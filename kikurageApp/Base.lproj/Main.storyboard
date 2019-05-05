@@ -141,7 +141,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="きくらげ栽培診断" id="u5b-Qp-vcV">
                         <barButtonItem key="backBarButtonItem" title="もどる" id="Ujd-6Q-1yM"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="G6N-Or-l5M">
+                        <barButtonItem key="leftBarButtonItem" title="メニュー" width="1" id="G6N-Or-l5M">
                             <connections>
                                 <segue destination="cUC-CD-GQj" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="mHt-pb-ePp"/>
                             </connections>
@@ -536,7 +536,6 @@
         <image name="kikurage_home_header_up" width="1080" height="1920"/>
         <image name="kikurage_recipe" width="1006" height="880"/>
         <image name="members" width="627" height="372"/>
-        <image name="menu" width="68" height="66"/>
         <image name="recipe" width="625" height="372"/>
         <image name="record_text" width="824" height="239"/>
         <image name="saibai" width="627" height="372"/>
