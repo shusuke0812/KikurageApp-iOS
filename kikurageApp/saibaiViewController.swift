@@ -9,6 +9,11 @@
 import UIKit
 import Charts
 
+//Firebase追加
+import Firebase
+import SwiftyJSON
+import FirebaseAuth
+
 class saibaiViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var cameraView: UIImageView!
@@ -22,6 +27,10 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
     
     /// 時間のテキストを取得するクラス
     let clock = Clock()
+    
+    //テスト（Firebaseから値を取得する配列）
+    var roomArrayTemparature: Array<Int> = []
+    var roomArrayHumidity: Array<Int> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +114,43 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
             print("カメラは利用できません")
         }
     }
+    
+    //====================================================
+    /****  Firebaseからリアルタイムで温度湿度の値を読み込む  ****/
+    //====================================================
+    
+    //累積データ/////////////////////////
+    func display2() {
+        //Databaseの参照URLを取得
+        let ref = Database.database().reference()
+        //        print("----------")
+        //        print(ref)
+        //データ取得開始
+        ref.child("kikurage_user1").child("monitor").observeSingleEvent(of: .value) { (snap, error) in
+            //RoomList下の階層をまとめて取得
+            let snapdata = snap.value as? [String:NSDictionary]
+            
+            //データを取得する配列
+            self.roomArrayTemparature = [Int]()
+            //もしデータがなければ無反応
+            if snapdata == nil {
+                return
+            }
+            //snapdata!.keys : 階層
+            //key : 階層
+            for key in snapdata!.keys.sorted() {
+                //snap : 階層下のデータを書くのすいた辞書
+                let snap = snapdata![key]
+                if let roomname = snap!["temparature"] as? Int {
+                    self.roomArrayTemparature.append(roomname)
+                    //                    print(self.roomArray)
+                }
+                else if let roomname = snap!["humidity"] as? Int {
+                    self.roomArrayHumidity.append(roomname)
+                }
+            }
+        }
+    }
   
     
     
@@ -136,20 +182,22 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func generateLineData() -> LineChartData
     {
-        
+        //display2()
         //リストを作り、グラフのデータを追加する方法（GitHubにあったCombinedChartViewとかMPAndroidChartのwikiを参考にしている********************
-        let values: [Double] = [0, 254, 321, 512, 214, 444, 967, 101, 765, 228,
-                                726, 253, 20, 123, 512, 448, 557, 223, 465, 291,
-                                979, 134, 864, 481, 405, 711, 1106, 411, 455, 761]
-        let values2: [Double] = [190,203,210,420,520,620,720,820,920,200,
-                                 201,220,203,420,520,657,757,857,579,570,
-                                 571,572,573,574,575,576,577,578,579,571]
+
+        let values: [Double] = [20, 26, 22, 23, 23, 24, 20, 11, 10, 30,
+                                20, 21, 25, 23, 27, 28, 15, 15, 19, 22,
+                                30, 27, 22, 26]
+        let values2: [Double] = [40,42,45,42,49,50,55,54,58,58,
+                                 56,60,62,65,67,68,69,73,77,78,
+                                 80,84,83,81]
+ 
         let date : [Double] = [1,2,3,4,5,6,7,8,9,10,
                                11,12,13,14,15,16,17,18,19,20,
-                               21,22,23,24,25,26,27,28,29,30]
-        let date2 : [Double] = [1,3,5,7,9,14,16,17,18,20,
-                                21,24,25,26,27,28,29,30,32,36,
-                                40,41,42,43,44,45,46,47,48,49]
+                               21,22,23,24]
+        let date2 : [Double] = [1,2,3,4,5,6,7,8,9,10,
+                                11,12,13,14,15,16,17,18,19,20,
+                                21,22,23,24]
         
         
         //DataSetを行うために必要なEntryの変数を作る　データによって入れるデータが違うため複数のentriesが必要になる？
@@ -163,6 +211,17 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
             entries2.append(ChartDataEntry(x: date2[i], y: value, icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
         }
         
+        //グラフテスト
+/*        var entries: [ChartDataEntry] = Array()
+        for (i, value) in roomArrayTemparature.enumerated(){
+            entries.append(ChartDataEntry(x: date[i], y: Double(value), icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
+        }
+        var entries2: [ChartDataEntry] = Array()
+        for (i, value) in roomArrayHumidity.enumerated(){
+            entries2.append(ChartDataEntry(x: date2[i], y: Double(value), icon: UIImage(named: "icon", in: Bundle(for: self.classForCoder), compatibleWith: nil)))
+        }
+*/
+        
         //データを送るためのDataSet変数をリストで作る
         var linedata:  [LineChartDataSet] = Array()
         
@@ -172,16 +231,16 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
         lineDataSet.drawIconsEnabled = false
         
         //グラフの線の色とマルの色を変えている********************
-        lineDataSet.colors = [NSUIColor.gray]
-        lineDataSet.circleColors = [NSUIColor.gray]
+        lineDataSet.colors = [NSUIColor.red]
+        lineDataSet.circleColors = [NSUIColor.red]
         //上で作ったデータをリストにappendで入れる
         linedata.append(lineDataSet)
         
         //上に同じ
         lineDataSet = LineChartDataSet(values: entries2, label: "湿度")
         lineDataSet.drawIconsEnabled = false
-        lineDataSet.colors = [NSUIColor.black]
-        lineDataSet.circleColors = [NSUIColor.black]
+        lineDataSet.colors = [NSUIColor.blue]
+        lineDataSet.circleColors = [NSUIColor.blue]
         linedata.append(lineDataSet)
         
         

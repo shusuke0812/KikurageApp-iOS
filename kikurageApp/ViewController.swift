@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             self.displaySensor()
         })
 //       timer2.fire()
-        display2()
+//        display2()
   
     }
 
@@ -74,8 +74,8 @@ class ViewController: UIViewController {
     func display2() {
         //Databaseの参照URLを取得
         let ref = Database.database().reference()
-        print("----------")
-        print(ref)
+//        print("----------")
+//        print(ref)
         //データ取得開始
         ref.child("kikurage_user1").child("monitor").observeSingleEvent(of: .value) { (snap, error) in
             //RoomList下の階層をまとめて取得
@@ -91,7 +91,6 @@ class ViewController: UIViewController {
             //key : 階層
             for key in snapdata!.keys.sorted() {
                 //snap : 階層下のデータを書くのすいた辞書
-                //今回なら、snap = ["RoomName":"はわはわ"]
                 let snap = snapdata![key]
                 if let roomname = snap!["temparature"] as? String {
                     self.roomArray.append(roomname)
@@ -153,13 +152,11 @@ class ViewController: UIViewController {
         //キクラゲの表情を表示する
         displayKikurage()
     }
-    
+
 //====================================================
 /*********  きくらげの状態を画像で表示させる  **************/
 //====================================================
     func displayKikurage() {
-        
-//        let humidity = displaySensor()
         
         //きくらげ表情
         let imageBad1 = UIImage(named: "Dry-1")

@@ -12,6 +12,7 @@
 		9C120F61222A5FFC00924C39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */; };
 		9C12F9652244F9FC00BA9FCB /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* loginViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
+		9C16BB9C22587B4E006BBE16 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16BB9B22587B4E006BBE16 /* Firebase.swift */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
 		9C1ACF4D2225768A00A3D4D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* ViewController.swift */; };
 		9C1ACF502225768A00A3D4D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9C16BB9B22587B4E006BBE16 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		9C1ACF472225768A00A3D4D1 /* きくらげ君.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "きくらげ君.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C1ACF4C2225768A00A3D4D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
 				9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */,
 				9C22857C2246025B000D6A9B /* Clock.swift */,
+				9C16BB9B22587B4E006BBE16 /* Firebase.swift */,
 			);
 			path = kikurageApp;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C16BB9C22587B4E006BBE16 /* Firebase.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* recipeViewController.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* ViewController.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* loginViewController.swift in Sources */,
@@ -404,7 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = kikurageApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -425,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = kikurageApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
