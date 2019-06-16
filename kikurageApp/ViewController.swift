@@ -25,9 +25,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var statusText: UILabel!
     @IBOutlet weak var adviceText: UILabel!
     
+   
     //Firebaseから取得するリアルタイム湿度,温度を保存するプロパティ
     var humidityNow :Int = 0
-    var tempatatureNow :Int = 0
+    var temparatureNow :Int = 0
     
     //現在時刻を取得するためのタイマーを設定する
     var timer: Timer!
@@ -135,14 +136,14 @@ class ViewController: UIViewController {
             
             //最新の湿度,温度プロパティを更新
             self.humidityNow = getjson["humidity"].intValue
-            self.tempatatureNow = getjson["temparature"].intValue
+            self.temparatureNow = getjson["temparature"].intValue
 //            self.humidityNow = 10
 //            self.tempatatureNow = 10
 
         }, withCancel: nil)
         
         //最新の湿度,温度がゼロである場合、キクラゲの表情を表示させない
-        if humidityNow == 0 || tempatatureNow == 0 {
+        if humidityNow == 0 || temparatureNow == 0 {
             return
         }
         
@@ -152,6 +153,16 @@ class ViewController: UIViewController {
         //キクラゲの表情を表示する
         displayKikurage()
     }
+    
+    //さいばい記録画面へ温湿データを渡す
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //segueから遷移先のsaibaiViewControllerを取得
+        let saibaiViewController: saibaiViewController = segue.destination as! saibaiViewController
+        
+        saibaiViewController.temparatureTest = self.temparatureNow
+    }
+ */
 
 //====================================================
 /*********  きくらげの状態を画像で表示させる  **************/
@@ -197,13 +208,13 @@ class ViewController: UIViewController {
 //        print(humidity)
         //湿度によって表情を変える
         if humidityNow <= 80 && humidityNow >= 60 {
-            if tempatatureNow >= 20 && tempatatureNow <= 25 {
+            if temparatureNow >= 20 && temparatureNow <= 25 {
                 imageView.animationImages = imageListArrayGood
                 self.statusText.text = "ノリノリやで！"
                 self.statusText.isHidden = false
                 self.adviceText.text = "（きくらげ博士より）\n引き続き見守っているのじゃぞ！"
             }
-            else if tempatatureNow > 25 {
+            else if temparatureNow > 25 {
                 imageView.animationImages = imageListArrayGood
                 self.statusText.text = "ちょっと暑いけど、大丈夫だよ！"
                 self.statusText.isHidden = false
@@ -217,13 +228,13 @@ class ViewController: UIViewController {
             }
         }
         else if humidityNow > 80 {
-            if tempatatureNow >= 20 && tempatatureNow <= 25 {
+            if temparatureNow >= 20 && temparatureNow <= 25 {
                 imageView.animationImages = imageListArrayBad
                 self.statusText.text = "もうおなかいっぱいや！"
                 self.statusText.isHidden = false
                 self.adviceText.text = "（きくらげ博士より）\n水をあげすぎてしまったようじゃ。\n換気の良いところへ移動して元気にするのじゃぞ！"
             }
-            else if tempatatureNow > 25 {
+            else if temparatureNow > 25 {
                 imageView.animationImages = imageListArrayBad
                 self.statusText.text = "暑いし、もうおなかいっぱいや！"
                 self.statusText.isHidden = false
@@ -238,13 +249,13 @@ class ViewController: UIViewController {
             }
         }
         else {
-            if tempatatureNow >= 20 && tempatatureNow <= 25 {
+            if temparatureNow >= 20 && temparatureNow <= 25 {
                 imageView.animationImages = imageListArrayBad
                 self.statusText.text = "のどカラカラや！"
                 self.statusText.isHidden = false
                 self.adviceText.text = "（きくらげ博士より）\nおなかが空いているようじゃ。\n水をあげるのじゃ！！"
             }
-            else if tempatatureNow > 25 {
+            else if temparatureNow > 25 {
                 imageView.animationImages = imageListArrayBad
                 self.statusText.text = "暑いけど、おなかすいたー！"
                 self.statusText.isHidden = false

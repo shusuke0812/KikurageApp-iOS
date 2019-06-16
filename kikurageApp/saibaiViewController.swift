@@ -31,6 +31,7 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
     //テスト（Firebaseから値を取得する配列）
     var roomArrayTemparature: Array<Int> = []
     var roomArrayHumidity: Array<Int> = []
+    var temparatureTest: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,6 +189,13 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
         let values: [Double] = [20, 26, 22, 23, 23, 24, 20, 11, 10, 30,
                                 20, 21, 25, 23, 27, 28, 15, 15, 19, 22,
                                 30, 27, 22, 26]
+ 
+        /*
+        let values: [Double] = [Double(self.temparatureTest), 26, 22, 23, 23, 24, 20, 11, 10, 30,
+                                20, 21, 25, 23, 27, 28, 15, 15, 19, 22,
+                                30, 27, 22, 26]
+ */
+        
         let values2: [Double] = [40,42,45,42,49,50,55,54,58,58,
                                  56,60,62,65,67,68,69,73,77,78,
                                  80,84,83,81]

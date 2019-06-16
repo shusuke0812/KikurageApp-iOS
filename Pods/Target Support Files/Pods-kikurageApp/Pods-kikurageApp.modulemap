@@ -1,6 +1,0 @@
-framework module Pods_kikurageApp {
-  umbrella header "Pods-kikurageApp-umbrella.h"
-
-  export *
-  module * { export * }
-}
