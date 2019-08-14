@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */; };
 		9C074970224E173B0012D2E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* MenuViewController.swift */; };
+		9C0D537E22B61A6B0031FF90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D537D22B61A6B0031FF90 /* GoogleService-Info.plist */; };
 		9C120F61222A5FFC00924C39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */; };
 		9C12F9652244F9FC00BA9FCB /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* loginViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9C0D537D22B61A6B0031FF90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -112,6 +114,7 @@
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 				9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */,
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
+				9C0D537D22B61A6B0031FF90 /* GoogleService-Info.plist */,
 				9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */,
 				9C22857C2246025B000D6A9B /* Clock.swift */,
 				9C16BB9B22587B4E006BBE16 /* Firebase.swift */,
@@ -181,6 +184,7 @@
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
 				9C120F61222A5FFC00924C39 /* GoogleService-Info.plist in Resources */,
+				9C0D537E22B61A6B0031FF90 /* GoogleService-Info.plist in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C1ACF502225768A00A3D4D1 /* Main.storyboard in Resources */,
 			);

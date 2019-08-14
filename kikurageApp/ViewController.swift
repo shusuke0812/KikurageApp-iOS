@@ -45,9 +45,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         //温度湿度テキスト、アドバイステキストを隠す
+        
         self.temparatureText.isHidden = true
         self.humidityText.isHidden = true
         self.statusText.isHidden = true
+ 
         
         //1秒毎にクラスdisplayClockを呼び出す
 //        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayClock), userInfo: nil, repeats: true)
@@ -56,7 +58,7 @@ class ViewController: UIViewController {
             self.displayClock()
         })
         
-        // 2秒毎にデータベースへの参照しさ最新のセンサ値を読み込み、キクラゲの表情を表示する
+        // 2秒毎にデータベースへの参照し、最新のセンサ値を読み込み、キクラゲの表情を表示する
 //       timer2 = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(displaySensor), userInfo: nil, repeats: true)
         timer2 = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { (timer2) in
             self.displaySensor()
@@ -121,6 +123,9 @@ class ViewController: UIViewController {
            if getjson.count == 0 {
                 return
             }
+            
+            print("DEBUG: \(getjson)")
+            
             self.temparatureText.text = "温度:\(getjson["temparature"].intValue)℃"
             self.humidityText.text = "湿度:\(getjson["humidity"].intValue)％"
             
