@@ -6,7 +6,7 @@ target 'kikurageApp' do
   use_frameworks!
 
   # Pods for kikurageApp
-
+  pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'SwiftyJSON'

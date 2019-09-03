@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */; };
 		9C074970224E173B0012D2E0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* MenuViewController.swift */; };
-		9C0D537E22B61A6B0031FF90 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C0D537D22B61A6B0031FF90 /* GoogleService-Info.plist */; };
-		9C120F61222A5FFC00924C39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */; };
 		9C12F9652244F9FC00BA9FCB /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* loginViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C16BB9C22587B4E006BBE16 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16BB9B22587B4E006BBE16 /* Firebase.swift */; };
@@ -20,6 +18,7 @@
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22857D2246025B000D6A9B /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22857C2246025B000D6A9B /* Clock.swift */; };
+		9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */; };
 		9C6EF7772229F0B900550AC2 /* saibaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7762229F0B900550AC2 /* saibaiViewController.swift */; };
 		9C6EF7792229F0CD00550AC2 /* recipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* recipeViewController.swift */; };
 		9C6EF77B2229F0DE00550AC2 /* hakaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* hakaseViewController.swift */; };
@@ -29,8 +28,6 @@
 /* Begin PBXFileReference section */
 		9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		9C0D537D22B61A6B0031FF90 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C16BB9B22587B4E006BBE16 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
@@ -42,6 +39,7 @@
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C22857C2246025B000D6A9B /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C6EF7762229F0B900550AC2 /* saibaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saibaiViewController.swift; sourceTree = "<group>"; };
 		9C6EF7782229F0CD00550AC2 /* recipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeViewController.swift; sourceTree = "<group>"; };
 		9C6EF77A2229F0DE00550AC2 /* hakaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hakaseViewController.swift; sourceTree = "<group>"; };
@@ -110,14 +108,13 @@
 				9C12F9642244F9FC00BA9FCB /* loginViewController.swift */,
 				9C07496F224E173B0012D2E0 /* MenuViewController.swift */,
 				9C1ACF4E2225768A00A3D4D1 /* Main.storyboard */,
-				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
-				9C120F60222A5FFC00924C39 /* GoogleService-Info.plist */,
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
-				9C0D537D22B61A6B0031FF90 /* GoogleService-Info.plist */,
 				9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */,
 				9C22857C2246025B000D6A9B /* Clock.swift */,
 				9C16BB9B22587B4E006BBE16 /* Firebase.swift */,
+				9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */,
+				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 			);
 			path = kikurageApp;
 			sourceTree = "<group>";
@@ -183,8 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
-				9C120F61222A5FFC00924C39 /* GoogleService-Info.plist in Resources */,
-				9C0D537E22B61A6B0031FF90 /* GoogleService-Info.plist in Resources */,
+				9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C1ACF502225768A00A3D4D1 /* Main.storyboard in Resources */,
 			);
@@ -207,6 +203,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -217,6 +214,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

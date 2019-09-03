@@ -31,8 +31,8 @@ class ViewController: UIViewController {
     var temparatureNow :Int = 0
     
     //現在時刻を取得するためのタイマーを設定する
-    var timer: Timer!
-    var timer2: Timer!
+    var timerClock: Timer!
+    var timerDisplay: Timer!
     
     /// 時間のテキストを取得するクラス
     let clock = Clock()
@@ -40,31 +40,35 @@ class ViewController: UIViewController {
     //テスト（Firebaseから値を取得する配列）
     var roomArray: Array<String> = []
     
+//====================================================
+/****  画面表示  ****/
+//====================================================
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //Firebase初期化
+        FirebaseApp.configure()
+        print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
         
-        //温度湿度テキスト、アドバイステキストを隠す
-        
+        //温度湿度テキスト、アドバイステキストを隠す :ok
         self.temparatureText.isHidden = true
         self.humidityText.isHidden = true
         self.statusText.isHidden = true
- 
         
-        //1秒毎にクラスdisplayClockを呼び出す
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayClock), userInfo: nil, repeats: true)
-//       timer.fire()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+        //博士コメントの枠を装飾 :ok
+        adviceText.layer.borderColor = UIColor.red.cgColor
+        adviceText.layer.borderWidth = 0.5
+        adviceText.layer.cornerRadius = 10.0
+        adviceText.layer.masksToBounds = true
+        
+        //1秒毎にクラスdisplayClockを呼び出す：ok
+        timerClock = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timerClock) in
             self.displayClock()
         })
         
-        // 2秒毎にデータベースへの参照し、最新のセンサ値を読み込み、キクラゲの表情を表示する
-//       timer2 = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(displaySensor), userInfo: nil, repeats: true)
-        timer2 = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { (timer2) in
+        // 2秒毎にデータベースへの参照し、最新のセンサ値を読み込み、キクラゲの表情を表示する :ok
+        timerDisplay = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { (timerDisplay) in
             self.displaySensor()
         })
-//       timer2.fire()
-//        display2()
   
     }
 
@@ -77,8 +81,7 @@ class ViewController: UIViewController {
     func display2() {
         //Databaseの参照URLを取得
         let ref = Database.database().reference()
-//        print("----------")
-//        print(ref)
+
         //データ取得開始
         ref.child("kikurage_user1").child("monitor").observeSingleEvent(of: .value) { (snap, error) in
             //RoomList下の階層をまとめて取得
@@ -97,7 +100,6 @@ class ViewController: UIViewController {
                 let snap = snapdata![key]
                 if let roomname = snap!["temparature"] as? String {
                     self.roomArray.append(roomname)
-//                    print(self.roomArray)
                 }
             }
         }
@@ -112,43 +114,25 @@ class ViewController: UIViewController {
         
         //トレーリングクロージャ？
         ref.child("kikurage_user1").child("monitor2").observeSingleEvent(of: .value, with:{(snapshot) in
-/*
-            if let data = snapshot.value as? [String:AnyObject] {
-                let temparature = data["temparature"] as? Double
-//                self.temparatureText.text = temparature
-                print(temparature)
-            }
-*/
+
            let getjson = JSON(snapshot.value as? [String : AnyObject] ?? [:])
            if getjson.count == 0 {
                 return
             }
-            
-            print("DEBUG: \(getjson)")
-            
             self.temparatureText.text = "温度:\(getjson["temparature"].intValue)℃"
             self.humidityText.text = "湿度:\(getjson["humidity"].intValue)％"
-            
-//            self.temparatureText.text = ""
-/*
-            for (key, _) in getjson.dictionaryValue {
- //               print("key:\(key)\ntemparature:\(getjson[key]["temparature"].stringValue)\ntimenow:\(getjson[key]["timenow"].stringValue)\n")
-                self.temparatureText.text = "温度:\(getjson[key]["temparature"].intValue)"
-                self.humidityText.text = "湿度:\(getjson[key]["humidity"].intValue)"
-
-            }
- */
             
             //最新の湿度,温度プロパティを更新
             self.humidityNow = getjson["humidity"].intValue
             self.temparatureNow = getjson["temparature"].intValue
-//            self.humidityNow = 10
-//            self.tempatatureNow = 10
 
         }, withCancel: nil)
         
+        print("DEBUG_humidityNow:\(humidityNow)")
+        print("DEBUG_temparatureNow:\(temparatureNow)")
         //最新の湿度,温度がゼロである場合、キクラゲの表情を表示させない
         if humidityNow == 0 || temparatureNow == 0 {
+            print("DEBUG:温度・湿度に値がありません")
             return
         }
         
@@ -158,19 +142,9 @@ class ViewController: UIViewController {
         //キクラゲの表情を表示する
         displayKikurage()
     }
-    
-    //さいばい記録画面へ温湿データを渡す
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //segueから遷移先のsaibaiViewControllerを取得
-        let saibaiViewController: saibaiViewController = segue.destination as! saibaiViewController
-        
-        saibaiViewController.temparatureTest = self.temparatureNow
-    }
- */
 
 //====================================================
-/*********  きくらげの状態を画像で表示させる  **************/
+/*********  きくらげ栽培環境を画像で表示させる  ************/
 //====================================================
     func displayKikurage() {
         
@@ -189,16 +163,6 @@ class ViewController: UIViewController {
         imageListArrayGood.append(imageGood1!)
         imageListArrayGood.append(imageGood2!)
         
-        //画面スクリーンサイズ
-//        let screenWidth = self.view.bounds.width
-//        let screenHeight = self.view.bounds.height
-//        print(screenWidth)
-//        print(screenHeight)
-        
-        //画像のサイズ
-//        let imageWidth = imageBad1?.size.width
-//        let imageHeight = imageBad1?.size.height
-        
         let imageView :UIImageView = UIImageView(image: imageBad1)
         
         let rect = CGRect(x:5,
@@ -206,11 +170,9 @@ class ViewController: UIViewController {
                           width:200,
                           height:130)
         imageView.frame = rect
-//        imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
 
         self.kikurageStatus.addSubview(imageView)
-        
-//        print(humidity)
+
         //湿度によって表情を変える
         if humidityNow <= 80 && humidityNow >= 60 {
             if temparatureNow >= 20 && temparatureNow <= 25 {
@@ -285,7 +247,5 @@ class ViewController: UIViewController {
     @objc func displayClock() {
         nowTime.text = clock.display()
     }
-    
-
 }
 
