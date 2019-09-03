@@ -40,14 +40,14 @@ class ViewController: UIViewController {
     //テスト（Firebaseから値を取得する配列）
     var roomArray: Array<String> = []
     
+    //Firebaseデータ取得用
+    var ref: DatabaseReference!
+    
 //====================================================
 /****  画面表示  ****/
 //====================================================
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Firebase初期化
-        FirebaseApp.configure()
-        print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
         
         //温度湿度テキスト、アドバイステキストを隠す :ok
         self.temparatureText.isHidden = true
@@ -77,10 +77,10 @@ class ViewController: UIViewController {
 /****  Firebaseからリアルタイムで温度湿度の値を読み込む  ****/
 //====================================================
 
-//累積データ/////////////////////////
+//累積データ///////////////////////// ボツ：Firebaseのデータ保存容量制限を回避するため、データは更新する方針とする
     func display2() {
         //Databaseの参照URLを取得
-        let ref = Database.database().reference()
+        ref = Database.database().reference()
 
         //データ取得開始
         ref.child("kikurage_user1").child("monitor").observeSingleEvent(of: .value) { (snap, error) in
@@ -109,11 +109,12 @@ class ViewController: UIViewController {
 
 //スナップショットデータ////////////////
     @objc func displaySensor() {
-
-        let ref = Database.database().reference()
         
-        //トレーリングクロージャ？
-        ref.child("kikurage_user1").child("monitor2").observeSingleEvent(of: .value, with:{(snapshot) in
+        //Firebaseインスタンス取得
+        ref = Database.database().reference()
+        
+        //monitor2内で値が変更されたとき、クロージャー関数がコールバックされる
+        ref.child("kikurage_user1").child("monitor2").observe(DataEventType.value, with:{(snapshot) in
 
            let getjson = JSON(snapshot.value as? [String : AnyObject] ?? [:])
            if getjson.count == 0 {
@@ -125,8 +126,13 @@ class ViewController: UIViewController {
             //最新の湿度,温度プロパティを更新
             self.humidityNow = getjson["humidity"].intValue
             self.temparatureNow = getjson["temparature"].intValue
+            
+            print("DEBUG: check2")
 
         }, withCancel: nil)
+        
+        self.temparatureText.isHidden = false
+        self.humidityText.isHidden = false
         
         print("DEBUG_humidityNow:\(humidityNow)")
         print("DEBUG_temparatureNow:\(temparatureNow)")
@@ -135,9 +141,6 @@ class ViewController: UIViewController {
             print("DEBUG:温度・湿度に値がありません")
             return
         }
-        
-        self.temparatureText.isHidden = false
-        self.humidityText.isHidden = false
         
         //キクラゲの表情を表示する
         displayKikurage()

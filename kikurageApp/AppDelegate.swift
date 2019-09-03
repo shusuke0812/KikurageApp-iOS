@@ -8,7 +8,7 @@
 
 import UIKit
 
-//import Firebase
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Firebase初期化
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
+        print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
         
         //スプラッシュ画面表示を2秒間に設定する
         sleep(1)
