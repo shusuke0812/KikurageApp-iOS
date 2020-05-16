@@ -10,12 +10,18 @@
 		9CCFC641246FD21000858216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC640246FD21000858216 /* AppDelegate.swift */; };
 		9CCFC643246FD21000858216 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC642246FD21000858216 /* SceneDelegate.swift */; };
 		9CCFC646246FD21000858216 /* KikurageProjectForiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC644246FD21000858216 /* KikurageProjectForiOS.xcdatamodeld */; };
-		9CCFC648246FD21000858216 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC647246FD21000858216 /* ContentView.swift */; };
+		9CCFC648246FD21000858216 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC647246FD21000858216 /* HomeView.swift */; };
 		9CCFC64A246FD21400858216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC649246FD21400858216 /* Assets.xcassets */; };
 		9CCFC64D246FD21400858216 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC64C246FD21400858216 /* Preview Assets.xcassets */; };
 		9CCFC650246FD21400858216 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC64E246FD21400858216 /* LaunchScreen.storyboard */; };
 		9CCFC65B246FD21400858216 /* KikurageProjectForiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC65A246FD21400858216 /* KikurageProjectForiOSTests.swift */; };
 		9CCFC666246FD21400858216 /* KikurageProjectForiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC665246FD21400858216 /* KikurageProjectForiOSUITests.swift */; };
+		9CCFC674246FD7C300858216 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC673246FD7C300858216 /* LoginView.swift */; };
+		9CCFC676246FD81100858216 /* SnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC675246FD81100858216 /* SnsView.swift */; };
+		9CCFC678246FD88700858216 /* CultivateRecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC677246FD88700858216 /* CultivateRecordListView.swift */; };
+		9CCFC67A246FD89800858216 /* CultivateRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC679246FD89800858216 /* CultivateRecordView.swift */; };
+		9CCFC67C246FD8B100858216 /* CultivateRecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC67B246FD8B100858216 /* CultivateRecordDetailView.swift */; };
+		9CCFC67E246FD8CD00858216 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC67D246FD8CD00858216 /* MyPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +46,7 @@
 		9CCFC640246FD21000858216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CCFC642246FD21000858216 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CCFC645246FD21000858216 /* KikurageProjectForiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KikurageProjectForiOS.xcdatamodel; sourceTree = "<group>"; };
-		9CCFC647246FD21000858216 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9CCFC647246FD21000858216 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9CCFC649246FD21400858216 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CCFC64C246FD21400858216 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9CCFC64F246FD21400858216 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +57,12 @@
 		9CCFC661246FD21400858216 /* KikurageProjectForiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageProjectForiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CCFC665246FD21400858216 /* KikurageProjectForiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageProjectForiOSUITests.swift; sourceTree = "<group>"; };
 		9CCFC667246FD21400858216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CCFC673246FD7C300858216 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9CCFC675246FD81100858216 /* SnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsView.swift; sourceTree = "<group>"; };
+		9CCFC677246FD88700858216 /* CultivateRecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateRecordListView.swift; sourceTree = "<group>"; };
+		9CCFC679246FD89800858216 /* CultivateRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateRecordView.swift; sourceTree = "<group>"; };
+		9CCFC67B246FD8B100858216 /* CultivateRecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateRecordDetailView.swift; sourceTree = "<group>"; };
+		9CCFC67D246FD8CD00858216 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +115,13 @@
 			children = (
 				9CCFC640246FD21000858216 /* AppDelegate.swift */,
 				9CCFC642246FD21000858216 /* SceneDelegate.swift */,
-				9CCFC647246FD21000858216 /* ContentView.swift */,
+				9CCFC647246FD21000858216 /* HomeView.swift */,
+				9CCFC673246FD7C300858216 /* LoginView.swift */,
+				9CCFC675246FD81100858216 /* SnsView.swift */,
+				9CCFC677246FD88700858216 /* CultivateRecordListView.swift */,
+				9CCFC679246FD89800858216 /* CultivateRecordView.swift */,
+				9CCFC67B246FD8B100858216 /* CultivateRecordDetailView.swift */,
+				9CCFC67D246FD8CD00858216 /* MyPageView.swift */,
 				9CCFC649246FD21400858216 /* Assets.xcassets */,
 				9CCFC64E246FD21400858216 /* LaunchScreen.storyboard */,
 				9CCFC651246FD21400858216 /* Info.plist */,
@@ -270,10 +288,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CCFC67C246FD8B100858216 /* CultivateRecordDetailView.swift in Sources */,
+				9CCFC678246FD88700858216 /* CultivateRecordListView.swift in Sources */,
 				9CCFC641246FD21000858216 /* AppDelegate.swift in Sources */,
 				9CCFC643246FD21000858216 /* SceneDelegate.swift in Sources */,
-				9CCFC648246FD21000858216 /* ContentView.swift in Sources */,
+				9CCFC648246FD21000858216 /* HomeView.swift in Sources */,
+				9CCFC676246FD81100858216 /* SnsView.swift in Sources */,
+				9CCFC674246FD7C300858216 /* LoginView.swift in Sources */,
+				9CCFC67E246FD8CD00858216 /* MyPageView.swift in Sources */,
 				9CCFC646246FD21000858216 /* KikurageProjectForiOS.xcdatamodeld in Sources */,
+				9CCFC67A246FD89800858216 /* CultivateRecordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
