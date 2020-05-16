@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BD5EB21ADED08FBC176C792 /* Pods_KikurageProjectForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B883F9640A34F1FDC712EB54 /* Pods_KikurageProjectForiOS.framework */; };
+		9C5F6D883B598827986AC7ED /* Pods_KikurageProjectForiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF0768C27830B8F9569E474F /* Pods_KikurageProjectForiOSTests.framework */; };
 		9CCFC641246FD21000858216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC640246FD21000858216 /* AppDelegate.swift */; };
 		9CCFC643246FD21000858216 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC642246FD21000858216 /* SceneDelegate.swift */; };
 		9CCFC646246FD21000858216 /* KikurageProjectForiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC644246FD21000858216 /* KikurageProjectForiOS.xcdatamodeld */; };
@@ -22,6 +24,8 @@
 		9CCFC67A246FD89800858216 /* CultivateRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC679246FD89800858216 /* CultivateRecordView.swift */; };
 		9CCFC67C246FD8B100858216 /* CultivateRecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC67B246FD8B100858216 /* CultivateRecordDetailView.swift */; };
 		9CCFC67E246FD8CD00858216 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFC67D246FD8CD00858216 /* MyPageView.swift */; };
+		9CCFC680246FDB4A00858216 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CCFC67F246FDB4A00858216 /* GoogleService-Info.plist */; };
+		F95BC73702E5CD4096055346 /* Pods_KikurageProjectForiOS_KikurageProjectForiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA926A22675B2A7C170E41E /* Pods_KikurageProjectForiOS_KikurageProjectForiOSUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DA926A22675B2A7C170E41E /* Pods_KikurageProjectForiOS_KikurageProjectForiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageProjectForiOS_KikurageProjectForiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A85146709D6C6DE75E6F90C /* Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		55926C1EBB02CDCC64CFE555 /* Pods-KikurageProjectForiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageProjectForiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageProjectForiOSTests/Pods-KikurageProjectForiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		92F0BA6A3ADF0EF56EDD5259 /* Pods-KikurageProjectForiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageProjectForiOS.release.xcconfig"; path = "Target Support Files/Pods-KikurageProjectForiOS/Pods-KikurageProjectForiOS.release.xcconfig"; sourceTree = "<group>"; };
 		9CCFC63D246FD21000858216 /* KikurageProjectForiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageProjectForiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CCFC640246FD21000858216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CCFC642246FD21000858216 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +71,12 @@
 		9CCFC679246FD89800858216 /* CultivateRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateRecordView.swift; sourceTree = "<group>"; };
 		9CCFC67B246FD8B100858216 /* CultivateRecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivateRecordDetailView.swift; sourceTree = "<group>"; };
 		9CCFC67D246FD8CD00858216 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		9CCFC67F246FDB4A00858216 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A3276B09DFBF8648CA455EE9 /* Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B883F9640A34F1FDC712EB54 /* Pods_KikurageProjectForiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageProjectForiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98EDEBE94AF69239D551B7C /* Pods-KikurageProjectForiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageProjectForiOSTests.release.xcconfig"; path = "Target Support Files/Pods-KikurageProjectForiOSTests/Pods-KikurageProjectForiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		E26CB7AF3177245D4B28EB0A /* Pods-KikurageProjectForiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageProjectForiOS.debug.xcconfig"; path = "Target Support Files/Pods-KikurageProjectForiOS/Pods-KikurageProjectForiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		EF0768C27830B8F9569E474F /* Pods_KikurageProjectForiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageProjectForiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BD5EB21ADED08FBC176C792 /* Pods_KikurageProjectForiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5F6D883B598827986AC7ED /* Pods_KikurageProjectForiOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +100,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F95BC73702E5CD4096055346 /* Pods_KikurageProjectForiOS_KikurageProjectForiOSUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18E0F4617CA97BA240BB64C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B883F9640A34F1FDC712EB54 /* Pods_KikurageProjectForiOS.framework */,
+				1DA926A22675B2A7C170E41E /* Pods_KikurageProjectForiOS_KikurageProjectForiOSUITests.framework */,
+				EF0768C27830B8F9569E474F /* Pods_KikurageProjectForiOSTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43A1C7177FF151A83865A00B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E26CB7AF3177245D4B28EB0A /* Pods-KikurageProjectForiOS.debug.xcconfig */,
+				92F0BA6A3ADF0EF56EDD5259 /* Pods-KikurageProjectForiOS.release.xcconfig */,
+				4A85146709D6C6DE75E6F90C /* Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.debug.xcconfig */,
+				A3276B09DFBF8648CA455EE9 /* Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.release.xcconfig */,
+				55926C1EBB02CDCC64CFE555 /* Pods-KikurageProjectForiOSTests.debug.xcconfig */,
+				C98EDEBE94AF69239D551B7C /* Pods-KikurageProjectForiOSTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9CCFC634246FD21000858216 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +138,8 @@
 				9CCFC659246FD21400858216 /* KikurageProjectForiOSTests */,
 				9CCFC664246FD21400858216 /* KikurageProjectForiOSUITests */,
 				9CCFC63E246FD21000858216 /* Products */,
+				43A1C7177FF151A83865A00B /* Pods */,
+				18E0F4617CA97BA240BB64C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +168,7 @@
 				9CCFC649246FD21400858216 /* Assets.xcassets */,
 				9CCFC64E246FD21400858216 /* LaunchScreen.storyboard */,
 				9CCFC651246FD21400858216 /* Info.plist */,
+				9CCFC67F246FDB4A00858216 /* GoogleService-Info.plist */,
 				9CCFC644246FD21000858216 /* KikurageProjectForiOS.xcdatamodeld */,
 				9CCFC64B246FD21400858216 /* Preview Content */,
 			);
@@ -164,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CCFC66A246FD21400858216 /* Build configuration list for PBXNativeTarget "KikurageProjectForiOS" */;
 			buildPhases = (
+				04699388E35FC7FDC42DE5C4 /* [CP] Check Pods Manifest.lock */,
 				9CCFC639246FD21000858216 /* Sources */,
 				9CCFC63A246FD21000858216 /* Frameworks */,
 				9CCFC63B246FD21000858216 /* Resources */,
+				253FD36838A3646B9D09B6BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +227,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CCFC66D246FD21400858216 /* Build configuration list for PBXNativeTarget "KikurageProjectForiOSTests" */;
 			buildPhases = (
+				677F7B2387D8ADB97E04BFB5 /* [CP] Check Pods Manifest.lock */,
 				9CCFC652246FD21400858216 /* Sources */,
 				9CCFC653246FD21400858216 /* Frameworks */,
 				9CCFC654246FD21400858216 /* Resources */,
@@ -199,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CCFC670246FD21400858216 /* Build configuration list for PBXNativeTarget "KikurageProjectForiOSUITests" */;
 			buildPhases = (
+				A59F94D031C81E2D4A38C93B /* [CP] Check Pods Manifest.lock */,
 				9CCFC65D246FD21400858216 /* Sources */,
 				9CCFC65E246FD21400858216 /* Frameworks */,
 				9CCFC65F246FD21400858216 /* Resources */,
+				A7BFCDB5C2372DA4376C8345 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CCFC650246FD21400858216 /* LaunchScreen.storyboard in Resources */,
+				9CCFC680246FDB4A00858216 /* GoogleService-Info.plist in Resources */,
 				9CCFC64D246FD21400858216 /* Preview Assets.xcassets in Resources */,
 				9CCFC64A246FD21400858216 /* Assets.xcassets in Resources */,
 			);
@@ -282,6 +332,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04699388E35FC7FDC42DE5C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KikurageProjectForiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		253FD36838A3646B9D09B6BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KikurageProjectForiOS/Pods-KikurageProjectForiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KikurageProjectForiOS/Pods-KikurageProjectForiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KikurageProjectForiOS/Pods-KikurageProjectForiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		677F7B2387D8ADB97E04BFB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KikurageProjectForiOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A59F94D031C81E2D4A38C93B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7BFCDB5C2372DA4376C8345 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests/Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9CCFC639246FD21000858216 /* Sources */ = {
@@ -460,6 +613,7 @@
 		};
 		9CCFC66B246FD21400858216 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E26CB7AF3177245D4B28EB0A /* Pods-KikurageProjectForiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -480,6 +634,7 @@
 		};
 		9CCFC66C246FD21400858216 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92F0BA6A3ADF0EF56EDD5259 /* Pods-KikurageProjectForiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -500,6 +655,7 @@
 		};
 		9CCFC66E246FD21400858216 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55926C1EBB02CDCC64CFE555 /* Pods-KikurageProjectForiOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -522,6 +678,7 @@
 		};
 		9CCFC66F246FD21400858216 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C98EDEBE94AF69239D551B7C /* Pods-KikurageProjectForiOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -544,6 +701,7 @@
 		};
 		9CCFC671246FD21400858216 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A85146709D6C6DE75E6F90C /* Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -564,6 +722,7 @@
 		};
 		9CCFC672246FD21400858216 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3276B09DFBF8648CA455EE9 /* Pods-KikurageProjectForiOS-KikurageProjectForiOSUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
