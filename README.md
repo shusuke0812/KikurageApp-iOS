@@ -1,5 +1,6 @@
 Development of Wood Ear Mashroom growth supported IoT device／キクラゲ栽培支援IoTデバイス開発
 ====　
+　
 ## Overview／概要
 本アプリは、家庭で育てることができるキクラゲ栽培キットと連動したキクラゲ栽培環境のモニタリング・生育の観察記録機能を備える
 　
@@ -30,9 +31,3 @@ Development of Wood Ear Mashroom growth supported IoT device／キクラゲ栽�
 
 
 ## Author／著者
-[@shusuke0812](https://github.com/shusuke0812)
-
-
-
-A
-
