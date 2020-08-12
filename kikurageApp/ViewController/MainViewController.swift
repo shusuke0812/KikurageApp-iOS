@@ -16,7 +16,7 @@ import FirebaseAuth
 //Mailer追加
 import MessageUI
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
    
     @IBOutlet weak var nowTime: UILabel!
     @IBOutlet weak var kikurageStatus: UIImageView!

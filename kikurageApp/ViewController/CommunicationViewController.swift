@@ -11,7 +11,7 @@ import UIKit
 import MessageUI //Mailer追加
 import SafariServices //Webアクセス
 
-class hakaseViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class CommunicationViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

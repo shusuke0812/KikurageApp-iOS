@@ -11,7 +11,7 @@ import UIKit
 //Webアクセス
 import SafariServices
 
-class recipeViewController: UIViewController {
+class RecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

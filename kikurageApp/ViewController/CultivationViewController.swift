@@ -14,7 +14,8 @@ import Firebase
 import SwiftyJSON
 import FirebaseAuth
 
-class saibaiViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate,UITextFieldDelegate {
+class
+CultivationViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var cameraView: UIImageView!
     @IBOutlet weak var pictureLabel: UILabel!
@@ -65,7 +66,8 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
         // スペーサー
         let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         // 閉じるボタン
-        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(saibaiViewController.commitButtonTapped))
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(
+        CultivationViewController.commitButtonTapped))
         
         kbToolBar.items = [spacer, commitButton]
         observationWrite.inputAccessoryView = kbToolBar

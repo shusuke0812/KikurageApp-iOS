@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class SideMenuViewController: UIViewController {
     
     @IBOutlet weak var menuView: UIView!
     
