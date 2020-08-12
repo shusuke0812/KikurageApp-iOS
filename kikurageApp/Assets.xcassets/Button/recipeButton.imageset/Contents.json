@@ -1,21 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "料理記録ボタン.png",
       "idiom" : "universal",
-      "filename" : "members.png",
       "scale" : "1x"
     },
     {
+      "filename" : "料理記録ボタン@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "料理記録ボタン@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

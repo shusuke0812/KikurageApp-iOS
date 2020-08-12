@@ -113,7 +113,6 @@
 				9CF0020324E398D00084036B /* Storyboard */,
 				9CF0020224E398AC0084036B /* ViewController */,
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
-				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
 				9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
@@ -137,11 +136,12 @@
 		9CF0020324E398D00084036B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
+				9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */,
 				9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */,
 				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
 				9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */,
 				9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */,
-				9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */,
 				9C8A524E24E4ADFD0025B179 /* MenuViewController.storyboard */,
 			);
 			path = Storyboard;
