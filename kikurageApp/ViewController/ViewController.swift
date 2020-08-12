@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     var timerDisplay: Timer!
     
     /// 時間のテキストを取得するクラス
-    let clock = Clock()
+    let clock = ClockHelper()
     
     //テスト（Firebaseから値を取得する配列）
     var roomArray: Array<String> = []

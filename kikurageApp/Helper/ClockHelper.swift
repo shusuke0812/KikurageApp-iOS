@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Clock {
+class ClockHelper {
     
     func display() -> String {
         //現在時刻を取得する

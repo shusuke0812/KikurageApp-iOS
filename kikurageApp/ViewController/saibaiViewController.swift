@@ -26,7 +26,7 @@ class saibaiViewController: UIViewController, UINavigationControllerDelegate, UI
     var lineDataSet: LineChartDataSet!
     
     /// 時間のテキストを取得するクラス
-    let clock = Clock()
+    let clock = ClockHelper()
     
     //テスト（Firebaseから値を取得する配列）
     var roomArrayTemparature: Array<Int> = []
