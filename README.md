@@ -1,4 +1,4 @@
-Development of Wood Ear Mashroom growth supported IoT device／キクラゲ栽培支援IoTデバイス開発  
+キクラゲ栽培支援IoTデバイス開発  
 ===
 　
 ## 概要
@@ -33,4 +33,5 @@ Development of Wood Ear Mashroom growth supported IoT device／キクラゲ栽�
 - pod version 1.9.1  
 - MacOS Catalina version 10.15.4  
 
-## Author／著者
+## 著者
+- [@shusuke0812](https://github.com/shusuke0812)
