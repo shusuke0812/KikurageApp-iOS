@@ -9,32 +9,18 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var productKeyTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        //機能１
-        //プロダクトキーが未入力の時はスタートボタンを押せないようにする
-        //プロダクトキーが未入力でスタートボタンを押した場合、
-        //「プロダクトキーを入力してください」とポップアップ表示
-        
-        //機能２
-        //間違った（設定していない）プロダクトキーが入力された場合、
-        //「間違っている」とポップアップ表示
-        
+        // self.setUI()
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension LoginViewController {
+    func setUI() {
+        // TODO：調整中
+        // self.productKeyTextField.setTextFieldStyle(cornerRadius: 10, height: 60)
     }
-    */
-
 }
