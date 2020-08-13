@@ -17,40 +17,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-        //Firebase初期化
+        // Firebase初期化
         FirebaseApp.configure()
         print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
         
-        //スプラッシュ画面表示を2秒間に設定する
+        // スプラッシュ画面表示を2秒間に設定する
         sleep(1)
+        
+        // ログイン画面を開く
+        self.openLoginPage()
         
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        // アプリを閉じる時に呼ばれる
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // アプリを閉じた時に呼ばれる
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // アプリを開く時に呼ばれる
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // アプリを開いた時に呼ばれる
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // フリックしてアプリを終了させた時に呼ばれる
     }
-
-
 }
 
+extension AppDelegate {
+    // ログイン画面を開く
+    func openLoginPage() {
+        let window = UIWindow()
+        self.window = window
+        
+        let s: UIStoryboard = UIStoryboard(name: "LoginViewController", bundle: nil)
+        self.window?.rootViewController = s.instantiateInitialViewController() as! LoginViewController
+        self.window?.makeKeyAndVisible()
+    }
+}
