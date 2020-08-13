@@ -14,7 +14,9 @@ extension UITextField {
     ///   - cornerRadius: 角丸
     ///   - height: 高さ
     func setTextFieldStyle(cornerRadius: Int, height: Int) {
-        self.borderStyle = .roundedRect
+        self.borderStyle = .none
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 1
         self.layer.cornerRadius = CGFloat(cornerRadius)
         self.frame.size.height = CGFloat(height)
     }
