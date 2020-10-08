@@ -37,6 +37,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJX-D5-eV3">
                                 <rect key="frame" x="102" y="698" width="210" height="37"/>
                                 <state key="normal" image="startButton"/>
+                                <connections>
+                                    <action selector="didTapStartButton:" destination="Kee-XX-2yh" eventType="touchUpInside" id="PUA-OT-Jze"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="きくらげ栽培開始日を選択して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Sg-EvC">
                                 <rect key="frame" x="53" y="629" width="308" height="34"/>

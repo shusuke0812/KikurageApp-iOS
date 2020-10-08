@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
 //====================================================
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         //温度湿度テキスト、アドバイステキストを隠す :ok
         self.temparatureText.isHidden = true
         self.humidityText.isHidden = true
@@ -69,6 +69,7 @@ class MainViewController: UIViewController {
         timerDisplay = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { (timerDisplay) in
             self.displaySensor()
         })
+        */
   
     }
 
