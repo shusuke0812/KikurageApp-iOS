@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©︎ チーム マッシュルームマニア" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOB-CQ-7qZ">
-                                <rect key="frame" x="104.5" y="855" width="205" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©︎ チーム マッシュルームマニア" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOB-CQ-7qZ">
+                                <rect key="frame" x="16" y="855" width="382" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="205" id="z3e-aT-WX9"/>
                                 </constraints>
@@ -68,6 +68,7 @@
                         <constraints>
                             <constraint firstItem="v2y-Sg-EvC" firstAttribute="top" secondItem="I1y-mr-QXt" secondAttribute="bottom" constant="25" id="0xo-qL-Ldh"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="HJX-D5-eV3" secondAttribute="trailing" constant="102" id="1hU-hW-umV"/>
+                            <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="cOB-CQ-7qZ" secondAttribute="trailing" constant="16" id="1we-dJ-bnS"/>
                             <constraint firstItem="cOB-CQ-7qZ" firstAttribute="top" secondItem="zbL-mA-vYG" secondAttribute="bottom" constant="45" id="CaS-8q-dzh"/>
                             <constraint firstItem="cOB-CQ-7qZ" firstAttribute="top" secondItem="7J4-eZ-VUj" secondAttribute="bottom" constant="45" id="JBV-KJ-whK"/>
                             <constraint firstItem="HJX-D5-eV3" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="102" id="JoK-bo-10h"/>
@@ -77,6 +78,7 @@
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="gTz-Hi-49i" secondAttribute="trailing" constant="53" id="g5C-9r-rCc"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="7J4-eZ-VUj" secondAttribute="trailing" constant="90" id="g8s-Xh-Fwl"/>
                             <constraint firstItem="I1y-mr-QXt" firstAttribute="top" secondItem="gTz-Hi-49i" secondAttribute="bottom" constant="25" id="gPy-NB-DlM"/>
+                            <constraint firstItem="cOB-CQ-7qZ" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="16" id="lwm-pE-hi3"/>
                             <constraint firstItem="v2y-Sg-EvC" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="53" id="mfu-uV-5P3"/>
                             <constraint firstItem="cOB-CQ-7qZ" firstAttribute="centerX" secondItem="bkR-99-1oz" secondAttribute="centerX" id="nDs-ii-pOJ"/>
                             <constraint firstItem="HJX-D5-eV3" firstAttribute="top" secondItem="v2y-Sg-EvC" secondAttribute="bottom" constant="35" id="obr-Ie-Dki"/>
