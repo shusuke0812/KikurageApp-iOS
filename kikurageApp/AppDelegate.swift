@@ -9,18 +9,21 @@
 import UIKit
 
 import Firebase
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Firebase初期化
         FirebaseApp.configure()
         print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
+        
+        // IQKeyboard初期化
+        IQKeyboardManager.shared.enable = true
         
         // スプラッシュ画面表示を2秒間に設定する
         sleep(1)

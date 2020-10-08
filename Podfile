@@ -11,6 +11,7 @@ target 'kikurageApp' do
   pod 'Firebase/Database'
   pod 'SwiftyJSON'
   pod 'Charts', '~> 3.0'
+	pod 'IQKeyboardManagerSwift'
 
 end
 
