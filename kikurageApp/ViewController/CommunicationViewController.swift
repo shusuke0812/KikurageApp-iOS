@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommunicationViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class CommunicationViewController: UIViewController {
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
