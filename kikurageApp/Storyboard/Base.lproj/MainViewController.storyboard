@@ -224,26 +224,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在時刻" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoT-Iq-VWq">
-                                <rect key="frame" x="16" y="108" width="382" height="21.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoT-Iq-VWq">
+                                <rect key="frame" x="16" y="108" width="382" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日の きんちゃん" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1um-rs-6A0">
-                                <rect key="frame" x="16" y="157.5" width="382" height="26.5"/>
+                                <rect key="frame" x="16" y="136" width="382" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="のどカラカラや！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8G-Od-1s5">
-                                <rect key="frame" x="16" y="202" width="382" height="26.5"/>
+                                <rect key="frame" x="16" y="180.5" width="382" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2w-ln-CB5">
-                                <rect key="frame" x="62" y="238.5" width="290" height="195"/>
+                                <rect key="frame" x="62" y="217" width="290" height="195"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="195" id="AEM-2F-VK7"/>
@@ -251,7 +251,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-a1-55m">
-                                <rect key="frame" x="118" y="443.5" width="60.5" height="78"/>
+                                <rect key="frame" x="118" y="422" width="60.5" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hof-d1-eRc">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="18"/>
@@ -274,7 +274,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9eI-cw-kb6">
-                                <rect key="frame" x="62" y="472" width="31" height="51"/>
+                                <rect key="frame" x="62" y="450.5" width="31" height="51"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjA-dL-2ed">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="18"/>
@@ -291,7 +291,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-Qq-H8t">
-                                <rect key="frame" x="249" y="443.5" width="63" height="78"/>
+                                <rect key="frame" x="249" y="422" width="63" height="78"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="260-Dw-0Od">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="18"/>
@@ -314,7 +314,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVY-ca-2x5">
-                                <rect key="frame" x="62" y="466.5" width="290" height="0.5"/>
+                                <rect key="frame" x="62" y="445" width="290" height="0.5"/>
                                 <color key="backgroundColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="IFk-30-dJi"/>
@@ -322,7 +322,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y50-vB-neh">
-                                <rect key="frame" x="62" y="527" width="290" height="0.5"/>
+                                <rect key="frame" x="62" y="505.5" width="290" height="0.5"/>
                                 <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="eon-zj-nMy"/>
@@ -330,7 +330,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2">
-                                <rect key="frame" x="62" y="552.5" width="290" height="140"/>
+                                <rect key="frame" x="62" y="531" width="290" height="140"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="ojo-fE-JAj"/>
@@ -397,6 +397,14 @@
                             <constraint firstItem="dVY-ca-2x5" firstAttribute="centerX" secondItem="fri-rL-faW" secondAttribute="centerX" id="zXy-k4-RSe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="humidityTextLabel" destination="rJF-Di-ePs" id="beQ-TB-sGe"/>
+                        <outlet property="kikurageNameLabel" destination="1um-rs-6A0" id="dP1-gP-WHO"/>
+                        <outlet property="kikurageStatusLabel" destination="o8G-Od-1s5" id="5ED-l6-cgI"/>
+                        <outlet property="kikurageStatusView" destination="D2w-ln-CB5" id="U2B-7h-f3h"/>
+                        <outlet property="nowTimeLabel" destination="RoT-Iq-VWq" id="NdQ-kA-4BC"/>
+                        <outlet property="temparatureTextLabel" destination="cDh-P9-m5Q" id="LBk-R9-Q9U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYt-b2-oXU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

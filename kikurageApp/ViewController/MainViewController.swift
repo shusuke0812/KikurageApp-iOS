@@ -18,24 +18,19 @@ import MessageUI
 
 class MainViewController: UIViewController {
    
-    @IBOutlet weak var nowTime: UILabel!
-    @IBOutlet weak var kikurageStatus: UIImageView!
-    @IBOutlet weak var temparatureText: UILabel!
-    @IBOutlet weak var humidityText: UILabel!
-    @IBOutlet weak var statusText: UILabel!
-    @IBOutlet weak var adviceText: UILabel!
+    @IBOutlet weak var nowTimeLabel: UILabel!
+    @IBOutlet weak var kikurageNameLabel: UILabel!
+    @IBOutlet weak var kikurageStatusLabel: UILabel!
+    @IBOutlet weak var kikurageStatusView: UIImageView!
+    @IBOutlet weak var temparatureTextLabel: UILabel!
+    @IBOutlet weak var humidityTextLabel: UILabel!
     
-   
     //Firebaseから取得するリアルタイム湿度,温度を保存するプロパティ
     var humidityNow :Int = 0
     var temparatureNow :Int = 0
     
-    //現在時刻を取得するためのタイマーを設定する
-    var timerClock: Timer!
-    var timerDisplay: Timer!
-    
     /// 時間のテキストを取得するクラス
-    let clock = ClockHelper()
+    private let clock: ClockHelper = ClockHelper()
     
     //テスト（Firebaseから値を取得する配列）
     var roomArray: Array<String> = []
@@ -43,11 +38,10 @@ class MainViewController: UIViewController {
     //Firebaseデータ取得用
     var ref: DatabaseReference!
     
-//====================================================
-/****  画面表示  ****/
-//====================================================
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUI()
         /*
         //温度湿度テキスト、アドバイステキストを隠す :ok
         self.temparatureText.isHidden = true
@@ -72,6 +66,23 @@ class MainViewController: UIViewController {
         */
   
     }
+}
+
+// MARK: - Initialized Method
+extension MainViewController {
+    // UIを初期化する
+    private func setUI() {
+        // ラベル、画像に初期値を設定する
+        self.nowTimeLabel.text = clock.display()
+        
+        // 1秒毎に現在時刻表示を更新する
+        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    // 時刻表示更新用メソッド
+    @objc private func updateTime() {
+        self.nowTimeLabel.text = clock.display()
+    }
+}
 
 
 //====================================================
@@ -79,6 +90,7 @@ class MainViewController: UIViewController {
 //====================================================
 
 //累積データ///////////////////////// ボツ：Firebaseのデータ保存容量制限を回避するため、データは更新する方針とする
+/*
     func display2() {
         //Databaseの参照URLを取得
         ref = Database.database().reference()
@@ -105,10 +117,11 @@ class MainViewController: UIViewController {
             }
         }
     }
-
+*/
     
 
 //スナップショットデータ////////////////
+    /*
     @objc func displaySensor() {
         
         //Firebaseインスタンス取得
@@ -145,12 +158,14 @@ class MainViewController: UIViewController {
         
         //キクラゲの表情を表示する
         displayKikurage()
-    }
+        */
 
 //====================================================
 /*********  きくらげ栽培環境を画像で表示させる  ************/
 //====================================================
-    func displayKikurage() {
+/*
+func displayKikurage() {
+        
         
         //きくらげ表情
         let imageBad1 = UIImage(named: "Dry-1")
@@ -244,12 +259,5 @@ class MainViewController: UIViewController {
         imageView.animationRepeatCount = 100 //繰り返し
         imageView.startAnimating()
     }
-    
-//====================================================
-/*********  現在時刻を取得する  **************/
-//====================================================
-    @objc func displayClock() {
-        nowTime.text = clock.display()
-    }
-}
+         */
 
