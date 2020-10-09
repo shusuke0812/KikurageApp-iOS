@@ -85,6 +85,10 @@ class MainViewController: UIViewController {
         let vc: CommunicationViewController = s.instantiateInitialViewController() as! CommunicationViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func didTapSideMenuButton(_ sender: Any) {
+        // サイドメニューを開く
+        self.performSegue(withIdentifier: "SideMenu", sender: nil)
+    }
 }
 
 // MARK: - Initialized Method

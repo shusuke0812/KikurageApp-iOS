@@ -396,7 +396,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="今日のきくらげ " id="TeJ-IM-bD8">
-                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6"/>
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6">
+                            <connections>
+                                <action selector="didTapSideMenuButton:" destination="HCp-ee-WbN" id="1HG-XF-LDF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="humidityTextLabel" destination="rJF-Di-ePs" id="beQ-TB-sGe"/>
@@ -405,11 +409,22 @@
                         <outlet property="kikurageStatusView" destination="D2w-ln-CB5" id="U2B-7h-f3h"/>
                         <outlet property="nowTimeLabel" destination="RoT-Iq-VWq" id="NdQ-kA-4BC"/>
                         <outlet property="temparatureTextLabel" destination="cDh-P9-m5Q" id="LBk-R9-Q9U"/>
+                        <segue destination="Leo-91-yKm" kind="presentation" identifier="SideMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="nuy-Rx-qvg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYt-b2-oXU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2388.4057971014495" y="8.7053571428571423"/>
+            <point key="canvasLocation" x="1742.0289855072465" y="-287.27678571428572"/>
+        </scene>
+        <!--SideMenuViewController-->
+        <scene sceneID="HIn-CC-7mS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SideMenuViewController" id="Leo-91-yKm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dRS-8d-9aO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M7k-dj-BgG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2433" y="-287"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ytw-Cr-3ZW">
@@ -768,7 +783,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="An9-WX-S8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478.2608695652175" y="8.7053571428571423"/>
+            <point key="canvasLocation" x="833" y="-287"/>
         </scene>
     </scenes>
     <resources>

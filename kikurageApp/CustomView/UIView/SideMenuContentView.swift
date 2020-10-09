@@ -12,14 +12,18 @@ protocol SideMenuContentViewDelegate: class {
     func transitonSideMenuContent(view: SideMenuContentView)
 }
 
-class SideMenuContentView: UIView {
+class SideMenuContentView: XibView {
     @IBOutlet weak var sideMenuContentIconView: UIImageView!
     @IBOutlet weak var sideMenuContentLabel: UILabel!
     
     internal weak var delegate: SideMenuContentViewDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setUI()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         self.setUI()
     }
     

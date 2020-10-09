@@ -23,11 +23,15 @@
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
 		9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */; };
 		9C82B417253037BD00E650B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B416253037BD00E650B5 /* Constants.swift */; };
+		9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B41C2530572300E650B5 /* SideMenuContentView.swift */; };
+		9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C82B4202530574100E650B5 /* SideMenuContentView.xib */; };
+		9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B42325305E6C00E650B5 /* UIView+Extension.swift */; };
+		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
 		9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */; };
 		9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */; };
 		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
 		9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */; };
-		9C8A524F24E4ADFD0025B179 /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* MenuViewController.storyboard */; };
+		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		F6B67301E7960027877D69C5 /* Pods_kikurageApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */; };
 /* End PBXBuildFile section */
@@ -51,11 +55,15 @@
 		9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewController.swift; sourceTree = "<group>"; };
 		9C82B416253037BD00E650B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9C82B41C2530572300E650B5 /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
+		9C82B4202530574100E650B5 /* SideMenuContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuContentView.xib; sourceTree = "<group>"; };
+		9C82B42325305E6C00E650B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524E24E4ADFD0025B179 /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
+		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kikurageApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,11 +144,21 @@
 			path = Static;
 			sourceTree = "<group>";
 		};
+		9C82B41B253056BC00E650B5 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
+				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		9CDAFBF624E4B95700E56550 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */,
 				9C07E7E12530194900720768 /* UIViewController+Extension.swift */,
+				9C82B42325305E6C00E650B5 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,7 +185,7 @@
 				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
 				9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */,
 				9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */,
-				9C8A524E24E4ADFD0025B179 /* MenuViewController.storyboard */,
+				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -175,7 +193,9 @@
 		9CF0020424E3990E0084036B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				9C82B41B253056BC00E650B5 /* UIView */,
 				9CF0020524E399190084036B /* UITextView */,
+				9C82B429253068CF00E650B5 /* XibView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -258,12 +278,13 @@
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
+				9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */,
 				9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */,
 				9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
-				9C8A524F24E4ADFD0025B179 /* MenuViewController.storyboard in Resources */,
+				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
 				9C1ACF502225768A00A3D4D1 /* MainViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,10 +346,13 @@
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
+				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
+				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

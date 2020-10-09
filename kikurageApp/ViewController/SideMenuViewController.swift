@@ -7,36 +7,30 @@
 //
 
 import UIKit
+import MessageUI
 
 class SideMenuViewController: UIViewController {
     
-    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var sideMenuView: UIView!
+    @IBOutlet weak var calendarContentView: SideMenuContentView!
+    @IBOutlet weak var cultivationContentView: SideMenuContentView!
+    @IBOutlet weak var recipeContentView: SideMenuContentView!
+    @IBOutlet weak var contactContentView: SideMenuContentView!
+    @IBOutlet weak var settingContentView: SideMenuContentView!
+    @IBOutlet weak var searchRecipeContentView: SideMenuContentView!
+    @IBOutlet weak var kikurageDictionaryContentView: SideMenuContentView!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setUI()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // メニューの位置を取得する
-        let menuPos = self.menuView.layer.position
-        // 初期位置を画面の外側にするため、メニューの幅の分だけマイナスする
-        self.menuView.layer.position.x = -self.menuView.frame.width
-        // 表示時のアニメーションを作成する
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            options: .curveEaseOut,
-            animations: {
-                self.menuView.layer.position.x = menuPos.x
-        },
-            completion: { bool in
-        })
-        
+        self.setAnimation()
     }
     
+    // MARK: - Action Method
     // メニューエリア以外タップ時の処理
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -47,7 +41,7 @@ class SideMenuViewController: UIViewController {
                     delay: 0,
                     options: .curveEaseIn,
                     animations: {
-                        self.menuView.layer.position.x = -self.menuView.frame.width
+                        self.sideMenuView.layer.position.x = -self.sideMenuView.frame.width
                 },
                     completion: { bool in
                         self.dismiss(animated: true, completion: nil)
@@ -56,16 +50,74 @@ class SideMenuViewController: UIViewController {
             }
         }
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - Initialized Method
+extension SideMenuViewController {
+    private func setUI() {
+        // サイドメニュー項目設定
+        self.calendarContentView.sideMenuContentLabel.text = "カレンダー"
+        self.calendarContentView.sideMenuContentIconView.image = UIImage(systemName: "calendar")
+        self.cultivationContentView.sideMenuContentLabel.text = "さいばいきろく集"
+        self.cultivationContentView.sideMenuContentIconView.image = UIImage(systemName: "tag")
+        self.recipeContentView.sideMenuContentLabel.text = "りょうりきろく集"
+        self.recipeContentView.sideMenuContentIconView.image = UIImage(systemName: "doc.plaintext")
+        self.contactContentView.sideMenuContentLabel.text = "問い合わせ"
+        self.contactContentView.sideMenuContentIconView.image = UIImage(systemName: "questionmark.circle")
+        self.settingContentView.sideMenuContentLabel.text = "設定"
+        self.settingContentView.sideMenuContentIconView.image = UIImage(systemName: "gearshape")
+        self.searchRecipeContentView.sideMenuContentLabel.text = "料理レシピ検索"
+        self.searchRecipeContentView.sideMenuContentIconView.image = UIImage(systemName: "magnifyingglass")
+        self.kikurageDictionaryContentView.sideMenuContentLabel.text = "きくらげ豆知識"
+        self.kikurageDictionaryContentView.sideMenuContentIconView.image = UIImage(systemName: "doc.text")
     }
-    */
+    private func setAnimation() {
+        // メニューの位置を取得する
+        let menuPosition: CGPoint = self.sideMenuView.layer.position
+        // 初期位置を画面の外側にするため、メニューの幅の分だけマイナスする
+        self.sideMenuView.layer.position.x = -self.sideMenuView.frame.width
+        // 表示時のアニメーションを作成する
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            options: .curveEaseOut,
+            animations: {
+                self.sideMenuView.layer.position.x = menuPosition.x
+        },
+            completion: { bool in
+        })
+    }
+}
 
+extension SideMenuViewController: MFMailComposeViewControllerDelegate {
+    
+    @IBAction func sendEmail(_ sender: Any) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["kikurageproject2019@googlegroups.com"]) // 宛先アドレスMain
+//          mail.setToRecipients(["shu.ota0812@gmail.com"]) // 宛先アドレスTest
+            mail.setSubject("【きくらげ君アプリ】お問い合わせ") // 件名
+            mail.setMessageBody("質問を入力して送信ボタンを押して下さい。\n--------------", isHTML: false) // 本文
+            
+            present(mail, animated: true, completion: nil)
+        } else {
+            print("送信できません")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            print("キャンセル")
+        case .saved:
+            print("下書き保存")
+        case .sent:
+            print("送信成功")
+        default:
+            print("送信失敗")
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
 }
