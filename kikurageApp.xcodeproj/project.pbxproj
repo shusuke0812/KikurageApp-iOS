@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
+		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
 		9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C1ACF472225768A00A3D4D1 /* きくらげ君.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "きくらげ君.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */,
+				9C07E7E12530194900720768 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
+				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,

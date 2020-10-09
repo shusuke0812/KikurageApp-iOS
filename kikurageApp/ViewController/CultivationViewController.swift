@@ -34,8 +34,10 @@ CultivationViewController: UIViewController, UINavigationControllerDelegate, UII
     var roomArrayHumidity: Array<Int> = []
     var temparatureTest: Int = 0
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUI()
         /*
         //観察日を取得する
         observationDate.text = clock.display()
@@ -78,6 +80,13 @@ CultivationViewController: UIViewController, UINavigationControllerDelegate, UII
         }
          */
         
+    }
+}
+
+extension CultivationViewController {
+    private func setUI() {
+        // ナビゲーションバーの体裁を設定
+        self.setNavigationBar(title: "さいばいきろく")
     }
 }
  /*

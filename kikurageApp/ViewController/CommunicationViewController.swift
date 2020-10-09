@@ -13,12 +13,20 @@ import SafariServices //Webアクセス
 
 class CommunicationViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setUI()
     }
-    
+}
+// MARK: - Initialized Method
+extension CommunicationViewController {
+    private func setUI() {
+        // ナビゲーションバーの体裁を設定
+        self.setNavigationBar(title: "みんなにそうだん")
+    }
+}
+/*
 /*facebookグループ：https://www.facebook.com/groups/kikurage.community.2019/ */
 
 //====================================================
@@ -67,15 +75,5 @@ class CommunicationViewController: UIViewController, MFMailComposeViewController
         }
         self.dismiss(animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+*/

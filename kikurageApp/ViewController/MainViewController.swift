@@ -96,6 +96,9 @@ extension MainViewController {
         
         // 1秒毎に現在時刻表示を更新する
         _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        
+        // 栽培記録・料理記録・みんなに相談画面のナビゲーションバーの戻るボタンを設定
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "もどる", style: .plain, target: nil, action: nil)
     }
     // 時刻表示更新用メソッド
     @objc private func updateTime() {

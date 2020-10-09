@@ -7,37 +7,28 @@
 //
 
 import UIKit
-
-//Webアクセス
 import SafariServices
 
 class RecipeViewController: UIViewController {
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setUI()
     }
 
-//====================================================
-/***********  ボタンを押してCookpadへ遷移させる  ***********/
-//====================================================
-    
+    // MARK: - Action Method
     @IBAction func cookPadButton(_ sender: Any) {
         guard let url = URL(string: "https://cookpad.com/search/%E3%81%8D%E3%81%8F%E3%82%89%E3%81%92") else { return }
         let safariController = SFSafariViewController(url: url)
         present(safariController, animated: true, completion: nil)
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - Initialized Method
+extension RecipeViewController {
+    private func setUI() {
+        // ナビゲーションバーの体裁を設定
+        self.setNavigationBar(title: "りょうりきろく")
     }
-    */
-
 }
