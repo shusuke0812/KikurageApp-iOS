@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MessageUI
 
 class CommunicationViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
