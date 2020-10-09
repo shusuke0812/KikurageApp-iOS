@@ -48,16 +48,8 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="aae-Uh-SmN" appends="YES" id="U20-Oi-hdI"/>
-            </connections>
             <point key="canvasLocation" x="201" y="10"/>
         </view>
-        <tapGestureRecognizer id="aae-Uh-SmN">
-            <connections>
-                <action selector="didTapSideMenuContent:" destination="-1" id="YQl-fn-iWf"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <systemColor name="labelColor">

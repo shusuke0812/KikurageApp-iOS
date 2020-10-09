@@ -8,15 +8,9 @@
 
 import UIKit
 
-protocol SideMenuContentViewDelegate: class {
-    func transitonSideMenuContent(view: SideMenuContentView)
-}
-
 class SideMenuContentView: XibView {
     @IBOutlet weak var sideMenuContentIconView: UIImageView!
     @IBOutlet weak var sideMenuContentLabel: UILabel!
-    
-    internal weak var delegate: SideMenuContentViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,11 +19,6 @@ class SideMenuContentView: XibView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setUI()
-    }
-    
-    // MARK: - Action Method
-    @IBAction func didTapSideMenuContent(_ sender: Any) {
-        self.delegate?.transitonSideMenuContent(view: self)
     }
 }
 

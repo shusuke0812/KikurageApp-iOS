@@ -50,6 +50,9 @@ class SideMenuViewController: UIViewController {
             }
         }
     }
+    @IBAction func didTapContactContent(_ sender: Any) {
+        self.openContactMailer()
+    }
 }
 
 // MARK: - Initialized Method
@@ -90,23 +93,23 @@ extension SideMenuViewController {
 }
 
 extension SideMenuViewController: MFMailComposeViewControllerDelegate {
-    
-    @IBAction func sendEmail(_ sender: Any) {
+    // 問い合わせのメーラーを開く
+    private func openContactMailer() {
         if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
+            let mail: MFMailComposeViewController = MFMailComposeViewController()
             
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["kikurageproject2019@googlegroups.com"]) // 宛先アドレスMain
-//          mail.setToRecipients(["shu.ota0812@gmail.com"]) // 宛先アドレスTest
-            mail.setSubject("【きくらげ君アプリ】お問い合わせ") // 件名
-            mail.setMessageBody("質問を入力して送信ボタンを押して下さい。\n--------------", isHTML: false) // 本文
-            
-            present(mail, animated: true, completion: nil)
+            // 宛先のメールアドレス
+            mail.setToRecipients(["kikurageproject2019@googlegroups.com"])
+            // 件名
+            mail.setSubject("【きくらげ君アプリ】お問い合わせ")
+            // 本文
+            mail.setMessageBody("質問を入力して送信ボタンを押して下さい。\n--------------", isHTML: false)
+            self.present(mail, animated: true, completion: nil)
         } else {
             print("送信できません")
         }
     }
-    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case .cancelled:
