@@ -50,6 +50,7 @@ class SideMenuViewController: UIViewController {
             }
         }
     }
+    // 問い合わせタップ
     @IBAction func didTapContactContent(_ sender: Any) {
         self.openContactMailer()
     }
