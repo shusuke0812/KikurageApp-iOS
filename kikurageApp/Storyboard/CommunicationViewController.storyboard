@@ -16,8 +16,21 @@
                     <view key="view" contentMode="scaleToFill" id="d3D-3V-zZU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmJ-Lj-YDS">
+                                <rect key="frame" x="182.5" y="793" width="49" height="49"/>
+                                <state key="normal" image="facebookButton"/>
+                                <connections>
+                                    <action selector="didTapFacebookButton:" destination="K9v-IR-Dsj" eventType="touchUpInside" id="T65-8v-e6m"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="759-gu-RgS"/>
                         <color key="backgroundColor" name="themeColor"/>
+                        <constraints>
+                            <constraint firstItem="759-gu-RgS" firstAttribute="bottom" secondItem="ZmJ-Lj-YDS" secondAttribute="bottom" constant="20" id="PT1-5X-cPs"/>
+                            <constraint firstItem="ZmJ-Lj-YDS" firstAttribute="centerX" secondItem="d3D-3V-zZU" secondAttribute="centerX" id="yVa-K2-eaV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOS-0S-boP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -26,6 +39,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="facebookButton" width="49" height="49"/>
         <namedColor name="themeColor">
             <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

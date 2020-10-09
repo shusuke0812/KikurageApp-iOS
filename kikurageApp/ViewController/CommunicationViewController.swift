@@ -7,9 +7,7 @@
 //
 
 import UIKit
-
-import MessageUI //Mailer追加
-import SafariServices //Webアクセス
+import MessageUI
 
 class CommunicationViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
@@ -18,6 +16,11 @@ class CommunicationViewController: UIViewController, MFMailComposeViewController
         super.viewDidLoad()
         self.setUI()
     }
+    //MARK: - Action Method
+    @IBAction func didTapFacebookButton(_ sender: Any) {
+        // Facebookのきくらげコミュニティへ遷移させる
+        self.transitionSafariViewController(urlString: Constants.Url.facebook)
+    }
 }
 // MARK: - Initialized Method
 extension CommunicationViewController {
@@ -25,6 +28,9 @@ extension CommunicationViewController {
         // ナビゲーションバーの体裁を設定
         self.setNavigationBar(title: "みんなにそうだん")
     }
+}
+// MARK: - Private Method
+extension CommunicationViewController {
 }
 /*
 /*facebookグループ：https://www.facebook.com/groups/kikurage.community.2019/ */
