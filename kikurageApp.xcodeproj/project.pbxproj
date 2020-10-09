@@ -134,8 +134,8 @@
 		9CF0020224E398AC0084036B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
 				9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */,
+				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
 				9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */,
 				9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */,
 				9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */,

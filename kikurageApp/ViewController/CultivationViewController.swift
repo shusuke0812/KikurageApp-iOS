@@ -36,7 +36,7 @@ CultivationViewController: UIViewController, UINavigationControllerDelegate, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         //観察日を取得する
         observationDate.text = clock.display()
         observationDate.adjustsFontSizeToFitWidth = true //文字サイズ自動調整
@@ -73,18 +73,20 @@ CultivationViewController: UIViewController, UINavigationControllerDelegate, UII
         observationWrite.inputAccessoryView = kbToolBar
         
         //UITextViewのプレースホルダーを隠す
-/*       if self.observationWrite.text != nil {
+         if self.observationWrite.text != nil {
             self.observationLabel.isHidden = true
         }
- */
+         */
         
     }
- 
+}
+ /*
     
     @objc func commitButtonTapped (){
         self.view.endEditing(true)
     }
-    
+ */
+/*
     
 //====================================================
 /*********  カメラできくらげの栽培記録をとる  **************/
@@ -261,3 +263,4 @@ CultivationViewController: UIViewController, UINavigationControllerDelegate, UII
     
 
 }
+*/

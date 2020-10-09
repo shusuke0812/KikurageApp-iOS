@@ -66,6 +66,25 @@ class MainViewController: UIViewController {
         */
   
     }
+    // MARK:- Action Method
+    @IBAction func didTapCultivationPageButton(_ sender: Any) {
+        // さいばい記録画面へ遷移させる
+        let s: UIStoryboard = UIStoryboard(name: "CultivationViewController", bundle: nil)
+        let vc: CultivationViewController = s.instantiateInitialViewController() as! CultivationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func didTapRecipePageButton(_ sender: Any) {
+        // 料理記録画面へ遷移させる
+        let s: UIStoryboard = UIStoryboard(name: "RecipeViewController", bundle: nil)
+        let vc: RecipeViewController = s.instantiateInitialViewController() as! RecipeViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func didTapCommunicationPageButton(_ sender: Any) {
+        // みんなに相談画面へ遷移させる
+        let s: UIStoryboard = UIStoryboard(name: "CommunicationViewController", bundle: nil)
+        let vc: CommunicationViewController = s.instantiateInitialViewController() as! CommunicationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - Initialized Method

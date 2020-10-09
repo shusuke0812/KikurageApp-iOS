@@ -337,6 +337,9 @@
                                             <constraint firstAttribute="width" constant="110" id="LJb-QK-gED"/>
                                         </constraints>
                                         <state key="normal" image="cultivationButton"/>
+                                        <connections>
+                                            <action selector="didTapCultivationPageButton:" destination="HCp-ee-WbN" eventType="touchUpInside" id="6RL-Ht-SUX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-LQ-DQW">
                                         <rect key="frame" x="118" y="0.0" width="110" height="50"/>
@@ -344,6 +347,9 @@
                                             <constraint firstAttribute="width" constant="110" id="Er6-kM-SHM"/>
                                         </constraints>
                                         <state key="normal" image="recipeButton"/>
+                                        <connections>
+                                            <action selector="didTapRecipePageButton:" destination="HCp-ee-WbN" eventType="touchUpInside" id="knt-P8-BaK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II1-rE-l8N">
                                         <rect key="frame" x="236" y="0.0" width="110" height="50"/>
@@ -351,6 +357,9 @@
                                             <constraint firstAttribute="width" constant="110" id="wii-Bo-NmX"/>
                                         </constraints>
                                         <state key="normal" image="communicationButton"/>
+                                        <connections>
+                                            <action selector="didTapCommunicationPageButton:" destination="HCp-ee-WbN" eventType="touchUpInside" id="hed-ys-RMC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
