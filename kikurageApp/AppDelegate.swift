@@ -21,13 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Firebase初期化
         FirebaseApp.configure()
         print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
-        
         // IQKeyboard初期化
         IQKeyboardManager.shared.enable = true
-        
-        // スプラッシュ画面表示を2秒間に設定する
-        sleep(1)
-        
         // ログイン画面を開く
         self.openLoginPage()
         
