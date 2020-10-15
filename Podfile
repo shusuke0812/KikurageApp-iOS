@@ -8,8 +8,7 @@ target 'kikurageApp' do
   # Pods for kikurageApp
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'SwiftyJSON'
+  pod 'Firebase/Firestore'
   pod 'Charts', '~> 3.0'
 	pod 'IQKeyboardManagerSwift'
 
