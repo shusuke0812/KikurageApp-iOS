@@ -20,13 +20,21 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temparatureTextLabel: UILabel!
     @IBOutlet weak var humidityTextLabel: UILabel!
     
-    /// 時間のテキストを取得するクラス
     private let clockHelper: ClockHelper = ClockHelper()
+    private var timer: Timer?
 
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // メモリ節約のため、他ViewControllerに移動する前にタイマーを停止する
+        if let timer = timer {
+            timer.invalidate()
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
         self.setUI()
     }
     // MARK:- Action Method
@@ -62,7 +70,7 @@ extension MainViewController {
         self.nowTimeLabel.text = clockHelper.display()
         
         // 1秒毎に現在時刻表示を更新する
-        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         
         // 栽培記録・料理記録・みんなに相談画面のナビゲーションバーの戻るボタンを設定
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "もどる", style: .plain, target: nil, action: nil)
