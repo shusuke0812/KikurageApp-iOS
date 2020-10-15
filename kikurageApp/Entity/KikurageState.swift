@@ -11,9 +11,9 @@ import FirebaseFirestore
 
 struct KikurageState {
     /// 温度
-    var temperature: Double?
+    var temperature: Int?
     /// 湿度
-    var humidity: Double?
+    var humidity: Int?
     /// 状態メッセージ
     var message: String?
     /// 判定（dry, normal, hot）
