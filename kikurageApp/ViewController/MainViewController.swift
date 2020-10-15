@@ -88,7 +88,7 @@ extension MainViewController {
 // きくらげ表情の表示
 extension MainViewController {
     private func displayKikurageStateImage() {
-        // TODO：温度湿度によって表情を変える処理を書く
+        // TODO：温度湿度によって表情を変える処理を書く（dry,normal,wetの状態判定はサーバーで処理）
         var kikurageStateImages: [UIImage] = []
         let beforeNormaImage: UIImage = UIImage(named: "normal_01")!
         let afterNormalImage: UIImage = UIImage(named: "normal_02")!
