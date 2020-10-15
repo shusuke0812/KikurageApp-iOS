@@ -30,9 +30,10 @@ class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // メモリ節約のため、他ViewControllerに移動する前にタイマーを停止する
-        if let timer = timer {
+        if let timer = self.timer {
             timer.invalidate()
         }
+        self.kikurageStatusView.stopAnimating()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.setUI()
@@ -69,6 +70,9 @@ extension MainViewController {
         // ラベル、画像に初期値を設定する
         self.nowTimeLabel.text = clockHelper.display()
         
+        // きくらげ表情の表示
+        self.displayKikurageStateImage()
+        
         // 1秒毎に現在時刻表示を更新する
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         
@@ -84,10 +88,18 @@ extension MainViewController {
 // きくらげ表情の表示
 extension MainViewController {
     private func displayKikurageStateImage() {
-        /*
-         imageView.animationDuration = 1 //間隔（秒）
-         imageView.animationRepeatCount = 100 //繰り返し
-         imageView.startAnimating()
-         */
+        // TODO：温度湿度によって表情を変える処理を書く
+        var kikurageStateImages: [UIImage] = []
+        let beforeNormaImage: UIImage = UIImage(named: "normal_01")!
+        let afterNormalImage: UIImage = UIImage(named: "normal_02")!
+        
+        kikurageStateImages.append(beforeNormaImage)
+        kikurageStateImages.append(afterNormalImage)
+        
+        // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
+        self.kikurageStatusView.animationImages = kikurageStateImages
+        self.kikurageStatusView.animationDuration = 1
+        self.kikurageStatusView.animationRepeatCount = 0
+        self.kikurageStatusView.startAnimating()
     }
 }
