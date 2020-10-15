@@ -18,6 +18,8 @@ struct KikurageState {
     var message: String?
     /// 判定（dry, normal, hot）
     var judge: String?
+    /// アドバイス
+    var advice: String?
     /// ユーザーリファレンス
     let userRef: DocumentReference?
 }
