@@ -515,7 +515,7 @@
 			baseConfigurationReference = F64405252FCD1BFF9274507A /* Pods-kikurageApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = kikurageApp/Info.plist;
@@ -536,7 +536,7 @@
 			baseConfigurationReference = A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = kikurageApp/Info.plist;
