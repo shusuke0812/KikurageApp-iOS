@@ -8,10 +8,7 @@
 
 import UIKit
 import Charts
-
-//Firebase追加
 import Firebase
-import SwiftyJSON
 import FirebaseAuth
 
 class
