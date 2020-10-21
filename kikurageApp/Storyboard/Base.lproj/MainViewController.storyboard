@@ -212,7 +212,7 @@
         <scene sceneID="FFd-Hr-BJg">
             <objects>
                 <viewController id="HCp-ee-WbN" customClass="MainViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fri-rL-faW">
+                    <view key="view" contentMode="scaleToFill" id="fri-rL-faW" customClass="MainBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -394,6 +394,14 @@
                             <constraint firstItem="RoT-Iq-VWq" firstAttribute="top" secondItem="xhU-Dg-G6Y" secondAttribute="top" constant="20" id="xAY-on-DHQ"/>
                             <constraint firstItem="dVY-ca-2x5" firstAttribute="centerX" secondItem="fri-rL-faW" secondAttribute="centerX" id="zXy-k4-RSe"/>
                         </constraints>
+                        <connections>
+                            <outlet property="humidityTextLabel" destination="rJF-Di-ePs" id="h4j-Ko-xcm"/>
+                            <outlet property="kikurageNameLabel" destination="1um-rs-6A0" id="fDK-gQ-tZo"/>
+                            <outlet property="kikurageStatusLabel" destination="o8G-Od-1s5" id="Pca-tP-8a9"/>
+                            <outlet property="kikurageStatusView" destination="D2w-ln-CB5" id="6RW-Js-PTY"/>
+                            <outlet property="nowTimeLabel" destination="RoT-Iq-VWq" id="IGb-sA-pnn"/>
+                            <outlet property="temparatureTextLabel" destination="cDh-P9-m5Q" id="GGf-Mf-Zdp"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="今日のきくらげ " id="TeJ-IM-bD8">
                         <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6">
@@ -403,12 +411,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="humidityTextLabel" destination="rJF-Di-ePs" id="beQ-TB-sGe"/>
-                        <outlet property="kikurageNameLabel" destination="1um-rs-6A0" id="dP1-gP-WHO"/>
-                        <outlet property="kikurageStatusLabel" destination="o8G-Od-1s5" id="5ED-l6-cgI"/>
-                        <outlet property="kikurageStatusView" destination="D2w-ln-CB5" id="U2B-7h-f3h"/>
-                        <outlet property="nowTimeLabel" destination="RoT-Iq-VWq" id="NdQ-kA-4BC"/>
-                        <outlet property="temparatureTextLabel" destination="cDh-P9-m5Q" id="LBk-R9-Q9U"/>
                         <segue destination="Leo-91-yKm" kind="presentation" identifier="SideMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="nuy-Rx-qvg"/>
                     </connections>
                 </viewController>

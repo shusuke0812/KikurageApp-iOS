@@ -12,14 +12,8 @@ import FirebaseAuth
 import MessageUI
 
 class MainViewController: UIViewController {
-   
-    @IBOutlet weak var nowTimeLabel: UILabel!
-    @IBOutlet weak var kikurageNameLabel: UILabel!
-    @IBOutlet weak var kikurageStatusLabel: UILabel!
-    @IBOutlet weak var kikurageStatusView: UIImageView!
-    @IBOutlet weak var temparatureTextLabel: UILabel!
-    @IBOutlet weak var humidityTextLabel: UILabel!
-    
+    /// BaseView
+    private var baseView: MainBaseView { return self.view as! MainBaseView}
     /// ViewModel
     private var viewModel: MainViewModel!
     
@@ -31,7 +25,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository())
         self.setDelegateDataSource()
-        self.loadKikurageStates() 
+        self.loadKikurageStates()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -39,7 +33,7 @@ class MainViewController: UIViewController {
         if let timer = self.timer {
             timer.invalidate()
         }
-        self.kikurageStatusView.stopAnimating()
+        self.baseView.kikurageStatusView.stopAnimating()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.setUI()
@@ -74,20 +68,17 @@ extension MainViewController {
     // UIを初期化する
     private func setUI() {
         // ラベル、画像に初期値を設定する
-        self.nowTimeLabel.text = clockHelper.display()
-        
+        self.baseView.nowTimeLabel.text = clockHelper.display()
         // きくらげ表情の表示
         self.displayKikurageStateImage()
-        
         // 1秒毎に現在時刻表示を更新する
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        
         // 栽培記録・料理記録・みんなに相談画面のナビゲーションバーの戻るボタンを設定
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "もどる", style: .plain, target: nil, action: nil)
     }
     // 時刻表示更新用メソッド
     @objc private func updateTime() {
-        self.nowTimeLabel.text = clockHelper.display()
+        self.baseView.nowTimeLabel.text = clockHelper.display()
     }
     // デリゲート登録
     private func setDelegateDataSource() {
@@ -107,10 +98,10 @@ extension MainViewController {
         kikurageStateImages.append(afterNormalImage)
         
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        self.kikurageStatusView.animationImages = kikurageStateImages
-        self.kikurageStatusView.animationDuration = 1
-        self.kikurageStatusView.animationRepeatCount = 0
-        self.kikurageStatusView.startAnimating()
+        self.baseView.kikurageStatusView.animationImages = kikurageStateImages
+        self.baseView.kikurageStatusView.animationDuration = 1
+        self.baseView.kikurageStatusView.animationRepeatCount = 0
+        self.baseView.kikurageStatusView.startAnimating()
     }
 }
 
