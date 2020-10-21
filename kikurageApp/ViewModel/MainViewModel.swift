@@ -20,7 +20,7 @@ class MainViewModel {
     /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     /// きくらげの状態
-    private var kikurageState: KikurageState?
+    internal var kikurageState: KikurageState?
     /// デリゲート
     internal weak var delegate: MainViewModelDelgate?
     

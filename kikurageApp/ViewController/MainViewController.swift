@@ -20,12 +20,18 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temparatureTextLabel: UILabel!
     @IBOutlet weak var humidityTextLabel: UILabel!
     
+    /// ViewModel
+    private var viewModel: MainViewModel!
+    
     private let clockHelper: ClockHelper = ClockHelper()
     private var timer: Timer?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository())
+        self.setDelegateDataSource()
+        self.loadKikurageStates() 
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -83,6 +89,10 @@ extension MainViewController {
     @objc private func updateTime() {
         self.nowTimeLabel.text = clockHelper.display()
     }
+    // デリゲート登録
+    private func setDelegateDataSource() {
+        self.viewModel.delegate = self
+    }
 }
 
 // きくらげ表情の表示
@@ -101,5 +111,18 @@ extension MainViewController {
         self.kikurageStatusView.animationDuration = 1
         self.kikurageStatusView.animationRepeatCount = 0
         self.kikurageStatusView.startAnimating()
+    }
+}
+
+extension MainViewController: MainViewModelDelgate {
+    // きくらげの状態を取得する
+    private func loadKikurageStates() {
+        self.viewModel.loadKikurageState()
+    }
+    func didSuccessGetKikurageState() {
+        print("test")
+    }
+    func didFailedGetKikurageState(errorMessage: String) {
+        print(errorMessage)
     }
 }
