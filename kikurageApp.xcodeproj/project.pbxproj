@@ -35,6 +35,7 @@
 		9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3352537FD96005BED9C /* KikurageUser.swift */; };
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
+		9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* MainViewModel.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		F6B67301E7960027877D69C5 /* Pods_kikurageApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		9CA7F3352537FD96005BED9C /* KikurageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUser.swift; sourceTree = "<group>"; };
 		9CA7F3392537FF1B005BED9C /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
+		9CB7D5FD254043FB00D57801 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kikurageApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		9C1ACF492225768A00A3D4D1 /* kikurageApp */ = {
 			isa = PBXGroup;
 			children = (
+				9CB7D5FC254043C300D57801 /* ViewModel */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CA7F3342537FD75005BED9C /* Entity */,
 				9C82B415253037AB00E650B5 /* Static */,
@@ -176,6 +179,14 @@
 				9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		9CB7D5FC254043C300D57801 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CDAFBF624E4B95700E56550 /* Extensions */ = {
@@ -376,6 +387,7 @@
 				9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
+				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
 				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
