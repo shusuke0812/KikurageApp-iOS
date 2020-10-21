@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct KikurageState {
+struct KikurageState: Codable {
     /// 温度
     var temperature: Int?
     /// 湿度

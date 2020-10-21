@@ -7,7 +7,7 @@
 //
 
 import Firebase
-import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 /// ネットワークエラー
 enum NetworkError: Error {
@@ -41,18 +41,23 @@ class KikurageStateRepository: KikurageStateRepositoryProtocol {
 extension KikurageStateRepository {
     func readKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
         let db = Firestore.firestore()
-        let docRef = db.collection("kikurageStates").document(uid)
-        
+        let docRef: DocumentReference = db.collection("kikurageStates").document(uid)
+
         docRef.getDocument { (snapshot, error) in
             if let error = error {
-                print(error)
+                completion(.failure(error))
                 return
             }
-            let kikurageState = snapshot?.data().map { document in
-                print(document)
+            guard let snapshotData = snapshot?.data() else {
+                completion(.failure(NetworkError.unknown))
                 return
             }
-            print(kikurageState)
+            do {
+                let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                completion(.success(kikurageState))
+            } catch (let error) {
+                fatalError(error.localizedDescription)
+            }
         }
     }
 }
