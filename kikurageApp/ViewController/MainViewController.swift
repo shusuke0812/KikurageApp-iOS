@@ -97,7 +97,7 @@ extension MainViewController {
 
 extension MainViewController: MainViewModelDelgate {
     // きくらげの状態を取得する
-    private func loadKikurageStates() {
+    private func loadKikurageState() {
         //self.viewModel.loadKikurageState()
     }
     func didSuccessGetKikurageState() {
@@ -110,6 +110,12 @@ extension MainViewController: MainViewModelDelgate {
         // きくらげの表情を設定
         if let judge = self.viewModel.kikurageState?.judge {
             self.displayKikurageStateImage(type: judge)
+        }
+        // 温度湿度を設定
+        if let temparature: Int = self.viewModel.kikurageState?.temperature,
+           let humidity: Int = self.viewModel.kikurageState?.humidity {
+            self.baseView.temparatureTextLabel.text = "\(temparature)"
+            self.baseView.humidityTextLabel.text = "\(humidity)"
         }
     }
 }
