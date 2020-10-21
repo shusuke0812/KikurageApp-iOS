@@ -32,14 +32,14 @@ protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む（GET）
     /// - Parameters:
     ///   - uid: プロダクトID
-    func readKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void)
+    func getKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
 }
 
 extension KikurageStateRepository {
-    func readKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
+    func getKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
         let db = Firestore.firestore()
         let docRef: DocumentReference = db.collection("kikurageStates").document(uid)
 
