@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     private var viewModel: MainViewModel!
     
     private let clockHelper: ClockHelper = ClockHelper()
+    private let kikurageStateHelper: KikurageStateHelper = KikurageStateHelper()
     private var timer: Timer?
 
     // MARK: - Lifecycle
@@ -25,7 +26,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository())
         self.setDelegateDataSource()
-        self.loadKikurageStates()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -69,8 +69,6 @@ extension MainViewController {
     private func setUI() {
         // ラベル、画像に初期値を設定する
         self.baseView.nowTimeLabel.text = clockHelper.display()
-        // きくらげ表情の表示
-        self.displayKikurageStateImage()
         // 1秒毎に現在時刻表示を更新する
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         // 栽培記録・料理記録・みんなに相談画面のナビゲーションバーの戻るボタンを設定
@@ -88,19 +86,9 @@ extension MainViewController {
 
 // きくらげ表情の表示
 extension MainViewController {
-    private func displayKikurageStateImage() {
-        // TODO：
-        // 温度湿度によって表情を変える処理を書く（dry,normal,wetの状態判定はサーバーで処理）
-        // もしくはクライアントでHelperクラスを使って処理
-        var kikurageStateImages: [UIImage] = []
-        let beforeNormaImage: UIImage = UIImage(named: "normal_01")!
-        let afterNormalImage: UIImage = UIImage(named: "normal_02")!
-        
-        kikurageStateImages.append(beforeNormaImage)
-        kikurageStateImages.append(afterNormalImage)
-        
+    private func displayKikurageStateImage(type: String) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        self.baseView.kikurageStatusView.animationImages = kikurageStateImages
+        self.baseView.kikurageStatusView.animationImages = kikurageStateHelper.setStateImage(type: type)
         self.baseView.kikurageStatusView.animationDuration = 1
         self.baseView.kikurageStatusView.animationRepeatCount = 0
         self.baseView.kikurageStatusView.startAnimating()
@@ -110,7 +98,7 @@ extension MainViewController {
 extension MainViewController: MainViewModelDelgate {
     // きくらげの状態を取得する
     private func loadKikurageStates() {
-        self.viewModel.loadKikurageState()
+        //self.viewModel.loadKikurageState()
     }
     func didSuccessGetKikurageState() {
         print("test")
@@ -119,6 +107,9 @@ extension MainViewController: MainViewModelDelgate {
         print(errorMessage)
     }
     func didChangedKikurageState() {
-        print("test")
+        // きくらげの表情を設定
+        if let judge = self.viewModel.kikurageState?.judge {
+            self.displayKikurageStateImage(type: judge)
+        }
     }
 }
