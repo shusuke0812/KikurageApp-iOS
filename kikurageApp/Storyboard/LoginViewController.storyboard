@@ -18,43 +18,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©︎ チーム マッシュルームマニア" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOB-CQ-7qZ">
-                                <rect key="frame" x="16" y="855" width="382" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="205" id="z3e-aT-WX9"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="845" width="382" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbL-mA-vYG">
-                                <rect key="frame" x="90" y="780" width="62" height="30"/>
-                                <state key="normal" title="利用規約"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7J4-eZ-VUj">
-                                <rect key="frame" x="201" y="780" width="123" height="30"/>
-                                <state key="normal" title="個人情報保護方針"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-lc-O0e">
+                                <rect key="frame" x="90" y="780" width="234" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbL-mA-vYG">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="利用規約"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7J4-eZ-VUj">
+                                        <rect key="frame" x="111" y="0.0" width="123" height="30"/>
+                                        <state key="normal" title="個人情報保護方針"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJX-D5-eV3">
-                                <rect key="frame" x="102" y="698" width="210" height="37"/>
+                                <rect key="frame" x="102" y="708" width="210" height="37"/>
                                 <state key="normal" image="startButton"/>
                                 <connections>
                                     <action selector="didTapStartButton:" destination="Kee-XX-2yh" eventType="touchUpInside" id="PUA-OT-Jze"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="きくらげ栽培開始日を選択して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Sg-EvC">
-                                <rect key="frame" x="53" y="629" width="308" height="34"/>
+                                <rect key="frame" x="53" y="639" width="308" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="プロダクトキー を入力して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-Hi-49i">
-                                <rect key="frame" x="53" y="511" width="308" height="34"/>
+                                <rect key="frame" x="53" y="521" width="308" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="きくらげ君の名前を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1y-mr-QXt">
-                                <rect key="frame" x="53" y="570" width="308" height="34"/>
+                                <rect key="frame" x="53" y="580" width="308" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -70,27 +72,25 @@
                         <color key="backgroundColor" name="themeColor"/>
                         <constraints>
                             <constraint firstItem="v2y-Sg-EvC" firstAttribute="top" secondItem="I1y-mr-QXt" secondAttribute="bottom" constant="25" id="0xo-qL-Ldh"/>
+                            <constraint firstItem="cOB-CQ-7qZ" firstAttribute="top" secondItem="IkQ-lc-O0e" secondAttribute="bottom" constant="35" id="1ZJ-za-JIO"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="HJX-D5-eV3" secondAttribute="trailing" constant="102" id="1hU-hW-umV"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="cOB-CQ-7qZ" secondAttribute="trailing" constant="16" id="1we-dJ-bnS"/>
-                            <constraint firstItem="cOB-CQ-7qZ" firstAttribute="top" secondItem="zbL-mA-vYG" secondAttribute="bottom" constant="45" id="CaS-8q-dzh"/>
-                            <constraint firstItem="cOB-CQ-7qZ" firstAttribute="top" secondItem="7J4-eZ-VUj" secondAttribute="bottom" constant="45" id="JBV-KJ-whK"/>
                             <constraint firstItem="HJX-D5-eV3" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="102" id="JoK-bo-10h"/>
-                            <constraint firstItem="zbL-mA-vYG" firstAttribute="top" secondItem="HJX-D5-eV3" secondAttribute="bottom" constant="45" id="VjC-im-87N"/>
+                            <constraint firstItem="IkQ-lc-O0e" firstAttribute="top" secondItem="HJX-D5-eV3" secondAttribute="bottom" constant="35" id="c1n-YO-AdA"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="v2y-Sg-EvC" secondAttribute="trailing" constant="53" id="dYt-6V-3Lb"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="TRg-qB-vEC" secondAttribute="trailing" constant="53" id="ff4-vp-Q1U"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="gTz-Hi-49i" secondAttribute="trailing" constant="53" id="g5C-9r-rCc"/>
-                            <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="7J4-eZ-VUj" secondAttribute="trailing" constant="90" id="g8s-Xh-Fwl"/>
                             <constraint firstItem="I1y-mr-QXt" firstAttribute="top" secondItem="gTz-Hi-49i" secondAttribute="bottom" constant="25" id="gPy-NB-DlM"/>
+                            <constraint firstItem="O59-kh-ErE" firstAttribute="bottom" secondItem="cOB-CQ-7qZ" secondAttribute="bottom" id="h5r-YI-uPi"/>
                             <constraint firstItem="cOB-CQ-7qZ" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="16" id="lwm-pE-hi3"/>
                             <constraint firstItem="v2y-Sg-EvC" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="53" id="mfu-uV-5P3"/>
                             <constraint firstItem="cOB-CQ-7qZ" firstAttribute="centerX" secondItem="bkR-99-1oz" secondAttribute="centerX" id="nDs-ii-pOJ"/>
                             <constraint firstItem="HJX-D5-eV3" firstAttribute="top" secondItem="v2y-Sg-EvC" secondAttribute="bottom" constant="35" id="obr-Ie-Dki"/>
                             <constraint firstItem="TRg-qB-vEC" firstAttribute="top" secondItem="O59-kh-ErE" secondAttribute="top" constant="50" id="rFj-tZ-oNh"/>
-                            <constraint firstItem="cOB-CQ-7qZ" firstAttribute="bottom" secondItem="O59-kh-ErE" secondAttribute="bottom" constant="10" id="rxk-Bk-wd0"/>
                             <constraint firstItem="TRg-qB-vEC" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="53" id="sdC-Ty-idh"/>
                             <constraint firstItem="gTz-Hi-49i" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="53" id="syN-Ga-810"/>
                             <constraint firstItem="I1y-mr-QXt" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="53" id="tLL-Lb-fAf"/>
-                            <constraint firstItem="zbL-mA-vYG" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="90" id="tlD-vP-yWS"/>
+                            <constraint firstItem="IkQ-lc-O0e" firstAttribute="centerX" secondItem="bkR-99-1oz" secondAttribute="centerX" id="v21-wv-5a8"/>
                             <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="I1y-mr-QXt" secondAttribute="trailing" constant="53" id="zLO-aG-I0X"/>
                         </constraints>
                     </view>
