@@ -9,25 +9,6 @@
 import Firebase
 import FirebaseFirestoreSwift
 
-/// ネットワークエラー
-enum NetworkError: Error {
-    case invalidUrl         // 不正なURL
-    case invalidResponse    // 不正なレスポンス
-    case unknown            // 想定外エラー
-    func description() -> String {
-        switch self {
-            case .invalidUrl:       return "DEBUG： 不正なURLです"
-            case .invalidResponse:  return "DEBUG： 不正なレスポンスです"
-            case .unknown:          return "DEBUG： レスポンスに失敗しました"
-        }
-    }
-}
-/// クライアントエラー
-enum ClientError: Error {
-    case parseField // パースエラー
-    case unknown    // 想定外エラー
-}
-
 protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む（GET）
     /// - Parameters:
