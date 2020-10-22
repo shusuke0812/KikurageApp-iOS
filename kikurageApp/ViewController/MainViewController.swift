@@ -107,8 +107,12 @@ extension MainViewController: MainViewModelDelgate {
         print(errorMessage)
     }
     func didChangedKikurageState() {
+        // きくらげの状態メッセージを設定
+        if let message: String = self.viewModel.kikurageState?.message {
+            self.baseView.kikurageStatusLabel.text = message
+        }
         // きくらげの表情を設定
-        if let judge = self.viewModel.kikurageState?.judge {
+        if let judge: String = self.viewModel.kikurageState?.judge {
             self.displayKikurageStateImage(type: judge)
         }
         // 温度湿度を設定
