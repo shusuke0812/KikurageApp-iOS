@@ -108,7 +108,7 @@ extension MainViewModel {
                     }
                 case .failure(let error):
                     print("DEBUG: \(error)")
-                    self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげの状態を取得できませんでした")
+                    self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
                 }
             })
     }
