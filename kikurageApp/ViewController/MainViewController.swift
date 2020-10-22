@@ -24,8 +24,11 @@ class MainViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository())
+        self.viewModel = MainViewModel(
+            kikurageStateRepository: KikurageStateRepository(),
+            kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
+        self.loadKikurageUser()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -100,6 +103,9 @@ extension MainViewController: MainViewModelDelgate {
     private func loadKikurageState() {
         //self.viewModel.loadKikurageState()
     }
+    private func loadKikurageUser() {
+        self.viewModel.loadKikurageUser()
+    }
     func didSuccessGetKikurageState() {
         print("test")
     }
@@ -121,5 +127,14 @@ extension MainViewController: MainViewModelDelgate {
             self.baseView.temparatureTextLabel.text = "\(temparature)"
             self.baseView.humidityTextLabel.text = "\(humidity)"
         }
+    }
+    func didSuccessGetKikurageUser() {
+        // きくらげ名を設定
+        if let name: String = self.viewModel.kikurageUser?.kikurageName {
+            self.baseView.kikurageNameLabel.text = "今日の \(name)"
+        }
+    }
+    func didFailedGetKikurageUser(errorMessage: String) {
+        print(errorMessage)
     }
 }
