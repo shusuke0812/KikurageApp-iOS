@@ -17,6 +17,10 @@ protocol MainViewModelDelgate: class {
     func didFailedGetKikurageState(errorMessage: String)
     /// きくらげの状態データが更新された
     func didChangedKikurageState()
+    /// きくらげユーザーの取得に成功した
+    func didSuccessGetKikurageUser()
+    /// きくらげユーザーの取得に失敗した
+    func didFailedGetKikurageUser(errorMessage: String)
 }
 
 class MainViewModel {
@@ -24,23 +28,30 @@ class MainViewModel {
     private var kikurageStateListener: ListenerRegistration?
     /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
+    /// きくらげユーザー取得リポジトリ
+    private let kikurageUserRepository: KikurageUserRepositoryProtocol
     /// きくらげの状態
     internal var kikurageState: KikurageState?
+    /// きくらげユーザー
+    internal var kikurageUser: KikurageUser?
     /// デリゲート
     internal weak var delegate: MainViewModelDelgate?
     
     // テスト用ID（後で消す）
     let uid: String = "BFwAuLtNWTg3YKhOqYsj"
+    let userId: String = "i0GrcLgkBBoLrBgGtrjp"
     
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol) {
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol,
+         kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
+        self.kikurageUserRepository = kikurageUserRepository
         self.setKikurageStateListener()
     }
     deinit {
         self.kikurageStateListener?.remove()
     }
 }
-
+// きくらげの状態データ
 extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
@@ -80,5 +91,25 @@ extension MainViewModel {
                 fatalError(error.localizedDescription)
             }
         }
+    }
+}
+// きくらげユーザー
+extension MainViewModel {
+    func loadKikurageUser() {
+        self.kikurageUserRepository.getKikurageUser(
+            uid: userId,
+            completion: { responsse in
+                switch responsse {
+                case .success(let kikurageUser):
+                    DispatchQueue.main.async {
+                        [weak self] in
+                        self?.kikurageUser = kikurageUser
+                        self?.delegate?.didSuccessGetKikurageUser()
+                    }
+                case .failure(let error):
+                    print("DEBUG: \(error)")
+                    self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげの状態を取得できませんでした")
+                }
+            })
     }
 }
