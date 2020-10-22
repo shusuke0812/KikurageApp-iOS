@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KikurageUser {
+struct KikurageUser: Codable {
     /// 製品シリアルコード
     let productKey: String
     /// きくらげ 君（筐体）の名前
