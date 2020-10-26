@@ -10,6 +10,8 @@
 		9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
+		9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* MainAdviceView.swift */; };
+		9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* MainAdviceView.xib */; };
 		9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
@@ -47,6 +49,8 @@
 		9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9C0DCF932546F55800C27051 /* MainAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAdviceView.swift; sourceTree = "<group>"; };
+		9C0DCF962546F58600C27051 /* MainAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainAdviceView.xib; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C1ACF472225768A00A3D4D1 /* きくらげ君.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "きくらげ君.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +170,8 @@
 			children = (
 				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
 				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
+				9C0DCF932546F55800C27051 /* MainAdviceView.swift */,
+				9C0DCF962546F58600C27051 /* MainAdviceView.xib */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 				9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */,
 				9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
+				9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */,
 				9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
@@ -396,6 +403,7 @@
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
 				9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */,
+				9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
