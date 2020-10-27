@@ -31,7 +31,7 @@
 
 　
 ## IoTシステム概要
-![system](https://user-images.githubusercontent.com/33107697/97246481-c9f23780-1840-11eb-94a9-cd9d87538049.png)
+![system](https://user-images.githubusercontent.com/33107697/97247537-3b32ea00-1843-11eb-97e9-475c6c1e668f.png)
 
 ## 開発環境
 - Xcode version 11.6  
