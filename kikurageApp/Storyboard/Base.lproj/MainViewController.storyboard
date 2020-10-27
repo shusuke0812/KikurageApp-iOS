@@ -122,9 +122,9 @@
                                     <constraint firstAttribute="height" constant="0.5" id="noz-ZL-NGu"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2" customClass="MainAdviceView" customModule="きくらげ君" customModuleProvider="target">
                                 <rect key="frame" x="62" y="500" width="290" height="140"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="themeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="F4s-4P-Fv2" secondAttribute="height" multiplier="29:14" id="PYx-a0-icH"/>
                                 </constraints>
@@ -261,9 +261,6 @@
         <namedColor name="themeColor">
             <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -14,13 +14,11 @@ class MainAdviceView: XibView {
     @IBOutlet weak var adviceTitleLabel: UILabel!
     @IBOutlet weak var adviceContentLabel: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         self.initBaseView()
         self.initAdviceTitleLabel()
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        initAdviceIconImageView()
     }
 }
 
