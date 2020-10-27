@@ -15,6 +15,7 @@ class MainBaseView: UIView {
     @IBOutlet weak var kikurageStatusView: UIImageView!
     @IBOutlet weak var temparatureTextLabel: UILabel!
     @IBOutlet weak var humidityTextLabel: UILabel!
+    @IBOutlet weak var kikurageAdviceView: MainAdviceView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -202,6 +202,7 @@
                         </constraints>
                         <connections>
                             <outlet property="humidityTextLabel" destination="rJF-Di-ePs" id="h4j-Ko-xcm"/>
+                            <outlet property="kikurageAdviceView" destination="F4s-4P-Fv2" id="hla-7n-bGe"/>
                             <outlet property="kikurageNameLabel" destination="1um-rs-6A0" id="fDK-gQ-tZo"/>
                             <outlet property="kikurageStatusLabel" destination="o8G-Od-1s5" id="Pca-tP-8a9"/>
                             <outlet property="kikurageStatusView" destination="D2w-ln-CB5" id="6RW-Js-PTY"/>

@@ -127,6 +127,10 @@ extension MainViewController: MainViewModelDelgate {
             self.baseView.temparatureTextLabel.text = "\(temparature)"
             self.baseView.humidityTextLabel.text = "\(humidity)"
         }
+        // アドバイスを設定
+        if let advice: String = self.viewModel.kikurageState?.advice {
+            self.baseView.kikurageAdviceView.adviceContentLabel.text = advice
+        }
     }
     func didSuccessGetKikurageUser() {
         // きくらげ名を設定
