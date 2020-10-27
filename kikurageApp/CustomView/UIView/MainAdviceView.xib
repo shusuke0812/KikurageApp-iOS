@@ -4,27 +4,80 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainAdviceView" customModule="きくらげ君" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="341" height="168"/>
+            <rect key="frame" x="0.0" y="0.0" width="290" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MK1-LN-GXy">
+                    <rect key="frame" x="0.0" y="0.0" width="290" height="140"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-li-2Bo">
+                            <rect key="frame" x="5" y="5" width="280" height="27"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGv-tP-Xrh">
+                                    <rect key="frame" x="0.0" y="0.0" width="235" height="27"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FIU-NA-TV5">
+                                    <rect key="frame" x="240" y="0.0" width="40" height="27"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="27" id="H0k-33-AUk"/>
+                                        <constraint firstAttribute="width" constant="40" id="XVG-Yv-cAy"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2os-3o-fpX">
+                            <rect key="frame" x="5" y="37" width="280" height="98"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="themeColor"/>
+                    <constraints>
+                        <constraint firstItem="2os-3o-fpX" firstAttribute="top" secondItem="pjh-li-2Bo" secondAttribute="bottom" constant="5" id="Lh1-gt-kQn"/>
+                        <constraint firstItem="pjh-li-2Bo" firstAttribute="leading" secondItem="MK1-LN-GXy" secondAttribute="leading" constant="5" id="WWE-DR-z5c"/>
+                        <constraint firstAttribute="bottom" secondItem="2os-3o-fpX" secondAttribute="bottom" constant="5" id="oR7-Vt-niX"/>
+                        <constraint firstAttribute="trailing" secondItem="pjh-li-2Bo" secondAttribute="trailing" constant="5" id="ody-4O-KIu"/>
+                        <constraint firstItem="pjh-li-2Bo" firstAttribute="top" secondItem="MK1-LN-GXy" secondAttribute="top" constant="5" id="rwC-kW-PlO"/>
+                        <constraint firstItem="2os-3o-fpX" firstAttribute="leading" secondItem="MK1-LN-GXy" secondAttribute="leading" constant="5" id="vCk-FI-PEX"/>
+                        <constraint firstAttribute="trailing" secondItem="2os-3o-fpX" secondAttribute="trailing" constant="5" id="vpD-rH-ied"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="themeColor"/>
+            <constraints>
+                <constraint firstItem="MK1-LN-GXy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qyn-bu-rDp"/>
+                <constraint firstItem="MK1-LN-GXy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VKi-XA-uYA"/>
+                <constraint firstItem="MK1-LN-GXy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="caD-QK-YK8"/>
+                <constraint firstAttribute="trailing" secondItem="MK1-LN-GXy" secondAttribute="trailing" id="frd-E0-5KI"/>
+                <constraint firstItem="MK1-LN-GXy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="j6v-kt-Nc2"/>
+                <constraint firstAttribute="bottom" secondItem="MK1-LN-GXy" secondAttribute="bottom" id="oRV-JP-mCO"/>
+            </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="87.681159420289859" y="349.55357142857139"/>
+            <connections>
+                <outlet property="adviceContentLabel" destination="2os-3o-fpX" id="AFf-8C-IPD"/>
+                <outlet property="adviceIconImageView" destination="FIU-NA-TV5" id="S0B-53-ca8"/>
+                <outlet property="adviceTitleLabel" destination="rGv-tP-Xrh" id="s8s-Mq-aKM"/>
+                <outlet property="baseView" destination="MK1-LN-GXy" id="Gf3-A8-4DC"/>
+            </connections>
+            <point key="canvasLocation" x="86.956521739130437" y="349.55357142857139"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="themeColor">
+            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
