@@ -38,5 +38,8 @@
 - pod version 1.9.1  
 - MacOS Catalina version 10.15.4  
 
+## 参考文献
+- [The Swift Programing Language (Swift5.3)](https://docs.google.com/document/d/1of1sUOzj_8-m-9uKabeVWOw33walmNkvGb4ctcbpry8/edit?usp=sharing)
+
 ## 著者
 - [@shusuke0812](https://github.com/shusuke0812)
