@@ -89,30 +89,7 @@ extension MainViewController {
 
 // きくらげ表情の表示
 extension MainViewController {
-    private func displayKikurageStateImage(type: String) {
-        // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        self.baseView.kikurageStatusView.animationImages = kikurageStateHelper.setStateImage(type: type)
-        self.baseView.kikurageStatusView.animationDuration = 1
-        self.baseView.kikurageStatusView.animationRepeatCount = 0
-        self.baseView.kikurageStatusView.startAnimating()
-    }
-}
-
-extension MainViewController: MainViewModelDelgate {
-    // きくらげの状態を取得する
-    private func loadKikurageState() {
-        //self.viewModel.loadKikurageState()
-    }
-    private func loadKikurageUser() {
-        self.viewModel.loadKikurageUser()
-    }
-    func didSuccessGetKikurageState() {
-        print("test")
-    }
-    func didFailedGetKikurageState(errorMessage: String) {
-        print(errorMessage)
-    }
-    func didChangedKikurageState() {
+    private func setKikurageStateUI() {
         // きくらげの状態メッセージを設定
         if let message: String = self.viewModel.kikurageState?.message {
             self.baseView.kikurageStatusLabel.text = message
@@ -132,11 +109,40 @@ extension MainViewController: MainViewModelDelgate {
             self.baseView.kikurageAdviceView.adviceContentLabel.text = advice
         }
     }
-    func didSuccessGetKikurageUser() {
+    private func setKikurageNameUI() {
         // きくらげ名を設定
         if let name: String = self.viewModel.kikurageUser?.kikurageName {
             self.baseView.kikurageNameLabel.text = "今日の \(name)"
         }
+    }
+    private func displayKikurageStateImage(type: String) {
+        // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
+        self.baseView.kikurageStatusView.animationImages = kikurageStateHelper.setStateImage(type: type)
+        self.baseView.kikurageStatusView.animationDuration = 1
+        self.baseView.kikurageStatusView.animationRepeatCount = 0
+        self.baseView.kikurageStatusView.startAnimating()
+    }
+}
+// MARK: - Delegate Method
+extension MainViewController: MainViewModelDelgate {
+    // きくらげの状態を取得する
+    private func loadKikurageState() {
+        //self.viewModel.loadKikurageState()
+    }
+    private func loadKikurageUser() {
+        self.viewModel.loadKikurageUser()
+    }
+    func didSuccessGetKikurageState() {
+        print("test")
+    }
+    func didFailedGetKikurageState(errorMessage: String) {
+        print(errorMessage)
+    }
+    func didChangedKikurageState() {
+        self.setKikurageStateUI()
+    }
+    func didSuccessGetKikurageUser() {
+        self.setKikurageNameUI()
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         print(errorMessage)
