@@ -53,15 +53,8 @@
                                             <constraint firstAttribute="height" constant="40" id="4Yz-DT-JFh"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lp-p7-ev2" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="207" width="210" height="40"/>
-                                        <color key="backgroundColor" name="themeColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="w5g-uZ-Yyv"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-8z-pJ1" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="292" width="210" height="40"/>
+                                        <rect key="frame" x="0.0" y="247" width="210" height="40"/>
                                         <color key="backgroundColor" name="themeColor"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -72,24 +65,31 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eqp-vu-1r6" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="332" width="210" height="40"/>
+                                        <rect key="frame" x="0.0" y="287" width="210" height="40"/>
                                         <color key="backgroundColor" name="themeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Ztz-wM-eyG"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xr-TQ-aG9" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="417" width="210" height="40"/>
+                                        <rect key="frame" x="0.0" y="407" width="210" height="40"/>
                                         <color key="backgroundColor" name="themeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="i8o-9c-FwY"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIH-Wy-bU2" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="457" width="210" height="40"/>
+                                        <rect key="frame" x="0.0" y="447" width="210" height="40"/>
                                         <color key="backgroundColor" name="themeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="QUb-3a-KmW"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53I-Gs-EQW" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="327" width="210" height="40"/>
+                                        <color key="backgroundColor" name="themeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Rr9-OJ-oKD"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -100,25 +100,25 @@
                                     <constraint firstItem="pIj-Qc-hkB" firstAttribute="top" secondItem="Fn5-HF-Gcq" secondAttribute="bottom" id="4O7-BX-dcP"/>
                                     <constraint firstAttribute="trailing" secondItem="6Xr-TQ-aG9" secondAttribute="trailing" id="8Km-MX-fx0"/>
                                     <constraint firstItem="Fn5-HF-Gcq" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="CIL-ST-1cA"/>
+                                    <constraint firstItem="53I-Gs-EQW" firstAttribute="top" secondItem="Eqp-vu-1r6" secondAttribute="bottom" id="Ewq-LY-MQY"/>
                                     <constraint firstAttribute="trailing" secondItem="pIj-Qc-hkB" secondAttribute="trailing" id="GXE-A2-8Bg"/>
+                                    <constraint firstItem="Gax-8z-pJ1" firstAttribute="top" secondItem="pIj-Qc-hkB" secondAttribute="bottom" constant="40" id="J30-JE-4fQ"/>
                                     <constraint firstItem="cm1-qL-gWI" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="K9E-S3-ui9"/>
+                                    <constraint firstItem="6Xr-TQ-aG9" firstAttribute="top" secondItem="53I-Gs-EQW" secondAttribute="bottom" constant="40" id="M08-Ck-sQR"/>
                                     <constraint firstAttribute="trailing" secondItem="Eqp-vu-1r6" secondAttribute="trailing" id="Mx0-cL-7ie"/>
                                     <constraint firstAttribute="trailing" secondItem="cIH-Wy-bU2" secondAttribute="trailing" id="N0r-Oe-dKC"/>
-                                    <constraint firstItem="Gax-8z-pJ1" firstAttribute="top" secondItem="1lp-p7-ev2" secondAttribute="bottom" constant="45" id="NPO-SO-5W1"/>
                                     <constraint firstAttribute="trailing" secondItem="Gax-8z-pJ1" secondAttribute="trailing" id="O4s-aE-yUI"/>
                                     <constraint firstItem="pIj-Qc-hkB" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="Q5m-ie-nHv"/>
-                                    <constraint firstItem="1lp-p7-ev2" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="UBl-Ly-ej4"/>
                                     <constraint firstItem="Eqp-vu-1r6" firstAttribute="top" secondItem="Gax-8z-pJ1" secondAttribute="bottom" id="We5-D3-xq9"/>
-                                    <constraint firstItem="1lp-p7-ev2" firstAttribute="top" secondItem="pIj-Qc-hkB" secondAttribute="bottom" id="WuY-Ve-JIl"/>
                                     <constraint firstAttribute="trailing" secondItem="Fn5-HF-Gcq" secondAttribute="trailing" id="XtC-8F-ovy"/>
                                     <constraint firstItem="cm1-qL-gWI" firstAttribute="top" secondItem="WOe-Kw-hb2" secondAttribute="top" id="aBq-1G-8Xh"/>
                                     <constraint firstAttribute="width" constant="210" id="cF6-bg-goE"/>
                                     <constraint firstAttribute="trailing" secondItem="cm1-qL-gWI" secondAttribute="trailing" id="cee-Yb-3KY"/>
                                     <constraint firstItem="cIH-Wy-bU2" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="hei-Mt-bUH"/>
-                                    <constraint firstItem="6Xr-TQ-aG9" firstAttribute="top" secondItem="Eqp-vu-1r6" secondAttribute="bottom" constant="45" id="kjf-Y1-Qza"/>
+                                    <constraint firstItem="53I-Gs-EQW" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="l3H-LH-PlE"/>
+                                    <constraint firstAttribute="trailing" secondItem="53I-Gs-EQW" secondAttribute="trailing" id="nys-f9-FQj"/>
                                     <constraint firstItem="6Xr-TQ-aG9" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="pxY-8d-pbH"/>
                                     <constraint firstItem="Gax-8z-pJ1" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="q6U-9u-70S"/>
-                                    <constraint firstAttribute="trailing" secondItem="1lp-p7-ev2" secondAttribute="trailing" id="q7W-ht-7qU"/>
                                     <constraint firstItem="Fn5-HF-Gcq" firstAttribute="top" secondItem="cm1-qL-gWI" secondAttribute="bottom" constant="40" id="tJa-ft-UiY"/>
                                 </constraints>
                             </view>
@@ -132,13 +132,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="calendarContentView" destination="Fn5-HF-Gcq" id="Wan-my-YjB"/>
-                        <outlet property="contactContentView" destination="Gax-8z-pJ1" id="8q1-dn-4WO"/>
-                        <outlet property="cultivationContentView" destination="pIj-Qc-hkB" id="8SC-2x-veE"/>
-                        <outlet property="kikurageDictionaryContentView" destination="cIH-Wy-bU2" id="Qbt-rq-j3R"/>
-                        <outlet property="recipeContentView" destination="1lp-p7-ev2" id="4Ke-YK-eDh"/>
-                        <outlet property="searchRecipeContentView" destination="6Xr-TQ-aG9" id="7K2-nl-f58"/>
-                        <outlet property="settingContentView" destination="Eqp-vu-1r6" id="TQ9-cA-g4n"/>
+                        <outlet property="calendarView" destination="Fn5-HF-Gcq" id="rFv-i1-FwW"/>
+                        <outlet property="contactView" destination="Gax-8z-pJ1" id="MtH-Zq-EX1"/>
+                        <outlet property="graphView" destination="pIj-Qc-hkB" id="yHN-K8-2E6"/>
+                        <outlet property="kikurageDictionaryView" destination="cIH-Wy-bU2" id="HUT-5j-enH"/>
+                        <outlet property="licenseView" destination="53I-Gs-EQW" id="oqF-re-RhK"/>
+                        <outlet property="searchRecipeView" destination="6Xr-TQ-aG9" id="spE-vE-fht"/>
+                        <outlet property="settingView" destination="Eqp-vu-1r6" id="EfM-sz-QLK"/>
                         <outlet property="sideMenuView" destination="WOe-Kw-hb2" id="g2M-jZ-KfP"/>
                     </connections>
                 </viewController>

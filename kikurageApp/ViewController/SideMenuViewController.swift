@@ -12,13 +12,13 @@ import MessageUI
 class SideMenuViewController: UIViewController {
     
     @IBOutlet weak var sideMenuView: UIView!
-    @IBOutlet weak var calendarContentView: SideMenuContentView!
-    @IBOutlet weak var cultivationContentView: SideMenuContentView!
-    @IBOutlet weak var recipeContentView: SideMenuContentView!
-    @IBOutlet weak var contactContentView: SideMenuContentView!
-    @IBOutlet weak var settingContentView: SideMenuContentView!
-    @IBOutlet weak var searchRecipeContentView: SideMenuContentView!
-    @IBOutlet weak var kikurageDictionaryContentView: SideMenuContentView!
+    @IBOutlet weak var calendarView: SideMenuContentView!
+    @IBOutlet weak var graphView: SideMenuContentView!
+    @IBOutlet weak var contactView: SideMenuContentView!
+    @IBOutlet weak var settingView: SideMenuContentView!
+    @IBOutlet weak var licenseView: SideMenuContentView!
+    @IBOutlet weak var searchRecipeView: SideMenuContentView!
+    @IBOutlet weak var kikurageDictionaryView: SideMenuContentView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -60,20 +60,17 @@ class SideMenuViewController: UIViewController {
 extension SideMenuViewController {
     private func setUI() {
         // サイドメニュー項目設定
-        self.calendarContentView.sideMenuContentLabel.text = "カレンダー"
-        self.calendarContentView.sideMenuContentIconView.image = UIImage(systemName: "calendar")
-        self.cultivationContentView.sideMenuContentLabel.text = "さいばいきろく集"
-        self.cultivationContentView.sideMenuContentIconView.image = UIImage(systemName: "tag")
-        self.recipeContentView.sideMenuContentLabel.text = "りょうりきろく集"
-        self.recipeContentView.sideMenuContentIconView.image = UIImage(systemName: "doc.plaintext")
-        self.contactContentView.sideMenuContentLabel.text = "問い合わせ"
-        self.contactContentView.sideMenuContentIconView.image = UIImage(systemName: "questionmark.circle")
-        self.settingContentView.sideMenuContentLabel.text = "設定"
-        self.settingContentView.sideMenuContentIconView.image = UIImage(systemName: "gearshape")
-        self.searchRecipeContentView.sideMenuContentLabel.text = "料理レシピ検索"
-        self.searchRecipeContentView.sideMenuContentIconView.image = UIImage(systemName: "magnifyingglass")
-        self.kikurageDictionaryContentView.sideMenuContentLabel.text = "きくらげ豆知識"
-        self.kikurageDictionaryContentView.sideMenuContentIconView.image = UIImage(systemName: "doc.text")
+        self.setSideMenuContent(view: self.calendarView, title: "カレンダー", imageSystemName: "calendar")
+        self.setSideMenuContent(view: self.graphView, title: "グラフ", imageSystemName: "waveform.path.ecg")
+        self.setSideMenuContent(view: self.contactView, title: "問い合わせ", imageSystemName: "questionmark.circle")
+        self.setSideMenuContent(view: self.settingView, title: "設定", imageSystemName: "gearshape")
+        self.setSideMenuContent(view: self.licenseView, title: "著作権", imageSystemName: "info.circle")
+        self.setSideMenuContent(view: self.searchRecipeView, title: "料理レシピ検索", imageSystemName: "magnifyingglass")
+        self.setSideMenuContent(view: self.kikurageDictionaryView, title: "きくらげ豆知識", imageSystemName: "doc.text")
+    }
+    private func setSideMenuContent(view: SideMenuContentView, title: String, imageSystemName: String) {
+        view.sideMenuContentLabel.text = title
+        view.sideMenuContentIconView.image = UIImage(systemName: imageSystemName)
     }
     private func setAnimation() {
         // メニューの位置を取得する
@@ -92,7 +89,7 @@ extension SideMenuViewController {
         })
     }
 }
-
+// MARK: - MFMail Delegate Method
 extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     // 問い合わせのメーラーを開く
     private func openContactMailer() {
