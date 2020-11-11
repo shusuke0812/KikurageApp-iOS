@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.setUI()
+        self.loadKikurageState()
     }
     // MARK:- Action Method
     @IBAction func didTapCultivationPageButton(_ sender: Any) {
@@ -76,6 +77,8 @@ extension MainViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         // 栽培記録・料理記録・みんなに相談画面のナビゲーションバーの戻るボタンを設定
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "もどる", style: .plain, target: nil, action: nil)
+        // きくらげ表情の設定
+        self.displayKikurageStateImage(type: "normal")
     }
     // 時刻表示更新用メソッド
     @objc private func updateTime() {
@@ -127,13 +130,14 @@ extension MainViewController {
 extension MainViewController: MainViewModelDelgate {
     // きくらげの状態を取得する
     private func loadKikurageState() {
-        //self.viewModel.loadKikurageState()
+        self.viewModel.loadKikurageState()
     }
     private func loadKikurageUser() {
         self.viewModel.loadKikurageUser()
     }
+    // きくらげの状態取得可否によってViewの表示をする
     func didSuccessGetKikurageState() {
-        print("test")
+        self.setKikurageStateUI()
     }
     func didFailedGetKikurageState(errorMessage: String) {
         print(errorMessage)
