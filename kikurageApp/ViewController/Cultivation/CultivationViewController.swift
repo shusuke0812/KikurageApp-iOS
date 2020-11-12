@@ -14,11 +14,9 @@ import FirebaseAuth
 class
 CultivationViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate,UITextFieldDelegate {
     
-    @IBOutlet weak var cameraView: UIImageView!
-    @IBOutlet weak var pictureLabel: UILabel!
-    @IBOutlet weak var observationDate: UILabel!
-    @IBOutlet weak var observationWrite: UITextView!
-    @IBOutlet weak var observationLabel: UILabel!
+    /// BaseView
+    /// ViewModel
+    //private var viewModel:
     
     var chart: CombinedChartView!
     var lineDataSet: LineChartDataSet!

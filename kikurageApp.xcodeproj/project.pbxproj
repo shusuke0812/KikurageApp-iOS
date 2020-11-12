@@ -37,6 +37,9 @@
 		9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3352537FD96005BED9C /* KikurageUser.swift */; };
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
+		9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */; };
+		9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */; };
+		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
 		9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* MainViewModel.swift */; };
 		9CB7D604254050D600D57801 /* MainBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* MainBaseView.swift */; };
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
@@ -78,6 +81,9 @@
 		9CA7F3352537FD96005BED9C /* KikurageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUser.swift; sourceTree = "<group>"; };
 		9CA7F3392537FF1B005BED9C /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
+		9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCollectionViewCell.xib; sourceTree = "<group>"; };
+		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* MainBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseView.swift; sourceTree = "<group>"; };
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
@@ -194,10 +200,53 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		9CAFF9A2255CC57800418745 /*  CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */,
+				9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */,
+			);
+			path = " CollectionViewCell";
+			sourceTree = "<group>";
+		};
+		9CAFF9AC255CD1E900418745 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */,
+				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9CAFF9AD255CD1FA00418745 /* Cultivation */ = {
+			isa = PBXGroup;
+			children = (
+				9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */,
+			);
+			path = Cultivation;
+			sourceTree = "<group>";
+		};
+		9CAFF9AE255CD20500418745 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		9CAFF9AF255CD21500418745 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 		9CB7D5FC254043C300D57801 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
+				9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -223,11 +272,10 @@
 		9CF0020224E398AC0084036B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */,
-				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
-				9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */,
-				9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */,
-				9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */,
+				9CAFF9AF255CD21500418745 /* Communication */,
+				9CAFF9AE255CD20500418745 /* Recipe */,
+				9CAFF9AD255CD1FA00418745 /* Cultivation */,
+				9CAFF9AC255CD1E900418745 /* Home */,
 				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
 			);
 			path = ViewController;
@@ -250,6 +298,7 @@
 		9CF0020424E3990E0084036B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				9CAFF9A2255CC57800418745 /*  CollectionViewCell */,
 				9CB7D602254050BF00D57801 /* BaseView */,
 				9C82B41B253056BC00E650B5 /* UIView */,
 				9CF0020524E399190084036B /* UITextView */,
@@ -340,6 +389,7 @@
 				9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */,
 				9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */,
 				9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */,
+				9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */,
 				9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */,
@@ -405,6 +455,7 @@
 				9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */,
 				9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */,
+				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
@@ -418,6 +469,7 @@
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
 				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
