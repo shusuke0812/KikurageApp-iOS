@@ -182,6 +182,40 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		9C8A0C41255CEB2400E1C98C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
+				9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */,
+				9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9C8A0C42255CEB2B00E1C98C /* Cultivation */ = {
+			isa = PBXGroup;
+			children = (
+				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
+			);
+			path = Cultivation;
+			sourceTree = "<group>";
+		};
+		9C8A0C43255CEB3400E1C98C /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		9C8A0C44255CEB3D00E1C98C /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 		9CA7F3342537FD75005BED9C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +246,7 @@
 		9CAFF9AC255CD1E900418745 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
 				9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */,
 				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
 			);
@@ -276,7 +311,6 @@
 				9CAFF9AE255CD20500418745 /* Recipe */,
 				9CAFF9AD255CD1FA00418745 /* Cultivation */,
 				9CAFF9AC255CD1E900418745 /* Home */,
-				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -284,13 +318,11 @@
 		9CF0020324E398D00084036B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				9C8A0C44255CEB3D00E1C98C /* Communication */,
+				9C8A0C43255CEB3400E1C98C /* Recipe */,
+				9C8A0C42255CEB2B00E1C98C /* Cultivation */,
+				9C8A0C41255CEB2400E1C98C /* Home */,
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
-				9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */,
-				9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */,
-				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
-				9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */,
-				9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */,
-				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
