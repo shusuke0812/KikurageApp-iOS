@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SwiftDate
 
-struct KikurageCultivation {
+struct KikurageCultivation: Codable {
     /// 栽培メモ
     var memo: String = ""
     /// 栽培写真
