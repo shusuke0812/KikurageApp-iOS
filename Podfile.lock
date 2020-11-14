@@ -334,6 +334,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.10)
+  - SwiftDate (5.1.0)
 
 DEPENDENCIES:
   - Charts (~> 3.0)
@@ -342,6 +343,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseFirestoreSwift (~> 0.2)
   - IQKeyboardManagerSwift
+  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -367,6 +369,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SwiftDate
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -390,7 +393,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: 5d4f03bff403767d427becd71e6b666b2d484b32
+PODFILE CHECKSUM: 86793e575a9e7cdb0aabd851d90c3fd078edd5bd
 
 COCOAPODS: 1.9.3

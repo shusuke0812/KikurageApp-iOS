@@ -12,6 +12,7 @@ target 'kikurageApp' do
 	pod 'FirebaseFirestoreSwift', '~> 0.2'
   pod 'Charts', '~> 3.0'
 	pod 'IQKeyboardManagerSwift'
+	pod 'SwiftDate', '~> 5.0'
 
 end
 
