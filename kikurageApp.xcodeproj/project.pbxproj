@@ -34,6 +34,13 @@
 		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
 		9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */; };
 		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
+		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
+		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
+		9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923334255F9760000293BB /* PostCultivationViewController.swift */; };
+		9C923338255F978D000293BB /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923337255F978D000293BB /* PostCultivationBaseView.swift */; };
+		9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */; };
+		9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333D255F9F7E000293BB /* CultivationRepository.swift */; };
+		9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923340255FA0DC000293BB /* KikurageCultivation.swift */; };
 		9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3352537FD96005BED9C /* KikurageUser.swift */; };
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
@@ -78,6 +85,13 @@
 		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
+		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
+		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
+		9C923334255F9760000293BB /* PostCultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewController.swift; sourceTree = "<group>"; };
+		9C923337255F978D000293BB /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
+		9C92333D255F9F7E000293BB /* CultivationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationRepository.swift; sourceTree = "<group>"; };
+		9C923340255FA0DC000293BB /* KikurageCultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivation.swift; sourceTree = "<group>"; };
 		9CA7F3352537FD96005BED9C /* KikurageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUser.swift; sourceTree = "<group>"; };
 		9CA7F3392537FF1B005BED9C /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
@@ -221,6 +235,7 @@
 			children = (
 				9CA7F3352537FD96005BED9C /* KikurageUser.swift */,
 				9CA7F3392537FF1B005BED9C /* KikurageState.swift */,
+				9C923340255FA0DC000293BB /* KikurageCultivation.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -230,6 +245,7 @@
 			children = (
 				9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */,
 				9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */,
+				9C92333D255F9F7E000293BB /* CultivationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -239,6 +255,8 @@
 			children = (
 				9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */,
 				9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */,
+				9C8B1D28255ECB11000CA36C /* CameraCell.swift */,
+				9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */,
 			);
 			path = " CollectionViewCell";
 			sourceTree = "<group>";
@@ -257,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */,
+				9C923334255F9760000293BB /* PostCultivationViewController.swift */,
 			);
 			path = Cultivation;
 			sourceTree = "<group>";
@@ -282,6 +301,7 @@
 			children = (
 				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
 				9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */,
+				9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				9CB7D603254050D600D57801 /* MainBaseView.swift */,
+				9C923337255F978D000293BB /* PostCultivationBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -417,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
+				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
 				9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */,
 				9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */,
@@ -482,14 +504,17 @@
 			files = (
 				9CB7D604254050D600D57801 /* MainBaseView.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
+				9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
 				9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */,
+				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */,
 				9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */,
 				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
+				9C923338255F978D000293BB /* PostCultivationBaseView.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
@@ -497,10 +522,13 @@
 				9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */,
 				9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
+				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
 				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
+				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */,
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
