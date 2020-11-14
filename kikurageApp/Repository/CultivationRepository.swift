@@ -40,7 +40,7 @@ extension CultivationRepository {
             }
             dispatchGroup.leave()
         }
-        // Firestoreにデータを登録した後にFirestore登録用にドキュメントIDをコールバックする
+        // Firestoreにデータを登録した後、Storageに画像を投稿するためのPath用にドキュメントIDをコールバックする
         dispatchGroup.notify(queue: .main) {
             completion(.success(documentReference))
         }
