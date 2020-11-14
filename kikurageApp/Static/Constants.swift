@@ -11,7 +11,13 @@ import Foundation
 struct Constants {
     struct Url {
         /// Facebookのきくらげコミュニティ
-        internal static let facebook: String = "https://www.facebook.com/groups/kikurage.community.2019/"
+        internal static let facebook = "https://www.facebook.com/groups/kikurage.community.2019/"
+    }
+    struct FirestoreCollectionName {
+        /// usersコレクション名
+        internal static let users = "users"
+        /// users配下の栽培サブコレクション名
+        internal static let cultivations = "cultivations"
     }
 }
 
