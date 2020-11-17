@@ -22,9 +22,12 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" systemColor="systemBackgroundColor"/>
                                 <items>
-                                    <navigationItem title="Title" id="YbJ-8S-yFQ">
+                                    <navigationItem id="YbJ-8S-yFQ">
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="b4s-6e-QMy">
                                             <color key="tintColor" systemColor="labelColor"/>
+                                            <connections>
+                                                <action selector="didTapCloseButton:" destination="IvK-fa-IF2" id="gCy-sz-c3E"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>

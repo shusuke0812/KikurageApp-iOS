@@ -11,6 +11,8 @@ import UIKit
 protocol PostCultivationBaseViewDelegate: class {
     /// 栽培記録保存ボタンが押された時の処理
     func didTapPostButton()
+    /// 閉じるボタンが押された時の処理
+    func didTapCloseButton()
 }
 
 class PostCultivationBaseView: UIView {
@@ -34,6 +36,9 @@ class PostCultivationBaseView: UIView {
     // MARK: - Action Method
     @IBAction func didTapPostButton(_ sender: Any) {
         self.delegate?.didTapPostButton()
+    }
+    @IBAction func didTapCloseButton(_ sender: Any) {
+        self.delegate?.didTapCloseButton()
     }
 }
 // MARK: - Initialized Method
