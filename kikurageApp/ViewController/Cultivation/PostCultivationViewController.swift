@@ -9,22 +9,20 @@
 import UIKit
 
 class PostCultivationViewController: UIViewController {
-
+    /// BaseView
+    private var baseView: PostCultivationBaseView { self.view as! PostCultivationBaseView}
+    /// ViewModel
+    private var viewModel: PostCultivationViewModel!
+    /// きくらげユーザーID
+    var kikurageUserId: String?
+    /// 栽培記録
+    var cultivation: KikurageCultivation?
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+// MARK: - Dekegate Method
+extension PostCultivationViewController {}

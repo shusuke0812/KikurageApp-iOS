@@ -20,10 +20,12 @@
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22857C2246025B000D6A9B /* ClockHelper.swift */; };
+		9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */; };
 		9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */; };
 		9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */; };
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
 		9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */; };
+		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C82B417253037BD00E650B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B416253037BD00E650B5 /* Constants.swift */; };
 		9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B41C2530572300E650B5 /* SideMenuContentView.swift */; };
 		9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C82B4202530574100E650B5 /* SideMenuContentView.xib */; };
@@ -71,10 +73,12 @@
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C22857C2246025B000D6A9B /* ClockHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHelper.swift; sourceTree = "<group>"; };
+		9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCultivationViewController.storyboard; sourceTree = "<group>"; };
 		9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewController.swift; sourceTree = "<group>"; };
 		9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewController.swift; sourceTree = "<group>"; };
+		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		9C82B416253037BD00E650B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C82B41C2530572300E650B5 /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
 		9C82B4202530574100E650B5 /* SideMenuContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuContentView.xib; sourceTree = "<group>"; };
@@ -160,13 +164,14 @@
 		9C1ACF492225768A00A3D4D1 /* kikurageApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C7E14E62563F8A600D2D8EF /* CustomClass */,
+				9CF0020424E3990E0084036B /* CustomView */,
 				9CB7D5FC254043C300D57801 /* ViewModel */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CA7F3342537FD75005BED9C /* Entity */,
 				9C82B415253037AB00E650B5 /* Static */,
 				9CDAFBF624E4B95700E56550 /* Extensions */,
 				9CF0020624E39B290084036B /* Helper */,
-				9CF0020424E3990E0084036B /* CustomView */,
 				9CF0020324E398D00084036B /* Storyboard */,
 				9CF0020224E398AC0084036B /* ViewController */,
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
@@ -175,6 +180,14 @@
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 			);
 			path = kikurageApp;
+			sourceTree = "<group>";
+		};
+		9C7E14E62563F8A600D2D8EF /* CustomClass */ = {
+			isa = PBXGroup;
+			children = (
+				9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */,
+			);
+			path = CustomClass;
 			sourceTree = "<group>";
 		};
 		9C82B415253037AB00E650B5 /* Static */ = {
@@ -210,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
+				9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */,
 			);
 			path = Cultivation;
 			sourceTree = "<group>";
@@ -250,7 +264,7 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		9CAFF9A2255CC57800418745 /*  CollectionViewCell */ = {
+		9CAFF9A2255CC57800418745 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */,
@@ -258,7 +272,7 @@
 				9C8B1D28255ECB11000CA36C /* CameraCell.swift */,
 				9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */,
 			);
-			path = " CollectionViewCell";
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		9CAFF9AC255CD1E900418745 /* Home */ = {
@@ -351,7 +365,7 @@
 		9CF0020424E3990E0084036B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				9CAFF9A2255CC57800418745 /*  CollectionViewCell */,
+				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 				9CB7D602254050BF00D57801 /* BaseView */,
 				9C82B41B253056BC00E650B5 /* UIView */,
 				9CF0020524E399190084036B /* UITextView */,
@@ -449,6 +463,7 @@
 				9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
+				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
 				9C1ACF502225768A00A3D4D1 /* MainViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +540,7 @@
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
+				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,
 				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
