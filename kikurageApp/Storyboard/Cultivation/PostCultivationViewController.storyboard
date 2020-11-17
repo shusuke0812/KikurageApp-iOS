@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,29 +83,56 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VXg-KC-8nl">
+                                <rect key="frame" x="8" y="564.5" width="398" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlY-Sc-yhw">
+                                <rect key="frame" x="16" y="822" width="382" height="45"/>
+                                <color key="backgroundColor" name="subColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="JyV-0t-rh8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="保存する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapPostButton:" destination="IvK-fa-IF2" eventType="touchUpInside" id="Dpf-w6-E0f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iTf-i7-dBw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="iTf-i7-dBw" firstAttribute="trailing" secondItem="PqW-BU-m9X" secondAttribute="trailing" constant="8" id="16E-jG-cD1"/>
+                            <constraint firstItem="iTf-i7-dBw" firstAttribute="trailing" secondItem="VXg-KC-8nl" secondAttribute="trailing" constant="8" id="25S-fi-avf"/>
+                            <constraint firstItem="mlY-Sc-yhw" firstAttribute="leading" secondItem="iTf-i7-dBw" secondAttribute="leading" constant="16" id="9JV-Yc-fXl"/>
                             <constraint firstItem="ihW-db-xFy" firstAttribute="top" secondItem="Jnh-Hi-R8f" secondAttribute="bottom" constant="60" id="AEB-I8-fKX"/>
                             <constraint firstItem="iTf-i7-dBw" firstAttribute="trailing" secondItem="Jbb-tP-CaW" secondAttribute="trailing" constant="8" id="C5J-ZL-Tex"/>
+                            <constraint firstItem="VXg-KC-8nl" firstAttribute="top" secondItem="Jbb-tP-CaW" secondAttribute="bottom" constant="20" id="I9X-Gl-bXj"/>
                             <constraint firstItem="iTf-i7-dBw" firstAttribute="trailing" secondItem="ihW-db-xFy" secondAttribute="trailing" constant="8" id="M8i-II-pwg"/>
+                            <constraint firstItem="iTf-i7-dBw" firstAttribute="trailing" secondItem="mlY-Sc-yhw" secondAttribute="trailing" constant="16" id="Mpn-Nt-ZkM"/>
                             <constraint firstItem="Ev5-t0-9pB" firstAttribute="top" secondItem="ihW-db-xFy" secondAttribute="bottom" constant="30" id="Mws-rd-fPK"/>
                             <constraint firstItem="PqW-BU-m9X" firstAttribute="leading" secondItem="iTf-i7-dBw" secondAttribute="leading" constant="8" id="PKT-k1-2gG"/>
                             <constraint firstItem="ihW-db-xFy" firstAttribute="leading" secondItem="iTf-i7-dBw" secondAttribute="leading" constant="8" id="Ts9-5d-T5l"/>
                             <constraint firstItem="Ev5-t0-9pB" firstAttribute="leading" secondItem="iTf-i7-dBw" secondAttribute="leading" constant="8" id="VeN-ok-wjR"/>
                             <constraint firstItem="Jnh-Hi-R8f" firstAttribute="leading" secondItem="iTf-i7-dBw" secondAttribute="leading" id="Vor-0R-Pcg"/>
+                            <constraint firstItem="VXg-KC-8nl" firstAttribute="leading" secondItem="iTf-i7-dBw" secondAttribute="leading" constant="8" id="Y7e-KE-0Q1"/>
                             <constraint firstItem="Jnh-Hi-R8f" firstAttribute="top" secondItem="iTf-i7-dBw" secondAttribute="top" id="bQg-wf-Khr"/>
                             <constraint firstItem="Jbb-tP-CaW" firstAttribute="top" secondItem="PqW-BU-m9X" secondAttribute="bottom" constant="3" id="bXb-ho-ao8"/>
                             <constraint firstItem="iTf-i7-dBw" firstAttribute="trailing" secondItem="Ev5-t0-9pB" secondAttribute="trailing" constant="8" id="cem-tG-ZnH"/>
                             <constraint firstItem="PqW-BU-m9X" firstAttribute="top" secondItem="Ev5-t0-9pB" secondAttribute="bottom" constant="5" id="mCi-M6-Te6"/>
                             <constraint firstItem="Jnh-Hi-R8f" firstAttribute="trailing" secondItem="iTf-i7-dBw" secondAttribute="trailing" id="okw-So-k9W"/>
+                            <constraint firstItem="mlY-Sc-yhw" firstAttribute="bottom" secondItem="iTf-i7-dBw" secondAttribute="bottom" constant="5" id="zDD-FX-qYv"/>
                         </constraints>
                         <connections>
                             <outlet property="cameraCollectionView" destination="ihW-db-xFy" id="nBf-Jc-DmG"/>
                             <outlet property="currentTextViewNumberLabel" destination="Zix-cg-dSg" id="FTV-uZ-qzl"/>
+                            <outlet property="dateTextField" destination="VXg-KC-8nl" id="lnt-OB-jte"/>
                             <outlet property="maxTextViewNumberLabel" destination="Kzm-YM-Cc5" id="gKS-kQ-Uvs"/>
+                            <outlet property="postButton" destination="mlY-Sc-yhw" id="XKp-XX-4fz"/>
                             <outlet property="textView" destination="Ev5-t0-9pB" id="5g8-Y2-SdK"/>
                         </connections>
                     </view>
@@ -116,6 +144,9 @@
     </scenes>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="subColor">
+            <color red="0.86274509803921573" green="0.29803921568627451" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
