@@ -26,6 +26,7 @@
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
 		9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
+		9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C82B417253037BD00E650B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B416253037BD00E650B5 /* Constants.swift */; };
 		9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B41C2530572300E650B5 /* SideMenuContentView.swift */; };
@@ -80,6 +81,7 @@
 		9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewController.swift; sourceTree = "<group>"; };
 		9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationBaseView.swift; sourceTree = "<group>"; };
+		9C7E105D25649637005A92C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		9C82B416253037BD00E650B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C82B41C2530572300E650B5 /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */,
 				9C07E7E12530194900720768 /* UIViewController+Extension.swift */,
 				9C82B42325305E6C00E650B5 /* UIView+Extension.swift */,
+				9C7E105D25649637005A92C7 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */,
 				9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
+				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
