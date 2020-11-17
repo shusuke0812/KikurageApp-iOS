@@ -15,6 +15,7 @@ protocol PostCultivationBaseViewDelegate: class {
 
 class PostCultivationBaseView: UIView {
     
+    @IBOutlet weak var navigationItem: UINavigationItem!
     @IBOutlet weak var cameraCollectionView: UICollectionView!
     @IBOutlet weak var textView: UITextViewWithPlaceholder!
     @IBOutlet weak var currentTextViewNumberLabel: UILabel!
@@ -38,6 +39,7 @@ class PostCultivationBaseView: UIView {
 // MARK: - Initialized Method
 extension PostCultivationBaseView {
     private func initUI() {
+        self.navigationItem.title = "さいばいきろく保存"
         self.textView.placeholder = "観察メモ"
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5

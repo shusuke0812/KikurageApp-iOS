@@ -132,6 +132,7 @@
                             <outlet property="currentTextViewNumberLabel" destination="Zix-cg-dSg" id="FTV-uZ-qzl"/>
                             <outlet property="dateTextField" destination="VXg-KC-8nl" id="lnt-OB-jte"/>
                             <outlet property="maxTextViewNumberLabel" destination="Kzm-YM-Cc5" id="gKS-kQ-Uvs"/>
+                            <outlet property="navigationItem" destination="YbJ-8S-yFQ" id="vdB-ac-1DG"/>
                             <outlet property="postButton" destination="mlY-Sc-yhw" id="XKp-XX-4fz"/>
                             <outlet property="textView" destination="Ev5-t0-9pB" id="5g8-Y2-SdK"/>
                         </connections>
@@ -145,7 +146,7 @@
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="subColor">
-            <color red="0.86274509803921573" green="0.29803921568627451" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.86299997568130493" green="0.29800000786781311" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
