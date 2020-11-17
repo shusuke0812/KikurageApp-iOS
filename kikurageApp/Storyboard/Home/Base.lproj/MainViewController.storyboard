@@ -108,7 +108,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVY-ca-2x5">
                                 <rect key="frame" x="62" y="429" width="290" height="0.5"/>
-                                <color key="backgroundColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="IFk-30-dJi"/>
                                     <constraint firstAttribute="height" constant="0.5" id="gyO-3Q-nfW"/>
@@ -116,7 +116,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y50-vB-neh">
                                 <rect key="frame" x="62" y="489.5" width="290" height="0.5"/>
-                                <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="eon-zj-nMy"/>
                                     <constraint firstAttribute="height" constant="0.5" id="noz-ZL-NGu"/>
