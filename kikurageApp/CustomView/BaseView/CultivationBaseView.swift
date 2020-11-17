@@ -10,7 +10,7 @@ import UIKit
 
 protocol CultivationBaseViewDelegate: class {
     /// 栽培記録保存画面のボタンをタップした時の処理
-    func didTapCultivationPageButton()
+    func didTapPostCultivationPageButton()
 }
 
 class CultivationBaseView: UIView {
@@ -25,8 +25,8 @@ class CultivationBaseView: UIView {
         super.awakeFromNib()
     }
     // MARK: - Action Method
-    @IBAction func didTapCultivationPageButton(_ sender: Any) {
-        self.delegate?.didTapCultivationPageButton()
+    @IBAction func didTapPostCultivationPageButton(_ sender: Any) {
+        self.delegate?.didTapPostCultivationPageButton()
     }
 }
 // MARK: - Initialized Method

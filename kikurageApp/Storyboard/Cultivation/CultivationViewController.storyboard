@@ -33,7 +33,7 @@
                                 <rect key="frame" x="331" y="779" width="63" height="63"/>
                                 <state key="normal" image="addMemoButton"/>
                                 <connections>
-                                    <action selector="didTapCultivationPageButton:" destination="JsX-gy-r0o" eventType="touchUpInside" id="R6L-xa-tlp"/>
+                                    <action selector="didTapPostCultivationPageButton:" destination="JsX-gy-r0o" eventType="touchUpInside" id="3b9-pK-IBP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,7 +48,7 @@
                             <constraint firstItem="2PN-c2-6av" firstAttribute="leading" secondItem="Jar-At-3Vx" secondAttribute="leading" id="kbu-pP-0QK"/>
                         </constraints>
                         <connections>
-                            <outlet property="postPageButton" destination="KeL-SW-wEN" id="Wdk-tA-lZZ"/>
+                            <outlet property="postPageButton" destination="KeL-SW-wEN" id="Opo-mn-SeC"/>
                         </connections>
                     </view>
                 </viewController>
