@@ -12,7 +12,11 @@ class CultivationCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+}
+// MARK: Initialized Method
+extension CultivationCollectionViewCell {
+    private func setUI() {
+        
+    }
 }
