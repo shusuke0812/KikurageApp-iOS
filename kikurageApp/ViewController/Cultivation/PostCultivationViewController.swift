@@ -22,7 +22,24 @@ class PostCultivationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
+        self.setDelegate()
     }
 }
+// MARK: - Initialized Method
+extension PostCultivationViewController {
+    private func initUI() {
+        
+    }
+    private func setDelegate() {
+        self.baseView.delegate = self
+    }
+}
+
 // MARK: - Dekegate Method
-extension PostCultivationViewController {}
+extension PostCultivationViewController: PostCultivationBaseViewDelegate {
+    func didTapPostButton() {
+    }
+    func didTapCloseButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
