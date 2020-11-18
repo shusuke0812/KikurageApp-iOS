@@ -44,11 +44,16 @@ class PostCultivationBaseView: UIView {
 // MARK: - Initialized Method
 extension PostCultivationBaseView {
     private func initUI() {
+        // タイトル
         self.navigationItem.title = "さいばいきろく保存"
+        // 背景色
         self.backgroundColor = .themeColor
         self.cameraCollectionView.backgroundColor = .themeColor
         self.textView.backgroundColor = .themeColor
+        // プレースホルダー
         self.textView.placeholder = "観察メモ"
+        self.dateTextField.placeholder = "日付を選択"
+        // 保存するボタン
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
     }
