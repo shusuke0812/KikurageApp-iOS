@@ -45,6 +45,9 @@ class PostCultivationBaseView: UIView {
 extension PostCultivationBaseView {
     private func initUI() {
         self.navigationItem.title = "さいばいきろく保存"
+        self.backgroundColor = .themeColor
+        self.cameraCollectionView.backgroundColor = .themeColor
+        self.textView.backgroundColor = .themeColor
         self.textView.placeholder = "観察メモ"
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
