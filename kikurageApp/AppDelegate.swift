@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
         // IQKeyboard初期化
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
         // ログイン画面を開く
         self.openLoginPage()
         
