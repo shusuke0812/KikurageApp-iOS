@@ -20,7 +20,6 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnh-Hi-R8f">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="barTintColor" systemColor="systemBackgroundColor"/>
                                 <items>
                                     <navigationItem id="YbJ-8S-yFQ">
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="b4s-6e-QMy">
