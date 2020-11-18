@@ -9,8 +9,9 @@
 import UIKit
 
 class KikurageStateHelper {
+    /// きくらげの状態によって表情を変える
+    /// - Parameter type: きくらげの状態（Firestoreより取得する文字列）
     internal func setStateImage(type: String) ->  [UIImage]{
-        // きくらげの状態によって表情を変える
         var kikurageStateImages: [UIImage] = []
         let beforeImage = UIImage(named: "\(type)_01")!
         let afterImage = UIImage(named: "\(type)_02")!
