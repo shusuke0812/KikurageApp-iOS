@@ -13,6 +13,6 @@ class DateHelper {
     internal func formatToString(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
-        return "\(formatter.string(from: date))"
+        return formatter.string(from: date)
     }
 }
