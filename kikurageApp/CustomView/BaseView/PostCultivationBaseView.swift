@@ -27,11 +27,14 @@ class PostCultivationBaseView: UIView {
     
     /// デリゲート
     internal weak var delegate: PostCultivationBaseViewDelegate?
+    /// 日付選択Picker
+    var datePicker = UIDatePicker()
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
+        self.initDatePicker()
     }
     // MARK: - Action Method
     @IBAction func didTapPostButton(_ sender: Any) {
@@ -56,6 +59,13 @@ extension PostCultivationBaseView {
         // 保存するボタン
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
+    }
+    private func initDatePicker() {
+        self.datePicker.preferredDatePickerStyle = .wheels
+        self.datePicker.datePickerMode = .date
+        self.datePicker.timeZone = NSTimeZone.local
+        self.datePicker.locale = Locale.current
+        self.dateTextField.inputView = self.datePicker
     }
 }
 

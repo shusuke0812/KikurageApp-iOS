@@ -18,11 +18,13 @@ class PostCultivationViewController: UIViewController {
     /// 栽培記録
     var cultivation: KikurageCultivation?
     
+    private let dateHelper: DateHelper = DateHelper()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
-        self.setDelegate()
+        self.setDelegateDataSource()
     }
 }
 // MARK: - Initialized Method
@@ -30,8 +32,9 @@ extension PostCultivationViewController {
     private func initUI() {
         
     }
-    private func setDelegate() {
+    private func setDelegateDataSource() {
         self.baseView.delegate = self
+        self.baseView.dateTextField.delegate = self
     }
 }
 
@@ -41,5 +44,10 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     }
     func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+extension PostCultivationViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.baseView.dateTextField.text = dateHelper.formatToString(date: self.baseView.datePicker.date)
     }
 }
