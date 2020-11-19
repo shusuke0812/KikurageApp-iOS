@@ -61,10 +61,17 @@ extension PostCultivationBaseView {
         self.postButton.layer.cornerRadius = 5
     }
     private func initDatePicker() {
+        // DatePickerの基本設定
         self.datePicker.preferredDatePickerStyle = .wheels
         self.datePicker.datePickerMode = .date
         self.datePicker.timeZone = NSTimeZone.local
         self.datePicker.locale = Locale.current
+        // 現在の日付の1ヶ月前
+        let minDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
+        // DatePickerの範囲設定
+        self.datePicker.minimumDate = minDate
+        self.datePicker.maximumDate = Date()
+        // TextFieldの入力にDatePickerを接続
         self.dateTextField.inputView = self.datePicker
     }
 }
