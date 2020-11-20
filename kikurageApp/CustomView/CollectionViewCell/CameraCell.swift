@@ -7,7 +7,50 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseUI
+
+protocol CameraCellDelegate: class {
+    /// 画像キャンセルボタンがタップされた時の処理
+    /// - Parameter cell: 選択された画像セル
+    func didTapImageCancelButton(cell: CameraCell)
+}
 
 class CameraCell: UICollectionViewCell {
     
+    @IBOutlet weak var cameraIamge: UIImageView!
+    // デリゲート
+    internal weak var delegate: CameraCellDelegate?
+    
+    // MARK: - Lifecycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    // MARK: - Action Method
+    @IBAction func didTapImageCancelButton(_ sender: Any) {
+        self.delegate?.didTapImageCancelButton(cell: self)
+    }
+}
+// MARK: - Set Image Method
+extension CameraCell {
+    /// デフォルトに戻す（キャンセルボタン押下時）
+    internal func setDefaultImage() {
+        self.cameraIamge.image = UIImage(named: "camera")
+    }
+    /// 選択した画像を表示する（新規選択時）
+    /// - Parameter image: 選択した画像
+    internal func setIamge(image: UIImage) {
+        self.cameraIamge.image = image
+        self.cameraIamge.contentMode = .scaleAspectFill
+    }
+    /// 投稿した画像を表示する（Firebase読み込み時）
+    internal func setImage(imageStoragePath: String) {
+        if imageStoragePath.isEmpty {
+            self.setDefaultImage()
+            return
+        }
+        let storageReference = Storage.storage().reference(withPath: imageStoragePath)
+        self.cameraIamge.sd_setImage(with: storageReference)
+        self.cameraIamge.contentMode = .scaleAspectFill
+    }
 }
