@@ -19,12 +19,12 @@ class MainBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initViews()
+        self.initUI()
     }
 }
 
 extension MainBaseView {
-    private func initViews() {
+    private func initUI() {
         self.nowTimeLabel.text = "現在時刻を読み込み中..."
         self.kikurageNameLabel.text = "きくらげ名"
         self.kikurageStatusLabel.text = "きくらげの状態メッセージ"
