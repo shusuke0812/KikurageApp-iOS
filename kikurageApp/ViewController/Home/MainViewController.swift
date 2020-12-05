@@ -16,9 +16,7 @@ class MainViewController: UIViewController {
     private var baseView: MainBaseView { return self.view as! MainBaseView}
     /// ViewModel
     private var viewModel: MainViewModel!
-    
-    private let clockHelper: ClockHelper = ClockHelper()
-    private let kikurageStateHelper: KikurageStateHelper = KikurageStateHelper()
+    /// タイマー
     private var timer: Timer?
 
     // MARK: - Lifecycle
@@ -39,7 +37,7 @@ class MainViewController: UIViewController {
         self.baseView.kikurageStatusView.stopAnimating()
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.setUI()
+        self.setTimer()
         self.loadKikurageState()
     }
     // MARK:- Action Method
@@ -66,64 +64,24 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: "SideMenu", sender: nil)
     }
 }
-
 // MARK: - Initialized Method
 extension MainViewController {
-    // UIを初期化する
-    private func setUI() {
-        // ラベル、画像に初期値を設定する
-        self.baseView.nowTimeLabel.text = clockHelper.display()
-        // 1秒毎に現在時刻表示を更新する
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        // 栽培記録・料理記録・みんなに相談画面のナビゲーションバーの戻るボタンを設定
+    // ナビゲーションアイテムの設定
+    private func setNavigationItem() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "もどる", style: .plain, target: nil, action: nil)
-        // きくらげ表情の設定
-        self.displayKikurageStateImage(type: "normal")
     }
-    // 時刻表示更新用メソッド
-    @objc private func updateTime() {
-        self.baseView.nowTimeLabel.text = clockHelper.display()
+    // タイマーの設定
+    private func setTimer() {
+        // 1秒毎に現在時刻表示を更新する
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+    }
+    // タイマーによってUIを更新
+    @objc private func updateUI() {
+        self.baseView.updateTimeLabel()
     }
     // デリゲート登録
     private func setDelegateDataSource() {
         self.viewModel.delegate = self
-    }
-}
-
-// きくらげ表情の表示
-extension MainViewController {
-    private func setKikurageStateUI() {
-        // きくらげの状態メッセージを設定
-        if let message: String = self.viewModel.kikurageState?.message {
-            self.baseView.kikurageStatusLabel.text = message
-        }
-        // きくらげの表情を設定
-        if let judge: String = self.viewModel.kikurageState?.judge {
-            self.displayKikurageStateImage(type: judge)
-        }
-        // 温度湿度を設定
-        if let temparature: Int = self.viewModel.kikurageState?.temperature,
-           let humidity: Int = self.viewModel.kikurageState?.humidity {
-            self.baseView.temparatureTextLabel.text = "\(temparature)"
-            self.baseView.humidityTextLabel.text = "\(humidity)"
-        }
-        // アドバイスを設定
-        if let advice: String = self.viewModel.kikurageState?.advice {
-            self.baseView.kikurageAdviceView.adviceContentLabel.text = advice
-        }
-    }
-    private func setKikurageNameUI() {
-        // きくらげ名を設定
-        if let name: String = self.viewModel.kikurageUser?.kikurageName {
-            self.baseView.kikurageNameLabel.text = "今日の \(name)"
-        }
-    }
-    private func displayKikurageStateImage(type: String) {
-        // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        self.baseView.kikurageStatusView.animationImages = kikurageStateHelper.setStateImage(type: type)
-        self.baseView.kikurageStatusView.animationDuration = 1
-        self.baseView.kikurageStatusView.animationRepeatCount = 0
-        self.baseView.kikurageStatusView.startAnimating()
     }
 }
 // MARK: - Delegate Method
@@ -137,16 +95,16 @@ extension MainViewController: MainViewModelDelgate {
     }
     // きくらげの状態取得可否によってViewの表示をする
     func didSuccessGetKikurageState() {
-        self.setKikurageStateUI()
+        self.baseView.setKikurageStateUI(kikurageState: self.viewModel.kikurageState)
     }
     func didFailedGetKikurageState(errorMessage: String) {
         print(errorMessage)
     }
     func didChangedKikurageState() {
-        self.setKikurageStateUI()
+        self.baseView.setKikurageStateUI(kikurageState: self.viewModel.kikurageState)
     }
     func didSuccessGetKikurageUser() {
-        self.setKikurageNameUI()
+        self.baseView.setKikurageNameUI(kikurageUser: self.viewModel.kikurageUser)
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         print(errorMessage)
