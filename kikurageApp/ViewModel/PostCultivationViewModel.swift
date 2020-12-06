@@ -24,6 +24,7 @@ class PostCultivationViewModel {
         self.cultivationRepository = cultivationRepository
     }
 }
+// MARK: - Firebase Method
 extension PostCultivationViewModel {
     func postCultivation(kikurageUserId: String,
                          kikurageCultivation: KikurageCultivation) {
@@ -35,6 +36,7 @@ extension PostCultivationViewModel {
                     self.delegate?.didSuccessPostCultivation()
                 case .failure(let error):
                     print("DEBUG: \(error)")
+                    self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録データの投稿に失敗しました")
                 }
             })
     }
