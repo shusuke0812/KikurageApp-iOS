@@ -20,6 +20,7 @@ protocol MainViewModelDelgate: class {
     /// きくらげユーザーの取得に成功した
     func didSuccessGetKikurageUser()
     /// きくらげユーザーの取得に失敗した
+    /// - Parameter errorMessage: エラーメッセージ
     func didFailedGetKikurageUser(errorMessage: String)
 }
 
@@ -51,7 +52,7 @@ class MainViewModel {
         self.kikurageStateListener?.remove()
     }
 }
-// きくらげの状態データ
+// MARK: - Setting Kikurage State Data Method
 extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
@@ -93,7 +94,7 @@ extension MainViewModel {
         }
     }
 }
-// きくらげユーザー
+// MARK: - Setting Kikurage User Data Method
 extension MainViewModel {
     func loadKikurageUser() {
         self.kikurageUserRepository.getKikurageUser(
