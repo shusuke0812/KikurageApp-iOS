@@ -34,4 +34,11 @@ extension UIViewController {
             self.present(safariVC, animated: true, completion: nil)
         }
     }
+    /// ImagePicker起動
+    internal func openImagePicker() {
+        let picker = UIImagePickerController()
+        picker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
 }
