@@ -70,6 +70,20 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
 // MARK: - UICollectionView Delegate Method
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("")
+        self.openImagePicker()
+    }
+}
+// MARK: - UIImagePickerController Delegate Method
+extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        guard let selectedIndexPath = self.baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
+        picker.dismiss(animated: true, completion: { [weak self] in
+            self?.cameraCollectionViewModel.setImageData(selectedImage: originalImage, index: selectedIndexPath.item)
+            self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
+        })
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
