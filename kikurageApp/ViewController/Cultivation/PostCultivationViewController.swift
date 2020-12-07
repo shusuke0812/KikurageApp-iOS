@@ -13,6 +13,8 @@ class PostCultivationViewController: UIViewController {
     private var baseView: PostCultivationBaseView { self.view as! PostCultivationBaseView}
     /// ViewModel
     private var viewModel: PostCultivationViewModel!
+    /// CameraCell ViewModel
+    private var cameraCollectionViewModel: CameraCollectionViewModel!
     /// きくらげユーザーID
     var kikurageUserId: String?
     /// 栽培記録
@@ -24,6 +26,7 @@ class PostCultivationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
+        self.cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
         self.setDelegateDataSource()
     }
 }
@@ -35,10 +38,12 @@ extension PostCultivationViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
         self.baseView.dateTextField.delegate = self
+        self.baseView.cameraCollectionView.delegate = self
+        self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
     }
 }
 
-// MARK: - Dekegate Method
+// MARK: - BaseView Delegate Method
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
     }
@@ -51,5 +56,20 @@ extension PostCultivationViewController: UITextFieldDelegate {
         let dateString = dateHelper.formatToString(date: self.baseView.datePicker.date)
         self.baseView.dateTextField.text = dateString
         //self.cultivation?.viewDate = dateString
+    }
+}
+// MARK: - PostCultivationViewModel Delegate Method
+extension PostCultivationViewController: PostCultivationViewModelDelegate {
+    func didSuccessPostCultivation() {
+        print("")
+    }
+    func didFailedPostCultivation(errorMessage: String) {
+        print("")
+    }
+}
+// MARK: - UICollectionView Delegate Method
+extension PostCultivationViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("")
     }
 }
