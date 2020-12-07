@@ -19,6 +19,10 @@ struct Constants {
         /// users配下の栽培サブコレクション名
         internal static let cultivations = "cultivations"
     }
+    struct CameraCollectionCell {
+        /// 画像選択の最大数
+        internal static let maxNumber = 8
+    }
 }
 
 /// ネットワークエラー
