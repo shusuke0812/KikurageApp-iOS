@@ -9,10 +9,18 @@
 import Foundation
 
 class DateHelper {
-    /// Dateを指定したStringに変換する
+    /// Date型を指定したString型に変換する
+    /// - Parameter date: 日付
     internal func formatToString(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
+        return formatter.string(from: date)
+    }
+    /// Date型を画像ファイル名に使うString型に変換する
+    /// - Parameter date: 日付
+    internal func formatToStringForImageData(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
         return formatter.string(from: date)
     }
 }
