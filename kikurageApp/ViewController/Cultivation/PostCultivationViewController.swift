@@ -47,6 +47,8 @@ extension PostCultivationViewController {
 // MARK: - BaseView Delegate Method
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
+        }
     }
     func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
