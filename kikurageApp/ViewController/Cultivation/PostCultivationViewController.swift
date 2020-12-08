@@ -38,6 +38,7 @@ extension PostCultivationViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
         self.baseView.dateTextField.delegate = self
+        self.baseView.textView.delegate = self
         self.baseView.cameraCollectionView.delegate = self
         self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
         self.cameraCollectionViewModel.cameraCellDelegate = self
@@ -59,6 +60,13 @@ extension PostCultivationViewController: UITextFieldDelegate {
         let dateString = dateHelper.formatToString(date: self.baseView.datePicker.date)
         self.baseView.dateTextField.text = dateString
         //self.cultivation?.viewDate = dateString
+    }
+}
+// MARK: - UITextView Delegate Method
+extension PostCultivationViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let resultTextNumber: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
+        return resultTextNumber.count <= self.baseView.maxTextViewNumber
     }
 }
 // MARK: - CameraCell Delegate Method
