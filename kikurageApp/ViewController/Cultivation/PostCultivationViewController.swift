@@ -40,6 +40,7 @@ extension PostCultivationViewController {
         self.baseView.dateTextField.delegate = self
         self.baseView.cameraCollectionView.delegate = self
         self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
+        self.cameraCollectionViewModel.cameraCellDelegate = self
     }
 }
 
@@ -56,6 +57,14 @@ extension PostCultivationViewController: UITextFieldDelegate {
         let dateString = dateHelper.formatToString(date: self.baseView.datePicker.date)
         self.baseView.dateTextField.text = dateString
         //self.cultivation?.viewDate = dateString
+    }
+}
+// MARK: - CameraCell Delegate Method
+extension PostCultivationViewController: CameraCellDelegate {
+    func didTapImageCancelButton(cell: CameraCell) {
+        let index = cell.tag
+        self.cameraCollectionViewModel.cancelImageData(index: index)
+        self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
 // MARK: - PostCultivationViewModel Delegate Method
