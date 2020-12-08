@@ -42,7 +42,6 @@
 		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
 		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
 		9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923334255F9760000293BB /* PostCultivationViewController.swift */; };
-		9C923338255F978D000293BB /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923337255F978D000293BB /* PostCultivationBaseView.swift */; };
 		9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */; };
 		9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333D255F9F7E000293BB /* CultivationRepository.swift */; };
 		9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923340255FA0DC000293BB /* KikurageCultivation.swift */; };
@@ -59,6 +58,7 @@
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
+		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		F6B67301E7960027877D69C5 /* Pods_kikurageApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,7 +100,6 @@
 		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
 		9C923334255F9760000293BB /* PostCultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewController.swift; sourceTree = "<group>"; };
-		9C923337255F978D000293BB /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
 		9C92333D255F9F7E000293BB /* CultivationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationRepository.swift; sourceTree = "<group>"; };
 		9C923340255FA0DC000293BB /* KikurageCultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivation.swift; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kikurageApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		F64405252FCD1BFF9274507A /* Pods-kikurageApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.debug.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 			children = (
 				9CB7D603254050D600D57801 /* MainBaseView.swift */,
 				9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */,
-				9C923337255F978D000293BB /* PostCultivationBaseView.swift */,
+				9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -547,7 +547,6 @@
 				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
-				9C923338255F978D000293BB /* PostCultivationBaseView.swift in Sources */,
 				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
@@ -569,6 +568,7 @@
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
+				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

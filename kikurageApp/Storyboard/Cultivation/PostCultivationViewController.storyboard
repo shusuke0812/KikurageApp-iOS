@@ -25,7 +25,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="b4s-6e-QMy">
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
-                                                <action selector="didTapCloseButton:" destination="IvK-fa-IF2" id="gCy-sz-c3E"/>
+                                                <action selector="didTapCloseButton:" destination="IvK-fa-IF2" id="brB-1M-plX"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -101,7 +101,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapPostButton:" destination="IvK-fa-IF2" eventType="touchUpInside" id="Dpf-w6-E0f"/>
+                                    <action selector="didTapPostButton:" destination="IvK-fa-IF2" eventType="touchUpInside" id="lex-K9-v8b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -130,13 +130,13 @@
                             <constraint firstItem="mlY-Sc-yhw" firstAttribute="bottom" secondItem="iTf-i7-dBw" secondAttribute="bottom" constant="5" id="zDD-FX-qYv"/>
                         </constraints>
                         <connections>
-                            <outlet property="cameraCollectionView" destination="ihW-db-xFy" id="nBf-Jc-DmG"/>
-                            <outlet property="currentTextViewNumberLabel" destination="Zix-cg-dSg" id="FTV-uZ-qzl"/>
-                            <outlet property="dateTextField" destination="VXg-KC-8nl" id="lnt-OB-jte"/>
-                            <outlet property="maxTextViewNumberLabel" destination="Kzm-YM-Cc5" id="gKS-kQ-Uvs"/>
-                            <outlet property="navigationItem" destination="YbJ-8S-yFQ" id="vdB-ac-1DG"/>
-                            <outlet property="postButton" destination="mlY-Sc-yhw" id="XKp-XX-4fz"/>
-                            <outlet property="textView" destination="Ev5-t0-9pB" id="5g8-Y2-SdK"/>
+                            <outlet property="cameraCollectionView" destination="ihW-db-xFy" id="BEW-eB-WjM"/>
+                            <outlet property="currentTextViewNumberLabel" destination="Zix-cg-dSg" id="ECg-08-FsU"/>
+                            <outlet property="dateTextField" destination="VXg-KC-8nl" id="ijK-0F-t9i"/>
+                            <outlet property="maxTextViewNumberLabel" destination="Kzm-YM-Cc5" id="lP2-81-XNB"/>
+                            <outlet property="navigationItem" destination="YbJ-8S-yFQ" id="XJb-lW-ftZ"/>
+                            <outlet property="postButton" destination="mlY-Sc-yhw" id="wg9-1b-RqN"/>
+                            <outlet property="textView" destination="Ev5-t0-9pB" id="crk-9R-4hj"/>
                         </connections>
                     </view>
                 </viewController>
