@@ -26,9 +26,7 @@ class UITextViewWithPlaceholder: UITextView {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.delegate = self
         self.setPlaceholder()
-        self.switchPlaceholderDisplay()
     }
 }
 // MARK: - Private Method
@@ -43,14 +41,7 @@ extension UITextViewWithPlaceholder {
         addSubview(self.placeholderLabel)
     }
     // Placeholderの表示・非表示切り替え
-    private func switchPlaceholderDisplay() {
+    internal func switchPlaceholderDisplay(text: String) {
         self.placeholderLabel.isHidden = text.isEmpty ? false : true
-    }
-}
-// MARK: - Delegate Method
-extension UITextViewWithPlaceholder: UITextViewDelegate {
-    // TextViewに文字が入力されたらplaceholderを非表示にする
-    func textViewDidChange(_ textView: UITextView) {
-        self.switchPlaceholderDisplay()
     }
 }
