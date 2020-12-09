@@ -14,7 +14,7 @@ struct KikurageCultivation: Codable {
     /// 栽培メモ
     var memo: String = ""
     /// 栽培写真
-    var imageStoragePath: [String] = []
+    var imageStoragePaths: [String] = []
     /// 栽培観察日
     var viewDate: String = ""
     /// 投稿日
@@ -24,9 +24,20 @@ struct KikurageCultivation: Codable {
     
     enum CodingKeys: String, CodingKey {
         case memo
-        case imageStoragePath
+        case imageStoragePaths
         case viewDate
         case createdAt
         case updatedAt
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.memo, forKey: .memo)
+        try container.encode(self.imageStoragePaths, forKey: .imageStoragePaths)
+        try container.encode(self.viewDate, forKey: .viewDate)
+        if self.createdAt == nil {
+            try container.encode(FieldValue.serverTimestamp(), forKey: .createdAt)
+        }
+        try container.encode(FieldValue.serverTimestamp(), forKey: .createdAt)
     }
 }
