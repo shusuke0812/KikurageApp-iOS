@@ -18,7 +18,7 @@ class CommunicationViewController: UIViewController {
     //MARK: - Action Method
     @IBAction func didTapFacebookButton(_ sender: Any) {
         // Facebookのきくらげコミュニティへ遷移させる
-        self.transitionSafariViewController(urlString: Constants.Url.facebook)
+        self.transitionSafariViewController(urlString: Constants.WebUrl.facebook)
     }
 }
 // MARK: - Initialized Method

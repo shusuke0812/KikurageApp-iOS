@@ -9,7 +9,7 @@
 import Foundation
 
 struct Constants {
-    struct Url {
+    struct WebUrl {
         /// Facebookのきくらげコミュニティ
         internal static let facebook = "https://www.facebook.com/groups/kikurage.community.2019/"
     }
