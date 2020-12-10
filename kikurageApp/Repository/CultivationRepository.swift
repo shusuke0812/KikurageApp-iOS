@@ -18,9 +18,26 @@ protocol CultivationRepositoryProtocol {
     func postCultivation(kikurageUserId: String,
                          kikurageCultivation: KikurageCultivation,
                          completion: @escaping (Result<DocumentReference, Error>) -> Void)
+    /// 栽培画像を保存する
+    /// - Parameters:
+    ///   - imageData: 保存する画像データ
+    ///   - imageStoragePath: 画像を保存するStorageパス
+    func postCultivationImages(imageData: [Data?], imageStoragePath: String,
+                               completion: @escaping (Result<String, Error>) -> Void)
 }
 class CultivationRepository: CultivationRepositoryProtocol {
+    // DateHelper
+    private let dateHelper: DateHelper
+    // Storageへ保存するデータのメタデータ
+    private let metaData: StorageMetadata
+    
+    init() {
+        self.dateHelper = DateHelper()
+        self.metaData = StorageMetadata()
+        self.metaData.contentType = "image/jpeg"
+    }
 }
+// MARK: - Firebase Firestore Method
 extension CultivationRepository {
     func postCultivation(kikurageUserId: String,
                          kikurageCultivation: KikurageCultivation,
@@ -43,6 +60,24 @@ extension CultivationRepository {
         // Firestoreにデータを登録した後、Storageに画像を投稿するためのPath用にドキュメントIDをコールバックする
         dispatchGroup.notify(queue: .main) {
             completion(.success(documentReference))
+        }
+    }
+}
+// MARK: - Firebase Storage Method
+extension CultivationRepository {
+    func postCultivationImages(imageData: [Data?], imageStoragePath: String,
+                               completion: @escaping (Result<String, Error>) -> Void) {
+        for (i, imageData) in zip(imageData.indices, imageData) {
+            guard let imageData = imageData else { return }
+            let fileName: String = self.dateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
+            let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
+            _ = storageReference.putData(imageData, metadata: self.metaData) { (metaData, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                completion(.success("DEBUG: 画像の保存に成功しました"))
+            }
         }
     }
 }
