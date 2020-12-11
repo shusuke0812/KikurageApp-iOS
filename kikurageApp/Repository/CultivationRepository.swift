@@ -18,7 +18,7 @@ protocol CultivationRepositoryProtocol {
     func postCultivation(kikurageUserId: String,
                          kikurageCultivation: KikurageCultivation,
                          completion: @escaping (Result<DocumentReference, Error>) -> Void)
-    /// 栽培画像を保存する
+    /// 栽培画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
     ///   - imageStoragePath: 画像を保存するStorageパス
@@ -67,17 +67,25 @@ extension CultivationRepository {
 extension CultivationRepository {
     func postCultivationImages(imageData: [Data?], imageStoragePath: String,
                                completion: @escaping (Result<String, Error>) -> Void) {
+        let dispathcGroup = DispatchGroup()
+        let dispatchQueue = DispatchQueue(label: "PostImageTask")
         for (i, imageData) in zip(imageData.indices, imageData) {
             guard let imageData = imageData else { return }
-            let fileName: String = self.dateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
-            let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
-            _ = storageReference.putData(imageData, metadata: self.metaData) { (metaData, error) in
-                if let error = error {
-                    completion(.failure(error))
-                    return
+            dispathcGroup.enter()
+            dispatchQueue.async(group: dispathcGroup) {
+                let fileName: String = self.dateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
+                let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
+                _ = storageReference.putData(imageData, metadata: self.metaData) { (metaData, error) in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+                    dispathcGroup.leave()
                 }
-                completion(.success("DEBUG: 画像の保存に成功しました"))
             }
+        }
+        dispathcGroup.notify(queue: .main) {
+            completion(.success("DEBUG: 画像の保存に成功しました"))
         }
     }
 }
