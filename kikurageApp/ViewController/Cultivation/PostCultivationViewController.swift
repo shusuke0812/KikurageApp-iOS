@@ -40,6 +40,7 @@ extension PostCultivationViewController {
         self.baseView.cameraCollectionView.delegate = self
         self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
         self.cameraCollectionViewModel.cameraCellDelegate = self
+        self.viewModel.delegate = self
     }
 }
 // MARK: - BaseView Delegate Method
