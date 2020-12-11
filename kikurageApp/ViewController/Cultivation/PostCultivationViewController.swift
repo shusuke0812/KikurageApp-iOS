@@ -17,10 +17,11 @@ class PostCultivationViewController: UIViewController {
     private var cameraCollectionViewModel: CameraCollectionViewModel!
     /// きくらげユーザーID
     var kikurageUserId: String?
-    /// 栽培記録
-    var cultivation: KikurageCultivation?
     
     private let dateHelper: DateHelper = DateHelper()
+    
+    // テスト用ID（後で消す）
+    let userId: String = "i0GrcLgkBBoLrBgGtrjp"
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -44,22 +45,23 @@ extension PostCultivationViewController {
         self.cameraCollectionViewModel.cameraCellDelegate = self
     }
 }
-
 // MARK: - BaseView Delegate Method
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
+            self.viewModel.postCultivation(kikurageUserId: self.userId, kikurageCultivation: self.viewModel.cultivation)
         }
     }
     func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
     }
 }
+// MARK: - UITextField Delegate Method
 extension PostCultivationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         let dateString = dateHelper.formatToString(date: self.baseView.datePicker.date)
         self.baseView.dateTextField.text = dateString
-        //self.cultivation?.viewDate = dateString
+        self.viewModel.cultivation.viewDate = dateString
     }
 }
 // MARK: - UITextView Delegate Method
@@ -68,22 +70,30 @@ extension PostCultivationViewController: UITextViewDelegate {
         let resultTextNumber: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
         return resultTextNumber.count <= self.baseView.maxTextViewNumber
     }
+    func textViewDidChange(_ textView: UITextView) {
+        self.baseView.textView.switchPlaceholderDisplay(text: textView.text)
+        self.viewModel.cultivation.memo = textView.text
+        self.baseView.setCurrentTextViewNumber(text: textView.text)
+    }
 }
 // MARK: - CameraCell Delegate Method
 extension PostCultivationViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
-        self.cameraCollectionViewModel.cancelImageData(index: index)
+        self.cameraCollectionViewModel.cancelImage(index: index)
         self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
 // MARK: - PostCultivationViewModel Delegate Method
 extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didSuccessPostCultivation() {
-        print("")
+        // 選択した画像をData型に変換する
+        let postImageData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8)
+        // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
+        self.viewModel.postCultivationImages(kikurageUserId: self.userId, imageData: postImageData, firestoreDocumentId: self.viewModel.postedCultivationDocumentId!)
     }
     func didFailedPostCultivation(errorMessage: String) {
-        print("")
+        print(errorMessage)
     }
 }
 // MARK: - UICollectionView Delegate Method
@@ -98,7 +108,7 @@ extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavi
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         guard let selectedIndexPath = self.baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
         picker.dismiss(animated: true, completion: { [weak self] in
-            self?.cameraCollectionViewModel.setImageData(selectedImage: originalImage, index: selectedIndexPath.item)
+            self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
             self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
         })
     }
