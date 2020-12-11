@@ -33,9 +33,6 @@ class PostCultivationViewController: UIViewController {
 }
 // MARK: - Initialized Method
 extension PostCultivationViewController {
-    private func initUI() {
-        
-    }
     private func setDelegateDataSource() {
         self.baseView.delegate = self
         self.baseView.dateTextField.delegate = self
