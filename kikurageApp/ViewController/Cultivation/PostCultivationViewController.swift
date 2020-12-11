@@ -84,8 +84,8 @@ extension PostCultivationViewController: CameraCellDelegate {
 // MARK: - PostCultivationViewModel Delegate Method
 extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didSuccessPostCultivation() {
-        // 選択した画像をData型に変換する
-        let postImageData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8)
+        // nil要素を取り除いた選択した画像のみのData型に変換する
+        let postImageData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter{ $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
         self.viewModel.postCultivationImages(kikurageUserId: self.userId, imageData: postImageData, firestoreDocumentId: self.viewModel.postedCultivationDocumentId!)
     }
