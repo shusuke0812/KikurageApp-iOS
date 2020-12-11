@@ -13,6 +13,13 @@ extension UIAlertController {
                                    title: String?, message: String?, okButtonTitle: String, cancelButtonTitle: String?,
                                    completionOk: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        // キャンセル｜OK というボタン配置にするためにCancelActionを先にAddする
+        if let cancelButtonTitle = cancelButtonTitle {
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel, handler: { (action: UIAlertAction) -> Void in
+                print("DEBUG: アラートのキャンセルボタンが押されました")
+            })
+            alert.addAction(cancelAction)
+        }
         let okAction = UIAlertAction(title: okButtonTitle, style: .default, handler: { (action: UIAlertAction!) -> Void in
             print("DEBUG: アラートのOKボタンが押されました")
             if let completionOk = completionOk {
@@ -20,12 +27,6 @@ extension UIAlertController {
             }
         })
         alert.addAction(okAction)
-        if let cancelButtonTitle = cancelButtonTitle {
-            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .default, handler: { (action: UIAlertAction) -> Void in
-                print("DEBUG: アラートのキャンセルボタンが押されました")
-            })
-            alert.addAction(cancelAction)
-        }
         viewController.present(alert, animated: true, completion: nil)
     }
 }
