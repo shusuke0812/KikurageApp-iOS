@@ -23,19 +23,33 @@ class CameraCollectionViewModel: NSObject {
 }
 // MARK: - Setting Data Method
 extension CameraCollectionViewModel {
-    func setImageData(selectedImage: UIImage, index: Int) {
+    /// 選択した画像を保持
+    /// - Parameters:
+    ///   - selectedImage: 選択画像
+    ///   - index: CollectionViewのセル番号
+    func setImage(selectedImage: UIImage, index: Int) {
         if index >= self.selectedImageMaxNumber {
             print("DEBUG: 指定した配列の要素数よりも大きい要素数です")
             return
         }
         self.selectedImages[index] = selectedImage
     }
-    func cancelImageData(index: Int) {
+    /// 選択した画像をキャンセル
+    /// - Parameter index: CollectionViewのセル番号
+    func cancelImage(index: Int) {
         if index >= self.selectedImageMaxNumber {
             print("DEBUG: 指定した配列の要素数よりも大きい要素数です")
             return
         }
         self.selectedImages[index] = nil
+    }
+    /// 画像をData型に変換
+    /// - Parameter compresssionQuality: 画像圧縮率 0.0 ~ 1.0
+    func changeToImageData(compressionQuality: CGFloat) -> [Data?] {
+        let imageDatas: [Data?] = self.selectedImages.map( { image in
+            image?.jpegData(compressionQuality: compressionQuality)
+        })
+        return imageDatas
     }
 }
 // MARK: - CollectionView DataSource Method
