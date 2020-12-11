@@ -21,6 +21,8 @@ class PostCultivationViewModel {
     internal weak var delegate: PostCultivationViewModelDelegate?
     /// 栽培記録
     var cultivation: KikurageCultivation
+    /// 栽培記録のFirestore Document ID
+    var postedCultivationDocumentId: String?
     
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
@@ -36,6 +38,7 @@ extension PostCultivationViewModel {
                 switch response {
                 case .success(let documentReference):
                     print(documentReference)
+                    self.postedCultivationDocumentId = documentReference.documentID
                     self.delegate?.didSuccessPostCultivation()
                 case .failure(let error):
                     print("DEBUG: \(error)")
