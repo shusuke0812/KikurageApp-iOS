@@ -12,7 +12,13 @@ protocol PostCultivationViewModelDelegate: class {
     /// 栽培記録の投稿に成功した
     func didSuccessPostCultivation()
     /// 栽培記録の投稿に失敗した
+    /// - Parameter errorMessage: エラーメッセージ
     func didFailedPostCultivation(errorMessage: String)
+    /// 栽培記録画像の投稿に成功した
+    func didSuccessPostCultivationImages()
+    /// 栽培記録画像の投稿に失敗した
+    /// - Parameter errorMessage: エラーメッセージ
+    func didFailedPostCultivationImages(errorMessage: String)
 }
 class PostCultivationViewModel {
     /// 栽培記録リポジトリ
@@ -55,10 +61,10 @@ extension PostCultivationViewModel {
             switch response {
             case .success(let successMessage):
                 print("DEBUG: \(successMessage)")
-                self.delegate?.didSuccessPostCultivation()
+                self.delegate?.didSuccessPostCultivationImages()
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostCultivation(errorMessage: "栽培記録画像の保存に失敗しました")
+                self.delegate?.didFailedPostCultivationImages(errorMessage: "栽培記録画像の保存に失敗しました")
             }
         })
     }
