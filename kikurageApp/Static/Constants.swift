@@ -14,9 +14,10 @@ struct Constants {
         internal static let facebook = "https://www.facebook.com/groups/kikurage.community.2019/"
     }
     struct FirestoreCollectionName {
-        /// usersコレクション名
-        internal static let users = "users"
-        /// users配下の栽培サブコレクション名
+        /// ユーザーコレクション名
+        internal static let users = "kikurageUsers"
+        /// ユーザー
+        /// 配下の栽培サブコレクション名
         internal static let cultivations = "cultivations"
     }
     struct CameraCollectionCell {
