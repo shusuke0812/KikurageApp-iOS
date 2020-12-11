@@ -19,12 +19,15 @@ class PostCultivationViewModel {
     private let cultivationRepository: CultivationRepositoryProtocol
     /// デリゲート
     internal weak var delegate: PostCultivationViewModelDelegate?
+    /// 栽培記録
+    var cultivation: KikurageCultivation
     
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
+        self.cultivation = KikurageCultivation()
     }
 }
-// MARK: - Firebase Method
+// MARK: - Firebase Firestore Method
 extension PostCultivationViewModel {
     func postCultivation(kikurageUserId: String,
                          kikurageCultivation: KikurageCultivation) {
@@ -39,5 +42,21 @@ extension PostCultivationViewModel {
                     self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録データの投稿に失敗しました")
                 }
             })
+    }
+}
+// MARK: - Firebase Storage Method
+extension PostCultivationViewModel {
+    func postCultivationImages(kikurageUserId: String, imageData: [Data?], firestoreDocumentId: String) {
+        let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(firestoreDocumentId)/images/"
+        self.cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath, completion: { response in
+            switch response {
+            case .success(let successMessage):
+                print("DEBUG: \(successMessage)")
+                self.delegate?.didSuccessPostCultivation()
+            case .failure(let error):
+                print("DEBUG: \(error)")
+                self.delegate?.didFailedPostCultivation(errorMessage: "栽培記録画像の保存に失敗しました")
+            }
+        })
     }
 }
