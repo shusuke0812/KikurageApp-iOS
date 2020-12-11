@@ -37,10 +37,9 @@ class PostCultivationViewModel {
 }
 // MARK: - Firebase Firestore Method
 extension PostCultivationViewModel {
-    func postCultivation(kikurageUserId: String,
-                         kikurageCultivation: KikurageCultivation) {
+    func postCultivation(kikurageUserId: String) {
         self.cultivationRepository
-            .postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: kikurageCultivation, completion: { response in
+            .postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: self.cultivation, completion: { response in
                 switch response {
                 case .success(let documentReference):
                     print(documentReference)
