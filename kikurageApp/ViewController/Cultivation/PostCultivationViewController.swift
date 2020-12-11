@@ -46,7 +46,7 @@ extension PostCultivationViewController {
 // MARK: - BaseView Delegate Method
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
             self.viewModel.postCultivation(kikurageUserId: self.userId)
         }
     }
