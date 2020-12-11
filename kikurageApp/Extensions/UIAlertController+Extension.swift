@@ -11,11 +11,13 @@ import UIKit
 extension UIAlertController {
     internal static func showAlert(style: UIAlertController.Style, viewController: UIViewController,
                                    title: String?, message: String?, okButtonTitle: String, cancelButtonTitle: String?,
-                                   completionOk: @escaping (() -> Void)) {
+                                   completionOk: (() -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: okButtonTitle, style: .default, handler: { (action: UIAlertAction!) -> Void in
             print("DEBUG: アラートのOKボタンが押されました")
-            completionOk()
+            if let completionOk = completionOk {
+                completionOk()
+            }
         })
         alert.addAction(okAction)
         if let cancelButtonTitle = cancelButtonTitle {
