@@ -91,7 +91,7 @@ extension CultivationRepository {
     func postCultivationImages(imageData: [Data?], imageStoragePath: String,
                                completion: @escaping (Result<[String], Error>) -> Void) {
         // 画像保存後のフルパス格納用
-        var imageStorageFullPaths: [String] = Array(repeating: "", count: imageData.count)
+        var imageStorageFullPaths: [String] = []
         // 直列処理（画像を１つずつ保存する）
         let dispatchSemaphore = DispatchSemaphore(value: 0)
         let dispatchQueue = DispatchQueue(label: "com.shusuke.KikurageApp.upload_cultivation_images_queue")
