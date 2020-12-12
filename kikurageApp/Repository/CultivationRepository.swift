@@ -95,6 +95,8 @@ extension CultivationRepository {
         // 直列処理（画像を１つずつ保存する）
         let dispatchSemaphore = DispatchSemaphore(value: 0)
         let dispatchQueue = DispatchQueue(label: "com.shusuke.KikurageApp.upload_cultivation_images_queue")
+        // エラー結果を保持する変数
+        var resultError: Error?
         dispatchQueue.async {
             for (i, imageData) in zip(imageData.indices, imageData) {
                 guard let imageData = imageData else {
@@ -105,7 +107,7 @@ extension CultivationRepository {
                 let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
                 _ = storageReference.putData(imageData, metadata: self.metaData) { (metaData, error) in
                     if let error = error {
-                        completion(.failure(error))
+                        resultError = error
                         dispatchSemaphore.signal()
                         return
                     }
@@ -115,7 +117,11 @@ extension CultivationRepository {
                 dispatchSemaphore.wait()
             }
             DispatchQueue.main.async {
-                completion(.success(imageStorageFullPaths))
+                if let resultError = resultError {
+                    completion(.failure(resultError))
+                } else {
+                    completion(.success(imageStorageFullPaths))
+                }
             }
         }
     }
