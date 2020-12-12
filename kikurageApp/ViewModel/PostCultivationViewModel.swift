@@ -51,19 +51,36 @@ extension PostCultivationViewModel {
                 }
             })
     }
+    private func putCultivationImages(kikurageUserId: String, firestoreDocumentId: String, imageStorageFullPaths: [String]) {
+        self.cultivationRepository
+            .putCultivationImage(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths,
+                                 completion: { response in
+                                    switch response {
+                                    case .success(let imageStorageFullPaths):
+                                        self.cultivation.imageStoragePaths = imageStorageFullPaths
+                                        self.delegate?.didSuccessPostCultivationImages()
+                                    case .failure(let error):
+                                        print(error)
+                                        self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録画像のStorageパスを保存しました")
+                                    }
+                                 })
+    }
 }
 // MARK: - Firebase Storage Method
 extension PostCultivationViewModel {
-    func postCultivationImages(kikurageUserId: String, imageData: [Data?], firestoreDocumentId: String) {
-        let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(firestoreDocumentId)/images/"
+    func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
+        guard let postedCultivationDocumentId = self.postedCultivationDocumentId else {
+            self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録のドキュメントIDが見つかりませんでした")
+            return
+        }
+        let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentId)/images/"
         self.cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath, completion: { response in
             switch response {
-            case .success(let successMessage):
-                print("DEBUG: \(successMessage)")
-                self.delegate?.didSuccessPostCultivationImages()
+            case .success(let imageStorageFullPaths):
+                self.putCultivationImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedCultivationDocumentId, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostCultivationImages(errorMessage: "栽培記録画像の保存に失敗しました")
+                self.delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録画像の保存に失敗しました")
             }
         })
     }
