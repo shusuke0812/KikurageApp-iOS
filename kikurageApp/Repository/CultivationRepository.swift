@@ -25,6 +25,14 @@ protocol CultivationRepositoryProtocol {
     ///   - completion: 投稿成功、失敗のハンドル
     func postCultivationImages(imageData: [Data?], imageStoragePath: String,
                                completion: @escaping (Result<[String], Error>) -> Void)
+    /// 栽培画像のStoragePathを更新する
+    /// - Parameters:
+    ///   - kikurageUserId: ユーザーID
+    ///   - documentId: 栽培記録のドキュメントID
+    ///   - imageStorageFullPath: Storageに保存した画像のフルパス
+    ///   - completion: 投稿成功、失敗のハンドル
+    func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String],
+                             completion: @escaping (Result<[String], Error>) -> Void)
 }
 class CultivationRepository: CultivationRepositoryProtocol {
     // DateHelper
@@ -63,13 +71,27 @@ extension CultivationRepository {
             completion(.success(documentReference))
         }
     }
+    func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String],
+                             completion: @escaping (Result<[String], Error>) -> Void) {
+        let db = Firestore.firestore()
+        let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations).document(documentId)
+        documentReference.updateData([
+            "imageStoragePaths": imageStorageFullPaths
+        ]) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(imageStorageFullPaths))
+            }
+        }
+    }
 }
 // MARK: - Firebase Storage Method
 extension CultivationRepository {
     func postCultivationImages(imageData: [Data?], imageStoragePath: String,
                                completion: @escaping (Result<[String], Error>) -> Void) {
         // 画像保存後のフルパス格納用
-        var imageStorageFullPath: [String] = Array(repeating: "", count: imageData.count)
+        var imageStorageFullPaths: [String] = Array(repeating: "", count: imageData.count)
         // 直列処理（画像を１つずつ保存する）
         let dispatchSemaphore = DispatchSemaphore(value: 0)
         let dispatchQueue = DispatchQueue(label: "com.shusuke.KikurageApp.upload_cultivation_images_queue")
@@ -87,13 +109,13 @@ extension CultivationRepository {
                         dispatchSemaphore.signal()
                         return
                     }
-                    imageStorageFullPath.append(storageReference.fullPath)
+                    imageStorageFullPaths.append(storageReference.fullPath)
                     dispatchSemaphore.signal()
                 }
                 dispatchSemaphore.wait()
             }
             DispatchQueue.main.async {
-                completion(.success(imageStorageFullPath))
+                completion(.success(imageStorageFullPaths))
             }
         }
     }
