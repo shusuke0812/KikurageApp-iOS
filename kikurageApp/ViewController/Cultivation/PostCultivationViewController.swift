@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class PostCultivationViewController: UIViewController {
     /// BaseView
@@ -47,6 +48,8 @@ extension PostCultivationViewController {
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
+            // HUD表示（始）
+            HUD.show(.progress)
             self.viewModel.postCultivation(kikurageUserId: self.userId)
         }
     }
@@ -92,15 +95,21 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
     }
     func didFailedPostCultivation(errorMessage: String) {
         print(errorMessage)
+        // HUD表示（終）
+        HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
     func didSuccessPostCultivationImages() {
+        // HUD表示（終）
+        HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "画像を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
             self.dismiss(animated: true, completion: nil)
         }
     }
     func didFailedPostCultivationImages(errorMessage: String) {
         print(errorMessage)
+        // HUD表示（終）
+        HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録画像の保存に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
 }
