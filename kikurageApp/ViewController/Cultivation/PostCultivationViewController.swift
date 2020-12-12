@@ -94,7 +94,9 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         print(errorMessage)
     }
     func didSuccessPostCultivationImages() {
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "画像を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "画像を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     func didFailedPostCultivationImages(errorMessage: String) {
         print(errorMessage)
