@@ -15,6 +15,7 @@ target 'kikurageApp' do
   pod 'Charts', '~> 3.0'
 	pod 'IQKeyboardManagerSwift'
 	pod 'SwiftDate', '~> 5.0'
+	pod 'PKHUD', '~> 5.0'
 
 end
 
