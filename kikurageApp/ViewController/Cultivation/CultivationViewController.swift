@@ -18,18 +18,17 @@ class CultivationViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
+        self.setNavigationItem()
         self.setDelegate()
     }
 }
 // MARK: - Initialized Method
 extension CultivationViewController {
-    private func setUI() {
-        // ナビゲーションバーの体裁を設定
+    private func setNavigationItem() {
         self.setNavigationBar(title: "さいばいきろく")
     }
 }
-// MARK: - Delegate Method
+// MARK: - CultivationBaseView Delegate Method
 extension CultivationViewController: CultivationBaseViewDelegate {
     private func setDelegate() {
         self.baseView.delegate = self
