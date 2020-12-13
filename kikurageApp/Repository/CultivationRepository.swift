@@ -33,6 +33,10 @@ protocol CultivationRepositoryProtocol {
     ///   - completion: 投稿成功、失敗のハンドル
     func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String],
                              completion: @escaping (Result<[String], Error>) -> Void)
+    /// 栽培記録を取得する
+    /// - Parameter kikurageUserId: ユーザーID
+    ///   - completion: 投稿成功、失敗のハンドル
+    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], Error>) -> Void)
 }
 class CultivationRepository: CultivationRepositoryProtocol {
     // DateHelper
@@ -82,6 +86,31 @@ extension CultivationRepository {
                 completion(.failure(error))
             } else {
                 completion(.success(imageStorageFullPaths))
+            }
+        }
+    }
+    func getCultivations(kikurageUserId: String,
+                         completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], Error>) -> Void) {
+        let db = Firestore.firestore()
+        let collectionReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations)
+        collectionReference.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let snapshot = snapshot else {
+                completion(.failure(NetworkError.unknown))
+                return
+            }
+            var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
+            do {
+                for document in snapshot.documents {
+                    let cultivation = try Firestore.Decoder().decode(KikurageCultivation.self, from: document.data())
+                    cultivations.append((cultivation: cultivation, documentId: document.documentID))
+                }
+                completion(.success(cultivations))
+            } catch (let error) {
+                completion(.failure(error))
             }
         }
     }
