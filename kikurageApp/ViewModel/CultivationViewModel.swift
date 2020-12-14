@@ -38,6 +38,7 @@ extension CultivationViewModel {
                                 switch response {
                                 case .success(let cultivations):
                                     self?.cultivations = cultivations
+                                    self?.delegate?.didSuccessGetCultivations()
                                 case .failure(let error):
                                     self?.delegate?.didFailedGetCultivations(errorMessage: "\(error)")
                                 }
