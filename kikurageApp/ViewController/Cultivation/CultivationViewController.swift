@@ -30,6 +30,8 @@ extension CultivationViewController {
     }
     private func setDelegateDataSource() {
         self.baseView.delegate = self
+        self.baseView.collectionView.delegate = self
+        self.baseView.collectionView.dataSource = self.viewModel
         self.viewModel.delegate = self
     }
 }
