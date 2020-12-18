@@ -16,7 +16,7 @@ protocol CultivationViewModelDelegate: class {
     /// - Parameter errorMessage: エラーメッセージ
     func didFailedGetCultivations(errorMessage: String)
 }
-class CultivationViewModel {
+class CultivationViewModel: NSObject {
     /// きくらげ栽培記録の取得リポジトリ
     private let cultivationRepository: CultivationRepositoryProtocol
     /// デリゲート
@@ -43,5 +43,18 @@ extension CultivationViewModel {
                                     self?.delegate?.didFailedGetCultivations(errorMessage: "\(error)")
                                 }
                              })
+    }
+}
+// MARK: - CollectionView DataSource Method
+extension CultivationViewModel: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.cultivations.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CultivationCollectionCell", for: indexPath) as! CultivationCollectionViewCell
+        return cell
     }
 }
