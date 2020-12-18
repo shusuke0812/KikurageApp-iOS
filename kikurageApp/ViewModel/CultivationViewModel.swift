@@ -28,6 +28,16 @@ class CultivationViewModel: NSObject {
         self.cultivationRepository = cultivationRepository
     }
 }
+// MARK: - Private Method
+extension CultivationViewModel {
+    private func sortCultivations() {
+        self.cultivations.sort(by: { (cultivation1, cultivation2) -> Bool in
+            guard let cultivationCreatedAt1 = cultivation1.cultivation.createdAt?.dateValue() else { return false }
+            guard let cultivationCreatedAt2 = cultivation2.cultivation.createdAt?.dateValue() else { return false }
+            return cultivationCreatedAt1 > cultivationCreatedAt2
+        })
+    }
+}
 // MARK: - Firebase Firestore Method
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
@@ -38,6 +48,7 @@ extension CultivationViewModel {
                                 switch response {
                                 case .success(let cultivations):
                                     self?.cultivations = cultivations
+                                    self?.sortCultivations()
                                     self?.delegate?.didSuccessGetCultivations()
                                 case .failure(let error):
                                     self?.delegate?.didFailedGetCultivations(errorMessage: "\(error)")
