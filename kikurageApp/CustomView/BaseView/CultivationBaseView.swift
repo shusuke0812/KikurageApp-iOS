@@ -16,6 +16,8 @@ protocol CultivationBaseViewDelegate: class {
 class CultivationBaseView: UIView {
     
     @IBOutlet weak var postPageButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     /// デリゲート
     internal weak var delegate: CultivationBaseViewDelegate?
@@ -23,6 +25,7 @@ class CultivationBaseView: UIView {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setCollectionView()
     }
     // MARK: - Action Method
     @IBAction func didTapPostCultivationPageButton(_ sender: Any) {
@@ -32,5 +35,9 @@ class CultivationBaseView: UIView {
 // MARK: - Initialized Method
 extension CultivationBaseView {
     private func initUI() {
+    }
+    private func setCollectionView() {
+        self.flowLayout.estimatedItemSize = .zero
+        self.collectionView.register(UINib(nibName: "CultivationCollectionCell", bundle: nil), forCellWithReuseIdentifier: "CultivationCollectionCell")
     }
 }

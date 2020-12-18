@@ -48,6 +48,8 @@
                             <constraint firstItem="2PN-c2-6av" firstAttribute="leading" secondItem="Jar-At-3Vx" secondAttribute="leading" id="kbu-pP-0QK"/>
                         </constraints>
                         <connections>
+                            <outlet property="collectionView" destination="2PN-c2-6av" id="e17-CS-I8w"/>
+                            <outlet property="flowLayout" destination="jcd-Tx-g9N" id="5uj-P7-mJt"/>
                             <outlet property="postPageButton" destination="KeL-SW-wEN" id="Opo-mn-SeC"/>
                         </connections>
                     </view>
