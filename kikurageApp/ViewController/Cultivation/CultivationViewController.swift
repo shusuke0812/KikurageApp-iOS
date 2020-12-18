@@ -21,6 +21,7 @@ class CultivationViewController: UIViewController {
         self.viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
         self.setNavigationItem()
         self.setDelegateDataSource()
+        self.viewModel.loadCultivations(kikurageUserId: "i0GrcLgkBBoLrBgGtrjp")
     }
 }
 // MARK: - Initialized Method
@@ -46,10 +47,10 @@ extension CultivationViewController: CultivationBaseViewDelegate {
 // MARK: - CultivationViewModel Delegate Method
 extension CultivationViewController: CultivationViewModelDelegate {
     func didSuccessGetCultivations() {
-        print("")
+        self.baseView.collectionView.reloadData()
     }
     func didFailedGetCultivations(errorMessage: String) {
-        print("")
+        print(errorMessage)
     }
 }
 // MARK: - UICollectionView Delegate FlowLayout Method
