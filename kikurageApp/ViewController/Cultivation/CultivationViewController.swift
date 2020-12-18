@@ -44,9 +44,18 @@ extension CultivationViewController: CultivationBaseViewDelegate {
 // MARK: - CultivationViewModel Delegate Method
 extension CultivationViewController: CultivationViewModelDelegate {
     func didSuccessGetCultivations() {
-        <#code#>
+        print("")
     }
     func didFailedGetCultivations(errorMessage: String) {
-        <#code#>
+        print("")
+    }
+}
+// MARK: - UICollectionView Delegate FlowLayout Method
+extension CultivationViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let horizontalSpace: CGFloat = 1.0
+        let cellWidth: CGFloat = self.baseView.bounds.width / 2 - horizontalSpace
+        let cellHeight: CGFloat = cellWidth
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 }
