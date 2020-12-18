@@ -34,6 +34,9 @@
 		9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C82B4202530574100E650B5 /* SideMenuContentView.xib */; };
 		9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B42325305E6C00E650B5 /* UIView+Extension.swift */; };
 		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
+		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
+		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
+		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
 		9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */; };
 		9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */; };
 		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
@@ -92,6 +95,9 @@
 		9C82B4202530574100E650B5 /* SideMenuContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuContentView.xib; sourceTree = "<group>"; };
 		9C82B42325305E6C00E650B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
+		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
+		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 			children = (
 				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
 				9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */,
+				9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */,
 			);
 			path = Cultivation;
 			sourceTree = "<group>";
@@ -300,6 +307,7 @@
 			children = (
 				9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */,
 				9C923334255F9760000293BB /* PostCultivationViewController.swift */,
+				9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */,
 			);
 			path = Cultivation;
 			sourceTree = "<group>";
@@ -337,6 +345,7 @@
 				9CB7D603254050D600D57801 /* MainBaseView.swift */,
 				9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */,
 				9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */,
+				9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -471,6 +480,7 @@
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
 				9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */,
 				9C6D094B231DCEAC00908ECA /* GoogleService-Info.plist in Resources */,
+				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
 				9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */,
 				9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
@@ -559,6 +569,8 @@
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
+				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
+				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,
 				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
