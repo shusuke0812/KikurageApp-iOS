@@ -9,8 +9,18 @@
 import UIKit
 
 class CultivationDetailViewController: UIViewController {
+    
+    /// BaseView
+    private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavigationItem()
+    }
+}
+// MARK: - Private Method
+extension CultivationDetailViewController {
+    private func setNavigationItem() {
+        self.setNavigationBar(title: "さいばいきろく詳細")
     }
 }
