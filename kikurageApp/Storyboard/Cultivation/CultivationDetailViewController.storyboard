@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,16 +17,73 @@
                     <view key="view" contentMode="scaleToFill" id="QUe-Ur-Jrq" customClass="CultivationDetailBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/12/21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bz-V6-ViH">
+                                <rect key="frame" x="20" y="84" width="374" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="観察メモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsd-rX-F29">
+                                <rect key="frame" x="20" y="461" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0p-nb-eP2">
+                                <rect key="frame" x="20" y="507" width="374" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zb1-Zv-3hg">
+                                <rect key="frame" x="0.0" y="121" width="414" height="320"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="wqO-tk-YOw"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9UL-LN-3SC">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="mou-yz-hH8"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="themeColor"/>
+                        <constraints>
+                            <constraint firstItem="v0p-nb-eP2" firstAttribute="leading" secondItem="mou-yz-hH8" secondAttribute="leading" constant="20" id="69m-Bd-U5K"/>
+                            <constraint firstItem="gsd-rX-F29" firstAttribute="top" secondItem="Zb1-Zv-3hg" secondAttribute="bottom" constant="20" id="A8J-3A-Ljy"/>
+                            <constraint firstItem="mou-yz-hH8" firstAttribute="trailing" secondItem="2Bz-V6-ViH" secondAttribute="trailing" constant="20" id="BMf-Vw-7Pk"/>
+                            <constraint firstItem="Zb1-Zv-3hg" firstAttribute="top" secondItem="2Bz-V6-ViH" secondAttribute="bottom" constant="15" id="M2Y-2P-wKW"/>
+                            <constraint firstItem="mou-yz-hH8" firstAttribute="trailing" secondItem="v0p-nb-eP2" secondAttribute="trailing" constant="20" id="TK8-rR-Xvp"/>
+                            <constraint firstItem="2Bz-V6-ViH" firstAttribute="top" secondItem="mou-yz-hH8" secondAttribute="top" constant="40" id="XK6-8A-Tmb"/>
+                            <constraint firstItem="Zb1-Zv-3hg" firstAttribute="trailing" secondItem="mou-yz-hH8" secondAttribute="trailing" id="iDt-Bf-EYX"/>
+                            <constraint firstItem="v0p-nb-eP2" firstAttribute="top" secondItem="gsd-rX-F29" secondAttribute="bottom" constant="25" id="rWi-fu-xwR"/>
+                            <constraint firstItem="mou-yz-hH8" firstAttribute="trailing" secondItem="gsd-rX-F29" secondAttribute="trailing" constant="20" id="taz-3E-pHn"/>
+                            <constraint firstItem="Zb1-Zv-3hg" firstAttribute="leading" secondItem="mou-yz-hH8" secondAttribute="leading" id="uGJ-bg-Bh0"/>
+                            <constraint firstItem="2Bz-V6-ViH" firstAttribute="leading" secondItem="mou-yz-hH8" secondAttribute="leading" constant="20" id="ucN-Lk-0fP"/>
+                            <constraint firstItem="gsd-rX-F29" firstAttribute="leading" secondItem="mou-yz-hH8" secondAttribute="leading" constant="20" id="yFP-3y-2bK"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="collectionView" destination="Zb1-Zv-3hg" id="nYT-bD-iHx"/>
+                            <outlet property="memoLabel" destination="v0p-nb-eP2" id="fKD-TS-PAQ"/>
+                            <outlet property="memoTitleLabel" destination="gsd-rX-F29" id="TXr-WF-VOB"/>
+                            <outlet property="viewDateLabel" destination="2Bz-V6-ViH" id="6kR-6Z-s8B"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cao-cv-zKy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="106"/>
+            <point key="canvasLocation" x="101" y="123"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="themeColor">
+            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
