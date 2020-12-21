@@ -36,6 +36,14 @@ extension CultivationViewController {
         self.viewModel.delegate = self
     }
 }
+// MARK: - Private Method
+extension CultivationViewController {
+    private func transitionCultivationDetailPage() {
+        let s = UIStoryboard(name: "CultivationDetailViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! CultivationDetailViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
 // MARK: - CultivationBaseView Delegate Method
 extension CultivationViewController: CultivationBaseViewDelegate {
     func didTapPostCultivationPageButton() {
@@ -60,5 +68,11 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth: CGFloat = self.baseView.bounds.width / 2 - horizontalSpace
         let cellHeight: CGFloat = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+}
+// MARK: - UICollectionView Delegate Method
+extension CultivationViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.transitionCultivationDetailPage()
     }
 }
