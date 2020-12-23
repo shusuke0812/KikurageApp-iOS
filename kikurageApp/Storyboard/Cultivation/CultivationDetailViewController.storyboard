@@ -42,7 +42,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="wqO-tk-YOw"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9UL-LN-3SC">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9UL-LN-3SC" customClass="CarouselCollectionFlowLayout" customModule="きくらげ君" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -69,6 +69,7 @@
                         </constraints>
                         <connections>
                             <outlet property="collectionView" destination="Zb1-Zv-3hg" id="nYT-bD-iHx"/>
+                            <outlet property="flowLayout" destination="9UL-LN-3SC" id="7WF-I6-W5N"/>
                             <outlet property="memoLabel" destination="v0p-nb-eP2" id="fKD-TS-PAQ"/>
                             <outlet property="memoTitleLabel" destination="gsd-rX-F29" id="TXr-WF-VOB"/>
                             <outlet property="viewDateLabel" destination="2Bz-V6-ViH" id="6kR-6Z-s8B"/>
