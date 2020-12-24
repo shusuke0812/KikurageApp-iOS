@@ -29,3 +29,12 @@ extension CultivationDetailBaseView {
         self.memoLabel.text = ""
     }
 }
+// MARK: - Setting UI Method
+extension CultivationDetailBaseView {
+    func setUI(cultivation: KikurageCultivation) {
+        // 観察日の設定
+        self.viewDateLabel.text = cultivation.viewDate
+        //  観察メモの設定
+        self.memoLabel.text = cultivation.memo
+    }
+}
