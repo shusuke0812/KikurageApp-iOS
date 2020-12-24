@@ -26,6 +26,9 @@ extension CultivationCollectionViewCell {
         self.viewDateLabel.text = ""
         self.imageView.backgroundColor = .lightGray
     }
+}
+// MARK: - Setting UI Method
+extension CultivationCollectionViewCell {
     func setUI(cultivation: KikurageCultivation) {
         // 画像を設定
         let imageStoragePath = cultivation.imageStoragePaths[0]
