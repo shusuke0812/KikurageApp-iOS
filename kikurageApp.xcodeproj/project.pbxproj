@@ -61,6 +61,7 @@
 		9CB7D604254050D600D57801 /* MainBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* MainBaseView.swift */; };
 		9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */; };
 		9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */; };
+		9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */; };
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
@@ -125,6 +126,7 @@
 		9CB7D603254050D600D57801 /* MainBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseView.swift; sourceTree = "<group>"; };
 		9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewModel.swift; sourceTree = "<group>"; };
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */,
 				9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */,
 				9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */,
+				9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
+				9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */,
 				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
