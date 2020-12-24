@@ -19,6 +19,7 @@ class CultivationDetailBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
+        self.setCollectionView()
     }
 }
 // MARK: - Initialized Method
@@ -27,6 +28,10 @@ extension CultivationDetailBaseView {
         self.viewDateLabel.text = ""
         self.memoTitleLabel.text = "観察メモ"
         self.memoLabel.text = ""
+    }
+    private func setCollectionView() {
+        self.flowLayout.estimatedItemSize = .zero
+        self.collectionView.register(UINib(nibName: "CultivationCarouselCollectionView", bundle: nil), forCellWithReuseIdentifier: "CultivationCarouselCollectionView")
     }
 }
 // MARK: - Setting UI Method
