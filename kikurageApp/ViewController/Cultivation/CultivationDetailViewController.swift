@@ -14,10 +14,12 @@ class CultivationDetailViewController: UIViewController {
     private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView }
     /// ViewModel
     private var viewModel: CultivationDetailViewModel!
+    /// 前画面から渡された栽培記録データ
+    var cultivation: KikurageCultivation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CultivationDetailViewModel()
+        self.viewModel = CultivationDetailViewModel(cultivation: self.cultivation)
         self.setDelegateDataSource()
         self.setNavigationItem()
     }

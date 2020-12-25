@@ -10,7 +10,11 @@ import UIKit
 
 class CultivationDetailViewModel: NSObject {
     /// きくらげ 栽培記録データ
-    var cultivation: KikurageCultivation!
+    var cultivation: KikurageCultivation
+    
+    init(cultivation: KikurageCultivation) {
+        self.cultivation = cultivation
+    }
 }
 // MARK: - UICollectionView DataSource Method
 extension CultivationDetailViewModel: UICollectionViewDataSource {
@@ -21,7 +25,7 @@ extension CultivationDetailViewModel: UICollectionViewDataSource {
         return self.cultivation.imageStoragePaths.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CultivationCarouselCollectionView", for: indexPath) as! CultivationCarouselCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CultivationCarouselCollectionViewCell", for: indexPath) as! CultivationCarouselCollectionViewCell
         cell.setUI(cultivationImageStoragePath: self.cultivation.imageStoragePaths[indexPath.row])
         return cell
     }
