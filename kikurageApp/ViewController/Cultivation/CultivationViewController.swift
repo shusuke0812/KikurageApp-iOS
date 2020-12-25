@@ -38,9 +38,10 @@ extension CultivationViewController {
 }
 // MARK: - Private Method
 extension CultivationViewController {
-    private func transitionCultivationDetailPage() {
+    private func transitionCultivationDetailPage(indexPath: IndexPath) {
         let s = UIStoryboard(name: "CultivationDetailViewController", bundle: nil)
         let vc = s.instantiateInitialViewController() as! CultivationDetailViewController
+        vc.cultivation = self.viewModel.cultivations[indexPath.row].cultivation
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -73,6 +74,6 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionView Delegate Method
 extension CultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.transitionCultivationDetailPage()
+        self.transitionCultivationDetailPage(indexPath: indexPath)
     }
 }
