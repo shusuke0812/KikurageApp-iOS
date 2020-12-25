@@ -22,6 +22,7 @@ class CultivationDetailViewController: UIViewController {
         self.viewModel = CultivationDetailViewModel(cultivation: self.cultivation)
         self.setDelegateDataSource()
         self.setNavigationItem()
+        self.setUI()
     }
 }
 // MARK: - Private Method
@@ -32,6 +33,10 @@ extension CultivationDetailViewController {
     private func setDelegateDataSource() {
         self.baseView.collectionView.delegate = self
         self.baseView.collectionView.dataSource = self.viewModel
+    }
+    // 観察日・観察メモを設定
+    private func setUI() {
+        self.baseView.setUI(cultivation: self.cultivation)
     }
 }
 // MARK: - UICollectionView Delegate Method
