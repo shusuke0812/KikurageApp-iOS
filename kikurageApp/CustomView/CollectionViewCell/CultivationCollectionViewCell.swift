@@ -34,7 +34,7 @@ extension CultivationCollectionViewCell {
         let imageStoragePath = cultivation.imageStoragePaths[0]
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            self.imageView.sd_setImage(with: storageReference)
+            self.imageView.sd_setImage(with: storageReference, placeholderImage: UIImage(named: "loading"))
         }
         // 日付を設定
         self.viewDateLabel.text = cultivation.viewDate
