@@ -16,13 +16,6 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         self.setUI()
     }
-
-    // MARK: - Action Method
-    @IBAction func cookPadButton(_ sender: Any) {
-        guard let url = URL(string: "https://cookpad.com/search/%E3%81%8D%E3%81%8F%E3%82%89%E3%81%92") else { return }
-        let safariController = SFSafariViewController(url: url)
-        present(safariController, animated: true, completion: nil)
-    }
 }
 
 // MARK: - Initialized Method
