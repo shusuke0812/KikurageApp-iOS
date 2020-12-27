@@ -14,14 +14,13 @@ class RecipeViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
+        self.setNavigationItem()
     }
 }
 
 // MARK: - Initialized Method
 extension RecipeViewController {
-    private func setUI() {
-        // ナビゲーションバーの体裁を設定
+    private func setNavigationItem() {
         self.setNavigationBar(title: "りょうりきろく")
     }
 }
