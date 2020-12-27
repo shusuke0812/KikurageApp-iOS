@@ -34,8 +34,6 @@ class CultivationBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension CultivationBaseView {
-    private func initUI() {
-    }
     private func setCollectionView() {
         self.flowLayout.estimatedItemSize = .zero
         self.collectionView.register(UINib(nibName: "CultivationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CultivationCollectionViewCell")
