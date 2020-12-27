@@ -38,6 +38,6 @@ struct KikurageCultivation: Codable {
         if self.createdAt == nil {
             try container.encode(FieldValue.serverTimestamp(), forKey: .createdAt)
         }
-        try container.encode(FieldValue.serverTimestamp(), forKey: .createdAt)
+        try container.encode(FieldValue.serverTimestamp(), forKey: .updatedAt)
     }
 }
