@@ -13,19 +13,44 @@
         <scene sceneID="yAG-CV-i13">
             <objects>
                 <viewController id="Yn1-qf-8LL" customClass="RecipeViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uu3-0x-fob">
+                    <view key="view" contentMode="scaleToFill" id="uu3-0x-fob" customClass="RecipeBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x1J-99-6qg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" name="themeColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3g-dt-07M">
+                                <rect key="frame" x="331" y="779" width="63" height="63"/>
+                                <state key="normal" image="addMemoButton"/>
+                                <connections>
+                                    <action selector="didTapPostRecipePageButton:" destination="uu3-0x-fob" eventType="touchUpInside" id="OnS-Vc-C1I"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="49h-m6-Xnv"/>
                         <color key="backgroundColor" name="themeColor"/>
+                        <constraints>
+                            <constraint firstItem="49h-m6-Xnv" firstAttribute="bottom" secondItem="x1J-99-6qg" secondAttribute="bottom" id="EyN-3q-L2A"/>
+                            <constraint firstItem="49h-m6-Xnv" firstAttribute="trailing" secondItem="x1J-99-6qg" secondAttribute="trailing" id="bN5-bA-QNw"/>
+                            <constraint firstItem="x1J-99-6qg" firstAttribute="leading" secondItem="49h-m6-Xnv" secondAttribute="leading" id="iYz-rL-sve"/>
+                            <constraint firstItem="49h-m6-Xnv" firstAttribute="trailing" secondItem="q3g-dt-07M" secondAttribute="trailing" constant="20" id="ljm-FY-NJb"/>
+                            <constraint firstItem="x1J-99-6qg" firstAttribute="top" secondItem="49h-m6-Xnv" secondAttribute="top" id="oh3-A4-JKu"/>
+                            <constraint firstItem="49h-m6-Xnv" firstAttribute="bottom" secondItem="q3g-dt-07M" secondAttribute="bottom" constant="20" id="y3M-Cq-z2O"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="tableView" destination="x1J-99-6qg" id="7qg-4c-geG"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMs-0y-y67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="441" y="186"/>
+            <point key="canvasLocation" x="440.57971014492756" y="185.49107142857142"/>
         </scene>
     </scenes>
     <resources>
+        <image name="addMemoButton" width="63" height="63"/>
         <namedColor name="themeColor">
             <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -43,6 +43,7 @@
 		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
 		9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */; };
 		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
+		9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */; };
 		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
 		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
 		9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923334255F9760000293BB /* PostCultivationViewController.swift */; };
@@ -108,6 +109,7 @@
 		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
+		9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBaseView.swift; sourceTree = "<group>"; };
 		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
 		9C923334255F9760000293BB /* PostCultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */,
 				9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */,
 				9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */,
+				9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */,
 				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
+				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
 				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
