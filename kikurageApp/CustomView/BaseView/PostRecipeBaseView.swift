@@ -37,6 +37,8 @@ class PostRecipeBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.initUI()
+        self.initDatePicker()
     }
     // MARK: - Action Method
     @IBAction func didTapCloseButton(_ sender: Any) {
