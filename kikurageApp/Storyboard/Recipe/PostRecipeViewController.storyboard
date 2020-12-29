@@ -179,7 +179,7 @@
                             <outlet property="dateTextField" destination="Phq-a3-1Vo" id="j23-BY-aCA"/>
                             <outlet property="maxRecipeMemoNumberLabel" destination="gEz-mn-L6i" id="1l3-2L-jhx"/>
                             <outlet property="maxRecipeNameNumberLabel" destination="aab-7L-BXX" id="jkR-27-U7o"/>
-                            <outlet property="navigationItem" destination="SWT-C8-qOu" id="CIG-fu-ZWr"/>
+                            <outlet property="navigationItem" destination="DZZ-Qz-zX1" id="elG-lR-bx6"/>
                             <outlet property="postButton" destination="2ju-zv-Izm" id="5Dj-qX-RXU"/>
                             <outlet property="recipeMemoTextView" destination="bxT-bv-0Ou" id="Igl-yZ-dgw"/>
                             <outlet property="recipeNameTextField" destination="3IK-Vu-4GC" id="jdU-iH-8dQ"/>
