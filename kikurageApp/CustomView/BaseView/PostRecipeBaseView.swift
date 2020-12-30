@@ -37,6 +37,7 @@ class PostRecipeBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.registerCameraCell()
         self.initUI()
         self.initDatePicker()
     }
@@ -50,6 +51,9 @@ class PostRecipeBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension PostRecipeBaseView {
+    private func registerCameraCell() {
+        self.cameraCollectionView.register(UINib(nibName: "CameraCell", bundle: nil), forCellWithReuseIdentifier: "CameraCell")
+    }
     private func initUI() {
         // タイトル
         self.navigationItem.title = "りょうりきろく保存"
