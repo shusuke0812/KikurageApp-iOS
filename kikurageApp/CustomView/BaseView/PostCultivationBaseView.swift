@@ -35,7 +35,7 @@ class PostCultivationBaseView: UIView {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.registerCell()
+        self.registerCameraCell()
         self.initUI()
         self.initDatePicker()
     }
@@ -49,7 +49,7 @@ class PostCultivationBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension PostCultivationBaseView {
-    private func registerCell() {
+    private func registerCameraCell() {
         self.cameraCollectionView.register(UINib(nibName: "CameraCell", bundle: nil), forCellWithReuseIdentifier: "CameraCell")
     }
     private func initUI() {
