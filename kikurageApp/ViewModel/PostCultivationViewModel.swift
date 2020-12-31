@@ -70,7 +70,7 @@ extension PostCultivationViewModel {
 extension PostCultivationViewModel {
     func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedCultivationDocumentId = self.postedCultivationDocumentId else {
-            self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録のドキュメントIDが見つかりませんでした")
+            self.delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録のドキュメントIDが見つかりませんでした")
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentId)/images/"
