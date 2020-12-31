@@ -16,9 +16,10 @@ struct Constants {
     struct FirestoreCollectionName {
         /// ユーザーコレクション名
         internal static let users = "kikurageUsers"
-        /// ユーザー
-        /// 配下の栽培サブコレクション名
+        /// ユーザー配下の栽培サブコレクション名
         internal static let cultivations = "cultivations"
+        /// ユーザー配下の料理サブコレクション名
+        internal static let recipes = "recipes"
     }
     struct CameraCollectionCell {
         /// 画像選択の最大数
