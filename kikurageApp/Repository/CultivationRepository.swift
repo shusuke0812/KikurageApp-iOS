@@ -29,12 +29,13 @@ protocol CultivationRepositoryProtocol {
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - documentId: 栽培記録のドキュメントID
-    ///   - imageStorageFullPath: Storageに保存した画像のフルパス
+    ///   - imageStorageFullPaths: Storageに保存した画像のフルパス
     ///   - completion: 投稿成功、失敗のハンドル
     func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String],
                              completion: @escaping (Result<[String], Error>) -> Void)
     /// 栽培記録を取得する
-    /// - Parameter kikurageUserId: ユーザーID
+    /// - Parameters:
+    ///   - kikurageUserId: ユーザーID
     ///   - completion: 投稿成功、失敗のハンドル
     func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], Error>) -> Void)
 }
