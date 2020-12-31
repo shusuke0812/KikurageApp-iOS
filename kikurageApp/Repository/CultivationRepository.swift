@@ -13,7 +13,7 @@ protocol CultivationRepositoryProtocol {
     /// 栽培記録を投稿する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
-    ///   - cultivation: Firestoreへ保存する栽培記録データ
+    ///   - kikurageCultivation: Firestoreへ保存する栽培記録データ
     ///   - completion: 投稿成功、失敗のハンドル
     func postCultivation(kikurageUserId: String,
                          kikurageCultivation: KikurageCultivation,
