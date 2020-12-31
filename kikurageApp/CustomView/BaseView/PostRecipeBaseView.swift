@@ -39,6 +39,7 @@ class PostRecipeBaseView: UIView {
         super.awakeFromNib()
         self.registerCameraCell()
         self.initUI()
+        self.initTextFieldTag()
         self.initDatePicker()
     }
     // MARK: - Action Method
@@ -67,6 +68,10 @@ extension PostRecipeBaseView {
         // 保存するボタン
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
+    }
+    private func initTextFieldTag() {
+        self.recipeNameTextField.tag = Constants.TextFieldTag.recipeName
+        self.dateTextField.tag = Constants.TextFieldTag.recipeDate
     }
     private func initDatePicker() {
         // DatePickerの基本設定

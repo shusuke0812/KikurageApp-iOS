@@ -25,6 +25,12 @@ struct Constants {
         /// 画像選択の最大数
         internal static let maxNumber = 8
     }
+    struct TextFieldTag {
+        /// 料理名のTextFieldタグ番号
+        internal static let recipeName = 1
+        /// 料理記録画面の日付のTextFieldタグ番号
+        internal static let recipeDate = 2
+    }
 }
 
 /// ネットワークエラー
