@@ -61,7 +61,7 @@ extension PostCultivationViewModel {
                                         self.delegate?.didSuccessPostCultivationImages()
                                     case .failure(let error):
                                         print(error)
-                                        self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録画像のStorageパスを保存しました")
+                                        self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録画像のStorageパスの保存に失敗しました")
                                     }
                                  })
     }
