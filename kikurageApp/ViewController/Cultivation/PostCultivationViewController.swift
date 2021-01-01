@@ -68,8 +68,8 @@ extension PostCultivationViewController: UITextFieldDelegate {
 // MARK: - UITextView Delegate Method
 extension PostCultivationViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let resultTextNumber: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
-        return resultTextNumber.count <= self.baseView.maxTextViewNumber
+        let resultText: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
+        return resultText.count <= self.baseView.maxTextViewNumber
     }
     func textViewDidChange(_ textView: UITextView) {
         self.baseView.textView.switchPlaceholderDisplay(text: textView.text)
