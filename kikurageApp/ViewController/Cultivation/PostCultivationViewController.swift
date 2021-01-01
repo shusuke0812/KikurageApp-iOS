@@ -72,9 +72,10 @@ extension PostCultivationViewController: UITextViewDelegate {
         return resultText.count <= self.baseView.maxTextViewNumber
     }
     func textViewDidChange(_ textView: UITextView) {
-        self.baseView.textView.switchPlaceholderDisplay(text: textView.text)
-        self.viewModel.cultivation.memo = textView.text
-        self.baseView.setCurrentTextViewNumber(text: textView.text)
+        guard let text = textView.text else { return }
+        self.baseView.textView.switchPlaceholderDisplay(text: text)
+        self.viewModel.cultivation.memo = text
+        self.baseView.setCurrentTextViewNumber(text: text)
     }
 }
 // MARK: - CameraCell Delegate Method
