@@ -56,6 +56,10 @@ extension PostRecipeViewController: UITextFieldDelegate {
         }
         return false
     }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        self.baseView.setCurrentRecipeNameNumber(text: text)
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case Constants.TextFieldTag.recipeDate:
