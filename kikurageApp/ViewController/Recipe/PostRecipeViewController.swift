@@ -16,6 +16,8 @@ class PostRecipeViewController: UIViewController {
     private var viewModel: PostRecipeViewModel!
     /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
+    
+    private let dateHelper: DateHelper = DateHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +52,21 @@ extension PostRecipeViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case Constants.TextFieldTag.recipeDate:
-            print("")
+            self.setRecipeDateTextFieldData()
         case Constants.TextFieldTag.recipeName:
-            print("")
+            self.setRecipeNameTextFieldData()
         default:
             break
         }
+    }
+    private func setRecipeDateTextFieldData() {
+        let dateString = self.dateHelper.formatToString(date: self.baseView.datePicker.date)
+        self.baseView.dateTextField.text = dateString
+        self.viewModel.recipe.cookDate = dateString
+    }
+    private func setRecipeNameTextFieldData() {
+        guard let recipeName = self.baseView.recipeNameTextField.text else { return }
+        self.viewModel.recipe.name = recipeName
     }
 }
 // MARK: - CameraCell Delegate Method
