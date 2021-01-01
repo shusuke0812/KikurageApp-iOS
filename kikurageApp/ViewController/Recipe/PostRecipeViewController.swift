@@ -54,7 +54,7 @@ extension PostRecipeViewController: UITextFieldDelegate {
             let resultText: String = (textField.text! as NSString).replacingCharacters(in: range, with: string)
             return resultText.count <= self.baseView.maxRecipeNameNumer
         }
-        return false
+        return true
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
