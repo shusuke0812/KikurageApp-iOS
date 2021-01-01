@@ -49,6 +49,13 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
 }
 // MARK: - UITextField Delegate Method
 extension PostRecipeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.tag == Constants.TextFieldTag.recipeName {
+            let resultText: String = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            return resultText.count <= self.baseView.maxRecipeNameNumer
+        }
+        return false
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case Constants.TextFieldTag.recipeDate:
