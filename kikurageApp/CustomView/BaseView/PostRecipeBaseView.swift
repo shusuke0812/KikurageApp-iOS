@@ -31,7 +31,7 @@ class PostRecipeBaseView: UIView {
     /// 日付選択Picker
     var datePicker = UIDatePicker()
     /// 料理名の最大入力可能文字数
-    let maxRecipeNameNumer = 30
+    let maxRecipeNameNumer = 20
     /// 料理メモの最大入力可能文字数
     let maxRecipeMemoNumber = 100
     
@@ -69,6 +69,9 @@ extension PostRecipeBaseView {
         // 保存するボタン
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
+        // 最大入力文字数
+        self.maxRecipeNameNumberLabel.text = "\(self.maxRecipeNameNumer)"
+        self.maxRecipeMemoNumberLabel.text = "\(self.maxRecipeMemoNumber)"
     }
     private func initTextFieldTag() {
         self.recipeNameTextField.tag = Constants.TextFieldTag.recipeName
