@@ -32,6 +32,7 @@ extension PostRecipeViewController {
         self.baseView.delegate = self
         self.baseView.recipeNameTextField.delegate = self
         self.baseView.dateTextField.delegate = self
+        self.baseView.recipeMemoTextView.delegate = self
         self.baseView.cameraCollectionView.delegate = self
         self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
         self.cameraCollectionViewModel.cameraCellDelegate = self
@@ -78,6 +79,13 @@ extension PostRecipeViewController: UITextFieldDelegate {
     private func setRecipeNameTextFieldData() {
         guard let recipeName = self.baseView.recipeNameTextField.text else { return }
         self.viewModel.recipe.name = recipeName
+    }
+}
+// MARK: - UITextView Delegate Method
+extension PostRecipeViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let resultText: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
+        return resultText.count <= self.baseView.maxRecipeMemoNumber
     }
 }
 // MARK: - CameraCell Delegate Method
