@@ -102,6 +102,7 @@ extension PostRecipeViewController: CameraCellDelegate {
 // MARK: - UICollectionView Delegate Method
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.openImagePicker()
     }
 }
 // MARK: - PostRecipeViewModel Method
