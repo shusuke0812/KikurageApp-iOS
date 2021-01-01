@@ -31,9 +31,9 @@ class PostRecipeBaseView: UIView {
     /// 日付選択Picker
     var datePicker = UIDatePicker()
     /// 料理名の最大入力可能文字数
-    private let maxRecipeNameNumer = 30
+    let maxRecipeNameNumer = 30
     /// 料理メモの最大入力可能文字数
-    private let maxRecipeMemoNumber = 100
+    let maxRecipeMemoNumber = 100
     
     override func awakeFromNib() {
         super.awakeFromNib()
