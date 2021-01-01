@@ -65,6 +65,8 @@ extension PostCultivationBaseView {
         // 保存するボタン
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
+        // 最大入力文字数
+        self.maxTextViewNumberLabel.text = "\(self.maxTextViewNumber)"
     }
     private func initDatePicker() {
         // DatePickerの基本設定
