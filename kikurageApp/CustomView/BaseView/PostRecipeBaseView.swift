@@ -65,6 +65,7 @@ extension PostRecipeBaseView {
         // プレースホルダー
         self.recipeMemoTextView.placeholder = "料理メモ"
         self.recipeNameTextField.placeholder = "料理名"
+        self.dateTextField.placeholder = "日付を選択"
         // 保存するボタン
         self.postButton.layer.masksToBounds = true
         self.postButton.layer.cornerRadius = 5
