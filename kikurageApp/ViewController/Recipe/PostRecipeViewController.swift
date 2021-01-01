@@ -87,6 +87,12 @@ extension PostRecipeViewController: UITextViewDelegate {
         let resultText: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
         return resultText.count <= self.baseView.maxRecipeMemoNumber
     }
+    func textViewDidChange(_ textView: UITextView) {
+        guard let text = textView.text else { return }
+        self.baseView.recipeMemoTextView.switchPlaceholderDisplay(text: text)
+        self.viewModel.recipe.memo = text
+        self.baseView.setCurrentRecipeMemoNumber(text: text)
+    }
 }
 // MARK: - CameraCell Delegate Method
 extension PostRecipeViewController: CameraCellDelegate {
