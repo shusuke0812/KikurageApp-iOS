@@ -103,7 +103,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didSuccessPostCultivationImages() {
         // HUD表示（終）
         HUD.hide()
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "画像を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -111,7 +111,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         print(errorMessage)
         // HUD表示（終）
         HUD.hide()
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録画像の保存に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録の保存に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
 }
 // MARK: - UICollectionView Delegate Method
