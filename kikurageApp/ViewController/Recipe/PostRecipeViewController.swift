@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class PostRecipeViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class PostRecipeViewController: UIViewController {
     private var cameraCollectionViewModel: CameraCollectionViewModel!
     
     private let dateHelper: DateHelper = DateHelper()
+    // テスト用ID（後で消す）
+    let userId: String = "i0GrcLgkBBoLrBgGtrjp"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +45,11 @@ extension PostRecipeViewController {
 // MARK: - BaseView Delegate Method
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func didTapPostButton() {
-        
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
+            // HUD表示（始）
+            HUD.show(.progress)
+            self.viewModel.postRecipe(kikurageUserId: self.userId)
+        }
     }
     func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
@@ -125,11 +132,28 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
 // MARK: - PostRecipeViewModel Method
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
+        // nil要素を取り除き、選択した画像のみData型に変換する
+        let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter{ $0 != nil }
+        // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
+        self.viewModel.postRecipeImages(kikurageUserId: self.userId, imageData: postIamgeData)
     }
     func didFailedPostRecipe(errorMessage: String) {
+        print(errorMessage)
+        // HUD表示（終）
+        HUD.hide()
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "料理記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
     func didSuccessPostRecipeImages() {
+        // HUD表示（終）
+        HUD.hide()
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     func didFailedPostRecipeImages(errorMessage: String) {
+        print(errorMessage)
+        // HUD表示（終）
+        HUD.hide()
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "料理記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
 }
