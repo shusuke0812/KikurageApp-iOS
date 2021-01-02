@@ -105,6 +105,20 @@ extension PostRecipeViewController: UICollectionViewDelegate {
         self.openImagePicker()
     }
 }
+// MAARK: - UIImagePickerController Delegage Method
+extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        guard let selectedIndexPath = self.baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
+        picker.dismiss(animated: true, completion: { [weak self] in
+            self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
+            self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
+        })
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
 // MARK: - PostRecipeViewModel Method
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
