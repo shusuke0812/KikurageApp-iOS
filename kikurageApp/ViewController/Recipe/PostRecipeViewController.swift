@@ -97,6 +97,9 @@ extension PostRecipeViewController: UITextViewDelegate {
 // MARK: - CameraCell Delegate Method
 extension PostRecipeViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
+        let index = cell.tag
+        self.cameraCollectionViewModel.cancelImage(index: index)
+        self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
 // MARK: - UICollectionView Delegate Method
