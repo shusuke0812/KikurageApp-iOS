@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class RecipeTableViewCell: UITableViewCell {
     
@@ -26,5 +28,19 @@ extension RecipeTableViewCell {
         self.recipeDateLabel.text = ""
         self.recipeNameLabel.text = ""
         self.recipeMemoLabel.text = ""
+    }
+}
+// MARK: - Setting UI Method
+extension RecipeTableViewCell {
+    func setUI(recipe: KikurageRecipe) {
+        self.recipeDateLabel.text = recipe.cookDate
+        self.recipeNameLabel.text = recipe.name
+        self.recipeMemoLabel.text = recipe.memo
+        
+        guard let imageStoragePath = recipe.imageStoragePaths.first else { return }
+        if !imageStoragePath.isEmpty {
+            let storageReference = Storage.storage().reference(withPath: imageStoragePath)
+            self.recipeImageView.sd_setImage(with: storageReference, placeholderImage: UIImage(named: "loading"))
+        }
     }
 }
