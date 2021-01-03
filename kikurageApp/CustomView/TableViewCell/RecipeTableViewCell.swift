@@ -28,6 +28,7 @@ extension RecipeTableViewCell {
         self.recipeDateLabel.text = ""
         self.recipeNameLabel.text = ""
         self.recipeMemoLabel.text = ""
+        self.recipeImageView.backgroundColor = .lightGray
     }
 }
 // MARK: - Setting UI Method
