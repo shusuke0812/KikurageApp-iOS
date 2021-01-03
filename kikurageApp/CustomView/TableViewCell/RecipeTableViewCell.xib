@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="KGk-i7-Jjw" customClass="RecipeTableViewCell" customModule="きくらげ君" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="RecipeTableViewCell" customModule="きくらげ君" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yrX-ya-5dt">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="160" id="DNg-Yr-qKg"/>
+                            <constraint firstAttribute="width" constant="160" id="nfa-l6-EEa"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/12/2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFh-qn-Y5o">
+                        <rect key="frame" x="165" y="5" width="74" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="料理名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAM-fS-F6Z">
+                        <rect key="frame" x="165" y="30" width="150" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="メモ" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx7-Pv-OT1">
+                        <rect key="frame" x="165" y="54.5" width="134" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="90" id="0Wa-hs-xck"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yrX-ya-5dt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ev4-e5-qgd"/>
+                    <constraint firstAttribute="trailing" secondItem="FAM-fS-F6Z" secondAttribute="trailing" constant="5" id="P7M-FB-F2b"/>
+                    <constraint firstItem="yrX-ya-5dt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Rmq-ic-QTL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qx7-Pv-OT1" secondAttribute="trailing" constant="5" id="U1N-rU-ZWf"/>
+                    <constraint firstItem="qx7-Pv-OT1" firstAttribute="top" secondItem="FAM-fS-F6Z" secondAttribute="bottom" constant="5" id="Xd6-UN-lHG"/>
+                    <constraint firstItem="FAM-fS-F6Z" firstAttribute="top" secondItem="FFh-qn-Y5o" secondAttribute="bottom" constant="5" id="Z83-T7-UOZ"/>
+                    <constraint firstItem="FAM-fS-F6Z" firstAttribute="leading" secondItem="yrX-ya-5dt" secondAttribute="trailing" constant="5" id="b6C-g3-fDF"/>
+                    <constraint firstItem="FFh-qn-Y5o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="j7d-Kx-OAK"/>
+                    <constraint firstItem="FFh-qn-Y5o" firstAttribute="leading" secondItem="yrX-ya-5dt" secondAttribute="trailing" constant="5" id="kcO-NX-XKq"/>
+                    <constraint firstItem="qx7-Pv-OT1" firstAttribute="leading" secondItem="yrX-ya-5dt" secondAttribute="trailing" constant="5" id="uw6-8K-uew"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="recipeDateLabel" destination="FFh-qn-Y5o" id="6gX-Zx-KsG"/>
+                <outlet property="recipeImageView" destination="yrX-ya-5dt" id="UKT-08-6M3"/>
+                <outlet property="recipeMemoLabel" destination="qx7-Pv-OT1" id="bO8-U6-bBF"/>
+                <outlet property="recipeNameLabel" destination="FAM-fS-F6Z" id="ebd-hy-Ry7"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
