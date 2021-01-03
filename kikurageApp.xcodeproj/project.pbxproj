@@ -287,6 +287,13 @@
 			path = Communication;
 			sourceTree = "<group>";
 		};
+		9C9D48A825A140DC009FCC64 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		9CA7F3342537FD75005BED9C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +431,7 @@
 		9CF0020424E3990E0084036B /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				9C9D48A825A140DC009FCC64 /* TableViewCell */,
 				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 				9CB7D602254050BF00D57801 /* BaseView */,
 				9C82B41B253056BC00E650B5 /* UIView */,
