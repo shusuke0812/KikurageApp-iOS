@@ -21,6 +21,7 @@ class RecipeBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.registerCell()
     }
     // MARK: - Action Method
     @IBAction func didTapPostRecipePageButton(_ sender: Any) {
@@ -29,4 +30,7 @@ class RecipeBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension RecipeBaseView {
+    private func registerCell() {
+        self.tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+    }
 }
