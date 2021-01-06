@@ -30,7 +30,20 @@ class RecipeViewModel: NSObject {
 }
 // MARK: - Firebase Firestore Method
 extension RecipeViewModel {
-    
+    /// きくらげ料理記録を読み込む
+    func loadRecipes(kikurageUserId: String) {
+        self.recipeRepository
+            .getRecipes(kikurageUserId: kikurageUserId,
+                        completion: { [weak self] response in
+                            switch response {
+                            case .success(let recipes):
+                                self?.recipes = recipes
+                                self?.delegate?.didSuccessGetRecipes()
+                            case .failure(let error):
+                                self?.delegate?.didFailedGetRecipes(errorMessage: "\(error)")
+                            }
+                        })
+    }
 }
 // MARK: - UITableView DataSource
 extension RecipeViewModel: UITableViewDataSource {
