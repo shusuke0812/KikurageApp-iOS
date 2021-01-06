@@ -19,29 +19,20 @@ class RecipeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-    }
-}
-// MARK: - Initialized Method
-extension RecipeTableViewCell {
-    private func initUI() {
-        self.recipeDateLabel.text = ""
-        self.recipeNameLabel.text = ""
-        self.recipeMemoLabel.text = ""
-        self.recipeImageView.backgroundColor = .lightGray
     }
 }
 // MARK: - Setting UI Method
-extension RecipeTableViewCell {
+extension RecipeTableViewCell  {
     func setUI(recipe: KikurageRecipe) {
+        // 文字の設定
         self.recipeDateLabel.text = recipe.cookDate
         self.recipeNameLabel.text = recipe.name
         self.recipeMemoLabel.text = recipe.memo
-        
+        // 画像の設定
         guard let imageStoragePath = recipe.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            self.recipeImageView.sd_setImage(with: storageReference, placeholderImage: UIImage(named: "loading"))
+            self.recipeImageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
         }
     }
 }
