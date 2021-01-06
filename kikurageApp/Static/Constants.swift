@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants {
     struct WebUrl {
@@ -30,6 +30,10 @@ struct Constants {
         internal static let recipeName = 1
         /// 料理記録画面の日付のTextFieldタグ番号
         internal static let recipeDate = 2
+    }
+    struct Image {
+        /// 画像読み込み中の表示
+        internal static let loading = UIImage(named: "loading")
     }
 }
 

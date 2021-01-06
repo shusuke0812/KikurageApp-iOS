@@ -29,6 +29,6 @@ extension CultivationCarouselCollectionViewCell {
 extension CultivationCarouselCollectionViewCell {
     func setUI(cultivationImageStoragePath: String) {
         let storageReference = Storage.storage().reference(withPath: cultivationImageStoragePath)
-        self.imageView.sd_setImage(with: storageReference, placeholderImage: UIImage(named: "loading"))
+        self.imageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
     }
 }
