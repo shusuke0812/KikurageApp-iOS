@@ -215,7 +215,7 @@
 				9CF0020624E39B290084036B /* Helper */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CB7D5FC254043C300D57801 /* ViewModel */,
-				9CF0020424E3990E0084036B /* CustomView */,
+				9CF0020424E3990E0084036B /* View */,
 				9CF0020224E398AC0084036B /* ViewController */,
 				9CF0020324E398D00084036B /* Storyboard */,
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
@@ -375,13 +375,10 @@
 		9CB7D5FC254043C300D57801 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
-				9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */,
-				9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */,
+				9CDD1F5E25A68232006DA852 /* Home */,
+				9CDD1F5D25A68216006DA852 /* Cultivaation */,
+				9CDD1F5C25A68206006DA852 /* Recipe */,
 				9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */,
-				9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */,
-				9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */,
-				9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -389,12 +386,9 @@
 		9CB7D602254050BF00D57801 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
-				9CB7D603254050D600D57801 /* MainBaseView.swift */,
-				9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */,
-				9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */,
-				9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */,
-				9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */,
-				9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */,
+				9CDD1F5F25A6824D006DA852 /* Home */,
+				9CDD1F6025A68257006DA852 /* Cultivation */,
+				9CDD1F6125A6827A006DA852 /* Recipe */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -411,13 +405,67 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		9CDD1F5C25A68206006DA852 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */,
+				9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		9CDD1F5D25A68216006DA852 /* Cultivaation */ = {
+			isa = PBXGroup;
+			children = (
+				9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */,
+				9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */,
+				9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */,
+			);
+			path = Cultivaation;
+			sourceTree = "<group>";
+		};
+		9CDD1F5E25A68232006DA852 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9CDD1F5F25A6824D006DA852 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9CB7D603254050D600D57801 /* MainBaseView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9CDD1F6025A68257006DA852 /* Cultivation */ = {
+			isa = PBXGroup;
+			children = (
+				9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */,
+				9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */,
+				9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */,
+			);
+			path = Cultivation;
+			sourceTree = "<group>";
+		};
+		9CDD1F6125A6827A006DA852 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */,
+				9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
 		9CF0020224E398AC0084036B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9CAFF9AF255CD21500418745 /* Communication */,
-				9CAFF9AE255CD20500418745 /* Recipe */,
-				9CAFF9AD255CD1FA00418745 /* Cultivation */,
 				9CAFF9AC255CD1E900418745 /* Home */,
+				9CAFF9AD255CD1FA00418745 /* Cultivation */,
+				9CAFF9AE255CD20500418745 /* Recipe */,
+				9CAFF9AF255CD21500418745 /* Communication */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -425,16 +473,16 @@
 		9CF0020324E398D00084036B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A0C44255CEB3D00E1C98C /* Communication */,
-				9C8A0C43255CEB3400E1C98C /* Recipe */,
-				9C8A0C42255CEB2B00E1C98C /* Cultivation */,
 				9C8A0C41255CEB2400E1C98C /* Home */,
+				9C8A0C42255CEB2B00E1C98C /* Cultivation */,
+				9C8A0C43255CEB3400E1C98C /* Recipe */,
+				9C8A0C44255CEB3D00E1C98C /* Communication */,
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		9CF0020424E3990E0084036B /* CustomView */ = {
+		9CF0020424E3990E0084036B /* View */ = {
 			isa = PBXGroup;
 			children = (
 				9C9D48A825A140DC009FCC64 /* TableViewCell */,
@@ -444,7 +492,7 @@
 				9CF0020524E399190084036B /* UITextView */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
 			);
-			path = CustomView;
+			path = View;
 			sourceTree = "<group>";
 		};
 		9CF0020524E399190084036B /* UITextView */ = {
