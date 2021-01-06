@@ -21,7 +21,7 @@ class RecipeBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.registerCell()
+        self.setTableView()
     }
     // MARK: - Action Method
     @IBAction func didTapPostRecipePageButton(_ sender: Any) {
@@ -30,7 +30,10 @@ class RecipeBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension RecipeBaseView {
-    private func registerCell() {
+    private func setTableView() {
+        // セル選択を不可にする（料理記録詳細ページは無いため）
+        self.tableView.allowsSelection = false
+        // セル登録
         self.tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
     }
 }
