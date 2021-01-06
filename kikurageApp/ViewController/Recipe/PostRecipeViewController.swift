@@ -133,7 +133,7 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
         // nil要素を取り除き、選択した画像のみData型に変換する
-        let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter{ $0 != nil }
+        let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter{ $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
         self.viewModel.postRecipeImages(kikurageUserId: self.userId, imageData: postIamgeData)
     }
