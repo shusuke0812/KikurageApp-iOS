@@ -70,6 +70,7 @@ extension RecipeRepository {
             if let error = error {
                 completion(.failure(error))
             }
+            dispathGroup.leave()
         }
         // Firestoreにデータを登録した後、Storageに画像を投稿するためのPath用にドキュメントIDをコールバックする
         dispathGroup.notify(queue: .main) {
