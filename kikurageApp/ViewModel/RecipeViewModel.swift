@@ -42,6 +42,7 @@ extension RecipeViewModel: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableViewCell", for: indexPath) as! RecipeTableViewCell
+        cell.setUI(recipe: self.recipes[indexPath.row].recipe)
         return cell
     }
 }
