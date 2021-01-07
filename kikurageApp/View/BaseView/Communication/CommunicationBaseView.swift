@@ -8,14 +8,33 @@
 
 import UIKit
 
+protocol CommunicationBaseViewDelegate: class {
+    /// Facebookボタンを押した時の処理
+    func didTapFacebookButton()
+}
+
 class CommunicationBaseView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var informationLabel: UILabel!
+    /// デリゲート
+    internal weak var delegate: CommunicationBaseViewDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.initUI()
     }
-    */
-
+    // MARK: - Action Method
+    @IBAction func didTapFacebookButton(_ sender: Any) {
+        self.delegate?.didTapFacebookButton()
+    }
+}
+// MARK: - Initialized Method
+extension CommunicationBaseView {
+    private func initUI() {
+        self.informationLabel.text = """
+        【お知らせ】
+        キクラゲ栽培者同士でお互いに相談できるFacebookグループです。Facebookアカウントを持っていない方は下記ボタンのリンク先の「新しいアカウントを作成」より設定してください。
+        """
+        self.informationLabel.backgroundColor = .information
+    }
 }
