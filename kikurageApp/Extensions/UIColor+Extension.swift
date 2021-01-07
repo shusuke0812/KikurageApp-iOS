@@ -17,4 +17,8 @@ extension UIColor {
     internal static var subColor: UIColor {
         return UIColor(named: "subColor")!
     }
+    /// お知らせカラー
+    internal static var information: UIColor {
+        return UIColor(named: "informationColor")!
+    }
 }
