@@ -24,16 +24,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-lc-O0e">
-                                <rect key="frame" x="80" y="796" width="254" height="31"/>
+                                <rect key="frame" x="80" y="794.5" width="254" height="32.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbL-mA-vYG">
-                                        <rect key="frame" x="0.0" y="0.0" width="68" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="32.5"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="利用規約">
                                                     <attributes>
                                                         <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                                        <font key="NSFont" metaFont="system" size="17"/>
                                                         <integer key="NSUnderline" value="1"/>
                                                     </attributes>
                                                 </fragment>
@@ -44,13 +44,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7J4-eZ-VUj">
-                                        <rect key="frame" x="88" y="0.0" width="166" height="31"/>
+                                        <rect key="frame" x="90" y="0.0" width="164" height="32.5"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="個人情報保護方針">
                                                     <attributes>
                                                         <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                                        <font key="NSFont" metaFont="system" size="17"/>
                                                         <integer key="NSUnderline" value="1"/>
                                                     </attributes>
                                                 </fragment>
@@ -63,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJX-D5-eV3">
-                                <rect key="frame" x="40" y="741" width="334" height="45"/>
+                                <rect key="frame" x="40" y="739.5" width="334" height="45"/>
                                 <color key="backgroundColor" name="subColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="EMH-T4-wZ9"/>
@@ -75,25 +75,25 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="きくらげ栽培開始日を選択して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Sg-EvC">
-                                <rect key="frame" x="40" y="672" width="334" height="34"/>
+                                <rect key="frame" x="40" y="670.5" width="334" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="プロダクトキー を入力して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-Hi-49i">
-                                <rect key="frame" x="40" y="554" width="334" height="34"/>
+                                <rect key="frame" x="40" y="552.5" width="334" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="きくらげ君の名前を入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1y-mr-QXt">
-                                <rect key="frame" x="40" y="613" width="334" height="34"/>
+                                <rect key="frame" x="40" y="611.5" width="334" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TRg-qB-vEC">
-                                <rect key="frame" x="40" y="266" width="334" height="188"/>
+                                <rect key="frame" x="40" y="264.5" width="334" height="188"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TRg-qB-vEC" secondAttribute="height" multiplier="16:9" id="3BU-uL-qcE"/>
                                 </constraints>
