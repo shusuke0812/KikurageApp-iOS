@@ -10,25 +10,33 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var productKeyTextField: UITextField!
+    /// BaseView
+    private var baseView: LoginBaseView { self.view as! LoginBaseView }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.setUI()
+        self.setDelegateDataSource()
     }
-    // MARK: - Action Method
-    @IBAction func didTapStartButton(_ sender: Any) {
-        // ホーム画面へ遷移する
+}
+// MARK: - Initialized Method
+extension LoginViewController {
+    private func setDelegateDataSource() {
+        self.baseView.delegate = self
+    }
+}
+// MARK: - LoginBaseView Delegate Method
+extension LoginViewController: LoginBaseViewDelegate {
+    func didTapLoginButton() {
+        self.transitionHomePage()
+    }
+    private func transitionHomePage() {
         let s: UIStoryboard = UIStoryboard(name: "MainViewController", bundle: nil)
         let vc: UIViewController = s.instantiateViewController(withIdentifier: "MainViewController")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
-}
-
-extension LoginViewController {
-    func setUI() {
-        // TODO：調整中
-        // self.productKeyTextField.setTextFieldStyle(cornerRadius: 10, height: 60)
+    func didTapTermsButton() {
+    }
+    func didTapPrivacyPolicyButton() {
     }
 }
