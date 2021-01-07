@@ -9,16 +9,15 @@
 import UIKit
 
 class CommunicationViewController: UIViewController {
+    
+    /// BaaseView
+    private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI()
-    }
-    //MARK: - Action Method
-    @IBAction func didTapFacebookButton(_ sender: Any) {
-        // Facebookのきくらげコミュニティへ遷移させる
-        self.transitionSafariViewController(urlString: Constants.WebUrl.facebook)
+        self.setDelegateDataSource()
     }
 }
 // MARK: - Initialized Method
@@ -27,7 +26,14 @@ extension CommunicationViewController {
         // ナビゲーションバーの体裁を設定
         self.setNavigationBar(title: "みんなにそうだん")
     }
+    private func setDelegateDataSource() {
+        self.baaseView.delegate = self
+    }
 }
-// MARK: - Private Method
-extension CommunicationViewController {
+// MARK: - CommunicationBaseView Delegate Method
+extension CommunicationViewController: CommunicationBaseViewDelegate {
+    func didTapFacebookButton() {
+        // Facebookのきくらげコミュニティへ遷移させる
+        self.transitionSafariViewController(urlString: Constants.WebUrl.facebook)
+    }
 }
