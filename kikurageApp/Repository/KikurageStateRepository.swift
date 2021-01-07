@@ -12,17 +12,18 @@ import FirebaseFirestoreSwift
 protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む（GET）
     /// - Parameters:
-    ///   - uid: プロダクトID
-    func getKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void)
+    ///   - productId: ユーザーID
+    ///   - completion: 読み込み成功、失敗のハンドル
+    func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, Error>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
 }
 
 extension KikurageStateRepository {
-    func getKikurageState(uid: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
+    func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
         let db = Firestore.firestore()
-        let docRef: DocumentReference = db.collection("kikurageStates").document(uid)
+        let docRef: DocumentReference = db.collection("kikurageStates").document(productId)
 
         docRef.getDocument { (snapshot, error) in
             if let error = error {

@@ -10,13 +10,16 @@ import Firebase
 import FirebaseFirestoreSwift
 
 protocol KikurageUserRepositoryProtocol {
-    /// KikurageUserを読み込む（GET）
+    /// KikurageUserを読み込む
+    /// - Parameters:
+    ///   - uid: ユーザーID
+    ///   - completion: 読み込み成功、失敗のハンドル
     func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void)
 }
 
 class KikurageUserRepository: KikurageUserRepositoryProtocol {
 }
-
+// MARK: - Firebase Firestore Method
 extension KikurageUserRepository {
     func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void) {
         let db = Firestore.firestore()
