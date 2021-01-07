@@ -8,6 +8,17 @@
 
 import UIKit
 
+protocol MainBaseViewDelegate: class {
+    /// 栽培記録ボタンを押した時の処理
+    func didTapCultivationButton()
+    /// 料理記録ボタンを押した時の処理
+    func didTapRecipeButton()
+    /// 相談ボタンを押した時の処理
+    func didTapCommunicationButton()
+    /// サイドメニュー用のハンバーガーアイコンを押した時の処理
+    func didTapSideMenuButton()
+}
+
 class MainBaseView: UIView {
     @IBOutlet weak var nowTimeLabel: UILabel!
     @IBOutlet weak var kikurageNameLabel: UILabel!
@@ -16,13 +27,28 @@ class MainBaseView: UIView {
     @IBOutlet weak var temparatureTextLabel: UILabel!
     @IBOutlet weak var humidityTextLabel: UILabel!
     @IBOutlet weak var kikurageAdviceView: MainAdviceView!
-    
+    // ヘルパークラス
     private var clockHelper: ClockHelper = ClockHelper()
     private let kikurageStateHelper: KikurageStateHelper = KikurageStateHelper()
+    // デリゲート
+    internal weak var delegate: MainBaseViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
+    }
+    // MARK: - Action Method
+    @IBAction func didTapCultivationButton(_ sender: Any) {
+        self.delegate?.didTapCultivationButton()
+    }
+    @IBAction func didTapRecipeButton(_ sender: Any) {
+        self.delegate?.didTapRecipeButton()
+    }
+    @IBAction func didTapCommunicationButton(_ sender: Any) {
+        self.delegate?.didTapCommunicationButton()
+    }
+    @IBAction func didTapSideMenuButton(_ sender: Any) {
+        self.delegate?.didTapSideMenuButton()
     }
 }
 // MARK: - Initialized Method

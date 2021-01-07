@@ -139,7 +139,7 @@
                                         </constraints>
                                         <state key="normal" image="cultivationButton"/>
                                         <connections>
-                                            <action selector="didTapCultivationPageButton:" destination="HCp-ee-WbN" eventType="touchUpInside" id="6RL-Ht-SUX"/>
+                                            <action selector="didTapCultivationButton:" destination="fri-rL-faW" eventType="touchUpInside" id="bpc-F9-pUw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-LQ-DQW">
@@ -149,7 +149,7 @@
                                         </constraints>
                                         <state key="normal" image="recipeButton"/>
                                         <connections>
-                                            <action selector="didTapRecipePageButton:" destination="HCp-ee-WbN" eventType="touchUpInside" id="knt-P8-BaK"/>
+                                            <action selector="didTapRecipeButton:" destination="fri-rL-faW" eventType="touchUpInside" id="iaC-6i-LDQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II1-rE-l8N">
@@ -159,7 +159,7 @@
                                         </constraints>
                                         <state key="normal" image="communicationButton"/>
                                         <connections>
-                                            <action selector="didTapCommunicationPageButton:" destination="HCp-ee-WbN" eventType="touchUpInside" id="hed-ys-RMC"/>
+                                            <action selector="didTapCommunicationButton:" destination="fri-rL-faW" eventType="touchUpInside" id="azM-Ki-TSL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -213,7 +213,7 @@
                     <navigationItem key="navigationItem" title="今日のきくらげ " id="TeJ-IM-bD8">
                         <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6">
                             <connections>
-                                <action selector="didTapSideMenuButton:" destination="HCp-ee-WbN" id="1HG-XF-LDF"/>
+                                <action selector="didTapSideMenuButton:" destination="fri-rL-faW" id="qsh-Fy-CJ8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -40,29 +40,6 @@ class MainViewController: UIViewController {
         self.setTimer()
         self.loadKikurageState()
     }
-    // MARK:- Action Method
-    @IBAction func didTapCultivationPageButton(_ sender: Any) {
-        // さいばい記録画面へ遷移させる
-        let s: UIStoryboard = UIStoryboard(name: "CultivationViewController", bundle: nil)
-        let vc: CultivationViewController = s.instantiateInitialViewController() as! CultivationViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    @IBAction func didTapRecipePageButton(_ sender: Any) {
-        // 料理記録画面へ遷移させる
-        let s: UIStoryboard = UIStoryboard(name: "RecipeViewController", bundle: nil)
-        let vc: RecipeViewController = s.instantiateInitialViewController() as! RecipeViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    @IBAction func didTapCommunicationPageButton(_ sender: Any) {
-        // みんなに相談画面へ遷移させる
-        let s: UIStoryboard = UIStoryboard(name: "CommunicationViewController", bundle: nil)
-        let vc: CommunicationViewController = s.instantiateInitialViewController() as! CommunicationViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    @IBAction func didTapSideMenuButton(_ sender: Any) {
-        // サイドメニューを開く
-        self.performSegue(withIdentifier: "SideMenu", sender: nil)
-    }
 }
 // MARK: - Initialized Method
 extension MainViewController {
@@ -82,9 +59,35 @@ extension MainViewController {
     // デリゲート登録
     private func setDelegateDataSource() {
         self.viewModel.delegate = self
+        self.baseView.delegate = self
     }
 }
-// MARK: - Delegate Method
+// MARK: - MainBaseView Delegate Method
+extension MainViewController: MainBaseViewDelegate {
+    func didTapCultivationButton() {
+        // 栽培記録画面へ遷移
+        let s: UIStoryboard = UIStoryboard(name: "CultivationViewController", bundle: nil)
+        let vc: CultivationViewController = s.instantiateInitialViewController() as! CultivationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func didTapRecipeButton() {
+        // 料理記録画面へ遷移
+        let s: UIStoryboard = UIStoryboard(name: "RecipeViewController", bundle: nil)
+        let vc: RecipeViewController = s.instantiateInitialViewController() as! RecipeViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func didTapCommunicationButton() {
+        // 相談画面へ遷移
+        let s: UIStoryboard = UIStoryboard(name: "CommunicationViewController", bundle: nil)
+        let vc: CommunicationViewController = s.instantiateInitialViewController() as! CommunicationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func didTapSideMenuButton() {
+        // サイドメニュー起動
+        self.performSegue(withIdentifier: "SideMenu", sender: nil)
+    }
+}
+// MARK: - MainViewModel Delegate Method
 extension MainViewController: MainViewModelDelgate {
     // きくらげの状態を取得する
     private func loadKikurageState() {
