@@ -36,7 +36,9 @@ extension LoginViewController: LoginBaseViewDelegate {
         self.present(vc, animated: true, completion: nil)
     }
     func didTapTermsButton() {
+        self.transitionSafariViewController(urlString: Constants.WebUrl.terms)
     }
     func didTapPrivacyPolicyButton() {
+        self.transitionSafariViewController(urlString: Constants.WebUrl.privacyPolicy)
     }
 }
