@@ -39,7 +39,7 @@ class MainViewModel {
     internal weak var delegate: MainViewModelDelgate?
     
     // テスト用ID（後で消す）
-    let uid: String = "BFwAuLtNWTg3YKhOqYsj"
+    let productId: String = "BFwAuLtNWTg3YKhOqYsj"
     let userId: String = "i0GrcLgkBBoLrBgGtrjp"
     
     init(kikurageStateRepository: KikurageStateRepositoryProtocol,
@@ -56,26 +56,24 @@ class MainViewModel {
 extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        self.kikurageStateRepository.getKikurageState(
-            uid: self.uid,
-            completion: { response in
-                switch response {
-                case .success(let kikurageState):
-                    DispatchQueue.main.async {
-                        [weak self] in
-                        self?.kikurageState = kikurageState
-                        self?.delegate?.didSuccessGetKikurageState()
-                    }
-                case .failure(let error):
-                    print("DEBUG: \(error)")
-                    self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
-                }
-            })
+        self.kikurageStateRepository
+            .getKikurageState(productId: self.productId,
+                              completion: { response in
+                                switch response {
+                                case .success(let kikurageState):
+                                    DispatchQueue.main.async { [weak self] in
+                                        self?.kikurageState = kikurageState
+                                        self?.delegate?.didSuccessGetKikurageState()
+                                    }
+                                case .failure(let error):
+                                    print("DEBUG: \(error)")
+                                    self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
+                                }
+                              })
     }
     /// きくらげの状態を監視して更新を通知する
     func setKikurageStateListener() {
-        self.kikurageStateListener = Firestore.firestore().collection("kikurageStates").document(self.uid).addSnapshotListener {
-            [weak self] (snapshot, error) in
+        self.kikurageStateListener = Firestore.firestore().collection("kikurageStates").document(self.productId).addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot: DocumentSnapshot = snapshot else {
                 print("DEBUG: \(error!)")
                 return
@@ -97,20 +95,19 @@ extension MainViewModel {
 // MARK: - Setting Kikurage User Data Method
 extension MainViewModel {
     func loadKikurageUser() {
-        self.kikurageUserRepository.getKikurageUser(
-            uid: userId,
-            completion: { responsse in
-                switch responsse {
-                case .success(let kikurageUser):
-                    DispatchQueue.main.async {
-                        [weak self] in
-                        self?.kikurageUser = kikurageUser
-                        self?.delegate?.didSuccessGetKikurageUser()
-                    }
-                case .failure(let error):
-                    print("DEBUG: \(error)")
-                    self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
-                }
-            })
+        self.kikurageUserRepository
+            .getKikurageUser(uid: userId,
+                             completion: { responsse in
+                                 switch responsse {
+                                 case .success(let kikurageUser):
+                                     DispatchQueue.main.async { [weak self] in
+                                        self?.kikurageUser = kikurageUser
+                                        self?.delegate?.didSuccessGetKikurageUser()
+                                     }
+                                 case .failure(let error):
+                                     print("DEBUG: \(error)")
+                                     self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+                                 }
+                             })
     }
 }
