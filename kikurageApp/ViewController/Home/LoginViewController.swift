@@ -26,7 +26,24 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
+        self.baseView.productKeyTextField.delegate = self
+        self.baseView.kikurageNameTextField.delegate = self
         self.viewModel.delegate = self
+    }
+}
+// MARK: - UITextField Delegate Method
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case Constants.TextFieldTag.productKey:
+            self.viewModel.kikurageStateId = self.baseView.productKeyTextField.text
+        case Constants.TextFieldTag.kikurageName:
+            self.viewModel.kikurageUser?.kikurageName = self.baseView.kikurageNameTextField.text
+        case Constants.TextFieldTag.cultivationStartDate:
+            print("")
+        default:
+            break
+        }
     }
 }
 // MARK: - LoginBaseView Delegate Method
