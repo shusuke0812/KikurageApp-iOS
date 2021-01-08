@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class LoginViewController: UIViewController {
     
@@ -49,13 +50,10 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginBaseView Delegate Method
 extension LoginViewController: LoginBaseViewDelegate {
     func didTapLoginButton() {
-        self.transitionHomePage()
-    }
-    private func transitionHomePage() {
-        let s = UIStoryboard(name: "MainViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! MainViewController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        // HUD表示（始）
+        HUD.show(.progress)
+        // きくらげの状態を取得する
+        self.viewModel.loadKikurageState()
     }
     func didTapTermsButton() {
         self.transitionSafariViewController(urlString: Constants.WebUrl.terms)
@@ -67,15 +65,28 @@ extension LoginViewController: LoginBaseViewDelegate {
 // MARK: - LoginViewModel Delegate Method
 extension LoginViewController: LoginViewModelDelegate {
     func didSuccessGetKikurageState() {
-        <#code#>
+        // ユーザーを登録する
+        self.viewModel.registerKikurageUser()
     }
     func didFailedGetKikurageState(errorMessage: String) {
-        <#code#>
+        // HUD表示（終）
+        HUD.hide()
+        print(errorMessage)
     }
-    func didSuccessGetKikurageUser() {
-        <#code#>
+    func didSuccessPostKikurageUser() {
+        // HUD表示（終）
+        HUD.hide()
+        self.transitionHomePage()
     }
-    func didFailedGetKikurageUser(errorMessage: String) {
-        <#code#>
+    func didFailedPostKikurageUser(errorMessage: String) {
+        // HUD表示（終）
+        HUD.hide()
+        print(errorMessage)
+    }
+    private func transitionHomePage() {
+        let s = UIStoryboard(name: "MainViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! MainViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
