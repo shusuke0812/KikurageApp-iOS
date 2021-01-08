@@ -15,11 +15,11 @@ protocol LoginViewModelDelegate: class {
     /// きくらげの状態データ取得に失敗した
     /// - Parameter errorMessage: エラーメッセージ
     func didFailedGetKikurageState(errorMessage: String)
-    /// きくらげユーザーの取得に成功した
-    func didSuccessGetKikurageUser()
-    /// きくらげユーザーの取得に失敗した
+    /// きくらげユーザーの登録に成功した
+    func didSuccessPostKikurageUser()
+    /// きくらげユーザーの登録に失敗した
     /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageUser(errorMessage: String)
+    func didFailedPostKikurageUser(errorMessage: String)
 }
 
 class LoginViewModel {
@@ -62,21 +62,20 @@ extension LoginViewModel {
                                 }
                               })
     }
-    /// きくらげユーザーを読み込む
+    /// きくらげユーザーを登録する
     /// - Parameter uid: ユーザーID
-    func loadKikurageUser(uid: String) {
+    func registerKikurageUser() {
+        guard let kikurageUser = self.kikurageUser else { return }
         self.kikurageUserRepository
-            .getKikurageUser(uid: uid,
-                             completion: { responsse in
+            .postKikurageUser(kikurageUser: kikurageUser,
+                             completion: { [weak self] responsse in
                                  switch responsse {
-                                 case .success(let kikurageUser):
-                                     DispatchQueue.main.async { [weak self] in
-                                        self?.kikurageUser = kikurageUser
-                                        self?.delegate?.didSuccessGetKikurageUser()
-                                     }
+                                 case .success(let kikurageUserDocumentReference):
+                                    self?.kikurageUser?.stateRef = kikurageUserDocumentReference
+                                    self?.delegate?.didSuccessPostKikurageUser()
                                  case .failure(let error):
                                      print("DEBUG: \(error)")
-                                     self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+                                     self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
                                  }
                              })
     }
