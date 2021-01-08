@@ -27,11 +27,14 @@ class LoginBaseView: UIView {
     @IBOutlet weak var copyRightLabel: UILabel!
     /// デリゲート
     internal weak var delegate: LoginBaseViewDelegate?
+    /// 日付選択Picker
+    var datePicker = UIDatePicker()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
         self.initTextFieldTag()
+        self.initDatePicker()
     }
     // MARK: - Action Method
     @IBAction func didTapLoginButton(_ sender: Any) {
@@ -59,5 +62,14 @@ extension LoginBaseView {
         self.productKeyTextField.tag = Constants.TextFieldTag.productKey
         self.kikurageNameTextField.tag = Constants.TextFieldTag.kikurageName
         self.cultivationStartDateTextField.tag = Constants.TextFieldTag.cultivationStartDate
+    }
+    private func initDatePicker() {
+        // DatePcikerの基本設定
+        self.datePicker.preferredDatePickerStyle = .wheels
+        self.datePicker.datePickerMode = .date
+        self.datePicker.timeZone = NSTimeZone.local
+        self.datePicker.locale = Locale.current
+        // TextFieldの入力にDatePickerを接続
+        self.cultivationStartDateTextField.inputView = self.datePicker
     }
 }
