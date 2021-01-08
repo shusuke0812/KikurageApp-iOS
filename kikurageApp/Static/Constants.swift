@@ -18,6 +18,8 @@ struct Constants {
         internal static let privacyPolicy = "https://docs.google.com/document/d/1xwKhNVNW-CUuRFp_jk8vhMG1TaihEtrzbEM9RPy77Ac/edit?usp=sharing"
     }
     struct FirestoreCollectionName {
+        /// 栽培ステートコレクション
+        internal static let states = "kikurageStates"
         /// ユーザーコレクション名
         internal static let users = "kikurageUsers"
         /// ユーザー配下の栽培サブコレクション名

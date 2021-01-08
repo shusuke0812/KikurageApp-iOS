@@ -23,7 +23,7 @@ class KikurageStateRepository: KikurageStateRepositoryProtocol {
 extension KikurageStateRepository {
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
         let db = Firestore.firestore()
-        let docRef: DocumentReference = db.collection("kikurageStates").document(productId)
+        let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productId)
 
         docRef.getDocument { (snapshot, error) in
             if let error = error {

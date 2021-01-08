@@ -66,7 +66,7 @@ extension MainViewModel {
     }
     /// きくらげの状態を監視して更新を通知する
     func setKikurageStateListener() {
-        self.kikurageStateListener = Firestore.firestore().collection("kikurageStates").document(self.kikurageStateId).addSnapshotListener { [weak self] (snapshot, error) in
+        self.kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageStateId).addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot: DocumentSnapshot = snapshot else {
                 print("DEBUG: \(error!)")
                 return
