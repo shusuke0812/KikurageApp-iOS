@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     private var baseView: LoginBaseView { self.view as! LoginBaseView }
     /// ViewModel
     private var viewModel: LoginViewModel!
+    /// Dateヘルパー
+    private let dateHelper: DateHelper = DateHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +43,16 @@ extension LoginViewController: UITextFieldDelegate {
         case Constants.TextFieldTag.kikurageName:
             self.viewModel.kikurageUser?.kikurageName = self.baseView.kikurageNameTextField.text
         case Constants.TextFieldTag.cultivationStartDate:
-            print("")
+            self.setCultivationStartDateTextFieldData()
         default:
             break
         }
+    }
+    private func setCultivationStartDateTextFieldData() {
+        let date: Date = self.baseView.datePicker.date
+        let dataString: String = self.dateHelper.formatToString(date: date)
+        self.baseView.cultivationStartDateTextField.text = dataString
+        self.viewModel.kikurageUser?.startDate = date
     }
 }
 // MARK: - LoginBaseView Delegate Method
