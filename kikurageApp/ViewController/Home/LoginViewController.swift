@@ -56,7 +56,7 @@ extension LoginViewController: UITextFieldDelegate {
         let date: Date = self.baseView.datePicker.date
         let dataString: String = self.dateHelper.formatToString(date: date)
         self.baseView.cultivationStartDateTextField.text = dataString
-        self.viewModel.kikurageUser?.startDate = date
+        self.viewModel.kikurageUser?.cultivationStartDate = date
     }
 }
 // MARK: - LoginBaseView Delegate Method
@@ -81,11 +81,11 @@ extension LoginViewController: LoginBaseViewDelegate {
     func textFieldValidation() -> Bool {
         guard let productKey = self.baseView.productKeyTextField.text,
               let kikurageName = self.baseView.kikurageNameTextField.text,
-              let startDate = self.baseView.cultivationStartDateTextField.text else {
+              let cultivationStartDate = self.baseView.cultivationStartDateTextField.text else {
             print("DEBUG: 入力されていない項目があります")
             return false
         }
-        if productKey.isEmpty || kikurageName.isEmpty || startDate.isEmpty {
+        if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDate.isEmpty {
             print("DEBUG: 入力されていない項目があります")
             return false
         }
