@@ -38,11 +38,14 @@ extension LoginViewController {
 // MARK: - UITextField Delegate Method
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
         switch textField.tag {
         case Constants.TextFieldTag.productKey:
-            self.viewModel.kikurageStateId = self.baseView.productKeyTextField.text
+            self.baseView.productKeyTextField.text = text
+            self.viewModel.kikurageUser?.productKey = text
         case Constants.TextFieldTag.kikurageName:
-            self.viewModel.kikurageUser?.kikurageName = self.baseView.kikurageNameTextField.text
+            self.baseView.kikurageNameTextField.text = text
+            self.viewModel.kikurageUser?.kikurageName = text
         case Constants.TextFieldTag.cultivationStartDate:
             self.setCultivationStartDateTextFieldData()
         default:
