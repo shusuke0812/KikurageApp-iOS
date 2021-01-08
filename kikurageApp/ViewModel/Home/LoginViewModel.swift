@@ -27,8 +27,6 @@ class LoginViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
-    /// きくらげの状態ID（プロダクトキー ）
-    var kikurageStateId: String?
     /// きくらげの状態
     var kikurageState: KikurageState?
     /// きくらげユーザー
@@ -40,13 +38,14 @@ class LoginViewModel {
          kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
+        self.kikurageUser = KikurageUser()
     }
 }
 // MARK: - Firebase Firestore Method
 extension LoginViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        guard let productId = self.kikurageStateId else { return }
+        guard let productId = self.kikurageUser?.productKey else { return }
         self.kikurageStateRepository
             .getKikurageState(productId: productId,
                               completion: { response in
