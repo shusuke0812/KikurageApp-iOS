@@ -11,15 +11,11 @@ import FirebaseFirestore
 
 struct KikurageUser: Codable {
     /// 製品シリアルコード
-    let productKey: String
+    var productKey: String = ""
     /// きくらげ 君（筐体）の名前
-    var kikurageName: String?
+    var kikurageName: String = ""
     /// 栽培開始日
-    var startDate: Date?
+    var startDate: Date = Date()
     /// ステートリファレンス
     var stateRef: DocumentReference?
-    
-    init(productKey: String) {
-        self.productKey = productKey
-    }
 }
