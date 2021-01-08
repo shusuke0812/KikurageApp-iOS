@@ -16,6 +16,10 @@ class MainViewController: UIViewController {
     private var baseView: MainBaseView { return self.view as! MainBaseView}
     /// ViewModel
     private var viewModel: MainViewModel!
+    /// きくらげの状態ID（プロダクトキー ）
+    var kikurageStateId: String!
+    /// きくらげユーザー
+    var kikurageUser: KikurageUser!
     /// タイマー
     private var timer: Timer?
 
@@ -24,9 +28,10 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = MainViewModel(
             kikurageStateRepository: KikurageStateRepository(),
-            kikurageUserRepository: KikurageUserRepository())
+            kikurageStateId: self.kikurageStateId,
+            kikurageUser: self.kikurageUser)
         self.setDelegateDataSource()
-        self.loadKikurageUser()
+        self.baseView.setKikurageNameUI(kikurageUser: self.viewModel.kikurageUser)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -93,9 +98,6 @@ extension MainViewController: MainViewModelDelgate {
     private func loadKikurageState() {
         self.viewModel.loadKikurageState()
     }
-    private func loadKikurageUser() {
-        self.viewModel.loadKikurageUser()
-    }
     // きくらげの状態取得可否によってViewの表示をする
     func didSuccessGetKikurageState() {
         self.baseView.setKikurageStateUI(kikurageState: self.viewModel.kikurageState)
@@ -105,11 +107,5 @@ extension MainViewController: MainViewModelDelgate {
     }
     func didChangedKikurageState() {
         self.baseView.setKikurageStateUI(kikurageState: self.viewModel.kikurageState)
-    }
-    func didSuccessGetKikurageUser() {
-        self.baseView.setKikurageNameUI(kikurageUser: self.viewModel.kikurageUser)
-    }
-    func didFailedGetKikurageUser(errorMessage: String) {
-        print(errorMessage)
     }
 }

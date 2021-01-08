@@ -27,14 +27,18 @@ class MainViewModel {
     /// きくらげの状態
     var kikurageState: KikurageState?
     /// きくらげの状態ID（プロダクトキー ）
-    var kikuragestateId: String!
+    private var kikurageStateId: String!
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
     /// デリゲート
     internal weak var delegate: MainViewModelDelgate?
     
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol) {
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol,
+         kikurageStateId: String,
+         kikurageUser: KikurageUser) {
         self.kikurageStateRepository = kikurageStateRepository
+        self.kikurageStateId = kikurageStateId
+        self.kikurageUser = kikurageUser
         self.setKikurageStateListener()
     }
     deinit {
@@ -46,7 +50,7 @@ extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         self.kikurageStateRepository
-            .getKikurageState(productId: self.kikuragestateId,
+            .getKikurageState(productId: self.kikurageStateId,
                               completion: { response in
                                 switch response {
                                 case .success(let kikurageState):
@@ -62,7 +66,7 @@ extension MainViewModel {
     }
     /// きくらげの状態を監視して更新を通知する
     func setKikurageStateListener() {
-        self.kikurageStateListener = Firestore.firestore().collection("kikurageStates").document(self.kikuragestateId).addSnapshotListener { [weak self] (snapshot, error) in
+        self.kikurageStateListener = Firestore.firestore().collection("kikurageStates").document(self.kikurageStateId).addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot: DocumentSnapshot = snapshot else {
                 print("DEBUG: \(error!)")
                 return
