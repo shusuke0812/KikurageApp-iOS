@@ -12,16 +12,21 @@ class LoginViewController: UIViewController {
     
     /// BaseView
     private var baseView: LoginBaseView { self.view as! LoginBaseView }
+    /// ViewModel
+    private var viewModel: LoginViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setDelegateDataSource()
+        self.viewModel = LoginViewModel(kikurageStateRepository: KikurageStateRepository(),
+                                        kikurageUserRepository: KikurageUserRepository())
     }
 }
 // MARK: - Initialized Method
 extension LoginViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
+        self.viewModel.delegate = self
     }
 }
 // MARK: - LoginBaseView Delegate Method
@@ -40,5 +45,20 @@ extension LoginViewController: LoginBaseViewDelegate {
     }
     func didTapPrivacyPolicyButton() {
         self.transitionSafariViewController(urlString: Constants.WebUrl.privacyPolicy)
+    }
+}
+// MARK: - LoginViewModel Delegate Method
+extension LoginViewController: LoginViewModelDelegate {
+    func didSuccessGetKikurageState() {
+        <#code#>
+    }
+    func didFailedGetKikurageState(errorMessage: String) {
+        <#code#>
+    }
+    func didSuccessGetKikurageUser() {
+        <#code#>
+    }
+    func didFailedGetKikurageUser(errorMessage: String) {
+        <#code#>
     }
 }
