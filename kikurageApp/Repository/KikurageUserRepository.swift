@@ -10,11 +10,16 @@ import Firebase
 import FirebaseFirestoreSwift
 
 protocol KikurageUserRepositoryProtocol {
-    /// KikurageUserを読み込む
+    /// きくらげユーザーを読み込む
     /// - Parameters:
     ///   - uid: ユーザーID
     ///   - completion: 読み込み成功、失敗のハンドル
     func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void)
+    /// きくらげユーザーを登録する
+    /// - Parameters:
+    ///   - kikurageUser: きくらげユーザー
+    ///   - completion: 登録成功、失敗のハンドル
+    func postKikurageUser(kikurageUser: KikurageUser, completion: @escaping (Result<DocumentReference, Error>) -> Void)
 }
 
 class KikurageUserRepository: KikurageUserRepositoryProtocol {
@@ -40,6 +45,26 @@ extension KikurageUserRepository {
             } catch (let error) {
                 fatalError(error.localizedDescription)
             }
+        }
+    }
+    func postKikurageUser(kikurageUser: KikurageUser, completion: @escaping (Result<DocumentReference, Error>) -> Void) {
+        let db = Firestore.firestore()
+        var data: [String: Any]!
+        do {
+            data = try Firestore.Encoder().encode(kikurageUser)
+        } catch (let error) {
+            fatalError(error.localizedDescription)
+        }
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        let ref: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).addDocument(data: data) { error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(.success(ref))
         }
     }
 }
