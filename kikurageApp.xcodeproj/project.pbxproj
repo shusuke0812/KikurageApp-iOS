@@ -502,11 +502,11 @@
 		9CF0020424E3990E0084036B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C9D48A825A140DC009FCC64 /* TableViewCell */,
-				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 				9CB7D602254050BF00D57801 /* BaseView */,
 				9C82B41B253056BC00E650B5 /* UIView */,
 				9CF0020524E399190084036B /* UITextView */,
+				9C9D48A825A140DC009FCC64 /* TableViewCell */,
+				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
 			);
 			path = View;
