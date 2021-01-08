@@ -41,6 +41,13 @@ class LoginViewModel {
         self.kikurageUser = KikurageUser()
     }
 }
+// MARK: - Setting Data Method
+extension LoginViewModel {
+    /// ユーザーにステートのリファレンスを登録する
+    func setStateReference(productKey: String) {
+        self.kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
+    }
+}
 // MARK: - Firebase Firestore Method
 extension LoginViewModel {
     /// きくらげの状態を読み込む
@@ -73,7 +80,7 @@ extension LoginViewModel {
                              completion: { [weak self] responsse in
                                  switch responsse {
                                  case .success(let kikurageUserDocumentReference):
-                                    self?.kikurageUser?.stateRef = kikurageUserDocumentReference
+                                    print("DEBUG: \(kikurageUserDocumentReference)")
                                     self?.delegate?.didSuccessPostKikurageUser()
                                  case .failure(let error):
                                      print("DEBUG: \(error)")

@@ -43,6 +43,7 @@ extension LoginViewController: UITextFieldDelegate {
         case Constants.TextFieldTag.productKey:
             self.baseView.productKeyTextField.text = text
             self.viewModel.kikurageUser?.productKey = text
+            self.viewModel.setStateReference(productKey: text)
         case Constants.TextFieldTag.kikurageName:
             self.baseView.kikurageNameTextField.text = text
             self.viewModel.kikurageUser?.kikurageName = text
