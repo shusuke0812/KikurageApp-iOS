@@ -58,16 +58,34 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginBaseView Delegate Method
 extension LoginViewController: LoginBaseViewDelegate {
     func didTapLoginButton() {
-        // HUD表示（始）
-        HUD.show(.progress)
-        // きくらげの状態を取得する
-        self.viewModel.loadKikurageState()
+        let validate = self.textFieldValidation()
+        if validate {
+            // HUD表示（始）
+            HUD.show(.progress)
+            // きくらげの状態を取得する
+            self.viewModel.loadKikurageState()
+        } else {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
     }
     func didTapTermsButton() {
         self.transitionSafariViewController(urlString: Constants.WebUrl.terms)
     }
     func didTapPrivacyPolicyButton() {
         self.transitionSafariViewController(urlString: Constants.WebUrl.privacyPolicy)
+    }
+    func textFieldValidation() -> Bool {
+        guard let productKey = self.baseView.productKeyTextField.text,
+              let kikurageName = self.baseView.kikurageNameTextField.text,
+              let startDate = self.baseView.cultivationStartDateTextField.text else {
+            print("DEBUG: 入力されていない項目があります")
+            return false
+        }
+        if productKey.isEmpty || kikurageName.isEmpty || startDate.isEmpty {
+            print("DEBUG: 入力されていない項目があります")
+            return false
+        }
+        return true
     }
 }
 // MARK: - LoginViewModel Delegate Method
