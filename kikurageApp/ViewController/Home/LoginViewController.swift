@@ -20,9 +20,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setDelegateDataSource()
         self.viewModel = LoginViewModel(kikurageStateRepository: KikurageStateRepository(),
                                         kikurageUserRepository: KikurageUserRepository())
+        self.setDelegateDataSource()
     }
 }
 // MARK: - Initialized Method
