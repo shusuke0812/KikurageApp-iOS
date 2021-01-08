@@ -30,8 +30,8 @@ extension LoginViewController: LoginBaseViewDelegate {
         self.transitionHomePage()
     }
     private func transitionHomePage() {
-        let s: UIStoryboard = UIStoryboard(name: "MainViewController", bundle: nil)
-        let vc: UIViewController = s.instantiateViewController(withIdentifier: "MainViewController")
+        let s = UIStoryboard(name: "MainViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! MainViewController
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
