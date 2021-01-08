@@ -34,6 +34,12 @@ struct Constants {
         internal static let recipeName = 1
         /// 料理記録画面の日付のTextFieldタグ番号
         internal static let recipeDate = 2
+        /// プロダクトキーのTextFieldタグ番号
+        internal static let productKey = 3
+        /// きくらげ名のTextFieldタグ番号
+        internal static let kikurageName = 4
+        /// きくらげ栽培開始日のTextFieldタグ番号
+        internal static let cultivationStartDate = 5
     }
     struct Image {
         /// 画像読み込み中の表示

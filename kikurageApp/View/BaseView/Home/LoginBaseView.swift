@@ -31,6 +31,7 @@ class LoginBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
+        self.initTextFieldTag()
     }
     // MARK: - Action Method
     @IBAction func didTapLoginButton(_ sender: Any) {
@@ -53,5 +54,10 @@ extension LoginBaseView {
         self.loginButton.layer.cornerRadius = 5
         // コピーライト
         self.copyRightLabel.text = "©︎ チーム きくらげ大使館"
+    }
+    private func initTextFieldTag() {
+        self.productKeyTextField.tag = Constants.TextFieldTag.productKey
+        self.kikurageNameTextField.tag = Constants.TextFieldTag.kikurageName
+        self.cultivationStartDateTextField.tag = Constants.TextFieldTag.cultivationStartDate
     }
 }
