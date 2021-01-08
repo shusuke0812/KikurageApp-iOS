@@ -65,7 +65,10 @@ extension LoginViewModel {
     /// きくらげユーザーを登録する
     /// - Parameter uid: ユーザーID
     func registerKikurageUser() {
-        guard let kikurageUser = self.kikurageUser else { return }
+        guard let kikurageUser = self.kikurageUser else {
+            self.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+            return
+        }
         self.kikurageUserRepository
             .postKikurageUser(kikurageUser: kikurageUser,
                              completion: { [weak self] responsse in
