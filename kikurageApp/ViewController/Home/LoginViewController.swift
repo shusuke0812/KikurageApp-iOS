@@ -31,6 +31,7 @@ extension LoginViewController {
         self.baseView.delegate = self
         self.baseView.productKeyTextField.delegate = self
         self.baseView.kikurageNameTextField.delegate = self
+        self.baseView.cultivationStartDateTextField.delegate = self
         self.viewModel.delegate = self
     }
 }
