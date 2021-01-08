@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 struct KikurageState: Codable {
     /// 温度
@@ -20,6 +19,4 @@ struct KikurageState: Codable {
     var judge: String?
     /// アドバイス
     var advice: String?
-    /// ユーザーリファレンス
-    let userRef: DocumentReference?
 }

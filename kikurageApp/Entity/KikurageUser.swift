@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct KikurageUser: Codable {
     /// 製品シリアルコード
@@ -15,6 +16,8 @@ struct KikurageUser: Codable {
     var kikurageName: String?
     /// 栽培開始日
     var startDate: Date?
+    /// ステートリファレンス
+    var stateRef: DocumentReference?
     
     init(productKey: String) {
         self.productKey = productKey
