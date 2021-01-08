@@ -71,6 +71,8 @@ extension LoginViewController: LoginViewModelDelegate {
     func didFailedGetKikurageState(errorMessage: String) {
         // HUD表示（終）
         HUD.hide()
+        // アラート表示
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "プロダクトキーが違います", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         print(errorMessage)
     }
     func didSuccessPostKikurageUser() {
@@ -81,6 +83,8 @@ extension LoginViewController: LoginViewModelDelegate {
     func didFailedPostKikurageUser(errorMessage: String) {
         // HUD表示（終）
         HUD.hide()
+        // アラート表示
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "ユーザー登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         print(errorMessage)
     }
     private func transitionHomePage() {
