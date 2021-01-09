@@ -47,9 +47,9 @@ extension LoginViewModel {
     func setStateReference(productKey: String) {
         self.kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
-    /// UserDefaultsにプロダクトキーを登録する
-    func setProductKeyToUserDefaults(productKey: String) {
-        UserDefaults.standard.set(productKey, forKey: Constants.UserDefaultsKey.productKey)
+    /// UserDefaultsにユーザーIDを登録する
+    func setUserIdToUserDefaults(userId: String) {
+        UserDefaults.standard.set(userId, forKey: Constants.UserDefaultsKey.userId)
     }
 }
 // MARK: - Firebase Firestore Method
@@ -84,7 +84,7 @@ extension LoginViewModel {
                              completion: { [weak self] responsse in
                                  switch responsse {
                                  case .success(let kikurageUserDocumentReference):
-                                    self?.setProductKeyToUserDefaults(productKey: kikurageUserDocumentReference.documentID)
+                                    self?.setUserIdToUserDefaults(userId: kikurageUserDocumentReference.documentID)
                                     self?.delegate?.didSuccessPostKikurageUser()
                                  case .failure(let error):
                                      print("DEBUG: \(error)")

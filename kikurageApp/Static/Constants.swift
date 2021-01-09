@@ -48,7 +48,7 @@ struct Constants {
         internal static let loading = UIImage(named: "loading")
     }
     struct UserDefaultsKey {
-        internal static let productKey = "productKey"
+        internal static let userId = "userId"
     }
 }
 
