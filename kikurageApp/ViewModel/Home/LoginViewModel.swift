@@ -49,7 +49,7 @@ extension LoginViewModel {
     }
     /// UserDefaultsにプロダクトキーを登録する
     func setProductKeyToUserDefaults(productKey: String) {
-        UserDefaults.standard.set(productKey, forKey: "productKey")
+        UserDefaults.standard.set(productKey, forKey: Constants.UserDefaultsKey.productKey)
     }
 }
 // MARK: - Firebase Firestore Method

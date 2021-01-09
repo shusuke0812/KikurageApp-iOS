@@ -47,6 +47,9 @@ struct Constants {
         /// 画像読み込み中の表示
         internal static let loading = UIImage(named: "loading")
     }
+    struct UserDefaultsKey {
+        internal static let productKey = "productKey"
+    }
 }
 
 /// ネットワークエラー
