@@ -16,13 +16,13 @@ class CommunicationViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
+        self.setNavigationItem()
         self.setDelegateDataSource()
     }
 }
 // MARK: - Initialized Method
 extension CommunicationViewController {
-    private func setUI() {
+    private func setNavigationItem() {
         // ナビゲーションバーの体裁を設定
         self.setNavigationBar(title: "みんなにそうだん")
     }
