@@ -16,8 +16,8 @@ class MainViewController: UIViewController {
     private var baseView: MainBaseView { return self.view as! MainBaseView}
     /// ViewModel
     private var viewModel: MainViewModel!
-    /// きくらげの状態ID（プロダクトキー ）
-    var kikurageStateId: String!
+    /// きくらげの状態
+    var kikurageState: KikurageState!
     /// きくらげユーザー
     var kikurageUser: KikurageUser!
     /// タイマー
@@ -28,8 +28,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = MainViewModel(
             kikurageStateRepository: KikurageStateRepository(),
-            kikurageStateId: self.kikurageStateId,
-            kikurageUser: self.kikurageUser)
+            kikurageUser: self.kikurageUser,
+            kikurageState: self.kikurageState)
         self.setDelegateDataSource()
         self.baseView.setKikurageNameUI(kikurageUser: self.viewModel.kikurageUser)
     }

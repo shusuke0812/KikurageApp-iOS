@@ -121,7 +121,12 @@ extension LoginViewController: LoginViewModelDelegate {
     private func transitionHomePage() {
         // NavigationControllerへの遷移になるのでViewControllerにStoryboardからIDを設定してUIViewControllerでインスタンス化する
         let s: UIStoryboard = UIStoryboard(name: "MainViewController", bundle: nil)
-        let vc: UIViewController = s.instantiateViewController(withIdentifier: "MainViewController")
+        let vc: UINavigationController = s.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
+        // MainViewController（トップ画面）への値渡し
+        let mainVC = vc.topViewController as! MainViewController
+        mainVC.kikurageState = self.viewModel.kikurageState
+        mainVC.kikurageUser = self.viewModel.kikurageUser
+        // 画面遷移
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }

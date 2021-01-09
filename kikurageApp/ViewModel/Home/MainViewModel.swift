@@ -25,20 +25,18 @@ class MainViewModel {
     /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     /// きくらげの状態
-    var kikurageState: KikurageState?
-    /// きくらげの状態ID（プロダクトキー ）
-    private var kikurageStateId: String!
+    var kikurageState: KikurageState!
     /// きくらげユーザー
-    var kikurageUser: KikurageUser?
+    var kikurageUser: KikurageUser!
     /// デリゲート
     internal weak var delegate: MainViewModelDelgate?
     
     init(kikurageStateRepository: KikurageStateRepositoryProtocol,
-         kikurageStateId: String,
-         kikurageUser: KikurageUser) {
+         kikurageUser: KikurageUser,
+         kikurageState: KikurageState) {
         self.kikurageStateRepository = kikurageStateRepository
-        self.kikurageStateId = kikurageStateId
         self.kikurageUser = kikurageUser
+        self.kikurageState = kikurageState
         self.setKikurageStateListener()
     }
     deinit {
@@ -50,7 +48,7 @@ extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         self.kikurageStateRepository
-            .getKikurageState(productId: self.kikurageStateId,
+            .getKikurageState(productId: self.kikurageUser.productKey,
                               completion: { response in
                                 switch response {
                                 case .success(let kikurageState):
@@ -66,7 +64,7 @@ extension MainViewModel {
     }
     /// きくらげの状態を監視して更新を通知する
     func setKikurageStateListener() {
-        self.kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageStateId).addSnapshotListener { [weak self] (snapshot, error) in
+        self.kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageUser.productKey).addSnapshotListener { [weak self] (snapshot, error) in
             guard let snapshot: DocumentSnapshot = snapshot else {
                 print("DEBUG: \(error!)")
                 return
