@@ -21,7 +21,9 @@ class CultivationViewController: UIViewController {
         self.viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
         self.setNavigationItem()
         self.setDelegateDataSource()
-        self.viewModel.loadCultivations(kikurageUserId: "i0GrcLgkBBoLrBgGtrjp")
+        if let kikurageUserId = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) {
+            self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+        }
     }
 }
 // MARK: - Initialized Method

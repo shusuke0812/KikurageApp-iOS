@@ -23,7 +23,7 @@ class RecipeViewController: UIViewController {
         self.setNavigationItem()
         self.viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
         self.setDelegateDataSource()
-        self.viewModel.loadRecipes(kikurageUserId: "i0GrcLgkBBoLrBgGtrjp")
+        self.viewModel.loadRecipes(kikurageUserId: LoginHelper.kikurageUserId!)
     }
 }
 

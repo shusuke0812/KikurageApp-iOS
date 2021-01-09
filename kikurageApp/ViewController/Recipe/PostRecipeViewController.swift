@@ -17,10 +17,8 @@ class PostRecipeViewController: UIViewController {
     private var viewModel: PostRecipeViewModel!
     /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
-    
+    /// Date型変換ヘルパー
     private let dateHelper: DateHelper = DateHelper()
-    // テスト用ID（後で消す）
-    let userId: String = "i0GrcLgkBBoLrBgGtrjp"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +46,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
             // HUD表示（始）
             HUD.show(.progress)
-            self.viewModel.postRecipe(kikurageUserId: self.userId)
+            self.viewModel.postRecipe(kikurageUserId: LoginHelper.kikurageUserId!)
         }
     }
     func didTapCloseButton() {
@@ -135,7 +133,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         // nil要素を取り除き、選択した画像のみData型に変換する
         let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter{ $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        self.viewModel.postRecipeImages(kikurageUserId: self.userId, imageData: postIamgeData)
+        self.viewModel.postRecipeImages(kikurageUserId: LoginHelper.kikurageUserId!, imageData: postIamgeData)
     }
     func didFailedPostRecipe(errorMessage: String) {
         print(errorMessage)

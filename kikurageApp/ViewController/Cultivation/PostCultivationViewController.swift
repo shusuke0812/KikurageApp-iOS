@@ -16,13 +16,8 @@ class PostCultivationViewController: UIViewController {
     private var viewModel: PostCultivationViewModel!
     /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
-    /// きくらげユーザーID
-    var kikurageUserId: String?
-    
+    /// Date型変換ヘルパー
     private let dateHelper: DateHelper = DateHelper()
-    
-    // テスト用ID（後で消す）
-    let userId: String = "i0GrcLgkBBoLrBgGtrjp"
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -50,7 +45,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
             // HUD表示（始）
             HUD.show(.progress)
-            self.viewModel.postCultivation(kikurageUserId: self.userId)
+            self.viewModel.postCultivation(kikurageUserId: LoginHelper.kikurageUserId!)
         }
     }
     func didTapCloseButton() {
@@ -92,7 +87,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         // nil要素を取り除いた選択した画像のみのData型に変換する
         let postImageData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter{ $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        self.viewModel.postCultivationImages(kikurageUserId: self.userId, imageData: postImageData)
+        self.viewModel.postCultivationImages(kikurageUserId: LoginHelper.kikurageUserId!, imageData: postImageData)
     }
     func didFailedPostCultivation(errorMessage: String) {
         print(errorMessage)
