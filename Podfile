@@ -12,7 +12,7 @@ target 'kikurageApp' do
 	pod 'Firebase/Storage'
 	pod 'FirebaseFirestoreSwift', '~> 0.2'
   pod 'FirebaseUI/Storage', '~> 8.0'
-  pod 'Charts', '~> 3.0'
+  pod 'Charts'
 	pod 'IQKeyboardManagerSwift'
 	pod 'SwiftDate', '~> 5.0'
 	pod 'PKHUD', '~> 5.0'

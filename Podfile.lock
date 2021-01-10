@@ -350,7 +350,7 @@ PODS:
   - SwiftDate (5.1.0)
 
 DEPENDENCIES:
-  - Charts (~> 3.0)
+  - Charts
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
@@ -419,6 +419,6 @@ SPEC CHECKSUMS:
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: 0a5131fa1ec8f110a740acf9a2c2732fe839f617
+PODFILE CHECKSUM: ad00f123014d27a3fa86ab139faafc1aaa3f2667
 
 COCOAPODS: 1.9.3
