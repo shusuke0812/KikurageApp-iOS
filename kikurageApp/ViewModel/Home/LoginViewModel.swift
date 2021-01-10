@@ -20,6 +20,11 @@ protocol LoginViewModelDelegate: class {
     /// きくらげユーザーの登録に失敗した
     /// - Parameter errorMessage: エラーメッセージ
     func didFailedPostKikurageUser(errorMessage: String)
+    /// きくらげユーザーの取得に成功した
+    func didSuccessGetKikurageUser()
+    /// きくらげユーザーの取得に失敗した
+    /// - Parameter errorMessage: エラーメッセージ
+    func didFailedGetKikurageUser(errorMessage: String)
 }
 
 class LoginViewModel {
@@ -88,8 +93,24 @@ extension LoginViewModel {
                                     self?.delegate?.didSuccessPostKikurageUser()
                                  case .failure(let error):
                                      print("DEBUG: \(error)")
-                                     self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+                                     self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを登録できませんでした")
                                  }
+                             })
+    }
+    /// きくらげユーザーを取得する
+    /// - Parameter uid: ユーザーID
+    func loadKikurageUser(uid: String) {
+        self.kikurageUserRepository
+            .getKikurageUser(uid: uid,
+                             completion: { [weak self] response in
+                                switch response {
+                                case .success(let kikurageUser):
+                                    self?.kikurageUser = kikurageUser
+                                    self?.delegate?.didSuccessGetKikurageUser()
+                                case .failure(let error):
+                                    print(error)
+                                    self?.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでし")
+                                }
                              })
     }
 }
