@@ -254,12 +254,40 @@
 		9C82B41B253056BC00E650B5 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
-				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
 				9C0DCF932546F55800C27051 /* MainAdviceView.swift */,
 				9C0DCF962546F58600C27051 /* MainAdviceView.xib */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		9C8674D925AAA72D0041AAF1 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		9C8674DA25AAA7490041AAF1 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
+				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		9C8674DB25AAA7720041AAF1 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		9C8674DC25AAA7800041AAF1 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		9C8A0C41255CEB2400E1C98C /* Home */ = {
@@ -386,6 +414,7 @@
 				9CDD1F5E25A68232006DA852 /* Home */,
 				9CDD1F5D25A68216006DA852 /* Cultivation */,
 				9CDD1F5C25A68206006DA852 /* Recipe */,
+				9C8674D925AAA72D0041AAF1 /* SideMenu */,
 				9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */,
 			);
 			path = ViewModel;
@@ -398,6 +427,7 @@
 				9CDD1F6025A68257006DA852 /* Cultivation */,
 				9CDD1F6125A6827A006DA852 /* Recipe */,
 				9CDD1F6225A684F0006DA852 /* Communication */,
+				9C8674DA25AAA7490041AAF1 /* SideMenu */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -485,6 +515,7 @@
 				9CAFF9AD255CD1FA00418745 /* Cultivation */,
 				9CAFF9AE255CD20500418745 /* Recipe */,
 				9CAFF9AF255CD21500418745 /* Communication */,
+				9C8674DC25AAA7800041AAF1 /* SideMenu */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -496,6 +527,7 @@
 				9C8A0C42255CEB2B00E1C98C /* Cultivation */,
 				9C8A0C43255CEB3400E1C98C /* Recipe */,
 				9C8A0C44255CEB3D00E1C98C /* Communication */,
+				9C8674DB25AAA7720041AAF1 /* SideMenu */,
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
