@@ -15,6 +15,7 @@ protocol SideMenuBaseViewDelegate: class {
 
 class SideMenuBaseView: UIView {
     
+    @IBOutlet weak var sideMenuParentView: UIView!
     @IBOutlet weak var calendarView: SideMenuContentView!
     @IBOutlet weak var graphView: SideMenuContentView!
     @IBOutlet weak var contactView: SideMenuContentView!
@@ -27,6 +28,7 @@ class SideMenuBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.initViewTag()
     }
     // MARK: - Action Method
     @IBAction func didTapContactCell(_ sender: Any) {
@@ -35,5 +37,7 @@ class SideMenuBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension SideMenuBaseView {
-    
+    func initViewTag() {
+        self.sideMenuParentView.tag = Constants.ViewTag.sideMenuParent
+    }
 }
