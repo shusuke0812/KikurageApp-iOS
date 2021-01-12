@@ -42,3 +42,14 @@ extension GraphBaseView {
         self.humidityLabel.text = "湿度"
     }
 }
+// MARK: - Setting UI Method
+extension GraphBaseView {
+    func setTemperatureLineChartView(datas: [Int]) {
+        var entry: [ChartDataEntry] = []
+        for (i, data) in datas.enumerated() {
+            entry.append(ChartDataEntry(x: Double(i), y: Double(data)))
+        }
+        let dataSet = LineChartDataSet(entry)
+        self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
+    }
+}
