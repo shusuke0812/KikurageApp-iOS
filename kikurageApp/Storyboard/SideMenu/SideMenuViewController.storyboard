@@ -14,7 +14,7 @@
         <scene sceneID="ZGN-dC-Lk5">
             <objects>
                 <viewController id="VK8-bK-HN2" customClass="SideMenuViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" tag="1" contentMode="scaleToFill" id="KJR-Rl-5b5">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="KJR-Rl-5b5" customClass="SideMenuBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -61,7 +61,7 @@
                                             <constraint firstAttribute="height" constant="40" id="b2T-UV-LfA"/>
                                         </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="6XE-I6-Xli" appends="YES" id="1Gh-7f-GaB"/>
+                                            <outletCollection property="gestureRecognizers" destination="6XE-I6-Xli" appends="YES" id="Vgw-vl-0uo"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eqp-vu-1r6" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
@@ -130,22 +130,24 @@
                             <constraint firstItem="WOe-Kw-hb2" firstAttribute="leading" secondItem="KJR-Rl-5b5" secondAttribute="leading" id="qnr-X3-9mv"/>
                             <constraint firstItem="WOe-Kw-hb2" firstAttribute="top" secondItem="KJR-Rl-5b5" secondAttribute="top" id="tAd-ee-pEg"/>
                         </constraints>
+                        <connections>
+                            <outlet property="calendarView" destination="Fn5-HF-Gcq" id="eDG-im-bXQ"/>
+                            <outlet property="contactView" destination="Gax-8z-pJ1" id="yiV-pE-jXN"/>
+                            <outlet property="graphView" destination="pIj-Qc-hkB" id="foB-9l-ej2"/>
+                            <outlet property="kikurageDictionaryView" destination="cIH-Wy-bU2" id="SUd-sj-Fq6"/>
+                            <outlet property="licenseView" destination="53I-Gs-EQW" id="pg8-s1-2AR"/>
+                            <outlet property="searchRecipeView" destination="6Xr-TQ-aG9" id="mV4-R6-7Zj"/>
+                            <outlet property="settingView" destination="Eqp-vu-1r6" id="7nV-VE-6us"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="calendarView" destination="Fn5-HF-Gcq" id="rFv-i1-FwW"/>
-                        <outlet property="contactView" destination="Gax-8z-pJ1" id="MtH-Zq-EX1"/>
-                        <outlet property="graphView" destination="pIj-Qc-hkB" id="yHN-K8-2E6"/>
-                        <outlet property="kikurageDictionaryView" destination="cIH-Wy-bU2" id="HUT-5j-enH"/>
-                        <outlet property="licenseView" destination="53I-Gs-EQW" id="oqF-re-RhK"/>
-                        <outlet property="searchRecipeView" destination="6Xr-TQ-aG9" id="spE-vE-fht"/>
-                        <outlet property="settingView" destination="Eqp-vu-1r6" id="EfM-sz-QLK"/>
                         <outlet property="sideMenuView" destination="WOe-Kw-hb2" id="g2M-jZ-KfP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRM-bk-7ne" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6XE-I6-Xli">
                     <connections>
-                        <action selector="didTapContactContent:" destination="VK8-bK-HN2" id="ZxF-Qk-gdz"/>
+                        <action selector="didTapContactCell:" destination="KJR-Rl-5b5" id="JyS-Xl-zPR"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
