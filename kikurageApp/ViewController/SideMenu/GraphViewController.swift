@@ -9,8 +9,23 @@
 import UIKit
 
 class GraphViewController: UIViewController {
+    
+    /// BaseView
+    private var baseView: GraphBaseView { self.view as! GraphBaseView }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+}
+// MARK: - Initialized Method
+extension GraphViewController {
+    private func setDelegateDataSource() {
+        self.baseView.delegate = self
+    }
+}
+// MARK: - GraphBaseView Delegate Method
+extension GraphViewController: GraphBaseViewDelegate {
+    func didTapCloseButton() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
