@@ -264,6 +264,8 @@
 			children = (
 				9C0DCF932546F55800C27051 /* MainAdviceView.swift */,
 				9C0DCF962546F58600C27051 /* MainAdviceView.xib */,
+				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
+				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -279,8 +281,6 @@
 		9C8674DA25AAA7490041AAF1 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
-				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
 				9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */,
 			);
 			path = SideMenu;
