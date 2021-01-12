@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vh-6Y-Jv2">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vh-6Y-Jv2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="bqu-up-xhg">
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="9Ie-1Q-Syt">
@@ -31,11 +30,58 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oef-Md-Gap">
+                                <rect key="frame" x="20" y="128" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0V4-CD-NPR" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="10" y="138" width="394" height="210"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0V4-CD-NPR" secondAttribute="height" multiplier="15:8" id="Ced-uA-FsV"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96e-i6-yWq">
+                                <rect key="frame" x="20" y="388" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9v-nG-Lqq" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="398" width="414" height="221"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="r9v-nG-Lqq" secondAttribute="height" multiplier="15:8" id="Niz-f4-UEw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n5m-bS-YIJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="r9v-nG-Lqq" firstAttribute="top" secondItem="96e-i6-yWq" secondAttribute="bottom" constant="10" id="2ah-QI-0HM"/>
+                            <constraint firstItem="Oef-Md-Gap" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="20" id="2oZ-jW-Val"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="r9v-nG-Lqq" secondAttribute="trailing" id="77x-xn-qAB"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="96e-i6-yWq" secondAttribute="trailing" constant="20" id="CNJ-fC-1BP"/>
+                            <constraint firstItem="0V4-CD-NPR" firstAttribute="top" secondItem="Oef-Md-Gap" secondAttribute="bottom" constant="10" id="EgL-yr-RbQ"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="0V4-CD-NPR" secondAttribute="trailing" constant="10" id="IUK-Q2-huj"/>
+                            <constraint firstItem="0V4-CD-NPR" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="10" id="MIq-Rm-tvF"/>
+                            <constraint firstItem="96e-i6-yWq" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="20" id="RPv-Oh-DHU"/>
+                            <constraint firstItem="r9v-nG-Lqq" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" id="Sea-6y-0Fb"/>
+                            <constraint firstItem="8vh-6Y-Jv2" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" id="TQp-Oj-tom"/>
+                            <constraint firstItem="96e-i6-yWq" firstAttribute="top" secondItem="0V4-CD-NPR" secondAttribute="bottom" constant="40" id="dDV-a7-jnz"/>
+                            <constraint firstItem="8vh-6Y-Jv2" firstAttribute="top" secondItem="n5m-bS-YIJ" secondAttribute="top" id="ev3-63-O8m"/>
+                            <constraint firstItem="Oef-Md-Gap" firstAttribute="top" secondItem="8vh-6Y-Jv2" secondAttribute="bottom" constant="40" id="p5Q-jU-XDb"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="Oef-Md-Gap" secondAttribute="trailing" constant="20" id="qwr-41-Mqo"/>
+                            <constraint firstItem="8vh-6Y-Jv2" firstAttribute="trailing" secondItem="n5m-bS-YIJ" secondAttribute="trailing" id="zME-Lb-gGN"/>
+                        </constraints>
                         <connections>
+                            <outlet property="humidityLabel" destination="96e-i6-yWq" id="vNw-IF-AUf"/>
+                            <outlet property="humidityLineChartView" destination="r9v-nG-Lqq" id="fwx-vd-ZJP"/>
                             <outlet property="navigationItem" destination="bqu-up-xhg" id="OmL-8C-az4"/>
+                            <outlet property="temperatureLabel" destination="Oef-Md-Gap" id="BlQ-De-m7m"/>
+                            <outlet property="temperatureLineChartView" destination="0V4-CD-NPR" id="1nN-HX-TMP"/>
                         </connections>
                     </view>
                 </viewController>
