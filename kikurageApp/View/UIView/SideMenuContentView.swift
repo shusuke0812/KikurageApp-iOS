@@ -9,22 +9,23 @@
 import UIKit
 
 class SideMenuContentView: XibView {
+    
     @IBOutlet weak var sideMenuContentIconView: UIImageView!
     @IBOutlet weak var sideMenuContentLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setUI()
+        self.setBoarder
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setUI()
+        self.setBoarder
     }
 }
 
 // MARK: - Initialized Method
 extension SideMenuContentView {
-    private func setUI() {
+    private func setBoarder() {
         // Viewの上下に枠線を引く
         self.setFrameBoarder(width: 0.5, color: .lightGray, position: .top)
         self.setFrameBoarder(width: 0.5, color: .lightGray, position: .bottom)
