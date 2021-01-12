@@ -20,15 +20,17 @@ class SideMenuBaseView: UIView {
     @IBOutlet weak var graphView: SideMenuContentView!
     @IBOutlet weak var contactView: SideMenuContentView!
     @IBOutlet weak var settingView: SideMenuContentView!
+    @IBOutlet weak var licenseView: SideMenuContentView!
     @IBOutlet weak var searchRecipeView: SideMenuContentView!
     @IBOutlet weak var kikurageDictionaryView: SideMenuContentView!
-    @IBOutlet weak var licenseView: SideMenuContentView!
     /// デリゲート
     internal weak var delegate: SideMenuBaseViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initViewTag()
+        self.initSideMenuContent()
+        self.initSideMenuBoarderLine()
     }
     // MARK: - Action Method
     @IBAction func didTapContactCell(_ sender: Any) {
@@ -37,7 +39,25 @@ class SideMenuBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension SideMenuBaseView {
-    func initViewTag() {
-        self.sideMenuParentView.tag = Constants.ViewTag.sideMenuParent
+    private func initViewTag() {
+        self.tag = Constants.ViewTag.sideMenuBase
+    }
+    private func initSideMenuContent() {
+        self.calendarView.setSideMenuContent(title: "カレンダー", imageSystemName: "calendar")
+        self.graphView.setSideMenuContent(title: "グラフ", imageSystemName: "waveform.path.ecg")
+        self.contactView.setSideMenuContent(title: "問い合わせ", imageSystemName: "questionmark.circle")
+        self.settingView.setSideMenuContent(title: "設定", imageSystemName: "gearshape")
+        self.licenseView.setSideMenuContent(title: "著作権", imageSystemName: "info.circle")
+        self.searchRecipeView.setSideMenuContent(title: "料理レシピ検索", imageSystemName: "magnifyingglass")
+        self.kikurageDictionaryView.setSideMenuContent(title: "きくらげ豆知識", imageSystemName: "doc.text")
+    }
+    private func initSideMenuBoarderLine() {
+        self.calendarView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
+        self.graphView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        self.contactView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
+        self.settingView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        self.licenseView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        self.searchRecipeView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
+        self.kikurageDictionaryView.setBoarder(topWidth: nil, bottomWidth: 0.5)
     }
 }

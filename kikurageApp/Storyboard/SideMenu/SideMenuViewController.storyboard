@@ -14,7 +14,7 @@
         <scene sceneID="ZGN-dC-Lk5">
             <objects>
                 <viewController id="VK8-bK-HN2" customClass="SideMenuViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" tag="1" contentMode="scaleToFill" id="KJR-Rl-5b5" customClass="SideMenuBaseView" customModule="きくらげ君" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="KJR-Rl-5b5" customClass="SideMenuBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -138,11 +138,9 @@
                             <outlet property="licenseView" destination="53I-Gs-EQW" id="pg8-s1-2AR"/>
                             <outlet property="searchRecipeView" destination="6Xr-TQ-aG9" id="mV4-R6-7Zj"/>
                             <outlet property="settingView" destination="Eqp-vu-1r6" id="7nV-VE-6us"/>
+                            <outlet property="sideMenuParentView" destination="WOe-Kw-hb2" id="gim-IM-4pU"/>
                         </connections>
                     </view>
-                    <connections>
-                        <outlet property="sideMenuView" destination="WOe-Kw-hb2" id="g2M-jZ-KfP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRM-bk-7ne" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6XE-I6-Xli">
