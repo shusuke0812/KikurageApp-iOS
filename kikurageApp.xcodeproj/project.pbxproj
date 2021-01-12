@@ -289,6 +289,7 @@
 		9C8674DB25AAA7720041AAF1 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
 				9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */,
 			);
 			path = SideMenu;
@@ -297,6 +298,7 @@
 		9C8674DC25AAA7800041AAF1 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
 			);
 			path = SideMenu;
@@ -305,7 +307,6 @@
 		9C8A0C41255CEB2400E1C98C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
 				9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */,
 				9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */,
 			);
@@ -386,7 +387,6 @@
 		9CAFF9AC255CD1E900418745 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
 				9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */,
 				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
 			);
