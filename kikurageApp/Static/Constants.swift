@@ -43,6 +43,10 @@ struct Constants {
         /// きくらげ栽培開始日のTextFieldタグ番号
         internal static let cultivationStartDate = 5
     }
+    struct ViewTag {
+        /// サイドメニューの親Viewタグ番号
+        internal static let sideMenuParent = 1
+    }
     struct Image {
         /// 画像読み込み中の表示
         internal static let loading = UIImage(named: "loading")
