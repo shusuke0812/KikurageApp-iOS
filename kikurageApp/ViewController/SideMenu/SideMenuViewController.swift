@@ -99,6 +99,8 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
         self.openContactMailer()
     }
     func didTapGraphCell() {
-        
+        let s = UIStoryboard(name: "GraphViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! GraphViewController
+        self.present(vc, animated: true, completion: nil)
     }
 }
