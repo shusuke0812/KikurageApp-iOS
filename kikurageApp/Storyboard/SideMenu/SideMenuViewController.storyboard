@@ -49,9 +49,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-Qc-hkB" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="167" width="210" height="40"/>
                                         <color key="backgroundColor" name="themeColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="4Yz-DT-JFh"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6DO-Yh-sH2" appends="YES" id="KO3-9L-xZe"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-8z-pJ1" customClass="SideMenuContentView" customModule="きくらげ君" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="247" width="210" height="40"/>
@@ -146,6 +150,11 @@
                 <tapGestureRecognizer id="6XE-I6-Xli">
                     <connections>
                         <action selector="didTapContactCell:" destination="KJR-Rl-5b5" id="JyS-Xl-zPR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="6DO-Yh-sH2">
+                    <connections>
+                        <action selector="didTapGraphCell:" destination="KJR-Rl-5b5" id="ejZ-2D-ghe"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

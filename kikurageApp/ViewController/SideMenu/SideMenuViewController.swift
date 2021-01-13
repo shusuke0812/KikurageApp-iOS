@@ -98,4 +98,7 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
     func didTapContactCell() {
         self.openContactMailer()
     }
+    func didTapGraphCell() {
+        
+    }
 }

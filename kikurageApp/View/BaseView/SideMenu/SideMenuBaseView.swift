@@ -11,6 +11,8 @@ import UIKit
 protocol SideMenuBaseViewDelegate: class {
     /// 問い合わせをタップした時の処理
     func didTapContactCell()
+    /// グラフをタップした時の処理
+    func didTapGraphCell()
 }
 
 class SideMenuBaseView: UIView {
@@ -35,6 +37,9 @@ class SideMenuBaseView: UIView {
     // MARK: - Action Method
     @IBAction func didTapContactCell(_ sender: Any) {
         self.delegate?.didTapContactCell()
+    }
+    @IBAction func didTapGraphCell(_ sender: Any) {
+        self.delegate?.didTapGraphCell()
     }
 }
 // MARK: - Initialized Method
