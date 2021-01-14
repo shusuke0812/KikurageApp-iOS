@@ -10,11 +10,16 @@ import Firebase
 import FirebaseFirestoreSwift
 
 protocol KikurageStateRepositoryProtocol {
-    /// KikurageStateを読み込む（GET）
+    /// KikurageStateを読み込む
     /// - Parameters:
-    ///   - productId: ユーザーID
+    ///   - productId: プロダクトキー（ドキュメントID）
     ///   - completion: 読み込み成功、失敗のハンドル
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, Error>) -> Void)
+    /// グラフデータを読み込む
+    /// - Parameters:
+    ///   - productId: プロダクトキー（ドキュメントID）
+    ///   - completion: 読み込み成功、失敗のハンドル
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], Error>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -39,6 +44,31 @@ extension KikurageStateRepository {
                 completion(.success(kikurageState))
             } catch (let error) {
                 fatalError(error.localizedDescription)
+            }
+        }
+    }
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], Error>) -> Void) {
+        let db = Firestore.firestore()
+        let collectionRef: CollectionReference = db.collection(Constants.FirestoreCollectionName.states).document(productId).collection(Constants.FirestoreCollectionName.graph)
+        
+        collectionRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let snapshot = snapshot else {
+                completion(.failure(NetworkError.unknown))
+                return
+            }
+            var graphs: [(graph: KikurageStateGraph, documentId: String)] = []
+            do {
+                for document in snapshot.documents {
+                    let graph = try Firestore.Decoder().decode(KikurageStateGraph.self, from: document.data())
+                    graphs.append((graph: graph, documentId: document.documentID))
+                }
+                completion(.success(graphs))
+            } catch (let error) {
+                completion(.failure(error))
             }
         }
     }
