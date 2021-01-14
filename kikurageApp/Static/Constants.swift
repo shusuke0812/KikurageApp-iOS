@@ -20,6 +20,8 @@ struct Constants {
     struct FirestoreCollectionName {
         /// 栽培ステートコレクション
         internal static let states = "kikurageStates"
+        /// 栽培ステート配下のグラフサブコレクション名
+        internal static let graph = "graph"
         /// ユーザーコレクション名
         internal static let users = "kikurageUsers"
         /// ユーザー配下の栽培サブコレクション名
