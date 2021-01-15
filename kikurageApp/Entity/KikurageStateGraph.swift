@@ -20,13 +20,13 @@ struct KikurageStateGraph: Codable {
     var sundayData: TimeData?
     
     enum CodingKeys: String, CodingKey {
-        case mondayData
-        case tuesdayData
-        case wednesdayData
-        case thursdayData
-        case fridayData
-        case saturdayData
-        case sundayData
+        case mondayData = "monday"
+        case tuesdayData = "tuesday"
+        case wednesdayData = "wednesday"
+        case thursdayData = "thursday"
+        case fridayData = "friday"
+        case saturdayData = "saturday"
+        case sundayData = "sunday"
     }
 }
 
