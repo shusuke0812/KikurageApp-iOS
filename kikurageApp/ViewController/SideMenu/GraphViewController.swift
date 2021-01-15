@@ -12,9 +12,12 @@ class GraphViewController: UIViewController {
     
     /// BaseView
     private var baseView: GraphBaseView { self.view as! GraphBaseView }
+    /// ViewModel
+    private var viewModel: GraphViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository())
         self.setDelegateDataSource()
     }
 }
@@ -22,11 +25,21 @@ class GraphViewController: UIViewController {
 extension GraphViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
+        self.viewModel.delegate = self
     }
 }
 // MARK: - GraphBaseView Delegate Method
 extension GraphViewController: GraphBaseViewDelegate {
     func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+// MARK: - GraphViewModel Delegate Method
+extension GraphViewController: GraphViewModelDelegate {
+    func didSuccessGetKikurageStateGraph() {
+        <#code#>
+    }
+    func didFailedGetKikurageStateGraph(errorMessage: String) {
+        <#code#>
     }
 }
