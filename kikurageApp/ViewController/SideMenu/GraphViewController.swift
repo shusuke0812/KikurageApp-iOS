@@ -17,8 +17,9 @@ class GraphViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository())
+        self.viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
+        self.loadKikurageUser()
     }
 }
 // MARK: - Initialized Method
@@ -26,6 +27,14 @@ extension GraphViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
         self.viewModel.delegate = self
+    }
+    private func loadKikurageUser() {
+        guard let userId = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) else { return }
+        self.viewModel.loadKikurageUser(uid: userId)
+    }
+    private func loadKikurageStateGraph() {
+        guard let kikurageUser = self.viewModel.kikurageUser else { return }
+        self.viewModel.loadKikurageStateGraph(productId: kikurageUser.productKey)
     }
 }
 // MARK: - GraphBaseView Delegate Method
@@ -37,9 +46,15 @@ extension GraphViewController: GraphBaseViewDelegate {
 // MARK: - GraphViewModel Delegate Method
 extension GraphViewController: GraphViewModelDelegate {
     func didSuccessGetKikurageStateGraph() {
-        <#code#>
+        print(self.viewModel.kikurageStateGraph)
     }
     func didFailedGetKikurageStateGraph(errorMessage: String) {
-        <#code#>
+        print(errorMessage)
+    }
+    func didSuccessGetKikurageUser() {
+        self.loadKikurageStateGraph()
+    }
+    func didFailedGetKikurageUser(errorMessage: String) {
+        print(errorMessage)
     }
 }
