@@ -9,6 +9,11 @@
 import UIKit
 import Charts
 
+enum GraphDataType {
+    case temperature
+    case humidity
+}
+
 protocol GraphBaseViewDelegate: class {
     /// 閉じるボタンを押した時の処理
     func didTapCloseButton()
@@ -44,12 +49,21 @@ extension GraphBaseView {
 }
 // MARK: - Setting UI Method
 extension GraphBaseView {
-    func setTemperatureLineChartView(datas: [Int]) {
+    /// 折れ線グラフ描画処理
+    /// - Parameters:
+    ///   - datas: グラフデータ（Y軸）
+    ///   - graphDataType: 温度 or 湿度
+    func setLineChartView(datas: [Int], graphDataType: GraphDataType) {
+        // ChartDataEntryクラスにデータを反映
         var entry: [ChartDataEntry] = []
         for (i, data) in datas.enumerated() {
             entry.append(ChartDataEntry(x: Double(i), y: Double(data)))
         }
         let dataSet = LineChartDataSet(entry)
-        self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
+        // ChartView設定
+        switch graphDataType {
+        case .temperature:  self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
+        case .humidity: self.humidityLineChartView.data = LineChartData(dataSet: dataSet)
+        }
     }
 }
