@@ -46,7 +46,8 @@ extension GraphViewController: GraphBaseViewDelegate {
 // MARK: - GraphViewModel Delegate Method
 extension GraphViewController: GraphViewModelDelegate {
     func didSuccessGetKikurageStateGraph() {
-        print(self.viewModel.kikurageStateGraph)
+        self.baseView.setLineChartView(datas: self.viewModel.humidityGraphDatas, graphDataType: .humidity)
+        self.baseView.setLineChartView(datas: self.viewModel.temperatureGraphDatas, graphDataType: .temperature)
     }
     func didFailedGetKikurageStateGraph(errorMessage: String) {
         print(errorMessage)
