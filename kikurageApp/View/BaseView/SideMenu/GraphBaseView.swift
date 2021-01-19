@@ -49,21 +49,38 @@ extension GraphBaseView {
 }
 // MARK: - Setting UI Method
 extension GraphBaseView {
+    // TODO: 温度・湿度のグラフの体裁を設定する処理が同じなのでまとめたい
     /// 折れ線グラフ描画処理
     /// - Parameters:
     ///   - datas: グラフデータ（Y軸）
     ///   - graphDataType: 温度 or 湿度
     func setLineChartView(datas: [Int], graphDataType: GraphDataType) {
         // ChartDataEntryクラスにデータを反映
-        var entry: [ChartDataEntry] = []
+        var entrys: [ChartDataEntry] = []
         for (i, data) in datas.enumerated() {
-            entry.append(ChartDataEntry(x: Double(i), y: Double(data)))
+            entrys.append(ChartDataEntry(x: Double(i), y: Double(data)))
         }
-        let dataSet = LineChartDataSet(entry)
+        // 閾値線の設定
+        let temperatureLimitLine = ChartLimitLine(limit: 20.0)
+        let humidityLimitLine = ChartLimitLine(limit: 80.0)
+        temperatureLimitLine.lineDashLengths = [4.0]
+        humidityLimitLine.lineDashLengths = [4.0]
         // ChartView設定
         switch graphDataType {
-        case .temperature:  self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
-        case .humidity: self.humidityLineChartView.data = LineChartData(dataSet: dataSet)
+        case .temperature:
+            let dataSet = LineChartDataSet(values: entrys, label: "[℃]")
+            dataSet.colors = [.subColor]
+            dataSet.circleColors = [.subColor]
+            self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
+            self.temperatureLineChartView.xAxis.labelPosition = .bottom
+            self.temperatureLineChartView.leftAxis.addLimitLine(temperatureLimitLine)
+        case .humidity:
+            let dataSet = LineChartDataSet(values: entrys, label: "[%]")
+            dataSet.colors = [.subColor]
+            dataSet.circleColors = [.subColor]
+            self.humidityLineChartView.data = LineChartData(dataSet: dataSet)
+            self.humidityLineChartView.xAxis.labelPosition = .bottom
+            self.humidityLineChartView.leftAxis.addLimitLine(humidityLimitLine)
         }
     }
 }
