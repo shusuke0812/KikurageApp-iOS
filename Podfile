@@ -6,16 +6,20 @@ target 'kikurageApp' do
   use_frameworks!
 
   # Pods for kikurageApp
-  pod 'Firebase/Core'
+  # Firebase
+	pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
 	pod 'Firebase/Storage'
 	pod 'FirebaseFirestoreSwift', '~> 0.2'
   pod 'FirebaseUI/Storage', '~> 8.0'
-  pod 'Charts'
+  # UI
+	pod 'Charts'
 	pod 'IQKeyboardManagerSwift'
-	pod 'SwiftDate', '~> 5.0'
 	pod 'PKHUD', '~> 5.0'
+	pod 'HorizonCalendar'
+	# Other
+	pod 'SwiftDate', '~> 5.0'
 
 end
 

@@ -335,6 +335,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.4.0)
+  - HorizonCalendar (1.6.5)
   - IQKeyboardManagerSwift (6.5.6)
   - leveldb-library (1.22)
   - nanopb (1.30906.0):
@@ -357,6 +358,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseFirestoreSwift (~> 0.2)
   - FirebaseUI/Storage (~> 8.0)
+  - HorizonCalendar
   - IQKeyboardManagerSwift
   - PKHUD (~> 5.0)
   - SwiftDate (~> 5.0)
@@ -383,6 +385,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - HorizonCalendar
     - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
@@ -411,6 +414,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  HorizonCalendar: bf90307200232779094ef5b85cb09a30a029c60a
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
@@ -419,6 +423,6 @@ SPEC CHECKSUMS:
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: ad00f123014d27a3fa86ab139faafc1aaa3f2667
+PODFILE CHECKSUM: 5dc47b01fc4a07c083c0b1424f591e103b585bf9
 
 COCOAPODS: 1.9.3
