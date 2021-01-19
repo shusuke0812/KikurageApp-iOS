@@ -11,6 +11,8 @@ import UIKit
 protocol SideMenuBaseViewDelegate: class {
     /// 問い合わせをタップした時の処理
     func didTapContactCell()
+    /// カレンダーをタップした時の処理
+    func didTapCalendarCell()
     /// グラフをタップした時の処理
     func didTapGraphCell()
 }
@@ -40,6 +42,9 @@ class SideMenuBaseView: UIView {
     }
     @IBAction func didTapGraphCell(_ sender: Any) {
         self.delegate?.didTapGraphCell()
+    }
+    @IBAction func didTapCalendarCell(_ sender: Any) {
+        self.delegate?.didTapCalendarCell()
     }
 }
 // MARK: - Initialized Method

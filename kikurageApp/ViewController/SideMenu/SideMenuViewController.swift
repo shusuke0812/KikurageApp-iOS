@@ -103,4 +103,9 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
         let vc = s.instantiateInitialViewController() as! GraphViewController
         self.present(vc, animated: true, completion: nil)
     }
+    func didTapCalendarCell() {
+        let s = UIStoryboard(name: "CalendarViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! CalendarViewController
+        self.present(vc, animated: true, completion: nil)
+    }
 }
