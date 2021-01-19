@@ -21,6 +21,7 @@ class CalendarBaseView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.initUI()
     }
     // MARK: - Action Method
     @IBAction func didTapCloseButton(_ sender: Any) {
