@@ -28,6 +28,8 @@ class GraphBaseView: UIView {
     @IBOutlet weak var humidityLineChartView: LineChartView!
     /// デリゲート
     internal weak var delegate: GraphBaseViewDelegate?
+    /// ChartViewHelper
+    private let chartViewHelper = ChartViewHelper()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,6 +76,7 @@ extension GraphBaseView {
             self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
             self.temperatureLineChartView.xAxis.labelPosition = .bottom
             self.temperatureLineChartView.leftAxis.addLimitLine(temperatureLimitLine)
+            self.temperatureLineChartView.xAxis.valueFormatter = chartViewHelper
         case .humidity:
             let dataSet = LineChartDataSet(values: entrys, label: "[%]")
             dataSet.colors = [.subColor]
@@ -81,6 +84,7 @@ extension GraphBaseView {
             self.humidityLineChartView.data = LineChartData(dataSet: dataSet)
             self.humidityLineChartView.xAxis.labelPosition = .bottom
             self.humidityLineChartView.leftAxis.addLimitLine(humidityLimitLine)
+            self.humidityLineChartView.xAxis.valueFormatter = chartViewHelper
         }
     }
 }
