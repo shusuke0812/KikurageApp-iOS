@@ -12,9 +12,12 @@ class CalendarViewController: UIViewController {
     
     /// BaseView
     private var baseView: CalendarBaseView { self.view as! CalendarBaseView }
+    /// ViewModel
+    private var viewModel: CalendarViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
     }
 }
@@ -28,5 +31,13 @@ extension CalendarViewController {
 extension CalendarViewController: CalendarBaseViewDelegate {
     func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+// MARK: - CalendarViewModel Delegate Method
+extension CalendarViewController: CalendarViewModelDelegate {
+    func didSuccessGetKikurageUser() {
+    }
+    func didFailedGetKikurageUser(errorMessage: String) {
+        print(errorMessage)
     }
 }
