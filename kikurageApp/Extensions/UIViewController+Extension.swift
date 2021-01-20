@@ -16,6 +16,14 @@ extension UIViewController {
     internal func setNavigationBar(title: String) {
         self.title = title
     }
+    /// ナビゲーションrootの遷移先に表示する戻るボタンの設定
+    /// - Parameters:
+    ///   - buttonTitle: 戻るボタン名（例：戻る、空文字""）
+    ///   - buttonColor: 戻るボタン色
+    internal func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: nil, action: nil)
+        self.navigationController!.navigationBar.tintColor = buttonColor
+    }
     /// Safariで指定したURLのページを開く
     /// - Parameters:
     ///   - urlString: URL

@@ -26,12 +26,16 @@ class MainViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // ViewModel
         self.viewModel = MainViewModel(
             kikurageStateRepository: KikurageStateRepository(),
             kikurageUser: self.kikurageUser,
             kikurageState: self.kikurageState)
-        self.setDelegateDataSource()
+        // UI
         self.baseView.setKikurageNameUI(kikurageUser: self.viewModel.kikurageUser)
+        self.setNavigationItem()
+        // Utility
+        self.setDelegateDataSource()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -50,7 +54,7 @@ class MainViewController: UIViewController {
 extension MainViewController {
     // ナビゲーションアイテムの設定
     private func setNavigationItem() {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "もどる", style: .plain, target: nil, action: nil)
+        self.setNavigationBackButton(buttonTitle: "もどる", buttonColor: .black)
     }
     // タイマーの設定
     private func setTimer() {
