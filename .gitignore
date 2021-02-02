@@ -102,4 +102,7 @@ iOSInjectionProject/
 # Firebase
 GoogleService-Info.plist
 
+# R.swift
+*.generated.swift
+
 #EOF
