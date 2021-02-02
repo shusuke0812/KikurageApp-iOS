@@ -148,14 +148,12 @@ opt_in_rules:
 
 # Lint対象のパス
 included:
-- iOSEngineerCodeCheck
+- kikurageApp
 
 # Lint対象外のパス
 excluded:
 - Carthage
 - Pods
-- iOSEngineerCodeCheckTests
-- iOSEngineerCodeCheckUITests
 
 # 1行の文字数制限
 line_length:
