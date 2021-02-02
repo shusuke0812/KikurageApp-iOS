@@ -606,6 +606,7 @@
 			buildConfigurationList = 9C1ACF592225768A00A3D4D1 /* Build configuration list for PBXNativeTarget "kikurageApp" */;
 			buildPhases = (
 				CBB3CAA4E7BF53B07E344743 /* [CP] Check Pods Manifest.lock */,
+				9C91E74B25C91C6900B3E2E0 /* R.Swift Run Script */,
 				9C1ACF432225768A00A3D4D1 /* Sources */,
 				9C1ACF442225768A00A3D4D1 /* Frameworks */,
 				9C1ACF452225768A00A3D4D1 /* Resources */,
@@ -701,6 +702,26 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kikurageApp/Pods-kikurageApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9C91E74B25C91C6900B3E2E0 /* R.Swift Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "R.Swift Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */ = {
 			isa = PBXShellScriptBuildPhase;

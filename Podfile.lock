@@ -345,6 +345,9 @@ PODS:
   - nanopb/encode (1.30906.0)
   - PKHUD (5.3.0)
   - PromisesObjC (1.2.10)
+  - R.swift (5.3.1):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
   - SDWebImage (5.9.2):
     - SDWebImage/Core (= 5.9.2)
   - SDWebImage/Core (5.9.2)
@@ -361,6 +364,7 @@ DEPENDENCIES:
   - HorizonCalendar
   - IQKeyboardManagerSwift
   - PKHUD (~> 5.0)
+  - R.swift
   - SwiftDate (~> 5.0)
 
 SPEC REPOS:
@@ -391,6 +395,8 @@ SPEC REPOS:
     - nanopb
     - PKHUD
     - PromisesObjC
+    - R.swift
+    - R.swift.Library
     - SDWebImage
     - SwiftDate
 
@@ -420,9 +426,11 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: 5dc47b01fc4a07c083c0b1424f591e103b585bf9
+PODFILE CHECKSUM: e7c8c6e8db916f4a866840124e52f71e7ab61ef4
 
 COCOAPODS: 1.9.3
