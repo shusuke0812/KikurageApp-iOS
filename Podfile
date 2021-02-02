@@ -7,20 +7,20 @@ target 'kikurageApp' do
 
   # Pods for kikurageApp
   # Firebase
-	pod 'Firebase/Core'
+  pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-	pod 'Firebase/Storage'
-	pod 'FirebaseFirestoreSwift', '~> 0.2'
+  pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift', '~> 0.2'
   pod 'FirebaseUI/Storage', '~> 8.0'
   # UI
-	pod 'Charts'
-	pod 'IQKeyboardManagerSwift'
-	pod 'PKHUD', '~> 5.0'
-	pod 'HorizonCalendar'
-	# Other
-	pod 'SwiftDate', '~> 5.0'
-	pod 'R.swift'
+  pod 'Charts'
+  pod 'IQKeyboardManagerSwift'
+  pod 'PKHUD', '~> 5.0'
+  pod 'HorizonCalendar'
+  # Other
+  pod 'SwiftDate', '~> 5.0'
+  pod 'R.swift'
 
 end
 
