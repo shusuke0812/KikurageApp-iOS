@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CalendarViewModelDelegate: class {
+protocol CalendarViewModelDelegate: AnyObject {
     /// きくらげユーザーの取得に成功した
     func didSuccessGetKikurageUser()
     /// きくらげユーザーの取得に失敗しました
@@ -23,7 +23,7 @@ class CalendarViewModel {
     internal weak var delegate: CalendarViewModelDelegate?
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
-    
+
     init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
     }
@@ -33,17 +33,15 @@ extension CalendarViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository
-            .getKikurageUser(uid: uid,
-                             completion: { [weak self] response in
-                                switch response {
-                                case .success(let kikurageUser):
-                                    self?.kikurageUser = kikurageUser
-                                    self?.delegate?.didSuccessGetKikurageUser()
-                                case .failure(let error):
-                                    print("DEBUG: \(error)")
-                                    self?.delegate?.didFailedGetKikurageUser(errorMessage: "ユーザー情報の取得に失敗しました")
-                                }
-                             })
+        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+            switch response {
+            case .success(let kikurageUser):
+                self?.kikurageUser = kikurageUser
+                self?.delegate?.didSuccessGetKikurageUser()
+            case .failure(let error):
+                print("DEBUG: \(error)")
+                self?.delegate?.didFailedGetKikurageUser(errorMessage: "ユーザー情報の取得に失敗しました")
+            }
+        }
     }
 }

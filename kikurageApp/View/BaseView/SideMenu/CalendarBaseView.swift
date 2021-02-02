@@ -8,23 +8,22 @@
 
 import UIKit
 
-protocol CalendarBaseViewDelegate: class {
+protocol CalendarBaseViewDelegate: AnyObject {
     /// 閉じるボタンを押した時の処理
     func didTapCloseButton()
 }
 
 class CalendarBaseView: UIView {
-    
     @IBOutlet weak var navigationItem: UINavigationItem!
     /// デリゲート
     internal weak var delegate: CalendarBaseViewDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
     }
     // MARK: - Action Method
-    @IBAction func didTapCloseButton(_ sender: Any) {
+    @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
 }

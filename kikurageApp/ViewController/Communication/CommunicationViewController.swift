@@ -9,9 +9,8 @@
 import UIKit
 
 class CommunicationViewController: UIViewController {
-    
     /// BaaseView
-    private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView }
+    private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
     override func viewDidLoad() {

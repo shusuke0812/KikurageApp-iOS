@@ -18,7 +18,7 @@ struct KikurageStateGraph: Codable {
     var fridayData: TimeData?
     var saturdayData: TimeData?
     var sundayData: TimeData?
-    
+
     enum CodingKeys: String, CodingKey {
         case mondayData = "monday"
         case tuesdayData = "tuesday"
@@ -37,7 +37,7 @@ struct TimeData: Codable {
     var temperature: Int?
     // 湿度
     var humidity: Int?
-    
+
     enum CodingKeys: String, CodingKey {
         case date
         case temperature

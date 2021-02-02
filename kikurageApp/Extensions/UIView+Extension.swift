@@ -15,8 +15,8 @@ extension UIView {
     ///   - color: 枠線の色
     ///   - position: 枠線をつける場所
     func setFrameBoarder(width: CGFloat, color: UIColor, position: BoarderPosition) {
-        let boarder: CALayer = CALayer()
-        
+        let boarder = CALayer()
+
         switch position {
         case .top:
             boarder.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: width)

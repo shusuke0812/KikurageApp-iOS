@@ -9,12 +9,11 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    
     /// BaseView
-    private var baseView: CalendarBaseView { self.view as! CalendarBaseView }
+    private var baseView: CalendarBaseView { self.view as! CalendarBaseView } // sswiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: CalendarViewModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())

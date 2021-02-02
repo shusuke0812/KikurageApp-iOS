@@ -11,14 +11,14 @@ import UIKit
 extension UIColor {
     /// テーマカラー
     internal static var themeColor: UIColor {
-        return UIColor(named: "themeColor")!
+        UIColor(named: "themeColor")! // swiftlint:disable:this force_unwrapping
     }
     /// サブカラー
     internal static var subColor: UIColor {
-        return UIColor(named: "subColor")!
+        UIColor(named: "subColor")! // swiftlint:disable:this force_unwrapping
     }
     /// お知らせカラー
     internal static var information: UIColor {
-        return UIColor(named: "informationColor")!
+        UIColor(named: "informationColor")! // swiftlint:disable:this force_unwrapping
     }
 }

@@ -13,7 +13,7 @@ import MessageUI
 
 class MainViewController: UIViewController {
     /// BaseView
-    private var baseView: MainBaseView { return self.view as! MainBaseView}
+    private var baseView: MainBaseView { self.view as! MainBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: MainViewModel!
     /// きくらげの状態
@@ -27,10 +27,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // ViewModel
-        self.viewModel = MainViewModel(
-            kikurageStateRepository: KikurageStateRepository(),
-            kikurageUser: self.kikurageUser,
-            kikurageState: self.kikurageState)
+        self.viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUser: self.kikurageUser, kikurageState: self.kikurageState)
         // UI
         self.baseView.setKikurageNameUI(kikurageUser: self.viewModel.kikurageUser)
         self.setNavigationItem()
@@ -46,6 +43,7 @@ class MainViewController: UIViewController {
         self.baseView.kikurageStatusView.stopAnimating()
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.setTimer()
         self.loadKikurageState()
     }
@@ -75,20 +73,20 @@ extension MainViewController {
 extension MainViewController: MainBaseViewDelegate {
     func didTapCultivationButton() {
         // 栽培記録画面へ遷移
-        let s: UIStoryboard = UIStoryboard(name: "CultivationViewController", bundle: nil)
-        let vc: CultivationViewController = s.instantiateInitialViewController() as! CultivationViewController
+        let s = UIStoryboard(name: "CultivationViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! CultivationViewController // swiftlint:disable:this force_cast
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapRecipeButton() {
         // 料理記録画面へ遷移
-        let s: UIStoryboard = UIStoryboard(name: "RecipeViewController", bundle: nil)
-        let vc: RecipeViewController = s.instantiateInitialViewController() as! RecipeViewController
+        let s = UIStoryboard(name: "RecipeViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! RecipeViewController // swiftlint:disable:this force_cast
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapCommunicationButton() {
         // 相談画面へ遷移
-        let s: UIStoryboard = UIStoryboard(name: "CommunicationViewController", bundle: nil)
-        let vc: CommunicationViewController = s.instantiateInitialViewController() as! CommunicationViewController
+        let s = UIStoryboard(name: "CommunicationViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! CommunicationViewController // swiftlint:disable:this force_cast
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapSideMenuButton() {

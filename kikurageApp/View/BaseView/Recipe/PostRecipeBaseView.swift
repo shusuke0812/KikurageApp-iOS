@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PostRecipeBaseViewDelegate: class {
+protocol PostRecipeBaseViewDelegate: AnyObject {
     /// 料理記録を保存するボタンを押した時の処理
     func didTapPostButton()
     /// 閉じるボタンを押した時の処理
@@ -34,7 +34,7 @@ class PostRecipeBaseView: UIView {
     let maxRecipeNameNumer = 20
     /// 料理メモの最大入力可能文字数
     let maxRecipeMemoNumber = 100
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.registerCameraCell()
@@ -43,10 +43,10 @@ class PostRecipeBaseView: UIView {
         self.initDatePicker()
     }
     // MARK: - Action Method
-    @IBAction func didTapCloseButton(_ sender: Any) {
+    @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
-    @IBAction func didTapPostButton(_ sender: Any) {
+    @IBAction private func didTapPostButton(_ sender: Any) {
         self.delegate?.didTapPostButton()
     }
 }

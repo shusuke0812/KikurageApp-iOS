@@ -9,9 +9,8 @@
 import UIKit
 
 class CultivationDetailViewController: UIViewController {
-    
     /// BaseView
-    private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView }
+    private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: CultivationDetailViewModel!
     /// 前画面から渡された栽培記録データ

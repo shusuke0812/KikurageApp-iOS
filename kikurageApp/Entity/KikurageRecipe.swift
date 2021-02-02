@@ -23,7 +23,7 @@ struct KikurageRecipe: Codable {
     var createdAt: Timestamp?
     /// 更新日
     var updatedAt: Timestamp?
-    
+
     enum CodingKeys: String, CodingKey {
         case name
         case memo
@@ -32,7 +32,7 @@ struct KikurageRecipe: Codable {
         case createdAt
         case updatedAt
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.name, forKey: .name)

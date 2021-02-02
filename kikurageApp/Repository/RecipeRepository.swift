@@ -15,24 +15,20 @@ protocol RecipeRepositoryProtocol {
     ///   - kikurageUserId: ユーザーID
     ///   - kikurageRecipe: Firestoreへ保存する料理記録データ
     ///   - completion: 投稿成功、失敗のハンドル
-    func postRecipe(kikurageUserId: String,
-                    kikurageRecipe: KikurageRecipe,
-                    completion: @escaping (Result<DocumentReference, Error>) -> Void)
+    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, Error>) -> Void)
     /// 料理画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
     ///   - imageStoragePath: 画像を保存するStorageパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func postRecipeImages(imageData: [Data?], imageStoragePath: String,
-                          completion: @escaping (Result<[String], Error>) -> Void)
+    func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void)
     /// 栽培画像のStoragePathを更新する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - documentId: 料理記録のドキュメントID
     ///   - imageStorageFullPaths: Storageに保存した画像のフルパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String],
-                        completion: @escaping (Result<[String], Error>) -> Void)
+    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], Error>) -> Void)
     /// 栽培記録を取得する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
@@ -45,7 +41,7 @@ class RecipeRepository: RecipeRepositoryProtocol {
     private let dateHelper: DateHelper
     // Storageへ保存するデータのメタデータ
     private let metaData: StorageMetadata
-    
+
     init() {
         self.dateHelper = DateHelper()
         self.metaData = StorageMetadata()
@@ -54,14 +50,12 @@ class RecipeRepository: RecipeRepositoryProtocol {
 }
 // MARK: - Firebase Firestore Method
 extension RecipeRepository {
-    func postRecipe(kikurageUserId: String,
-                    kikurageRecipe: KikurageRecipe,
-                    completion: @escaping (Result<DocumentReference, Error>) -> Void) {
+    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, Error>) -> Void) {
         let db = Firestore.firestore()
         var data: [String: Any]!
         do {
             data = try Firestore.Encoder().encode(kikurageRecipe)
-        } catch (let error) {
+        } catch {
             fatalError(error.localizedDescription)
         }
         let dispathGroup = DispatchGroup()
@@ -77,10 +71,7 @@ extension RecipeRepository {
             completion(.success(documentReference))
         }
     }
-    func putRecipeImage(kikurageUserId: String,
-                        documentId: String,
-                        imageStorageFullPaths: [String],
-                        completion: @escaping (Result<[String], Error>) -> Void) {
+    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], Error>) -> Void) {
         let db = Firestore.firestore()
         let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes).document(documentId)
         documentReference.updateData([
@@ -93,11 +84,10 @@ extension RecipeRepository {
             }
         }
     }
-    func getRecipes(kikurageUserId: String,
-                    completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], Error>) -> Void) {
+    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], Error>) -> Void) {
         let db = Firestore.firestore()
         let collectionReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes)
-        collectionReference.getDocuments { (snapshot, error) in
+        collectionReference.getDocuments { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -113,7 +103,7 @@ extension RecipeRepository {
                     recipes.append((recipe: recipe, documentId: document.documentID))
                 }
                 completion(.success(recipes))
-            } catch (let error) {
+            } catch {
                 completion(.failure(error))
             }
         }
@@ -121,9 +111,7 @@ extension RecipeRepository {
 }
 // MARK: - Firebase Storage Method
 extension RecipeRepository {
-    func postRecipeImages(imageData: [Data?],
-                          imageStoragePath: String,
-                          completion: @escaping (Result<[String], Error>) -> Void) {
+    func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void) {
         // 画像保存後のフルパス格納用
         var imageStorageFullPaths: [String] = []
         // 直列処理（画像を１つずつ保存する）
@@ -139,7 +127,7 @@ extension RecipeRepository {
                 }
                 let fileName: String = self.dateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
                 let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
-                _ = storageReference.putData(imageData, metadata: self.metaData) { (metaData, error) in
+                _ = storageReference.putData(imageData, metadata: self.metaData) { _, error in
                     if let error = error {
                         resultError = error
                         dispatchSemaphore.signal()

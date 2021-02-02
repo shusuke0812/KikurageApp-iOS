@@ -30,7 +30,7 @@ extension KikurageStateRepository {
         let db = Firestore.firestore()
         let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productId)
 
-        docRef.getDocument { (snapshot, error) in
+        docRef.getDocument { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -42,7 +42,7 @@ extension KikurageStateRepository {
             do {
                 let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                 completion(.success(kikurageState))
-            } catch (let error) {
+            } catch {
                 fatalError(error.localizedDescription)
             }
         }
@@ -50,8 +50,8 @@ extension KikurageStateRepository {
     func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], Error>) -> Void) {
         let db = Firestore.firestore()
         let collectionRef: CollectionReference = db.collection(Constants.FirestoreCollectionName.states).document(productId).collection(Constants.FirestoreCollectionName.graph)
-        
-        collectionRef.getDocuments { (snapshot, error) in
+
+        collectionRef.getDocuments { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -67,7 +67,7 @@ extension KikurageStateRepository {
                     graphs.append((graph: graph, documentId: document.documentID))
                 }
                 completion(.success(graphs))
-            } catch (let error) {
+            } catch {
                 completion(.failure(error))
             }
         }

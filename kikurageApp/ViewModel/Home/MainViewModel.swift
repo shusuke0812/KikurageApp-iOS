@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-protocol MainViewModelDelgate: class {
+protocol MainViewModelDelgate: AnyObject {
     /// きくらげの状態データ取得に成功した
     func didSuccessGetKikurageState()
     /// きくらげの状態データ取得に失敗した
@@ -30,10 +30,8 @@ class MainViewModel {
     var kikurageUser: KikurageUser!
     /// デリゲート
     internal weak var delegate: MainViewModelDelgate?
-    
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol,
-         kikurageUser: KikurageUser,
-         kikurageState: KikurageState) {
+
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUser = kikurageUser
         self.kikurageState = kikurageState
@@ -47,26 +45,27 @@ class MainViewModel {
 extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        self.kikurageStateRepository
-            .getKikurageState(productId: self.kikurageUser.productKey,
-                              completion: { response in
-                                switch response {
-                                case .success(let kikurageState):
-                                    DispatchQueue.main.async { [weak self] in
-                                        self?.kikurageState = kikurageState
-                                        self?.delegate?.didSuccessGetKikurageState()
-                                    }
-                                case .failure(let error):
-                                    print("DEBUG: \(error)")
-                                    self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
-                                }
-                              })
+        self.kikurageStateRepository.getKikurageState(productId: self.kikurageUser.productKey) { response in
+            switch response {
+            case .success(let kikurageState):
+                DispatchQueue.main.async { [weak self] in
+                    self?.kikurageState = kikurageState
+                    self?.delegate?.didSuccessGetKikurageState()
+                }
+            case .failure(let error):
+                print("DEBUG: \(error)")
+                self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
+            }
+        }
     }
     /// きくらげの状態を監視して更新を通知する
     func setKikurageStateListener() {
-        self.kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageUser.productKey).addSnapshotListener { [weak self] (snapshot, error) in
+        self.kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageUser.productKey).addSnapshotListener { [weak self] snapshot, error in
+            if let error = error {
+                print("DEBUG: \(error)")
+                return
+            }
             guard let snapshot: DocumentSnapshot = snapshot else {
-                print("DEBUG: \(error!)")
                 return
             }
             guard let snapshotData = snapshot.data() else {
@@ -77,7 +76,7 @@ extension MainViewModel {
                 let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                 self?.kikurageState = kikurageState
                 self?.delegate?.didChangedKikurageState()
-            } catch (let error) {
+            } catch {
                 fatalError(error.localizedDescription)
             }
         }

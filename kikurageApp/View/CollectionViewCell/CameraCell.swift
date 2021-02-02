@@ -10,25 +10,24 @@ import UIKit
 import FirebaseStorage
 import FirebaseUI
 
-protocol CameraCellDelegate: class {
+protocol CameraCellDelegate: AnyObject {
     /// 画像キャンセルボタンがタップされた時の処理
     /// - Parameter cell: 選択された画像セル
     func didTapImageCancelButton(cell: CameraCell)
 }
 
 class CameraCell: UICollectionViewCell {
-    
     @IBOutlet weak var cameraIamge: UIImageView!
     // デリゲート
     internal weak var delegate: CameraCellDelegate?
-    
+
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setDefaultImage()
     }
     // MARK: - Action Method
-    @IBAction func didTapImageCancelButton(_ sender: Any) {
+    @IBAction private func didTapImageCancelButton(_ sender: Any) {
         self.delegate?.didTapImageCancelButton(cell: self)
     }
 }

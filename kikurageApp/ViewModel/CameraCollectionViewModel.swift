@@ -15,7 +15,7 @@ class CameraCollectionViewModel: NSObject {
     var selectedImageMaxNumber: Int
     // CameraCellデリゲート
     internal weak var cameraCellDelegate: CameraCellDelegate?
-    
+
     init(selectedImageMaxNumber: Int) {
         self.selectedImageMaxNumber = selectedImageMaxNumber
         self.selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
@@ -46,19 +46,19 @@ extension CameraCollectionViewModel {
     /// 画像をData型に変換
     /// - Parameter compresssionQuality: 画像圧縮率 0.0 ~ 1.0
     func changeToImageData(compressionQuality: CGFloat) -> [Data?] {
-        let imageDatas: [Data?] = self.selectedImages.map( { image in
+        let imageDatas: [Data?] = self.selectedImages.map { image in
             image?.jpegData(compressionQuality: compressionQuality)
-        })
+        }
         return imageDatas
     }
 }
 // MARK: - CollectionView DataSource Method
 extension CameraCollectionViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.selectedImageMaxNumber
+        self.selectedImageMaxNumber
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCell", for: indexPath) as! CameraCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCell", for: indexPath) as! CameraCell // swiftlint:disable:this force_cast
         // 各セルのdelegateと管理番号tag（削除用）を設定
         cell.delegate = self.cameraCellDelegate
         cell.tag = indexPath.item

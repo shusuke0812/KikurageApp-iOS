@@ -11,18 +11,17 @@ import Firebase
 import FirebaseFirestore
 
 class RecipeTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeDateLabel: UILabel!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeMemoLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 }
 // MARK: - Setting UI Method
-extension RecipeTableViewCell  {
+extension RecipeTableViewCell {
     func setUI(recipe: KikurageRecipe) {
         // 文字の設定
         self.recipeDateLabel.text = recipe.cookDate

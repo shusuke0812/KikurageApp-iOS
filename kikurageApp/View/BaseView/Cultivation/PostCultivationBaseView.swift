@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PostCultivationBaseViewDelegate: class {
+protocol PostCultivationBaseViewDelegate: AnyObject {
     /// 栽培記録保存するボタンを押した時の処理
     func didTapPostButton()
     /// 閉じるボタンを押した時の処理
@@ -23,15 +23,13 @@ class PostCultivationBaseView: UIView {
     @IBOutlet weak var maxTextViewNumberLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var postButton: UIButton!
-    
     /// デリゲート
     internal weak var delegate: PostCultivationBaseViewDelegate?
     /// 日付選択Picker
     var datePicker = UIDatePicker()
     /// 観察メモの最大入力可能文字数
     let maxTextViewNumber = 200
-    
-    
+
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,10 +38,10 @@ class PostCultivationBaseView: UIView {
         self.initDatePicker()
     }
     // MARK: - Action Method
-    @IBAction func didTapPostButton(_ sender: Any) {
+    @IBAction private func didTapPostButton(_ sender: Any) {
         self.delegate?.didTapPostButton()
     }
-    @IBAction func didTapCloseButton(_ sender: Any) {
+    @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
 }

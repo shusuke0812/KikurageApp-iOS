@@ -21,7 +21,7 @@ struct KikurageCultivation: Codable {
     var createdAt: Timestamp?
     /// 更新日
     var updatedAt: Timestamp?
-    
+
     enum CodingKeys: String, CodingKey {
         case memo
         case imageStoragePaths
@@ -29,7 +29,7 @@ struct KikurageCultivation: Codable {
         case createdAt
         case updatedAt
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.memo, forKey: .memo)

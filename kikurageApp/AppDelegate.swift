@@ -13,11 +13,9 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         // Firebase初期化
         FirebaseApp.configure()
         print("DEBUG: \(FirebaseApp.app()?.name ?? "App name is nil")")
@@ -26,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
         // ログイン画面を開く
         self.openLoginPage()
-        
         return true
     }
 
@@ -56,9 +53,8 @@ extension AppDelegate {
     func openLoginPage() {
         let window = UIWindow()
         self.window = window
-        
-        let s: UIStoryboard = UIStoryboard(name: "LoginViewController", bundle: nil)
-        self.window?.rootViewController = s.instantiateInitialViewController() as! LoginViewController
+        let s = UIStoryboard(name: "LoginViewController", bundle: nil)
+        self.window?.rootViewController = s.instantiateInitialViewController() as! LoginViewController // swiftlint:disable:this force_cast
         self.window?.makeKeyAndVisible()
     }
 }

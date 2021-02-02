@@ -10,15 +10,14 @@ import UIKit
 import PKHUD
 
 class PostRecipeViewController: UIViewController {
-    
     /// BaseView
-    private var baseView: PostRecipeBaseView { self.view as! PostRecipeBaseView }
+    private var baseView: PostRecipeBaseView { self.view as! PostRecipeBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: PostRecipeViewModel!
     /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
     /// Date型変換ヘルパー
-    private let dateHelper: DateHelper = DateHelper()
+    private let dateHelper = DateHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,9 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
             // HUD表示（始）
             HUD.show(.progress)
-            self.viewModel.postRecipe(kikurageUserId: LoginHelper.kikurageUserId!)
+            if let kikurageUserId = LoginHelper.kikurageUserId {
+                self.viewModel.postRecipe(kikurageUserId: kikurageUserId)
+            }
         }
     }
     func didTapCloseButton() {
@@ -57,8 +58,10 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
 extension PostRecipeViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.tag == Constants.TextFieldTag.recipeName {
-            let resultText: String = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-            return resultText.count <= self.baseView.maxRecipeNameNumer
+            if let text = textField.text {
+                let resultText = (text as NSString).replacingCharacters(in: range, with: string)
+                return resultText.count <= self.baseView.maxRecipeNameNumer
+            }
         }
         return true
     }
@@ -89,7 +92,10 @@ extension PostRecipeViewController: UITextFieldDelegate {
 // MARK: - UITextView Delegate Method
 extension PostRecipeViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let resultText: String = (textView.text! as NSString).replacingCharacters(in: range, with: text)
+        var resultText = ""
+        if let text = textView.text {
+            resultText = (text as NSString).replacingCharacters(in: range, with: text)
+        }
         return resultText.count <= self.baseView.maxRecipeMemoNumber
     }
     func textViewDidChange(_ textView: UITextView) {
@@ -115,13 +121,13 @@ extension PostRecipeViewController: UICollectionViewDelegate {
 }
 // MAARK: - UIImagePickerController Delegage Method
 extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         guard let selectedIndexPath = self.baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
-        picker.dismiss(animated: true, completion: { [weak self] in
+        picker.dismiss(animated: true) { [weak self] in
             self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
             self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
-        })
+        }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -131,9 +137,11 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
         // nil要素を取り除き、選択した画像のみData型に変換する
-        let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter{ $0 != nil }
+        let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        self.viewModel.postRecipeImages(kikurageUserId: LoginHelper.kikurageUserId!, imageData: postIamgeData)
+        if let kikurageUserId = LoginHelper.kikurageUserId {
+            self.viewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
+        }
     }
     func didFailedPostRecipe(errorMessage: String) {
         print(errorMessage)

@@ -15,14 +15,14 @@ struct KikurageUser: Codable {
     /// きくらげ 君（筐体）の名前
     var kikurageName: String = ""
     /// 栽培開始日
-    var cultivationStartDate: Date = Date()
+    var cultivationStartDate = Date()
     /// ステートリファレンス
     var stateRef: DocumentReference?
     /// 投稿日
     var createdAt: Timestamp?
     /// 更新日
     var updatedAt: Timestamp?
-    
+
     enum CodingKeys: String, CodingKey {
         case productKey
         case kikurageName
@@ -31,7 +31,7 @@ struct KikurageUser: Codable {
         case createdAt
         case updatedAt
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.productKey, forKey: .productKey)

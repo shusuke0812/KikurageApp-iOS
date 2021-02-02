@@ -6,20 +6,19 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-/*
- * UITextViewにコードでPlaceholderを設定できるようにするカスタムクラス
- */
-
 import UIKit
 
+/**
+UITextViewにコードでPlaceholderを設定できるようにするカスタムクラス
+*/
 class UITextViewWithPlaceholder: UITextView {
     /// プレースホルダーのラベル
     private lazy var placeholderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
-    
+
     var placeholder: String = "" {
         didSet {
             if placeholder.isEmpty { return }
-            self.placeholderLabel.text = NSLocalizedString(placeholder, comment: "")
+            self.placeholderLabel.text = self.placeholder
             self.placeholderLabel.sizeToFit()
         }
     }

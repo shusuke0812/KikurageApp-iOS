@@ -29,8 +29,8 @@ extension KikurageUserRepository {
     func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void) {
         let db = Firestore.firestore()
         let docRef: DocumentReference = db.collection("kikurageUsers").document(uid)
-        
-        docRef.getDocument { (snapshot, error) in
+
+        docRef.getDocument { snapshot, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -42,7 +42,7 @@ extension KikurageUserRepository {
             do {
                 let kikurageUser: KikurageUser = try Firestore.Decoder().decode(KikurageUser.self, from: snapshotData)
                 completion(.success(kikurageUser))
-            } catch (let error) {
+            } catch {
                 fatalError(error.localizedDescription)
             }
         }
@@ -52,7 +52,7 @@ extension KikurageUserRepository {
         var data: [String: Any]!
         do {
             data = try Firestore.Encoder().encode(kikurageUser)
-        } catch (let error) {
+        } catch {
             fatalError(error.localizedDescription)
         }
         let dispatchGroup = DispatchGroup()

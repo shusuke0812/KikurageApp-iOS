@@ -14,13 +14,12 @@ enum GraphDataType {
     case humidity
 }
 
-protocol GraphBaseViewDelegate: class {
+protocol GraphBaseViewDelegate: AnyObject {
     /// 閉じるボタンを押した時の処理
     func didTapCloseButton()
 }
 
 class GraphBaseView: UIView {
-    
     @IBOutlet weak var navigationItem: UINavigationItem!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -30,13 +29,13 @@ class GraphBaseView: UIView {
     internal weak var delegate: GraphBaseViewDelegate?
     /// ChartViewHelper
     private let chartViewHelper = ChartViewHelper()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
     }
     // MARK: - Action Method
-    @IBAction func didTapCloseButton(_ sender: Any) {
+    @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
 }

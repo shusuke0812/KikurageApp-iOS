@@ -11,7 +11,7 @@ import SafariServices
 
 class RecipeViewController: UIViewController {
     // BaseView
-    private var baseView: RecipeBaseView { self.view as! RecipeBaseView }
+    private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
     // ViewModel
     private var viewModel: RecipeViewModel!
     // TableViewのセル高さ
@@ -23,7 +23,9 @@ class RecipeViewController: UIViewController {
         self.setNavigationItem()
         self.viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
         self.setDelegateDataSource()
-        self.viewModel.loadRecipes(kikurageUserId: LoginHelper.kikurageUserId!)
+        if let kikurageUserId = LoginHelper.kikurageUserId {
+            self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+        }
     }
 }
 
@@ -43,14 +45,14 @@ extension RecipeViewController {
 extension RecipeViewController: RecipeBaseViewDelegate {
     func didTapPostRecipePageButton() {
         let s = UIStoryboard(name: "PostRecipeViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! PostRecipeViewController
+        let vc = s.instantiateInitialViewController() as! PostRecipeViewController // swiftlint:disable:this force_cast
         self.present(vc, animated: true, completion: nil)
     }
 }
 // MARK: - UITableView Delegate Method
 extension RecipeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.cellHeight
+        self.cellHeight
     }
 }
 // MARK: - RecipeViewModel Method

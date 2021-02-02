@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SideMenuBaseViewDelegate: class {
+protocol SideMenuBaseViewDelegate: AnyObject {
     /// 問い合わせをタップした時の処理
     func didTapContactCell()
     /// カレンダーをタップした時の処理
@@ -18,7 +18,6 @@ protocol SideMenuBaseViewDelegate: class {
 }
 
 class SideMenuBaseView: UIView {
-    
     @IBOutlet weak var sideMenuParentView: UIView!
     @IBOutlet weak var calendarView: SideMenuContentView!
     @IBOutlet weak var graphView: SideMenuContentView!
@@ -29,7 +28,7 @@ class SideMenuBaseView: UIView {
     @IBOutlet weak var kikurageDictionaryView: SideMenuContentView!
     /// デリゲート
     internal weak var delegate: SideMenuBaseViewDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initViewTag()
@@ -37,13 +36,13 @@ class SideMenuBaseView: UIView {
         self.initSideMenuBoarderLine()
     }
     // MARK: - Action Method
-    @IBAction func didTapContactCell(_ sender: Any) {
+    @IBAction private func didTapContactCell(_ sender: Any) {
         self.delegate?.didTapContactCell()
     }
-    @IBAction func didTapGraphCell(_ sender: Any) {
+    @IBAction private func didTapGraphCell(_ sender: Any) {
         self.delegate?.didTapGraphCell()
     }
-    @IBAction func didTapCalendarCell(_ sender: Any) {
+    @IBAction private func didTapCalendarCell(_ sender: Any) {
         self.delegate?.didTapCalendarCell()
     }
 }

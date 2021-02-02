@@ -22,7 +22,7 @@ extension UIViewController {
     ///   - buttonColor: 戻るボタン色
     internal func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: nil, action: nil)
-        self.navigationController!.navigationBar.tintColor = buttonColor
+        self.navigationController?.navigationBar.tintColor = buttonColor
     }
     /// Safariで指定したURLのページを開く
     /// - Parameters:
@@ -30,7 +30,7 @@ extension UIViewController {
     internal func transitionSafariViewController(urlString: String) {
         let url: URL?
         // 不正なURLであるかを判定する
-        //（不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
+        // （不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
         if urlString.hasPrefix("http://") || urlString.hasPrefix("https") {
             url = URL(string: urlString)
         } else {
@@ -38,7 +38,7 @@ extension UIViewController {
         }
         // Safariで引数URLのページを開く
         if let url = url {
-            let safariVC: SFSafariViewController = SFSafariViewController(url: url)
+            let safariVC = SFSafariViewController(url: url)
             self.present(safariVC, animated: true, completion: nil)
         }
     }

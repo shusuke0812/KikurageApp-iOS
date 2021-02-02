@@ -10,12 +10,11 @@ import UIKit
 import MessageUI
 
 class SideMenuViewController: UIViewController {
-
     /// BaseView
-    private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView }
+    private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
     /// Mailer
-    private let mail: MFMailComposeViewController = MFMailComposeViewController()
-    
+    private let mail = MFMailComposeViewController()
+
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +28,14 @@ class SideMenuViewController: UIViewController {
     // メニューエリア以外をタップした時の処理
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        for touch in touches {
-            if touch.view?.tag == Constants.ViewTag.sideMenuBase {
-                UIView.animate(
-                    withDuration: 0.2,
-                    delay: 0,
-                    options: .curveEaseIn,
-                    animations: { self.baseView.sideMenuParentView.layer.position.x = -(self.baseView.sideMenuParentView.frame.width)},
-                    completion: { _ in
-                        self.dismiss(animated: true, completion: nil)
-                })
+        for touch in touches where touch.view?.tag == Constants.ViewTag.sideMenuBase {
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0,
+                options: .curveEaseIn,
+                animations: { self.baseView.sideMenuParentView.layer.position.x = -(self.baseView.sideMenuParentView.frame.width) }
+            ) { _ in
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -56,7 +53,8 @@ extension SideMenuViewController {
             delay: 0,
             options: .curveEaseOut,
             animations: { self.baseView.sideMenuParentView.layer.position.x = menuPosition.x },
-            completion: nil)
+            completion: nil
+        )
     }
     private func setDelegateDataSource() {
         self.baseView.delegate = self
@@ -100,12 +98,12 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
     }
     func didTapGraphCell() {
         let s = UIStoryboard(name: "GraphViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! GraphViewController
+        let vc = s.instantiateInitialViewController() as! GraphViewController // swiftlint:disable:this force_cast
         self.present(vc, animated: true, completion: nil)
     }
     func didTapCalendarCell() {
         let s = UIStoryboard(name: "CalendarViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! CalendarViewController
+        let vc = s.instantiateInitialViewController() as! CalendarViewController // swiftlint:disable:this force_cast
         self.present(vc, animated: true, completion: nil)
     }
 }

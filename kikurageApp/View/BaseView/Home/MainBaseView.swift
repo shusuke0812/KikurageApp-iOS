@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MainBaseViewDelegate: class {
+protocol MainBaseViewDelegate: AnyObject {
     /// 栽培記録ボタンを押した時の処理
     func didTapCultivationButton()
     /// 料理記録ボタンを押した時の処理
@@ -28,26 +28,26 @@ class MainBaseView: UIView {
     @IBOutlet weak var humidityTextLabel: UILabel!
     @IBOutlet weak var kikurageAdviceView: MainAdviceView!
     // ヘルパークラス
-    private var clockHelper: ClockHelper = ClockHelper()
-    private let kikurageStateHelper: KikurageStateHelper = KikurageStateHelper()
+    private var clockHelper = ClockHelper()
+    private let kikurageStateHelper = KikurageStateHelper()
     // デリゲート
     internal weak var delegate: MainBaseViewDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
     }
     // MARK: - Action Method
-    @IBAction func didTapCultivationButton(_ sender: Any) {
+    @IBAction private func didTapCultivationButton(_ sender: Any) {
         self.delegate?.didTapCultivationButton()
     }
-    @IBAction func didTapRecipeButton(_ sender: Any) {
+    @IBAction private func didTapRecipeButton(_ sender: Any) {
         self.delegate?.didTapRecipeButton()
     }
-    @IBAction func didTapCommunicationButton(_ sender: Any) {
+    @IBAction private func didTapCommunicationButton(_ sender: Any) {
         self.delegate?.didTapCommunicationButton()
     }
-    @IBAction func didTapSideMenuButton(_ sender: Any) {
+    @IBAction private func didTapSideMenuButton(_ sender: Any) {
         self.delegate?.didTapSideMenuButton()
     }
 }
@@ -74,8 +74,7 @@ extension MainBaseView {
             self.displayKikurageStateImage(type: judge)
         }
         // 温度湿度を設定
-        if let temparature: Int = kikurageState?.temperature,
-           let humidity: Int = kikurageState?.humidity {
+        if let temparature: Int = kikurageState?.temperature, let humidity: Int = kikurageState?.humidity {
             self.temparatureTextLabel.text = "\(temparature)"
             self.humidityTextLabel.text = "\(humidity)"
         }

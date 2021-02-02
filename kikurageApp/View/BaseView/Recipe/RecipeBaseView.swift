@@ -8,23 +8,22 @@
 
 import UIKit
 
-protocol RecipeBaseViewDelegate: class {
+protocol RecipeBaseViewDelegate: AnyObject {
     /// 料理記録保存画面のボタンをタップした時の処理
     func didTapPostRecipePageButton()
 }
 
 class RecipeBaseView: UIView {
-
     @IBOutlet weak var tableView: UITableView!
     /// デリゲート
     internal weak var delegate: RecipeBaseViewDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setTableView()
     }
     // MARK: - Action Method
-    @IBAction func didTapPostRecipePageButton(_ sender: Any) {
+    @IBAction private func didTapPostRecipePageButton(_ sender: Any) {
         self.delegate?.didTapPostRecipePageButton()
     }
 }

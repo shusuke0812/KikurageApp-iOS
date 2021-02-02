@@ -8,27 +8,25 @@
 
 import UIKit
 
-protocol CultivationBaseViewDelegate: class {
+protocol CultivationBaseViewDelegate: AnyObject {
     /// 栽培記録保存画面のボタンをタップした時の処理
     func didTapPostCultivationPageButton()
 }
 
 class CultivationBaseView: UIView {
-    
     @IBOutlet weak var postPageButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    
     /// デリゲート
     internal weak var delegate: CultivationBaseViewDelegate?
-    
+
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setCollectionView()
     }
     // MARK: - Action Method
-    @IBAction func didTapPostCultivationPageButton(_ sender: Any) {
+    @IBAction private func didTapPostCultivationPageButton(_ sender: Any) {
         self.delegate?.didTapPostCultivationPageButton()
     }
 }

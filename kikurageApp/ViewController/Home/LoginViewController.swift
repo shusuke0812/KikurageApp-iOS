@@ -10,22 +10,21 @@ import UIKit
 import PKHUD
 
 class LoginViewController: UIViewController {
-    
     /// BaseView
-    private var baseView: LoginBaseView { self.view as! LoginBaseView }
+    private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: LoginViewModel!
     /// Dateヘルパー
-    private let dateHelper: DateHelper = DateHelper()
-    
+    private let dateHelper = DateHelper()
+
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = LoginViewModel(kikurageStateRepository: KikurageStateRepository(),
-                                        kikurageUserRepository: KikurageUserRepository())
+        self.viewModel = LoginViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.validateOpenPage()
     }
 }
@@ -92,9 +91,7 @@ extension LoginViewController: LoginBaseViewDelegate {
         self.transitionSafariViewController(urlString: Constants.WebUrl.privacyPolicy)
     }
     func textFieldValidation() -> Bool {
-        guard let productKey = self.baseView.productKeyTextField.text,
-              let kikurageName = self.baseView.kikurageNameTextField.text,
-              let cultivationStartDate = self.baseView.cultivationStartDateTextField.text else {
+        guard let productKey = self.baseView.productKeyTextField.text, let kikurageName = self.baseView.kikurageNameTextField.text, let cultivationStartDate = self.baseView.cultivationStartDateTextField.text else {
             print("DEBUG: 入力されていない項目があります")
             return false
         }
@@ -144,10 +141,10 @@ extension LoginViewController: LoginViewModelDelegate {
     }
     private func transitionHomePage() {
         // NavigationControllerへの遷移になるのでViewControllerにStoryboardからIDを設定してUIViewControllerでインスタンス化する
-        let s: UIStoryboard = UIStoryboard(name: "MainViewController", bundle: nil)
-        let vc: UINavigationController = s.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController
+        let s = UIStoryboard(name: "MainViewController", bundle: nil)
+        let vc = s.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController // swiftlint:disable:this force_cast
         // MainViewController（トップ画面）への値渡し
-        let mainVC = vc.topViewController as! MainViewController
+        let mainVC = vc.topViewController as! MainViewController // swiftlint:disable:this force_cast
         mainVC.kikurageState = self.viewModel.kikurageState
         mainVC.kikurageUser = self.viewModel.kikurageUser
         // 画面遷移

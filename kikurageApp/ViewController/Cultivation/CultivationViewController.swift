@@ -9,12 +9,11 @@
 import UIKit
 
 class CultivationViewController: UIViewController {
-    
     /// BaseView
-    private var baseView: CultivationBaseView { self.view as! CultivationBaseView }
+    private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: CultivationViewModel!
-    
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +41,7 @@ extension CultivationViewController {
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
         let s = UIStoryboard(name: "CultivationDetailViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! CultivationDetailViewController
+        let vc = s.instantiateInitialViewController() as! CultivationDetailViewController // swiftlint:disable:this force_cast
         vc.cultivation = self.viewModel.cultivations[indexPath.row].cultivation
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -51,7 +50,7 @@ extension CultivationViewController {
 extension CultivationViewController: CultivationBaseViewDelegate {
     func didTapPostCultivationPageButton() {
         let s = UIStoryboard(name: "PostCultivationViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! PostCultivationViewController
+        let vc = s.instantiateInitialViewController() as! PostCultivationViewController // swiftlint:disable:this force_cast
         self.present(vc, animated: true, completion: nil)
     }
 }

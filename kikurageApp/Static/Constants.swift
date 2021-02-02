@@ -65,9 +65,9 @@ enum NetworkError: Error {
     case unknown            // 想定外エラー
     func description() -> String {
         switch self {
-            case .invalidUrl:       return "DEBUG： 不正なURLです"
-            case .invalidResponse:  return "DEBUG： 不正なレスポンスです"
-            case .unknown:          return "DEBUG： レスポンスに失敗しました"
+        case .invalidUrl:       return "DEBUG： 不正なURLです"
+        case .invalidResponse:  return "DEBUG： 不正なレスポンスです"
+        case .unknown:          return "DEBUG： レスポンスに失敗しました"
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-protocol LoginViewModelDelegate: class {
+protocol LoginViewModelDelegate: AnyObject {
     /// きくらげの状態データ取得に成功した
     func didSuccessGetKikurageState()
     /// きくらげの状態データ取得に失敗した
@@ -38,9 +38,8 @@ class LoginViewModel {
     var kikurageUser: KikurageUser?
     /// デリゲート
     internal weak var delegate: LoginViewModelDelegate?
-    
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol,
-         kikurageUserRepository: KikurageUserRepositoryProtocol) {
+
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
         self.kikurageUser = KikurageUser()
@@ -62,20 +61,18 @@ extension LoginViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         guard let productId = self.kikurageUser?.productKey else { return }
-        self.kikurageStateRepository
-            .getKikurageState(productId: productId,
-                              completion: { response in
-                                switch response {
-                                case .success(let kikurageState):
-                                    DispatchQueue.main.async { [weak self] in
-                                        self?.kikurageState = kikurageState
-                                        self?.delegate?.didSuccessGetKikurageState()
-                                    }
-                                case .failure(let error):
-                                    print("DEBUG: \(error)")
-                                    self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
-                                }
-                              })
+        self.kikurageStateRepository.getKikurageState(productId: productId) { response in
+            switch response {
+            case .success(let kikurageState):
+                DispatchQueue.main.async { [weak self] in
+                    self?.kikurageState = kikurageState
+                    self?.delegate?.didSuccessGetKikurageState()
+                }
+            case .failure(let error):
+                print("DEBUG: \(error)")
+                self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
+            }
+        }
     }
     /// きくらげユーザーを登録する
     /// - Parameter uid: ユーザーID
@@ -84,33 +81,29 @@ extension LoginViewModel {
             self.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
             return
         }
-        self.kikurageUserRepository
-            .postKikurageUser(kikurageUser: kikurageUser,
-                             completion: { [weak self] responsse in
-                                 switch responsse {
-                                 case .success(let kikurageUserDocumentReference):
-                                    self?.setUserIdToUserDefaults(userId: kikurageUserDocumentReference.documentID)
-                                    self?.delegate?.didSuccessPostKikurageUser()
-                                 case .failure(let error):
-                                     print("DEBUG: \(error)")
-                                     self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを登録できませんでした")
-                                 }
-                             })
+        self.kikurageUserRepository.postKikurageUser(kikurageUser: kikurageUser) { [weak self] responsse in
+            switch responsse {
+            case .success(let kikurageUserDocumentReference):
+                self?.setUserIdToUserDefaults(userId: kikurageUserDocumentReference.documentID)
+                self?.delegate?.didSuccessPostKikurageUser()
+            case .failure(let error):
+                print("DEBUG: \(error)")
+                self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを登録できませんでした")
+            }
+        }
     }
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository
-            .getKikurageUser(uid: uid,
-                             completion: { [weak self] response in
-                                switch response {
-                                case .success(let kikurageUser):
-                                    self?.kikurageUser = kikurageUser
-                                    self?.delegate?.didSuccessGetKikurageUser()
-                                case .failure(let error):
-                                    print(error)
-                                    self?.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでし")
-                                }
-                             })
+        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+            switch response {
+            case .success(let kikurageUser):
+                self?.kikurageUser = kikurageUser
+                self?.delegate?.didSuccessGetKikurageUser()
+            case .failure(let error):
+                print(error)
+                self?.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでし")
+            }
+        }
     }
 }

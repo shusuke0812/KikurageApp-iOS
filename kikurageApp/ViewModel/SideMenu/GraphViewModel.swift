@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GraphViewModelDelegate: class {
+protocol GraphViewModelDelegate: AnyObject {
     /// きくらげの状態グラフデータの取得に成功した
     func didSuccessGetKikurageStateGraph()
     /// きくらげの状態グラフデータの取得に失敗した
@@ -36,9 +36,8 @@ class GraphViewModel {
     var humidityGraphDatas: [Int] = []
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
-    
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol,
-         kikurageUserRepository: KikurageUserRepositoryProtocol) {
+
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
     }
@@ -71,34 +70,30 @@ extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
     func loadKikurageStateGraph(productId: String) {
-        self.kikurageStateRepository
-            .getKikurageStateGraph(productId: productId,
-                                   completion: { [weak self] response in
-                                    switch response {
-                                    case .success(let graphs):
-                                        self?.kikurageStateGraph = graphs
-                                        self?.setTemperatureGraphData()
-                                        self?.setHumidityGraphData()
-                                        self?.delegate?.didSuccessGetKikurageStateGraph()
-                                    case .failure(let error):
-                                        self?.delegate?.didFailedGetKikurageStateGraph(errorMessage: "\(error)")
-                                    }
-                                   })
+        self.kikurageStateRepository.getKikurageStateGraph(productId: productId) { [weak self] response in
+            switch response {
+            case .success(let graphs):
+                self?.kikurageStateGraph = graphs
+                self?.setTemperatureGraphData()
+                self?.setHumidityGraphData()
+                self?.delegate?.didSuccessGetKikurageStateGraph()
+            case .failure(let error):
+                self?.delegate?.didFailedGetKikurageStateGraph(errorMessage: "\(error)")
+            }
+        }
     }
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository
-            .getKikurageUser(uid: uid,
-                             completion: { [weak self] response in
-                                switch response {
-                                case .success(let kikurageUser):
-                                    self?.kikurageUser = kikurageUser
-                                    self?.delegate?.didSuccessGetKikurageUser()
-                                case .failure(let error):
-                                    print("DEBUG: \(error)")
-                                    self?.delegate?.didFailedGetKikurageUser(errorMessage: "ユーザー情報の取得に失敗しました")
-                                }
-                             })
+        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+            switch response {
+            case .success(let kikurageUser):
+                self?.kikurageUser = kikurageUser
+                self?.delegate?.didSuccessGetKikurageUser()
+            case .failure(let error):
+                print("DEBUG: \(error)")
+                self?.delegate?.didFailedGetKikurageUser(errorMessage: "ユーザー情報の取得に失敗しました")
+            }
+        }
     }
 }

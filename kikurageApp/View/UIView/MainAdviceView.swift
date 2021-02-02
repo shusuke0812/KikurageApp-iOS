@@ -13,7 +13,7 @@ class MainAdviceView: XibView {
     @IBOutlet weak var adviceIconImageView: UIImageView!
     @IBOutlet weak var adviceTitleLabel: UILabel!
     @IBOutlet weak var adviceContentLabel: UILabel!
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initBaseView()

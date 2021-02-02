@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LoginBaseViewDelegate: class {
+protocol LoginBaseViewDelegate: AnyObject {
     /// ログインボタンを押した時の処理
     func didTapLoginButton()
     /// 利用規約ボタンを押した時の処理
@@ -18,7 +18,6 @@ protocol LoginBaseViewDelegate: class {
 }
 
 class LoginBaseView: UIView {
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var productKeyTextField: UITextField!
     @IBOutlet weak var kikurageNameTextField: UITextField!
@@ -29,7 +28,7 @@ class LoginBaseView: UIView {
     internal weak var delegate: LoginBaseViewDelegate?
     /// 日付選択Picker
     var datePicker = UIDatePicker()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
@@ -37,13 +36,13 @@ class LoginBaseView: UIView {
         self.initDatePicker()
     }
     // MARK: - Action Method
-    @IBAction func didTapLoginButton(_ sender: Any) {
+    @IBAction private func didTapLoginButton(_ sender: Any) {
         self.delegate?.didTapLoginButton()
     }
-    @IBAction func didTapTermsButton(_ sender: Any) {
+    @IBAction private func didTapTermsButton(_ sender: Any) {
         self.delegate?.didTapTermsButton()
     }
-    @IBAction func didTapPrivacyPolicyButton(_ sender: Any) {
+    @IBAction private func didTapPrivacyPolicyButton(_ sender: Any) {
         self.delegate?.didTapPrivacyPolicyButton()
     }
 }

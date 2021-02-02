@@ -8,23 +8,22 @@
 
 import UIKit
 
-protocol CommunicationBaseViewDelegate: class {
+protocol CommunicationBaseViewDelegate: AnyObject {
     /// Facebookボタンを押した時の処理
     func didTapFacebookButton()
 }
 
 class CommunicationBaseView: UIView {
-    
     @IBOutlet weak var informationLabel: UILabel!
     /// デリゲート
     internal weak var delegate: CommunicationBaseViewDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
     }
     // MARK: - Action Method
-    @IBAction func didTapFacebookButton(_ sender: Any) {
+    @IBAction private func didTapFacebookButton(_ sender: Any) {
         self.delegate?.didTapFacebookButton()
     }
 }
