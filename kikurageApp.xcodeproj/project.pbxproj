@@ -610,6 +610,7 @@
 				9C1ACF442225768A00A3D4D1 /* Frameworks */,
 				9C1ACF452225768A00A3D4D1 /* Resources */,
 				0E3A132012F2A0D84614820D /* [CP] Embed Pods Frameworks */,
+				9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */,
 			);
 			buildRules = (
 			);
@@ -700,6 +701,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kikurageApp/Pods-kikurageApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". ${PROJECT_DIR}/Script/SwiftLint.sh\n";
 		};
 		CBB3CAA4E7BF53B07E344743 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
