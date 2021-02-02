@@ -171,6 +171,9 @@ identifier_name:
     - vc    # ViewController
     - x
     - y
+    - i
+    - j
+    - k
     - r
     - g
     - b
