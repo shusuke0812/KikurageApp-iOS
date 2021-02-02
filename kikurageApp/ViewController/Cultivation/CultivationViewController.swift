@@ -40,8 +40,7 @@ extension CultivationViewController {
 // MARK: - Private Method
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
-        let s = UIStoryboard(name: "CultivationDetailViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! CultivationDetailViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
         vc.cultivation = self.viewModel.cultivations[indexPath.row].cultivation
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -49,8 +48,7 @@ extension CultivationViewController {
 // MARK: - CultivationBaseView Delegate Method
 extension CultivationViewController: CultivationBaseViewDelegate {
     func didTapPostCultivationPageButton() {
-        let s = UIStoryboard(name: "PostCultivationViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! PostCultivationViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
         self.present(vc, animated: true, completion: nil)
     }
 }

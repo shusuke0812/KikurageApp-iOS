@@ -141,8 +141,7 @@ extension LoginViewController: LoginViewModelDelegate {
     }
     private func transitionHomePage() {
         // NavigationControllerへの遷移になるのでViewControllerにStoryboardからIDを設定してUIViewControllerでインスタンス化する
-        let s = UIStoryboard(name: "MainViewController", bundle: nil)
-        let vc = s.instantiateViewController(withIdentifier: "MainViewController") as! UINavigationController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }        
         // MainViewController（トップ画面）への値渡し
         let mainVC = vc.topViewController as! MainViewController // swiftlint:disable:this force_cast
         mainVC.kikurageState = self.viewModel.kikurageState

@@ -30,7 +30,7 @@ extension CultivationDetailBaseView {
     }
     private func setCollectionView() {
         self.flowLayout.estimatedItemSize = .zero
-        self.collectionView.register(UINib(nibName: "CultivationCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CultivationCarouselCollectionViewCell")
+        self.collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
     }
 }
 // MARK: - Setting UI Method

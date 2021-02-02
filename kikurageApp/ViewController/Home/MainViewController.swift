@@ -73,20 +73,17 @@ extension MainViewController {
 extension MainViewController: MainBaseViewDelegate {
     func didTapCultivationButton() {
         // 栽培記録画面へ遷移
-        let s = UIStoryboard(name: "CultivationViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! CultivationViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapRecipeButton() {
         // 料理記録画面へ遷移
-        let s = UIStoryboard(name: "RecipeViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! RecipeViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapCommunicationButton() {
         // 相談画面へ遷移
-        let s = UIStoryboard(name: "CommunicationViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! CommunicationViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func didTapSideMenuButton() {

@@ -53,7 +53,7 @@ class PostRecipeBaseView: UIView {
 // MARK: - Initialized Method
 extension PostRecipeBaseView {
     private func registerCameraCell() {
-        self.cameraCollectionView.register(UINib(nibName: "CameraCell", bundle: nil), forCellWithReuseIdentifier: "CameraCell")
+        self.cameraCollectionView.register(R.nib.cameraCell)
     }
     private func initUI() {
         // タイトル

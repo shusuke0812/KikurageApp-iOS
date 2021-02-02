@@ -44,8 +44,7 @@ extension RecipeViewController {
 // MARK: - RecipeBaseView Delegate Method
 extension RecipeViewController: RecipeBaseViewDelegate {
     func didTapPostRecipePageButton() {
-        let s = UIStoryboard(name: "PostRecipeViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! PostRecipeViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
         self.present(vc, animated: true, completion: nil)
     }
 }

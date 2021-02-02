@@ -35,7 +35,7 @@ class CameraCell: UICollectionViewCell {
 extension CameraCell {
     /// デフォルトに戻す（キャンセルボタン押下時）
     internal func setDefaultImage() {
-        self.cameraIamge.image = UIImage(named: "camera")
+        self.cameraIamge.image = R.image.camera()
     }
     /// 選択した画像を表示する（新規選択時）
     /// - Parameter image: 選択した画像

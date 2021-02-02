@@ -58,6 +58,7 @@
 		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
 		9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125325B69EA0007BCECB /* CalendarViewModel.swift */; };
+		9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91E74E25C9207C00B3E2E0 /* R.generated.swift */; };
 		9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923334255F9760000293BB /* PostCultivationViewController.swift */; };
 		9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */; };
 		9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333D255F9F7E000293BB /* CultivationRepository.swift */; };
@@ -148,6 +149,7 @@
 		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
 		9C91125025B68F2E007BCECB /* CalendarBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBaseView.swift; sourceTree = "<group>"; };
 		9C91125325B69EA0007BCECB /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		9C91E74E25C9207C00B3E2E0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9C923334255F9760000293BB /* PostCultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewController.swift; sourceTree = "<group>"; };
 		9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
 		9C92333D255F9F7E000293BB /* CultivationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationRepository.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		9C1ACF3E2225768A00A3D4D1 = {
 			isa = PBXGroup;
 			children = (
+				9C91E74E25C9207C00B3E2E0 /* R.generated.swift */,
 				9C1ACF492225768A00A3D4D1 /* kikurageApp */,
 				9C1ACF482225768A00A3D4D1 /* Products */,
 				923FE88E53278C489EBA6831 /* Frameworks */,
@@ -797,6 +800,7 @@
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
 				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
+				9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
 				9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,

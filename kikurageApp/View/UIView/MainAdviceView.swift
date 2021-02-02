@@ -35,6 +35,6 @@ extension MainAdviceView {
         self.adviceTitleLabel.text = "【アドバイス】"
     }
     private func initAdviceIconImageView() {
-        self.adviceIconImageView.image = UIImage(named: "hakase")
+        self.adviceIconImageView.image = R.image.hakase()
     }
 }

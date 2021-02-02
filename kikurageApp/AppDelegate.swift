@@ -53,8 +53,8 @@ extension AppDelegate {
     func openLoginPage() {
         let window = UIWindow()
         self.window = window
-        let s = UIStoryboard(name: "LoginViewController", bundle: nil)
-        self.window?.rootViewController = s.instantiateInitialViewController() as! LoginViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
+        self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }
 }

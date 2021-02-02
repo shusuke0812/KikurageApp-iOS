@@ -33,6 +33,6 @@ extension RecipeBaseView {
         // セル選択を不可にする（料理記録詳細ページは無いため）
         self.tableView.allowsSelection = false
         // セル登録
-        self.tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+        self.tableView.register(R.nib.recipeTableViewCell)
     }
 }

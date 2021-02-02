@@ -97,13 +97,11 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
         self.openContactMailer()
     }
     func didTapGraphCell() {
-        let s = UIStoryboard(name: "GraphViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! GraphViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
         self.present(vc, animated: true, completion: nil)
     }
     func didTapCalendarCell() {
-        let s = UIStoryboard(name: "CalendarViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! CalendarViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
         self.present(vc, animated: true, completion: nil)
     }
 }

@@ -65,7 +65,7 @@ extension CultivationViewModel: UICollectionViewDataSource {
         self.cultivations.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CultivationCollectionViewCell", for: indexPath) as! CultivationCollectionViewCell // swiftlint:disable:this force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_cast
         cell.setUI(cultivation: self.cultivations[indexPath.row].cultivation)
         return cell
     }
