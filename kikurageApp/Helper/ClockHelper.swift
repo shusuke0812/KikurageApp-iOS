@@ -9,6 +9,10 @@
 import Foundation
 
 class ClockHelper {
+    /// シングルトン
+    static let shared = ClockHelper()
+}
+extension ClockHelper {
     internal func display() -> String {
         // 現在時刻を取得する
         let now = Date()

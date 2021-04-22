@@ -28,7 +28,6 @@ class MainBaseView: UIView {
     @IBOutlet weak var humidityTextLabel: UILabel!
     @IBOutlet weak var kikurageAdviceView: MainAdviceView!
     // ヘルパークラス
-    private var clockHelper = ClockHelper()
     private let kikurageStateHelper = KikurageStateHelper()
     // デリゲート
     internal weak var delegate: MainBaseViewDelegate?
@@ -54,7 +53,7 @@ class MainBaseView: UIView {
 // MARK: - Initialized Method
 extension MainBaseView {
     private func initUI() {
-        self.nowTimeLabel.text = self.clockHelper.display()
+        self.nowTimeLabel.text = ClockHelper.shared.display()
         self.kikurageNameLabel.text = "きくらげ名"
         self.kikurageStatusLabel.text = "きくらげの状態メッセージ"
         self.displayKikurageStateImage(type: "normal")
@@ -91,7 +90,7 @@ extension MainBaseView {
     }
     // 時刻表示更新用メソッド
     func updateTimeLabel() {
-        self.nowTimeLabel.text = clockHelper.display()
+        self.nowTimeLabel.text = ClockHelper.shared.display()
     }
     private func displayKikurageStateImage(type: String) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
