@@ -27,8 +27,6 @@ class MainBaseView: UIView {
     @IBOutlet weak var temparatureTextLabel: UILabel!
     @IBOutlet weak var humidityTextLabel: UILabel!
     @IBOutlet weak var kikurageAdviceView: MainAdviceView!
-    // ヘルパークラス
-    private let kikurageStateHelper = KikurageStateHelper()
     // デリゲート
     internal weak var delegate: MainBaseViewDelegate?
 
@@ -94,7 +92,7 @@ extension MainBaseView {
     }
     private func displayKikurageStateImage(type: String) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        self.kikurageStatusView.animationImages = kikurageStateHelper.setStateImage(type: type)
+        self.kikurageStatusView.animationImages = KikurageStateHelper.shared.setStateImage(type: type)
         self.kikurageStatusView.animationDuration = 1
         self.kikurageStatusView.animationRepeatCount = 0
         self.kikurageStatusView.startAnimating()

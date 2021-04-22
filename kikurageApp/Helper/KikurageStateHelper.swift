@@ -9,6 +9,10 @@
 import UIKit
 
 class KikurageStateHelper {
+    /// シングルトン
+    static let shared = KikurageStateHelper()
+}
+extension KikurageStateHelper {
     /// きくらげの状態によって表情を変える
     /// - Parameter type: きくらげの状態（Firestoreより取得する文字列）
     internal func setStateImage(type: String) -> [UIImage] {
