@@ -16,8 +16,6 @@ class PostCultivationViewController: UIViewController {
     private var viewModel: PostCultivationViewModel!
     /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
-    /// Date型変換ヘルパー
-    private let dateHelper = DateHelper()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -57,7 +55,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
 // MARK: - UITextField Delegate Method
 extension PostCultivationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let dateString = self.dateHelper.formatToString(date: self.baseView.datePicker.date)
+        let dateString = DateHelper.shared.formatToString(date: self.baseView.datePicker.date)
         self.baseView.dateTextField.text = dateString
         self.viewModel.cultivation.viewDate = dateString
     }

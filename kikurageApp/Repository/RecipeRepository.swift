@@ -37,13 +37,10 @@ protocol RecipeRepositoryProtocol {
 }
 
 class RecipeRepository: RecipeRepositoryProtocol {
-    // DateHelper
-    private let dateHelper: DateHelper
     // Storageへ保存するデータのメタデータ
     private let metaData: StorageMetadata
 
     init() {
-        self.dateHelper = DateHelper()
         self.metaData = StorageMetadata()
         self.metaData.contentType = "image/jpeg"
     }
@@ -125,7 +122,7 @@ extension RecipeRepository {
                     dispatchSemaphore.signal()
                     return
                 }
-                let fileName: String = self.dateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
+                let fileName: String = DateHelper.shared.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
                 let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
                 _ = storageReference.putData(imageData, metadata: self.metaData) { _, error in
                     if let error = error {

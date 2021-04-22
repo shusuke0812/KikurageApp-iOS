@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
     private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: LoginViewModel!
-    /// Dateヘルパー
-    private let dateHelper = DateHelper()
 
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
@@ -66,7 +64,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     private func setCultivationStartDateTextFieldData() {
         let date: Date = self.baseView.datePicker.date
-        let dataString: String = self.dateHelper.formatToString(date: date)
+        let dataString: String = DateHelper.shared.formatToString(date: date)
         self.baseView.cultivationStartDateTextField.text = dataString
         self.viewModel.kikurageUser?.cultivationStartDate = date
     }

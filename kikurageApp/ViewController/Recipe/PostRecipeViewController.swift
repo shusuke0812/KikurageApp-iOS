@@ -16,8 +16,6 @@ class PostRecipeViewController: UIViewController {
     private var viewModel: PostRecipeViewModel!
     /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
-    /// Date型変換ヘルパー
-    private let dateHelper = DateHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +78,7 @@ extension PostRecipeViewController: UITextFieldDelegate {
         }
     }
     private func setRecipeDateTextFieldData() {
-        let dateString = self.dateHelper.formatToString(date: self.baseView.datePicker.date)
+        let dateString = DateHelper.shared.formatToString(date: self.baseView.datePicker.date)
         self.baseView.dateTextField.text = dateString
         self.viewModel.recipe.cookDate = dateString
     }
