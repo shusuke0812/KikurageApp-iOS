@@ -12,7 +12,11 @@ class DateHelper {
     /// シングルトン
     static let shared = DateHelper()
 
-    private let formatter = DateFormatter()
+    private let formatter: DateFormatter
+    
+    private init() {
+        self.formatter = DateFormatter()
+    }
 }
 extension DateHelper {
     /// Date型を指定したString型に変換する

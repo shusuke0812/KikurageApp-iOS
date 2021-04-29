@@ -11,6 +11,13 @@ import Foundation
 class ClockHelper {
     /// シングルトン
     static let shared = ClockHelper()
+    
+    private let formatter: DateFormatter
+    
+    private init() {
+        self.formatter = DateFormatter()
+        self.formatter.locale = Locale(identifier: "ja_JP")
+    }
 }
 extension ClockHelper {
     internal func display() -> String {
@@ -18,8 +25,7 @@ extension ClockHelper {
         let now = Date()
 
         // Date関数の値を翻訳し、翻訳の型を決める
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年MM月dd日 HH時mm分ss秒"
+        self.formatter.dateFormat = "yyyy年MM月dd日 HH時mm分ss秒"
 
         // 翻訳してもらった値を「時刻ボタン」へ反映する
         return formatter.string(from: now)
