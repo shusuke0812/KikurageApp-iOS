@@ -49,7 +49,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
         }
     }
     func didTapCloseButton() {
-        self.dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 // MARK: - UITextField Delegate Method

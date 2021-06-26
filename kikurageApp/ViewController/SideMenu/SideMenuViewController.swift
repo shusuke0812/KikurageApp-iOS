@@ -88,7 +88,7 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
         default:
             print("DEBUG: 送信失敗")
         }
-        self.dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 // MARK: - SideMenuBaaseView Delegate Method

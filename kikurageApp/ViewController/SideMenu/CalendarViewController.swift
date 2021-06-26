@@ -29,7 +29,7 @@ extension CalendarViewController {
 // MARK: - CalendarBaseView Delegate Method
 extension CalendarViewController: CalendarBaseViewDelegate {
     func didTapCloseButton() {
-        self.dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 // MARK: - CalendarViewModel Delegate Method
