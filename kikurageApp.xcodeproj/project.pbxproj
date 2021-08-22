@@ -243,7 +243,7 @@
 			children = (
 				9C82B415253037AB00E650B5 /* Static */,
 				9CA7F3342537FD75005BED9C /* Entity */,
-				9CDAFBF624E4B95700E56550 /* Extensions */,
+				9CDAFBF624E4B95700E56550 /* Extension */,
 				9C7E14E62563F8A600D2D8EF /* CustomClass */,
 				9CF0020624E39B290084036B /* Helper */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
@@ -467,7 +467,7 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		9CDAFBF624E4B95700E56550 /* Extensions */ = {
+		9CDAFBF624E4B95700E56550 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */,
@@ -476,7 +476,7 @@
 				9C7E105D25649637005A92C7 /* UIColor+Extension.swift */,
 				9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */,
 			);
-			path = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		9CDD1F5C25A68206006DA852 /* Recipe */ = {
