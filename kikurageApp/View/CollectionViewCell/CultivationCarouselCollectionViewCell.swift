@@ -11,7 +11,7 @@ import Firebase
 import FirebaseFirestore
 
 class CultivationCarouselCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

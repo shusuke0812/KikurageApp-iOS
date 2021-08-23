@@ -10,11 +10,11 @@ import Foundation
 
 class LoginHelper {
     /// ユーザードキュメントId
-    internal static var kikurageUserId: String? {
+    static var kikurageUserId: String? {
         UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId)
     }
     /// ログイン判定
-    internal static var isLogin: Bool {
+    static var isLogin: Bool {
         UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) != nil
     }
 }

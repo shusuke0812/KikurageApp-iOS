@@ -20,7 +20,7 @@ class CalendarViewModel {
     /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     /// デリゲート
-    internal weak var delegate: CalendarViewModelDelegate?
+    weak var delegate: CalendarViewModelDelegate?
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
 

@@ -19,15 +19,15 @@ protocol SideMenuBaseViewDelegate: AnyObject {
 
 class SideMenuBaseView: UIView {
     @IBOutlet weak var sideMenuParentView: UIView!
-    @IBOutlet weak var calendarView: SideMenuContentView!
-    @IBOutlet weak var graphView: SideMenuContentView!
-    @IBOutlet weak var contactView: SideMenuContentView!
-    @IBOutlet weak var settingView: SideMenuContentView!
-    @IBOutlet weak var licenseView: SideMenuContentView!
-    @IBOutlet weak var searchRecipeView: SideMenuContentView!
-    @IBOutlet weak var kikurageDictionaryView: SideMenuContentView!
+    @IBOutlet private weak var calendarView: SideMenuContentView!
+    @IBOutlet private weak var graphView: SideMenuContentView!
+    @IBOutlet private weak var contactView: SideMenuContentView!
+    @IBOutlet private weak var settingView: SideMenuContentView!
+    @IBOutlet private weak var licenseView: SideMenuContentView!
+    @IBOutlet private weak var searchRecipeView: SideMenuContentView!
+    @IBOutlet private weak var kikurageDictionaryView: SideMenuContentView!
     /// デリゲート
-    internal weak var delegate: SideMenuBaseViewDelegate?
+    weak var delegate: SideMenuBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

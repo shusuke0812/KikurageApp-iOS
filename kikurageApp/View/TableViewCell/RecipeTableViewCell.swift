@@ -11,10 +11,10 @@ import Firebase
 import FirebaseFirestore
 
 class RecipeTableViewCell: UITableViewCell {
-    @IBOutlet weak var recipeImageView: UIImageView!
-    @IBOutlet weak var recipeDateLabel: UILabel!
-    @IBOutlet weak var recipeNameLabel: UILabel!
-    @IBOutlet weak var recipeMemoLabel: UILabel!
+    @IBOutlet private weak var recipeImageView: UIImageView!
+    @IBOutlet private weak var recipeDateLabel: UILabel!
+    @IBOutlet private weak var recipeNameLabel: UILabel!
+    @IBOutlet private weak var recipeMemoLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,7 +20,7 @@ class CultivationViewModel: NSObject {
     /// きくらげ栽培記録の取得リポジトリ
     private let cultivationRepository: CultivationRepositoryProtocol
     /// デリゲート
-    internal weak var delegate: CultivationViewModelDelegate?
+    weak var delegate: CultivationViewModelDelegate?
     /// きくらげ栽培記録データ
     var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
     /// セクション数

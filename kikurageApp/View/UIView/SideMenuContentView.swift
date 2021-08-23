@@ -9,8 +9,8 @@
 import UIKit
 
 class SideMenuContentView: XibView {
-    @IBOutlet weak var sideMenuContentIconView: UIImageView!
-    @IBOutlet weak var sideMenuContentLabel: UILabel!
+    @IBOutlet private weak var sideMenuContentIconView: UIImageView!
+    @IBOutlet private weak var sideMenuContentLabel: UILabel!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

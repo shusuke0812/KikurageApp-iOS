@@ -18,14 +18,14 @@ protocol LoginBaseViewDelegate: AnyObject {
 }
 
 class LoginBaseView: UIView {
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet weak var productKeyTextField: UITextField!
     @IBOutlet weak var kikurageNameTextField: UITextField!
     @IBOutlet weak var cultivationStartDateTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var copyRightLabel: UILabel!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var copyRightLabel: UILabel!
     /// デリゲート
-    internal weak var delegate: LoginBaseViewDelegate?
+    weak var delegate: LoginBaseViewDelegate?
     /// 日付選択Picker
     var datePicker = UIDatePicker()
 

@@ -14,7 +14,7 @@ class CameraCollectionViewModel: NSObject {
     // 選択できる画像数
     var selectedImageMaxNumber: Int
     // CameraCellデリゲート
-    internal weak var cameraCellDelegate: CameraCellDelegate?
+    weak var cameraCellDelegate: CameraCellDelegate?
 
     init(selectedImageMaxNumber: Int) {
         self.selectedImageMaxNumber = selectedImageMaxNumber

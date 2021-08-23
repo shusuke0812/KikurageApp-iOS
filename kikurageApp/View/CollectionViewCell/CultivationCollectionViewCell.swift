@@ -11,8 +11,8 @@ import Firebase
 import FirebaseFirestore
 
 class CultivationCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var viewDateLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var viewDateLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

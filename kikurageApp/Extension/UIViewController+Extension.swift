@@ -13,21 +13,21 @@ extension UIViewController {
     /// ナビゲーションバー の体裁を設定する
     /// - Parameters:
     ///   - title: タイトル
-    internal func setNavigationBar(title: String) {
+    func setNavigationBar(title: String) {
         self.title = title
     }
     /// ナビゲーションrootの遷移先に表示する戻るボタンの設定
     /// - Parameters:
     ///   - buttonTitle: 戻るボタン名（例：戻る、空文字""）
     ///   - buttonColor: 戻るボタン色
-    internal func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor) {
+    func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = buttonColor
     }
     /// Safariで指定したURLのページを開く
     /// - Parameters:
     ///   - urlString: URL
-    internal func transitionSafariViewController(urlString: String) {
+    func transitionSafariViewController(urlString: String) {
         let url: URL?
         // 不正なURLであるかを判定する
         // （不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
@@ -43,7 +43,7 @@ extension UIViewController {
         }
     }
     /// ImagePicker起動
-    internal func openImagePicker() {
+    func openImagePicker() {
         let picker = UIImagePickerController()
         picker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         picker.sourceType = .photoLibrary

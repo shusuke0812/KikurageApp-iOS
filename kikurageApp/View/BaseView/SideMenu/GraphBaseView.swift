@@ -20,13 +20,13 @@ protocol GraphBaseViewDelegate: AnyObject {
 }
 
 class GraphBaseView: UIView {
-    @IBOutlet weak var navigationItem: UINavigationItem!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
-    @IBOutlet weak var temperatureLineChartView: LineChartView!
-    @IBOutlet weak var humidityLineChartView: LineChartView!
+    @IBOutlet private weak var navigationItem: UINavigationItem!
+    @IBOutlet private weak var temperatureLabel: UILabel!
+    @IBOutlet private weak var humidityLabel: UILabel!
+    @IBOutlet private weak var temperatureLineChartView: LineChartView!
+    @IBOutlet private weak var humidityLineChartView: LineChartView!
     /// デリゲート
-    internal weak var delegate: GraphBaseViewDelegate?
+    weak var delegate: GraphBaseViewDelegate?
     /// ChartViewHelper
     private let chartViewHelper = ChartViewHelper()
 

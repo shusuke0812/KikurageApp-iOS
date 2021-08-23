@@ -16,18 +16,18 @@ protocol PostRecipeBaseViewDelegate: AnyObject {
 }
 
 class PostRecipeBaseView: UIView {
-    @IBOutlet weak var navigationItem: UINavigationItem!
+    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet weak var cameraCollectionView: UICollectionView!
     @IBOutlet weak var recipeNameTextField: UITextField!
-    @IBOutlet weak var currentRecipeNameNumberLabel: UILabel!
-    @IBOutlet weak var maxRecipeNameNumberLabel: UILabel!
+    @IBOutlet private weak var currentRecipeNameNumberLabel: UILabel!
+    @IBOutlet private weak var maxRecipeNameNumberLabel: UILabel!
     @IBOutlet weak var recipeMemoTextView: UITextViewWithPlaceholder!
-    @IBOutlet weak var currentRecipeMemoNumberLabel: UILabel!
-    @IBOutlet weak var maxRecipeMemoNumberLabel: UILabel!
+    @IBOutlet private weak var currentRecipeMemoNumberLabel: UILabel!
+    @IBOutlet private weak var maxRecipeMemoNumberLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet private weak var postButton: UIButton!
     /// デリゲート
-    internal weak var delegate: PostRecipeBaseViewDelegate?
+    weak var delegate: PostRecipeBaseViewDelegate?
     /// 日付選択Picker
     var datePicker = UIDatePicker()
     /// 料理名の最大入力可能文字数

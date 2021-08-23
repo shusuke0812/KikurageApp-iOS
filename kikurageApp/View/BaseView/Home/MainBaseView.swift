@@ -20,15 +20,15 @@ protocol MainBaseViewDelegate: AnyObject {
 }
 
 class MainBaseView: UIView {
-    @IBOutlet weak var nowTimeLabel: UILabel!
-    @IBOutlet weak var kikurageNameLabel: UILabel!
-    @IBOutlet weak var kikurageStatusLabel: UILabel!
+    @IBOutlet private weak var nowTimeLabel: UILabel!
+    @IBOutlet private weak var kikurageNameLabel: UILabel!
+    @IBOutlet private weak var kikurageStatusLabel: UILabel!
     @IBOutlet weak var kikurageStatusView: UIImageView!
-    @IBOutlet weak var temparatureTextLabel: UILabel!
-    @IBOutlet weak var humidityTextLabel: UILabel!
-    @IBOutlet weak var kikurageAdviceView: MainAdviceView!
+    @IBOutlet private weak var temparatureTextLabel: UILabel!
+    @IBOutlet private weak var humidityTextLabel: UILabel!
+    @IBOutlet private weak var kikurageAdviceView: MainAdviceView!
     // デリゲート
-    internal weak var delegate: MainBaseViewDelegate?
+    weak var delegate: MainBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

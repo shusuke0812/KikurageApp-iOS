@@ -29,7 +29,7 @@ class MainViewModel {
     /// きくらげユーザー
     var kikurageUser: KikurageUser!
     /// デリゲート
-    internal weak var delegate: MainViewModelDelgate?
+    weak var delegate: MainViewModelDelgate?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {
         self.kikurageStateRepository = kikurageStateRepository

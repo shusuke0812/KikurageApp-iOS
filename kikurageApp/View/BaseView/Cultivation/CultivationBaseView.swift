@@ -14,11 +14,11 @@ protocol CultivationBaseViewDelegate: AnyObject {
 }
 
 class CultivationBaseView: UIView {
-    @IBOutlet weak var postPageButton: UIButton!
+    @IBOutlet private weak var postPageButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout!
     /// デリゲート
-    internal weak var delegate: CultivationBaseViewDelegate?
+    weak var delegate: CultivationBaseViewDelegate?
 
     // MARK: - Lifecycle
     override func awakeFromNib() {

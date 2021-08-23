@@ -27,7 +27,7 @@ class GraphViewModel {
     /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     /// デリゲート
-    internal weak var delegate: GraphViewModelDelegate?
+    weak var delegate: GraphViewModelDelegate?
     /// きくらげの１週間データ
     var kikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []
     /// きくらげの１週間の温度データ

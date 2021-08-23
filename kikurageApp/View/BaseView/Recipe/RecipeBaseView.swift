@@ -16,7 +16,7 @@ protocol RecipeBaseViewDelegate: AnyObject {
 class RecipeBaseView: UIView {
     @IBOutlet weak var tableView: UITableView!
     /// デリゲート
-    internal weak var delegate: RecipeBaseViewDelegate?
+    weak var delegate: RecipeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
