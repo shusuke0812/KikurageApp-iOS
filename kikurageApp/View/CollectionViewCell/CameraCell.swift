@@ -17,9 +17,9 @@ protocol CameraCellDelegate: AnyObject {
 }
 
 class CameraCell: UICollectionViewCell {
-    @IBOutlet weak var cameraIamge: UIImageView!
+    @IBOutlet private weak var cameraIamge: UIImageView!
     // デリゲート
-    internal weak var delegate: CameraCellDelegate?
+    weak var delegate: CameraCellDelegate?
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -34,18 +34,18 @@ class CameraCell: UICollectionViewCell {
 // MARK: - Setting Image Method
 extension CameraCell {
     /// デフォルトに戻す（キャンセルボタン押下時）
-    internal func setDefaultImage() {
+    func setDefaultImage() {
         self.cameraIamge.image = R.image.camera()
     }
     /// 選択した画像を表示する（新規選択時）
     /// - Parameter image: 選択した画像
-    internal func setIamge(image: UIImage) {
+    func setIamge(image: UIImage) {
         self.cameraIamge.image = image
         self.cameraIamge.contentMode = .scaleAspectFill
     }
     /// 投稿した画像を表示する（Firebase読み込み時）
     /// - Parameter imageStoragePath: 画像のStorageパス
-    internal func setImage(imageStoragePath: String) {
+    func setImage(imageStoragePath: String) {
         if imageStoragePath.isEmpty {
             self.setDefaultImage()
             return

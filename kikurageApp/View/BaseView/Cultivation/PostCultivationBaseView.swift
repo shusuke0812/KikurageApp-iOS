@@ -16,15 +16,15 @@ protocol PostCultivationBaseViewDelegate: AnyObject {
 }
 
 class PostCultivationBaseView: UIView {
-    @IBOutlet weak var navigationItem: UINavigationItem!
+    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet weak var cameraCollectionView: UICollectionView!
     @IBOutlet weak var textView: UITextViewWithPlaceholder!
-    @IBOutlet weak var currentTextViewNumberLabel: UILabel!
-    @IBOutlet weak var maxTextViewNumberLabel: UILabel!
+    @IBOutlet private weak var currentTextViewNumberLabel: UILabel!
+    @IBOutlet private weak var maxTextViewNumberLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet private weak var postButton: UIButton!
     /// デリゲート
-    internal weak var delegate: PostCultivationBaseViewDelegate?
+    weak var delegate: PostCultivationBaseViewDelegate?
     /// 日付選択Picker
     var datePicker = UIDatePicker()
     /// 観察メモの最大入力可能文字数

@@ -40,7 +40,7 @@ extension UITextViewWithPlaceholder {
         addSubview(self.placeholderLabel)
     }
     // Placeholderの表示・非表示切り替え
-    internal func switchPlaceholderDisplay(text: String) {
+    func switchPlaceholderDisplay(text: String) {
         self.placeholderLabel.isHidden = text.isEmpty ? false : true
     }
 }

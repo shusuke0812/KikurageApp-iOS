@@ -9,9 +9,9 @@
 import UIKit
 
 class MainAdviceView: XibView {
-    @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var adviceIconImageView: UIImageView!
-    @IBOutlet weak var adviceTitleLabel: UILabel!
+    @IBOutlet private weak var baseView: UIView!
+    @IBOutlet private weak var adviceIconImageView: UIImageView!
+    @IBOutlet private weak var adviceTitleLabel: UILabel!
     @IBOutlet weak var adviceContentLabel: UILabel!
 
     required init?(coder aDecoder: NSCoder) {

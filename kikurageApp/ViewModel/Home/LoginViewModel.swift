@@ -37,7 +37,7 @@ class LoginViewModel {
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
     /// デリゲート
-    internal weak var delegate: LoginViewModelDelegate?
+    weak var delegate: LoginViewModelDelegate?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository

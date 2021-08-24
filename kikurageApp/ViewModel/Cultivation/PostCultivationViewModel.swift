@@ -24,7 +24,7 @@ class PostCultivationViewModel {
     /// 栽培記録リポジトリ
     private let cultivationRepository: CultivationRepositoryProtocol
     /// デリゲート
-    internal weak var delegate: PostCultivationViewModelDelegate?
+    weak var delegate: PostCultivationViewModelDelegate?
     /// 栽培記録
     var cultivation: KikurageCultivation
     /// 栽培記録のFirestore Document ID

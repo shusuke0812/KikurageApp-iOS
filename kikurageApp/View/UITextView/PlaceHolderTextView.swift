@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class PlaceHolderTextView: UITextView {
-    lazy var placeHolderLabel = UILabel()
+    private lazy var placeHolderLabel = UILabel()
     var placeHolderColor = UIColor.lightGray
     var placeHolder = ""
 

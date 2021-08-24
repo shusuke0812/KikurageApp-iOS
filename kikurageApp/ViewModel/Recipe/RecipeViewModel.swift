@@ -19,7 +19,7 @@ class RecipeViewModel: NSObject {
     /// 料理記録リポジトリ
     private let recipeRepository: RecipeRepositoryProtocol
     /// デリゲート
-    internal weak var delegate: RecipeViewModelDelegate?
+    weak var delegate: RecipeViewModelDelegate?
     ///　きくらげ料理データ
     var recipes: [(recipe: KikurageRecipe, documentId: String)] = []
     /// セクション数

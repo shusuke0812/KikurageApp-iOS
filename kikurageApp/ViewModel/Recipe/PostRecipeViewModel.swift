@@ -25,7 +25,7 @@ class PostRecipeViewModel {
     /// 料理記録リポジトリ
     private let recipeRepository: RecipeRepositoryProtocol
     /// デリゲート
-    internal weak var delegate: PostRecipeViewModelDelegate?
+    weak var delegate: PostRecipeViewModelDelegate?
     /// 料理記録
     var recipe: KikurageRecipe
     /// 料理記録のFirestore Document ID

@@ -20,7 +20,7 @@ class ClockHelper {
     }
 }
 extension ClockHelper {
-    internal func display() -> String {
+    func display() -> String {
         // 現在時刻を取得する
         let now = Date()
 
