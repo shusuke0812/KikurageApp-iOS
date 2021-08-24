@@ -35,7 +35,7 @@ class SideMenuBaseView: UIView {
         self.initSideMenuContent()
         self.initSideMenuBoarderLine()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapContactCell(_ sender: Any) {
         self.delegate?.didTapContactCell()
     }
@@ -46,7 +46,7 @@ class SideMenuBaseView: UIView {
         self.delegate?.didTapCalendarCell()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension SideMenuBaseView {
     private func initViewTag() {
         self.tag = Constants.ViewTag.sideMenuBase

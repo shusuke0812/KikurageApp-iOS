@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
         self.loadKikurageState()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension MainViewController {
     // ナビゲーションアイテムの設定
     private func setNavigationItem() {
@@ -69,7 +69,7 @@ extension MainViewController {
         self.baseView.delegate = self
     }
 }
-// MARK: - MainBaseView Delegate Method
+// MARK: - MainBaseView Delegate
 extension MainViewController: MainBaseViewDelegate {
     func didTapCultivationButton() {
         // 栽培記録画面へ遷移
@@ -91,7 +91,7 @@ extension MainViewController: MainBaseViewDelegate {
         self.performSegue(withIdentifier: "SideMenu", sender: nil)
     }
 }
-// MARK: - MainViewModel Delegate Method
+// MARK: - MainViewModel Delegate
 extension MainViewController: MainViewModelDelgate {
     // きくらげの状態を取得する
     private func loadKikurageState() {

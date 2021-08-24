@@ -24,7 +24,7 @@ protocol KikurageStateRepositoryProtocol {
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension KikurageStateRepository {
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
         let db = Firestore.firestore()

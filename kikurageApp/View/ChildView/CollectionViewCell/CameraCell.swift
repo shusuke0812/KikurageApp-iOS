@@ -26,12 +26,12 @@ class CameraCell: UICollectionViewCell {
         super.awakeFromNib()
         self.setDefaultImage()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapImageCancelButton(_ sender: Any) {
         self.delegate?.didTapImageCancelButton(cell: self)
     }
 }
-// MARK: - Setting Image Method
+// MARK: - Setting Image
 extension CameraCell {
     /// デフォルトに戻す（キャンセルボタン押下時）
     func setDefaultImage() {

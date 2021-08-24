@@ -22,12 +22,12 @@ class CommunicationBaseView: UIView {
         super.awakeFromNib()
         self.initUI()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapFacebookButton(_ sender: Any) {
         self.delegate?.didTapFacebookButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CommunicationBaseView {
     private func initUI() {
         self.informationLabel.text = """

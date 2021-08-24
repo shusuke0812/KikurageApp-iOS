@@ -14,25 +14,26 @@ class CalendarViewController: UIViewController {
     /// ViewModel
     private var viewModel: CalendarViewModel!
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CalendarViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
     }
 }
-// MARK: - CalendarBaseView Delegate Method
+// MARK: - CalendarBaseView Delegate
 extension CalendarViewController: CalendarBaseViewDelegate {
     func didTapCloseButton() {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - CalendarViewModel Delegate Method
+// MARK: - CalendarViewModel Delegate
 extension CalendarViewController: CalendarViewModelDelegate {
     func didSuccessGetKikurageUser() {
     }

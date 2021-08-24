@@ -25,7 +25,7 @@ class PostCultivationViewController: UIViewController {
         self.setDelegateDataSource()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension PostCultivationViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
@@ -37,7 +37,7 @@ extension PostCultivationViewController {
         self.viewModel.delegate = self
     }
 }
-// MARK: - BaseView Delegate Method
+// MARK: - BaseView Delegate
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
@@ -52,7 +52,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - UITextField Delegate Method
+// MARK: - UITextField Delegate
 extension PostCultivationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         let dateString = DateHelper.shared.formatToString(date: self.baseView.datePicker.date)
@@ -60,7 +60,7 @@ extension PostCultivationViewController: UITextFieldDelegate {
         self.viewModel.cultivation.viewDate = dateString
     }
 }
-// MARK: - UITextView Delegate Method
+// MARK: - UITextView Delegate
 extension PostCultivationViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         var resultText = ""
@@ -76,7 +76,7 @@ extension PostCultivationViewController: UITextViewDelegate {
         self.baseView.setCurrentTextViewNumber(text: text)
     }
 }
-// MARK: - CameraCell Delegate Method
+// MARK: - CameraCell Delegate
 extension PostCultivationViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
@@ -84,7 +84,7 @@ extension PostCultivationViewController: CameraCellDelegate {
         self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
-// MARK: - PostCultivationViewModel Delegate Method
+// MARK: - PostCultivationViewModel Delegate
 extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didSuccessPostCultivation() {
         // nil要素を取り除いた選択した画像のみのData型に変換する
@@ -114,13 +114,13 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録の保存に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
 }
-// MARK: - UICollectionView Delegate Method
+// MARK: - UICollectionView Delegate
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.openImagePicker()
     }
 }
-// MARK: - UIImagePickerController Delegate Method
+// MARK: - UIImagePickerController Delegate
 extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }

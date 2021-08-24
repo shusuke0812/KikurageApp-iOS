@@ -22,7 +22,7 @@ class RecipeBaseView: UIView {
         super.awakeFromNib()
         self.setTableView()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapPostRecipePageButton(_ sender: Any) {
         self.delegate?.didTapPostRecipePageButton()
     }

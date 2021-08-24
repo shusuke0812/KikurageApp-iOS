@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     /// ViewModel
     private var viewModel: LoginViewModel!
 
-    // MARK: - Lifecycle Method
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = LoginViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         self.validateOpenPage()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension LoginViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
@@ -44,7 +44,7 @@ extension LoginViewController {
         self.viewModel.loadKikurageUser(uid: userId)
     }
 }
-// MARK: - UITextField Delegate Method
+// MARK: - UITextField Delegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -69,7 +69,7 @@ extension LoginViewController: UITextFieldDelegate {
         self.viewModel.kikurageUser?.cultivationStartDate = date
     }
 }
-// MARK: - LoginBaseView Delegate Method
+// MARK: - LoginBaseView Delegate
 extension LoginViewController: LoginBaseViewDelegate {
     func didTapLoginButton() {
         let validate = self.textFieldValidation()
@@ -100,7 +100,7 @@ extension LoginViewController: LoginBaseViewDelegate {
         return true
     }
 }
-// MARK: - LoginViewModel Delegate Method
+// MARK: - LoginViewModel Delegate
 extension LoginViewController: LoginViewModelDelegate {
     func didSuccessGetKikurageState() {
         if self.viewModel.kikurageUser?.createdAt != nil {

@@ -24,7 +24,7 @@ class PostRecipeViewController: UIViewController {
         self.setDelegateDataSource()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension PostRecipeViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
@@ -37,7 +37,7 @@ extension PostRecipeViewController {
         self.viewModel.delegate = self
     }
 }
-// MARK: - BaseView Delegate Method
+// MARK: - BaseView Delegate
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
@@ -52,7 +52,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - UITextField Delegate Method
+// MARK: - UITextField Delegate
 extension PostRecipeViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.tag == Constants.TextFieldTag.recipeName {
@@ -87,7 +87,7 @@ extension PostRecipeViewController: UITextFieldDelegate {
         self.viewModel.recipe.name = recipeName
     }
 }
-// MARK: - UITextView Delegate Method
+// MARK: - UITextView Delegate
 extension PostRecipeViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         var resultText = ""
@@ -103,7 +103,7 @@ extension PostRecipeViewController: UITextViewDelegate {
         self.baseView.setCurrentRecipeMemoNumber(text: text)
     }
 }
-// MARK: - CameraCell Delegate Method
+// MARK: - CameraCell Delegate
 extension PostRecipeViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
@@ -111,13 +111,13 @@ extension PostRecipeViewController: CameraCellDelegate {
         self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
-// MARK: - UICollectionView Delegate Method
+// MARK: - UICollectionView Delegate
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.openImagePicker()
     }
 }
-// MAARK: - UIImagePickerController Delegage Method
+// MARK: - UIImagePickerController Delegage
 extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
@@ -131,7 +131,7 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
         picker.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - PostRecipeViewModel Method
+// MARK: - PostRecipeViewModel Delegate
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
         // nil要素を取り除き、選択した画像のみData型に変換する

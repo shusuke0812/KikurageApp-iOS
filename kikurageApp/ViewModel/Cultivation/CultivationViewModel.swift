@@ -30,7 +30,7 @@ class CultivationViewModel: NSObject {
         self.cultivationRepository = cultivationRepository
     }
 }
-// MARK: - Private Method
+// MARK: - Private
 extension CultivationViewModel {
     private func sortCultivations() {
         self.cultivations.sort { cultivation1, cultivation2 -> Bool in
@@ -40,7 +40,7 @@ extension CultivationViewModel {
         }
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     func loadCultivations(kikurageUserId: String) {

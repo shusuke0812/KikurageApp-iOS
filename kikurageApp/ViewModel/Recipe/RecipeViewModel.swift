@@ -29,7 +29,7 @@ class RecipeViewModel: NSObject {
         self.recipeRepository = recipeRepository
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
     func loadRecipes(kikurageUserId: String) {

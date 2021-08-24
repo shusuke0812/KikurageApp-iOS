@@ -36,7 +36,7 @@ class PostRecipeViewModel {
         self.recipe = KikurageRecipe()
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension PostRecipeViewModel {
     func postRecipe(kikurageUserId: String) {
         self.recipeRepository.postRecipe(kikurageUserId: kikurageUserId, kikurageRecipe: self.recipe) { response in
@@ -64,7 +64,7 @@ extension PostRecipeViewModel {
         }
     }
 }
-// MARK: - Firebase Storage Method
+// MARK: - Firebase Storage
 extension PostRecipeViewModel {
     func postRecipeImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedRecipeDocumentId = self.postedRecipeDocumentId else {

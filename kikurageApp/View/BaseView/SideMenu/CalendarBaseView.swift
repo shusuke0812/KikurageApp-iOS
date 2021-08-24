@@ -22,12 +22,12 @@ class CalendarBaseView: UIView {
         super.awakeFromNib()
         self.initUI()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CalendarBaseView {
     private func initUI() {
         // タイトル

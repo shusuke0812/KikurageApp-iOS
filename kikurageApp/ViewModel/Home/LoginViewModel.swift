@@ -45,7 +45,7 @@ class LoginViewModel {
         self.kikurageUser = KikurageUser()
     }
 }
-// MARK: - Setting Data Method
+// MARK: - Setting Data
 extension LoginViewModel {
     /// ユーザーにステートのリファレンスを登録する
     func setStateReference(productKey: String) {
@@ -56,7 +56,7 @@ extension LoginViewModel {
         UserDefaults.standard.set(userId, forKey: Constants.UserDefaultsKey.userId)
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension LoginViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {

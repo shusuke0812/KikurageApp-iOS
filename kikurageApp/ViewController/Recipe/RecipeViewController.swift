@@ -29,7 +29,7 @@ class RecipeViewController: UIViewController {
     }
 }
 
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension RecipeViewController {
     private func setNavigationItem() {
         self.setNavigationBar(title: "りょうりきろく")
@@ -41,20 +41,20 @@ extension RecipeViewController {
         self.viewModel.delegate = self
     }
 }
-// MARK: - RecipeBaseView Delegate Method
+// MARK: - RecipeBaseView Delegate
 extension RecipeViewController: RecipeBaseViewDelegate {
     func didTapPostRecipePageButton() {
         guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
         self.present(vc, animated: true, completion: nil)
     }
 }
-// MARK: - UITableView Delegate Method
+// MARK: - UITableView Delegate
 extension RecipeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         self.cellHeight
     }
 }
-// MARK: - RecipeViewModel Method
+// MARK: - RecipeViewModel
 extension RecipeViewController: RecipeViewModelDelegate {
     func didSuccessGetRecipes() {
         self.baseView.tableView.reloadData()

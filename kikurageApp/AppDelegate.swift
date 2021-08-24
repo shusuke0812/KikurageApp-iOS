@@ -49,9 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+// MARK: - Private
 extension AppDelegate {
-    // ログイン画面を開く
-    func openLoginPage() {
+    /// ログイン画面を開く
+    private func openLoginPage() {
         let window = UIWindow()
         self.window = window
         guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }

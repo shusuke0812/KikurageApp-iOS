@@ -34,12 +34,12 @@ class GraphBaseView: UIView {
         super.awakeFromNib()
         self.initUI()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension GraphBaseView {
     private func initUI() {
         // タイトル
@@ -48,7 +48,7 @@ extension GraphBaseView {
         self.humidityLabel.text = "湿度"
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension GraphBaseView {
     // TODO: 温度・湿度のグラフの体裁を設定する処理が同じなのでまとめたい
     /// 折れ線グラフ描画処理

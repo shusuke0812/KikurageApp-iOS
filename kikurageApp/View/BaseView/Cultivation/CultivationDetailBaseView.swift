@@ -21,7 +21,7 @@ class CultivationDetailBaseView: UIView {
         self.setCollectionView()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CultivationDetailBaseView {
     private func initUI() {
         self.viewDateLabel.text = ""
@@ -33,7 +33,7 @@ extension CultivationDetailBaseView {
         self.collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
         // 観察日の設定

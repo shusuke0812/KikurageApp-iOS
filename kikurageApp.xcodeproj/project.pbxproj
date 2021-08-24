@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
 		9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* MainAdviceView.swift */; };
@@ -96,7 +95,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9C0DCF932546F55800C27051 /* MainAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAdviceView.swift; sourceTree = "<group>"; };
@@ -241,11 +239,9 @@
 		9C1ACF492225768A00A3D4D1 /* kikurageApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C73CCD026D53F3C00B4DE55 /* Utility */,
 				9C82B415253037AB00E650B5 /* Static */,
 				9CA7F3342537FD75005BED9C /* Entity */,
-				9CDAFBF624E4B95700E56550 /* Extension */,
-				9C7E14E62563F8A600D2D8EF /* CustomClass */,
-				9CF0020624E39B290084036B /* Helper */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CB7D5FC254043C300D57801 /* ViewModel */,
 				9CF0020424E3990E0084036B /* View */,
@@ -257,6 +253,38 @@
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 			);
 			path = kikurageApp;
+			sourceTree = "<group>";
+		};
+		9C73CCCF26D53ECB00B4DE55 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				9CA7F3352537FD96005BED9C /* KikurageUser.swift */,
+				9CA7F3392537FF1B005BED9C /* KikurageState.swift */,
+				9C923340255FA0DC000293BB /* KikurageCultivation.swift */,
+				9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */,
+				9C70C44425AFDC8900069F8F /* KikurageStateGraph.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		9C73CCD026D53F3C00B4DE55 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				9CF0020624E39B290084036B /* Helper */,
+				9C7E14E62563F8A600D2D8EF /* CustomClass */,
+				9CDAFBF624E4B95700E56550 /* Extension */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		9C73CCD126D540FE00B4DE55 /* ChildView */ = {
+			isa = PBXGroup;
+			children = (
+				9C82B41B253056BC00E650B5 /* UIView */,
+				9C9D48A825A140DC009FCC64 /* TableViewCell */,
+				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
+			);
+			path = ChildView;
 			sourceTree = "<group>";
 		};
 		9C7E14E62563F8A600D2D8EF /* CustomClass */ = {
@@ -374,11 +402,7 @@
 		9CA7F3342537FD75005BED9C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				9CA7F3352537FD96005BED9C /* KikurageUser.swift */,
-				9CA7F3392537FF1B005BED9C /* KikurageState.swift */,
-				9C923340255FA0DC000293BB /* KikurageCultivation.swift */,
-				9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */,
-				9C70C44425AFDC8900069F8F /* KikurageStateGraph.swift */,
+				9C73CCCF26D53ECB00B4DE55 /* Response */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -572,21 +596,10 @@
 			isa = PBXGroup;
 			children = (
 				9CB7D602254050BF00D57801 /* BaseView */,
-				9C82B41B253056BC00E650B5 /* UIView */,
-				9CF0020524E399190084036B /* UITextView */,
-				9C9D48A825A140DC009FCC64 /* TableViewCell */,
-				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
+				9C73CCD126D540FE00B4DE55 /* ChildView */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		9CF0020524E399190084036B /* UITextView */ = {
-			isa = PBXGroup;
-			children = (
-				9C07496D224DFB080012D2E0 /* PlaceHolderTextView.swift */,
-			);
-			path = UITextView;
 			sourceTree = "<group>";
 		};
 		9CF0020624E39B290084036B /* Helper */ = {
@@ -841,7 +854,6 @@
 				9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */,
 				9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */,
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
-				9C07496E224DFB080012D2E0 /* PlaceHolderTextView.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,

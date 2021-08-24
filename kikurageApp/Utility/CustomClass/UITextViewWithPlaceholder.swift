@@ -28,7 +28,7 @@ class UITextViewWithPlaceholder: UITextView {
         self.setPlaceholder()
     }
 }
-// MARK: - Private Method
+// MARK: - Config
 extension UITextViewWithPlaceholder {
     // TextViewの基本設定
     private func setPlaceholder() {

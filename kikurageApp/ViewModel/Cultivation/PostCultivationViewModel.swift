@@ -35,7 +35,7 @@ class PostCultivationViewModel {
         self.cultivation = KikurageCultivation()
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension PostCultivationViewModel {
     func postCultivation(kikurageUserId: String) {
         self.cultivationRepository.postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: self.cultivation) { response in
@@ -63,7 +63,7 @@ extension PostCultivationViewModel {
         }
     }
 }
-// MARK: - Firebase Storage Method
+// MARK: - Firebase Storage
 extension PostCultivationViewModel {
     func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedCultivationDocumentId = self.postedCultivationDocumentId else {

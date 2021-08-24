@@ -14,6 +14,7 @@ class GraphViewController: UIViewController {
     /// ViewModel
     private var viewModel: GraphViewModel!
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
@@ -21,7 +22,7 @@ class GraphViewController: UIViewController {
         self.loadKikurageUser()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension GraphViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
@@ -36,13 +37,13 @@ extension GraphViewController {
         self.viewModel.loadKikurageStateGraph(productId: kikurageUser.productKey)
     }
 }
-// MARK: - GraphBaseView Delegate Method
+// MARK: - GraphBaseView Delegate
 extension GraphViewController: GraphBaseViewDelegate {
     func didTapCloseButton() {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - GraphViewModel Delegate Method
+// MARK: - GraphViewModel Delegate
 extension GraphViewController: GraphViewModelDelegate {
     func didSuccessGetKikurageStateGraph() {
         self.baseView.setLineChartView(datas: self.viewModel.humidityGraphDatas, graphDataType: .humidity)

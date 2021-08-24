@@ -37,7 +37,7 @@ class PostCultivationBaseView: UIView {
         self.initUI()
         self.initDatePicker()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapPostButton(_ sender: Any) {
         self.delegate?.didTapPostButton()
     }
@@ -45,7 +45,7 @@ class PostCultivationBaseView: UIView {
         self.delegate?.didTapCloseButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension PostCultivationBaseView {
     private func registerCameraCell() {
         self.cameraCollectionView.register(R.nib.cameraCell)

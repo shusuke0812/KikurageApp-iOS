@@ -29,7 +29,7 @@ extension CommunicationViewController {
         self.baaseView.delegate = self
     }
 }
-// MARK: - CommunicationBaseView Delegate Method
+// MARK: - CommunicationBaseView Delegate
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func didTapFacebookButton() {
         // Facebookのきくらげコミュニティへ遷移させる

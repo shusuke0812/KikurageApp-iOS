@@ -18,7 +18,7 @@ class CultivationDetailViewModel: NSObject {
         self.cultivation = cultivation
     }
 }
-// MARK: - UICollectionView DataSource Method
+// MARK: - UICollectionView DataSource
 extension CultivationDetailViewModel: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         self.sectionNumber

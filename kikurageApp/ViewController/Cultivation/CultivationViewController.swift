@@ -25,7 +25,7 @@ class CultivationViewController: UIViewController {
         }
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CultivationViewController {
     private func setNavigationItem() {
         self.setNavigationBar(title: "さいばいきろく")
@@ -37,7 +37,7 @@ extension CultivationViewController {
         self.viewModel.delegate = self
     }
 }
-// MARK: - Private Method
+// MARK: - Private
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
         guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
@@ -45,14 +45,14 @@ extension CultivationViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-// MARK: - CultivationBaseView Delegate Method
+// MARK: - CultivationBaseView Delegate
 extension CultivationViewController: CultivationBaseViewDelegate {
     func didTapPostCultivationPageButton() {
         guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
         self.present(vc, animated: true, completion: nil)
     }
 }
-// MARK: - CultivationViewModel Delegate Method
+// MARK: - CultivationViewModel Delegate
 extension CultivationViewController: CultivationViewModelDelegate {
     func didSuccessGetCultivations() {
         self.baseView.collectionView.reloadData()
@@ -61,7 +61,7 @@ extension CultivationViewController: CultivationViewModelDelegate {
         print(errorMessage)
     }
 }
-// MARK: - UICollectionView Delegate FlowLayout Method
+// MARK: - UICollectionView Delegate FlowLayout
 extension CultivationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalSpace: CGFloat = 1.0
@@ -70,7 +70,7 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellHeight)
     }
 }
-// MARK: - UICollectionView Delegate Method
+// MARK: - UICollectionView Delegate
 extension CultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.transitionCultivationDetailPage(indexPath: indexPath)

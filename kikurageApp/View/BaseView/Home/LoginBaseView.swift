@@ -35,7 +35,7 @@ class LoginBaseView: UIView {
         self.initTextFieldTag()
         self.initDatePicker()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapLoginButton(_ sender: Any) {
         self.delegate?.didTapLoginButton()
     }
@@ -46,7 +46,7 @@ class LoginBaseView: UIView {
         self.delegate?.didTapPrivacyPolicyButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension LoginBaseView {
     private func initUI() {
         // 画像

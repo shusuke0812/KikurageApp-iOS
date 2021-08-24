@@ -45,7 +45,7 @@ class RecipeRepository: RecipeRepositoryProtocol {
         self.metaData.contentType = "image/jpeg"
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension RecipeRepository {
     func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, Error>) -> Void) {
         let db = Firestore.firestore()
@@ -106,7 +106,7 @@ extension RecipeRepository {
         }
     }
 }
-// MARK: - Firebase Storage Method
+// MARK: - Firebase Storage
 extension RecipeRepository {
     func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void) {
         // 画像保存後のフルパス格納用

@@ -24,7 +24,7 @@ class CultivationDetailViewController: UIViewController {
         self.setUI()
     }
 }
-// MARK: - Private Method
+// MARK: - Private
 extension CultivationDetailViewController {
     private func setNavigationItem() {
         self.setNavigationBar(title: "さいばいきろく詳細")
@@ -38,13 +38,13 @@ extension CultivationDetailViewController {
         self.baseView.setUI(cultivation: self.cultivation)
     }
 }
-// MARK: - UICollectionView Delegate Method
+// MARK: - UICollectionView Delegate
 extension CultivationDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 画像拡大処理を書く
     }
 }
-// MARK: - UICollectionView Delegate FlowLayout Method
+// MARK: - UICollectionView Delegate FlowLayout
 extension CultivationDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horiizontalSpace: CGFloat = 0.0

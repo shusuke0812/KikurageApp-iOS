@@ -15,7 +15,7 @@ class SideMenuViewController: UIViewController {
     /// Mailer
     private let mail = MFMailComposeViewController()
 
-    // MARK: - Lifecycle Method
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setDelegateDataSource()
@@ -24,7 +24,7 @@ class SideMenuViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setAnimation()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     // メニューエリア以外をタップした時の処理
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -40,7 +40,7 @@ class SideMenuViewController: UIViewController {
         }
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension SideMenuViewController {
     private func setAnimation() {
         // メニューの位置を取得する
@@ -61,7 +61,7 @@ extension SideMenuViewController {
         self.mail.mailComposeDelegate = self
     }
 }
-// MARK: - MFMail Delegate Method
+// MARK: - MFMail Delegate
 extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     // 問い合わせのメーラーを開く
     private func openContactMailer() {
@@ -91,7 +91,7 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - SideMenuBaaseView Delegate Method
+// MARK: - SideMenuBaaseView Delegate
 extension SideMenuViewController: SideMenuBaseViewDelegate {
     func didTapContactCell() {
         self.openContactMailer()

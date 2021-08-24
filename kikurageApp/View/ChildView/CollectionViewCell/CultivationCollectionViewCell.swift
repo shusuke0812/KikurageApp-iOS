@@ -19,14 +19,14 @@ class CultivationCollectionViewCell: UICollectionViewCell {
         self.initUI()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CultivationCollectionViewCell {
     private func initUI() {
         self.viewDateLabel.text = ""
         self.imageView.backgroundColor = .lightGray
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension CultivationCollectionViewCell {
     func setUI(cultivation: KikurageCultivation) {
         // 画像を設定

@@ -25,12 +25,12 @@ class CultivationBaseView: UIView {
         super.awakeFromNib()
         self.setCollectionView()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapPostCultivationPageButton(_ sender: Any) {
         self.delegate?.didTapPostCultivationPageButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CultivationBaseView {
     private func setCollectionView() {
         self.flowLayout.estimatedItemSize = .zero

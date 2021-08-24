@@ -18,13 +18,13 @@ class CultivationCarouselCollectionViewCell: UICollectionViewCell {
         self.initUI()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension CultivationCarouselCollectionViewCell {
     private func initUI() {
         self.imageView.backgroundColor = .lightGray
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension CultivationCarouselCollectionViewCell {
     func setUI(cultivationImageStoragePath: String) {
         let storageReference = Storage.storage().reference(withPath: cultivationImageStoragePath)

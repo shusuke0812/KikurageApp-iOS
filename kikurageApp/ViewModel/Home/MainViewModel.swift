@@ -41,7 +41,7 @@ class MainViewModel {
         self.kikurageStateListener?.remove()
     }
 }
-// MARK: - Firebase Firestore Method
+// MARK: - Firebase Firestore
 extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {

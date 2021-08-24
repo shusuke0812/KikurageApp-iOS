@@ -42,7 +42,7 @@ class PostRecipeBaseView: UIView {
         self.initTextFieldTag()
         self.initDatePicker()
     }
-    // MARK: - Action Method
+    // MARK: - Action
     @IBAction private func didTapCloseButton(_ sender: Any) {
         self.delegate?.didTapCloseButton()
     }
@@ -50,7 +50,7 @@ class PostRecipeBaseView: UIView {
         self.delegate?.didTapPostButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension PostRecipeBaseView {
     private func registerCameraCell() {
         self.cameraCollectionView.register(R.nib.cameraCell)
@@ -92,7 +92,7 @@ extension PostRecipeBaseView {
         self.dateTextField.inputView = self.datePicker
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension PostRecipeBaseView {
     func setCurrentRecipeNameNumber(text: String) {
         self.currentRecipeNameNumberLabel.text = "\(text.count)"

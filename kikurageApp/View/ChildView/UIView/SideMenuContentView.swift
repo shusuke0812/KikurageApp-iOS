@@ -16,7 +16,7 @@ class SideMenuContentView: XibView {
         super.init(coder: aDecoder)
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension SideMenuContentView {
     /// Viewの上下に枠線を引く
     /// - Parameters:

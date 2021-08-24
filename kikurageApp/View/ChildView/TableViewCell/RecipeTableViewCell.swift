@@ -20,7 +20,7 @@ class RecipeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension RecipeTableViewCell {
     func setUI(recipe: KikurageRecipe) {
         // 文字の設定

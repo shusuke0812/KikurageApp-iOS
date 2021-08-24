@@ -48,7 +48,7 @@ class MainBaseView: UIView {
         self.delegate?.didTapSideMenuButton()
     }
 }
-// MARK: - Initialized Method
+// MARK: - Initialized
 extension MainBaseView {
     private func initUI() {
         self.nowTimeLabel.text = ClockHelper.shared.display()
@@ -59,7 +59,7 @@ extension MainBaseView {
         self.humidityTextLabel.text = "-"
     }
 }
-// MARK: - Setting UI Method
+// MARK: - Setting UI
 extension MainBaseView {
     func setKikurageStateUI(kikurageState: KikurageState?) {
         // きくらげの状態メッセージを設定
