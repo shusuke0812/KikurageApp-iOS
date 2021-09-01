@@ -239,6 +239,7 @@
 		9C1ACF492225768A00A3D4D1 /* kikurageApp */ = {
 			isa = PBXGroup;
 			children = (
+				9C9A8D9F26DFB990006C31E7 /* App */,
 				9C73CCD026D53F3C00B4DE55 /* Utility */,
 				9C82B415253037AB00E650B5 /* Static */,
 				9CA7F3342537FD75005BED9C /* Entity */,
@@ -247,7 +248,6 @@
 				9CF0020424E3990E0084036B /* View */,
 				9CF0020224E398AC0084036B /* ViewController */,
 				9CF0020324E398D00084036B /* Storyboard */,
-				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
 				9C6D094A231DCEAC00908ECA /* GoogleService-Info.plist */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
@@ -388,6 +388,14 @@
 				9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */,
 			);
 			path = Communication;
+			sourceTree = "<group>";
+		};
+		9C9A8D9F26DFB990006C31E7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		9C9D48A825A140DC009FCC64 /* TableViewCell */ = {
