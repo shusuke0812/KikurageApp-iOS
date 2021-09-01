@@ -67,6 +67,7 @@
 		9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */; };
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
+		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
 		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
 		9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3352537FD96005BED9C /* KikurageUser.swift */; };
@@ -157,6 +158,7 @@
 		9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostRecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeBaseView.swift; sourceTree = "<group>"; };
 		9C96997C2566118B00D655DA /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9CA7F3352537FD96005BED9C /* KikurageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUser.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
+				9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
 				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
+				9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */,
 				9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
 				9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */,

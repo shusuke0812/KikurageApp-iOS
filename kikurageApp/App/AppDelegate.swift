@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
         // ログイン画面を開く
-        self.openLoginPage()
+        self.openTopPage()
         return true
     }
 
@@ -51,11 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - Private
 extension AppDelegate {
-    /// ログイン画面を開く
-    private func openLoginPage() {
+    private func openTopPage() {
         let window = UIWindow()
         self.window = window
-        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
+        let vc = AppRootController()
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
     }
