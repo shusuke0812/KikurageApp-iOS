@@ -14,7 +14,7 @@ class AppRootController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoginPage()
+        showTopPage()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -24,9 +24,9 @@ class AppRootController: UIViewController {
 
 // MARK: - Private
 extension AppRootController {
-    /// ログイン画面を開く
-    private func showLoginPage() {
-        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
+    /// トップ画面を開く
+    private func showTopPage() {
+        guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
         changeViewController(vc)
     }
     private func changeViewController(_ vc: UIViewController) {

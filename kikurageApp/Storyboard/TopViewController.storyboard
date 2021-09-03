@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N9c-Qc-Vwv">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N9c-Qc-Vwv">
                                 <rect key="frame" x="40" y="84" width="334" height="188"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="N9c-Qc-Vwv" secondAttribute="height" multiplier="16:9" id="VGt-KG-YH1"/>
@@ -34,6 +34,9 @@
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTappedLoginButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="9wM-U2-9E6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuL-mP-68c">
                                 <rect key="frame" x="40" y="392" width="334" height="45"/>
@@ -45,6 +48,9 @@
                                 <state key="normal" title="新規ユーザー登録">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTappedSignUpButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="xEP-ua-ekS"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JBQ-z1-pFQ">
                                 <rect key="frame" x="80" y="467" width="254" height="31"/>
@@ -62,6 +68,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="didTappedTermsButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="8ud-Vd-OIT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WcK-7Q-gF3">
                                         <rect key="frame" x="88" y="0.0" width="166" height="31"/>
@@ -77,15 +86,26 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="didTappedPrivacyPolicyButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="IuX-zh-NLD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwj-ct-97N">
+                                <rect key="frame" x="15" y="847" width="384" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="themeColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JBQ-z1-pFQ" secondAttribute="trailing" constant="80" id="166-Yv-Bud"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1Ii-RY-ici" secondAttribute="trailing" constant="40" id="5FG-Je-UMb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Hwj-ct-97N" secondAttribute="trailing" constant="15" id="C06-t8-Bl5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Hwj-ct-97N" secondAttribute="bottom" constant="15" id="DEQ-Fi-WH2"/>
                             <constraint firstItem="JBQ-z1-pFQ" firstAttribute="top" secondItem="FuL-mP-68c" secondAttribute="bottom" constant="30" id="FQI-hx-xjw"/>
                             <constraint firstItem="JBQ-z1-pFQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="80" id="Jr3-fN-oPF"/>
                             <constraint firstItem="1Ii-RY-ici" firstAttribute="top" secondItem="N9c-Qc-Vwv" secondAttribute="bottom" constant="40" id="Jwa-OX-2fh"/>
@@ -95,8 +115,15 @@
                             <constraint firstItem="FuL-mP-68c" firstAttribute="top" secondItem="1Ii-RY-ici" secondAttribute="bottom" constant="35" id="eEV-wn-i3H"/>
                             <constraint firstItem="N9c-Qc-Vwv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="hU2-jK-O2v"/>
                             <constraint firstItem="1Ii-RY-ici" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="qJp-Ro-KCZ"/>
+                            <constraint firstItem="Hwj-ct-97N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="rYc-ZC-4xF"/>
                             <constraint firstItem="FuL-mP-68c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="tS5-WW-GAM"/>
                         </constraints>
+                        <connections>
+                            <outlet property="copyrightLabel" destination="Hwj-ct-97N" id="h13-vu-UKP"/>
+                            <outlet property="loginButton" destination="1Ii-RY-ici" id="wK3-rM-DjZ"/>
+                            <outlet property="signUpButton" destination="FuL-mP-68c" id="5Qb-bM-RRK"/>
+                            <outlet property="topImageView" destination="N9c-Qc-Vwv" id="JcB-P8-BK0"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
