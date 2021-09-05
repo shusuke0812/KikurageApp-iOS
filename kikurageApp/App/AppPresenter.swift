@@ -31,7 +31,10 @@ class AppPresenter {
 extension AppPresenter {
     /// ユーザーIDが`UserDefaults`に登録されているか確認し、ある場合はユーザーを取得する
     func checkSavedUserId() {
-        guard let userId: String = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) else { return }
+        guard let userId: String = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) else {
+            self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+            return
+        }
         self.loadKikurageUser(uid: userId)
     }
 }
@@ -47,7 +50,7 @@ extension AppPresenter {
                 self?.delegate?.didSuccessGetKikurageUser(kikurageUser: kikurageUser)
             case .failure(let error):
                 print(error)
-                self?.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでし")
+                self?.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
             }
         }
     }

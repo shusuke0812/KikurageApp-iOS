@@ -28,8 +28,8 @@ class AppRootController: UIViewController {
 
 // MARK: - Private
 extension AppRootController {
-    /// トップ画面を開く
-    private func showTopPage(kikurageUser: KikurageUser) {
+    /// ホーム画面を開く
+    private func showMainPage(kikurageUser: KikurageUser) {
         guard let vc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
         let navVC = UINavigationController(rootViewController: vc)
         let mainVC = navVC.topViewController as! MainViewController // swiftlint:disable:this force_cast
@@ -37,7 +37,7 @@ extension AppRootController {
         changeViewController(mainVC)
     }
     /// ログイン画面を開く
-    private func showLoginPage() {
+    private func showTopPage() {
         guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
         let navVC = UINavigationController(rootViewController: vc)
         changeViewController(navVC)
@@ -62,10 +62,10 @@ extension AppRootController {
 // MARK: - AppPresenter Delegate
 extension AppRootController: AppPresenterDelegate {
     func didSuccessGetKikurageUser(kikurageUser: KikurageUser) {
-        showTopPage(kikurageUser: kikurageUser)
+        showMainPage(kikurageUser: kikurageUser)
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         print("DEBUG: \(errorMessage)")
-        showLoginPage()
+        showTopPage()
     }
 }

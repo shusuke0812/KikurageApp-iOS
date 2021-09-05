@@ -15,8 +15,9 @@ class TopViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setDelegate()
 
-        self.title = "ログイン"
+        self.navigationItem.title = "ようこそ！"
     }
 }
 
@@ -38,8 +39,12 @@ extension TopViewController: TopBaseViewDelegate {
     }
 
     func didTappedLoginButton() {
+        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     func didTappedSignUpButton() {
+        guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
