@@ -11,7 +11,7 @@
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
 		9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* MainAdviceView.swift */; };
 		9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* MainAdviceView.xib */; };
-		9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */; };
+		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
 		9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */; };
@@ -41,11 +41,11 @@
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
 		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
-		9C87EB0C25A6E275006CB1D7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87EB0B25A6E275006CB1D7 /* LoginViewModel.swift */; };
+		9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */; };
 		9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */; };
 		9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */; };
 		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
-		9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */; };
+		9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */; };
 		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
 		9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */; };
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
@@ -73,6 +73,7 @@
 		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
 		9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */; };
 		9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627E26E26B70000F7EE2 /* TopViewController.swift */; };
+		9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */; };
 		9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3352537FD96005BED9C /* KikurageUser.swift */; };
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
@@ -93,7 +94,7 @@
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
-		9CDD1FC225A69040006DA852 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* LoginBaseView.swift */; };
+		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		F6B67301E7960027877D69C5 /* Pods_kikurageApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */; };
 /* End PBXBuildFile section */
@@ -103,7 +104,7 @@
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9C0DCF932546F55800C27051 /* MainAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAdviceView.swift; sourceTree = "<group>"; };
 		9C0DCF962546F58600C27051 /* MainAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainAdviceView.xib; sourceTree = "<group>"; };
-		9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C1ACF472225768A00A3D4D1 /* きくらげ君.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "きくらげ君.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,11 +136,11 @@
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
 		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
-		9C87EB0B25A6E275006CB1D7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeviceRegisterViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
 		9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBaseView.swift; sourceTree = "<group>"; };
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBaseView.swift; sourceTree = "<group>"; };
 		9CA7627E26E26B70000F7EE2 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		9CA7F3352537FD96005BED9C /* KikurageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUser.swift; sourceTree = "<group>"; };
 		9CA7F3392537FF1B005BED9C /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
@@ -187,7 +189,7 @@
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
-		9CDD1FC125A69040006DA852 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
+		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9DE7A57E7E4CA9ABE24A7C5A /* Pods_kikurageApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kikurageApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -365,7 +367,6 @@
 		9C8A0C41255CEB2400E1C98C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524C24E4ADC90025B179 /* LoginViewController.storyboard */,
 				9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */,
 			);
 			path = Home;
@@ -403,6 +404,7 @@
 			children = (
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
 				9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */,
+				9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -451,7 +453,6 @@
 		9CAFF9AC255CD1E900418745 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9C12F9642244F9FC00BA9FCB /* LoginViewController.swift */,
 				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
 			);
 			path = Home;
@@ -487,6 +488,7 @@
 		9CB7D5FC254043C300D57801 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
 				9CDD1F5E25A68232006DA852 /* Home */,
 				9CDD1F5D25A68216006DA852 /* Cultivation */,
 				9CDD1F5C25A68206006DA852 /* Recipe */,
@@ -500,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */,
+				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 				9CDD1F5F25A6824D006DA852 /* Home */,
 				9CDD1F6025A68257006DA852 /* Cultivation */,
 				9CDD1F6125A6827A006DA852 /* Recipe */,
@@ -544,7 +547,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
-				9C87EB0B25A6E275006CB1D7 /* LoginViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -553,7 +555,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB7D603254050D600D57801 /* MainBaseView.swift */,
-				9CDD1FC125A69040006DA852 /* LoginBaseView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -589,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				9CA7627E26E26B70000F7EE2 /* TopViewController.swift */,
+				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
 				9CAFF9AC255CD1E900418745 /* Home */,
 				9CAFF9AD255CD1FA00418745 /* Cultivation */,
 				9CAFF9AE255CD20500418745 /* Recipe */,
@@ -602,6 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				9C7DE9F126E130A60006B36F /* TopViewController.storyboard */,
+				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
 				9C8A0C41255CEB2400E1C98C /* Home */,
 				9C8A0C42255CEB2B00E1C98C /* Cultivation */,
 				9C8A0C43255CEB3400E1C98C /* Recipe */,
@@ -711,7 +714,7 @@
 				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */,
-				9C8A524D24E4ADC90025B179 /* LoginViewController.storyboard in Resources */,
+				9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
 				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
@@ -836,7 +839,7 @@
 				9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */,
 				9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */,
 				9C96997D2566118C00D655DA /* DateHelper.swift in Sources */,
-				9C87EB0C25A6E275006CB1D7 /* LoginViewModel.swift in Sources */,
+				9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
 				9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */,
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
@@ -847,10 +850,10 @@
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */,
 				9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */,
-				9C12F9652244F9FC00BA9FCB /* LoginViewController.swift in Sources */,
+				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
 				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
-				9CDD1FC225A69040006DA852 /* LoginBaseView.swift in Sources */,
+				9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */,
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
 				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
@@ -867,6 +870,7 @@
 				9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
+				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-protocol LoginViewModelDelegate: AnyObject {
+protocol DeviceRegisterModelDelegate: AnyObject {
     /// きくらげの状態データ取得に成功した
     func didSuccessGetKikurageState()
     /// きくらげの状態データ取得に失敗した
@@ -27,7 +27,7 @@ protocol LoginViewModelDelegate: AnyObject {
     func didFailedGetKikurageUser(errorMessage: String)
 }
 
-class LoginViewModel {
+class DeviceRegisterViewModel {
     /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     /// きくらげユーザー取得リポジトリ
@@ -37,7 +37,7 @@ class LoginViewModel {
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
     /// デリゲート
-    weak var delegate: LoginViewModelDelegate?
+    weak var delegate: DeviceRegisterViewModelDelegate?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
@@ -46,7 +46,7 @@ class LoginViewModel {
     }
 }
 // MARK: - Setting Data
-extension LoginViewModel {
+extension DeviceRegisterViewModel {
     /// ユーザーにステートのリファレンスを登録する
     func setStateReference(productKey: String) {
         self.kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
@@ -57,7 +57,7 @@ extension LoginViewModel {
     }
 }
 // MARK: - Firebase Firestore
-extension LoginViewModel {
+extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         guard let productId = self.kikurageUser?.productKey else { return }

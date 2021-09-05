@@ -9,9 +9,9 @@
 import UIKit
 import PKHUD
 
-class LoginViewController: UIViewController {
+class DeviceRegisterViewController: UIViewController {
     /// BaseView
-    private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: LoginViewModel!
 
@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     }
 }
 // MARK: - Initialized
-extension LoginViewController {
+extension DeviceRegisterViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
         self.baseView.productKeyTextField.delegate = self
@@ -45,7 +45,7 @@ extension LoginViewController {
     }
 }
 // MARK: - UITextField Delegate
-extension LoginViewController: UITextFieldDelegate {
+extension DeviceRegisterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
         switch textField.tag {
@@ -69,9 +69,9 @@ extension LoginViewController: UITextFieldDelegate {
         self.viewModel.kikurageUser?.cultivationStartDate = date
     }
 }
-// MARK: - LoginBaseView Delegate
-extension LoginViewController: LoginBaseViewDelegate {
-    func didTapLoginButton() {
+// MARK: - DeviceRegisterBaseView Delegate
+extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
+    func didTappedDeviceRegisterButton() {
         let validate = self.textFieldValidation()
         if validate {
             // HUD表示（始）
@@ -82,13 +82,7 @@ extension LoginViewController: LoginBaseViewDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    func didTapTermsButton() {
-        self.transitionSafariViewController(urlString: Constants.WebUrl.terms)
-    }
-    func didTapPrivacyPolicyButton() {
-        self.transitionSafariViewController(urlString: Constants.WebUrl.privacyPolicy)
-    }
-    func textFieldValidation() -> Bool {
+    private func textFieldValidation() -> Bool {
         guard let productKey = self.baseView.productKeyTextField.text, let kikurageName = self.baseView.kikurageNameTextField.text, let cultivationStartDate = self.baseView.cultivationStartDateTextField.text else {
             print("DEBUG: 入力されていない項目があります")
             return false
@@ -101,7 +95,7 @@ extension LoginViewController: LoginBaseViewDelegate {
     }
 }
 // MARK: - LoginViewModel Delegate
-extension LoginViewController: LoginViewModelDelegate {
+extension DeviceRegisterViewController: LoginViewModelDelegate {
     func didSuccessGetKikurageState() {
         if self.viewModel.kikurageUser?.createdAt != nil {
             // HUD（終）

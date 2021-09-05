@@ -8,24 +8,19 @@
 
 import UIKit
 
-protocol LoginBaseViewDelegate: AnyObject {
+protocol DeviceRegisterBaseViewDelegate: AnyObject {
     /// ログインボタンを押した時の処理
-    func didTapLoginButton()
-    /// 利用規約ボタンを押した時の処理
-    func didTapTermsButton()
-    /// 個人情報保護方針ボタンを押した時の処理
-    func didTapPrivacyPolicyButton()
+    func didTappedDeviceRegisterButton()
 }
 
-class LoginBaseView: UIView {
-    @IBOutlet private weak var imageView: UIImageView!
+class DeviceRegisterBaseView: UIView {
     @IBOutlet weak var productKeyTextField: UITextField!
     @IBOutlet weak var kikurageNameTextField: UITextField!
     @IBOutlet weak var cultivationStartDateTextField: UITextField!
-    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var deviceRegisterButton: UIButton!
     @IBOutlet private weak var copyRightLabel: UILabel!
     /// デリゲート
-    weak var delegate: LoginBaseViewDelegate?
+    weak var delegate: DeviceRegisterBaseViewDelegate?
     /// 日付選択Picker
     var datePicker = UIDatePicker()
 
@@ -36,26 +31,15 @@ class LoginBaseView: UIView {
         self.initDatePicker()
     }
     // MARK: - Action
-    @IBAction private func didTapLoginButton(_ sender: Any) {
-        self.delegate?.didTapLoginButton()
-    }
-    @IBAction private func didTapTermsButton(_ sender: Any) {
-        self.delegate?.didTapTermsButton()
-    }
-    @IBAction private func didTapPrivacyPolicyButton(_ sender: Any) {
-        self.delegate?.didTapPrivacyPolicyButton()
+    @IBAction private func didTappedDeviceRegisterButton(_ sender: Any) {
+        self.delegate?.didTappedDeviceRegisterButton()
     }
 }
 // MARK: - Initialized
-extension LoginBaseView {
+extension DeviceRegisterBaseView {
     private func initUI() {
-        // 画像
-        self.imageView.image = UIImage(named: "kikurageDevice")
-        // ログインボタンの体裁
-        self.loginButton.layer.masksToBounds = true
-        self.loginButton.layer.cornerRadius = 5
-        // コピーライト
-        self.copyRightLabel.text = "©︎ チーム きくらげ大使館"
+        self.deviceRegisterButton.layer.masksToBounds = true
+        self.deviceRegisterButton.layer.cornerRadius = 5
     }
     private func initTextFieldTag() {
         self.productKeyTextField.tag = Constants.TextFieldTag.productKey
