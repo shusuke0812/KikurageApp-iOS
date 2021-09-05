@@ -288,7 +288,7 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
-  - FirebaseStorage (3.9.0):
+  - FirebaseStorage (3.9.1):
     - FirebaseCore (~> 6.10)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseUI/Storage (8.5.1):
@@ -300,7 +300,7 @@ PODS:
     - GoogleUtilities/Network (~> 6.7)
     - "GoogleUtilities/NSData+zlib (~> 6.7)"
     - nanopb (~> 1.30906.0)
-  - GoogleDataTransport (7.4.0):
+  - GoogleDataTransport (7.5.1):
     - nanopb (~> 1.30906.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.2):
     - GoogleUtilities/Environment
@@ -345,7 +345,7 @@ PODS:
     - BoringSSL-GRPC (= 0.0.7)
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
-  - GTMSessionFetcher/Core (1.4.0)
+  - GTMSessionFetcher/Core (1.5.0)
   - HorizonCalendar (1.6.5)
   - IQKeyboardManagerSwift (6.5.6)
   - leveldb-library (1.22)
@@ -355,7 +355,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PKHUD (5.3.0)
-  - PromisesObjC (1.2.10)
+  - PromisesObjC (1.2.11)
   - R.swift (5.3.1):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -368,7 +368,6 @@ DEPENDENCIES:
   - Charts
   - Firebase/Analytics
   - Firebase/Auth
-  - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Firestore
   - Firebase/Storage
@@ -427,25 +426,25 @@ SPEC CHECKSUMS:
   FirebaseFirestore: adff4877869ca91a11250cc0989a6cd56bad163f
   FirebaseFirestoreSwift: 2c46dbc1156db97dc4f6dd798d4f5b57b9c7fab6
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
-  FirebaseStorage: 33b92875a9b556824886cc7a65120c7d2cb3a8d8
+  FirebaseStorage: 15e0f15ef3c7fec3d1899d68623e47d4447066b4
   FirebaseUI: 9df84336a56f1d755ae4c37d5885c237d3084b6b
   GoogleAppMeasurement: 966e88df9d19c15715137bb2ddaf52373f111436
-  GoogleDataTransport: b7f406340a291370045a270c599e53c6fa6ec20f
+  GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
-  GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   HorizonCalendar: bf90307200232779094ef5b85cb09a30a029c60a
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
-  PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: ca1b22a29f7d7ad6cd83d285efc161b397857dc7
+PODFILE CHECKSUM: b4458f1457009b2f1add3a4164573fe820d8f445
 
 COCOAPODS: 1.9.3

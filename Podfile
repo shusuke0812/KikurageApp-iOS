@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'kikurageApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,7 +7,6 @@ target 'kikurageApp' do
 
   # Pods for kikurageApp
   # Firebase
-  pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
