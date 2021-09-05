@@ -15,6 +15,8 @@ class TopViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.title = "ログイン"
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-protocol DeviceRegisterModelDelegate: AnyObject {
+protocol DeviceRegisterViewModelDelegate: AnyObject {
     /// きくらげの状態データ取得に成功した
     func didSuccessGetKikurageState()
     /// きくらげの状態データ取得に失敗した
@@ -20,11 +20,6 @@ protocol DeviceRegisterModelDelegate: AnyObject {
     /// きくらげユーザーの登録に失敗した
     /// - Parameter errorMessage: エラーメッセージ
     func didFailedPostKikurageUser(errorMessage: String)
-    /// きくらげユーザーの取得に成功した
-    func didSuccessGetKikurageUser()
-    /// きくらげユーザーの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageUser(errorMessage: String)
 }
 
 class DeviceRegisterViewModel {
@@ -99,10 +94,8 @@ extension DeviceRegisterViewModel {
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
-                self?.delegate?.didSuccessGetKikurageUser()
             case .failure(let error):
                 print(error)
-                self?.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでし")
             }
         }
     }

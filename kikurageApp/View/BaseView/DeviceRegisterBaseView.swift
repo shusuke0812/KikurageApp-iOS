@@ -18,7 +18,6 @@ class DeviceRegisterBaseView: UIView {
     @IBOutlet weak var kikurageNameTextField: UITextField!
     @IBOutlet weak var cultivationStartDateTextField: UITextField!
     @IBOutlet private weak var deviceRegisterButton: UIButton!
-    @IBOutlet private weak var copyRightLabel: UILabel!
     /// デリゲート
     weak var delegate: DeviceRegisterBaseViewDelegate?
     /// 日付選択Picker

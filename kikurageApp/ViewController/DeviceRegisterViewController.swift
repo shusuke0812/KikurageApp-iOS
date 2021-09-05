@@ -13,17 +13,16 @@ class DeviceRegisterViewController: UIViewController {
     /// BaseView
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
-    private var viewModel: LoginViewModel!
+    private var viewModel: DeviceRegisterViewModel!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = LoginViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        self.viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.validateOpenPage()
     }
 }
 // MARK: - Initialized
@@ -34,14 +33,6 @@ extension DeviceRegisterViewController {
         self.baseView.kikurageNameTextField.delegate = self
         self.baseView.cultivationStartDateTextField.delegate = self
         self.viewModel.delegate = self
-    }
-    // 初回起動画面・ログイン後起動画面を判定（TODO: AppDelegate.swiftでハンドリングする）
-    private func validateOpenPage() {
-        guard let userId = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) else { return }
-        // HUD表示（始）
-        HUD.show(.progress)
-        // ユーザーIDが登録されている場合、User/Stateを読み込んでトップページへ遷移させる
-        self.viewModel.loadKikurageUser(uid: userId)
     }
 }
 // MARK: - UITextField Delegate
@@ -95,7 +86,7 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     }
 }
 // MARK: - LoginViewModel Delegate
-extension DeviceRegisterViewController: LoginViewModelDelegate {
+extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     func didSuccessGetKikurageState() {
         if self.viewModel.kikurageUser?.createdAt != nil {
             // HUD（終）

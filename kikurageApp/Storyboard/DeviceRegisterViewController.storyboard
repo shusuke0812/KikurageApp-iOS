@@ -13,7 +13,7 @@
         <scene sceneID="6Qt-bC-tRp">
             <objects>
                 <viewController id="Kee-XX-2yh" customClass="DeviceRegisterViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bkR-99-1oz" customClass="LoginBaseView" customModule="きくらげ君" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="bkR-99-1oz" customClass="DeviceRegisterBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -26,7 +26,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="はじめる"/>
                                 <connections>
-                                    <action selector="didTapLoginButton:" destination="bkR-99-1oz" eventType="touchUpInside" id="DCz-gx-LfE"/>
+                                    <action selector="didTappedDeviceRegisterButton:" destination="bkR-99-1oz" eventType="touchUpInside" id="KlO-sN-faH"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="きくらげ栽培開始日を選択して下さい" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Sg-EvC">
@@ -66,8 +66,8 @@
                         </constraints>
                         <connections>
                             <outlet property="cultivationStartDateTextField" destination="v2y-Sg-EvC" id="De6-UI-uhV"/>
+                            <outlet property="deviceRegisterButton" destination="HJX-D5-eV3" id="HuU-Jj-fkp"/>
                             <outlet property="kikurageNameTextField" destination="I1y-mr-QXt" id="hSy-rj-BIl"/>
-                            <outlet property="loginButton" destination="HJX-D5-eV3" id="tzJ-ej-tTv"/>
                             <outlet property="productKeyTextField" destination="gTz-Hi-49i" id="0IU-PH-Shs"/>
                         </connections>
                     </view>
