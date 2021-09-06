@@ -435,8 +435,8 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */,
-				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
+				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";

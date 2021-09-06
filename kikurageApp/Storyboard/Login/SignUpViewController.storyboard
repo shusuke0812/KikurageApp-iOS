@@ -13,19 +13,64 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="SignUpViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="SingUpBaseView">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="SignUpBaseView" customModule="きくらげ君" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kFy-af-4H6">
+                                <rect key="frame" x="40" y="84" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yeG-aM-GHB">
+                                <rect key="frame" x="40" y="143" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEV-CC-gRf">
+                                <rect key="frame" x="40" y="212" width="334" height="45"/>
+                                <color key="backgroundColor" name="subColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="IT7-Mz-yrY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="登録する">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTappedUserRegisterButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="r2L-4c-aal"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="themeColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yeG-aM-GHB" secondAttribute="trailing" constant="40" id="53e-cd-c5O"/>
+                            <constraint firstItem="PEV-CC-gRf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="8XB-Yy-g9g"/>
+                            <constraint firstItem="kFy-af-4H6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="AEm-Ho-2xj"/>
+                            <constraint firstItem="yeG-aM-GHB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="DeS-kc-FkX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kFy-af-4H6" secondAttribute="trailing" constant="40" id="aKC-vC-gOr"/>
+                            <constraint firstItem="kFy-af-4H6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="nOJ-7h-aco"/>
+                            <constraint firstItem="PEV-CC-gRf" firstAttribute="top" secondItem="yeG-aM-GHB" secondAttribute="bottom" constant="35" id="scy-1x-Wjb"/>
+                            <constraint firstItem="yeG-aM-GHB" firstAttribute="top" secondItem="kFy-af-4H6" secondAttribute="bottom" constant="25" id="yLr-2x-UqP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PEV-CC-gRf" secondAttribute="trailing" constant="40" id="zYJ-fF-lHH"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="emailTextField" destination="kFy-af-4H6" id="vhe-tD-YwS"/>
+                            <outlet property="passwordTextField" destination="yeG-aM-GHB" id="6bP-yR-HY9"/>
+                            <outlet property="userRegisterButton" destination="PEV-CC-gRf" id="9xj-yh-q5y"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="14" y="100"/>
+            <point key="canvasLocation" x="3" y="63"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="subColor">
+            <color red="0.86299997568130493" green="0.29800000786781311" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="themeColor">
             <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
