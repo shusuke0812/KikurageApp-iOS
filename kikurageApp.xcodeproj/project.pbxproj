@@ -77,6 +77,7 @@
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
 		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
+		9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0CDA926E8FED800116896 /* SignUpRepository.swift */; };
 		9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */; };
 		9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627E26E26B70000F7EE2 /* TopViewController.swift */; };
 		9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */; };
@@ -84,6 +85,7 @@
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
 		9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */; };
+		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */; };
 		9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */; };
 		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
@@ -178,6 +180,7 @@
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
+		9CA0CDA926E8FED800116896 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBaseView.swift; sourceTree = "<group>"; };
 		9CA7627E26E26B70000F7EE2 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
@@ -185,6 +188,7 @@
 		9CA7F3392537FF1B005BED9C /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewModel.swift; sourceTree = "<group>"; };
+		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 		9C91C2B326E4E70B007FB864 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
 				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
 			);
 			path = Login;
@@ -483,6 +488,7 @@
 				9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */,
 				9C92333D255F9F7E000293BB /* CultivationRepository.swift */,
 				9C8B0BD7259870970036CD0F /* RecipeRepository.swift */,
+				9CA0CDA926E8FED800116896 /* SignUpRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 				9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
 				9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */,
+				9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
@@ -941,6 +948,7 @@
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */,
 				9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */,
 				9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */,
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
