@@ -11,9 +11,9 @@ import Foundation
 class ClockHelper {
     /// シングルトン
     static let shared = ClockHelper()
-    
+
     private let formatter: DateFormatter
-    
+
     private init() {
         self.formatter = DateFormatter()
         self.formatter.locale = Locale(identifier: "ja_JP")

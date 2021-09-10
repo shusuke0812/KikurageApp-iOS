@@ -53,7 +53,7 @@ extension RecipeViewModel: UITableViewDataSource {
         self.recipes.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_cast
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         cell.setUI(recipe: self.recipes[indexPath.row].recipe)
         return cell
     }

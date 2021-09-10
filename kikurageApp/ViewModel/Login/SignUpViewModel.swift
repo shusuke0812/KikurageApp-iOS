@@ -16,11 +16,11 @@ protocol SignUpViewModelDelegate: AnyObject {
 
 class SignUpViewModel {
     private var signUpRepository: SignUpRepositoryProtocol
-    
+
     weak var delegate: SignUpViewModelDelegate?
-    
+
     private var user: User?
-    
+
     init(signUpRepository: SignUpRepositoryProtocol) {
         self.signUpRepository = signUpRepository
     }

@@ -58,7 +58,7 @@ extension CameraCollectionViewModel: UICollectionViewDataSource {
         self.selectedImageMaxNumber
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cameraCell, for: indexPath)! // swiftlint:disable:this force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cameraCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         // 各セルのdelegateと管理番号tag（削除用）を設定
         cell.delegate = self.cameraCellDelegate
         cell.tag = indexPath.item

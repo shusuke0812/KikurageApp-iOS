@@ -9,17 +9,17 @@
 import UIKit
 
 protocol SignUpBaseViewDelegate: AnyObject {
-    func didTappedUserRegisterButton(registerInfo: (email :String, password: String))
+    func didTappedUserRegisterButton(registerInfo: (email: String, password: String))
 }
 
 class SignUpBaseView: UIView {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var userRegisterButton: UIButton!
-    
+
     private var email: String = ""
     private var password: String = ""
-    
+
     weak var delegate: SignUpBaseViewDelegate?
 
     override func awakeFromNib() {

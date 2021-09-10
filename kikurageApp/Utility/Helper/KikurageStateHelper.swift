@@ -11,7 +11,7 @@ import UIKit
 class KikurageStateHelper {
     /// シングルトン
     static let shared = KikurageStateHelper()
-    
+
     private init() {}
 }
 extension KikurageStateHelper {

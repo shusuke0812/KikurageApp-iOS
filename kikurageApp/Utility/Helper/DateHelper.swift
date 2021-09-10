@@ -13,7 +13,7 @@ class DateHelper {
     static let shared = DateHelper()
 
     private let formatter: DateFormatter
-    
+
     private init() {
         self.formatter = DateFormatter()
     }
