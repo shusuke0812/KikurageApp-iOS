@@ -62,7 +62,13 @@ extension SignUpViewController: UITextFieldDelegate {
 // MARK: - SignUpViewModel Delegate
 extension SignUpViewController: SignUpViewModelDelegate {
     func didSuccessRegisterUser() {
+        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     func didFailedRegisterUser(errorMessage: String) {
+        UIAlertController.showAlert(style: .alert, viewController: self, title: "エラー", message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            self.viewModel.initUserInfo()
+            self.baseView.initTextField()
+        }
     }
 }

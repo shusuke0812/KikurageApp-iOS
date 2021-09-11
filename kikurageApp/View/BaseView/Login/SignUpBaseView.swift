@@ -43,4 +43,8 @@ extension SignUpBaseView {
         self.emailTextField.tag = Constants.TextFieldTag.email
         self.passwordTextField.tag = Constants.TextFieldTag.password
     }
+    func initTextField() {
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
+    }
 }

@@ -36,6 +36,10 @@ extension SignUpViewModel {
     private func setRegisterInfo() -> (email: String, password: String) {
         (self.email, self.password)
     }
+    func initUserInfo() {
+        self.email = ""
+        self.password = ""
+    }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
 
