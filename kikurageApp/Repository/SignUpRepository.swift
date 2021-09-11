@@ -11,6 +11,9 @@ import Firebase
 
 protocol SignUpRepositoryProtocol {
     /// 新規ユーザー登録を行う
+    /// - Parameters:
+    ///   - registerInfo:（メールアドレス, パスワード）
+    ///   - completion: ユーザー登録成功、失敗のハンドル
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void)
 }
 
@@ -19,13 +22,21 @@ class SignUpRepository: SignUpRepositoryProtocol {
 
 // MARK: - Firebase Authentication
 extension SignUpRepository {
-    // TODO: メール認証機能を追加
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void) {
         Auth.auth().createUser(withEmail: registerInfo.email, password: registerInfo.password) { authResult, error in
             if let error = error {
                 completion(.failure(error))
+                return
             }
-            if let user = authResult?.user {
+            guard let user = authResult?.user else {
+                completion(.failure(NetworkError.invalidResponse))
+                return
+            }
+            user.sendEmailVerification { error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
                 completion(.success(user))
             }
         }
