@@ -9,27 +9,25 @@
 import UIKit
 
 protocol SignUpBaseViewDelegate: AnyObject {
-    func didTappedUserRegisterButton(registerInfo: (email: String, password: String))
+    func didTappedUserRegisterButton()
 }
 
 class SignUpBaseView: UIView {
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet private weak var userRegisterButton: UIButton!
-
-    private var email: String = ""
-    private var password: String = ""
 
     weak var delegate: SignUpBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()
+        self.initTextFieldTag()
     }
 
     // MARK: - Action
     @IBAction private func didTappedUserRegisterButton(_ sender: Any) {
-        self.delegate?.didTappedUserRegisterButton(registerInfo: (email, password))
+        self.delegate?.didTappedUserRegisterButton()
     }
 }
 
@@ -40,5 +38,9 @@ extension SignUpBaseView {
         self.userRegisterButton.layer.cornerRadius = 5
 
         self.passwordTextField.isSecureTextEntry = true
+    }
+    private func initTextFieldTag() {
+        self.emailTextField.tag = Constants.TextFieldTag.email
+        self.passwordTextField.tag = Constants.TextFieldTag.password
     }
 }

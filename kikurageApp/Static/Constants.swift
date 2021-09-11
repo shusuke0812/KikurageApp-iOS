@@ -44,6 +44,10 @@ struct Constants {
         static let kikurageName = 4
         /// きくらげ栽培開始日のTextFieldタグ番号
         static let cultivationStartDate = 5
+        /// メールアドレス
+        static let email = 6
+        /// パスワード
+        static let password = 7
     }
     struct ViewTag {
         /// サイドメニューのBaseViewタグ番号
