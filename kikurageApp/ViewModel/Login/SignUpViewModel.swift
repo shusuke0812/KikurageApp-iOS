@@ -13,7 +13,7 @@ protocol SignUpViewModelDelegate: AnyObject {
     /// ユーザー登録に成功した
     func didSuccessRegisterUser()
     /// ユーザー登録に失敗した
-    /// - Parameter errorMessage: エラ〜メッセージ
+    /// - Parameter errorMessage: エラーメッセージ
     func didFailedRegisterUser(errorMessage: String)
 }
 
