@@ -28,6 +28,8 @@
 		9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */; };
 		9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70C44425AFDC8900069F8F /* KikurageStateGraph.swift */; };
 		9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */; };
+		9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */; };
+		9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */; };
 		9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C7DE9F126E130A60006B36F /* TopViewController.storyboard */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
 		9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
@@ -131,6 +133,8 @@
 		9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewController.swift; sourceTree = "<group>"; };
 		9C70C44425AFDC8900069F8F /* KikurageStateGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateGraph.swift; sourceTree = "<group>"; };
 		9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		9C7DE9F126E130A60006B36F /* TopViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopViewController.storyboard; sourceTree = "<group>"; };
 		9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationBaseView.swift; sourceTree = "<group>"; };
 		9C7E105D25649637005A92C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -448,6 +452,7 @@
 		9C91C2B326E4E70B007FB864 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */,
 				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
 				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
 			);
@@ -489,6 +494,7 @@
 				9C92333D255F9F7E000293BB /* CultivationRepository.swift */,
 				9C8B0BD7259870970036CD0F /* RecipeRepository.swift */,
 				9CA0CDA926E8FED800116896 /* SignUpRepository.swift */,
+				9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -939,6 +945,7 @@
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
+				9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */,
 				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,
 				9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */,
 				9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */,
@@ -955,6 +962,7 @@
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
 				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
+				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
 				9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
