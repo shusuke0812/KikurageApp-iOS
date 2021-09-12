@@ -35,6 +35,7 @@ extension SignUpViewController {
         self.baseView.delegate = self
         self.baseView.emailTextField.delegate = self
         self.baseView.passwordTextField.delegate = self
+        self.viewModel.delegate = self
     }
 }
 
