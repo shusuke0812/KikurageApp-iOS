@@ -34,5 +34,6 @@ extension RecipeBaseView {
         self.tableView.allowsSelection = false
         // セル登録
         self.tableView.register(R.nib.recipeTableViewCell)
+        self.tableView.tableFooterView = UIView()
     }
 }
