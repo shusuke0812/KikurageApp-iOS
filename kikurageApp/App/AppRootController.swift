@@ -34,12 +34,11 @@ class AppRootController: UIViewController {
 extension AppRootController {
     /// ホーム画面を開く
     private func showMainPage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        guard let vc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
-        let navVC = UINavigationController(rootViewController: vc)
-        let mainVC = navVC.topViewController as! MainViewController // swiftlint:disable:this force_cast
-        mainVC.kikurageUser = kikurageInfo.user
-        mainVC.kikurageState = kikurageInfo.state
-        changeViewController(mainVC)
+        guard let nc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
+        let vc = nc.topViewController as! MainViewController // swiftlint:disable:this force_cast
+        vc.kikurageUser = kikurageInfo.user
+        vc.kikurageState = kikurageInfo.state
+        changeViewController(nc)
     }
     /// ログイン画面を開く
     private func showTopPage() {
@@ -67,10 +66,14 @@ extension AppRootController {
 // MARK: - AppPresenter Delegate
 extension AppRootController: AppPresenterDelegate {
     func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        showMainPage(kikurageInfo: kikurageInfo)
+        DispatchQueue.main.async {
+            self.showMainPage(kikurageInfo: kikurageInfo)
+        }
     }
     func didFailedGetKikurageInfo(errorMessage: String) {
         print("DEBUG: \(errorMessage)")
-        showTopPage()
+        DispatchQueue.main.async {
+            self.showTopPage()
+        }
     }
 }
