@@ -20,6 +20,13 @@ protocol SignUpRepositoryProtocol {
 class SignUpRepository: SignUpRepositoryProtocol {
 }
 
+// MARK: - UserDefaults
+extension SignUpRepository {
+    private func setUserInUserDefaults(user: User) {
+        UserDefaults.standard.set(user, forKey: Constants.UserDefaultsKey.firebaseUser)
+    }
+}
+
 // MARK: - Firebase Authentication
 extension SignUpRepository {
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void) {
@@ -32,11 +39,12 @@ extension SignUpRepository {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
-            user.sendEmailVerification { error in
+            user.sendEmailVerification { [weak self]error in
                 if let error = error {
                     completion(.failure(error))
                     return
                 }
+                self?.setUserInUserDefaults(user: user)
                 completion(.success(user))
             }
         }
