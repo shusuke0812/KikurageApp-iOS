@@ -47,7 +47,7 @@ class LoginHelper {
     /// Firebaseユーザー情報を更新
     func userReload(completion: @escaping (() -> Void)) {
         Auth.auth().currentUser?.reload { [weak self] _ in
-            self?.userListener() {
+            self?.userListener {
                 completion()
             }
         }

@@ -20,7 +20,7 @@ class DeviceRegisterViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         self.setDelegateDataSource()
-        
+
         self.navigationItem.title = "デバイス登録"
         self.navigationItem.hidesBackButton = true
     }
