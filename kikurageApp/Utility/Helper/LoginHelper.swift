@@ -17,18 +17,28 @@ class LoginHelper {
 
     /// 認証ユーザーID
     var kikurageUserId: String? {
-        if let user = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? User {
-            if user.isEmailVerified {
-                return user.uid
-            } else {
-                return nil
+        if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
+            do {
+                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                    return user.isEmailVerified ? user.uid : nil
+                }
+            } catch {
+                print("DEBUG: ユーザー情報の取得に失敗 -> " + error.localizedDescription)
             }
         }
         return nil
     }
     /// ログイン判定
     var isLogin: Bool {
-        guard let user = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? User else { return false }
-        return user.isEmailVerified
+        if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
+            do {
+                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                    return user.isEmailVerified
+                }
+            } catch {
+                print("DEBUG: ユーザー情報の取得に失敗 -> " + error.localizedDescription)
+            }
+        }
+        return false
     }
 }

@@ -23,7 +23,12 @@ class SignUpRepository: SignUpRepositoryProtocol {
 // MARK: - UserDefaults
 extension SignUpRepository {
     private func setUserInUserDefaults(user: User) {
-        UserDefaults.standard.set(user, forKey: Constants.UserDefaultsKey.firebaseUser)
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+            UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
+        } catch {
+            print("DEBUG: ユーザー情報の保存に失敗 -> " + error.localizedDescription)
+        }
     }
 }
 
