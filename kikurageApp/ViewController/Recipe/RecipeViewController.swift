@@ -23,7 +23,7 @@ class RecipeViewController: UIViewController {
         self.setNavigationItem()
         self.viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
         self.setDelegateDataSource()
-        if let kikurageUserId = LoginHelper.kikurageUserId {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }

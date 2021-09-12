@@ -59,7 +59,7 @@ extension AppDelegate {
         self.window?.makeKeyAndVisible()
     }
     private func configCrashlyticsUserId() {
-        let userId: String = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) ?? "no id"
+        let userId = LoginHelper.shared.kikurageUserId ?? "no id"
         Crashlytics.crashlytics().setUserID(userId)
     }
 }

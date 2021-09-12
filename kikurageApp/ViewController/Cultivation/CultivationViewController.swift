@@ -20,7 +20,7 @@ class CultivationViewController: UIViewController {
         self.viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
         self.setNavigationItem()
         self.setDelegateDataSource()
-        if let kikurageUserId = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }

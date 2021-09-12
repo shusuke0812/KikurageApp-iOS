@@ -43,7 +43,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
             // HUD表示（始）
             HUD.show(.progress)
-            if let kikurageUserId = LoginHelper.kikurageUserId {
+            if let kikurageUserId = LoginHelper.shared.kikurageUserId {
                 self.viewModel.postCultivation(kikurageUserId: kikurageUserId)
             }
         }
@@ -90,7 +90,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         // nil要素を取り除いた選択した画像のみのData型に変換する
         let postImageData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserId = LoginHelper.kikurageUserId {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             self.viewModel.postCultivationImages(kikurageUserId: kikurageUserId, imageData: postImageData)
         }
     }

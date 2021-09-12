@@ -29,7 +29,7 @@ extension GraphViewController {
         self.viewModel.delegate = self
     }
     private func loadKikurageUser() {
-        guard let userId = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) else { return }
+        guard let userId = LoginHelper.shared.kikurageUserId else { return }
         self.viewModel.loadKikurageUser(uid: userId)
     }
     private func loadKikurageStateGraph() {

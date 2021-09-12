@@ -43,7 +43,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
             // HUD表示（始）
             HUD.show(.progress)
-            if let kikurageUserId = LoginHelper.kikurageUserId {
+            if let kikurageUserId = LoginHelper.shared.kikurageUserId {
                 self.viewModel.postRecipe(kikurageUserId: kikurageUserId)
             }
         }
@@ -137,7 +137,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         // nil要素を取り除き、選択した画像のみData型に変換する
         let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserId = LoginHelper.kikurageUserId {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             self.viewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
         }
     }

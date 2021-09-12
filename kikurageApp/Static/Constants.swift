@@ -58,7 +58,7 @@ struct Constants {
         static let loading = R.image.loading()
     }
     struct UserDefaultsKey {
-        static let userId = "userId"
+        static let firebaseUser = "firebase_user"
     }
 }
 
