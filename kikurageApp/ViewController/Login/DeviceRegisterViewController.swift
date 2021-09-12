@@ -89,38 +89,26 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
 // MARK: - LoginViewModel Delegate
 extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     func didSuccessGetKikurageState() {
-        if self.viewModel.kikurageUser?.createdAt != nil {
-            // HUD（終）
-            HUD.hide()
-            self.transitionHomePage()
-        } else {
-            // ユーザーを登録する
-            self.viewModel.registerKikurageUser()
-        }
+        self.viewModel.registerKikurageUser()
     }
     func didFailedGetKikurageState(errorMessage: String) {
-        // HUD表示（終）
-        HUD.hide()
-        // アラート表示
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "プロダクトキーが違います", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "プロダクトキーが違います", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
         print(errorMessage)
     }
     func didSuccessPostKikurageUser() {
-        // HUD表示（終）
-        HUD.hide()
-        self.transitionHomePage()
+        DispatchQueue.main.async {
+            HUD.hide()
+            self.transitionHomePage()
+        }
     }
     func didFailedPostKikurageUser(errorMessage: String) {
-        // HUD表示（終）
-        HUD.hide()
-        // アラート表示
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "ユーザー登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
-        print(errorMessage)
-    }
-    func didSuccessGetKikurageUser() {
-        self.viewModel.loadKikurageState()
-    }
-    func didFailedGetKikurageUser(errorMessage: String) {
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "ユーザー登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
         print(errorMessage)
     }
     private func transitionHomePage() {

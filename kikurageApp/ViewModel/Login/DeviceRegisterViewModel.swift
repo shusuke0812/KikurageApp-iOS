@@ -46,26 +46,20 @@ extension DeviceRegisterViewModel {
     func setStateReference(productKey: String) {
         self.kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
-    /// UserDefaultsにユーザーIDを登録する
-    func setUserIdToUserDefaults(userId: String) {
-        UserDefaults.standard.set(userId, forKey: Constants.UserDefaultsKey.userId)
-    }
 }
 // MARK: - Firebase Firestore
 extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        guard let productId = self.kikurageUser?.productKey else { return }
-        self.kikurageStateRepository.getKikurageState(productId: productId) { response in
+        let productId = (self.kikurageUser?.productKey)!
+        self.kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
             switch response {
             case .success(let kikurageState):
-                DispatchQueue.main.async { [weak self] in
-                    self?.kikurageState = kikurageState
-                    self?.delegate?.didSuccessGetKikurageState()
-                }
+                self?.kikurageState = kikurageState
+                self?.delegate?.didSuccessGetKikurageState()
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
+                self?.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
             }
         }
     }
@@ -76,26 +70,14 @@ extension DeviceRegisterViewModel {
             self.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
             return
         }
-        self.kikurageUserRepository.postKikurageUser(kikurageUser: kikurageUser) { [weak self] responsse in
+        guard let uid = LoginHelper.shared.kikurageUserId else { return }
+        self.kikurageUserRepository.postKikurageUser(uid: uid, kikurageUser: kikurageUser) { [weak self] responsse in
             switch responsse {
-            case .success(let kikurageUserDocumentReference):
-                self?.setUserIdToUserDefaults(userId: kikurageUserDocumentReference.documentID)
+            case .success():
                 self?.delegate?.didSuccessPostKikurageUser()
             case .failure(let error):
                 print("DEBUG: \(error)")
                 self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを登録できませんでした")
-            }
-        }
-    }
-    /// きくらげユーザーを取得する
-    /// - Parameter uid: ユーザーID
-    func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
-            switch response {
-            case .success(let kikurageUser):
-                self?.kikurageUser = kikurageUser
-            case .failure(let error):
-                print(error)
             }
         }
     }
