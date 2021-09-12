@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class SignUpViewController: UIViewController {
     /// BaseView
@@ -40,6 +41,7 @@ extension SignUpViewController {
 // MARK: - SignUpBaseView Delegate
 extension SignUpViewController: SignUpBaseViewDelegate {
     func didTappedUserRegisterButton() {
+        HUD.show(.progress)
         self.viewModel.registerUser()
     }
 }
@@ -62,13 +64,19 @@ extension SignUpViewController: UITextFieldDelegate {
 // MARK: - SignUpViewModel Delegate
 extension SignUpViewController: SignUpViewModelDelegate {
     func didSuccessRegisterUser() {
-        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            HUD.hide()
+            guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     func didFailedRegisterUser(errorMessage: String) {
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "エラー", message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
-            self.viewModel.initUserInfo()
-            self.baseView.initTextField()
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "エラー", message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
+                self.viewModel.initUserInfo()
+                self.baseView.initTextField()
+            }
         }
     }
 }
