@@ -24,7 +24,7 @@ class AppPresenter {
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
     weak var delegate: AppPresenterDelegate?
-    
+
     private var kikurageUser: KikurageUser?
     private var kikurageState: KikurageState?
 
@@ -52,7 +52,7 @@ extension AppPresenter {
     }
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (self.kikurageUser?.productKey)!
+        let productId = (self.kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
         self.kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
             switch response {
             case .success(let kikurageState):

@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "ログイン"
         self.viewModel = LoginViewModel(loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
-        
+
         self.setDelegate()
     }
 }

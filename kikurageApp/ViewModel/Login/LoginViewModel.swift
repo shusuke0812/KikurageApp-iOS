@@ -24,16 +24,16 @@ class LoginViewModel {
     private var kikurageStateRepository: KikurageStateRepositoryProtocol
     /// きくらげのユーザー取得リポジトリ
     private var kikurageUserRepository: KikurageUserRepositoryProtocol
-    
+
     weak var delegate: LoginViewModelDelegate?
-    
+
     var kikurageUser: KikurageUser?
     var kikurageState: KikurageState?
-    
+
     private var user: User?
     var email: String = ""
     var password: String = ""
-    
+
     init(loginRepository: LoginRepositoryProtocol, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.loginRepository = loginRepository
         self.kikurageStateRepository = kikurageStateRepository
@@ -74,7 +74,7 @@ extension LoginViewModel {
 extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {
-        self.kikurageUserRepository.getKikurageUser(uid: (self.user?.uid)!) { [weak self] response in
+        self.kikurageUserRepository.getKikurageUser(uid: (self.user?.uid)!) { [weak self] response in   // swiftlint:disable:this force_unwrapping
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
@@ -87,7 +87,7 @@ extension LoginViewModel {
     }
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (self.kikurageUser?.productKey)!
+        let productId = (self.kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
         self.kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
             switch response {
             case .success(let kikurageState):
