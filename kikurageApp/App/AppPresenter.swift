@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol AppPresenterDelegate: AnyObject {
     /// きくらげユーザーの取得に成功した
@@ -27,24 +28,12 @@ class AppPresenter {
     }
 }
 
-// MARK: - Initialized
-extension AppPresenter {
-    /// ユーザーIDが`UserDefaults`に登録されているか確認し、ある場合はユーザーを取得する
-    func checkSavedUserId() {
-        guard let userId: String = UserDefaults.standard.string(forKey: Constants.UserDefaultsKey.userId) else {
-            self.delegate?.didFailedGetKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
-            return
-        }
-        self.loadKikurageUser(uid: userId)
-    }
-}
-
 // MARK: - Firebase Firestore
 extension AppPresenter {
     /// きくらげユーザーを取得する
-    /// - Parameter uid: ユーザーID
-    func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+    /// - Parameter userId: Firebase ユーザーID
+    func loadKikurageUser(userId: String) {
+        self.kikurageUserRepository.getKikurageUser(uid: userId) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.delegate?.didSuccessGetKikurageUser(kikurageUser: kikurageUser)

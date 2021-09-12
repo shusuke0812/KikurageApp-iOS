@@ -18,7 +18,11 @@ class AppRootController: UIViewController {
         self.presenter = AppPresenter(kikurageUserRepository: KikurageUserRepository())
         self.presenter.delegate = self
 
-        self.presenter.checkSavedUserId()
+        if let userId = LoginHelper.shared.kikurageUserId {
+            self.presenter.loadKikurageUser(userId: userId)
+        } else {
+            showTopPage()
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
