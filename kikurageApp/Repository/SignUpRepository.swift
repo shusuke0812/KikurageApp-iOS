@@ -39,7 +39,7 @@ extension SignUpRepository {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
-            user.sendEmailVerification { [weak self]error in
+            user.sendEmailVerification { [weak self] error in
                 if let error = error {
                     completion(.failure(error))
                     return
