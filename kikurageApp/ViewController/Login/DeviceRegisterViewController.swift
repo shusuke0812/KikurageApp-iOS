@@ -73,6 +73,7 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
+    // TODO: TextFieldバリデーションはViewModelに書く
     private func textFieldValidation() -> Bool {
         guard let productKey = self.baseView.productKeyTextField.text, let kikurageName = self.baseView.kikurageNameTextField.text, let cultivationStartDate = self.baseView.cultivationStartDateTextField.text else {
             print("DEBUG: 入力されていない項目があります")
