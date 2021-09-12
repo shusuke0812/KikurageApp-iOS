@@ -36,6 +36,7 @@ extension LoginBaseView {
         self.loginButton.layer.masksToBounds = true
         self.loginButton.layer.cornerRadius = 5
 
+        self.emailTextField.autocorrectionType = .no
         self.passwordTextField.isSecureTextEntry = true
     }
     private func initTextFieldTag() {

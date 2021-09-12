@@ -37,6 +37,7 @@ extension SignUpBaseView {
         self.userRegisterButton.layer.masksToBounds = true
         self.userRegisterButton.layer.cornerRadius = 5
 
+        self.emailTextField.autocorrectionType = .no
         self.passwordTextField.isSecureTextEntry = true
     }
     private func initTextFieldTag() {

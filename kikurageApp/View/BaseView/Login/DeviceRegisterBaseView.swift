@@ -39,6 +39,8 @@ extension DeviceRegisterBaseView {
     private func initUI() {
         self.deviceRegisterButton.layer.masksToBounds = true
         self.deviceRegisterButton.layer.cornerRadius = 5
+    
+        self.productKeyTextField.autocorrectionType = .no
     }
     private func initTextFieldTag() {
         self.productKeyTextField.tag = Constants.TextFieldTag.productKey
