@@ -15,11 +15,13 @@ protocol RecipeBaseViewDelegate: AnyObject {
 
 class RecipeBaseView: UIView {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noRecipeLabel: UILabel!
     /// デリゲート
     weak var delegate: RecipeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.initUI()
         self.setTableView()
     }
     // MARK: - Action
@@ -29,6 +31,10 @@ class RecipeBaseView: UIView {
 }
 // MARK: - Initialized Method
 extension RecipeBaseView {
+    private func initUI() {
+        self.noRecipeLabel.text = "りょうりきろくがありません"
+        self.noRecipeLabel.textColor = .darkGray
+    }
     private func setTableView() {
         // セル選択を不可にする（料理記録詳細ページは無いため）
         self.tableView.allowsSelection = false

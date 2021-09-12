@@ -27,6 +27,10 @@ class RecipeViewController: UIViewController {
             self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.baseView.noRecipeLabel.isHidden = !(self.viewModel.recipes.isEmpty)
+    }
 }
 
 // MARK: - Initialized
