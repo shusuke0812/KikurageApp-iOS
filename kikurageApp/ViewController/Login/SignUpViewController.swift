@@ -23,9 +23,8 @@ class SignUpViewController: UIViewController {
 
         self.setDelegate()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 }
 
@@ -67,8 +66,13 @@ extension SignUpViewController: SignUpViewModelDelegate {
     func didSuccessRegisterUser() {
         DispatchQueue.main.async {
             HUD.hide()
-            guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "仮登録完了", message: "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください", okButtonTitle: "次へ", cancelButtonTitle: nil) {
+                LoginHelper.shared.userReload { [weak self] in
+                    self?.viewModel.saveUser()
+                    self?.transitionDeviceRegisterPage()
+                    LoginHelper.shared.userListenerDetach()
+                }
+            }
         }
     }
     func didFailedRegisterUser(errorMessage: String) {
@@ -79,5 +83,9 @@ extension SignUpViewController: SignUpViewModelDelegate {
                 self.baseView.initTextFields()
             }
         }
+    }
+    private func transitionDeviceRegisterPage() {
+        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

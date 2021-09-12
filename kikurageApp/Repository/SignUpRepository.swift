@@ -15,6 +15,9 @@ protocol SignUpRepositoryProtocol {
     ///   - registerInfo:（メールアドレス, パスワード）
     ///   - completion: ユーザー登録成功、失敗のハンドル
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void)
+    /// ユーザー情報を`UserDefaults`へ保存する
+    /// - Parameter user: Firebase Auth ユーザー
+    func setUserInUserDefaults(user: User, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class SignUpRepository: SignUpRepositoryProtocol {
@@ -22,12 +25,13 @@ class SignUpRepository: SignUpRepositoryProtocol {
 
 // MARK: - UserDefaults
 extension SignUpRepository {
-    private func setUserInUserDefaults(user: User) {
+    func setUserInUserDefaults(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
+            completion(.success(()))
         } catch {
-            print("DEBUG: ユーザー情報の保存に失敗 -> " + error.localizedDescription)
+            completion(.failure(error))
         }
     }
 }
@@ -44,12 +48,11 @@ extension SignUpRepository {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
-            user.sendEmailVerification { [weak self] error in
+            user.sendEmailVerification { error in
                 if let error = error {
                     completion(.failure(error))
                     return
                 }
-                self?.setUserInUserDefaults(user: user)
                 completion(.success(user))
             }
         }
