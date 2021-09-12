@@ -17,9 +17,10 @@ protocol KikurageUserRepositoryProtocol {
     func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void)
     /// きくらげユーザーを登録する
     /// - Parameters:
+    ///   - uid: ユーザーID
     ///   - kikurageUser: きくらげユーザー
     ///   - completion: 登録成功、失敗のハンドル
-    func postKikurageUser(kikurageUser: KikurageUser, completion: @escaping (Result<DocumentReference, Error>) -> Void)
+    func postKikurageUser(uid: String, kikurageUser: KikurageUser, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class KikurageUserRepository: KikurageUserRepositoryProtocol {
@@ -47,7 +48,7 @@ extension KikurageUserRepository {
             }
         }
     }
-    func postKikurageUser(kikurageUser: KikurageUser, completion: @escaping (Result<DocumentReference, Error>) -> Void) {
+    func postKikurageUser(uid: String, kikurageUser: KikurageUser, completion: @escaping (Result<Void, Error>) -> Void) {
         let db = Firestore.firestore()
         var data: [String: Any]!
         do {
@@ -57,14 +58,14 @@ extension KikurageUserRepository {
         }
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        let ref: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).addDocument(data: data) { error in
+        db.collection(Constants.FirestoreCollectionName.users).document(uid).setData(data) { error in
             if let error = error {
                 completion(.failure(error))
             }
             dispatchGroup.leave()
         }
         dispatchGroup.notify(queue: .main) {
-            completion(.success(ref))
+            completion(.success(()))
         }
     }
 }
