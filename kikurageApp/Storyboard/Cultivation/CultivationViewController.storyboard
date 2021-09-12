@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="afA-8l-vfe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="afA-8l-vfe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,6 +28,12 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifZ-v7-SaM">
+                                <rect key="frame" x="15" y="448" width="384" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeL-SW-wEN">
                                 <rect key="frame" x="331" y="779" width="63" height="63"/>
                                 <state key="normal" image="addMemoButton"/>
@@ -39,16 +45,21 @@
                         <viewLayoutGuide key="safeArea" id="Jar-At-3Vx"/>
                         <color key="backgroundColor" name="themeColor"/>
                         <constraints>
+                            <constraint firstItem="ifZ-v7-SaM" firstAttribute="centerX" secondItem="JsX-gy-r0o" secondAttribute="centerX" id="938-FX-2PD"/>
+                            <constraint firstItem="ifZ-v7-SaM" firstAttribute="leading" secondItem="Jar-At-3Vx" secondAttribute="leading" constant="15" id="DQ0-fq-TtM"/>
                             <constraint firstAttribute="bottom" secondItem="2PN-c2-6av" secondAttribute="bottom" id="HKf-le-7NM"/>
                             <constraint firstItem="Jar-At-3Vx" firstAttribute="trailing" secondItem="2PN-c2-6av" secondAttribute="trailing" id="Jhx-xj-YaZ"/>
                             <constraint firstItem="Jar-At-3Vx" firstAttribute="trailing" secondItem="KeL-SW-wEN" secondAttribute="trailing" constant="20" id="Phj-et-thY"/>
                             <constraint firstItem="2PN-c2-6av" firstAttribute="top" secondItem="Jar-At-3Vx" secondAttribute="top" id="VS8-nh-Pzc"/>
                             <constraint firstItem="Jar-At-3Vx" firstAttribute="bottom" secondItem="KeL-SW-wEN" secondAttribute="bottom" constant="20" id="Zb8-YU-yRp"/>
+                            <constraint firstItem="Jar-At-3Vx" firstAttribute="trailing" secondItem="ifZ-v7-SaM" secondAttribute="trailing" constant="15" id="faM-Pd-xjI"/>
+                            <constraint firstItem="ifZ-v7-SaM" firstAttribute="centerY" secondItem="JsX-gy-r0o" secondAttribute="centerY" id="fje-AV-nhz"/>
                             <constraint firstItem="2PN-c2-6av" firstAttribute="leading" secondItem="Jar-At-3Vx" secondAttribute="leading" id="kbu-pP-0QK"/>
                         </constraints>
                         <connections>
                             <outlet property="collectionView" destination="2PN-c2-6av" id="e17-CS-I8w"/>
                             <outlet property="flowLayout" destination="jcd-Tx-g9N" id="5uj-P7-mJt"/>
+                            <outlet property="noCultivationLabel" destination="ifZ-v7-SaM" id="6Qg-VB-zhD"/>
                             <outlet property="postPageButton" destination="KeL-SW-wEN" id="Opo-mn-SeC"/>
                         </connections>
                     </view>

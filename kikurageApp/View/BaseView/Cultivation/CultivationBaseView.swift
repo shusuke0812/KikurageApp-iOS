@@ -17,12 +17,14 @@ class CultivationBaseView: UIView {
     @IBOutlet private weak var postPageButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var noCultivationLabel: UILabel!
     /// デリゲート
     weak var delegate: CultivationBaseViewDelegate?
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.initUI()
         self.setCollectionView()
     }
     // MARK: - Action
@@ -32,6 +34,10 @@ class CultivationBaseView: UIView {
 }
 // MARK: - Initialized
 extension CultivationBaseView {
+    private func initUI() {
+        self.noCultivationLabel.text = "さいばいきろくがありません"
+        self.noCultivationLabel.textColor = .darkGray
+    }
     private func setCollectionView() {
         self.flowLayout.estimatedItemSize = .zero
         self.collectionView.register(R.nib.cultivationCollectionViewCell)

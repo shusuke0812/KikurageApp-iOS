@@ -24,6 +24,10 @@ class CultivationViewController: UIViewController {
             self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
+    }
 }
 // MARK: - Initialized
 extension CultivationViewController {
