@@ -15,7 +15,7 @@ class AppRootController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = AppPresenter(kikurageUserRepository: KikurageUserRepository())
+        self.presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         self.presenter.delegate = self
 
         if let userId = LoginHelper.shared.kikurageUserId {
@@ -33,11 +33,12 @@ class AppRootController: UIViewController {
 // MARK: - Private
 extension AppRootController {
     /// ホーム画面を開く
-    private func showMainPage(kikurageUser: KikurageUser) {
+    private func showMainPage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         guard let vc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
         let navVC = UINavigationController(rootViewController: vc)
         let mainVC = navVC.topViewController as! MainViewController // swiftlint:disable:this force_cast
-        mainVC.kikurageUser = kikurageUser
+        mainVC.kikurageUser = kikurageInfo.user
+        mainVC.kikurageState = kikurageInfo.state
         changeViewController(mainVC)
     }
     /// ログイン画面を開く
@@ -65,10 +66,10 @@ extension AppRootController {
 
 // MARK: - AppPresenter Delegate
 extension AppRootController: AppPresenterDelegate {
-    func didSuccessGetKikurageUser(kikurageUser: KikurageUser) {
-        showMainPage(kikurageUser: kikurageUser)
+    func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+        showMainPage(kikurageInfo: kikurageInfo)
     }
-    func didFailedGetKikurageUser(errorMessage: String) {
+    func didFailedGetKikurageInfo(errorMessage: String) {
         print("DEBUG: \(errorMessage)")
         showTopPage()
     }
