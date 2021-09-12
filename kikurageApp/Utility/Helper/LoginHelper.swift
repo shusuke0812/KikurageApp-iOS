@@ -13,6 +13,9 @@ class LoginHelper {
     /// シングルトン
     static let shared = LoginHelper()
 
+    var userListenerHandle: AuthStateDidChangeListenerHandle?
+    var user: User?
+
     private init() {}
 
     /// 認証ユーザーID
@@ -40,5 +43,24 @@ class LoginHelper {
             }
         }
         return false
+    }
+    /// Firebaseユーザー情報を更新
+    func userReload(completion: @escaping (() -> Void)) {
+        Auth.auth().currentUser?.reload { [weak self] _ in
+            self?.userListener() {
+                completion()
+            }
+        }
+    }
+    /// Firebaeユーザーを取得
+    func userListener(completion: @escaping (() -> Void)) {
+        self.userListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
+            self.user = user
+            completion()
+        }
+    }
+    /// Firebaseユーザーリスナをデタッチ
+    func userListenerDetach() {
+        Auth.auth().removeStateDidChangeListener(self.userListenerHandle!)  // swiftlint:disable:this force_unwrapping
     }
 }
