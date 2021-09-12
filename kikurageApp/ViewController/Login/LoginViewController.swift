@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "ログイン"
-        self.viewModel = LoginViewModel(loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        self.viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
 
         self.setDelegate()
     }

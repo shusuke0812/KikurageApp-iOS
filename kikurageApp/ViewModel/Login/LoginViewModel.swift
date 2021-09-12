@@ -18,6 +18,8 @@ protocol LoginViewModelDelegate: AnyObject {
 }
 
 class LoginViewModel {
+    /// ユーザー登録リポジトリ
+    private var signUpRepository: SignUpRepositoryProtocol
     /// ログインリポジトリ
     private var loginRepository: LoginRepositoryProtocol
     /// きくらげの状態取得リポジトリ
@@ -34,7 +36,8 @@ class LoginViewModel {
     var email: String = ""
     var password: String = ""
 
-    init(loginRepository: LoginRepositoryProtocol, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    init(signUpRepository: SignUpRepositoryProtocol, loginRepository: LoginRepositoryProtocol, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+        self.signUpRepository = signUpRepository
         self.loginRepository = loginRepository
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
@@ -61,10 +64,22 @@ extension LoginViewModel {
             switch response {
             case .success(let user):
                 self?.user = user
+                self?.saveUser()
                 self?.loadKikurageUser()
             case .failure(let error):
                 print("DEBUG: \(error)")
                 self?.delegate?.didFailedLogin(errorMessage: "ユーザーログインに失敗しました")
+            }
+        }
+    }
+    /// ユーザー情報を`UserDefaults`へ保存する
+    private func saveUser() {
+        self.signUpRepository.setUserInUserDefaults(user: self.user!) { response in     // swiftlint:disable:this force_unwrapping
+            switch response {
+            case .success:
+                print("DEBUG: ユーザー情報を`UserDefaults`に保存しました")
+            case .failure(let error):
+                print("DEBUG: ユーザー情報のを`UserDefaults`に保存できませんでした -> " + error.localizedDescription)
             }
         }
     }
