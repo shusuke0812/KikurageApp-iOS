@@ -151,6 +151,8 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            // 料理記録一覧画面へ更新イベントを通知
+            NotificationCenter.default.post(name: .updatedRecipes, object: nil)
             self.dismiss(animated: true, completion: nil)
         }
     }

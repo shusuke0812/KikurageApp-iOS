@@ -24,6 +24,7 @@ class RecipeViewController: UIViewController {
         self.setNavigationItem()
         self.viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
         self.setDelegateDataSource()
+        self.setNotificationCenter()
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
@@ -72,6 +73,18 @@ extension RecipeViewController: RecipeViewModelDelegate {
         print(errorMessage)
         DispatchQueue.main.async {
             HUD.hide()
+        }
+    }
+}
+
+// MARK: - NotificationCenter
+extension RecipeViewController {
+    private func setNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didPostRecipe), name: .updatedRecipes, object: nil)
+    }
+    @objc private func didPostRecipe(notification: Notification) {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }
