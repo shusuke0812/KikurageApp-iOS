@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>934001857400-787lusv9ap5qcsghatsbpgbi893j66go.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.934001857400-787lusv9ap5qcsghatsbpgbi893j66go</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCrElX9xHmSdUuLBAAa1NKl1G9gNHRoTF4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>934001857400</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jp.shusuke.ota.KikurageProjectForiOS</string>
+	<key>PROJECT_ID</key>
+	<string>kikurageproject</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kikurageproject.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:934001857400:ios:09753391951e565ea26e8d</string>
+	<key>DATABASE_URL</key>
+	<string>https://kikurageproject.firebaseio.com</string>
+</dict>
+</plist>
