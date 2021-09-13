@@ -37,6 +37,7 @@ extension CultivationBaseView {
     private func initUI() {
         self.noCultivationLabel.text = "さいばいきろくがありません"
         self.noCultivationLabel.textColor = .darkGray
+        self.noCultivationLabel.isHidden = true
     }
     private func setCollectionView() {
         self.flowLayout.estimatedItemSize = .zero

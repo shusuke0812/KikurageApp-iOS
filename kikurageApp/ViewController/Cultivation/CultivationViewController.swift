@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class CultivationViewController: UIViewController {
     /// BaseView
@@ -21,12 +22,12 @@ class CultivationViewController: UIViewController {
         self.setNavigationItem()
         self.setDelegateDataSource()
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            HUD.show(.progress)
             self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
     }
 }
 // MARK: - Initialized
@@ -59,10 +60,17 @@ extension CultivationViewController: CultivationBaseViewDelegate {
 // MARK: - CultivationViewModel Delegate
 extension CultivationViewController: CultivationViewModelDelegate {
     func didSuccessGetCultivations() {
-        self.baseView.collectionView.reloadData()
+        DispatchQueue.main.async {
+            HUD.hide()
+            self.baseView.collectionView.reloadData()
+            self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
+        }
     }
     func didFailedGetCultivations(errorMessage: String) {
         print(errorMessage)
+        DispatchQueue.main.async {
+            HUD.hide()
+        }
     }
 }
 // MARK: - UICollectionView Delegate FlowLayout
