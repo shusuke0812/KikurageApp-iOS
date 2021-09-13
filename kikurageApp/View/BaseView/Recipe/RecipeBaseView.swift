@@ -34,6 +34,7 @@ extension RecipeBaseView {
     private func initUI() {
         self.noRecipeLabel.text = "りょうりきろくがありません"
         self.noRecipeLabel.textColor = .darkGray
+        self.noRecipeLabel.isHidden = true
     }
     private func setTableView() {
         // セル選択を不可にする（料理記録詳細ページは無いため）

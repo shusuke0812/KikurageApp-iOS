@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import PKHUD
 
 class RecipeViewController: UIViewController {
     // BaseView
@@ -24,12 +25,12 @@ class RecipeViewController: UIViewController {
         self.viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
         self.setDelegateDataSource()
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            HUD.show(.progress)
             self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.baseView.noRecipeLabel.isHidden = !(self.viewModel.recipes.isEmpty)
     }
 }
 
@@ -61,9 +62,16 @@ extension RecipeViewController: UITableViewDelegate {
 // MARK: - RecipeViewModel
 extension RecipeViewController: RecipeViewModelDelegate {
     func didSuccessGetRecipes() {
-        self.baseView.tableView.reloadData()
+        DispatchQueue.main.async {
+            HUD.hide()
+            self.baseView.tableView.reloadData()
+            self.baseView.noRecipeLabel.isHidden = !(self.viewModel.recipes.isEmpty)
+        }
     }
     func didFailedGetRecipes(errorMessage: String) {
         print(errorMessage)
+        DispatchQueue.main.async {
+            HUD.hide()
+        }
     }
 }
