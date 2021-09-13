@@ -21,6 +21,7 @@ class CultivationViewController: UIViewController {
         self.viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
         self.setNavigationItem()
         self.setDelegateDataSource()
+        self.setNotificationCenter()
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
@@ -86,5 +87,17 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
 extension CultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.transitionCultivationDetailPage(indexPath: indexPath)
+    }
+}
+
+// MARK: - NotificationCenter
+extension CultivationViewController {
+    private func setNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didPostCultivation), name: .updatedCultivations, object: nil)
+    }
+    @objc private func didPostCultivation(notification: Notification) {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+        }
     }
 }
