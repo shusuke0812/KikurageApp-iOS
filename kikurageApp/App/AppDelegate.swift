@@ -56,6 +56,7 @@ extension AppDelegate {
         self.window = window
         let vc = AppRootController()
         self.window?.rootViewController = vc
+        self.window?.backgroundColor = .white
         self.window?.makeKeyAndVisible()
     }
     private func configCrashlyticsUserId() {
