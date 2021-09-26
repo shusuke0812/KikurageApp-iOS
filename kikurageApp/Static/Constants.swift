@@ -8,8 +8,10 @@
 
 import UIKit
 
-struct Constants {
-    struct WebUrl {
+// MEMO: `struct`ではなく`enum`にする
+//       `不要なインスタンス化を防ぐ`ことが狙い。structだと意図しない箇所でインスタンス化できてしまうが、caseのないenumだとインスタンス化できない
+enum Constants {
+    enum WebUrl {
         /// Facebookのきくらげコミュニティ
         static let facebook = "https://www.facebook.com/groups/kikurage.community.2019/"
         /// 利用規約
@@ -17,7 +19,7 @@ struct Constants {
         /// 個人情報保護方針
         static let privacyPolicy = "https://docs.google.com/document/d/1xwKhNVNW-CUuRFp_jk8vhMG1TaihEtrzbEM9RPy77Ac/edit?usp=sharing"
     }
-    struct FirestoreCollectionName {
+    enum FirestoreCollectionName {
         /// 栽培ステートコレクション
         static let states = "kikurageStates"
         /// 栽培ステート配下のグラフサブコレクション名
@@ -29,11 +31,12 @@ struct Constants {
         /// ユーザー配下の料理サブコレクション名
         static let recipes = "recipes"
     }
-    struct CameraCollectionCell {
+    enum CameraCollectionCell {
         /// 画像選択の最大数
         static let maxNumber = 8
     }
-    struct TextFieldTag {
+    // TODO: Tagは使わない方が良い、enumに置き換え
+    enum TextFieldTag {
         /// 料理名のTextFieldタグ番号
         static let recipeName = 1
         /// 料理記録画面の日付のTextFieldタグ番号
@@ -49,15 +52,15 @@ struct Constants {
         /// パスワード
         static let password = 7
     }
-    struct ViewTag {
+    enum ViewTag {
         /// サイドメニューのBaseViewタグ番号
         static let sideMenuBase = 1
     }
-    struct Image {
+    enum Image {
         /// 画像読み込み中の表示
         static let loading = R.image.loading()
     }
-    struct UserDefaultsKey {
+    enum UserDefaultsKey {
         static let firebaseUser = "firebase_user"
     }
 }
