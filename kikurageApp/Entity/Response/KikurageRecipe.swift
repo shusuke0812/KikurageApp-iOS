@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import SwiftDate
 
 struct KikurageRecipe: Codable {
     /// 料理名

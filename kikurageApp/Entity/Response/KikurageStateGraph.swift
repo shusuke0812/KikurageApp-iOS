@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftDate
 
 struct KikurageStateGraph: Codable {
     // 曜日毎のデータ

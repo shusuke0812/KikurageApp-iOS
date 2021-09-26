@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import SwiftDate
 
 struct KikurageCultivation: Codable {
     /// 栽培メモ

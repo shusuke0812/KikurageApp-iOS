@@ -20,7 +20,6 @@ target 'kikurageApp' do
   pod 'PKHUD', '~> 5.0'
   pod 'HorizonCalendar'
   # Other
-  pod 'SwiftDate', '~> 5.0'
   pod 'R.swift'
 
 end
