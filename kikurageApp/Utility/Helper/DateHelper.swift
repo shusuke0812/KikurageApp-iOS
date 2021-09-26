@@ -31,4 +31,9 @@ extension DateHelper {
         self.formatter.dateFormat = "yyyyMMddHHmmss"
         return formatter.string(from: date)
     }
+    /// Date型をログに使うString型へ変換する
+    func formatToStringForLog() -> String {
+        self.formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        return formatter.string(from: Date())
+    }
 }

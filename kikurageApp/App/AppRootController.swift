@@ -60,6 +60,7 @@ extension AppRootController {
         guard let vc = currentViewController else { return }
         vc.willMove(toParent: nil)
         vc.view.removeFromSuperview()
+        vc.removeFromParent()
     }
 }
 
