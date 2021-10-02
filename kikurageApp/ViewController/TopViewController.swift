@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopViewController: UIViewController {
+class TopViewController: UIViewController, UIViewControllerNavigatable {
     /// BaseView
     private var baseView: TopBaseView { self.view as! TopBaseView } // swiftlint:disable:this force_cast
 

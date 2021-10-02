@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommunicationViewController: UIViewController {
+class CommunicationViewController: UIViewController, UIViewControllerNavigatable {
     /// BaseView
     private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
 

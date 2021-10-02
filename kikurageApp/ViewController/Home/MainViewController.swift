@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import MessageUI
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIViewControllerNavigatable {
     /// BaseView
     private var baseView: MainBaseView { self.view as! MainBaseView } // swiftlint:disable:this force_cast
     /// ViewModel

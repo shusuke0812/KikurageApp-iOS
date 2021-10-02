@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class PostRecipeViewController: UIViewController {
+class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
     /// BaseView
     private var baseView: PostRecipeBaseView { self.view as! PostRecipeBaseView } // swiftlint:disable:this force_cast
     /// ViewModel

@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class CultivationViewController: UIViewController {
+class CultivationViewController: UIViewController, UIViewControllerNavigatable {
     /// BaseView
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
     /// ViewModel

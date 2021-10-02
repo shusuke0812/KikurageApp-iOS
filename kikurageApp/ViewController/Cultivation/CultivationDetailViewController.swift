@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CultivationDetailViewController: UIViewController {
+class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
     /// BaseView
     private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
     /// ViewModel

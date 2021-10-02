@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import PKHUD
 
-class RecipeViewController: UIViewController {
+class RecipeViewController: UIViewController, UIViewControllerNavigatable {
     // BaseView
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
     // ViewModel
