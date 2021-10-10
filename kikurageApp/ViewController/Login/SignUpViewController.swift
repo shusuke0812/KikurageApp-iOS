@@ -68,7 +68,6 @@ extension SignUpViewController: SignUpViewModelDelegate {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: "仮登録完了", message: "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください", okButtonTitle: "次へ", cancelButtonTitle: nil) {
                 LoginHelper.shared.userReload { [weak self] in
-                    self?.viewModel.saveUser()
                     self?.transitionDeviceRegisterPage()
                     LoginHelper.shared.userListenerDetach()
                 }

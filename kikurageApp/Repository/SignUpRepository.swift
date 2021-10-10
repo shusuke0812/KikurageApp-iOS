@@ -15,9 +15,6 @@ protocol SignUpRepositoryProtocol {
     ///   - registerInfo:（メールアドレス, パスワード）
     ///   - completion: ユーザー登録成功、失敗のハンドル
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void)
-    /// ユーザー情報を`UserDefaults`へ保存する
-    /// - Parameter user: Firebase Auth ユーザー
-    func setUserInUserDefaults(user: User, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class SignUpRepository: SignUpRepositoryProtocol {
@@ -25,13 +22,19 @@ class SignUpRepository: SignUpRepositoryProtocol {
 
 // MARK: - UserDefaults
 extension SignUpRepository {
-    func setUserInUserDefaults(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
+    /* MEMO:
+       - UserDefaultsへの`User`情報を登録する処理はどのクラスに書くべきか -> UIロジックに使うわけではないのでViewModelではなく、Repositoryクラスに一旦追記
+       - 登録エラーのハンドリングをUIに表示すべきか and エラーであった場合の処理をどうすべきか
+    */
+    /// ユーザー情報を`UserDefaults`へ保存する
+    /// - Parameter user: Firebase Auth ユーザー
+    private func setUserInUserDefaults(user: User) {
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
-            completion(.success(()))
+            print("DEBUG: ユーザー情報を`UserDefaults`に保存しました")
         } catch {
-            completion(.failure(error))
+            print("DEBUG: ユーザー情報のを`UserDefaults`に保存できませんでした -> " + error.localizedDescription)
         }
     }
 }
@@ -48,11 +51,12 @@ extension SignUpRepository {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
-            user.sendEmailVerification { error in
+            user.sendEmailVerification { [weak self] error in
                 if let error = error {
                     completion(.failure(error))
                     return
                 }
+                self?.setUserInUserDefaults(user: user)
                 completion(.success(user))
             }
         }

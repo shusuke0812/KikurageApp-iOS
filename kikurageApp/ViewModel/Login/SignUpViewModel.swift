@@ -59,15 +59,4 @@ extension SignUpViewModel {
             }
         }
     }
-    /// ユーザー情報を`UserDefaults`へ保存する
-    func saveUser() {
-        self.signUpRepository.setUserInUserDefaults(user: LoginHelper.shared.user!) { response in   // swiftlint:disable:this force_unwrapping
-            switch response {
-            case .success:
-                print("DEBUG: ユーザー情報を`UserDefaults`に保存しました")
-            case .failure(let error):
-                print("DEBUG: ユーザー情報のを`UserDefaults`に保存できませんでした -> " + error.localizedDescription)
-            }
-        }
-    }
 }
