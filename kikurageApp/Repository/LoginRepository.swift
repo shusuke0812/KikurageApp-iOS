@@ -28,6 +28,7 @@ extension LoginRepository {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
+            LoginHelper.shared.setUserInUserDefaults(user: user)
             completion(.success(user))
         }
     }

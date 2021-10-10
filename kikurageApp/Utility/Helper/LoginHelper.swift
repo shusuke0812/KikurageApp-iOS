@@ -63,4 +63,15 @@ class LoginHelper {
     func userListenerDetach() {
         Auth.auth().removeStateDidChangeListener(self.userListenerHandle!)  // swiftlint:disable:this force_unwrapping
     }
+    /// ユーザー情報を`UserDefaults`へ保存する
+    /// - Parameter user: Firebase Auth ユーザー
+    func setUserInUserDefaults(user: User) {
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+            UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
+            print("DEBUG: ユーザー情報を`UserDefaults`に保存しました")
+        } catch {
+            print("DEBUG: ユーザー情報のを`UserDefaults`に保存できませんでした -> " + error.localizedDescription)
+        }
+    }
 }
