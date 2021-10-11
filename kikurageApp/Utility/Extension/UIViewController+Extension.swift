@@ -38,7 +38,6 @@ extension UIViewControllerNavigatable where Self: UIViewController {
     }
     func transitionSafariViewController(urlString: String) {
         let url: URL?
-        // TODO: Stringの引数ではなく、URL型を渡す
         // 不正なURLであるかを判定する
         // （不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
         if urlString.hasPrefix("http://") || urlString.hasPrefix("https") {
