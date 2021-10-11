@@ -14,7 +14,7 @@ protocol SignUpRepositoryProtocol {
     /// - Parameters:
     ///   - registerInfo:（メールアドレス, パスワード）
     ///   - completion: ユーザー登録成功、失敗のハンドル
-    func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void)
+    func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, Error>) -> Void)
 }
 
 class SignUpRepository: SignUpRepositoryProtocol {
@@ -22,7 +22,7 @@ class SignUpRepository: SignUpRepositoryProtocol {
 
 // MARK: - Firebase Authentication
 extension SignUpRepository {
-    func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void) {
+    func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, Error>) -> Void) {
         Auth.auth().createUser(withEmail: registerInfo.email, password: registerInfo.password) { authResult, error in
             if let error = error {
                 completion(.failure(error))
@@ -38,7 +38,9 @@ extension SignUpRepository {
                     return
                 }
                 LoginHelper.shared.setUserInUserDefaults(user: user)
-                completion(.success(user))
+                
+                let loginUser = LoginUser(uid: user.uid)
+                completion(.success(loginUser))
             }
         }
     }

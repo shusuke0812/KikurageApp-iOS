@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 protocol LoginViewModelDelegate: AnyObject {
     /// ログインに成功した
@@ -32,7 +31,7 @@ class LoginViewModel {
     var kikurageUser: KikurageUser?
     var kikurageState: KikurageState?
 
-    private var user: User?
+    private var loginUser: LoginUser?
     var email: String = ""
     var password: String = ""
 
@@ -62,24 +61,12 @@ extension LoginViewModel {
         let loginInfo = self.setLoginInfo()
         self.loginRepository.login(loginInfo: loginInfo) { [weak self] response in
             switch response {
-            case .success(let user):
-                self?.user = user
-                self?.saveUser()
+            case .success(let loginUser):
+                self?.loginUser = loginUser
                 self?.loadKikurageUser()
             case .failure(let error):
                 print("DEBUG: \(error)")
                 self?.delegate?.didFailedLogin(errorMessage: "ユーザーログインに失敗しました")
-            }
-        }
-    }
-    /// ユーザー情報を`UserDefaults`へ保存する
-    private func saveUser() {
-        self.signUpRepository.setUserInUserDefaults(user: self.user!) { response in     // swiftlint:disable:this force_unwrapping
-            switch response {
-            case .success:
-                print("DEBUG: ユーザー情報を`UserDefaults`に保存しました")
-            case .failure(let error):
-                print("DEBUG: ユーザー情報のを`UserDefaults`に保存できませんでした -> " + error.localizedDescription)
             }
         }
     }
@@ -89,7 +76,7 @@ extension LoginViewModel {
 extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {
-        self.kikurageUserRepository.getKikurageUser(uid: (self.user?.uid)!) { [weak self] response in   // swiftlint:disable:this force_unwrapping
+        self.kikurageUserRepository.getKikurageUser(uid: (self.loginUser?.uid)!) { [weak self] response in   // swiftlint:disable:this force_unwrapping
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser

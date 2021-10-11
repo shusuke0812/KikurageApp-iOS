@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 protocol LoginRepositoryProtocol {
-    func login(loginInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void)
+    func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, Error>) -> Void)
 }
 
 class LoginRepository: LoginRepositoryProtocol {
@@ -18,7 +18,7 @@ class LoginRepository: LoginRepositoryProtocol {
 
 // MARK: - Firebase Authentication
 extension LoginRepository {
-    func login(loginInfo: (email: String, password: String), completion: @escaping (Result<User, Error>) -> Void) {
+    func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, Error>) -> Void) {
         Auth.auth().signIn(withEmail: loginInfo.email, password: loginInfo.password) { authResult, error in
             if let error = error {
                 completion(.failure(error))
@@ -29,7 +29,9 @@ extension LoginRepository {
                 return
             }
             LoginHelper.shared.setUserInUserDefaults(user: user)
-            completion(.success(user))
+
+            let loginUser = LoginUser(uid: user.uid)
+            completion(.success(loginUser))
         }
     }
 }

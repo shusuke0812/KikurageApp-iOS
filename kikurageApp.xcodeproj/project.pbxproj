@@ -105,6 +105,7 @@
 		9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */; };
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
+		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
@@ -214,6 +215,7 @@
 		9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewModel.swift; sourceTree = "<group>"; };
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
+		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				9C923340255FA0DC000293BB /* KikurageCultivation.swift */,
 				9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */,
 				9C70C44425AFDC8900069F8F /* KikurageStateGraph.swift */,
+				9CC103B0270818A200067823 /* LoginUser.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -981,6 +984,7 @@
 				9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */,
 				9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */,
 				9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */,
+				9CC103B1270818A200067823 /* LoginUser.swift in Sources */,
 				9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */,
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,

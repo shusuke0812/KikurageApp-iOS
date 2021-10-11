@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+struct LoginUser {
+    /// ログイン用ユーザー識別ID
+    var uid: String
+    
+    init(uid: String) {
+        self.uid = uid
+    }
+}

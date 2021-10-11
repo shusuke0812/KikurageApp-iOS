@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 protocol SignUpViewModelDelegate: AnyObject {
     /// ユーザー登録に成功した
@@ -22,7 +21,7 @@ class SignUpViewModel {
 
     weak var delegate: SignUpViewModelDelegate?
 
-    private var user: User?
+    private var loginUser: LoginUser?
     var email: String = ""
     var password: String = ""
 
@@ -50,8 +49,8 @@ extension SignUpViewModel {
         let registerInfo = setRegisterInfo()
         self.signUpRepository.registerUser(registerInfo: registerInfo) { [weak self] response in
             switch response {
-            case .success(let user):
-                self?.user = user
+            case .success(let loginUser):
+                self?.loginUser = loginUser
                 self?.delegate?.didSuccessRegisterUser()
             case .failure(let error):
                 print("DEBUG: \(error)")
