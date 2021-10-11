@@ -63,4 +63,13 @@ enum Constants {
     enum UserDefaultsKey {
         static let firebaseUser = "firebase_user"
     }
+    enum Week: String, CaseIterable {
+        case monday     = "月曜"
+        case tuesday    = "火曜"
+        case wednesday  = "水曜"
+        case thursday   = "木曜"
+        case friday     = "金曜"
+        case saturday   = "土曜"
+        case sunday     = "日曜"
+    }
 }

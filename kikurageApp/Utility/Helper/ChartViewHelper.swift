@@ -11,10 +11,11 @@ import Charts
 
 /// Chartsのx軸を設定するヘルパー
 class ChartViewHelper: NSObject, IAxisValueFormatter {
-    let xAxisValues = ["月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜"]
+    let xAxisValues = Constants.Week.allCases
 
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let index = Int(value)
-        return xAxisValues[index]
+        // MEMO: Index out of range対策（参考：https://github.com/danielgindi/Charts/issues/1749）
+        let index = Int(value) % xAxisValues.count
+        return xAxisValues[index].rawValue
     }
 }
