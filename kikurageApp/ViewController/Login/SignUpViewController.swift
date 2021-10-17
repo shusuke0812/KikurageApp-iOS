@@ -10,9 +10,7 @@ import UIKit
 import PKHUD
 
 class SignUpViewController: UIViewController {
-    /// BaseView
     private var baseView: SignUpBaseView { self.view as! SignUpBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: SignUpViewModel!
 
     // MARK: - Lifecycle

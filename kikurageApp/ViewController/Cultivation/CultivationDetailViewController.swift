@@ -9,9 +9,7 @@
 import UIKit
 
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
-    /// BaseView
     private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: CultivationDetailViewModel!
     /// 前画面から渡された栽培記録データ
     var cultivation: KikurageCultivation!
@@ -33,7 +31,6 @@ extension CultivationDetailViewController {
         self.baseView.collectionView.delegate = self
         self.baseView.collectionView.dataSource = self.viewModel
     }
-    // 観察日・観察メモを設定
     private func setUI() {
         self.baseView.setUI(cultivation: self.cultivation)
     }

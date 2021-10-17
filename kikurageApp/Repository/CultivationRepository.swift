@@ -36,7 +36,7 @@ protocol CultivationRepositoryProtocol {
     func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], Error>) -> Void)
 }
 class CultivationRepository: CultivationRepositoryProtocol {
-    // Storageへ保存するデータのメタデータ
+    /// Storageへ保存するデータのメタデータ
     private let metaData: StorageMetadata
 
     init() {

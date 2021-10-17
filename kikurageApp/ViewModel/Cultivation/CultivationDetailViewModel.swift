@@ -11,7 +11,7 @@ import UIKit
 class CultivationDetailViewModel: NSObject {
     /// きくらげ 栽培記録データ
     var cultivation: KikurageCultivation
-    /// セクション数
+
     private let sectionNumber = 1
 
     init(cultivation: KikurageCultivation) {

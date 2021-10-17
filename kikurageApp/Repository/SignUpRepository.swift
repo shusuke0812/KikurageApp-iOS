@@ -38,7 +38,6 @@ extension SignUpRepository {
                     return
                 }
                 LoginHelper.shared.setUserInUserDefaults(user: user)
-                
                 let loginUser = LoginUser(uid: user.uid)
                 completion(.success(loginUser))
             }

@@ -18,9 +18,7 @@ protocol AppPresenterDelegate: AnyObject {
 }
 
 class AppPresenter {
-    /// きくらげの状態取得リポジトリ
     private var kikurageStateRepository: KikurageStateRepositoryProtocol
-    /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
     weak var delegate: AppPresenterDelegate?

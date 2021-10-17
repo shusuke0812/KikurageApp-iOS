@@ -21,9 +21,8 @@ protocol PostCultivationViewModelDelegate: AnyObject {
     func didFailedPostCultivationImages(errorMessage: String)
 }
 class PostCultivationViewModel {
-    /// 栽培記録リポジトリ
     private let cultivationRepository: CultivationRepositoryProtocol
-    /// デリゲート
+
     weak var delegate: PostCultivationViewModelDelegate?
     /// 栽培記録
     var cultivation: KikurageCultivation

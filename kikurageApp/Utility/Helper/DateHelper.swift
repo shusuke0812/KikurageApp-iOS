@@ -9,7 +9,6 @@
 import Foundation
 
 class DateHelper {
-    /// シングルトン
     static let shared = DateHelper()
 
     private let formatter: DateFormatter

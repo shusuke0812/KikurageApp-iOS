@@ -9,11 +9,11 @@
 import UIKit
 
 class CameraCollectionViewModel: NSObject {
-    // 選択した画像リスト
+    /// 選択した画像リスト
     private var selectedImages: [UIImage?] = []
-    // 選択できる画像数
+    /// 選択できる画像数
     var selectedImageMaxNumber: Int
-    // CameraCellデリゲート
+
     weak var cameraCellDelegate: CameraCellDelegate?
 
     init(selectedImageMaxNumber: Int) {

@@ -23,9 +23,9 @@ class PostCultivationBaseView: UIView {
     @IBOutlet private weak var maxTextViewNumberLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
-    /// デリゲート
+
     weak var delegate: PostCultivationBaseViewDelegate?
-    /// 日付選択Picker
+
     var datePicker = UIDatePicker()
     /// 観察メモの最大入力可能文字数
     let maxTextViewNumber = 200

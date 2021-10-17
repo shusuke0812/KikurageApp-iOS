@@ -22,9 +22,8 @@ protocol PostRecipeViewModelDelegate: AnyObject {
 }
 
 class PostRecipeViewModel {
-    /// 料理記録リポジトリ
     private let recipeRepository: RecipeRepositoryProtocol
-    /// デリゲート
+
     weak var delegate: PostRecipeViewModelDelegate?
     /// 料理記録
     var recipe: KikurageRecipe

@@ -16,13 +16,12 @@ protocol RecipeViewModelDelegate: AnyObject {
 }
 
 class RecipeViewModel: NSObject {
-    /// 料理記録リポジトリ
     private let recipeRepository: RecipeRepositoryProtocol
-    /// デリゲート
+
     weak var delegate: RecipeViewModelDelegate?
     ///　きくらげ料理データ
     var recipes: [(recipe: KikurageRecipe, documentId: String)] = []
-    /// セクション数
+
     private let sectionNumber = 1
 
     init(recipeRepository: RecipeRepositoryProtocol) {

@@ -10,6 +10,8 @@ import Foundation
 
 /// クライアントエラー
 enum ClientError: Error {
-    case parseField // パースエラー
-    case unknown    // 想定外エラー
+    /// パースエラー
+    case parseField
+    /// 想定外エラー
+    case unknown
 }

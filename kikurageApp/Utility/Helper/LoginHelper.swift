@@ -10,7 +10,6 @@ import Foundation
 import Firebase
 
 class LoginHelper {
-    /// シングルトン
     static let shared = LoginHelper()
 
     var userListenerHandle: AuthStateDidChangeListenerHandle?

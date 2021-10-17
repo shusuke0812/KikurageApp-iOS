@@ -15,7 +15,7 @@ protocol CommunicationBaseViewDelegate: AnyObject {
 
 class CommunicationBaseView: UIView {
     @IBOutlet weak var informationLabel: UILabel!
-    /// デリゲート
+
     weak var delegate: CommunicationBaseViewDelegate?
 
     override func awakeFromNib() {

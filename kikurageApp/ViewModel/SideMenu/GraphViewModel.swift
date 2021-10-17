@@ -22,11 +22,9 @@ protocol GraphViewModelDelegate: AnyObject {
 }
 
 class GraphViewModel {
-    /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
-    /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
-    /// デリゲート
+
     weak var delegate: GraphViewModelDelegate?
     /// きくらげの１週間データ
     var kikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []

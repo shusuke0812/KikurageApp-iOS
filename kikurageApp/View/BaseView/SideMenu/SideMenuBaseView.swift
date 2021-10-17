@@ -26,7 +26,7 @@ class SideMenuBaseView: UIView {
     @IBOutlet private weak var licenseView: SideMenuContentView!
     @IBOutlet private weak var searchRecipeView: SideMenuContentView!
     @IBOutlet private weak var kikurageDictionaryView: SideMenuContentView!
-    /// デリゲート
+
     weak var delegate: SideMenuBaseViewDelegate?
 
     override func awakeFromNib() {

@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MEMO: `struct`ではなく`enum`にする
-//       `不要なインスタンス化を防ぐ`ことが狙い。structだと意図しない箇所でインスタンス化できてしまうが、caseのないenumだとインスタンス化できない
 enum Constants {
     enum WebUrl {
         /// Facebookのきくらげコミュニティ

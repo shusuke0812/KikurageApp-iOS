@@ -25,9 +25,9 @@ class GraphBaseView: UIView {
     @IBOutlet private weak var humidityLabel: UILabel!
     @IBOutlet private weak var temperatureLineChartView: LineChartView!
     @IBOutlet private weak var humidityLineChartView: LineChartView!
-    /// デリゲート
+
     weak var delegate: GraphBaseViewDelegate?
-    /// ChartViewHelper
+
     private let chartViewHelper = ChartViewHelper()
 
     override func awakeFromNib() {

@@ -10,11 +10,8 @@ import UIKit
 import PKHUD
 
 class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
-    /// BaseView
     private var baseView: PostRecipeBaseView { self.view as! PostRecipeBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: PostRecipeViewModel!
-    /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
 
     override func viewDidLoad() {
@@ -41,7 +38,6 @@ extension PostRecipeViewController {
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
-            // HUD表示（始）
             HUD.show(.progress)
             if let kikurageUserId = LoginHelper.shared.kikurageUserId {
                 self.viewModel.postRecipe(kikurageUserId: kikurageUserId)
@@ -143,12 +139,10 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
     }
     func didFailedPostRecipe(errorMessage: String) {
         print(errorMessage)
-        // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "料理記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
     func didSuccessPostRecipeImages() {
-        // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
             // 料理記録一覧画面へ更新イベントを通知
@@ -158,7 +152,6 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
     }
     func didFailedPostRecipeImages(errorMessage: String) {
         print(errorMessage)
-        // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "料理記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }

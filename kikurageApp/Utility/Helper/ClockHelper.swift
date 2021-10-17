@@ -9,7 +9,6 @@
 import Foundation
 
 class ClockHelper {
-    /// シングルトン
     static let shared = ClockHelper()
 
     private let formatter: DateFormatter

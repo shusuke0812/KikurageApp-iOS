@@ -10,11 +10,8 @@ import UIKit
 import PKHUD
 
 class PostCultivationViewController: UIViewController, UIViewControllerNavigatable {
-    /// BaseView
     private var baseView: PostCultivationBaseView { self.view as! PostCultivationBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: PostCultivationViewModel!
-    /// CameraCell ViewModel
     private var cameraCollectionViewModel: CameraCollectionViewModel!
 
     // MARK: - Lifecycle
@@ -96,12 +93,10 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
     }
     func didFailedPostCultivation(errorMessage: String) {
         print(errorMessage)
-        // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }
     func didSuccessPostCultivationImages() {
-        // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
             // 栽培記録一覧画面へ更新イベントを通知
@@ -111,7 +106,6 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
     }
     func didFailedPostCultivationImages(errorMessage: String) {
         print(errorMessage)
-        // HUD表示（終）
         HUD.hide()
         UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録の保存に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
     }

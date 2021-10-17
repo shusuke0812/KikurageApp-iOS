@@ -18,7 +18,7 @@ protocol CameraCellDelegate: AnyObject {
 
 class CameraCell: UICollectionViewCell {
     @IBOutlet private weak var cameraIamge: UIImageView!
-    // デリゲート
+
     weak var delegate: CameraCellDelegate?
 
     // MARK: - Lifecycle

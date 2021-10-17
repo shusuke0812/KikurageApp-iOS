@@ -15,7 +15,7 @@ protocol CalendarBaseViewDelegate: AnyObject {
 
 class CalendarBaseView: UIView {
     @IBOutlet private weak var navigationItem: UINavigationItem!
-    /// デリゲート
+
     weak var delegate: CalendarBaseViewDelegate?
 
     override func awakeFromNib() {

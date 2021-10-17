@@ -10,14 +10,18 @@ import Foundation
 
 /// ネットワークエラー
 enum NetworkError: Error {
-    case invalidUrl         // 不正なURL
-    case invalidResponse    // 不正なレスポンス
-    case unknown            // 想定外エラー
+    /// 不正なURL
+    case invalidUrl
+    /// 不正なレスポンス
+    case invalidResponse
+    /// 想定外エラー
+    case unknown
+    /// エラー文言を返す
     func description() -> String {
         switch self {
-        case .invalidUrl:       return "DEBUG： 不正なURLです"
-        case .invalidResponse:  return "DEBUG： 不正なレスポンスです"
-        case .unknown:          return "DEBUG： レスポンスに失敗しました"
+        case .invalidUrl:       return "不正なURLです"
+        case .invalidResponse:  return "不正なレスポンスです"
+        case .unknown:          return "レスポンスに失敗しました"
         }
     }
 }

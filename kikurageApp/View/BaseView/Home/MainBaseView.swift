@@ -27,7 +27,7 @@ class MainBaseView: UIView {
     @IBOutlet private weak var temparatureTextLabel: UILabel!
     @IBOutlet private weak var humidityTextLabel: UILabel!
     @IBOutlet private weak var kikurageAdviceView: MainAdviceView!
-    // デリゲート
+
     weak var delegate: MainBaseViewDelegate?
 
     override func awakeFromNib() {
@@ -80,13 +80,13 @@ extension MainBaseView {
             self.kikurageAdviceView.adviceContentLabel.text = advice
         }
     }
-    // きくらげ名を設定
+    /// きくらげ名を設定
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
         if let name: String = kikurageUser?.kikurageName {
             self.kikurageNameLabel.text = "今日の \(name)"
         }
     }
-    // 時刻表示更新用メソッド
+    /// 時刻表示更新用メソッド
     func updateTimeLabel() {
         self.nowTimeLabel.text = ClockHelper.shared.display()
     }

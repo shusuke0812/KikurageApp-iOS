@@ -9,7 +9,6 @@
 import Foundation
 
 struct KikurageStateGraph: Codable {
-    // 曜日毎のデータ
     var mondayData: TimeData?
     var tuesdayData: TimeData?
     var wednesdayData: TimeData?

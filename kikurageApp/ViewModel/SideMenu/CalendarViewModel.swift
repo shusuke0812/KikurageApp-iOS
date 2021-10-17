@@ -17,9 +17,8 @@ protocol CalendarViewModelDelegate: AnyObject {
 }
 
 class CalendarViewModel {
-    /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
-    /// デリゲート
+
     weak var delegate: CalendarViewModelDelegate?
     /// きくらげユーザー
     var kikurageUser: KikurageUser?

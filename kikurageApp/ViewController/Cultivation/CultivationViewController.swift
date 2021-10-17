@@ -10,9 +10,7 @@ import UIKit
 import PKHUD
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable {
-    /// BaseView
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: CultivationViewModel!
 
     // MARK: - Lifecycle

@@ -10,9 +10,7 @@ import UIKit
 import PKHUD
 
 class LoginViewController: UIViewController {
-    /// BaseView
     private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: LoginViewModel!
 
     override func viewDidLoad() {

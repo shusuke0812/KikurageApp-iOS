@@ -23,15 +23,13 @@ protocol DeviceRegisterViewModelDelegate: AnyObject {
 }
 
 class DeviceRegisterViewModel {
-    /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
-    /// きくらげユーザー取得リポジトリ
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     /// きくらげの状態
     var kikurageState: KikurageState?
     /// きくらげユーザー
     var kikurageUser: KikurageUser?
-    /// デリゲート
+
     weak var delegate: DeviceRegisterViewModelDelegate?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
@@ -64,7 +62,6 @@ extension DeviceRegisterViewModel {
         }
     }
     /// きくらげユーザーを登録する
-    /// - Parameter uid: ユーザーID
     func registerKikurageUser() {
         guard let kikurageUser = self.kikurageUser else {
             self.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")

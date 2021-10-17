@@ -18,9 +18,9 @@ class DeviceRegisterBaseView: UIView {
     @IBOutlet weak var kikurageNameTextField: UITextField!
     @IBOutlet weak var cultivationStartDateTextField: UITextField!
     @IBOutlet private weak var deviceRegisterButton: UIButton!
-    /// デリゲート
+
     weak var delegate: DeviceRegisterBaseViewDelegate?
-    /// 日付選択Picker
+
     var datePicker = UIDatePicker()
 
     override func awakeFromNib() {

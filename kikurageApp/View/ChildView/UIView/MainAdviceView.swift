@@ -24,11 +24,8 @@ class MainAdviceView: XibView {
 
 extension MainAdviceView {
     private func initBaseView() {
-        // BaseViewを角丸にする
         self.baseView.layer.cornerRadius = 18
-        // BaseViewの枠線に色をつける
         self.baseView.layer.borderColor = UIColor.red.cgColor
-        // BaseViewの枠線の太さを設定する
         self.baseView.layer.borderWidth = 1.0
     }
     private func initAdviceTitleLabel() {

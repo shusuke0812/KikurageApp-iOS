@@ -10,9 +10,7 @@ import UIKit
 import PKHUD
 
 class DeviceRegisterViewController: UIViewController {
-    /// BaseView
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: DeviceRegisterViewModel!
 
     // MARK: - Lifecycle
@@ -68,9 +66,7 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     func didTappedDeviceRegisterButton() {
         let validate = self.textFieldValidation()
         if validate {
-            // HUD表示（始）
             HUD.show(.progress)
-            // きくらげの状態を取得する
             self.viewModel.loadKikurageState()
         } else {
             UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)

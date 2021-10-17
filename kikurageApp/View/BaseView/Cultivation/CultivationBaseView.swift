@@ -18,7 +18,7 @@ class CultivationBaseView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var noCultivationLabel: UILabel!
-    /// デリゲート
+
     weak var delegate: CultivationBaseViewDelegate?
 
     // MARK: - Lifecycle

@@ -10,9 +10,8 @@ import UIKit
 import MessageUI
 
 class SideMenuViewController: UIViewController {
-    /// BaseView
     private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
-    /// Mailer
+
     private let mail = MFMailComposeViewController()
 
     // MARK: - Lifecycle
@@ -63,7 +62,6 @@ extension SideMenuViewController {
 }
 // MARK: - MFMail Delegate
 extension SideMenuViewController: MFMailComposeViewControllerDelegate {
-    // 問い合わせのメーラーを開く
     private func openContactMailer() {
         if MFMailComposeViewController.canSendMail() {
             // 宛先のメールアドレス

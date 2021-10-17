@@ -8,13 +8,10 @@
 
 import UIKit
 
-/**
-UITextViewにコードでPlaceholderを設定できるようにするカスタムクラス
-*/
+/// UITextViewにコードでPlaceholderを設定できるようにするカスタムクラス
 class UITextViewWithPlaceholder: UITextView {
-    /// プレースホルダーのラベル
     private lazy var placeholderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
-
+    /// プレースホルダー文字列
     var placeholder: String = "" {
         didSet {
             if placeholder.isEmpty { return }
@@ -30,7 +27,6 @@ class UITextViewWithPlaceholder: UITextView {
 }
 // MARK: - Config
 extension UITextViewWithPlaceholder {
-    // TextViewの基本設定
     private func setPlaceholder() {
         self.placeholderLabel.backgroundColor = .clear
         self.placeholderLabel.textColor = UIColor.lightGray
@@ -39,7 +35,6 @@ extension UITextViewWithPlaceholder {
         self.placeholderLabel.font = self.font
         addSubview(self.placeholderLabel)
     }
-    // Placeholderの表示・非表示切り替え
     func switchPlaceholderDisplay(text: String) {
         self.placeholderLabel.isHidden = text.isEmpty ? false : true
     }

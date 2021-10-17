@@ -26,9 +26,9 @@ class PostRecipeBaseView: UIView {
     @IBOutlet private weak var maxRecipeMemoNumberLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
-    /// デリゲート
+
     weak var delegate: PostRecipeBaseViewDelegate?
-    /// 日付選択Picker
+
     var datePicker = UIDatePicker()
     /// 料理名の最大入力可能文字数
     let maxRecipeNameNumer = 20

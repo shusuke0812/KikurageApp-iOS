@@ -20,15 +20,13 @@ protocol MainViewModelDelgate: AnyObject {
 }
 
 class MainViewModel {
-    /// きくらげの状態リスナー
     private var kikurageStateListener: ListenerRegistration?
-    /// きくらげの状態取得リポジトリ
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     /// きくらげの状態
     var kikurageState: KikurageState!
     /// きくらげユーザー
     var kikurageUser: KikurageUser!
-    /// デリゲート
+
     weak var delegate: MainViewModelDelgate?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {

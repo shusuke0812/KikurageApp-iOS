@@ -17,13 +17,9 @@ protocol LoginViewModelDelegate: AnyObject {
 }
 
 class LoginViewModel {
-    /// ユーザー登録リポジトリ
     private var signUpRepository: SignUpRepositoryProtocol
-    /// ログインリポジトリ
     private var loginRepository: LoginRepositoryProtocol
-    /// きくらげの状態取得リポジトリ
     private var kikurageStateRepository: KikurageStateRepositoryProtocol
-    /// きくらげのユーザー取得リポジトリ
     private var kikurageUserRepository: KikurageUserRepositoryProtocol
 
     weak var delegate: LoginViewModelDelegate?

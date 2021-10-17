@@ -17,13 +17,12 @@ protocol CultivationViewModelDelegate: AnyObject {
     func didFailedGetCultivations(errorMessage: String)
 }
 class CultivationViewModel: NSObject {
-    /// きくらげ栽培記録の取得リポジトリ
     private let cultivationRepository: CultivationRepositoryProtocol
-    /// デリゲート
+
     weak var delegate: CultivationViewModelDelegate?
     /// きくらげ栽培記録データ
     var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
-    /// セクション数
+
     private let sectionNumber = 1
 
     init(cultivationRepository: CultivationRepositoryProtocol) {

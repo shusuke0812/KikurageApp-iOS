@@ -11,11 +11,9 @@ import SafariServices
 import PKHUD
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable {
-    // BaseView
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
-    // ViewModel
     private var viewModel: RecipeViewModel!
-    // TableViewのセル高さ
+
     private let cellHeight: CGFloat = 160.0
 
     // MARK: - Lifecycle

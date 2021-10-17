@@ -37,7 +37,7 @@ protocol RecipeRepositoryProtocol {
 }
 
 class RecipeRepository: RecipeRepositoryProtocol {
-    // Storageへ保存するデータのメタデータ
+    /// Storageへ保存するデータのメタデータ
     private let metaData: StorageMetadata
 
     init() {

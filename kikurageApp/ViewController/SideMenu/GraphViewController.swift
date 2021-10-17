@@ -9,9 +9,7 @@
 import UIKit
 
 class GraphViewController: UIViewController {
-    /// BaseView
     private var baseView: GraphBaseView { self.view as! GraphBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: GraphViewModel!
 
     // MARK: - Lifecycle

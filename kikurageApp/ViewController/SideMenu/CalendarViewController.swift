@@ -9,9 +9,7 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    /// BaseView
     private var baseView: CalendarBaseView { self.view as! CalendarBaseView } // sswiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: CalendarViewModel!
 
     // MARK: - Lifecycle
