@@ -32,20 +32,20 @@ class GraphBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
     // MARK: - Action
     @IBAction private func didTapCloseButton(_ sender: Any) {
-        self.delegate?.didTapCloseButton()
+        delegate?.didTapCloseButton()
     }
 }
 // MARK: - Initialized
 extension GraphBaseView {
     private func initUI() {
         // タイトル
-        self.navigationItem.title = "グラフ"
-        self.temperatureLabel.text = "温度"
-        self.humidityLabel.text = "湿度"
+        navigationItem.title = "グラフ"
+        temperatureLabel.text = "温度"
+        humidityLabel.text = "湿度"
     }
 }
 // MARK: - Setting UI
@@ -72,18 +72,18 @@ extension GraphBaseView {
             let dataSet = LineChartDataSet(values: entrys, label: "[℃]")
             dataSet.colors = [.subColor]
             dataSet.circleColors = [.subColor]
-            self.temperatureLineChartView.data = LineChartData(dataSet: dataSet)
-            self.temperatureLineChartView.xAxis.labelPosition = .bottom
-            self.temperatureLineChartView.leftAxis.addLimitLine(temperatureLimitLine)
-            self.temperatureLineChartView.xAxis.valueFormatter = chartViewHelper
+            temperatureLineChartView.data = LineChartData(dataSet: dataSet)
+            temperatureLineChartView.xAxis.labelPosition = .bottom
+            temperatureLineChartView.leftAxis.addLimitLine(temperatureLimitLine)
+            temperatureLineChartView.xAxis.valueFormatter = chartViewHelper
         case .humidity:
             let dataSet = LineChartDataSet(values: entrys, label: "[%]")
             dataSet.colors = [.subColor]
             dataSet.circleColors = [.subColor]
-            self.humidityLineChartView.data = LineChartData(dataSet: dataSet)
-            self.humidityLineChartView.xAxis.labelPosition = .bottom
-            self.humidityLineChartView.leftAxis.addLimitLine(humidityLimitLine)
-            self.humidityLineChartView.xAxis.valueFormatter = chartViewHelper
+            humidityLineChartView.data = LineChartData(dataSet: dataSet)
+            humidityLineChartView.xAxis.labelPosition = .bottom
+            humidityLineChartView.leftAxis.addLimitLine(humidityLimitLine)
+            humidityLineChartView.xAxis.valueFormatter = chartViewHelper
         }
     }
 }

@@ -16,14 +16,14 @@ class CultivationCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
 }
 // MARK: - Initialized
 extension CultivationCollectionViewCell {
     private func initUI() {
-        self.viewDateLabel.text = ""
-        self.imageView.backgroundColor = .lightGray
+        viewDateLabel.text = ""
+        imageView.backgroundColor = .lightGray
     }
 }
 // MARK: - Setting UI
@@ -33,9 +33,9 @@ extension CultivationCollectionViewCell {
         guard let imageStoragePath = cultivation.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            self.imageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
+            imageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
         }
         // 日付を設定
-        self.viewDateLabel.text = cultivation.viewDate
+        viewDateLabel.text = cultivation.viewDate
     }
 }

@@ -15,19 +15,19 @@ class CultivationCarouselCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
 }
 // MARK: - Initialized
 extension CultivationCarouselCollectionViewCell {
     private func initUI() {
-        self.imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .lightGray
     }
 }
 // MARK: - Setting UI
 extension CultivationCarouselCollectionViewCell {
     func setUI(cultivationImageStoragePath: String) {
         let storageReference = Storage.storage().reference(withPath: cultivationImageStoragePath)
-        self.imageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
+        imageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
     }
 }

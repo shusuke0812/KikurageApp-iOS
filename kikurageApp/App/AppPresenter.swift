@@ -37,7 +37,7 @@ extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
     func loadKikurageUser(userId: String) {
-        self.kikurageUserRepository.getKikurageUser(uid: userId) { [weak self] response in
+        kikurageUserRepository.getKikurageUser(uid: userId) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
@@ -50,8 +50,8 @@ extension AppPresenter {
     }
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (self.kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        self.kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
+        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState

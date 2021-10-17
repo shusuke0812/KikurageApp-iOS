@@ -32,7 +32,7 @@ class CultivationViewModel: NSObject {
 // MARK: - Private
 extension CultivationViewModel {
     private func sortCultivations() {
-        self.cultivations.sort { cultivation1, cultivation2 -> Bool in
+        cultivations.sort { cultivation1, cultivation2 -> Bool in
             guard let cultivationCreatedAt1 = cultivation1.cultivation.createdAt?.dateValue() else { return false }
             guard let cultivationCreatedAt2 = cultivation2.cultivation.createdAt?.dateValue() else { return false }
             return cultivationCreatedAt1 > cultivationCreatedAt2
@@ -43,7 +43,7 @@ extension CultivationViewModel {
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     func loadCultivations(kikurageUserId: String) {
-        self.cultivationRepository.getCultivations(kikurageUserId: kikurageUserId) { [weak self] response in
+        cultivationRepository.getCultivations(kikurageUserId: kikurageUserId) { [weak self] response in
             switch response {
             case .success(let cultivations):
                 self?.cultivations = cultivations
@@ -58,14 +58,14 @@ extension CultivationViewModel {
 // MARK: - CollectionView DataSource Method
 extension CultivationViewModel: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        self.sectionNumber
+        sectionNumber
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.cultivations.count
+        cultivations.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        cell.setUI(cultivation: self.cultivations[indexPath.row].cultivation)
+        cell.setUI(cultivation: cultivations[indexPath.row].cultivation)
         return cell
     }
 }

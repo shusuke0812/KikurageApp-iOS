@@ -25,35 +25,35 @@ class TopBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
 
     // MARK: - Action
     @IBAction private func didTappedTermsButton(_ sender: Any) {
-        self.delegate?.didTappedTermsButton()
+        delegate?.didTappedTermsButton()
     }
     @IBAction private func didTappedPrivacyPolicyButton(_ sender: Any) {
-        self.delegate?.didTappedPrivacyPolicyButton()
+        delegate?.didTappedPrivacyPolicyButton()
     }
     @IBAction private func didTappedLoginButton(_ sender: Any) {
-        self.delegate?.didTappedLoginButton()
+        delegate?.didTappedLoginButton()
     }
     @IBAction private func didTappedSignUpButton(_ sender: Any) {
-        self.delegate?.didTappedSignUpButton()
+        delegate?.didTappedSignUpButton()
     }
 }
 
 // MARK: - Initialized
 extension TopBaseView {
     private func initUI() {
-        self.topImageView.image = R.image.kikurageDevice()
+        topImageView.image = R.image.kikurageDevice()
 
-        self.signUpButton.layer.masksToBounds = true
-        self.signUpButton.layer.cornerRadius = 5
+        signUpButton.layer.masksToBounds = true
+        signUpButton.layer.cornerRadius = 5
 
-        self.loginButton.layer.masksToBounds = true
-        self.loginButton.layer.cornerRadius = 5
+        loginButton.layer.masksToBounds = true
+        loginButton.layer.cornerRadius = 5
 
-        self.copyrightLabel.text = "©︎ チーム きくらげ大使館"
+        copyrightLabel.text = "©︎ チーム きくらげ大使館"
     }
 }

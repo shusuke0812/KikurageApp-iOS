@@ -16,10 +16,10 @@ class SignUpViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "ユーザー登録"
-        self.viewModel = SignUpViewModel(signUpRepository: SignUpRepository())
+        navigationItem.title = "ユーザー登録"
+        viewModel = SignUpViewModel(signUpRepository: SignUpRepository())
 
-        self.setDelegate()
+        setDelegate()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,10 +29,10 @@ class SignUpViewController: UIViewController {
 // MARK: - Initialized
 extension SignUpViewController {
     private func setDelegate() {
-        self.baseView.delegate = self
-        self.baseView.emailTextField.delegate = self
-        self.baseView.passwordTextField.delegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.emailTextField.delegate = self
+        baseView.passwordTextField.delegate = self
+        viewModel.delegate = self
     }
 }
 
@@ -40,7 +40,7 @@ extension SignUpViewController {
 extension SignUpViewController: SignUpBaseViewDelegate {
     func didTappedUserRegisterButton() {
         HUD.show(.progress)
-        self.viewModel.registerUser()
+        viewModel.registerUser()
     }
 }
 
@@ -50,9 +50,9 @@ extension SignUpViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
         switch textField.tag {
         case Constants.TextFieldTag.email:
-            self.viewModel.email = text
+            viewModel.email = text
         case Constants.TextFieldTag.password:
-            self.viewModel.password = text
+            viewModel.password = text
         default:
             break
         }
@@ -83,6 +83,6 @@ extension SignUpViewController: SignUpViewModelDelegate {
     }
     private func transitionDeviceRegisterPage() {
         guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

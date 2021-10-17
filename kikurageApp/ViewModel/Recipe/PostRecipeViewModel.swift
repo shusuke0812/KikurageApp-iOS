@@ -38,27 +38,27 @@ class PostRecipeViewModel {
 // MARK: - Firebase Firestore
 extension PostRecipeViewModel {
     func postRecipe(kikurageUserId: String) {
-        self.recipeRepository.postRecipe(kikurageUserId: kikurageUserId, kikurageRecipe: self.recipe) { response in
+        recipeRepository.postRecipe(kikurageUserId: kikurageUserId, kikurageRecipe: recipe) { [weak self] response in
             switch response {
             case .success(let documentReference):
                 print("documentReference = \(documentReference)")
-                self.postedRecipeDocumentId = documentReference.documentID
-                self.delegate?.didSuccessPostRecipe()
+                self?.postedRecipeDocumentId = documentReference.documentID
+                self?.delegate?.didSuccessPostRecipe()
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostRecipe(errorMessage: "DEBUG: 料理記録データの投稿に失敗しました")
+                self?.delegate?.didFailedPostRecipe(errorMessage: "DEBUG: 料理記録データの投稿に失敗しました")
             }
         }
     }
     private func postRecipeImages(kikurageUserId: String, firestoreDocumentId: String, imageStorageFullPaths: [String]) {
-        self.recipeRepository.putRecipeImage(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths) { response in
+        recipeRepository.putRecipeImage(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self.recipe.imageStoragePaths = imageStorageFullPaths
-                self.delegate?.didSuccessPostRecipeImages()
+                self?.recipe.imageStoragePaths = imageStorageFullPaths
+                self?.delegate?.didSuccessPostRecipeImages()
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録画像のStorageパスの保存に失敗しました")
+                self?.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録画像のStorageパスの保存に失敗しました")
             }
         }
     }
@@ -66,18 +66,18 @@ extension PostRecipeViewModel {
 // MARK: - Firebase Storage
 extension PostRecipeViewModel {
     func postRecipeImages(kikurageUserId: String, imageData: [Data?]) {
-        guard let postedRecipeDocumentId = self.postedRecipeDocumentId else {
-            self.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録のドキュメントIDが見つかりませんでした")
+        guard let postedRecipeDocumentId = postedRecipeDocumentId else {
+            delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録のドキュメントIDが見つかりませんでした")
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.recipes)/\(postedRecipeDocumentId)/images/"
-        self.recipeRepository.postRecipeImages(imageData: imageData, imageStoragePath: imageStoragePath) { response in
+        recipeRepository.postRecipeImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStoraageFullPaths):
-                self.postRecipeImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedRecipeDocumentId, imageStorageFullPaths: imageStoraageFullPaths)
+                self?.postRecipeImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedRecipeDocumentId, imageStorageFullPaths: imageStoraageFullPaths)
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録画像の保存に失敗しました")
+                self?.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録画像の保存に失敗しました")
             }
         }
     }

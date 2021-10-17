@@ -42,15 +42,15 @@ class DeviceRegisterViewModel {
 extension DeviceRegisterViewModel {
     /// ユーザーにステートのリファレンスを登録する
     func setStateReference(productKey: String) {
-        self.kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
+        kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
 }
 // MARK: - Firebase Firestore
 extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        let productId = (self.kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        self.kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
+        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
@@ -63,12 +63,12 @@ extension DeviceRegisterViewModel {
     }
     /// きくらげユーザーを登録する
     func registerKikurageUser() {
-        guard let kikurageUser = self.kikurageUser else {
-            self.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+        guard let kikurageUser = kikurageUser else {
+            delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
             return
         }
         guard let uid = LoginHelper.shared.kikurageUserId else { return }
-        self.kikurageUserRepository.postKikurageUser(uid: uid, kikurageUser: kikurageUser) { [weak self] responsse in
+        kikurageUserRepository.postKikurageUser(uid: uid, kikurageUser: kikurageUser) { [weak self] responsse in
             switch responsse {
             case .success():
                 self?.delegate?.didSuccessPostKikurageUser()

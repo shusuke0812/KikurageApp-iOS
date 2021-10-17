@@ -15,24 +15,24 @@ class GraphViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
-        self.setDelegateDataSource()
-        self.loadKikurageUser()
+        viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        setDelegateDataSource()
+        loadKikurageUser()
     }
 }
 // MARK: - Initialized
 extension GraphViewController {
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        viewModel.delegate = self
     }
     private func loadKikurageUser() {
         guard let userId = LoginHelper.shared.kikurageUserId else { return }
-        self.viewModel.loadKikurageUser(uid: userId)
+        viewModel.loadKikurageUser(uid: userId)
     }
     private func loadKikurageStateGraph() {
-        guard let kikurageUser = self.viewModel.kikurageUser else { return }
-        self.viewModel.loadKikurageStateGraph(productId: kikurageUser.productKey)
+        guard let kikurageUser = viewModel.kikurageUser else { return }
+        viewModel.loadKikurageStateGraph(productId: kikurageUser.productKey)
     }
 }
 // MARK: - GraphBaseView Delegate
@@ -44,14 +44,14 @@ extension GraphViewController: GraphBaseViewDelegate {
 // MARK: - GraphViewModel Delegate
 extension GraphViewController: GraphViewModelDelegate {
     func didSuccessGetKikurageStateGraph() {
-        self.baseView.setLineChartView(datas: self.viewModel.humidityGraphDatas, graphDataType: .humidity)
-        self.baseView.setLineChartView(datas: self.viewModel.temperatureGraphDatas, graphDataType: .temperature)
+        baseView.setLineChartView(datas: viewModel.humidityGraphDatas, graphDataType: .humidity)
+        baseView.setLineChartView(datas: viewModel.temperatureGraphDatas, graphDataType: .temperature)
     }
     func didFailedGetKikurageStateGraph(errorMessage: String) {
         print(errorMessage)
     }
     func didSuccessGetKikurageUser() {
-        self.loadKikurageStateGraph()
+        loadKikurageStateGraph()
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         print(errorMessage)

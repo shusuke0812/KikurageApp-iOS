@@ -53,14 +53,14 @@ class LoginHelper {
     }
     /// Firebaeユーザーを取得
     func userListener(completion: @escaping (() -> Void)) {
-        self.userListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
+        userListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
             self.user = user
             completion()
         }
     }
     /// Firebaseユーザーリスナをデタッチ
     func userListenerDetach() {
-        Auth.auth().removeStateDidChangeListener(self.userListenerHandle!)  // swiftlint:disable:this force_unwrapping
+        Auth.auth().removeStateDidChangeListener(userListenerHandle!)  // swiftlint:disable:this force_unwrapping
     }
     /// ユーザー情報を`UserDefaults`へ保存する
     /// - Parameter user: Firebase Auth ユーザー

@@ -34,11 +34,11 @@ struct KikurageUser: Codable {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.productKey, forKey: .productKey)
-        try container.encode(self.kikurageName, forKey: .kikurageName)
-        try container.encode(self.cultivationStartDate, forKey: .cultivationStartDate)
-        try container.encode(self.stateRef, forKey: .stateRef)
-        if self.createdAt == nil {
+        try container.encode(productKey, forKey: .productKey)
+        try container.encode(kikurageName, forKey: .kikurageName)
+        try container.encode(cultivationStartDate, forKey: .cultivationStartDate)
+        try container.encode(stateRef, forKey: .stateRef)
+        if createdAt == nil {
             try container.encode(FieldValue.serverTimestamp(), forKey: .createdAt)
         }
         try container.encode(FieldValue.serverTimestamp(), forKey: .updatedAt)

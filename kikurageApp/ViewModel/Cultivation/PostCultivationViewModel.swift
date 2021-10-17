@@ -37,27 +37,27 @@ class PostCultivationViewModel {
 // MARK: - Firebase Firestore
 extension PostCultivationViewModel {
     func postCultivation(kikurageUserId: String) {
-        self.cultivationRepository.postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: self.cultivation) { response in
+        cultivationRepository.postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: cultivation) { [weak self] response in
             switch response {
             case .success(let documentReference):
                 print(documentReference)
-                self.postedCultivationDocumentId = documentReference.documentID
-                self.delegate?.didSuccessPostCultivation()
+                self?.postedCultivationDocumentId = documentReference.documentID
+                self?.delegate?.didSuccessPostCultivation()
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録データの投稿に失敗しました")
+                self?.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録データの投稿に失敗しました")
             }
         }
     }
     private func putCultivationImages(kikurageUserId: String, firestoreDocumentId: String, imageStorageFullPaths: [String]) {
-        self.cultivationRepository.putCultivationImage(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths) { response in
+        cultivationRepository.putCultivationImage(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self.cultivation.imageStoragePaths = imageStorageFullPaths
-                self.delegate?.didSuccessPostCultivationImages()
+                self?.cultivation.imageStoragePaths = imageStorageFullPaths
+                self?.delegate?.didSuccessPostCultivationImages()
             case .failure(let error):
                 print(error)
-                self.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録画像のStorageパスの保存に失敗しました")
+                self?.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録画像のStorageパスの保存に失敗しました")
             }
         }
     }
@@ -65,18 +65,18 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Storage
 extension PostCultivationViewModel {
     func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
-        guard let postedCultivationDocumentId = self.postedCultivationDocumentId else {
-            self.delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録のドキュメントIDが見つかりませんでした")
+        guard let postedCultivationDocumentId = postedCultivationDocumentId else {
+            delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録のドキュメントIDが見つかりませんでした")
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentId)/images/"
-        self.cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { response in
+        cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self.putCultivationImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedCultivationDocumentId, imageStorageFullPaths: imageStorageFullPaths)
+                self?.putCultivationImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedCultivationDocumentId, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 print("DEBUG: \(error)")
-                self.delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録画像の保存に失敗しました")
+                self?.delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録画像の保存に失敗しました")
             }
         }
     }

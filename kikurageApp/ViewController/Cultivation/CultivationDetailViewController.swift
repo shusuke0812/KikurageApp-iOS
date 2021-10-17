@@ -16,23 +16,23 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CultivationDetailViewModel(cultivation: self.cultivation)
-        self.setDelegateDataSource()
-        self.setNavigationItem()
-        self.setUI()
+        viewModel = CultivationDetailViewModel(cultivation: self.cultivation)
+        setDelegateDataSource()
+        setNavigationItem()
+        setUI()
     }
 }
 // MARK: - Private
 extension CultivationDetailViewController {
     private func setNavigationItem() {
-        self.setNavigationBar(title: "さいばいきろく詳細")
+        setNavigationBar(title: "さいばいきろく詳細")
     }
     private func setDelegateDataSource() {
-        self.baseView.collectionView.delegate = self
-        self.baseView.collectionView.dataSource = self.viewModel
+        baseView.collectionView.delegate = self
+        baseView.collectionView.dataSource = viewModel
     }
     private func setUI() {
-        self.baseView.setUI(cultivation: self.cultivation)
+        baseView.setUI(cultivation: self.cultivation)
     }
 }
 // MARK: - UICollectionView Delegate
@@ -45,8 +45,8 @@ extension CultivationDetailViewController: UICollectionViewDelegate {
 extension CultivationDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horiizontalSpace: CGFloat = 0.0
-        let cellWidth: CGFloat = self.baseView.bounds.width - horiizontalSpace
-        let cellHeight: CGFloat = self.baseView.collectionView.bounds.height
+        let cellWidth: CGFloat = baseView.bounds.width - horiizontalSpace
+        let cellHeight: CGFloat = baseView.collectionView.bounds.height
         return CGSize(width: cellWidth, height: cellHeight)
     }
 }

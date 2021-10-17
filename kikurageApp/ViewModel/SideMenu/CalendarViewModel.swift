@@ -32,7 +32,7 @@ extension CalendarViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+        kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser

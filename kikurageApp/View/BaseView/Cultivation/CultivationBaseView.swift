@@ -24,23 +24,23 @@ class CultivationBaseView: UIView {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-        self.setCollectionView()
+        initUI()
+        setCollectionView()
     }
     // MARK: - Action
     @IBAction private func didTapPostCultivationPageButton(_ sender: Any) {
-        self.delegate?.didTapPostCultivationPageButton()
+        delegate?.didTapPostCultivationPageButton()
     }
 }
 // MARK: - Initialized
 extension CultivationBaseView {
     private func initUI() {
-        self.noCultivationLabel.text = "さいばいきろくがありません"
-        self.noCultivationLabel.textColor = .darkGray
-        self.noCultivationLabel.isHidden = true
+        noCultivationLabel.text = "さいばいきろくがありません"
+        noCultivationLabel.textColor = .darkGray
+        noCultivationLabel.isHidden = true
     }
     private func setCollectionView() {
-        self.flowLayout.estimatedItemSize = .zero
-        self.collectionView.register(R.nib.cultivationCollectionViewCell)
+        flowLayout.estimatedItemSize = .zero
+        collectionView.register(R.nib.cultivationCollectionViewCell)
     }
 }

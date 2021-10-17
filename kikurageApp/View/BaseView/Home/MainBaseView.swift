@@ -32,31 +32,31 @@ class MainBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
     // MARK: - Action Method
     @IBAction private func didTapCultivationButton(_ sender: Any) {
-        self.delegate?.didTapCultivationButton()
+        delegate?.didTapCultivationButton()
     }
     @IBAction private func didTapRecipeButton(_ sender: Any) {
-        self.delegate?.didTapRecipeButton()
+        delegate?.didTapRecipeButton()
     }
     @IBAction private func didTapCommunicationButton(_ sender: Any) {
-        self.delegate?.didTapCommunicationButton()
+        delegate?.didTapCommunicationButton()
     }
     @IBAction private func didTapSideMenuButton(_ sender: Any) {
-        self.delegate?.didTapSideMenuButton()
+        delegate?.didTapSideMenuButton()
     }
 }
 // MARK: - Initialized
 extension MainBaseView {
     private func initUI() {
-        self.nowTimeLabel.text = ClockHelper.shared.display()
-        self.kikurageNameLabel.text = "きくらげ名"
-        self.kikurageStatusLabel.text = "きくらげの状態メッセージ"
-        self.displayKikurageStateImage(type: "normal")
-        self.temparatureTextLabel.text = "-"
-        self.humidityTextLabel.text = "-"
+        nowTimeLabel.text = ClockHelper.shared.display()
+        kikurageNameLabel.text = "きくらげ名"
+        kikurageStatusLabel.text = "きくらげの状態メッセージ"
+        displayKikurageStateImage(type: "normal")
+        temparatureTextLabel.text = "-"
+        humidityTextLabel.text = "-"
     }
 }
 // MARK: - Setting UI
@@ -64,37 +64,37 @@ extension MainBaseView {
     func setKikurageStateUI(kikurageState: KikurageState?) {
         // きくらげの状態メッセージを設定
         if let message: String = kikurageState?.message {
-            self.kikurageStatusLabel.text = message
+            kikurageStatusLabel.text = message
         }
         // きくらげの表情を設定
         if let judge: String = kikurageState?.judge {
-            self.displayKikurageStateImage(type: judge)
+            displayKikurageStateImage(type: judge)
         }
         // 温度湿度を設定
         if let temparature: Int = kikurageState?.temperature, let humidity: Int = kikurageState?.humidity {
-            self.temparatureTextLabel.text = "\(temparature)"
-            self.humidityTextLabel.text = "\(humidity)"
+            temparatureTextLabel.text = "\(temparature)"
+            humidityTextLabel.text = "\(humidity)"
         }
         // アドバイスを設定
         if let advice: String = kikurageState?.advice {
-            self.kikurageAdviceView.adviceContentLabel.text = advice
+            kikurageAdviceView.adviceContentLabel.text = advice
         }
     }
     /// きくらげ名を設定
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
         if let name: String = kikurageUser?.kikurageName {
-            self.kikurageNameLabel.text = "今日の \(name)"
+            kikurageNameLabel.text = "今日の \(name)"
         }
     }
     /// 時刻表示更新用メソッド
     func updateTimeLabel() {
-        self.nowTimeLabel.text = ClockHelper.shared.display()
+        nowTimeLabel.text = ClockHelper.shared.display()
     }
     private func displayKikurageStateImage(type: String) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        self.kikurageStatusView.animationImages = KikurageStateHelper.shared.setStateImage(type: type)
-        self.kikurageStatusView.animationDuration = 1
-        self.kikurageStatusView.animationRepeatCount = 0
-        self.kikurageStatusView.startAnimating()
+        kikurageStatusView.animationImages = KikurageStateHelper.shared.setStateImage(type: type)
+        kikurageStatusView.animationDuration = 1
+        kikurageStatusView.animationRepeatCount = 0
+        kikurageStatusView.startAnimating()
     }
 }

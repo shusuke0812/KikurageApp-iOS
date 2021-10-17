@@ -20,20 +20,20 @@ class CommunicationBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
     // MARK: - Action
     @IBAction private func didTapFacebookButton(_ sender: Any) {
-        self.delegate?.didTapFacebookButton()
+        delegate?.didTapFacebookButton()
     }
 }
 // MARK: - Initialized
 extension CommunicationBaseView {
     private func initUI() {
-        self.informationLabel.text = """
+        informationLabel.text = """
         【お知らせ】
         キクラゲ栽培者同士でお互いに相談できるFacebookグループです。Facebookアカウントを持っていない方は下記ボタンのリンク先の「新しいアカウントを作成」より設定してください。
         """
-        self.informationLabel.backgroundColor = .information
+        informationLabel.backgroundColor = .information
     }
 }

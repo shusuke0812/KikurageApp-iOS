@@ -19,13 +19,13 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationItem()
-        self.viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
-        self.setDelegateDataSource()
-        self.setNotificationCenter()
+        setNavigationItem()
+        viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
+        setDelegateDataSource()
+        setNotificationCenter()
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -36,26 +36,26 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
 // MARK: - Initialized
 extension RecipeViewController {
     private func setNavigationItem() {
-        self.setNavigationBar(title: "りょうりきろく")
+        setNavigationBar(title: "りょうりきろく")
     }
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.baseView.tableView.delegate = self
-        self.baseView.tableView.dataSource = self.viewModel
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.tableView.delegate = self
+        baseView.tableView.dataSource = viewModel
+        viewModel.delegate = self
     }
 }
 // MARK: - RecipeBaseView Delegate
 extension RecipeViewController: RecipeBaseViewDelegate {
     func didTapPostRecipePageButton() {
         guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 }
 // MARK: - UITableView Delegate
 extension RecipeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        self.cellHeight
+        cellHeight
     }
 }
 // MARK: - RecipeViewModel
@@ -82,7 +82,7 @@ extension RecipeViewController {
     }
     @objc private func didPostRecipe(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            self.viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }

@@ -32,7 +32,7 @@ class RecipeViewModel: NSObject {
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
     func loadRecipes(kikurageUserId: String) {
-        self.recipeRepository.getRecipes(kikurageUserId: kikurageUserId) { [weak self] response in
+        recipeRepository.getRecipes(kikurageUserId: kikurageUserId) { [weak self] response in
             switch response {
             case .success(let recipes):
                 self?.recipes = recipes
@@ -46,14 +46,14 @@ extension RecipeViewModel {
 // MARK: - UITableView DataSource
 extension RecipeViewModel: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.sectionNumber
+        sectionNumber
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.recipes.count
+        recipes.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        cell.setUI(recipe: self.recipes[indexPath.row].recipe)
+        cell.setUI(recipe: recipes[indexPath.row].recipe)
         return cell
     }
 }

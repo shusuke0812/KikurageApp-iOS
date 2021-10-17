@@ -21,30 +21,30 @@ class LoginBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-        self.initTextFieldTag()
+        initUI()
+        initTextFieldTag()
     }
     // MARK: - Action
     @IBAction private func didTappedLoginButton(_ sender: Any) {
-        self.delegate?.didTappedLoginButton()
+        delegate?.didTappedLoginButton()
     }
 }
 
 // MARK: - Initialized
 extension LoginBaseView {
     private func initUI() {
-        self.loginButton.layer.masksToBounds = true
-        self.loginButton.layer.cornerRadius = 5
+        loginButton.layer.masksToBounds = true
+        loginButton.layer.cornerRadius = 5
 
-        self.emailTextField.autocorrectionType = .no
-        self.passwordTextField.isSecureTextEntry = true
+        emailTextField.autocorrectionType = .no
+        passwordTextField.isSecureTextEntry = true
     }
     private func initTextFieldTag() {
-        self.emailTextField.tag = Constants.TextFieldTag.email
-        self.passwordTextField.tag = Constants.TextFieldTag.password
+        emailTextField.tag = Constants.TextFieldTag.email
+        passwordTextField.tag = Constants.TextFieldTag.password
     }
     func initTextFields() {
-        self.emailTextField.text = ""
-        self.passwordTextField.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
 }

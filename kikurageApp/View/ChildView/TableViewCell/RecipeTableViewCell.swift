@@ -24,14 +24,14 @@ class RecipeTableViewCell: UITableViewCell {
 extension RecipeTableViewCell {
     func setUI(recipe: KikurageRecipe) {
         // 文字の設定
-        self.recipeDateLabel.text = recipe.cookDate
-        self.recipeNameLabel.text = recipe.name
-        self.recipeMemoLabel.text = recipe.memo
+        recipeDateLabel.text = recipe.cookDate
+        recipeNameLabel.text = recipe.name
+        recipeMemoLabel.text = recipe.memo
         // 画像の設定
         guard let imageStoragePath = recipe.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            self.recipeImageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
+            recipeImageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
         }
     }
 }

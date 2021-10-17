@@ -15,14 +15,14 @@ class CalendarViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
-        self.setDelegateDataSource()
+        viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
+        setDelegateDataSource()
     }
 }
 // MARK: - Initialized
 extension CalendarViewController {
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
+        baseView.delegate = self
     }
 }
 // MARK: - CalendarBaseView Delegate

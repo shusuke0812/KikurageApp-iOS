@@ -17,21 +17,21 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
-        self.cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
-        self.setDelegateDataSource()
+        viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
+        cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
+        setDelegateDataSource()
     }
 }
 // MARK: - Initialized
 extension PostCultivationViewController {
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.baseView.dateTextField.delegate = self
-        self.baseView.textView.delegate = self
-        self.baseView.cameraCollectionView.delegate = self
-        self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
-        self.cameraCollectionViewModel.cameraCellDelegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.dateTextField.delegate = self
+        baseView.textView.delegate = self
+        baseView.cameraCollectionView.delegate = self
+        baseView.cameraCollectionView.dataSource = cameraCollectionViewModel
+        cameraCollectionViewModel.cameraCellDelegate = self
+        viewModel.delegate = self
     }
 }
 // MARK: - BaseView Delegate
@@ -52,9 +52,9 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
 // MARK: - UITextField Delegate
 extension PostCultivationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let dateString = DateHelper.shared.formatToString(date: self.baseView.datePicker.date)
-        self.baseView.dateTextField.text = dateString
-        self.viewModel.cultivation.viewDate = dateString
+        let dateString = DateHelper.shared.formatToString(date: baseView.datePicker.date)
+        baseView.dateTextField.text = dateString
+        viewModel.cultivation.viewDate = dateString
     }
 }
 // MARK: - UITextView Delegate
@@ -64,31 +64,31 @@ extension PostCultivationViewController: UITextViewDelegate {
         if let text = textView.text {
             resultText = (text as NSString).replacingCharacters(in: range, with: text)
         }
-        return resultText.count <= self.baseView.maxTextViewNumber
+        return resultText.count <= baseView.maxTextViewNumber
     }
     func textViewDidChange(_ textView: UITextView) {
         guard let text = textView.text else { return }
-        self.baseView.textView.switchPlaceholderDisplay(text: text)
-        self.viewModel.cultivation.memo = text
-        self.baseView.setCurrentTextViewNumber(text: text)
+        baseView.textView.switchPlaceholderDisplay(text: text)
+        viewModel.cultivation.memo = text
+        baseView.setCurrentTextViewNumber(text: text)
     }
 }
 // MARK: - CameraCell Delegate
 extension PostCultivationViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
-        self.cameraCollectionViewModel.cancelImage(index: index)
-        self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        cameraCollectionViewModel.cancelImage(index: index)
+        baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
 // MARK: - PostCultivationViewModel Delegate
 extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didSuccessPostCultivation() {
         // nil要素を取り除いた選択した画像のみのData型に変換する
-        let postImageData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter { $0 != nil }
+        let postImageData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            self.viewModel.postCultivationImages(kikurageUserId: kikurageUserId, imageData: postImageData)
+            viewModel.postCultivationImages(kikurageUserId: kikurageUserId, imageData: postImageData)
         }
     }
     func didFailedPostCultivation(errorMessage: String) {
@@ -113,14 +113,14 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
 // MARK: - UICollectionView Delegate
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.openImagePicker()
+        openImagePicker()
     }
 }
 // MARK: - UIImagePickerController Delegate
 extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        guard let selectedIndexPath = self.baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
+        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
         picker.dismiss(animated: true) { [weak self] in
             self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
             self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])

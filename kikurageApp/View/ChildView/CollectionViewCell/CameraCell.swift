@@ -24,34 +24,34 @@ class CameraCell: UICollectionViewCell {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setDefaultImage()
+        setDefaultImage()
     }
     // MARK: - Action
     @IBAction private func didTapImageCancelButton(_ sender: Any) {
-        self.delegate?.didTapImageCancelButton(cell: self)
+        delegate?.didTapImageCancelButton(cell: self)
     }
 }
 // MARK: - Setting Image
 extension CameraCell {
     /// デフォルトに戻す（キャンセルボタン押下時）
     func setDefaultImage() {
-        self.cameraIamge.image = R.image.camera()
+        cameraIamge.image = R.image.camera()
     }
     /// 選択した画像を表示する（新規選択時）
     /// - Parameter image: 選択した画像
     func setIamge(image: UIImage) {
-        self.cameraIamge.image = image
-        self.cameraIamge.contentMode = .scaleAspectFill
+        cameraIamge.image = image
+        cameraIamge.contentMode = .scaleAspectFill
     }
     /// 投稿した画像を表示する（Firebase読み込み時）
     /// - Parameter imageStoragePath: 画像のStorageパス
     func setImage(imageStoragePath: String) {
         if imageStoragePath.isEmpty {
-            self.setDefaultImage()
+            setDefaultImage()
             return
         }
         let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-        self.cameraIamge.sd_setImage(with: storageReference)
-        self.cameraIamge.contentMode = .scaleAspectFill
+        cameraIamge.sd_setImage(with: storageReference)
+        cameraIamge.contentMode = .scaleAspectFill
     }
 }

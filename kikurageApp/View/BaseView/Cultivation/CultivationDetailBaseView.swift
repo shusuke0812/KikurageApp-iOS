@@ -17,28 +17,28 @@ class CultivationDetailBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-        self.setCollectionView()
+        initUI()
+        setCollectionView()
     }
 }
 // MARK: - Initialized
 extension CultivationDetailBaseView {
     private func initUI() {
-        self.viewDateLabel.text = ""
-        self.memoTitleLabel.text = "観察メモ"
-        self.memoLabel.text = ""
+        viewDateLabel.text = ""
+        memoTitleLabel.text = "観察メモ"
+        memoLabel.text = ""
     }
     private func setCollectionView() {
-        self.flowLayout.estimatedItemSize = .zero
-        self.collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
+        flowLayout.estimatedItemSize = .zero
+        collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
     }
 }
 // MARK: - Setting UI
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
         // 観察日の設定
-        self.viewDateLabel.text = cultivation.viewDate
+        viewDateLabel.text = cultivation.viewDate
         //  観察メモの設定
-        self.memoLabel.text = cultivation.memo
+        memoLabel.text = cultivation.memo
     }
 }

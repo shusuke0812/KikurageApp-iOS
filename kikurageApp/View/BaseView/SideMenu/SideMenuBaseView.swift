@@ -31,42 +31,42 @@ class SideMenuBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initViewTag()
-        self.initSideMenuContent()
-        self.initSideMenuBoarderLine()
+        initViewTag()
+        initSideMenuContent()
+        initSideMenuBoarderLine()
     }
     // MARK: - Action
     @IBAction private func didTapContactCell(_ sender: Any) {
-        self.delegate?.didTapContactCell()
+        delegate?.didTapContactCell()
     }
     @IBAction private func didTapGraphCell(_ sender: Any) {
-        self.delegate?.didTapGraphCell()
+        delegate?.didTapGraphCell()
     }
     @IBAction private func didTapCalendarCell(_ sender: Any) {
-        self.delegate?.didTapCalendarCell()
+        delegate?.didTapCalendarCell()
     }
 }
 // MARK: - Initialized
 extension SideMenuBaseView {
     private func initViewTag() {
-        self.tag = Constants.ViewTag.sideMenuBase
+        tag = Constants.ViewTag.sideMenuBase
     }
     private func initSideMenuContent() {
-        self.calendarView.setSideMenuContent(title: "カレンダー", imageSystemName: "calendar")
-        self.graphView.setSideMenuContent(title: "グラフ", imageSystemName: "waveform.path.ecg")
-        self.contactView.setSideMenuContent(title: "問い合わせ", imageSystemName: "questionmark.circle")
-        self.settingView.setSideMenuContent(title: "設定", imageSystemName: "gearshape")
-        self.licenseView.setSideMenuContent(title: "著作権", imageSystemName: "info.circle")
-        self.searchRecipeView.setSideMenuContent(title: "料理レシピ検索", imageSystemName: "magnifyingglass")
-        self.kikurageDictionaryView.setSideMenuContent(title: "きくらげ豆知識", imageSystemName: "doc.text")
+        calendarView.setSideMenuContent(title: "カレンダー", imageSystemName: "calendar")
+        graphView.setSideMenuContent(title: "グラフ", imageSystemName: "waveform.path.ecg")
+        contactView.setSideMenuContent(title: "問い合わせ", imageSystemName: "questionmark.circle")
+        settingView.setSideMenuContent(title: "設定", imageSystemName: "gearshape")
+        licenseView.setSideMenuContent(title: "著作権", imageSystemName: "info.circle")
+        searchRecipeView.setSideMenuContent(title: "料理レシピ検索", imageSystemName: "magnifyingglass")
+        kikurageDictionaryView.setSideMenuContent(title: "きくらげ豆知識", imageSystemName: "doc.text")
     }
     private func initSideMenuBoarderLine() {
-        self.calendarView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
-        self.graphView.setBoarder(topWidth: nil, bottomWidth: 0.5)
-        self.contactView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
-        self.settingView.setBoarder(topWidth: nil, bottomWidth: 0.5)
-        self.licenseView.setBoarder(topWidth: nil, bottomWidth: 0.5)
-        self.searchRecipeView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
-        self.kikurageDictionaryView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        calendarView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
+        graphView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        contactView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
+        settingView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        licenseView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+        searchRecipeView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
+        kikurageDictionaryView.setBoarder(topWidth: nil, bottomWidth: 0.5)
     }
 }

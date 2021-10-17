@@ -14,28 +14,28 @@ class UITextViewWithPlaceholder: UITextView {
     /// プレースホルダー文字列
     var placeholder: String = "" {
         didSet {
-            if placeholder.isEmpty { return }
-            self.placeholderLabel.text = self.placeholder
-            self.placeholderLabel.sizeToFit()
+            guard placeholder.isEmpty else { return }
+            placeholderLabel.text = self.placeholder
+            placeholderLabel.sizeToFit()
         }
     }
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setPlaceholder()
+        setPlaceholder()
     }
 }
 // MARK: - Config
 extension UITextViewWithPlaceholder {
     private func setPlaceholder() {
-        self.placeholderLabel.backgroundColor = .clear
-        self.placeholderLabel.textColor = UIColor.lightGray
-        self.placeholderLabel.lineBreakMode = .byWordWrapping
-        self.placeholderLabel.numberOfLines = 0
-        self.placeholderLabel.font = self.font
+        placeholderLabel.backgroundColor = .clear
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.lineBreakMode = .byWordWrapping
+        placeholderLabel.numberOfLines = 0
+        placeholderLabel.font = self.font
         addSubview(self.placeholderLabel)
     }
     func switchPlaceholderDisplay(text: String) {
-        self.placeholderLabel.isHidden = text.isEmpty ? false : true
+        placeholderLabel.isHidden = text.isEmpty ? false : true
     }
 }

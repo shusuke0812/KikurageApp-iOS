@@ -21,31 +21,31 @@ class SignUpBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-        self.initTextFieldTag()
+        initUI()
+        initTextFieldTag()
     }
 
     // MARK: - Action
     @IBAction private func didTappedUserRegisterButton(_ sender: Any) {
-        self.delegate?.didTappedUserRegisterButton()
+        delegate?.didTappedUserRegisterButton()
     }
 }
 
 // MARK: - Initialized
 extension SignUpBaseView {
     private func initUI() {
-        self.userRegisterButton.layer.masksToBounds = true
-        self.userRegisterButton.layer.cornerRadius = 5
+        userRegisterButton.layer.masksToBounds = true
+        userRegisterButton.layer.cornerRadius = 5
 
-        self.emailTextField.autocorrectionType = .no
-        self.passwordTextField.isSecureTextEntry = true
+        emailTextField.autocorrectionType = .no
+        passwordTextField.isSecureTextEntry = true
     }
     private func initTextFieldTag() {
-        self.emailTextField.tag = Constants.TextFieldTag.email
-        self.passwordTextField.tag = Constants.TextFieldTag.password
+        emailTextField.tag = Constants.TextFieldTag.email
+        passwordTextField.tag = Constants.TextFieldTag.password
     }
     func initTextFields() {
-        self.emailTextField.text = ""
-        self.passwordTextField.text = ""
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
 }

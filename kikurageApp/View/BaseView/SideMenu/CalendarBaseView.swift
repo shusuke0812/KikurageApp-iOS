@@ -20,17 +20,16 @@ class CalendarBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
+        initUI()
     }
     // MARK: - Action
     @IBAction private func didTapCloseButton(_ sender: Any) {
-        self.delegate?.didTapCloseButton()
+        delegate?.didTapCloseButton()
     }
 }
 // MARK: - Initialized
 extension CalendarBaseView {
     private func initUI() {
-        // タイトル
-        self.navigationItem.title = "カレンダー"
+        navigationItem.title = "カレンダー"
     }
 }

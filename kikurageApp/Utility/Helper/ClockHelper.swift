@@ -24,7 +24,7 @@ extension ClockHelper {
         let now = Date()
 
         // Date関数の値を翻訳し、翻訳の型を決める
-        self.formatter.dateFormat = "yyyy年MM月dd日 HH時mm分ss秒"
+        formatter.dateFormat = "yyyy年MM月dd日 HH時mm分ss秒"
 
         // 翻訳してもらった値を「時刻ボタン」へ反映する
         return formatter.string(from: now)

@@ -15,11 +15,11 @@ class AppRootController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
-        self.presenter.delegate = self
+        presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        presenter.delegate = self
 
         if let userId = LoginHelper.shared.kikurageUserId {
-            self.presenter.loadKikurageUser(userId: userId)
+            presenter.loadKikurageUser(userId: userId)
         } else {
             showTopPage()
         }

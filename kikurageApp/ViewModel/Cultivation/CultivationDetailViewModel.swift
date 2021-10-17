@@ -21,14 +21,14 @@ class CultivationDetailViewModel: NSObject {
 // MARK: - UICollectionView DataSource
 extension CultivationDetailViewModel: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        self.sectionNumber
+        sectionNumber
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.cultivation.imageStoragePaths.count
+        cultivation.imageStoragePaths.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCarouselCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        cell.setUI(cultivationImageStoragePath: self.cultivation.imageStoragePaths[indexPath.row])
+        cell.setUI(cultivationImageStoragePath: cultivation.imageStoragePaths[indexPath.row])
         return cell
     }
 }

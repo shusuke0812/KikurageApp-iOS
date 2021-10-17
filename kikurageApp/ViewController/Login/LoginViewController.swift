@@ -15,20 +15,20 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "ログイン"
-        self.viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        navigationItem.title = "ログイン"
+        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
 
-        self.setDelegate()
+        setDelegate()
     }
 }
 
 // MARK: - Initialized
 extension LoginViewController {
     private func setDelegate() {
-        self.baseView.delegate = self
-        self.baseView.emailTextField.delegate = self
-        self.baseView.passwordTextField.delegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.emailTextField.delegate = self
+        baseView.passwordTextField.delegate = self
+        viewModel.delegate = self
     }
 }
 
@@ -36,7 +36,7 @@ extension LoginViewController {
 extension LoginViewController: LoginBaseViewDelegate {
     func didTappedLoginButton() {
         HUD.show(.progress)
-        self.viewModel.login()
+        viewModel.login()
     }
 }
 
@@ -46,9 +46,9 @@ extension LoginViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
         switch textField.tag {
         case Constants.TextFieldTag.email:
-            self.viewModel.email = text
+            viewModel.email = text
         case Constants.TextFieldTag.password:
-            self.viewModel.password = text
+            viewModel.password = text
         default:
             break
         }
@@ -75,9 +75,9 @@ extension LoginViewController: LoginViewModelDelegate {
     private func transitionHomePage() {
         guard let vc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
         let mainVC = vc.topViewController as! MainViewController // swiftlint:disable:this force_cast
-        mainVC.kikurageUser = self.viewModel.kikurageUser
-        mainVC.kikurageState = self.viewModel.kikurageState
+        mainVC.kikurageUser = viewModel.kikurageUser
+        mainVC.kikurageState = viewModel.kikurageState
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 }

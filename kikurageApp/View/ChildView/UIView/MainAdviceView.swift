@@ -16,22 +16,22 @@ class MainAdviceView: XibView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initBaseView()
-        self.initAdviceTitleLabel()
+        initBaseView()
+        initAdviceTitleLabel()
         initAdviceIconImageView()
     }
 }
 
 extension MainAdviceView {
     private func initBaseView() {
-        self.baseView.layer.cornerRadius = 18
-        self.baseView.layer.borderColor = UIColor.red.cgColor
-        self.baseView.layer.borderWidth = 1.0
+        baseView.layer.cornerRadius = 18
+        baseView.layer.borderColor = UIColor.red.cgColor
+        baseView.layer.borderWidth = 1.0
     }
     private func initAdviceTitleLabel() {
-        self.adviceTitleLabel.text = "【アドバイス】"
+        adviceTitleLabel.text = "【アドバイス】"
     }
     private func initAdviceIconImageView() {
-        self.adviceIconImageView.image = R.image.hakase()
+        adviceIconImageView.image = R.image.hakase()
     }
 }

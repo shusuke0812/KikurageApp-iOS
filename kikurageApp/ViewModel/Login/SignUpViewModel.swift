@@ -33,11 +33,11 @@ class SignUpViewModel {
 // MARK: - Setting Data
 extension SignUpViewModel {
     private func setRegisterInfo() -> (email: String, password: String) {
-        (self.email, self.password)
+        (email, password)
     }
     func initUserInfo() {
-        self.email = ""
-        self.password = ""
+        email = ""
+        password = ""
     }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
@@ -47,7 +47,7 @@ extension SignUpViewModel {
     /// ユーザー登録する
     func registerUser() {
         let registerInfo = setRegisterInfo()
-        self.signUpRepository.registerUser(registerInfo: registerInfo) { [weak self] response in
+        signUpRepository.registerUser(registerInfo: registerInfo) { [weak self] response in
             switch response {
             case .success(let loginUser):
                 self?.loginUser = loginUser

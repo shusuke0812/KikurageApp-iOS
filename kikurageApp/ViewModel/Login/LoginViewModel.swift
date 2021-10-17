@@ -42,11 +42,11 @@ class LoginViewModel {
 // MARK: - Setting Data
 extension LoginViewModel {
     private func setLoginInfo() -> (email: String, password: String) {
-        (self.email, self.password)
+        (email, password)
     }
     func initLoginInfo() {
-        self.email = ""
-        self.password = ""
+        email = ""
+        password = ""
     }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
@@ -54,8 +54,8 @@ extension LoginViewModel {
 // MARK: - Firebase Authentication
 extension LoginViewModel {
     func login() {
-        let loginInfo = self.setLoginInfo()
-        self.loginRepository.login(loginInfo: loginInfo) { [weak self] response in
+        let loginInfo = setLoginInfo()
+        loginRepository.login(loginInfo: loginInfo) { [weak self] response in
             switch response {
             case .success(let loginUser):
                 self?.loginUser = loginUser
@@ -72,7 +72,7 @@ extension LoginViewModel {
 extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {
-        self.kikurageUserRepository.getKikurageUser(uid: (self.loginUser?.uid)!) { [weak self] response in   // swiftlint:disable:this force_unwrapping
+        kikurageUserRepository.getKikurageUser(uid: (loginUser?.uid)!) { [weak self] response in   // swiftlint:disable:this force_unwrapping
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
@@ -85,8 +85,8 @@ extension LoginViewModel {
     }
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (self.kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        self.kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
+        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState

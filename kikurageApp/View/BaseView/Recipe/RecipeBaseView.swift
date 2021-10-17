@@ -21,26 +21,26 @@ class RecipeBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-        self.setTableView()
+        initUI()
+        setTableView()
     }
     // MARK: - Action
     @IBAction private func didTapPostRecipePageButton(_ sender: Any) {
-        self.delegate?.didTapPostRecipePageButton()
+        delegate?.didTapPostRecipePageButton()
     }
 }
 // MARK: - Initialized Method
 extension RecipeBaseView {
     private func initUI() {
-        self.noRecipeLabel.text = "りょうりきろくがありません"
-        self.noRecipeLabel.textColor = .darkGray
-        self.noRecipeLabel.isHidden = true
+        noRecipeLabel.text = "りょうりきろくがありません"
+        noRecipeLabel.textColor = .darkGray
+        noRecipeLabel.isHidden = true
     }
     private func setTableView() {
         // セル選択を不可にする（料理記録詳細ページは無いため）
-        self.tableView.allowsSelection = false
+        tableView.allowsSelection = false
         // セル登録
-        self.tableView.register(R.nib.recipeTableViewCell)
-        self.tableView.tableFooterView = UIView()
+        tableView.register(R.nib.recipeTableViewCell)
+        tableView.tableFooterView = UIView()
     }
 }

@@ -43,7 +43,7 @@ class MainViewModel {
 extension MainViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        self.kikurageStateRepository.getKikurageState(productId: self.kikurageUser.productKey) { response in
+        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { response in
             switch response {
             case .success(let kikurageState):
                 DispatchQueue.main.async { [weak self] in
@@ -58,7 +58,7 @@ extension MainViewModel {
     }
     /// きくらげの状態を監視して更新を通知する
     func setKikurageStateListener() {
-        self.kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageUser.productKey).addSnapshotListener { [weak self] snapshot, error in
+        kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageUser.productKey).addSnapshotListener { [weak self] snapshot, error in
             if let error = error {
                 print("DEBUG: \(error)")
                 return

@@ -43,24 +43,24 @@ class GraphViewModel {
 // MARK: - Data Setting
 extension GraphViewModel {
     private func setTemperatureGraphData() {
-        guard let graphData = self.kikurageStateGraph.first?.graph else { return }
-        self.temperatureGraphDatas.append(graphData.mondayData?.temperature ?? 0)
-        self.temperatureGraphDatas.append(graphData.tuesdayData?.temperature ?? 0)
-        self.temperatureGraphDatas.append(graphData.wednesdayData?.temperature ?? 0)
-        self.temperatureGraphDatas.append(graphData.thursdayData?.temperature ?? 0)
-        self.temperatureGraphDatas.append(graphData.fridayData?.temperature ?? 0)
-        self.temperatureGraphDatas.append(graphData.saturdayData?.temperature ?? 0)
-        self.temperatureGraphDatas.append(graphData.sundayData?.temperature ?? 0)
+        guard let graphData = kikurageStateGraph.first?.graph else { return }
+        temperatureGraphDatas.append(graphData.mondayData?.temperature ?? 0)
+        temperatureGraphDatas.append(graphData.tuesdayData?.temperature ?? 0)
+        temperatureGraphDatas.append(graphData.wednesdayData?.temperature ?? 0)
+        temperatureGraphDatas.append(graphData.thursdayData?.temperature ?? 0)
+        temperatureGraphDatas.append(graphData.fridayData?.temperature ?? 0)
+        temperatureGraphDatas.append(graphData.saturdayData?.temperature ?? 0)
+        temperatureGraphDatas.append(graphData.sundayData?.temperature ?? 0)
     }
     private func setHumidityGraphData() {
-        guard let graphData = self.kikurageStateGraph.first?.graph else { return }
-        self.humidityGraphDatas.append(graphData.mondayData?.humidity ?? 0)
-        self.humidityGraphDatas.append(graphData.tuesdayData?.humidity ?? 0)
-        self.humidityGraphDatas.append(graphData.wednesdayData?.humidity ?? 0)
-        self.humidityGraphDatas.append(graphData.thursdayData?.humidity ?? 0)
-        self.humidityGraphDatas.append(graphData.fridayData?.humidity ?? 0)
-        self.humidityGraphDatas.append(graphData.saturdayData?.humidity ?? 0)
-        self.humidityGraphDatas.append(graphData.sundayData?.humidity ?? 0)
+        guard let graphData = kikurageStateGraph.first?.graph else { return }
+        humidityGraphDatas.append(graphData.mondayData?.humidity ?? 0)
+        humidityGraphDatas.append(graphData.tuesdayData?.humidity ?? 0)
+        humidityGraphDatas.append(graphData.wednesdayData?.humidity ?? 0)
+        humidityGraphDatas.append(graphData.thursdayData?.humidity ?? 0)
+        humidityGraphDatas.append(graphData.fridayData?.humidity ?? 0)
+        humidityGraphDatas.append(graphData.saturdayData?.humidity ?? 0)
+        humidityGraphDatas.append(graphData.sundayData?.humidity ?? 0)
     }
 }
 // MARK: - Firebase Firestore
@@ -68,7 +68,7 @@ extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
     func loadKikurageStateGraph(productId: String) {
-        self.kikurageStateRepository.getKikurageStateGraph(productId: productId) { [weak self] response in
+        kikurageStateRepository.getKikurageStateGraph(productId: productId) { [weak self] response in
             switch response {
             case .success(let graphs):
                 self?.kikurageStateGraph = graphs
@@ -83,7 +83,7 @@ extension GraphViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
-        self.kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+        kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser

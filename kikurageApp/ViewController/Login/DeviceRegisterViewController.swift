@@ -16,11 +16,11 @@ class DeviceRegisterViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
-        self.setDelegateDataSource()
+        viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        setDelegateDataSource()
 
-        self.navigationItem.title = "デバイス登録"
-        self.navigationItem.hidesBackButton = true
+        navigationItem.title = "デバイス登録"
+        navigationItem.hidesBackButton = true
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -29,11 +29,11 @@ class DeviceRegisterViewController: UIViewController {
 // MARK: - Initialized
 extension DeviceRegisterViewController {
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.baseView.productKeyTextField.delegate = self
-        self.baseView.kikurageNameTextField.delegate = self
-        self.baseView.cultivationStartDateTextField.delegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.productKeyTextField.delegate = self
+        baseView.kikurageNameTextField.delegate = self
+        baseView.cultivationStartDateTextField.delegate = self
+        viewModel.delegate = self
     }
 }
 // MARK: - UITextField Delegate
@@ -42,39 +42,39 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
         switch textField.tag {
         case Constants.TextFieldTag.productKey:
-            self.baseView.productKeyTextField.text = text
-            self.viewModel.kikurageUser?.productKey = text
-            self.viewModel.setStateReference(productKey: text)
+            baseView.productKeyTextField.text = text
+            viewModel.kikurageUser?.productKey = text
+            viewModel.setStateReference(productKey: text)
         case Constants.TextFieldTag.kikurageName:
-            self.baseView.kikurageNameTextField.text = text
-            self.viewModel.kikurageUser?.kikurageName = text
+            baseView.kikurageNameTextField.text = text
+            viewModel.kikurageUser?.kikurageName = text
         case Constants.TextFieldTag.cultivationStartDate:
-            self.setCultivationStartDateTextFieldData()
+            setCultivationStartDateTextFieldData()
         default:
             break
         }
     }
     private func setCultivationStartDateTextFieldData() {
-        let date: Date = self.baseView.datePicker.date
+        let date: Date = baseView.datePicker.date
         let dataString: String = DateHelper.shared.formatToString(date: date)
-        self.baseView.cultivationStartDateTextField.text = dataString
-        self.viewModel.kikurageUser?.cultivationStartDate = date
+        baseView.cultivationStartDateTextField.text = dataString
+        viewModel.kikurageUser?.cultivationStartDate = date
     }
 }
 // MARK: - DeviceRegisterBaseView Delegate
 extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     func didTappedDeviceRegisterButton() {
-        let validate = self.textFieldValidation()
+        let validate = textFieldValidation()
         if validate {
             HUD.show(.progress)
-            self.viewModel.loadKikurageState()
+            viewModel.loadKikurageState()
         } else {
             UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
     // TODO: TextFieldバリデーションはViewModelに書く
     private func textFieldValidation() -> Bool {
-        guard let productKey = self.baseView.productKeyTextField.text, let kikurageName = self.baseView.kikurageNameTextField.text, let cultivationStartDate = self.baseView.cultivationStartDateTextField.text else {
+        guard let productKey = baseView.productKeyTextField.text, let kikurageName = baseView.kikurageNameTextField.text, let cultivationStartDate = baseView.cultivationStartDateTextField.text else {
             print("DEBUG: 入力されていない項目があります")
             return false
         }
@@ -88,7 +88,7 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
 // MARK: - LoginViewModel Delegate
 extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     func didSuccessGetKikurageState() {
-        self.viewModel.registerKikurageUser()
+        viewModel.registerKikurageUser()
     }
     func didFailedGetKikurageState(errorMessage: String) {
         DispatchQueue.main.async {
@@ -115,10 +115,10 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
         guard let nc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
         // MainViewController（トップ画面）への値渡し
         let vc = nc.topViewController as! MainViewController // swiftlint:disable:this force_cast
-        vc.kikurageState = self.viewModel.kikurageState
-        vc.kikurageUser = self.viewModel.kikurageUser
+        vc.kikurageState = viewModel.kikurageState
+        vc.kikurageUser = viewModel.kikurageUser
         // 画面遷移
         nc.modalPresentationStyle = .fullScreen
-        self.present(nc, animated: true, completion: nil)
+        present(nc, animated: true, completion: nil)
     }
 }

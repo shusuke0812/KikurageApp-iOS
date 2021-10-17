@@ -17,11 +17,11 @@ class SideMenuViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setDelegateDataSource()
+        setDelegateDataSource()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setAnimation()
+        setAnimation()
     }
     // MARK: - Action
     // メニューエリア以外をタップした時の処理
@@ -43,9 +43,9 @@ class SideMenuViewController: UIViewController {
 extension SideMenuViewController {
     private func setAnimation() {
         // メニューの位置を取得する
-        let menuPosition: CGPoint = self.baseView.sideMenuParentView.layer.position
+        let menuPosition: CGPoint = baseView.sideMenuParentView.layer.position
         // 初期位置を画面の外側にするため、メニューの幅の分だけマイナスする
-        self.baseView.sideMenuParentView.layer.position.x = -(self.baseView.sideMenuParentView.frame.width)
+        baseView.sideMenuParentView.layer.position.x = -(baseView.sideMenuParentView.frame.width)
         // 表示時のアニメーションを作成する
         UIView.animate(
             withDuration: 0.5,
@@ -56,8 +56,8 @@ extension SideMenuViewController {
         )
     }
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.mail.mailComposeDelegate = self
+        baseView.delegate = self
+        mail.mailComposeDelegate = self
     }
 }
 // MARK: - MFMail Delegate
@@ -65,12 +65,12 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     private func openContactMailer() {
         if MFMailComposeViewController.canSendMail() {
             // 宛先のメールアドレス
-            self.mail.setToRecipients(["kikurageproject2019@googlegroups.com"])
+            mail.setToRecipients(["kikurageproject2019@googlegroups.com"])
             // 件名
-            self.mail.setSubject("【きくらげ君アプリ】お問い合わせ")
+            mail.setSubject("【きくらげ君アプリ】お問い合わせ")
             // 本文
-            self.mail.setMessageBody("質問を入力して送信ボタンを押して下さい。\n--------------", isHTML: false)
-            self.present(mail, animated: true, completion: nil)
+            mail.setMessageBody("質問を入力して送信ボタンを押して下さい。\n--------------", isHTML: false)
+            present(mail, animated: true, completion: nil)
         } else {
             print("DEBUG: 送信できません")
         }
@@ -92,14 +92,14 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
 // MARK: - SideMenuBaaseView Delegate
 extension SideMenuViewController: SideMenuBaseViewDelegate {
     func didTapContactCell() {
-        self.openContactMailer()
+        openContactMailer()
     }
     func didTapGraphCell() {
         guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
     func didTapCalendarCell() {
         guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 }

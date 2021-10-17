@@ -16,22 +16,22 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
-        self.viewModel = PostRecipeViewModel(recipeRepository: RecipeRepository())
-        self.setDelegateDataSource()
+        cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
+        viewModel = PostRecipeViewModel(recipeRepository: RecipeRepository())
+        setDelegateDataSource()
     }
 }
 // MARK: - Initialized
 extension PostRecipeViewController {
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.baseView.recipeNameTextField.delegate = self
-        self.baseView.dateTextField.delegate = self
-        self.baseView.recipeMemoTextView.delegate = self
-        self.baseView.cameraCollectionView.delegate = self
-        self.baseView.cameraCollectionView.dataSource = self.cameraCollectionViewModel
-        self.cameraCollectionViewModel.cameraCellDelegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.recipeNameTextField.delegate = self
+        baseView.dateTextField.delegate = self
+        baseView.recipeMemoTextView.delegate = self
+        baseView.cameraCollectionView.delegate = self
+        baseView.cameraCollectionView.dataSource = cameraCollectionViewModel
+        cameraCollectionViewModel.cameraCellDelegate = self
+        viewModel.delegate = self
     }
 }
 // MARK: - BaseView Delegate
@@ -54,33 +54,33 @@ extension PostRecipeViewController: UITextFieldDelegate {
         if textField.tag == Constants.TextFieldTag.recipeName {
             if let text = textField.text {
                 let resultText = (text as NSString).replacingCharacters(in: range, with: string)
-                return resultText.count <= self.baseView.maxRecipeNameNumer
+                return resultText.count <= baseView.maxRecipeNameNumer
             }
         }
         return true
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        self.baseView.setCurrentRecipeNameNumber(text: text)
+        baseView.setCurrentRecipeNameNumber(text: text)
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case Constants.TextFieldTag.recipeDate:
-            self.setRecipeDateTextFieldData()
+            setRecipeDateTextFieldData()
         case Constants.TextFieldTag.recipeName:
-            self.setRecipeNameTextFieldData()
+            setRecipeNameTextFieldData()
         default:
             break
         }
     }
     private func setRecipeDateTextFieldData() {
-        let dateString = DateHelper.shared.formatToString(date: self.baseView.datePicker.date)
-        self.baseView.dateTextField.text = dateString
-        self.viewModel.recipe.cookDate = dateString
+        let dateString = DateHelper.shared.formatToString(date: baseView.datePicker.date)
+        baseView.dateTextField.text = dateString
+        viewModel.recipe.cookDate = dateString
     }
     private func setRecipeNameTextFieldData() {
-        guard let recipeName = self.baseView.recipeNameTextField.text else { return }
-        self.viewModel.recipe.name = recipeName
+        guard let recipeName = baseView.recipeNameTextField.text else { return }
+        viewModel.recipe.name = recipeName
     }
 }
 // MARK: - UITextView Delegate
@@ -90,34 +90,34 @@ extension PostRecipeViewController: UITextViewDelegate {
         if let text = textView.text {
             resultText = (text as NSString).replacingCharacters(in: range, with: text)
         }
-        return resultText.count <= self.baseView.maxRecipeMemoNumber
+        return resultText.count <= baseView.maxRecipeMemoNumber
     }
     func textViewDidChange(_ textView: UITextView) {
         guard let text = textView.text else { return }
-        self.baseView.recipeMemoTextView.switchPlaceholderDisplay(text: text)
-        self.viewModel.recipe.memo = text
-        self.baseView.setCurrentRecipeMemoNumber(text: text)
+        baseView.recipeMemoTextView.switchPlaceholderDisplay(text: text)
+        viewModel.recipe.memo = text
+        baseView.setCurrentRecipeMemoNumber(text: text)
     }
 }
 // MARK: - CameraCell Delegate
 extension PostRecipeViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
-        self.cameraCollectionViewModel.cancelImage(index: index)
-        self.baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        cameraCollectionViewModel.cancelImage(index: index)
+        baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
 // MARK: - UICollectionView Delegate
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.openImagePicker()
+        openImagePicker()
     }
 }
 // MARK: - UIImagePickerController Delegage
 extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        guard let selectedIndexPath = self.baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
+        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
         picker.dismiss(animated: true) { [weak self] in
             self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
             self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
@@ -131,10 +131,10 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
         // nil要素を取り除き、選択した画像のみData型に変換する
-        let postIamgeData: [Data?] = self.cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter { $0 != nil }
+        let postIamgeData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            self.viewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
+            viewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
         }
     }
     func didFailedPostRecipe(errorMessage: String) {

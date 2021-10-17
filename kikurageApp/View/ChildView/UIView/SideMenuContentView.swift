@@ -24,14 +24,14 @@ extension SideMenuContentView {
     ///   - bottomWidth: 下枠線の幅
     func setBoarder(topWidth: CGFloat?, bottomWidth: CGFloat?) {
         if let topWidth = topWidth {
-            self.setFrameBoarder(width: topWidth, color: .lightGray, position: .top)
+            setFrameBoarder(width: topWidth, color: .lightGray, position: .top)
         }
         if let bottomWidth = bottomWidth {
-            self.setFrameBoarder(width: bottomWidth, color: .lightGray, position: .bottom)
+            setFrameBoarder(width: bottomWidth, color: .lightGray, position: .bottom)
         }
     }
     func setSideMenuContent(title: String, imageSystemName: String) {
-        self.sideMenuContentLabel.text = title
-        self.sideMenuContentIconView.image = UIImage(systemName: imageSystemName)
+        sideMenuContentLabel.text = title
+        sideMenuContentIconView.image = UIImage(systemName: imageSystemName)
     }
 }

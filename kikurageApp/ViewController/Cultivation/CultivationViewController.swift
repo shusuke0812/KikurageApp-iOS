@@ -16,13 +16,13 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
-        self.setNavigationItem()
-        self.setDelegateDataSource()
-        self.setNotificationCenter()
+        viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
+        setNavigationItem()
+        setDelegateDataSource()
+        setNotificationCenter()
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -32,28 +32,28 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
 // MARK: - Initialized
 extension CultivationViewController {
     private func setNavigationItem() {
-        self.setNavigationBar(title: "さいばいきろく")
+        setNavigationBar(title: "さいばいきろく")
     }
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.baseView.collectionView.delegate = self
-        self.baseView.collectionView.dataSource = self.viewModel
-        self.viewModel.delegate = self
+        baseView.delegate = self
+        baseView.collectionView.delegate = self
+        baseView.collectionView.dataSource = viewModel
+        viewModel.delegate = self
     }
 }
 // MARK: - Private
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
         guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
-        vc.cultivation = self.viewModel.cultivations[indexPath.row].cultivation
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.cultivation = viewModel.cultivations[indexPath.row].cultivation
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 // MARK: - CultivationBaseView Delegate
 extension CultivationViewController: CultivationBaseViewDelegate {
     func didTapPostCultivationPageButton() {
         guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
-        self.present(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
     }
 }
 // MARK: - CultivationViewModel Delegate
@@ -76,7 +76,7 @@ extension CultivationViewController: CultivationViewModelDelegate {
 extension CultivationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalSpace: CGFloat = 1.0
-        let cellWidth: CGFloat = self.baseView.bounds.width / 2 - horizontalSpace
+        let cellWidth: CGFloat = baseView.bounds.width / 2 - horizontalSpace
         let cellHeight: CGFloat = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)
     }
@@ -84,7 +84,7 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionView Delegate
 extension CultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.transitionCultivationDetailPage(indexPath: indexPath)
+        transitionCultivationDetailPage(indexPath: indexPath)
     }
 }
 
@@ -95,7 +95,7 @@ extension CultivationViewController {
     }
     @objc private func didPostCultivation(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            self.viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
 }

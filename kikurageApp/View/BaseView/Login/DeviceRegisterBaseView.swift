@@ -25,35 +25,35 @@ class DeviceRegisterBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
-        self.initTextFieldTag()
-        self.initDatePicker()
+        initUI()
+        initTextFieldTag()
+        initDatePicker()
     }
     // MARK: - Action
     @IBAction private func didTappedDeviceRegisterButton(_ sender: Any) {
-        self.delegate?.didTappedDeviceRegisterButton()
+        delegate?.didTappedDeviceRegisterButton()
     }
 }
 // MARK: - Initialized
 extension DeviceRegisterBaseView {
     private func initUI() {
-        self.deviceRegisterButton.layer.masksToBounds = true
-        self.deviceRegisterButton.layer.cornerRadius = 5
+        deviceRegisterButton.layer.masksToBounds = true
+        deviceRegisterButton.layer.cornerRadius = 5
 
-        self.productKeyTextField.autocorrectionType = .no
+        productKeyTextField.autocorrectionType = .no
     }
     private func initTextFieldTag() {
-        self.productKeyTextField.tag = Constants.TextFieldTag.productKey
-        self.kikurageNameTextField.tag = Constants.TextFieldTag.kikurageName
-        self.cultivationStartDateTextField.tag = Constants.TextFieldTag.cultivationStartDate
+        productKeyTextField.tag = Constants.TextFieldTag.productKey
+        kikurageNameTextField.tag = Constants.TextFieldTag.kikurageName
+        cultivationStartDateTextField.tag = Constants.TextFieldTag.cultivationStartDate
     }
     private func initDatePicker() {
         // DatePcikerの基本設定
-        self.datePicker.preferredDatePickerStyle = .wheels
-        self.datePicker.datePickerMode = .date
-        self.datePicker.timeZone = NSTimeZone.local
-        self.datePicker.locale = Locale.current
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.locale = Locale.current
         // TextFieldの入力にDatePickerを接続
-        self.cultivationStartDateTextField.inputView = self.datePicker
+        cultivationStartDateTextField.inputView = datePicker
     }
 }

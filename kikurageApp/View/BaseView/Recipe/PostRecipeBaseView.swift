@@ -37,67 +37,67 @@ class PostRecipeBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.registerCameraCell()
-        self.initUI()
-        self.initTextFieldTag()
-        self.initDatePicker()
+        registerCameraCell()
+        initUI()
+        initTextFieldTag()
+        initDatePicker()
     }
     // MARK: - Action
     @IBAction private func didTapCloseButton(_ sender: Any) {
-        self.delegate?.didTapCloseButton()
+        delegate?.didTapCloseButton()
     }
     @IBAction private func didTapPostButton(_ sender: Any) {
-        self.delegate?.didTapPostButton()
+        delegate?.didTapPostButton()
     }
 }
 // MARK: - Initialized
 extension PostRecipeBaseView {
     private func registerCameraCell() {
-        self.cameraCollectionView.register(R.nib.cameraCell)
+        cameraCollectionView.register(R.nib.cameraCell)
     }
     private func initUI() {
         // タイトル
-        self.navigationItem.title = "りょうりきろく保存"
+        navigationItem.title = "りょうりきろく保存"
         // 背景色
-        self.backgroundColor = .themeColor
-        self.cameraCollectionView.backgroundColor = .themeColor
-        self.recipeMemoTextView.backgroundColor = .themeColor
+        backgroundColor = .themeColor
+        cameraCollectionView.backgroundColor = .themeColor
+        recipeMemoTextView.backgroundColor = .themeColor
         // プレースホルダー
-        self.recipeMemoTextView.placeholder = "料理メモ"
-        self.recipeNameTextField.placeholder = "料理名"
-        self.dateTextField.placeholder = "日付を選択"
+        recipeMemoTextView.placeholder = "料理メモ"
+        recipeNameTextField.placeholder = "料理名"
+        dateTextField.placeholder = "日付を選択"
         // 保存するボタン
-        self.postButton.layer.masksToBounds = true
-        self.postButton.layer.cornerRadius = 5
+        postButton.layer.masksToBounds = true
+        postButton.layer.cornerRadius = 5
         // 最大入力文字数
-        self.maxRecipeNameNumberLabel.text = "\(self.maxRecipeNameNumer)"
-        self.maxRecipeMemoNumberLabel.text = "\(self.maxRecipeMemoNumber)"
+        maxRecipeNameNumberLabel.text = "\(maxRecipeNameNumer)"
+        maxRecipeMemoNumberLabel.text = "\(maxRecipeMemoNumber)"
     }
     private func initTextFieldTag() {
-        self.recipeNameTextField.tag = Constants.TextFieldTag.recipeName
-        self.dateTextField.tag = Constants.TextFieldTag.recipeDate
+        recipeNameTextField.tag = Constants.TextFieldTag.recipeName
+        dateTextField.tag = Constants.TextFieldTag.recipeDate
     }
     private func initDatePicker() {
         // DatePickerの基本設定
-        self.datePicker.preferredDatePickerStyle = .wheels
-        self.datePicker.datePickerMode = .date
-        self.datePicker.timeZone = NSTimeZone.local
-        self.datePicker.locale = Locale.current
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.locale = Locale.current
         // 現在の日付の1ヶ月前
         let minDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
         // DatePickerの範囲設定
-        self.datePicker.minimumDate = minDate
-        self.datePicker.maximumDate = Date()
+        datePicker.minimumDate = minDate
+        datePicker.maximumDate = Date()
         // TextFieldの入力にDatePickerを接続
-        self.dateTextField.inputView = self.datePicker
+        dateTextField.inputView = datePicker
     }
 }
 // MARK: - Setting UI
 extension PostRecipeBaseView {
     func setCurrentRecipeNameNumber(text: String) {
-        self.currentRecipeNameNumberLabel.text = "\(text.count)"
+        currentRecipeNameNumberLabel.text = "\(text.count)"
     }
     func setCurrentRecipeMemoNumber(text: String) {
-        self.currentRecipeMemoNumberLabel.text = "\(text.count)"
+        currentRecipeMemoNumberLabel.text = "\(text.count)"
     }
 }

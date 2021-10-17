@@ -33,57 +33,57 @@ class PostCultivationBaseView: UIView {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.registerCameraCell()
-        self.initUI()
-        self.initDatePicker()
+        registerCameraCell()
+        initUI()
+        initDatePicker()
     }
     // MARK: - Action
     @IBAction private func didTapPostButton(_ sender: Any) {
-        self.delegate?.didTapPostButton()
+        delegate?.didTapPostButton()
     }
     @IBAction private func didTapCloseButton(_ sender: Any) {
-        self.delegate?.didTapCloseButton()
+        delegate?.didTapCloseButton()
     }
 }
 // MARK: - Initialized
 extension PostCultivationBaseView {
     private func registerCameraCell() {
-        self.cameraCollectionView.register(R.nib.cameraCell)
+        cameraCollectionView.register(R.nib.cameraCell)
     }
     private func initUI() {
         // タイトル
-        self.navigationItem.title = "さいばいきろく保存"
+        navigationItem.title = "さいばいきろく保存"
         // 背景色
-        self.backgroundColor = .themeColor
-        self.cameraCollectionView.backgroundColor = .themeColor
-        self.textView.backgroundColor = .themeColor
+        backgroundColor = .themeColor
+        cameraCollectionView.backgroundColor = .themeColor
+        textView.backgroundColor = .themeColor
         // プレースホルダー
-        self.textView.placeholder = "観察メモ"
-        self.dateTextField.placeholder = "日付を選択"
+        textView.placeholder = "観察メモ"
+        dateTextField.placeholder = "日付を選択"
         // 保存するボタン
-        self.postButton.layer.masksToBounds = true
-        self.postButton.layer.cornerRadius = 5
+        postButton.layer.masksToBounds = true
+        postButton.layer.cornerRadius = 5
         // 最大入力文字数
-        self.maxTextViewNumberLabel.text = "\(self.maxTextViewNumber)"
+        maxTextViewNumberLabel.text = "\(maxTextViewNumber)"
     }
     private func initDatePicker() {
         // DatePickerの基本設定
-        self.datePicker.preferredDatePickerStyle = .wheels
-        self.datePicker.datePickerMode = .date
-        self.datePicker.timeZone = NSTimeZone.local
-        self.datePicker.locale = Locale.current
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.locale = Locale.current
         // 現在の日付の1ヶ月前
         let minDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
         // DatePickerの範囲設定
-        self.datePicker.minimumDate = minDate
-        self.datePicker.maximumDate = Date()
+        datePicker.minimumDate = minDate
+        datePicker.maximumDate = Date()
         // TextFieldの入力にDatePickerを接続
-        self.dateTextField.inputView = self.datePicker
+        dateTextField.inputView = datePicker
     }
 }
 // MARK: - Setting UI Method
 extension PostCultivationBaseView {
     func setCurrentTextViewNumber(text: String) {
-        self.currentTextViewNumberLabel.text = "\(text.count)"
+        currentTextViewNumberLabel.text = "\(text.count)"
     }
 }

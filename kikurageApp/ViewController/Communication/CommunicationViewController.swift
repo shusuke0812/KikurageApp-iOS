@@ -14,22 +14,22 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationItem()
-        self.setDelegateDataSource()
+        setNavigationItem()
+        setDelegateDataSource()
     }
 }
 // MARK: - Initialized Method
 extension CommunicationViewController {
     private func setNavigationItem() {
-        self.setNavigationBar(title: "みんなにそうだん")
+        setNavigationBar(title: "みんなにそうだん")
     }
     private func setDelegateDataSource() {
-        self.baaseView.delegate = self
+        baaseView.delegate = self
     }
 }
 // MARK: - CommunicationBaseView Delegate
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func didTapFacebookButton() {
-        self.transitionSafariViewController(urlString: Constants.WebUrl.facebook)
+        transitionSafariViewController(urlString: Constants.WebUrl.facebook)
     }
 }
