@@ -18,7 +18,6 @@
 		9C1ACF502225768A00A3D4D1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
-		9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22857C2246025B000D6A9B /* ClockHelper.swift */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
 		9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */; };
@@ -128,7 +127,6 @@
 		9C1ACF512225768A00A3D4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C22857C2246025B000D6A9B /* ClockHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHelper.swift; sourceTree = "<group>"; };
 		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCultivationViewController.storyboard; sourceTree = "<group>"; };
@@ -857,7 +855,6 @@
 		9CF0020624E39B290084036B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				9C22857C2246025B000D6A9B /* ClockHelper.swift */,
 				9C96997C2566118B00D655DA /* DateHelper.swift */,
 				9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */,
 				9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */,
@@ -1087,7 +1084,6 @@
 				9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */,
 				9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */,
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
-				9C22857D2246025B000D6A9B /* ClockHelper.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,

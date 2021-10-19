@@ -88,7 +88,7 @@ extension MainBaseView {
     }
     /// 時刻表示更新用メソッド
     func updateTimeLabel() {
-        nowTimeLabel.text = ClockHelper.shared.display()
+        nowTimeLabel.text = DateHelper.shared.display()
     }
     private func displayKikurageStateImage(type: String) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
