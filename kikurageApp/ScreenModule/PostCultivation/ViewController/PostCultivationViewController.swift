@@ -52,7 +52,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
 // MARK: - UITextField Delegate
 extension PostCultivationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let dateString = DateHelper.shared.formatToString(date: baseView.datePicker.date)
+        let dateString = DateHelper.formatToString(date: baseView.datePicker.date)
         baseView.dateTextField.text = dateString
         viewModel.cultivation.viewDate = dateString
     }

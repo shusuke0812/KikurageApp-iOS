@@ -8,30 +8,45 @@
 
 import Foundation
 
-class DateHelper {
-    static let shared = DateHelper()
+struct DateHelper {
+    /// 現在時刻を取得する
+    static func now() -> String {
+        let now = Date()
 
-    private let formatter: DateFormatter
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
 
-    private init() {
-        self.formatter = DateFormatter()
+        return formatter.string(from: now)
     }
-}
-extension DateHelper {
     /// Date型を指定したString型に変換する
     /// - Parameter date: 日付
-    func formatToString(date: Date) -> String {
+    static func formatToString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter.string(from: date)
     }
     /// Date型を画像ファイル名に使うString型に変換する
     /// - Parameter date: 日付
-    func formatToStringForImageData(date: Date) -> String {
+    static func formatToStringForImageData(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+
         formatter.dateFormat = "yyyyMMddHHmmss"
         return formatter.string(from: date)
     }
     /// Date型をログに使うString型へ変換する
-    func formatToStringForLog() -> String {
+    static func formatToStringForLog() -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         return formatter.string(from: Date())
     }

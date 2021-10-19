@@ -74,7 +74,7 @@ extension PostRecipeViewController: UITextFieldDelegate {
         }
     }
     private func setRecipeDateTextFieldData() {
-        let dateString = DateHelper.shared.formatToString(date: baseView.datePicker.date)
+        let dateString = DateHelper.formatToString(date: baseView.datePicker.date)
         baseView.dateTextField.text = dateString
         viewModel.recipe.cookDate = dateString
     }

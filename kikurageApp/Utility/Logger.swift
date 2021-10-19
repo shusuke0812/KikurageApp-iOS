@@ -9,7 +9,7 @@
 import Foundation
 
 struct Logger {
-    private static var dateString: String = DateHelper.shared.formatToStringForLog()
+    private static var dateString: String = DateHelper.formatToStringForLog()
 
     enum LogLevel: String {
         case verbose

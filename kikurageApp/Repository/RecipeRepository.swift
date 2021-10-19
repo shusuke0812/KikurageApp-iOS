@@ -122,7 +122,7 @@ extension RecipeRepository {
                     dispatchSemaphore.signal()
                     return
                 }
-                let fileName: String = DateHelper.shared.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
+                let fileName: String = DateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
                 let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
                 _ = storageReference.putData(imageData, metadata: self.metaData) { _, error in
                     if let error = error {
