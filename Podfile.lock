@@ -362,7 +362,6 @@ PODS:
   - SDWebImage (5.9.2):
     - SDWebImage/Core (= 5.9.2)
   - SDWebImage/Core (5.9.2)
-  - SwiftDate (5.1.0)
 
 DEPENDENCIES:
   - Charts
@@ -377,7 +376,6 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - PKHUD (~> 5.0)
   - R.swift
-  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -411,7 +409,6 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - SDWebImage
-    - SwiftDate
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -443,8 +440,7 @@ SPEC CHECKSUMS:
   R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
-  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: b4458f1457009b2f1add3a4164573fe820d8f445
+PODFILE CHECKSUM: b2f4dcf82aed0fb2f5fb25302ac5b9d4a8dd78e3
 
 COCOAPODS: 1.9.3
