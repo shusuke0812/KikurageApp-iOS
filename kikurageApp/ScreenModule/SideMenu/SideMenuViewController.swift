@@ -27,7 +27,7 @@ class SideMenuViewController: UIViewController {
     // メニューエリア以外をタップした時の処理
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        for touch in touches where touch.view?.tag == Constants.ViewTag.sideMenuBase {
+        for touch in touches where touch.view == baseView {
             UIView.animate(
                 withDuration: 0.2,
                 delay: 0,

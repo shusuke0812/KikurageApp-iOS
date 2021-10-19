@@ -31,7 +31,6 @@ class SideMenuBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        initViewTag()
         initSideMenuContent()
         initSideMenuBoarderLine()
     }
@@ -48,9 +47,6 @@ class SideMenuBaseView: UIView {
 }
 // MARK: - Initialized
 extension SideMenuBaseView {
-    private func initViewTag() {
-        tag = Constants.ViewTag.sideMenuBase
-    }
     private func initSideMenuContent() {
         calendarView.setSideMenuContent(title: "カレンダー", imageSystemName: "calendar")
         graphView.setSideMenuContent(title: "グラフ", imageSystemName: "waveform.path.ecg")

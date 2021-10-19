@@ -33,10 +33,6 @@ enum Constants {
         /// 画像選択の最大数
         static let maxNumber = 8
     }
-    enum ViewTag {
-        /// サイドメニューのBaseViewタグ番号
-        static let sideMenuBase = 1
-    }
     enum Image {
         /// 画像読み込み中の表示
         static let loading = R.image.loading()
