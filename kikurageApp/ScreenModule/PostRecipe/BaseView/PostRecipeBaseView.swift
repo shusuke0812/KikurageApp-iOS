@@ -39,7 +39,6 @@ class PostRecipeBaseView: UIView {
         super.awakeFromNib()
         registerCameraCell()
         initUI()
-        initTextFieldTag()
         initDatePicker()
     }
     // MARK: - Action
@@ -72,10 +71,6 @@ extension PostRecipeBaseView {
         // 最大入力文字数
         maxRecipeNameNumberLabel.text = "\(maxRecipeNameNumer)"
         maxRecipeMemoNumberLabel.text = "\(maxRecipeMemoNumber)"
-    }
-    private func initTextFieldTag() {
-        recipeNameTextField.tag = Constants.TextFieldTag.recipeName
-        dateTextField.tag = Constants.TextFieldTag.recipeDate
     }
     private func initDatePicker() {
         // DatePickerの基本設定

@@ -40,15 +40,13 @@ extension DeviceRegisterViewController {
 extension DeviceRegisterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        switch textField.tag {
-        case Constants.TextFieldTag.productKey:
-            baseView.productKeyTextField.text = text
+        switch textField {
+        case baseView.productKeyTextField:
             viewModel.kikurageUser?.productKey = text
             viewModel.setStateReference(productKey: text)
-        case Constants.TextFieldTag.kikurageName:
-            baseView.kikurageNameTextField.text = text
+        case baseView.kikurageNameTextField:
             viewModel.kikurageUser?.kikurageName = text
-        case Constants.TextFieldTag.cultivationStartDate:
+        case baseView.cultivationStartDateTextField:
             setCultivationStartDateTextFieldData()
         default:
             break

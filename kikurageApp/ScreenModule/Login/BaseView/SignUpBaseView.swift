@@ -22,7 +22,6 @@ class SignUpBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
-        initTextFieldTag()
     }
 
     // MARK: - Action
@@ -39,10 +38,6 @@ extension SignUpBaseView {
 
         emailTextField.autocorrectionType = .no
         passwordTextField.isSecureTextEntry = true
-    }
-    private func initTextFieldTag() {
-        emailTextField.tag = Constants.TextFieldTag.email
-        passwordTextField.tag = Constants.TextFieldTag.password
     }
     func initTextFields() {
         emailTextField.text = ""

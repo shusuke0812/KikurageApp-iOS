@@ -44,10 +44,10 @@ extension LoginViewController: LoginBaseViewDelegate {
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        switch textField.tag {
-        case Constants.TextFieldTag.email:
+        switch textField {
+        case baseView.emailTextField:
             viewModel.email = text
-        case Constants.TextFieldTag.password:
+        case baseView.passwordTextField:
             viewModel.password = text
         default:
             break

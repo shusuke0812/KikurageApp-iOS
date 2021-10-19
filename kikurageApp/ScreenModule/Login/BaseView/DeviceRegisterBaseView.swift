@@ -26,7 +26,6 @@ class DeviceRegisterBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
-        initTextFieldTag()
         initDatePicker()
     }
     // MARK: - Action
@@ -41,11 +40,6 @@ extension DeviceRegisterBaseView {
         deviceRegisterButton.layer.cornerRadius = 5
 
         productKeyTextField.autocorrectionType = .no
-    }
-    private func initTextFieldTag() {
-        productKeyTextField.tag = Constants.TextFieldTag.productKey
-        kikurageNameTextField.tag = Constants.TextFieldTag.kikurageName
-        cultivationStartDateTextField.tag = Constants.TextFieldTag.cultivationStartDate
     }
     private func initDatePicker() {
         // DatePcikerの基本設定

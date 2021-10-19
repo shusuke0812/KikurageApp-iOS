@@ -33,23 +33,6 @@ enum Constants {
         /// 画像選択の最大数
         static let maxNumber = 8
     }
-    // TODO: Tagは使わない方が良い、enumに置き換え
-    enum TextFieldTag {
-        /// 料理名のTextFieldタグ番号
-        static let recipeName = 1
-        /// 料理記録画面の日付のTextFieldタグ番号
-        static let recipeDate = 2
-        /// プロダクトキーのTextFieldタグ番号
-        static let productKey = 3
-        /// きくらげ名のTextFieldタグ番号
-        static let kikurageName = 4
-        /// きくらげ栽培開始日のTextFieldタグ番号
-        static let cultivationStartDate = 5
-        /// メールアドレス
-        static let email = 6
-        /// パスワード
-        static let password = 7
-    }
     enum ViewTag {
         /// サイドメニューのBaseViewタグ番号
         static let sideMenuBase = 1

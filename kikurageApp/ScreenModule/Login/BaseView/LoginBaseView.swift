@@ -22,7 +22,6 @@ class LoginBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
-        initTextFieldTag()
     }
     // MARK: - Action
     @IBAction private func didTappedLoginButton(_ sender: Any) {
@@ -38,10 +37,6 @@ extension LoginBaseView {
 
         emailTextField.autocorrectionType = .no
         passwordTextField.isSecureTextEntry = true
-    }
-    private func initTextFieldTag() {
-        emailTextField.tag = Constants.TextFieldTag.email
-        passwordTextField.tag = Constants.TextFieldTag.password
     }
     func initTextFields() {
         emailTextField.text = ""
