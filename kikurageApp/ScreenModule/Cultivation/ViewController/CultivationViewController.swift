@@ -24,6 +24,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
             HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
+        adjustNavigationBarBackgroundColor()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

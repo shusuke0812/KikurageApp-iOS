@@ -28,6 +28,7 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
         baseView.setKikurageNameUI(kikurageUser: viewModel.kikurageUser)
         setNavigationItem()
         setDelegateDataSource()
+        adjustNavigationBarBackgroundColor()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

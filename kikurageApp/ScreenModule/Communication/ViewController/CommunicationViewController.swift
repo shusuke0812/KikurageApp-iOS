@@ -16,6 +16,7 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
         super.viewDidLoad()
         setNavigationItem()
         setDelegateDataSource()
+        adjustNavigationBarBackgroundColor()
     }
 }
 // MARK: - Initialized Method

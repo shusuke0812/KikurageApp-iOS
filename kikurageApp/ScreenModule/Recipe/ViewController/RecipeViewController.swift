@@ -27,6 +27,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
             HUD.show(.progress)
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
+        adjustNavigationBarBackgroundColor()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

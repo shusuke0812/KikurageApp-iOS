@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class DeviceRegisterViewController: UIViewController {
+class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     private var viewModel: DeviceRegisterViewModel!
 
@@ -21,6 +21,7 @@ class DeviceRegisterViewController: UIViewController {
 
         navigationItem.title = "デバイス登録"
         navigationItem.hidesBackButton = true
+        adjustNavigationBarBackgroundColor()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

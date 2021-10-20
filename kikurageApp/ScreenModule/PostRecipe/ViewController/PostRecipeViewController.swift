@@ -19,6 +19,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
         cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
         viewModel = PostRecipeViewModel(recipeRepository: RecipeRepository())
         setDelegateDataSource()
+        adjustNavigationBarBackgroundColor()
     }
 }
 // MARK: - Initialized

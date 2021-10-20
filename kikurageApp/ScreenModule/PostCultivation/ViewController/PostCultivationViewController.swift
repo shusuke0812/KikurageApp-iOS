@@ -20,6 +20,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
         viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
         cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
         setDelegateDataSource()
+        adjustNavigationBarBackgroundColor()
     }
 }
 // MARK: - Initialized

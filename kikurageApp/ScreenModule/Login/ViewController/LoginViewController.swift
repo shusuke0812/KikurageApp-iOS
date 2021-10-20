@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
     private var viewModel: LoginViewModel!
 
@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
         viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
 
         setDelegate()
+        adjustNavigationBarBackgroundColor()
     }
 }
 

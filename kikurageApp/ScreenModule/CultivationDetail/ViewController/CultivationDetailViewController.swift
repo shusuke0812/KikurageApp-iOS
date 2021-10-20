@@ -20,6 +20,7 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
         setDelegateDataSource()
         setNavigationItem()
         setUI()
+        adjustNavigationBarBackgroundColor()
     }
 }
 // MARK: - Private

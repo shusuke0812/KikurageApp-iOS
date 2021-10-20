@@ -26,6 +26,8 @@ protocol UIViewControllerNavigatable {
     func transitionSafariViewController(urlString: String)
     /// ImagePicker起動
     func openImagePicker()
+    ///  iOS15対策：NavigationBarの背景色を設定（iOS15、NavBar背景色が透明になる）
+    func adjustNavigationBarBackgroundColor()
 }
 
 extension UIViewControllerNavigatable where Self: UIViewController {
@@ -55,5 +57,14 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         picker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
+    }
+    func adjustNavigationBarBackgroundColor() {
+        guard let nc = self.navigationController else { return }
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
+        nc.navigationBar.standardAppearance = appearance
+        nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
     }
 }

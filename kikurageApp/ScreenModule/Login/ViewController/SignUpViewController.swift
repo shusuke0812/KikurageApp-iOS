@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: SignUpBaseView { self.view as! SignUpBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SignUpViewModel!
 
@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
         viewModel = SignUpViewModel(signUpRepository: SignUpRepository())
 
         setDelegate()
+        adjustNavigationBarBackgroundColor()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
