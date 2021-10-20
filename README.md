@@ -34,12 +34,11 @@
 
 ![UI](https://user-images.githubusercontent.com/33107697/63015932-3d728800-becd-11e9-82a9-89d18caf1ab6.png)
 
-　
 ## IoTシステム概要
 ![system](https://user-images.githubusercontent.com/33107697/97247537-3b32ea00-1843-11eb-97e9-475c6c1e668f.png)
 
 ## 開発環境
-- Xcode 12.5.1 （12E507）
+- Xcode 13.0 (13A233)
 - Swift 5.0 
 - CocoaPods 1.9.3  
 - MacOS BigSur 11.4
