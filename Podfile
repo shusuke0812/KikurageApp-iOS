@@ -21,6 +21,8 @@ target 'kikurageApp' do
   pod 'HorizonCalendar'
   # Other
   pod 'R.swift'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
 
 end
 
