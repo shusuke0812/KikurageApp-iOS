@@ -9,6 +9,8 @@
 import Foundation
 
 struct DateHelper {
+    private init() {}
+
     private static let defaultDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
