@@ -105,7 +105,6 @@
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
-		9CCC24E827259B4E000AE2CF /* GraphWeekDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC24E727259B4E000AE2CF /* GraphWeekDataSource.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
@@ -215,7 +214,6 @@
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
-		9CCC24E727259B4E000AE2CF /* GraphWeekDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphWeekDataSource.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
@@ -815,7 +813,6 @@
 			children = (
 				9C7DCE9A26EE156B00F62DF8 /* Error */,
 				9C73CCCF26D53ECB00B4DE55 /* Response */,
-				9CCC24E727259B4E000AE2CF /* GraphWeekDataSource.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1091,7 +1088,6 @@
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
 				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
-				9CCC24E827259B4E000AE2CF /* GraphWeekDataSource.swift in Sources */,
 				9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */,
 				9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
