@@ -92,7 +92,7 @@ extension MainBaseView {
     }
     private func displayKikurageStateImage(type: String) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        kikurageStatusView.animationImages = KikurageStateHelper.shared.setStateImage(type: type)
+        kikurageStatusView.animationImages = KikurageStateHelper.setStateImage(type: type)
         kikurageStatusView.animationDuration = 1
         kikurageStatusView.animationRepeatCount = 0
         kikurageStatusView.startAnimating()
