@@ -51,7 +51,7 @@ extension SideMenuBaseView {
         calendarView.setSideMenuContent(title: "カレンダー", imageSystemName: "calendar")
         graphView.setSideMenuContent(title: "グラフ", imageSystemName: "waveform.path.ecg")
         contactView.setSideMenuContent(title: "問い合わせ", imageSystemName: "questionmark.circle")
-        settingView.setSideMenuContent(title: "設定", imageSystemName: "gearshape")
+        settingView.setSideMenuContent(title: "設定", imageSystemName: "gear")
         licenseView.setSideMenuContent(title: "著作権", imageSystemName: "info.circle")
         searchRecipeView.setSideMenuContent(title: "料理レシピ検索", imageSystemName: "magnifyingglass")
         kikurageDictionaryView.setSideMenuContent(title: "きくらげ豆知識", imageSystemName: "doc.text")
