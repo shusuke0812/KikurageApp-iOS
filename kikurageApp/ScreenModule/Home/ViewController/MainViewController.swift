@@ -25,7 +25,7 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Util
-        viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUser: kikurageUser, kikurageState: kikurageState)
+        viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository(), kikurageUser: kikurageUser, kikurageState: kikurageState)
         setDelegateDataSource()
 
         // UI

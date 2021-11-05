@@ -20,23 +20,20 @@ protocol MainViewModelDelgate: AnyObject {
 }
 
 class MainViewModel {
-    private var kikurageStateListener: ListenerRegistration?
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
-    /// きくらげの状態
+    private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
+
     var kikurageState: KikurageState!
-    /// きくらげユーザー
     var kikurageUser: KikurageUser!
 
     weak var delegate: MainViewModelDelgate?
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {
         self.kikurageStateRepository = kikurageStateRepository
+        self.kikurageStateListenerRepository = kikurageStateListenerRepository
         self.kikurageUser = kikurageUser
         self.kikurageState = kikurageState
-        self.setKikurageStateListener()
-    }
-    deinit {
-        self.kikurageStateListener?.remove()
+        self.listenKikurageState()
     }
 }
 // MARK: - Firebase Firestore
@@ -56,25 +53,14 @@ extension MainViewModel {
             }
         }
     }
-    /// きくらげの状態を監視して更新を通知する
-    func setKikurageStateListener() {
-        kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(self.kikurageUser.productKey).addSnapshotListener { [weak self] snapshot, error in
-            if let error = error {
-                print("DEBUG: \(error)")
-                return
-            }
-            guard let snapshot: DocumentSnapshot = snapshot else {
-                return
-            }
-            guard let snapshotData = snapshot.data() else {
-                print("きくらげの状態データがありません")
-                return
-            }
-            do {
-                let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+    /// きくらげの状態をリッスンする
+    private func listenKikurageState() {
+        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { [weak self] response in
+            switch response {
+            case .success(let kikurageState):
                 self?.kikurageState = kikurageState
                 self?.delegate?.didChangedKikurageState()
-            } catch {
+            case .failure(let error):
                 fatalError(error.localizedDescription)
             }
         }
