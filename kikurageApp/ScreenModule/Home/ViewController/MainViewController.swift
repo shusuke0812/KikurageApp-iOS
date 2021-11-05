@@ -8,25 +8,35 @@
 
 import UIKit
 import MessageUI
+import RxSwift
 
 class MainViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: MainBaseView { self.view as! MainBaseView } // swiftlint:disable:this force_cast
     private var viewModel: MainViewModel!
-    /// きくらげの状態
-    var kikurageState: KikurageState!
-    /// きくらげユーザー
-    var kikurageUser: KikurageUser!
-    /// タイマー
+
+    private let disposeBag = RxSwift.DisposeBag()
     private var timer: Timer?
 
+    var kikurageState: KikurageState!
+    var kikurageUser: KikurageUser!
+
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Util
         viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUser: kikurageUser, kikurageState: kikurageState)
+        setDelegateDataSource()
+
+        // UI
         baseView.setKikurageNameUI(kikurageUser: viewModel.kikurageUser)
         setNavigationItem()
-        setDelegateDataSource()
         adjustNavigationBarBackgroundColor()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTimer()
+        loadKikurageState()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -36,19 +46,15 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
         }
         baseView.kikurageStatusView.stopAnimating()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setTimer()
-        loadKikurageState()
-    }
 }
+
 // MARK: - Initialized
+
 extension MainViewController {
     private func setNavigationItem() {
         setNavigationBackButton(buttonTitle: "もどる", buttonColor: .black)
     }
     private func setTimer() {
-        // 1秒毎に現在時刻表示を更新する
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
     }
     @objc private func updateUI() {
@@ -59,10 +65,11 @@ extension MainViewController {
         baseView.delegate = self
     }
 }
+
 // MARK: - MainBaseView Delegate
+
 extension MainViewController: MainBaseViewDelegate {
     func didTapCultivationButton() {
-        // 栽培記録画面へ遷移
         guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -75,10 +82,12 @@ extension MainViewController: MainBaseViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     func didTapSideMenuButton() {
-        performSegue(withIdentifier: "SideMenu", sender: nil)
+        performSegue(withIdentifier: R.segue.mainViewController.sideMenu.identifier, sender: nil)
     }
 }
+
 // MARK: - MainViewModel Delegate
+
 extension MainViewController: MainViewModelDelgate {
     private func loadKikurageState() {
         viewModel.loadKikurageState()
