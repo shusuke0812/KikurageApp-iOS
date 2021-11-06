@@ -52,8 +52,8 @@ class MainBaseView: UIView {
 extension MainBaseView {
     private func initUI() {
         nowTimeLabel.text = DateHelper.now()
-        kikurageNameLabel.text = "きくらげ名"
-        kikurageStatusLabel.text = "きくらげの状態メッセージ"
+        kikurageNameLabel.text = ""
+        kikurageStatusLabel.text = ""
         displayKikurageStateImage(type: "normal")
         temparatureTextLabel.text = "-"
         humidityTextLabel.text = "-"
