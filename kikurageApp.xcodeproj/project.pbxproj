@@ -211,8 +211,6 @@
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* MainBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseView.swift; sourceTree = "<group>"; };
-		9CBB32CD27365D5E00A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		9CBB32CE27365D5E00A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainViewController.strings; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB32D427365E3900A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1160,7 +1158,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C1ACF4F2225768A00A3D4D1 /* Base */,
-				9CBB32CE27365D5E00A1AB6C /* ja */,
 			);
 			name = MainViewController.storyboard;
 			sourceTree = "<group>";
@@ -1169,7 +1166,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C1ACF542225768A00A3D4D1 /* Base */,
-				9CBB32CD27365D5E00A1AB6C /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
