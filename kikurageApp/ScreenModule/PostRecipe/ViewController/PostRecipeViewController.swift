@@ -139,21 +139,24 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         }
     }
     func didFailedPostRecipe(errorMessage: String) {
-        print(errorMessage)
-        HUD.hide()
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "料理記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
     }
     func didSuccessPostRecipeImages() {
-        HUD.hide()
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
-            // 料理記録一覧画面へ更新イベントを通知
-            NotificationCenter.default.post(name: .updatedRecipes, object: nil)
-            self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+                NotificationCenter.default.post(name: .updatedRecipes, object: nil)
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     func didFailedPostRecipeImages(errorMessage: String) {
-        print(errorMessage)
-        HUD.hide()
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "料理記録の登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
     }
 }

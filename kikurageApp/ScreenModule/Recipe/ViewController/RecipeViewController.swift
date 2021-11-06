@@ -69,9 +69,9 @@ extension RecipeViewController: RecipeViewModelDelegate {
         }
     }
     func didFailedGetRecipes(errorMessage: String) {
-        print(errorMessage)
         DispatchQueue.main.async {
             HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }

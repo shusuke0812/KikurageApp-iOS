@@ -67,7 +67,7 @@ extension LoginViewController: LoginViewModelDelegate {
     func didFailedLogin(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "エラー", message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
                 self?.baseView.initTextFields()
                 self?.viewModel.initLoginInfo()
             }

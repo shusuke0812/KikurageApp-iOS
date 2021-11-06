@@ -96,7 +96,9 @@ extension MainViewController: MainViewModelDelgate {
         baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
     }
     func didFailedGetKikurageState(errorMessage: String) {
-        print(errorMessage)
+        DispatchQueue.main.async {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
     }
     func didChangedKikurageState() {
         baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)

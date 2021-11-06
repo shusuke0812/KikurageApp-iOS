@@ -76,7 +76,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
     func didFailedRegisterUser(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "エラー", message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
                 self.viewModel.initUserInfo()
                 self.baseView.initTextFields()
             }

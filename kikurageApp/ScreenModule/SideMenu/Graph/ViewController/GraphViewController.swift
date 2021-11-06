@@ -48,12 +48,16 @@ extension GraphViewController: GraphViewModelDelegate {
         baseView.setLineChartView(datas: viewModel.temperatureGraphDatas, graphDataType: .temperature)
     }
     func didFailedGetKikurageStateGraph(errorMessage: String) {
-        print(errorMessage)
+        DispatchQueue.main.async {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
     }
     func didSuccessGetKikurageUser() {
         loadKikurageStateGraph()
     }
     func didFailedGetKikurageUser(errorMessage: String) {
-        print(errorMessage)
+        DispatchQueue.main.async {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
     }
 }

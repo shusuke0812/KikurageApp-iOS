@@ -92,9 +92,8 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     func didFailedGetKikurageState(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "プロダクトキーが違います", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
-        print(errorMessage)
     }
     func didSuccessPostKikurageUser() {
         DispatchQueue.main.async {
@@ -105,9 +104,8 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     func didFailedPostKikurageUser(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "ユーザー登録に失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
-        print(errorMessage)
     }
     private func transitionHomePage() {
         // NavigationControllerへの遷移になるのでViewControllerにStoryboardからIDを設定してUIViewControllerでインスタンス化する
