@@ -1,0 +1,118 @@
+/* 
+  Localizable.strings
+  kikurageApp
+
+  Created by Shusuke Ota on 2021/11/6.
+  Copyright © 2021 shusuke. All rights reserved.
+*/
+
+/****
+ * common
+ */
+
+// firebase api error
+"common_create_error" = "Failed to create";
+"common_read_error" = "Failed to read";
+"common_delete_error" = "Failed to delete";
+"common_update_error" = "Failed to update";
+"common_document_id_error" = "Not found document ID";
+"common_load_user_error" = "Faield to load user";
+
+// client error
+"common_network_connection_error" = "Failed to connect network";
+"common_parse_error" = "parse error";
+"common_response_parse_error" = "Failed to parse for response";
+"common_api_error" = "Server error";
+"common_unknown" = "Error";
+"common_save_user_defaults_error" = "Failed to save in UserDefaults";
+
+// week
+"common_week_monday" = "Monday";
+"common_week_tuesday" = "Tuesday";
+"common_week_wednesday" = "Wednesday";
+"common_week_thursday" = "Thursday";
+"common_week_friday" = "Friday";
+"common_week_saturday" = "Saturday";
+"common_week_sunday" = "Sunday";
+
+// alert
+"common_alert_ok_btn_next" = "Next";
+"common_alert_ok_btn_ok" = "OK";
+"common_alert_cancel_btn_cancel" = "Cancel";
+
+// navigation
+"common_navigation_back_btn_title" = "Back";
+
+
+/****
+ * screen
+ */
+
+// top
+"screen_top_copy_right" = "©︎ Team Kikurage Ambassadors";
+"screen_top_title" = "Welcom！";
+
+// login
+"screen_login_title" = "Login";
+"screen_signup_title" = "User Registration";
+"screen_signup_register_alert_user_title" = "Complete registration";
+"screen_signup_register_alert_user_message" = "Please register from URL link usign your sent email.";
+"screen_device_register_title" = "Device Registration";
+
+// home
+"screen_home_title" = "Home";
+"screen_home_kikurage_name" = "Today's %@";
+"screen_home_advice_title" = "[ Advice ]";
+
+// cultivation
+"screen_cultivation_title" = "Cultivation";
+"screen_cultivation_no_cultivation" = "Not found cultivation record";
+
+// cultivation detail
+"screen_cultivation_detail_title" = "Cultivation Detail";
+"screen_cultivation_detail_memo_title" = "Watching memo";
+
+// post cultivation
+"screen_post_cultivation_title" = "Cultivation Save";
+"screen_post_cultivation_textview_placeholder" = "Watching memo";
+"screen_post_cultivation_date_textfield_placeholder" = "Selecting date";
+"screen_post_cultivation_alert_post_cultivation_title" = "Is it OK this post content?";
+"screen_post_cultivation_alert_post_cultivation_success_title" = "Saved cultivation record.";
+
+// recipe
+"screen_recipe_title" = "Recipe";
+"screen_recipe_no_recipe" = "Not found recipe record";
+
+// post recipe
+"screen_post_recipe_title" = "Recipe Save";
+"screen_post_recipe_recipe_memo_textview_placeholder" = "Recipe memo";
+"screen_post_recipe_recipe_name_textfield_placeholder" = "Recipe name";
+"screen_post_recipe_recipe_date_textfield_placeholder" = "Selecting date";
+"screen_post_recipe_alert_post_recipe_title" = "Is it OK this post content?";
+"screen_post_recipe_alert_post_recipe_success_title" = "Saved recipe record.";
+
+// communication
+"screen_communication_title" = "Communication";
+"screen_communication_information" = "[ Info ]\nHere is you can communicate with friends cativating Kikurage. If you don't have Facebool account, please get its.";
+
+
+/****
+ * side menu
+ */
+
+// side menu content
+"side_menu_content_clendar_subtitle" = "Calendar";
+"side_menu_content_graph_subtitle" = "Graph";
+"side_menu_content_contact_subtitle" = "Contact";
+"side_menu_content_setting_subtitle" = "Setting";
+"side_menu_content_license_subtitle" = "License";
+"side_menu_content_search_recipe_subtitle" = "Searching recipe";
+"side_menu_content_kikurage_dictionary_subtitle" = "Dictionary";
+
+// calendar
+"side_menu_clendar_title" = "Calendar";
+
+// graph
+"side_menu_graph_title" = "Graph";
+"side_menu_graph_temperature_subtitle" = "Temperature";
+"side_menu_graph_humidity_subtitle" = "Humidity";
