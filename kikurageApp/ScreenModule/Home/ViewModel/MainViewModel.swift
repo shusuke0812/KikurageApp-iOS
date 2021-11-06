@@ -48,8 +48,7 @@ extension MainViewModel {
                     self?.delegate?.didSuccessGetKikurageState()
                 }
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
+                self.delegate?.didFailedGetKikurageState(errorMessage: error.description())
             }
         }
     }
@@ -61,7 +60,8 @@ extension MainViewModel {
                 self?.kikurageState = kikurageState
                 self?.delegate?.didChangedKikurageState()
             case .failure(let error):
-                fatalError(error.localizedDescription)
+                // TODO: エラーが発生した場合はretryする処理を実装する
+                fatalError(error.description())
             }
         }
     }

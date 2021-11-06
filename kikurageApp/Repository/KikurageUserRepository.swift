@@ -14,53 +14,55 @@ protocol KikurageUserRepositoryProtocol {
     /// - Parameters:
     ///   - uid: ユーザーID
     ///   - completion: 読み込み成功、失敗のハンドル
-    func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void)
+    func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, ClientError>) -> Void)
     /// きくらげユーザーを登録する
     /// - Parameters:
     ///   - uid: ユーザーID
     ///   - kikurageUser: きくらげユーザー
     ///   - completion: 登録成功、失敗のハンドル
-    func postKikurageUser(uid: String, kikurageUser: KikurageUser, completion: @escaping (Result<Void, Error>) -> Void)
+    func postKikurageUser(uid: String, kikurageUser: KikurageUser, completion: @escaping (Result<Void, ClientError>) -> Void)
 }
 
 class KikurageUserRepository: KikurageUserRepositoryProtocol {
 }
 // MARK: - Firebase Firestore
 extension KikurageUserRepository {
-    func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, Error>) -> Void) {
+    func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, ClientError>) -> Void) {
         let db = Firestore.firestore()
         let docRef: DocumentReference = db.collection("kikurageUsers").document(uid)
 
         docRef.getDocument { snapshot, error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             guard let snapshotData = snapshot?.data() else {
-                completion(.failure(NetworkError.unknown))
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             do {
                 let kikurageUser: KikurageUser = try Firestore.Decoder().decode(KikurageUser.self, from: snapshotData)
                 completion(.success(kikurageUser))
             } catch {
-                fatalError(error.localizedDescription)
+                completion(.failure(ClientError.responseParseError(error)))
             }
         }
     }
-    func postKikurageUser(uid: String, kikurageUser: KikurageUser, completion: @escaping (Result<Void, Error>) -> Void) {
+    func postKikurageUser(uid: String, kikurageUser: KikurageUser, completion: @escaping (Result<Void, ClientError>) -> Void) {
         let db = Firestore.firestore()
         var data: [String: Any]!
         do {
             data = try Firestore.Encoder().encode(kikurageUser)
         } catch {
-            fatalError(error.localizedDescription)
+            completion(.failure(ClientError.parseError(error)))
         }
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         db.collection(Constants.FirestoreCollectionName.users).document(uid).setData(data) { error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.createError)))
             }
             dispatchGroup.leave()
         }

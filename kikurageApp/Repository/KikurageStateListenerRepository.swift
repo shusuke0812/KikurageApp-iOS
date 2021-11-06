@@ -10,12 +10,12 @@ import Firebase
 
 protocol KikurageStateListenerRepositoryProtocol {
     /// きくらげの状態を監視して更新を通知する
-    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, Error>) -> Void)
+    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
 }
 
 class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
     private var kikurageStateListener: ListenerRegistration?
-    
+
     deinit {
         kikurageStateListener?.remove()
     }
@@ -24,21 +24,22 @@ class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
 // MARK: - Firebase
 
 extension KikurageStateListenerRepository {
-    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, Error>) -> Void) {
+    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
         kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(productKey).addSnapshotListener { snapshot, error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             guard let snapshotData = snapshot?.data() else {
-                completion(.failure(NetworkError.invalidResponse))
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             do {
                 let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                 completion(.success(kikurageState))
             } catch {
-                completion(.failure(ClientError.parseField))
+                completion(.failure(ClientError.responseParseError(error)))
             }
         }
     }

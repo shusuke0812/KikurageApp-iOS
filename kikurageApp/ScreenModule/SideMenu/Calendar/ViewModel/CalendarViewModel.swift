@@ -38,8 +38,7 @@ extension CalendarViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.didSuccessGetKikurageUser()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedGetKikurageUser(errorMessage: "ユーザー情報の取得に失敗しました")
+                self?.delegate?.didFailedGetKikurageUser(errorMessage: error.description())
             }
         }
     }

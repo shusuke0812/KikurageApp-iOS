@@ -50,7 +50,7 @@ extension CultivationViewModel {
                 self?.sortCultivations()
                 self?.delegate?.didSuccessGetCultivations()
             case .failure(let error):
-                self?.delegate?.didFailedGetCultivations(errorMessage: "\(error)")
+                self?.delegate?.didFailedGetCultivations(errorMessage: error.description())
             }
         }
     }

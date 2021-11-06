@@ -45,8 +45,7 @@ extension PostRecipeViewModel {
                 self?.postedRecipeDocumentId = documentReference.documentID
                 self?.delegate?.didSuccessPostRecipe()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedPostRecipe(errorMessage: "DEBUG: 料理記録データの投稿に失敗しました")
+                self?.delegate?.didFailedPostRecipe(errorMessage: error.description())
             }
         }
     }
@@ -57,8 +56,7 @@ extension PostRecipeViewModel {
                 self?.recipe.imageStoragePaths = imageStorageFullPaths
                 self?.delegate?.didSuccessPostRecipeImages()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録画像のStorageパスの保存に失敗しました")
+                self?.delegate?.didFailedPostRecipeImages(errorMessage: error.description())
             }
         }
     }
@@ -67,7 +65,7 @@ extension PostRecipeViewModel {
 extension PostRecipeViewModel {
     func postRecipeImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedRecipeDocumentId = postedRecipeDocumentId else {
-            delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録のドキュメントIDが見つかりませんでした")
+            delegate?.didFailedPostRecipeImages(errorMessage: ClientError.documentIdError.description())
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.recipes)/\(postedRecipeDocumentId)/images/"
@@ -76,8 +74,7 @@ extension PostRecipeViewModel {
             case .success(let imageStoraageFullPaths):
                 self?.postRecipeImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedRecipeDocumentId, imageStorageFullPaths: imageStoraageFullPaths)
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedPostRecipeImages(errorMessage: "DEBUG: 料理記録画像の保存に失敗しました")
+                self?.delegate?.didFailedPostRecipeImages(errorMessage: error.description())
             }
         }
     }

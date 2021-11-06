@@ -15,25 +15,25 @@ protocol CultivationRepositoryProtocol {
     ///   - kikurageUserId: ユーザーID
     ///   - kikurageCultivation: Firestoreへ保存する栽培記録データ
     ///   - completion: 投稿成功、失敗のハンドル
-    func postCultivation(kikurageUserId: String, kikurageCultivation: KikurageCultivation, completion: @escaping (Result<DocumentReference, Error>) -> Void)
+    func postCultivation(kikurageUserId: String, kikurageCultivation: KikurageCultivation, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
     /// 栽培画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
     ///   - imageStoragePath: 画像を保存するStorageパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void)
+    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void)
     /// 栽培画像のStoragePathを更新する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - documentId: 栽培記録のドキュメントID
     ///   - imageStorageFullPaths: Storageに保存した画像のフルパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], Error>) -> Void)
+    func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], ClientError>) -> Void)
     /// 栽培記録を取得する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - completion: 投稿成功、失敗のハンドル
-    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], Error>) -> Void)
+    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], ClientError>) -> Void)
 }
 class CultivationRepository: CultivationRepositoryProtocol {
     /// Storageへ保存するデータのメタデータ
@@ -46,19 +46,20 @@ class CultivationRepository: CultivationRepositoryProtocol {
 }
 // MARK: - Firebase Firestore
 extension CultivationRepository {
-    func postCultivation(kikurageUserId: String, kikurageCultivation: KikurageCultivation, completion: @escaping (Result<DocumentReference, Error>) -> Void) {
+    func postCultivation(kikurageUserId: String, kikurageCultivation: KikurageCultivation, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
         let db = Firestore.firestore()
         var data: [String: Any]!
         do {
             data = try Firestore.Encoder().encode(kikurageCultivation)
         } catch {
-            fatalError(error.localizedDescription)
+            completion(.failure(ClientError.parseError(error)))
         }
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         let documentReference: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations).addDocument(data: data) { error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.createError)))
             }
             dispatchGroup.leave()
         }
@@ -67,29 +68,31 @@ extension CultivationRepository {
             completion(.success(documentReference))
         }
     }
-    func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], Error>) -> Void) {
+    func putCultivationImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], ClientError>) -> Void) {
         let db = Firestore.firestore()
         let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations).document(documentId)
         documentReference.updateData([
             "imageStoragePaths": imageStorageFullPaths
         ]) { error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.updateError)))
             } else {
                 completion(.success(imageStorageFullPaths))
             }
         }
     }
-    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], Error>) -> Void) {
+    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], ClientError>) -> Void) {
         let db = Firestore.firestore()
         let collectionReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations)
         collectionReference.getDocuments { snapshot, error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             guard let snapshot = snapshot else {
-                completion(.failure(NetworkError.unknown))
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
@@ -100,14 +103,14 @@ extension CultivationRepository {
                 }
                 completion(.success(cultivations))
             } catch {
-                completion(.failure(error))
+                completion(.failure(ClientError.responseParseError(error)))
             }
         }
     }
 }
 // MARK: - Firebase Storage
 extension CultivationRepository {
-    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void) {
+    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void) {
         // 画像保存後のフルパス格納用
         var imageStorageFullPaths: [String] = []
         // 直列処理（画像を１つずつ保存する）
@@ -136,7 +139,8 @@ extension CultivationRepository {
             }
             DispatchQueue.main.async {
                 if let resultError = resultError {
-                    completion(.failure(resultError))
+                    dump(resultError)
+                    completion(.failure(ClientError.apiError(.createError)))
                 } else {
                     completion(.success(imageStorageFullPaths))
                 }

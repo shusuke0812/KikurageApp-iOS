@@ -38,7 +38,7 @@ extension RecipeViewModel {
                 self?.recipes = recipes
                 self?.delegate?.didSuccessGetRecipes()
             case .failure(let error):
-                self?.delegate?.didFailedGetRecipes(errorMessage: "\(error)")
+                self?.delegate?.didFailedGetRecipes(errorMessage: error.description())
             }
         }
     }

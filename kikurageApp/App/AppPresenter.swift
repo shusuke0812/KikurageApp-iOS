@@ -43,8 +43,7 @@ extension AppPresenter {
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
             case .failure(let error):
-                print(error)
-                self?.delegate?.didFailedGetKikurageInfo(errorMessage: "きくらげユーザーの取得に失敗しました")
+                self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
             }
         }
     }
@@ -57,8 +56,7 @@ extension AppPresenter {
                 self?.kikurageState = kikurageState
                 self?.delegate?.didSuccessGetKikurageInfo(kikurageInfo: (user: self?.kikurageUser, state: self?.kikurageState))
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedGetKikurageInfo(errorMessage: "きくらげ状態の取得に失敗しました")
+                self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
             }
         }
     }

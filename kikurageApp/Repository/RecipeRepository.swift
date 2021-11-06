@@ -15,25 +15,25 @@ protocol RecipeRepositoryProtocol {
     ///   - kikurageUserId: ユーザーID
     ///   - kikurageRecipe: Firestoreへ保存する料理記録データ
     ///   - completion: 投稿成功、失敗のハンドル
-    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, Error>) -> Void)
+    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
     /// 料理画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
     ///   - imageStoragePath: 画像を保存するStorageパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void)
+    func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void)
     /// 栽培画像のStoragePathを更新する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - documentId: 料理記録のドキュメントID
     ///   - imageStorageFullPaths: Storageに保存した画像のフルパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], Error>) -> Void)
+    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], ClientError>) -> Void)
     /// 栽培記録を取得する
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - completion: 投稿成功、失敗のハンドル
-    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], Error>) -> Void)
+    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], ClientError>) -> Void)
 }
 
 class RecipeRepository: RecipeRepositoryProtocol {
@@ -47,19 +47,20 @@ class RecipeRepository: RecipeRepositoryProtocol {
 }
 // MARK: - Firebase Firestore
 extension RecipeRepository {
-    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, Error>) -> Void) {
+    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
         let db = Firestore.firestore()
         var data: [String: Any]!
         do {
             data = try Firestore.Encoder().encode(kikurageRecipe)
         } catch {
-            fatalError(error.localizedDescription)
+            completion(.failure(ClientError.parseError(error)))
         }
         let dispathGroup = DispatchGroup()
         dispathGroup.enter()
         let documentReference: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes).addDocument(data: data) { error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.createError)))
             }
             dispathGroup.leave()
         }
@@ -68,29 +69,31 @@ extension RecipeRepository {
             completion(.success(documentReference))
         }
     }
-    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], Error>) -> Void) {
+    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String], completion: @escaping (Result<[String], ClientError>) -> Void) {
         let db = Firestore.firestore()
         let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes).document(documentId)
         documentReference.updateData([
             "imageStoragePaths": imageStorageFullPaths
         ]) { error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.updateError)))
             } else {
                 completion(.success(imageStorageFullPaths))
             }
         }
     }
-    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], Error>) -> Void) {
+    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], ClientError>) -> Void) {
         let db = Firestore.firestore()
         let collectionReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes)
         collectionReference.getDocuments { snapshot, error in
             if let error = error {
-                completion(.failure(error))
+                dump(error)
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             guard let snapshot = snapshot else {
-                completion(.failure(NetworkError.unknown))
+                completion(.failure(ClientError.apiError(.readError)))
                 return
             }
             var recipes: [(recipe: KikurageRecipe, documentId: String)] = []
@@ -101,14 +104,14 @@ extension RecipeRepository {
                 }
                 completion(.success(recipes))
             } catch {
-                completion(.failure(error))
+                completion(.failure(ClientError.responseParseError(error)))
             }
         }
     }
 }
 // MARK: - Firebase Storage
 extension RecipeRepository {
-    func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], Error>) -> Void) {
+    func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void) {
         // 画像保存後のフルパス格納用
         var imageStorageFullPaths: [String] = []
         // 直列処理（画像を１つずつ保存する）
@@ -137,7 +140,8 @@ extension RecipeRepository {
             }
             DispatchQueue.main.async {
                 if let resultError = resultError {
-                    completion(.failure(resultError))
+                    dump(resultError)
+                    completion(.failure(ClientError.apiError(.createError)))
                 } else {
                     completion(.success(imageStorageFullPaths))
                 }

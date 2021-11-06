@@ -44,8 +44,7 @@ extension PostCultivationViewModel {
                 self?.postedCultivationDocumentId = documentReference.documentID
                 self?.delegate?.didSuccessPostCultivation()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録データの投稿に失敗しました")
+                self?.delegate?.didFailedPostCultivation(errorMessage: error.description())
             }
         }
     }
@@ -56,8 +55,7 @@ extension PostCultivationViewModel {
                 self?.cultivation.imageStoragePaths = imageStorageFullPaths
                 self?.delegate?.didSuccessPostCultivationImages()
             case .failure(let error):
-                print(error)
-                self?.delegate?.didFailedPostCultivation(errorMessage: "DEBUG: 栽培記録画像のStorageパスの保存に失敗しました")
+                self?.delegate?.didFailedPostCultivation(errorMessage: error.description())
             }
         }
     }
@@ -66,7 +64,7 @@ extension PostCultivationViewModel {
 extension PostCultivationViewModel {
     func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedCultivationDocumentId = postedCultivationDocumentId else {
-            delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録のドキュメントIDが見つかりませんでした")
+            delegate?.didFailedPostCultivationImages(errorMessage: ClientError.documentIdError.description())
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentId)/images/"
@@ -75,8 +73,7 @@ extension PostCultivationViewModel {
             case .success(let imageStorageFullPaths):
                 self?.putCultivationImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedCultivationDocumentId, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedPostCultivationImages(errorMessage: "DEBUG: 栽培記録画像の保存に失敗しました")
+                self?.delegate?.didFailedPostCultivationImages(errorMessage: error.description())
             }
         }
     }
