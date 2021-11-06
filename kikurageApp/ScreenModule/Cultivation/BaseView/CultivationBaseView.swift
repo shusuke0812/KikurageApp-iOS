@@ -35,7 +35,7 @@ class CultivationBaseView: UIView {
 // MARK: - Initialized
 extension CultivationBaseView {
     private func initUI() {
-        noCultivationLabel.text = "さいばいきろくがありません"
+        noCultivationLabel.text = R.string.localizable.screen_cultivation_no_cultivation()
         noCultivationLabel.textColor = .darkGray
         noCultivationLabel.isHidden = true
     }

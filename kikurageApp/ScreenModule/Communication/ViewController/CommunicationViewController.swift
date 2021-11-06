@@ -22,7 +22,7 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
 // MARK: - Initialized Method
 extension CommunicationViewController {
     private func setNavigationItem() {
-        setNavigationBar(title: "みんなにそうだん")
+        setNavigationBar(title: R.string.localizable.screen_communication_title())
     }
     private func setDelegateDataSource() {
         baaseView.delegate = self

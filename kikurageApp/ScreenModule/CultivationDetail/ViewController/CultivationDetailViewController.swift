@@ -26,7 +26,7 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
 // MARK: - Private
 extension CultivationDetailViewController {
     private func setNavigationItem() {
-        setNavigationBar(title: "さいばいきろく詳細")
+        setNavigationBar(title: R.string.localizable.screen_cultivation_detail_title())
     }
     private func setDelegateDataSource() {
         baseView.collectionView.delegate = self

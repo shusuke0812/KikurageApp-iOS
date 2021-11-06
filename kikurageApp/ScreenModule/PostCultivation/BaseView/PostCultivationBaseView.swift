@@ -52,14 +52,14 @@ extension PostCultivationBaseView {
     }
     private func initUI() {
         // タイトル
-        navigationItem.title = "さいばいきろく保存"
+        navigationItem.title = R.string.localizable.screen_post_cultivation_title()
         // 背景色
         backgroundColor = .themeColor
         cameraCollectionView.backgroundColor = .themeColor
         textView.backgroundColor = .themeColor
         // プレースホルダー
-        textView.placeholder = "観察メモ"
-        dateTextField.placeholder = "日付を選択"
+        textView.placeholder = R.string.localizable.screen_post_cultivation_textview_placeholder()
+        dateTextField.placeholder = R.string.localizable.screen_post_cultivation_date_textfield_placeholder()
         // 保存するボタン
         postButton.layer.masksToBounds = true
         postButton.layer.cornerRadius = 5

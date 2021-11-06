@@ -38,7 +38,7 @@ extension PostCultivationViewController {
 // MARK: - BaseView Delegate
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか？", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル ") {
+        UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             // HUD表示（始）
             HUD.show(.progress)
             if let kikurageUserId = LoginHelper.shared.kikurageUserId {
@@ -95,13 +95,13 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didFailedPostCultivation(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
     func didSuccessPostCultivationImages() {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) {
                 NotificationCenter.default.post(name: .updatedCultivations, object: nil)
                 self.dismiss(animated: true, completion: nil)
             }
@@ -110,7 +110,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func didFailedPostCultivationImages(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }

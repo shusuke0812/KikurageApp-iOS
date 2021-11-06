@@ -38,7 +38,7 @@ extension PostRecipeViewController {
 // MARK: - BaseView Delegate
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func didTapPostButton() {
-        UIAlertController.showAlert(style: .alert, viewController: self, title: "こちらの投稿内容で\n良いですか", message: nil, okButtonTitle: "OK", cancelButtonTitle: "キャンセル") {
+        UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             HUD.show(.progress)
             if let kikurageUserId = LoginHelper.shared.kikurageUserId {
                 self.viewModel.postRecipe(kikurageUserId: kikurageUserId)
@@ -141,13 +141,13 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didFailedPostRecipe(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
     func didSuccessPostRecipeImages() {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "栽培記録を保存しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil) {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_success_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) {
                 NotificationCenter.default.post(name: .updatedRecipes, object: nil)
                 self.dismiss(animated: true, completion: nil)
             }
@@ -156,7 +156,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didFailedPostRecipeImages(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }

@@ -33,7 +33,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
 // MARK: - Initialized
 extension CultivationViewController {
     private func setNavigationItem() {
-        setNavigationBar(title: "さいばいきろく")
+        setNavigationBar(title: R.string.localizable.screen_cultivation_title())
     }
     private func setDelegateDataSource() {
         baseView.delegate = self
@@ -70,7 +70,7 @@ extension CultivationViewController: CultivationViewModelDelegate {
         print(errorMessage)
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }

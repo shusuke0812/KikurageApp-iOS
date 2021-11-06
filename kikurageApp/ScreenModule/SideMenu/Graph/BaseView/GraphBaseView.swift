@@ -43,9 +43,9 @@ class GraphBaseView: UIView {
 extension GraphBaseView {
     private func initUI() {
         // タイトル
-        navigationItem.title = "グラフ"
-        temperatureLabel.text = "温度"
-        humidityLabel.text = "湿度"
+        navigationItem.title = R.string.localizable.side_menu_graph_title()
+        temperatureLabel.text = R.string.localizable.side_menu_graph_temperature_subtitle()
+        humidityLabel.text = R.string.localizable.side_menu_graph_humidity_subtitle()
     }
 }
 // MARK: - Setting UI

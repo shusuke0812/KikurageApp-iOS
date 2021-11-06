@@ -56,15 +56,15 @@ extension PostRecipeBaseView {
     }
     private func initUI() {
         // タイトル
-        navigationItem.title = "りょうりきろく保存"
+        navigationItem.title = R.string.localizable.screen_post_recipe_title()
         // 背景色
         backgroundColor = .themeColor
         cameraCollectionView.backgroundColor = .themeColor
         recipeMemoTextView.backgroundColor = .themeColor
         // プレースホルダー
-        recipeMemoTextView.placeholder = "料理メモ"
-        recipeNameTextField.placeholder = "料理名"
-        dateTextField.placeholder = "日付を選択"
+        recipeMemoTextView.placeholder = R.string.localizable.screen_post_recipe_recipe_memo_textview_placeholder()
+        recipeNameTextField.placeholder = R.string.localizable.screen_post_recipe_recipe_name_textfield_placeholder()
+        dateTextField.placeholder = R.string.localizable.screen_post_recipe_recipe_date_textfield_placeholder()
         // 保存するボタン
         postButton.layer.masksToBounds = true
         postButton.layer.cornerRadius = 5

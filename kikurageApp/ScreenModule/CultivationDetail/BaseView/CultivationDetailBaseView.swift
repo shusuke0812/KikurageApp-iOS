@@ -25,7 +25,7 @@ class CultivationDetailBaseView: UIView {
 extension CultivationDetailBaseView {
     private func initUI() {
         viewDateLabel.text = ""
-        memoTitleLabel.text = "観察メモ"
+        memoTitleLabel.text = R.string.localizable.screen_cultivation_detail_memo_title()
         memoLabel.text = ""
     }
     private func setCollectionView() {

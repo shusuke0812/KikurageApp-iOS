@@ -48,13 +48,13 @@ class SideMenuBaseView: UIView {
 // MARK: - Initialized
 extension SideMenuBaseView {
     private func initSideMenuContent() {
-        calendarView.setSideMenuContent(title: "カレンダー", imageSystemName: "calendar")
-        graphView.setSideMenuContent(title: "グラフ", imageSystemName: "waveform.path.ecg")
-        contactView.setSideMenuContent(title: "問い合わせ", imageSystemName: "questionmark.circle")
-        settingView.setSideMenuContent(title: "設定", imageSystemName: "gear")
-        licenseView.setSideMenuContent(title: "著作権", imageSystemName: "info.circle")
-        searchRecipeView.setSideMenuContent(title: "料理レシピ検索", imageSystemName: "magnifyingglass")
-        kikurageDictionaryView.setSideMenuContent(title: "きくらげ豆知識", imageSystemName: "doc.text")
+        calendarView.setSideMenuContent(title: R.string.localizable.side_menu_content_clendar_subtitle(), imageSystemName: "calendar")
+        graphView.setSideMenuContent(title: R.string.localizable.side_menu_content_clendar_subtitle(), imageSystemName: "waveform.path.ecg")
+        contactView.setSideMenuContent(title: R.string.localizable.side_menu_content_contact_subtitle(), imageSystemName: "questionmark.circle")
+        settingView.setSideMenuContent(title: R.string.localizable.side_menu_content_setting_subtitle(), imageSystemName: "gear")
+        licenseView.setSideMenuContent(title: R.string.localizable.side_menu_content_license_subtitle(), imageSystemName: "info.circle")
+        searchRecipeView.setSideMenuContent(title: R.string.localizable.side_menu_content_search_recipe_subtitle(), imageSystemName: "magnifyingglass")
+        kikurageDictionaryView.setSideMenuContent(title: R.string.localizable.side_menu_content_kikurage_dictionary_subtitle(), imageSystemName: "doc.text")
     }
     private func initSideMenuBoarderLine() {
         calendarView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)

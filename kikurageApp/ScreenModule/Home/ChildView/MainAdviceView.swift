@@ -29,7 +29,7 @@ extension MainAdviceView {
         baseView.layer.borderWidth = 1.0
     }
     private func initAdviceTitleLabel() {
-        adviceTitleLabel.text = "【アドバイス】"
+        adviceTitleLabel.text = R.string.localizable.screen_home_advice_title()
     }
     private func initAdviceIconImageView() {
         adviceIconImageView.image = R.image.hakase()

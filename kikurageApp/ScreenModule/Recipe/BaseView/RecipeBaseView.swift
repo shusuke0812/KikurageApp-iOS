@@ -32,7 +32,7 @@ class RecipeBaseView: UIView {
 // MARK: - Initialized Method
 extension RecipeBaseView {
     private func initUI() {
-        noRecipeLabel.text = "りょうりきろくがありません"
+        noRecipeLabel.text = R.string.localizable.screen_recipe_no_recipe()
         noRecipeLabel.textColor = .darkGray
         noRecipeLabel.isHidden = true
     }

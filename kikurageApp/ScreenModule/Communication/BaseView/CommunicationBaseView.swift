@@ -30,10 +30,7 @@ class CommunicationBaseView: UIView {
 // MARK: - Initialized
 extension CommunicationBaseView {
     private func initUI() {
-        informationLabel.text = """
-        【お知らせ】
-        キクラゲ栽培者同士でお互いに相談できるFacebookグループです。Facebookアカウントを持っていない方は下記ボタンのリンク先の「新しいアカウントを作成」より設定してください。
-        """
+        informationLabel.text = R.string.localizable.screen_communication_information()
         informationLabel.backgroundColor = .information
     }
 }

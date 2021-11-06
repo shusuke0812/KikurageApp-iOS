@@ -83,7 +83,7 @@ extension MainBaseView {
     /// きくらげ名を設定
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
         if let name: String = kikurageUser?.kikurageName {
-            kikurageNameLabel.text = "今日の \(name)"
+            kikurageNameLabel.text = R.string.localizable.screen_home_kikurage_name(name)
         }
     }
     /// 時刻表示更新用メソッド

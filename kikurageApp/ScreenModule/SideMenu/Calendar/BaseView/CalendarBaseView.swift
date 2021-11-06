@@ -30,6 +30,6 @@ class CalendarBaseView: UIView {
 // MARK: - Initialized
 extension CalendarBaseView {
     private func initUI() {
-        navigationItem.title = "カレンダー"
+        navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
 }

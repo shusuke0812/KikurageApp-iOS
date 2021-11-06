@@ -37,7 +37,7 @@ extension CalendarViewController: CalendarViewModelDelegate {
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         DispatchQueue.main.async {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }
