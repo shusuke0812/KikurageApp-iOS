@@ -19,8 +19,8 @@ enum ClientError: Error {
     case apiError(FirebaseAPIError)
     /// 不明なエラー
     case unknown
-    /// FirestoreのドキュメントIDが見つからない
-    case documentIdError
+    /// UserDefaultsの保存に失敗
+    case saveUserDefaultsError
 
     func description() -> String {
         switch self {
@@ -29,7 +29,7 @@ enum ClientError: Error {
         case .responseParseError:       return "レスポンスの変換に失敗しました"
         case .apiError:                 return "サーバーエラー"
         case .unknown:                  return "エラーが発生しました"
-        case .documentIdError:          return "ドキュメントIDが見つかりません"
+        case .saveUserDefaultsError:    return "UserDefaultsへの保存に失敗しました"
         }
     }
 }
