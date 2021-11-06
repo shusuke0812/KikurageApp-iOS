@@ -41,7 +41,6 @@ extension PostRecipeViewModel {
         recipeRepository.postRecipe(kikurageUserId: kikurageUserId, kikurageRecipe: recipe) { [weak self] response in
             switch response {
             case .success(let documentReference):
-                print("documentReference = \(documentReference)")
                 self?.postedRecipeDocumentId = documentReference.documentID
                 self?.delegate?.didSuccessPostRecipe()
             case .failure(let error):
@@ -65,7 +64,7 @@ extension PostRecipeViewModel {
 extension PostRecipeViewModel {
     func postRecipeImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedRecipeDocumentId = postedRecipeDocumentId else {
-            delegate?.didFailedPostRecipeImages(errorMessage: ClientError.documentIdError.description())
+            delegate?.didFailedPostRecipeImages(errorMessage: FirebaseAPIError.documentIdError.description())
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.recipes)/\(postedRecipeDocumentId)/images/"

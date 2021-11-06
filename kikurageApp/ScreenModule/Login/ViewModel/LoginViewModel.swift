@@ -61,8 +61,7 @@ extension LoginViewModel {
                 self?.loginUser = loginUser
                 self?.loadKikurageUser()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedLogin(errorMessage: "ユーザーログインに失敗しました")
+                self?.delegate?.didFailedLogin(errorMessage: error.description())
             }
         }
     }
@@ -78,8 +77,7 @@ extension LoginViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedLogin(errorMessage: "きくらげユーザーの取得に失敗しました")
+                self?.delegate?.didFailedLogin(errorMessage: error.description())
             }
         }
     }
@@ -92,8 +90,7 @@ extension LoginViewModel {
                 self?.kikurageState = kikurageState
                 self?.delegate?.didSuccessLogin()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedLogin(errorMessage: "きくらげ状態の取得に失敗しました")
+                self?.delegate?.didFailedLogin(errorMessage: error.description())
             }
         }
     }

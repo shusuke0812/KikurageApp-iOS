@@ -53,8 +53,7 @@ extension SignUpViewModel {
                 self?.loginUser = loginUser
                 self?.delegate?.didSuccessRegisterUser()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedRegisterUser(errorMessage: "ユーザー登録に失敗しました")
+                self?.delegate?.didFailedRegisterUser(errorMessage: error.description())
             }
         }
     }

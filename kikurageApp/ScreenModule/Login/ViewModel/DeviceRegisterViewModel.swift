@@ -56,8 +56,7 @@ extension DeviceRegisterViewModel {
                 self?.kikurageState = kikurageState
                 self?.delegate?.didSuccessGetKikurageState()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedGetKikurageState(errorMessage: "きくらげの状態を取得できませんでした")
+                self?.delegate?.didFailedGetKikurageState(errorMessage: error.description())
             }
         }
     }
@@ -73,8 +72,7 @@ extension DeviceRegisterViewModel {
             case .success():
                 self?.delegate?.didSuccessPostKikurageUser()
             case .failure(let error):
-                print("DEBUG: \(error)")
-                self?.delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを登録できませんでした")
+                self?.delegate?.didFailedPostKikurageUser(errorMessage: error.description())
             }
         }
     }

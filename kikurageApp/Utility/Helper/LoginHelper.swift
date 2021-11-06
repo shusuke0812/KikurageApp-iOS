@@ -25,7 +25,7 @@ class LoginHelper {
                     return user.isEmailVerified ? user.uid : nil
                 }
             } catch {
-                print("DEBUG: ユーザー情報の取得に失敗 -> " + error.localizedDescription)
+                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return nil
@@ -38,7 +38,7 @@ class LoginHelper {
                     return user.isEmailVerified
                 }
             } catch {
-                print("DEBUG: ユーザー情報の取得に失敗 -> " + error.localizedDescription)
+                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return false
@@ -68,9 +68,8 @@ class LoginHelper {
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
-            print("DEBUG: ユーザー情報を`UserDefaults`に保存しました")
         } catch {
-            print("DEBUG: ユーザー情報のを`UserDefaults`に保存できませんでした -> " + error.localizedDescription)
+            print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
 }

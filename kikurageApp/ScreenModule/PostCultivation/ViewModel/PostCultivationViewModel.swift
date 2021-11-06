@@ -40,7 +40,6 @@ extension PostCultivationViewModel {
         cultivationRepository.postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: cultivation) { [weak self] response in
             switch response {
             case .success(let documentReference):
-                print(documentReference)
                 self?.postedCultivationDocumentId = documentReference.documentID
                 self?.delegate?.didSuccessPostCultivation()
             case .failure(let error):
@@ -64,7 +63,7 @@ extension PostCultivationViewModel {
 extension PostCultivationViewModel {
     func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedCultivationDocumentId = postedCultivationDocumentId else {
-            delegate?.didFailedPostCultivationImages(errorMessage: ClientError.documentIdError.description())
+            delegate?.didFailedPostCultivationImages(errorMessage: FirebaseAPIError.documentIdError.description())
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentId)/images/"
