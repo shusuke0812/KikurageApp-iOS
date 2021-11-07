@@ -61,7 +61,11 @@
 "screen_login_email_textfield_placeholer" = "Email address";
 "screen_login_password_textfield_placeholer" = "Password";
 "screen_login_login_btn_name" = "Login";
+
 "screen_signup_title" = "User Registration";
+"screen_signup_email_textfield_placeholer" = "Email address";
+"screen_signup_password_textfield_placeholer" = "Password";
+"screen_signup_signup_btn_name" = "SignUp";
 "screen_signup_register_alert_user_title" = "Complete registration";
 "screen_signup_register_alert_user_message" = "Please register from URL link usign your sent email.";
 "screen_device_register_title" = "Device Registration";

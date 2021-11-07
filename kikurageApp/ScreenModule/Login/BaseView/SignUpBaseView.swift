@@ -35,9 +35,13 @@ extension SignUpBaseView {
     private func initUI() {
         userRegisterButton.layer.masksToBounds = true
         userRegisterButton.layer.cornerRadius = 5
+        userRegisterButton.setTitle(R.string.localizable.screen_signup_signup_btn_name(), for: .normal)
 
         emailTextField.autocorrectionType = .no
+        emailTextField.placeholder = R.string.localizable.screen_signup_email_textfield_placeholer()
+
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.placeholder = R.string.localizable.screen_signup_password_textfield_placeholer()
     }
     func initTextFields() {
         emailTextField.text = ""

@@ -61,7 +61,11 @@
 "screen_login_email_textfield_placeholer" = "メールアドレス";
 "screen_login_password_textfield_placeholer" = "パスワード";
 "screen_login_login_btn_name" = "ログイン";
+
 "screen_signup_title" = "ユーザー登録";
+"screen_signup_email_textfield_placeholer" = "メールアドレス";
+"screen_signup_password_textfield_placeholer" = "パスワード";
+"screen_signup_signup_btn_name" = "登録する";
 "screen_signup_register_alert_user_title" = "仮登録完了";
 "screen_signup_register_alert_user_message" = "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください";
 "screen_device_register_title" = "デバイス登録";
