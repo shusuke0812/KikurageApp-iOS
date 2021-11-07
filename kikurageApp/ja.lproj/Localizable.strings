@@ -51,6 +51,10 @@
 // top
 "screen_top_copy_right" = "©︎ チーム きくらげ大使館";
 "screen_top_title" = "ようこそ！";
+"screen_top_login_btn_name" = "ログイン";
+"screen_top_signup_btn_name" = "新規ユーザー登録";
+"screen_top_app_term" = "利用規約";
+"screen_top_app_privacy" = "個人情報保護方針";
 
 // login
 "screen_login_title" = "ログイン";

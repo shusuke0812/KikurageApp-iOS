@@ -20,6 +20,8 @@ class TopBaseView: UIView {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var copyrightLabel: UILabel!
+    @IBOutlet private weak var termsButton: UIButton!
+    @IBOutlet private weak var privacyButton: UIButton!
 
     weak var delegate: TopBaseViewDelegate?
 
@@ -50,10 +52,18 @@ extension TopBaseView {
 
         signUpButton.layer.masksToBounds = true
         signUpButton.layer.cornerRadius = 5
+        signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
 
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 5
+        loginButton.setTitle(R.string.localizable.screen_top_login_btn_name(), for: .normal)
 
-        copyrightLabel.text = "©︎ チーム きくらげ大使館"
+        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
+        let termsButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_term(), attributes: attributes)
+        let privacyButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_privacy(), attributes: attributes)
+        termsButton.setAttributedTitle(termsButtonAttributedString, for: .normal)
+        privacyButton.setAttributedTitle(privacyButtonAttributedString, for: .normal)
+
+        copyrightLabel.text = R.string.localizable.screen_top_copy_right()
     }
 }

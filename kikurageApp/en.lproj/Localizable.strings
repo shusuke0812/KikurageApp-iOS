@@ -51,6 +51,10 @@
 // top
 "screen_top_copy_right" = "©︎ Team Kikurage Ambassadors";
 "screen_top_title" = "Welcom！";
+"screen_top_login_btn_name" = "Login";
+"screen_top_signup_btn_name" = "SignUp";
+"screen_top_app_term" = "Terms of Service";
+"screen_top_app_privacy" = "Privacy";
 
 // login
 "screen_login_title" = "Login";
