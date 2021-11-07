@@ -116,3 +116,7 @@
 "side_menu_graph_title" = "グラフ";
 "side_menu_graph_temperature_subtitle" = "温度";
 "side_menu_graph_humidity_subtitle" = "湿度";
+
+// mail
+"side_menu_mail_subject" = "【きくらげ君アプリ】お問い合わせ";
+"side_menu_mail_message_body" = "質問を入力して送信ボタンを押して下さい。\n--------------";

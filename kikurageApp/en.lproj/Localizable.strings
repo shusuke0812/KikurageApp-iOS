@@ -116,3 +116,7 @@
 "side_menu_graph_title" = "Graph";
 "side_menu_graph_temperature_subtitle" = "Temperature";
 "side_menu_graph_humidity_subtitle" = "Humidity";
+
+// mail
+"side_menu_mail_subject" = "[ Kikurage App ] Contact";
+"side_menu_mail_message_body" = "Please send email after entered your question.\n--------------";

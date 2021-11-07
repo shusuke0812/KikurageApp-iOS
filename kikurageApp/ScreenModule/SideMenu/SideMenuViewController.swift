@@ -65,11 +65,11 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     private func openContactMailer() {
         if MFMailComposeViewController.canSendMail() {
             // 宛先のメールアドレス
-            mail.setToRecipients(["kikurageproject2019@googlegroups.com"])
+            mail.setToRecipients([Constants.Email.address])
             // 件名
-            mail.setSubject("【きくらげ君アプリ】お問い合わせ")
+            mail.setSubject(R.string.localizable.side_menu_mail_subject())
             // 本文
-            mail.setMessageBody("質問を入力して送信ボタンを押して下さい。\n--------------", isHTML: false)
+            mail.setMessageBody(R.string.localizable.side_menu_mail_message_body(), isHTML: false)
             present(mail, animated: true, completion: nil)
         } else {
             print("DEBUG: 送信できません")
