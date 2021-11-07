@@ -38,8 +38,14 @@ extension DeviceRegisterBaseView {
     private func initUI() {
         deviceRegisterButton.layer.masksToBounds = true
         deviceRegisterButton.layer.cornerRadius = 5
+        deviceRegisterButton.setTitle(R.string.localizable.screen_device_register_register_btn_name(), for: .normal)
 
         productKeyTextField.autocorrectionType = .no
+        productKeyTextField.placeholder = R.string.localizable.screen_device_register_productkey_textfield_placeholer()
+
+        kikurageNameTextField.placeholder = R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer()
+
+        cultivationStartDateTextField.placeholder = R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
     }
     private func initDatePicker() {
         // DatePcikerの基本設定
