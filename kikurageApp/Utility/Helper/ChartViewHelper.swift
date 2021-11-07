@@ -16,6 +16,6 @@ class ChartViewHelper: NSObject, IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         // MEMO: Index out of range対策（参考：https://github.com/danielgindi/Charts/issues/1749）
         let index = Int(value) % xAxisValues.count
-        return xAxisValues[index].rawValue
+        return xAxisValues[index].localizedString
     }
 }

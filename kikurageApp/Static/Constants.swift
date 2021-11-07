@@ -41,13 +41,25 @@ enum Constants {
         static let firebaseUser = "firebase_user"
     }
     enum Week: String, CaseIterable {
-        case monday     = "月曜"
-        case tuesday    = "火曜"
-        case wednesday  = "水曜"
-        case thursday   = "木曜"
-        case friday     = "金曜"
-        case saturday   = "土曜"
-        case sunday     = "日曜"
+        case monday
+        case tuesday
+        case wednesday
+        case thursday
+        case friday
+        case saturday
+        case sunday
+
+        var localizedString: String {
+            switch self {
+            case .monday:       return R.string.localizable.common_week_monday()
+            case .tuesday:      return R.string.localizable.common_week_tuesday()
+            case .wednesday:    return R.string.localizable.common_week_wednesday()
+            case .thursday:     return R.string.localizable.common_week_thursday()
+            case .friday:       return R.string.localizable.common_week_friday()
+            case .saturday:     return R.string.localizable.common_week_saturday()
+            case .sunday:       return R.string.localizable.common_week_sunday()
+            }
+        }
     }
     enum Email {
         static let address = "kikurageproject2019@googlegroups.com"
