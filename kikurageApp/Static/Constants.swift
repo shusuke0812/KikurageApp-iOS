@@ -49,7 +49,7 @@ enum Constants {
         case saturday   = "土曜"
         case sunday     = "日曜"
     }
-    enum Email: String {
+    enum Email {
         static let address = "kikurageproject2019@googlegroups.com"
     }
 }
