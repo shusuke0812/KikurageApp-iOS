@@ -34,9 +34,13 @@ extension LoginBaseView {
     private func initUI() {
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = 5
+        loginButton.setTitle(R.string.localizable.screen_login_login_btn_name(), for: .normal)
 
         emailTextField.autocorrectionType = .no
+        emailTextField.placeholder = R.string.localizable.screen_login_email_textfield_placeholer()
+
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.placeholder = R.string.localizable.screen_login_password_textfield_placeholer()
     }
     func initTextFields() {
         emailTextField.text = ""
