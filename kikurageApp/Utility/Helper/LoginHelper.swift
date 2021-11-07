@@ -44,18 +44,18 @@ class LoginHelper {
         return false
     }
     /// Firebaseユーザー情報を更新
-    func userReload(completion: @escaping (() -> Void)) {
+    func userReload(completion: (() -> Void)? = nil) {
         Auth.auth().currentUser?.reload { [weak self] _ in
             self?.userListener {
-                completion()
+                completion?()
             }
         }
     }
     /// Firebaeユーザーを取得
-    func userListener(completion: @escaping (() -> Void)) {
+    func userListener(completion: (() -> Void)? = nil) {
         userListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
             self.user = user
-            completion()
+            completion?()
         }
     }
     /// Firebaseユーザーリスナをデタッチ
