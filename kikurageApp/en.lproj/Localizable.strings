@@ -79,6 +79,11 @@
 "screen_home_title" = "Home";
 "screen_home_kikurage_name" = "Today's %@";
 "screen_home_advice_title" = "[ Advice ]";
+"screen_home_temperature_title" = "Temperature";
+"screen_home_humidity_title" = "Humidity";
+"screen_home_temperature_humidity_now_title" = "Now";
+"screen_home_temperature_humidity_expected_title" = "Expected";
+"screen_home_humidity_expected_suffix" = "more";
 
 // cultivation
 "screen_cultivation_title" = "Cultivation";

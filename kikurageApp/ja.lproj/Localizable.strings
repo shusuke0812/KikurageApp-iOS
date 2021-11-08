@@ -79,6 +79,11 @@
 "screen_home_title" = "ホーム";
 "screen_home_kikurage_name" = "今日の %@";
 "screen_home_advice_title" = "【アドバイス】";
+"screen_home_temperature_title" = "温度";
+"screen_home_humidity_title" = "湿度";
+"screen_home_temperature_humidity_now_title" = "現在";
+"screen_home_temperature_humidity_expected_title" = "理想";
+"screen_home_humidity_expected_suffix" = "以上";
 
 // cultivation
 "screen_cultivation_title" = "さいばいきろく";
