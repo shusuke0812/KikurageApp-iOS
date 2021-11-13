@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MessageUI
 import RxSwift
 
 class MainViewController: UIViewController, UIViewControllerNavigatable {
