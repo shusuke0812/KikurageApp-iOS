@@ -21,12 +21,12 @@ enum FirebaseAPIError: Error {
 
     func description() -> String {
         switch self {
-        case .createError:              return "作成に失敗しました"
-        case .readError:                return "読み込みに失敗しました"
-        case .deleteError:              return "削除に失敗しました"
-        case .updateError:              return "更新に失敗しました"
-        case .documentIdError:          return "ドキュメントIDが見つかりません"
-        case .loadUserError:            return "ユーザー情報の取得に失敗しました"
+        case .createError:              return R.string.localizable.error_firebase_create()
+        case .readError:                return R.string.localizable.error_firebase_read()
+        case .deleteError:              return R.string.localizable.error_firebase_delete()
+        case .updateError:              return R.string.localizable.error_firebase_update()
+        case .documentIdError:          return R.string.localizable.error_firebase_document_id()
+        case .loadUserError:            return R.string.localizable.error_firebase_load_user()
         }
     }
 }

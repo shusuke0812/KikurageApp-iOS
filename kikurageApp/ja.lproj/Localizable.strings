@@ -43,6 +43,25 @@
 // navigation
 "common_navigation_back_btn_title" = "もどる";
 
+/****
+ * error
+ */
+
+// client error
+"error_client_network_connection" = "ネットワーク通信に失敗しました";
+"error_client_parse" = "パースエラー";
+"error_client_response_parse" = "レスポンスの変換に失敗しました";
+"error_client_api" = "サーバーエラー";
+"error_client_unknown" = "エラーが発生しました";
+"error_client_save_user_defaults" = "UserDefaultsへの保存に失敗しました";
+
+// firebase error
+"error_firebase_create" = "作成に失敗しました";
+"error_firebase_read" = "読み込みに失敗しました";
+"error_firebase_delete" = "削除に失敗しました";
+"error_firebase_update" = "更新に失敗しました";
+"error_firebase_document_id" = "ドキュメントIDが見つかりません";
+"error_firebase_load_user" = "ユーザー情報の取得に失敗しました";
 
 /****
  * screen

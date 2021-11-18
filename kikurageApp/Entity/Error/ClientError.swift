@@ -24,12 +24,12 @@ enum ClientError: Error {
 
     func description() -> String {
         switch self {
-        case .networkConnectionError:   return "ネットワーク通信に失敗しました"
-        case .parseError:               return "パースエラー"
-        case .responseParseError:       return "レスポンスの変換に失敗しました"
-        case .apiError:                 return "サーバーエラー"
-        case .unknown:                  return "エラーが発生しました"
-        case .saveUserDefaultsError:    return "UserDefaultsへの保存に失敗しました"
+        case .networkConnectionError:   return R.string.localizable.error_client_network_connection()
+        case .parseError:               return R.string.localizable.error_client_parse()
+        case .responseParseError:       return R.string.localizable.error_client_response_parse()
+        case .apiError:                 return R.string.localizable.error_client_api()
+        case .unknown:                  return R.string.localizable.error_client_unknown()
+        case .saveUserDefaultsError:    return R.string.localizable.error_client_save_user_defaults()
         }
     }
 }

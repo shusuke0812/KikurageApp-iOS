@@ -43,6 +43,25 @@
 // navigation
 "common_navigation_back_btn_title" = "Back";
 
+/****
+ * error
+ */
+
+// client error
+"error_client_network_connection" = "Network error";
+"error_client_parse" = "Parse error";
+"error_client_response_parse" = "Failed to response parse";
+"error_client_api" = "Server error";
+"error_client_unknown" = "Error";
+"error_client_save_user_defaults" = "Failed to save UserDefaults";
+
+// firebase error
+"error_firebase_create" = "Failed to create";
+"error_firebase_read" = "Failed to read";
+"error_firebase_delete" = "Failed to delete";
+"error_firebase_update" = "Failed to update";
+"error_firebase_document_id" = "Not found document id";
+"error_firebase_load_user" = "Failed to get user information";
 
 /****
  * screen
