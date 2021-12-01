@@ -9,14 +9,6 @@
 import UIKit
 
 enum Constants {
-    enum WebUrl {
-        /// Facebookのきくらげコミュニティ
-        static let facebook = "https://www.facebook.com/groups/kikurage.community.2019/"
-        /// 利用規約
-        static let terms = "https://docs.google.com/document/d/1xwKhNVNW-CUuRFp_jk8vhMG1TaihEtrzbEM9RPy77Ac/edit?usp=sharing"
-        /// 個人情報保護方針
-        static let privacyPolicy = "https://docs.google.com/document/d/1xwKhNVNW-CUuRFp_jk8vhMG1TaihEtrzbEM9RPy77Ac/edit?usp=sharing"
-    }
     enum FirestoreCollectionName {
         /// 栽培ステートコレクション
         static let states = "kikurageStates"
