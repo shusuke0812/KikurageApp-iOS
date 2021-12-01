@@ -84,6 +84,7 @@
 		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
 		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
 		9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */; };
+		9C9FABE42757C20A008E6D7A /* CommunicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE32757C20A008E6D7A /* CommunicationViewModel.swift */; };
 		9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0CDA926E8FED800116896 /* SignUpRepository.swift */; };
 		9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */; };
 		9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627E26E26B70000F7EE2 /* TopViewController.swift */; };
@@ -198,6 +199,7 @@
 		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigRepository.swift; sourceTree = "<group>"; };
+		9C9FABE32757C20A008E6D7A /* CommunicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewModel.swift; sourceTree = "<group>"; };
 		9CA0CDA926E8FED800116896 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBaseView.swift; sourceTree = "<group>"; };
 		9CA7627E26E26B70000F7EE2 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +354,14 @@
 				9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		9C9FABE22757C1E9008E6D7A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C9FABE32757C20A008E6D7A /* CommunicationViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA2043D271C76A000D65DD7 /* ScreenModule */ = {
@@ -538,6 +548,7 @@
 		9CA20450271C784000D65DD7 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				9C9FABE22757C1E9008E6D7A /* ViewModel */,
 				9CA20451271C784E00D65DD7 /* BaseView */,
 				9CA20463271C7AF700D65DD7 /* ViewController */,
 			);
@@ -1129,6 +1140,7 @@
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
+				9C9FABE42757C20A008E6D7A /* CommunicationViewModel.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
 				9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */,
 				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,

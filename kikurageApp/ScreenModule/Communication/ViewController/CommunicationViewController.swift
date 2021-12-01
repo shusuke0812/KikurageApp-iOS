@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import PKHUD
 
 class CommunicationViewController: UIViewController, UIViewControllerNavigatable {
     private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
+    private var viewModel: CommunicationViewModel!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -17,6 +19,10 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
         setNavigationItem()
         setDelegateDataSource()
         adjustNavigationBarBackgroundColor()
+
+        viewModel = CommunicationViewModel(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
+        viewModel.delegate = self
+        loadFacebookGroupUrl()
     }
 }
 // MARK: - Initialized Method
@@ -27,10 +33,23 @@ extension CommunicationViewController {
     private func setDelegateDataSource() {
         baaseView.delegate = self
     }
+    private func loadFacebookGroupUrl() {
+        HUD.show(.progress)
+        viewModel.loadFacebookGroupUrl()
+    }
 }
 // MARK: - CommunicationBaseView Delegate
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func didTapFacebookButton() {
-        transitionSafariViewController(urlString: Constants.WebUrl.facebook)
+        transitionSafariViewController(urlString: viewModel.faceboolGroupUrl)
+    }
+}
+// MARK: - CommunicationViewMdeol Delegate
+extension CommunicationViewController: CommunicationViewModelDelegate {
+    func didSuccessGetFacebookGroupUrl() {
+        HUD.hide()
+    }
+    func didFailedGetFacebookGroupUrl() {
+        HUD.hide()
     }
 }

@@ -21,7 +21,7 @@ protocol FirebaseRemoteConfigRepositoryProtocol {
 
 class FirebaseRemoteConfigRepository: FirebaseRemoteConfigRepositoryProtocol {
     private let remoteConfig: RemoteConfig
-    
+
     init() {
         remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
@@ -34,7 +34,7 @@ class FirebaseRemoteConfigRepository: FirebaseRemoteConfigRepositoryProtocol {
 
 extension FirebaseRemoteConfigRepository {
     func fetch(key: FirebaseRemoteConfigPrimaryKey, completion: @escaping (Result<String, Error>) -> Void) {
-        remoteConfig.fetchAndActivate { [weak self] (status, error) in
+        remoteConfig.fetchAndActivate { [weak self] status, error in
             if let error = error {
                 completion(.failure(error))
                 return
