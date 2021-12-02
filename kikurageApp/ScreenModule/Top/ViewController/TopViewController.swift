@@ -31,11 +31,19 @@ extension TopViewController {
 // MARK: - TopBaseView Delegate
 extension TopViewController: TopBaseViewDelegate {
     func didTappedTermsButton() {
-        transitionSafariViewController(urlString: Constants.WebUrl.terms)
+        if let urlString = AppConfig.shared.termsUrl {
+            transitionSafariViewController(urlString: urlString)
+        } else {
+            // TODO: 利用規約を開けないアラートを出す
+        }
     }
 
     func didTappedPrivacyPolicyButton() {
-        transitionSafariViewController(urlString: Constants.WebUrl.privacyPolicy)
+        if let urlString = AppConfig.shared.privacyPolicyUrl {
+            transitionSafariViewController(urlString: urlString)
+        } else {
+            // TODO: プライバシーポリシーを開けないアラートを出す
+        }
     }
 
     func didTappedLoginButton() {

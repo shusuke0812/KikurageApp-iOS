@@ -36,6 +36,8 @@ class AppRootController: UIViewController {
 extension AppRootController {
     private func fetchRemoteConfig() {
         presenter.loadFacebookGroupUrl()
+        presenter.loadTermsUrl()
+        presenter.loadPrivacyPolicyUrl()
     }
 }
 
