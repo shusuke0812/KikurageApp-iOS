@@ -15,8 +15,10 @@ class AppRootController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
+
+        fetchRemoteConfig()
 
         if let userId = LoginHelper.shared.kikurageUserId {
             presenter.loadKikurageUser(userId: userId)
@@ -30,7 +32,14 @@ class AppRootController: UIViewController {
     }
 }
 
-// MARK: - Private
+// MARK: - Initialized
+extension AppRootController {
+    private func fetchRemoteConfig() {
+        presenter.loadFacebookGroupUrl()
+    }
+}
+
+// MARK: - Transition
 extension AppRootController {
     /// ホーム画面を開く
     private func showMainPage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {

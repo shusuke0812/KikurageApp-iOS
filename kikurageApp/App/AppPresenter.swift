@@ -20,15 +20,17 @@ protocol AppPresenterDelegate: AnyObject {
 class AppPresenter {
     private var kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
+    private let firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol
 
     weak var delegate: AppPresenterDelegate?
 
     private var kikurageUser: KikurageUser?
     private var kikurageState: KikurageState?
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol, firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
+        self.firebaseRemoteCofigRepository = firebaseRemoteCofigRepository
     }
 }
 
@@ -57,6 +59,20 @@ extension AppPresenter {
                 self?.delegate?.didSuccessGetKikurageInfo(kikurageInfo: (user: self?.kikurageUser, state: self?.kikurageState))
             case .failure(let error):
                 self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
+            }
+        }
+    }
+}
+
+// MARK: - Firebase RemoteConfig
+extension AppPresenter {
+    func loadFacebookGroupUrl() {
+        firebaseRemoteCofigRepository.fetch(key: .facebookGroupUrl) { [weak self] response in
+            switch response {
+            case .success(let urlString):
+                AppConfig.shared.facebookGroupUrl = urlString
+            case .failure(let error):
+                Logger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
             }
         }
     }

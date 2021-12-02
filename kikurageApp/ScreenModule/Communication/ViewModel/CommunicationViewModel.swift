@@ -14,12 +14,12 @@ protocol CommunicationViewModelDelegate: AnyObject {
 }
 
 class CommunicationViewModel {
-    private let firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol
+    
     private(set) var faceboolGroupUrl: String = ""
 
     weak var delegate: CommunicationViewModelDelegate?
 
-    init(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol) {
+    init() {
         self.firebaseRemoteCofigRepository = firebaseRemoteCofigRepository
     }
 }

@@ -84,7 +84,6 @@
 		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
 		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
 		9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */; };
-		9C9FABE42757C20A008E6D7A /* CommunicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE32757C20A008E6D7A /* CommunicationViewModel.swift */; };
 		9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0CDA926E8FED800116896 /* SignUpRepository.swift */; };
 		9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */; };
 		9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7627E26E26B70000F7EE2 /* TopViewController.swift */; };
@@ -107,6 +106,7 @@
 		9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */; };
 		9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */; };
 		9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */; };
+		9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD27FE275845EE007191CE /* AppConfig.swift */; };
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
@@ -199,7 +199,6 @@
 		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigRepository.swift; sourceTree = "<group>"; };
-		9C9FABE32757C20A008E6D7A /* CommunicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewModel.swift; sourceTree = "<group>"; };
 		9CA0CDA926E8FED800116896 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		9CA7627C26E26B28000F7EE2 /* TopBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBaseView.swift; sourceTree = "<group>"; };
 		9CA7627E26E26B70000F7EE2 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +222,7 @@
 		9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewModel.swift; sourceTree = "<group>"; };
+		9CBD27FE275845EE007191CE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
@@ -352,16 +352,9 @@
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
 				9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */,
 				9CA7628026E28CBE000F7EE2 /* AppPresenter.swift */,
+				9CBD27FE275845EE007191CE /* AppConfig.swift */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		9C9FABE22757C1E9008E6D7A /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9C9FABE32757C20A008E6D7A /* CommunicationViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA2043D271C76A000D65DD7 /* ScreenModule */ = {
@@ -548,7 +541,6 @@
 		9CA20450271C784000D65DD7 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
-				9C9FABE22757C1E9008E6D7A /* ViewModel */,
 				9CA20451271C784E00D65DD7 /* BaseView */,
 				9CA20463271C7AF700D65DD7 /* ViewController */,
 			);
@@ -1098,6 +1090,7 @@
 				9C96997D2566118C00D655DA /* DateHelper.swift in Sources */,
 				9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
+				9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */,
 				9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */,
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
@@ -1140,7 +1133,6 @@
 				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
-				9C9FABE42757C20A008E6D7A /* CommunicationViewModel.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
 				9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */,
 				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,
