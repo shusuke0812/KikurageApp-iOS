@@ -67,7 +67,7 @@ extension AppPresenter {
 // MARK: - Firebase RemoteConfig
 extension AppPresenter {
     func loadFacebookGroupUrl() {
-        firebaseRemoteCofigRepository.fetch(key: .facebookGroupUrl) { [weak self] response in
+        firebaseRemoteCofigRepository.fetch(key: .facebookGroupUrl) { response in
             switch response {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupUrl = urlString
