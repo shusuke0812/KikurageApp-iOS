@@ -18,7 +18,7 @@
 		9C1ACF502225768A00A3D4D1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
-		9C22302D275B2E16009275EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info.plist */; };
+		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
 		9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */; };
@@ -113,6 +113,7 @@
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
+		9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CFDB09426F2420B0093A770 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDB09326F2420B0093A770 /* Logger.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
@@ -122,6 +123,8 @@
 		045BAAA6BB2C1B5F96CDC0F5 /* Pods-Kikurage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.release.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.release.xcconfig"; sourceTree = "<group>"; };
 		5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.debug.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.debug.xcconfig"; sourceTree = "<group>"; };
 		57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kikurage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.staging.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.staging.xcconfig"; sourceTree = "<group>"; };
+		6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.production.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.production.xcconfig"; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9C0DCF932546F55800C27051 /* MainAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAdviceView.swift; sourceTree = "<group>"; };
@@ -135,7 +138,7 @@
 		9C1ACF512225768A00A3D4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C22302C275B2E16009275EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
 		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCultivationViewController.storyboard; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
+		9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CFDB09326F2420B0093A770 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */,
 				5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */,
 				045BAAA6BB2C1B5F96CDC0F5 /* Pods-Kikurage.release.xcconfig */,
+				588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */,
+				6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -300,7 +306,6 @@
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CA2043D271C76A000D65DD7 /* ScreenModule */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
-				9C22302C275B2E16009275EB /* GoogleService-Info.plist */,
 				9C665EF02739704F000EE152 /* InfoPlist.strings */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 			);
@@ -876,9 +881,19 @@
 		9CE3FE72275B582000FFDF19 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				9CE3FE73275B60FC00FFDF19 /* Firebase */,
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
 			);
 			path = Plist;
+			sourceTree = "<group>";
+		};
+		9CE3FE73275B60FC00FFDF19 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */,
+				9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		9CF0020624E39B290084036B /* Helper */ = {
@@ -906,6 +921,7 @@
 				9C1ACF452225768A00A3D4D1 /* Resources */,
 				0E3A132012F2A0D84614820D /* [CP] Embed Pods Frameworks */,
 				9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */,
+				9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */,
 				9C5D9D7A2665377D00474CFD /* Firebase Crashlytics Run Script */,
 			);
 			buildRules = (
@@ -964,11 +980,12 @@
 				9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */,
 				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
 				9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */,
+				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
 				9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */,
 				9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */,
-				9C22302D275B2E16009275EB /* GoogleService-Info.plist in Resources */,
+				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
@@ -1061,6 +1078,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ". ${PROJECT_DIR}/Script/SwiftLint.sh\n";
+		};
+		9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Google Service Info Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". ${PROJECT_DIR}/Script/GenerateGoogleServiceInfo.sh\n";
 		};
 		CBB3CAA4E7BF53B07E344743 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1220,7 +1255,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APP_DISPLAY_NAME = Kikurage;
+				APP_DISPLAY_NAME = KikurageDebug;
 				BUNDLE_ID_SUFFIX = .dev;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1270,21 +1305,23 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "${SRCROOT}/${PROJECT_NAME}/Utility/Plist/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "${APP_DISPLAY_NAME}";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		9C1ACF582225768A00A3D4D1 /* Release */ = {
+		9C1ACF582225768A00A3D4D1 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APP_DISPLAY_NAME = "";
+				APP_DISPLAY_NAME = Kikurage;
 				BUNDLE_ID_SUFFIX = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1328,15 +1365,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "${SRCROOT}/${PROJECT_NAME}/Utility/Plist/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "${APP_DISPLAY_NAME}";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Production;
 		};
 		9C1ACF5A2225768A00A3D4D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1360,9 +1399,9 @@
 			};
 			name = Debug;
 		};
-		9C1ACF5B2225768A00A3D4D1 /* Release */ = {
+		9C1ACF5B2225768A00A3D4D1 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 045BAAA6BB2C1B5F96CDC0F5 /* Pods-Kikurage.release.xcconfig */;
+			baseConfigurationReference = 6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -1379,7 +1418,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Release;
+			name = Production;
 		};
 		9CE3FE70275B504000FFDF19 /* Staging */ = {
 			isa = XCBuildConfiguration;
@@ -1435,10 +1474,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "${SRCROOT}/${PROJECT_NAME}/Utility/Plist/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "${APP_DISPLAY_NAME}";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGING;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1447,7 +1488,7 @@
 		};
 		9CE3FE71275B504000FFDF19 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */;
+			baseConfigurationReference = 588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -1475,20 +1516,20 @@
 			buildConfigurations = (
 				9C1ACF572225768A00A3D4D1 /* Debug */,
 				9CE3FE70275B504000FFDF19 /* Staging */,
-				9C1ACF582225768A00A3D4D1 /* Release */,
+				9C1ACF582225768A00A3D4D1 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		9C1ACF592225768A00A3D4D1 /* Build configuration list for PBXNativeTarget "Kikurage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C1ACF5A2225768A00A3D4D1 /* Debug */,
 				9CE3FE71275B504000FFDF19 /* Staging */,
-				9C1ACF5B2225768A00A3D4D1 /* Release */,
+				9C1ACF5B2225768A00A3D4D1 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 /* End XCConfigurationList section */
 	};
