@@ -14,7 +14,7 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: MainViewModel!
 
     private let disposeBag = RxSwift.DisposeBag()
-    private var timer: Timer?
+    private var dateTimer: Timer?
 
     var kikurageState: KikurageState!
     var kikurageUser: KikurageUser!
@@ -34,14 +34,14 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTimer()
+        setDateTimer()
         loadKikurageState()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // メモリ節約のため、他ViewControllerに移動する前にタイマーを停止する
-        if let timer = self.timer {
-            timer.invalidate()
+        if let dateTimer = self.dateTimer {
+            dateTimer.invalidate()
         }
         baseView.kikurageStatusView.stopAnimating()
     }
@@ -54,8 +54,8 @@ extension MainViewController {
         setNavigationBackButton(buttonTitle: R.string.localizable.common_navigation_back_btn_title(), buttonColor: .black)
         setNavigationBar(title: R.string.localizable.screen_home_title())
     }
-    private func setTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+    private func setDateTimer() {
+        dateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
     }
     @objc private func updateUI() {
         baseView.updateTimeLabel()
