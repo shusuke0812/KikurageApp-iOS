@@ -31,6 +31,9 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
         baseView.setKikurageNameUI(kikurageUser: viewModel.kikurageUser)
         setNavigationItem()
         adjustNavigationBarBackgroundColor()
+        
+        // Other
+        makeForeBackgroundObserver()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,6 +66,25 @@ extension MainViewController {
     private func setDelegateDataSource() {
         viewModel.delegate = self
         baseView.delegate = self
+    }
+    private func makeForeBackgroundObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+}
+
+// MARK: - Observer
+
+extension MainViewController {
+    @objc private func willEnterForeground() {
+        setDateTimer()
+        baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
+    }
+    @objc private func didEnterBackground() {
+        if let dateTimer = self.dateTimer {
+            dateTimer.invalidate()
+        }
+        baseView.kikurageStatusView.stopAnimating()
     }
 }
 
