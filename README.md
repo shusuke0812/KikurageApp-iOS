@@ -41,7 +41,7 @@
 - Xcode 13.0 (13A233)
 - Swift 5.0 
 - CocoaPods 1.9.3  
-- MacOS BigSur 11.4
+- MacOS BigSur 11.4 / MacBook Intel Processor Model
 - 開発ターゲット：iOS 13.0  
 
 ## 参考文献
