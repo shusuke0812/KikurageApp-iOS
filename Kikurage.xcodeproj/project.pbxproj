@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
-		9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* MainAdviceView.swift */; };
-		9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* MainAdviceView.xib */; };
+		9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* HomeAdviceView.swift */; };
+		9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* HomeAdviceView.xib */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
-		9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */; };
-		9C1ACF502225768A00A3D4D1 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */; };
+		9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */; };
+		9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
@@ -100,8 +100,8 @@
 		9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
-		9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* MainViewModel.swift */; };
-		9CB7D604254050D600D57801 /* MainBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* MainBaseView.swift */; };
+		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
+		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
 		9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */; };
 		9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */; };
@@ -127,14 +127,14 @@
 		6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.production.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.production.xcconfig"; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		9C0DCF932546F55800C27051 /* MainAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAdviceView.swift; sourceTree = "<group>"; };
-		9C0DCF962546F58600C27051 /* MainAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainAdviceView.xib; sourceTree = "<group>"; };
+		9C0DCF932546F55800C27051 /* HomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdviceView.swift; sourceTree = "<group>"; };
+		9C0DCF962546F58600C27051 /* HomeAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAdviceView.xib; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		9C1ACF472225768A00A3D4D1 /* Kikurage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kikurage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1ACF472225768A00A3D4D1 /* Kikurage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Kikurage.app; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9C1ACF4F2225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
+		9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9C1ACF4F2225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeViewController.storyboard; sourceTree = "<group>"; };
 		9C1ACF512225768A00A3D4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -221,8 +221,8 @@
 		9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphViewController.storyboard; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
-		9CB7D5FD254043FB00D57801 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		9CB7D603254050D600D57801 /* MainBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseView.swift; sourceTree = "<group>"; };
+		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB32D427365E3900A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -471,7 +471,7 @@
 		9CA20446271C778700D65DD7 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
-				9CB7D603254050D600D57801 /* MainBaseView.swift */,
+				9CB7D603254050D600D57801 /* HomeBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -603,8 +603,8 @@
 		9CA20456271C78CA00D65DD7 /* ChildView */ = {
 			isa = PBXGroup;
 			children = (
-				9C0DCF932546F55800C27051 /* MainAdviceView.swift */,
-				9C0DCF962546F58600C27051 /* MainAdviceView.xib */,
+				9C0DCF932546F55800C27051 /* HomeAdviceView.swift */,
+				9C0DCF962546F58600C27051 /* HomeAdviceView.xib */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -672,8 +672,8 @@
 		9CA2045D271C7A4900D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C1ACF4C2225768A00A3D4D1 /* MainViewController.swift */,
-				9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */,
+				9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */,
+				9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -763,7 +763,7 @@
 		9CA20467271C7B9E00D65DD7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9CB7D5FD254043FB00D57801 /* MainViewModel.swift */,
+				9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -989,13 +989,13 @@
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
-				9C0DCF972546F58600C27051 /* MainAdviceView.xib in Resources */,
+				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
 				9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
 				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
-				9C1ACF502225768A00A3D4D1 /* MainViewController.storyboard in Resources */,
+				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
 				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */,
 			);
@@ -1128,7 +1128,7 @@
 			files = (
 				9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */,
 				9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */,
-				9CB7D604254050D600D57801 /* MainBaseView.swift in Sources */,
+				9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
@@ -1145,8 +1145,8 @@
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
 				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
-				9C1ACF4D2225768A00A3D4D1 /* MainViewController.swift in Sources */,
-				9C0DCF942546F55800C27051 /* MainAdviceView.swift in Sources */,
+				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
+				9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
 				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
@@ -1177,7 +1177,7 @@
 				9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,
-				9CB7D5FE254043FB00D57801 /* MainViewModel.swift in Sources */,
+				9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
@@ -1214,12 +1214,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9C1ACF4E2225768A00A3D4D1 /* MainViewController.storyboard */ = {
+		9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9C1ACF4F2225768A00A3D4D1 /* Base */,
 			);
-			name = MainViewController.storyboard;
+			name = HomeViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */ = {

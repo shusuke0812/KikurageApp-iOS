@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="FFd-Hr-BJg">
             <objects>
-                <viewController id="HCp-ee-WbN" customClass="MainViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fri-rL-faW" customClass="MainBaseView" customModule="きくらげ君" customModuleProvider="target">
+                <viewController id="HCp-ee-WbN" customClass="HomeViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fri-rL-faW" customClass="HomeBaseView" customModule="Kikurage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -122,7 +122,7 @@
                                     <constraint firstAttribute="height" constant="0.5" id="noz-ZL-NGu"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2" customClass="MainAdviceView" customModule="きくらげ君" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2" customClass="HomeAdviceView" customModule="Kikurage" customModuleProvider="target">
                                 <rect key="frame" x="62" y="447" width="290" height="140"/>
                                 <color key="backgroundColor" name="themeColor"/>
                                 <constraints>

@@ -44,9 +44,9 @@ extension AppRootController {
 // MARK: - Transition
 extension AppRootController {
     /// ホーム画面を開く
-    private func showMainPage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        guard let nc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
-        let vc = nc.topViewController as! MainViewController // swiftlint:disable:this force_cast
+    private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+        guard let nc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
+        let vc = nc.topViewController as! HomeViewController // swiftlint:disable:this force_cast
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
         changeViewController(nc)
@@ -79,7 +79,7 @@ extension AppRootController {
 extension AppRootController: AppPresenterDelegate {
     func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         DispatchQueue.main.async {
-            self.showMainPage(kikurageInfo: kikurageInfo)
+            self.showHomePage(kikurageInfo: kikurageInfo)
         }
     }
     func didFailedGetKikurageInfo(errorMessage: String) {

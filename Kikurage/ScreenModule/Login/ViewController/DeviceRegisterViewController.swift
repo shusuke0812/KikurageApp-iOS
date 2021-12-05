@@ -109,9 +109,9 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     }
     private func transitionHomePage() {
         // NavigationControllerへの遷移になるのでViewControllerにStoryboardからIDを設定してUIViewControllerでインスタンス化する
-        guard let nc = R.storyboard.mainViewController.instantiateInitialViewController() else { return }
+        guard let nc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         // MainViewController（トップ画面）への値渡し
-        let vc = nc.topViewController as! MainViewController // swiftlint:disable:this force_cast
+        let vc = nc.topViewController as! HomeViewController // swiftlint:disable:this force_cast
         vc.kikurageState = viewModel.kikurageState
         vc.kikurageUser = viewModel.kikurageUser
         // 画面遷移

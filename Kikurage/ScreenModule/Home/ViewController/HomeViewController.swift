@@ -9,9 +9,9 @@
 import UIKit
 import RxSwift
 
-class MainViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: MainBaseView { self.view as! MainBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: MainViewModel!
+class HomeViewController: UIViewController, UIViewControllerNavigatable {
+    private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
+    private var viewModel: HomeViewModel!
 
     private let disposeBag = RxSwift.DisposeBag()
     private var dateTimer: Timer?
@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Util
-        viewModel = MainViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository(), kikurageUser: kikurageUser, kikurageState: kikurageState)
+        viewModel = HomeViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository(), kikurageUser: kikurageUser, kikurageState: kikurageState)
         setDelegateDataSource()
 
         // UI
@@ -52,7 +52,7 @@ class MainViewController: UIViewController, UIViewControllerNavigatable {
 
 // MARK: - Initialized
 
-extension MainViewController {
+extension HomeViewController {
     private func setNavigationItem() {
         setNavigationBackButton(buttonTitle: R.string.localizable.common_navigation_back_btn_title(), buttonColor: .black)
         setNavigationBar(title: R.string.localizable.screen_home_title())
@@ -75,7 +75,7 @@ extension MainViewController {
 
 // MARK: - Observer
 
-extension MainViewController {
+extension HomeViewController {
     @objc private func willEnterForeground() {
         setDateTimer()
         baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
@@ -88,9 +88,9 @@ extension MainViewController {
     }
 }
 
-// MARK: - MainBaseView Delegate
+// MARK: - HomeBaseView Delegate
 
-extension MainViewController: MainBaseViewDelegate {
+extension HomeViewController: HomeBaseViewDelegate {
     func didTapCultivationButton() {
         guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
@@ -104,13 +104,13 @@ extension MainViewController: MainBaseViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     func didTapSideMenuButton() {
-        performSegue(withIdentifier: R.segue.mainViewController.sideMenu.identifier, sender: nil)
+        performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
     }
 }
 
-// MARK: - MainViewModel Delegate
+// MARK: - HomeViewModel Delegate
 
-extension MainViewController: MainViewModelDelgate {
+extension HomeViewController: HomeViewModelDelgate {
     private func loadKikurageState() {
         viewModel.loadKikurageState()
     }

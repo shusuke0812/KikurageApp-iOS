@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainAdviceView: XibView {
+class HomeAdviceView: XibView {
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var adviceIconImageView: UIImageView!
     @IBOutlet private weak var adviceTitleLabel: UILabel!
@@ -22,7 +22,7 @@ class MainAdviceView: XibView {
     }
 }
 
-extension MainAdviceView {
+extension HomeAdviceView {
     private func initBaseView() {
         baseView.layer.cornerRadius = 18
         baseView.layer.borderColor = UIColor.red.cgColor

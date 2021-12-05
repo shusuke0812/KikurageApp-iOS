@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-protocol MainViewModelDelgate: AnyObject {
+protocol HomeViewModelDelgate: AnyObject {
     /// きくらげの状態データ取得に成功した
     func didSuccessGetKikurageState()
     /// きくらげの状態データ取得に失敗した
@@ -19,14 +19,14 @@ protocol MainViewModelDelgate: AnyObject {
     func didChangedKikurageState()
 }
 
-class MainViewModel {
+class HomeViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
     var kikurageState: KikurageState!
     var kikurageUser: KikurageUser!
 
-    weak var delegate: MainViewModelDelgate?
+    weak var delegate: HomeViewModelDelgate?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {
         self.kikurageStateRepository = kikurageStateRepository
@@ -37,7 +37,7 @@ class MainViewModel {
     }
 }
 // MARK: - Firebase Firestore
-extension MainViewModel {
+extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { response in

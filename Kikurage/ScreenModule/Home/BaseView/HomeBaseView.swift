@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MainBaseViewDelegate: AnyObject {
+protocol HomeBaseViewDelegate: AnyObject {
     /// 栽培記録ボタンを押した時の処理
     func didTapCultivationButton()
     /// 料理記録ボタンを押した時の処理
@@ -19,7 +19,7 @@ protocol MainBaseViewDelegate: AnyObject {
     func didTapSideMenuButton()
 }
 
-class MainBaseView: UIView {
+class HomeBaseView: UIView {
     @IBOutlet private weak var nowTimeLabel: UILabel!
     @IBOutlet private weak var kikurageNameLabel: UILabel!
     @IBOutlet private weak var kikurageStatusLabel: UILabel!
@@ -32,9 +32,9 @@ class MainBaseView: UIView {
     @IBOutlet private weak var expectedValueTitleLabel: UILabel!
     @IBOutlet private weak var expectedTemperatureLabel: UILabel!
     @IBOutlet private weak var expectedHumidityLabel: UILabel!
-    @IBOutlet private weak var kikurageAdviceView: MainAdviceView!
+    @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
 
-    weak var delegate: MainBaseViewDelegate?
+    weak var delegate: HomeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,7 +55,7 @@ class MainBaseView: UIView {
     }
 }
 // MARK: - Initialized
-extension MainBaseView {
+extension HomeBaseView {
     private func initUI() {
         nowTimeLabel.text = DateHelper.now()
         kikurageNameLabel.text = ""
@@ -75,7 +75,7 @@ extension MainBaseView {
     }
 }
 // MARK: - Setting UI
-extension MainBaseView {
+extension HomeBaseView {
     func setKikurageStateUI(kikurageState: KikurageState?) {
         // きくらげの状態メッセージを設定
         if let message: String = kikurageState?.message {
