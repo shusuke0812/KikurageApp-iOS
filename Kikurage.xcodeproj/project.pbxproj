@@ -306,7 +306,6 @@
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CA2043D271C76A000D65DD7 /* ScreenModule */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
-				9C665EF02739704F000EE152 /* InfoPlist.strings */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 			);
 			path = Kikurage;
@@ -883,6 +882,7 @@
 			children = (
 				9CE3FE73275B60FC00FFDF19 /* Firebase */,
 				9C1ACF562225768A00A3D4D1 /* Info.plist */,
+				9C665EF02739704F000EE152 /* InfoPlist.strings */,
 			);
 			path = Plist;
 			sourceTree = "<group>";

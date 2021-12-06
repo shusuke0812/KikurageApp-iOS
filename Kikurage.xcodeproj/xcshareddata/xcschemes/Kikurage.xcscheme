@@ -38,7 +38,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C1ACF462225768A00A3D4D1"
-            BuildableName = ".app"
+            BuildableName = "Kikurage.app"
             BlueprintName = "Kikurage"
             ReferencedContainer = "container:Kikurage.xcodeproj">
          </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C1ACF462225768A00A3D4D1"
-            BuildableName = ".app"
+            BuildableName = "Kikurage.app"
             BlueprintName = "Kikurage"
             ReferencedContainer = "container:Kikurage.xcodeproj">
          </BuildableReference>
