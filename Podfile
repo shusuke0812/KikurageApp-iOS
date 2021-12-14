@@ -25,6 +25,10 @@ target 'Kikurage' do
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
 
+  target 'KikurageTests' do
+    inherit! :search_paths
+  end
+
 end
 
 # 暫定：M1 Macのシミュレータ向けビルドを通す処理

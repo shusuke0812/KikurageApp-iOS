@@ -21,6 +21,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C96F7002768E97300C2E778"
+               BuildableName = "KikurageTests.xctest"
+               BlueprintName = "KikurageTests"
+               ReferencedContainer = "container:Kikurage.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
