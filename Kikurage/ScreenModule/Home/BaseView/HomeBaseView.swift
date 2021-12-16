@@ -40,7 +40,9 @@ class HomeBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
+
     // MARK: - Action Method
+
     @IBAction private func didTapCultivationButton(_ sender: Any) {
         delegate?.didTapCultivationButton()
     }
@@ -54,7 +56,9 @@ class HomeBaseView: UIView {
         delegate?.didTapSideMenuButton()
     }
 }
+
 // MARK: - Initialized
+
 extension HomeBaseView {
     private func initUI() {
         nowTimeLabel.text = DateHelper.now()
@@ -74,7 +78,9 @@ extension HomeBaseView {
         expectedHumidityLabel.text = "80% " + R.string.localizable.screen_home_humidity_expected_suffix()
     }
 }
+
 // MARK: - Setting UI
+
 extension HomeBaseView {
     func setKikurageStateUI(kikurageState: KikurageState?) {
         // きくらげの状態メッセージを設定
@@ -113,7 +119,9 @@ extension HomeBaseView {
         kikurageStatusView.startAnimating()
     }
 }
+
 // MARK: - Animation
+
 extension HomeBaseView {
     func kikurageStatusViewAnimation(_ animation: Bool) {
         (animation == true) ? kikurageStatusView.startAnimating() : kikurageStatusView.stopAnimating()
