@@ -23,7 +23,7 @@ class HomeBaseView: UIView {
     @IBOutlet private weak var nowTimeLabel: UILabel!
     @IBOutlet private weak var kikurageNameLabel: UILabel!
     @IBOutlet private weak var kikurageStatusLabel: UILabel!
-    @IBOutlet weak var kikurageStatusView: UIImageView!
+    @IBOutlet private weak var kikurageStatusView: UIImageView!
     @IBOutlet private weak var temperatureTitleLabel: UILabel!
     @IBOutlet private weak var temparatureTextLabel: UILabel!
     @IBOutlet private weak var humidityTitleLabel: UILabel!
@@ -111,5 +111,11 @@ extension HomeBaseView {
         kikurageStatusView.animationDuration = 1
         kikurageStatusView.animationRepeatCount = 0
         kikurageStatusView.startAnimating()
+    }
+}
+// MARK: - Animation
+extension HomeBaseView {
+    func kikurageStatusViewAnimation(_ animation: Bool) {
+        (animation == true) ? kikurageStatusView.startAnimating() : kikurageStatusView.stopAnimating()
     }
 }

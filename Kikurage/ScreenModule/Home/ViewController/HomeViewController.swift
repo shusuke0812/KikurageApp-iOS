@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable {
         if let dateTimer = self.dateTimer {
             dateTimer.invalidate()
         }
-        baseView.kikurageStatusView.stopAnimating()
+        baseView.kikurageStatusViewAnimation(false)
     }
 }
 
@@ -84,7 +84,7 @@ extension HomeViewController {
         if let dateTimer = self.dateTimer {
             dateTimer.invalidate()
         }
-        baseView.kikurageStatusView.stopAnimating()
+        baseView.kikurageStatusViewAnimation(false)
     }
 }
 
