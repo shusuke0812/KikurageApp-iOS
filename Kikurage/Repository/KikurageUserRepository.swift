@@ -29,7 +29,7 @@ class KikurageUserRepository: KikurageUserRepositoryProtocol {
 extension KikurageUserRepository {
     func getKikurageUser(uid: String, completion: @escaping (Result<KikurageUser, ClientError>) -> Void) {
         let db = Firestore.firestore()
-        let docRef: DocumentReference = db.collection("kikurageUsers").document(uid)
+        let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).document(uid)
 
         docRef.getDocument { snapshot, error in
             if let error = error {
