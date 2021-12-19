@@ -18,13 +18,16 @@ class StubKikurageStateRepository: KikurageStateRepositoryProtocol {
         self.returnKikurageState = kikurageState
         self.returnKikurageStateGraph = kikurageStateGraph
     }
-    
-    // MARK: Call Firebase
+}
+
+// MARK: - Call Firebase
+
+extension StubKikurageStateRepository {
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
         self.argProductId = productId
         completion(.success(self.returnKikurageState))
     }
-    
+
     func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void) {
         self.argProductId = productId
         completion(.success(self.returnKikurageStateGraph))
