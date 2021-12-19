@@ -23,20 +23,31 @@ class HomeViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
-    var kikurageState: KikurageState!
-    var kikurageUser: KikurageUser!
+    private(set) var kikurageState: KikurageState!
+    private(set) var kikurageUser: KikurageUser!
 
     weak var delegate: HomeViewModelDelgate?
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol, kikurageUser: KikurageUser, kikurageState: KikurageState) {
+    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
+    }
+}
+
+// MARK: - Config
+
+extension HomeViewModel {
+    /// きくらげ状態変数とリスナーを設定する
+    func config(kikurageUser: KikurageUser?, kikurageState: KikurageState?) {
         self.kikurageUser = kikurageUser
         self.kikurageState = kikurageState
+        
         self.listenKikurageState()
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
