@@ -80,7 +80,6 @@
 		9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */; };
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
-		9C96F7042768E97300C2E778 /* KikurageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96F7032768E97300C2E778 /* KikurageTests.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
@@ -218,7 +217,6 @@
 		9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeBaseView.swift; sourceTree = "<group>"; };
 		9C96997C2566118B00D655DA /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C96F7032768E97300C2E778 /* KikurageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageTests.swift; sourceTree = "<group>"; };
 		9C97679526EF798100126F80 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -398,7 +396,6 @@
 				9CB409D0276F04EF00E413E4 /* Entity */,
 				9CBF6721276E008F00081340 /* Repository */,
 				9CBF671E276DF35700081340 /* ViewModel */,
-				9C96F7032768E97300C2E778 /* KikurageTests.swift */,
 			);
 			path = KikurageTests;
 			sourceTree = "<group>";
@@ -1342,7 +1339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */,
-				9C96F7042768E97300C2E778 /* KikurageTests.swift in Sources */,
 				9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */,
 				9CB409D2276F051400E413E4 /* Stub.swift in Sources */,
 			);
