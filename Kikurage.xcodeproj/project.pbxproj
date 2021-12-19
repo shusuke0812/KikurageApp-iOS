@@ -102,6 +102,7 @@
 		9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
+		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
 		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
@@ -239,6 +240,7 @@
 		9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphViewController.storyboard; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
+		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 		9C96F7022768E97300C2E778 /* KikurageTests */ = {
 			isa = PBXGroup;
 			children = (
+				9CB409D0276F04EF00E413E4 /* Entity */,
 				9CBF6721276E008F00081340 /* Repository */,
 				9CBF671E276DF35700081340 /* ViewModel */,
 				9C96F7032768E97300C2E778 /* KikurageTests.swift */,
@@ -910,6 +913,14 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		9CB409D0276F04EF00E413E4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9CB409D1276F051400E413E4 /* Stub.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		9CBF671E276DF35700081340 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1333,6 +1344,7 @@
 				9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */,
 				9C96F7042768E97300C2E778 /* KikurageTests.swift in Sources */,
 				9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */,
+				9CB409D2276F051400E413E4 /* Stub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
