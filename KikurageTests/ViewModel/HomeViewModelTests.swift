@@ -9,10 +9,23 @@
 import XCTest
 @testable import Kikurage
 
-class KikurageStateRepositoryTests: XCTestCase {
+class HomeViewModelTests: XCTestCase {
+    
+    private var kikurageStateRepository: KikurageStateRepositoryProtocol!
+    private var homeViewModel: HomeViewModel!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        // Stub
+        
+        let testKikurageState = Stub.kikurageState
+        let testKikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []
+        let testKikurageUser = Stub.kikurageStateGraph
+        
+        // Repository / ViewModel
+        
+        kikurageStateRepository = StubKikurageStateRepository(kikurageState: testKikurageState, kikurageStateGraph: testKikurageStateGraph)
+        homeViewModel = HomeViewModel(kikurageStateRepository: kikurageStateRepository, kikurageStateListenerRepository: KikurageStateListenerRepository())
     }
 
     override func tearDownWithError() throws {
@@ -20,8 +33,7 @@ class KikurageStateRepositoryTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // testXXX()
     }
 
     func testPerformanceExample() throws {
@@ -31,4 +43,15 @@ class KikurageStateRepositoryTests: XCTestCase {
         }
     }
 
+}
+
+// MARK: - XXX
+
+extension HomeViewModelTests {
+    // ViewModelのロジックテストを書く
+    /*
+    func testXXX() {
+        homeViewModel.XXX()
+    }
+    */
 }
