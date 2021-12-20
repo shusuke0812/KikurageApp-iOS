@@ -18,6 +18,8 @@ protocol SideMenuBaseViewDelegate: AnyObject {
 }
 
 class SideMenuBaseView: UIView {
+    @IBOutlet private weak var tableView: UITableView!
+    
     @IBOutlet weak var sideMenuParentView: UIView!
     @IBOutlet private weak var calendarView: SideMenuContentView!
     @IBOutlet private weak var graphView: SideMenuContentView!
@@ -35,17 +37,10 @@ class SideMenuBaseView: UIView {
         initSideMenuBoarderLine()
     }
     // MARK: - Action
-    @IBAction private func didTapContactCell(_ sender: Any) {
-        delegate?.didTapContactCell()
-    }
-    @IBAction private func didTapGraphCell(_ sender: Any) {
-        delegate?.didTapGraphCell()
-    }
-    @IBAction private func didTapCalendarCell(_ sender: Any) {
-        delegate?.didTapCalendarCell()
-    }
 }
+
 // MARK: - Initialized
+
 extension SideMenuBaseView {
     private func initSideMenuContent() {
         calendarView.setSideMenuContent(title: R.string.localizable.side_menu_content_clendar_subtitle(), imageSystemName: "calendar")
@@ -64,5 +59,14 @@ extension SideMenuBaseView {
         licenseView.setBoarder(topWidth: nil, bottomWidth: 0.5)
         searchRecipeView.setBoarder(topWidth: 0.5, bottomWidth: 0.5)
         kikurageDictionaryView.setBoarder(topWidth: nil, bottomWidth: 0.5)
+    }
+}
+
+// MARK: - Config
+
+extension SideMenuBaseView {
+    func configTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
     }
 }
