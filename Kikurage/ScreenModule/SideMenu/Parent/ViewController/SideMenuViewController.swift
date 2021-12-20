@@ -101,11 +101,13 @@ extension SideMenuViewController: UITableViewDelegate {
         let sectionRow = viewModel.sections[indexPath.section].rows[indexPath.row]
         switch sectionRow {
         case .calendar:
-            print("")
+            guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
+            present(vc, animated: true, completion: nil)
         case .graph:
-            print("")
+            guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
+            present(vc, animated: true, completion: nil)
         case .contact:
-            print("")
+            openContactMailer()
         case .setting:
             print("")
         case .license:
