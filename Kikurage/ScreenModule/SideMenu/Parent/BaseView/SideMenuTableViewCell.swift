@@ -14,13 +14,17 @@ class SideMenuTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        accessibilityIdentifier = "SideMenuTableViewCell"
+        initUI()
     }
 }
 
 // MARK: - Config
 
 extension SideMenuTableViewCell {
+    private func initUI() {
+        contentView.backgroundColor = .themeColor
+        iconImageView.tintColor = .black
+    }
     func setSideMenuContent(title: String, iconImageName: String) {
         titleLabel.text = title
         iconImageView.image = UIImage(systemName: iconImageName)
