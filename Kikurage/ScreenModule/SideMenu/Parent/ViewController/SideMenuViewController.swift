@@ -102,10 +102,14 @@ extension SideMenuViewController: UITableViewDelegate {
         switch sectionRow {
         case .calendar:
             guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
-            present(vc, animated: true, completion: nil)
+            present(vc, animated: true) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         case .graph:
             guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
-            present(vc, animated: true, completion: nil)
+            present(vc, animated: true) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         case .contact:
             openContactMailer()
         case .setting:
