@@ -39,8 +39,6 @@
 		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */; };
 		9C82B417253037BD00E650B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B416253037BD00E650B5 /* Constants.swift */; };
-		9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B41C2530572300E650B5 /* SideMenuContentView.swift */; };
-		9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C82B4202530574100E650B5 /* SideMenuContentView.xib */; };
 		9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B42325305E6C00E650B5 /* UIView+Extension.swift */; };
 		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
 		9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */; };
@@ -82,6 +80,9 @@
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
+		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
+		9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */; };
+		9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */; };
 		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
 		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
 		9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */; };
@@ -175,8 +176,6 @@
 		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
 		9C82B416253037BD00E650B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9C82B41C2530572300E650B5 /* SideMenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuContentView.swift; sourceTree = "<group>"; };
-		9C82B4202530574100E650B5 /* SideMenuContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuContentView.xib; sourceTree = "<group>"; };
 		9C82B42325305E6C00E650B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateListenerRepository.swift; sourceTree = "<group>"; };
@@ -219,6 +218,9 @@
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97679526EF798100126F80 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
+		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigRepository.swift; sourceTree = "<group>"; };
@@ -411,6 +413,43 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		9C9B6C6C2770B07A004B2D62 /* Parent */ = {
+			isa = PBXGroup;
+			children = (
+				9C9B6C6D2770B084004B2D62 /* BaseView */,
+				9C9B6C6E2770B08C004B2D62 /* ViewController */,
+				9C9B6C6F2770B096004B2D62 /* ViewModel */,
+			);
+			path = Parent;
+			sourceTree = "<group>";
+		};
+		9C9B6C6D2770B084004B2D62 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */,
+				9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */,
+				9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		9C9B6C6E2770B08C004B2D62 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
+				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9C9B6C6F2770B096004B2D62 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9CA2043D271C76A000D65DD7 /* ScreenModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,11 +514,7 @@
 		9CA20442271C76FC00D65DD7 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */,
-				9C82B41C2530572300E650B5 /* SideMenuContentView.swift */,
-				9C82B4202530574100E650B5 /* SideMenuContentView.xib */,
-				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
-				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
+				9C9B6C6C2770B07A004B2D62 /* Parent */,
 				9CA20454271C787300D65DD7 /* Calendar */,
 				9CA20452271C785E00D65DD7 /* Graph */,
 			);
@@ -1071,7 +1106,6 @@
 				9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */,
 				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
-				9C82B4212530574100E650B5 /* SideMenuContentView.xib in Resources */,
 				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
 				9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
@@ -1090,6 +1124,7 @@
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
 				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
 				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
+				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */,
 			);
@@ -1263,6 +1298,7 @@
 				9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */,
 				9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */,
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
+				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
@@ -1287,6 +1323,7 @@
 				9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */,
 				9CFDB09426F2420B0093A770 /* Logger.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
+				9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */,
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
 				9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */,
@@ -1322,7 +1359,6 @@
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
-				9C82B41D2530572300E650B5 /* SideMenuContentView.swift in Sources */,
 				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
 				9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */,

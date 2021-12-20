@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VK8-bK-HN2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Side Menu View Controller-->
+        <scene sceneID="ZGN-dC-Lk5">
+            <objects>
+                <viewController id="VK8-bK-HN2" customClass="SideMenuViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KJR-Rl-5b5" customClass="SideMenuBaseView" customModule="Kikurage" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOe-Kw-hb2">
+                                <rect key="frame" x="0.0" y="0.0" width="210" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm1-qL-gWI">
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="87"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メニュー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEW-Cu-phc">
+                                                <rect key="frame" x="10" y="55" width="190" height="22"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="bEW-Cu-phc" firstAttribute="leading" secondItem="cm1-qL-gWI" secondAttribute="leading" constant="10" id="9MP-NL-Oy1"/>
+                                            <constraint firstAttribute="trailing" secondItem="bEW-Cu-phc" secondAttribute="trailing" constant="10" id="HUX-ID-i6z"/>
+                                            <constraint firstAttribute="bottom" secondItem="bEW-Cu-phc" secondAttribute="bottom" constant="10" id="jzZ-1i-SEQ"/>
+                                            <constraint firstAttribute="height" constant="87" id="o8Z-Yt-RyH"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7qV-Zl-ga3">
+                                        <rect key="frame" x="0.0" y="87" width="210" height="809"/>
+                                        <color key="backgroundColor" name="themeColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" name="themeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7qV-Zl-ga3" secondAttribute="trailing" id="9iu-9W-Oov"/>
+                                    <constraint firstItem="7qV-Zl-ga3" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="B40-K9-A2d"/>
+                                    <constraint firstItem="cm1-qL-gWI" firstAttribute="leading" secondItem="WOe-Kw-hb2" secondAttribute="leading" id="K9E-S3-ui9"/>
+                                    <constraint firstItem="cm1-qL-gWI" firstAttribute="top" secondItem="WOe-Kw-hb2" secondAttribute="top" id="aBq-1G-8Xh"/>
+                                    <constraint firstAttribute="width" constant="210" id="cF6-bg-goE"/>
+                                    <constraint firstAttribute="trailing" secondItem="cm1-qL-gWI" secondAttribute="trailing" id="cee-Yb-3KY"/>
+                                    <constraint firstAttribute="bottom" secondItem="7qV-Zl-ga3" secondAttribute="bottom" id="gYQ-71-m3K"/>
+                                    <constraint firstItem="7qV-Zl-ga3" firstAttribute="top" secondItem="cm1-qL-gWI" secondAttribute="bottom" id="uQQ-mq-Ucv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6U5-YB-YKN"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WOe-Kw-hb2" secondAttribute="bottom" id="cQF-Sb-isu"/>
+                            <constraint firstItem="WOe-Kw-hb2" firstAttribute="leading" secondItem="KJR-Rl-5b5" secondAttribute="leading" id="qnr-X3-9mv"/>
+                            <constraint firstItem="WOe-Kw-hb2" firstAttribute="top" secondItem="KJR-Rl-5b5" secondAttribute="top" id="tAd-ee-pEg"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="sideMenuParentView" destination="WOe-Kw-hb2" id="gim-IM-4pU"/>
+                            <outlet property="tableView" destination="7qV-Zl-ga3" id="Z2D-nv-IiK"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tRM-bk-7ne" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6XE-I6-Xli">
+                    <connections>
+                        <action selector="didTapContactCell:" destination="KJR-Rl-5b5" id="JyS-Xl-zPR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="6DO-Yh-sH2">
+                    <connections>
+                        <action selector="didTapGraphCell:" destination="KJR-Rl-5b5" id="ejZ-2D-ghe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="hZ1-os-RnU">
+                    <connections>
+                        <action selector="didTapCalendarCell:" destination="KJR-Rl-5b5" id="UCs-Pz-MG5"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="468.11594202898556" y="868.52678571428567"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="themeColor">
+            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,12 +11,14 @@ import MessageUI
 
 class SideMenuViewController: UIViewController {
     private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
+    private var viewModel: SideMenuViewModel!
 
     private let mail = MFMailComposeViewController()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = SideMenuViewModel()
         setDelegateDataSource()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +34,7 @@ class SideMenuViewController: UIViewController {
                 withDuration: 0.2,
                 delay: 0,
                 options: .curveEaseIn,
-                animations: { self.baseView.sideMenuParentView.layer.position.x = -(self.baseView.sideMenuParentView.frame.width) }
+                animations: { self.baseView.animations() }
             ) { _ in
                 self.dismiss(animated: true, completion: nil)
             }
@@ -56,11 +58,13 @@ extension SideMenuViewController {
         )
     }
     private func setDelegateDataSource() {
-        baseView.delegate = self
         mail.mailComposeDelegate = self
+        baseView.configTableView(delegate: self, dataSource: viewModel)
     }
 }
+
 // MARK: - MFMail Delegate
+
 extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     private func openContactMailer() {
         if MFMailComposeViewController.canSendMail() {
@@ -89,17 +93,30 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
-// MARK: - SideMenuBaaseView Delegate
-extension SideMenuViewController: SideMenuBaseViewDelegate {
-    func didTapContactCell() {
-        openContactMailer()
-    }
-    func didTapGraphCell() {
-        guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
-    }
-    func didTapCalendarCell() {
-        guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
+
+// MARK: - UITableView Delegate
+
+extension SideMenuViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sectionRow = viewModel.sections[indexPath.section].rows[indexPath.row]
+        switch sectionRow {
+        case .calendar:
+            guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
+            present(vc, animated: true, completion: nil)
+        case .graph:
+            guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
+            present(vc, animated: true, completion: nil)
+        case .contact:
+            openContactMailer()
+        case .setting:
+            print("")
+        case .license:
+            print("")
+        case .searchRecipe:
+            print("")
+        case .kikurageDictionary:
+            print("")
+        }
+        baseView.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
