@@ -10,20 +10,20 @@ import Foundation
 import UIKit.UITableView
 
 class SideMenuViewModel: NSObject {
-    private enum Section {
+    enum Section {
         case history
         case support
         case help
         
         var rows: [SectionRowType] {
             switch self {
-            case .history:  return [.calendar, .contact]
+            case .history:  return [.calendar, .graph]
             case .support:  return [.contact, .setting, .license]
             case .help:     return [.searchRecipe, .kikurageDictionary]
             }
         }
     }
-    private enum SectionRowType {
+    enum SectionRowType {
         case calendar
         case graph
         case contact
@@ -71,7 +71,7 @@ class SideMenuViewModel: NSObject {
         }
     }
     
-    private var sections: [Section] = []
+    private(set) var sections: [Section] = []
     
     override init() {
         super.init()
