@@ -450,6 +450,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9C9B6C762770D4FD004B2D62 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				9CA20454271C787300D65DD7 /* Calendar */,
+				9CA20452271C785E00D65DD7 /* Graph */,
+			);
+			path = Child;
+			sourceTree = "<group>";
+		};
 		9CA2043D271C76A000D65DD7 /* ScreenModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,8 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				9C9B6C6C2770B07A004B2D62 /* Parent */,
-				9CA20454271C787300D65DD7 /* Calendar */,
-				9CA20452271C785E00D65DD7 /* Graph */,
+				9C9B6C762770D4FD004B2D62 /* Child */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
