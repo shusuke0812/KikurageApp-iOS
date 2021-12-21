@@ -123,17 +123,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2" customClass="HomeAdviceView" customModule="Kikurage" customModuleProvider="target">
-                                <rect key="frame" x="62" y="468" width="290" height="140"/>
+                                <rect key="frame" x="15" y="468" width="384" height="324"/>
                                 <color key="backgroundColor" name="themeColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="F4s-4P-Fv2" secondAttribute="height" multiplier="29:14" id="PYx-a0-icH"/>
-                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="y85-N9-qG7">
-                                <rect key="frame" x="34" y="729" width="346" height="128"/>
+                                <rect key="frame" x="34" y="807" width="346" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiM-j2-akw">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="LJb-QK-gED"/>
                                         </constraints>
@@ -143,7 +140,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-LQ-DQW">
-                                        <rect key="frame" x="118" y="0.0" width="110" height="128"/>
+                                        <rect key="frame" x="118" y="0.0" width="110" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="Er6-kM-SHM"/>
                                         </constraints>
@@ -153,7 +150,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II1-rE-l8N">
-                                        <rect key="frame" x="236" y="0.0" width="110" height="128"/>
+                                        <rect key="frame" x="236" y="0.0" width="110" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="wii-Bo-NmX"/>
                                         </constraints>
@@ -163,6 +160,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LOX-HG-JSP"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xhU-Dg-G6Y"/>
@@ -174,7 +174,7 @@
                             <constraint firstItem="Zap-Qq-H8t" firstAttribute="leading" secondItem="lJ7-a1-55m" secondAttribute="trailing" constant="70.5" id="5rw-Ti-VK0"/>
                             <constraint firstItem="D2w-ln-CB5" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="15" id="HBZ-NS-dew"/>
                             <constraint firstItem="y85-N9-qG7" firstAttribute="centerX" secondItem="fri-rL-faW" secondAttribute="centerX" id="HXT-p2-ATR"/>
-                            <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="F4s-4P-Fv2" secondAttribute="trailing" constant="62" id="HnV-xF-JcA"/>
+                            <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="F4s-4P-Fv2" secondAttribute="trailing" constant="15" id="HnV-xF-JcA"/>
                             <constraint firstItem="o8G-Od-1s5" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="16" id="IEW-gF-H5o"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="bottom" secondItem="y85-N9-qG7" secondAttribute="bottom" constant="5" id="N15-0j-cJp"/>
                             <constraint firstItem="o8G-Od-1s5" firstAttribute="top" secondItem="1um-rs-6A0" secondAttribute="bottom" constant="10" id="PpF-4K-qJU"/>
@@ -190,13 +190,11 @@
                             <constraint firstItem="9eI-cw-kb6" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="62" id="e8s-zC-dG0"/>
                             <constraint firstItem="9eI-cw-kb6" firstAttribute="top" secondItem="dVY-ca-2x5" secondAttribute="bottom" constant="5" id="i9Z-Id-ZG2"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="o8G-Od-1s5" secondAttribute="trailing" constant="16" id="juc-hb-Mlf"/>
-                            <constraint firstItem="F4s-4P-Fv2" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="62" id="lQh-OW-jqX"/>
+                            <constraint firstItem="F4s-4P-Fv2" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="15" id="lQh-OW-jqX"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="1um-rs-6A0" secondAttribute="trailing" constant="16" id="lgS-JZ-EWp"/>
                             <constraint firstItem="RoT-Iq-VWq" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="16" id="nni-fU-1Sm"/>
-                            <constraint firstItem="F4s-4P-Fv2" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="62" id="p3p-Lg-Icl"/>
-                            <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="F4s-4P-Fv2" secondAttribute="trailing" constant="62" id="skl-1l-jhO"/>
                             <constraint firstItem="dVY-ca-2x5" firstAttribute="top" secondItem="D2w-ln-CB5" secondAttribute="bottom" constant="33" id="uEc-7s-muV"/>
-                            <constraint firstItem="y85-N9-qG7" firstAttribute="top" relation="lessThanOrEqual" secondItem="F4s-4P-Fv2" secondAttribute="bottom" constant="121" id="v52-kv-IdS"/>
+                            <constraint firstItem="y85-N9-qG7" firstAttribute="top" secondItem="F4s-4P-Fv2" secondAttribute="bottom" constant="15" id="v52-kv-IdS"/>
                             <constraint firstItem="RoT-Iq-VWq" firstAttribute="top" secondItem="xhU-Dg-G6Y" secondAttribute="top" constant="20" id="xAY-on-DHQ"/>
                             <constraint firstItem="dVY-ca-2x5" firstAttribute="centerX" secondItem="fri-rL-faW" secondAttribute="centerX" id="zXy-k4-RSe"/>
                         </constraints>
