@@ -6,7 +6,6 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
 import UIKit.UITableView
 
 class SideMenuViewModel: NSObject {

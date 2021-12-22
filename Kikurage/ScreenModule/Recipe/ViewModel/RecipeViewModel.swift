@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
+import UIKit.UITableView
 
 protocol RecipeViewModelDelegate: AnyObject {
     /// きくらげ料理記録の取得に成功した

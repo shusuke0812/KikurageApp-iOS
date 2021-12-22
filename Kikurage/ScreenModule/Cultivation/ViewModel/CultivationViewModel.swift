@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
+import UIKit.UICollectionView
 import Firebase
 
 protocol CultivationViewModelDelegate: AnyObject {
