@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol PostCultivationViewModelDelegate: AnyObject {
     /// 栽培記録の投稿に成功した
