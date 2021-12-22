@@ -6,8 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
-import Firebase
+import Foundation
 
 protocol HomeViewModelDelgate: AnyObject {
     /// きくらげの状態データ取得に成功した
