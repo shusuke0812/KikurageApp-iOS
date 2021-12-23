@@ -20,10 +20,14 @@ protocol HomeBaseViewDelegate: AnyObject {
 }
 
 class HomeBaseView: UIView {
-    @IBOutlet private weak var nowTimeLabel: UILabel!
     @IBOutlet private weak var kikurageNameLabel: UILabel!
     @IBOutlet private weak var kikurageStatusLabel: UILabel!
+
+    @IBOutlet private weak var kikurageStatusParentView: UIView!
     @IBOutlet private weak var kikurageStatusView: UIImageView!
+    @IBOutlet private weak var nowTimeLabel: UILabel!
+
+    @IBOutlet private weak var valueParentView: UIView!
     @IBOutlet private weak var temperatureTitleLabel: UILabel!
     @IBOutlet private weak var temparatureTextLabel: UILabel!
     @IBOutlet private weak var humidityTitleLabel: UILabel!
@@ -32,6 +36,7 @@ class HomeBaseView: UIView {
     @IBOutlet private weak var expectedValueTitleLabel: UILabel!
     @IBOutlet private weak var expectedTemperatureLabel: UILabel!
     @IBOutlet private weak var expectedHumidityLabel: UILabel!
+
     @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
 
     weak var delegate: HomeBaseViewDelegate?
@@ -67,10 +72,11 @@ extension HomeBaseView {
         kikurageNameLabel.text = ""
         kikurageStatusLabel.text = ""
         
-        kikurageStatusView.clipsToBounds = true
-        kikurageStatusView.layer.cornerRadius = 18
+        kikurageStatusParentView.clipsToBounds = true
+        kikurageStatusParentView.layer.cornerRadius = 18
         displayKikurageStateImage(type: .normal)
         
+        valueParentView.backgroundColor = .systemGroupedBackground
         nowValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_now_title()
         expectedValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_expected_title()
         
