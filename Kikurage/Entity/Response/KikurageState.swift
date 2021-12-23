@@ -15,8 +15,14 @@ struct KikurageState: Codable {
     var humidity: Int?
     /// 状態メッセージ
     var message: String?
-    /// 判定（dry, normal, hot）
-    var judge: String?
+    /// タイプ（dry, normal, hot）
+    var type: KikurageStateType?
     /// アドバイス
     var advice: String?
+}
+
+enum KikurageStateType: String, Codable {
+    case normal
+    case wet
+    case dry
 }

@@ -64,7 +64,7 @@ extension HomeBaseView {
         nowTimeLabel.text = DateHelper.now()
         kikurageNameLabel.text = ""
         kikurageStatusLabel.text = ""
-        displayKikurageStateImage(type: "normal")
+        displayKikurageStateImage(type: .normal)
         
         nowValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_now_title()
         expectedValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_expected_title()
@@ -88,8 +88,8 @@ extension HomeBaseView {
             kikurageStatusLabel.text = message
         }
         // きくらげの表情を設定
-        if let judge: String = kikurageState?.judge {
-            displayKikurageStateImage(type: judge)
+        if let type: KikurageStateType = kikurageState?.type {
+            displayKikurageStateImage(type: type)
         }
         // 温度湿度を設定
         if let temparature: Int = kikurageState?.temperature, let humidity: Int = kikurageState?.humidity {
@@ -111,7 +111,7 @@ extension HomeBaseView {
     func updateTimeLabel() {
         nowTimeLabel.text = DateHelper.now()
     }
-    private func displayKikurageStateImage(type: String) {
+    private func displayKikurageStateImage(type: KikurageStateType) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
         kikurageStatusView.animationImages = KikurageStateHelper.setStateImage(type: type)
         kikurageStatusView.animationDuration = 1
