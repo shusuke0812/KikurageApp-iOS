@@ -64,6 +64,9 @@ extension HomeBaseView {
         nowTimeLabel.text = DateHelper.now()
         kikurageNameLabel.text = ""
         kikurageStatusLabel.text = ""
+        
+        kikurageStatusView.clipsToBounds = true
+        kikurageStatusView.layer.cornerRadius = 18
         displayKikurageStateImage(type: .normal)
         
         nowValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_now_title()
