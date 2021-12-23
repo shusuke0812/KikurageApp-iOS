@@ -24,9 +24,9 @@ class HomeAdviceView: XibView {
 
 extension HomeAdviceView {
     private func initBaseView() {
+        baseView.clipsToBounds = true
         baseView.layer.cornerRadius = 18
-        baseView.layer.borderColor = UIColor.red.cgColor
-        baseView.layer.borderWidth = 1.0
+        baseView.backgroundColor = .white
     }
     private func initAdviceTitleLabel() {
         adviceTitleLabel.text = R.string.localizable.screen_home_advice_title()

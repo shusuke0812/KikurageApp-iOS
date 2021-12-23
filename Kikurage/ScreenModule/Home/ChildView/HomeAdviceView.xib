@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" name="themeColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="2os-3o-fpX" firstAttribute="top" secondItem="pjh-li-2Bo" secondAttribute="bottom" constant="5" id="Lh1-gt-kQn"/>
                         <constraint firstItem="pjh-li-2Bo" firstAttribute="leading" secondItem="MK1-LN-GXy" secondAttribute="leading" constant="5" id="WWE-DR-z5c"/>
@@ -61,7 +60,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" name="themeColor"/>
             <constraints>
                 <constraint firstItem="MK1-LN-GXy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qyn-bu-rDp"/>
                 <constraint firstItem="MK1-LN-GXy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VKi-XA-uYA"/>
@@ -76,9 +74,4 @@
             <point key="canvasLocation" x="86.956521739130437" y="349.55357142857139"/>
         </view>
     </objects>
-    <resources>
-        <namedColor name="themeColor">
-            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

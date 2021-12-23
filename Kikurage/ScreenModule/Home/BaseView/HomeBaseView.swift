@@ -61,6 +61,8 @@ class HomeBaseView: UIView {
 
 extension HomeBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+        
         nowTimeLabel.text = DateHelper.now()
         kikurageNameLabel.text = ""
         kikurageStatusLabel.text = ""
