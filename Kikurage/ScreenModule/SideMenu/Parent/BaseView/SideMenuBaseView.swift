@@ -15,12 +15,16 @@ class SideMenuBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         registerTableViewCell()
+        initUI()
     }
 }
 
 // MARK: - Config
 
 extension SideMenuBaseView {
+    private func initUI() {
+        tableView.backgroundColor = .systemGroupedBackground
+    }
     private func registerTableViewCell() {
         let nib = UINib(nibName: "SideMenuTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SideMenuTableViewCell")

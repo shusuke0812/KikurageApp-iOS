@@ -30,6 +30,7 @@ class CalendarBaseView: UIView {
 // MARK: - Initialized
 extension CalendarBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
         navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
 }

@@ -32,6 +32,9 @@ class RecipeBaseView: UIView {
 // MARK: - Initialized Method
 extension RecipeBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+        tableView.backgroundColor = .systemGroupedBackground
+
         noRecipeLabel.text = R.string.localizable.screen_recipe_no_recipe()
         noRecipeLabel.textColor = .darkGray
         noRecipeLabel.isHidden = true

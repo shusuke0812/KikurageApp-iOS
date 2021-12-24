@@ -22,7 +22,7 @@ class SideMenuTableViewCell: UITableViewCell {
 
 extension SideMenuTableViewCell {
     private func initUI() {
-        contentView.backgroundColor = .themeColor
+        contentView.backgroundColor = .systemGroupedBackground
         iconImageView.tintColor = .black
     }
     func setSideMenuContent(title: String, iconImageName: String) {

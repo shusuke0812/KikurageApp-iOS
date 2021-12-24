@@ -35,6 +35,8 @@ class CultivationBaseView: UIView {
 // MARK: - Initialized
 extension CultivationBaseView {
     private func initUI() {
+        collectionView.backgroundColor = .systemGroupedBackground
+        
         noCultivationLabel.text = R.string.localizable.screen_cultivation_no_cultivation()
         noCultivationLabel.textColor = .darkGray
         noCultivationLabel.isHidden = true

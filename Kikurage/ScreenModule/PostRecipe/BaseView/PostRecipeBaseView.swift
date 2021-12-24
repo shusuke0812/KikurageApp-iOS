@@ -58,9 +58,9 @@ extension PostRecipeBaseView {
         // タイトル
         navigationItem.title = R.string.localizable.screen_post_recipe_title()
         // 背景色
-        backgroundColor = .themeColor
-        cameraCollectionView.backgroundColor = .themeColor
-        recipeMemoTextView.backgroundColor = .themeColor
+        backgroundColor = .systemGroupedBackground
+        cameraCollectionView.backgroundColor = .systemGroupedBackground
+        recipeMemoTextView.backgroundColor = .systemGroupedBackground
         // プレースホルダー
         recipeMemoTextView.placeholder = R.string.localizable.screen_post_recipe_recipe_memo_textview_placeholder()
         recipeNameTextField.placeholder = R.string.localizable.screen_post_recipe_recipe_name_textfield_placeholder()

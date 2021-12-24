@@ -54,9 +54,9 @@ extension PostCultivationBaseView {
         // タイトル
         navigationItem.title = R.string.localizable.screen_post_cultivation_title()
         // 背景色
-        backgroundColor = .themeColor
-        cameraCollectionView.backgroundColor = .themeColor
-        textView.backgroundColor = .themeColor
+        backgroundColor = .systemGroupedBackground
+        cameraCollectionView.backgroundColor = .systemGroupedBackground
+        textView.backgroundColor = .systemGroupedBackground
         // プレースホルダー
         textView.placeholder = R.string.localizable.screen_post_cultivation_textview_placeholder()
         dateTextField.placeholder = R.string.localizable.screen_post_cultivation_date_textfield_placeholder()

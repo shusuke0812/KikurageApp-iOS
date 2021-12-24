@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mYJ-tv-MHi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mYJ-tv-MHi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,8 +12,8 @@
         <!--Cultivation Detail View Controller-->
         <scene sceneID="gHR-XB-1IB">
             <objects>
-                <viewController id="mYJ-tv-MHi" customClass="CultivationDetailViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QUe-Ur-Jrq" customClass="CultivationDetailBaseView" customModule="きくらげ君" customModuleProvider="target">
+                <viewController id="mYJ-tv-MHi" customClass="CultivationDetailViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QUe-Ur-Jrq" customClass="CultivationDetailBaseView" customModule="Kikurage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -42,7 +41,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="wqO-tk-YOw"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9UL-LN-3SC" customClass="CarouselCollectionFlowLayout" customModule="きくらげ君" customModuleProvider="target">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="9UL-LN-3SC" customClass="CarouselCollectionFlowLayout" customModule="Kikurage" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -52,7 +51,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mou-yz-hH8"/>
-                        <color key="backgroundColor" name="themeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="v0p-nb-eP2" firstAttribute="leading" secondItem="mou-yz-hH8" secondAttribute="leading" constant="20" id="69m-Bd-U5K"/>
                             <constraint firstItem="gsd-rX-F29" firstAttribute="top" secondItem="Zb1-Zv-3hg" secondAttribute="bottom" constant="20" id="A8J-3A-Ljy"/>
@@ -82,9 +81,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="themeColor">
-            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K9v-IR-Dsj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K9v-IR-Dsj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,8 +11,8 @@
         <!--Communication View Controller-->
         <scene sceneID="Ofa-Uf-iAD">
             <objects>
-                <viewController id="K9v-IR-Dsj" customClass="CommunicationViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d3D-3V-zZU" customClass="CommunicationBaseView" customModule="きくらげ君" customModuleProvider="target">
+                <viewController id="K9v-IR-Dsj" customClass="CommunicationViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d3D-3V-zZU" customClass="CommunicationBaseView" customModule="Kikurage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -38,7 +37,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="759-gu-RgS"/>
-                        <color key="backgroundColor" name="themeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PZt-uh-Gv7" firstAttribute="centerX" secondItem="d3D-3V-zZU" secondAttribute="centerX" id="B2J-5z-fGP"/>
                             <constraint firstItem="ZmJ-Lj-YDS" firstAttribute="top" secondItem="u5V-vl-INU" secondAttribute="bottom" constant="30" id="BHx-gV-67R"/>
@@ -64,8 +63,5 @@
     <resources>
         <image name="communication" width="330" height="285"/>
         <image name="facebookButton" width="49" height="49"/>
-        <namedColor name="themeColor">
-            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

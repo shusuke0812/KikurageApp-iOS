@@ -30,6 +30,8 @@ class CommunicationBaseView: UIView {
 // MARK: - Initialized
 extension CommunicationBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+        
         informationLabel.text = R.string.localizable.screen_communication_information()
         informationLabel.backgroundColor = .information
     }

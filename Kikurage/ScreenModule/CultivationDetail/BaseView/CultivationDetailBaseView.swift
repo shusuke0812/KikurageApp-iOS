@@ -24,6 +24,8 @@ class CultivationDetailBaseView: UIView {
 // MARK: - Initialized
 extension CultivationDetailBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+        
         viewDateLabel.text = ""
         memoTitleLabel.text = R.string.localizable.screen_cultivation_detail_memo_title()
         memoLabel.text = ""
