@@ -36,6 +36,6 @@ extension CommunicationBaseView {
         informationLabel.text = R.string.localizable.screen_communication_information()
         
         informationParentView.clipsToBounds = true
-        informationParentView.layer.cornerRadius = 18
+        informationParentView.layer.cornerRadius = .viewCornerRadius
     }
 }

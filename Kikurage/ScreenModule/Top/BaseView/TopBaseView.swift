@@ -51,11 +51,11 @@ extension TopBaseView {
         topImageView.image = R.image.kikurageDevice()
 
         signUpButton.layer.masksToBounds = true
-        signUpButton.layer.cornerRadius = 5
+        signUpButton.layer.cornerRadius = .buttonCornerRadius
         signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
 
         loginButton.layer.masksToBounds = true
-        loginButton.layer.cornerRadius = 5
+        loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_top_login_btn_name(), for: .normal)
 
         let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]

@@ -62,7 +62,7 @@ extension PostCultivationBaseView {
         dateTextField.placeholder = R.string.localizable.screen_post_cultivation_date_textfield_placeholder()
         // 保存するボタン
         postButton.layer.masksToBounds = true
-        postButton.layer.cornerRadius = 5
+        postButton.layer.cornerRadius = .buttonCornerRadius
         // 最大入力文字数
         maxTextViewNumberLabel.text = "\(maxTextViewNumber)"
     }

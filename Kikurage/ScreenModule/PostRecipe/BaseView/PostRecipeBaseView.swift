@@ -67,7 +67,7 @@ extension PostRecipeBaseView {
         dateTextField.placeholder = R.string.localizable.screen_post_recipe_recipe_date_textfield_placeholder()
         // 保存するボタン
         postButton.layer.masksToBounds = true
-        postButton.layer.cornerRadius = 5
+        postButton.layer.cornerRadius = .buttonCornerRadius
         // 最大入力文字数
         maxRecipeNameNumberLabel.text = "\(maxRecipeNameNumer)"
         maxRecipeMemoNumberLabel.text = "\(maxRecipeMemoNumber)"

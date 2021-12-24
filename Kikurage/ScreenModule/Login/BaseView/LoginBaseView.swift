@@ -33,7 +33,7 @@ class LoginBaseView: UIView {
 extension LoginBaseView {
     private func initUI() {
         loginButton.layer.masksToBounds = true
-        loginButton.layer.cornerRadius = 5
+        loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_login_login_btn_name(), for: .normal)
 
         emailTextField.autocorrectionType = .no

@@ -34,7 +34,7 @@ class SignUpBaseView: UIView {
 extension SignUpBaseView {
     private func initUI() {
         userRegisterButton.layer.masksToBounds = true
-        userRegisterButton.layer.cornerRadius = 5
+        userRegisterButton.layer.cornerRadius = .buttonCornerRadius
         userRegisterButton.setTitle(R.string.localizable.screen_signup_signup_btn_name(), for: .normal)
 
         emailTextField.autocorrectionType = .no

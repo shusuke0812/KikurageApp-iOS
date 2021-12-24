@@ -73,7 +73,7 @@ extension HomeBaseView {
         kikurageStatusLabel.text = ""
         
         kikurageStatusParentView.clipsToBounds = true
-        kikurageStatusParentView.layer.cornerRadius = 18
+        kikurageStatusParentView.layer.cornerRadius = .viewCornerRadius
         displayKikurageStateImage(type: .normal)
         
         valueParentView.backgroundColor = .systemGroupedBackground

@@ -37,7 +37,7 @@ class DeviceRegisterBaseView: UIView {
 extension DeviceRegisterBaseView {
     private func initUI() {
         deviceRegisterButton.layer.masksToBounds = true
-        deviceRegisterButton.layer.cornerRadius = 5
+        deviceRegisterButton.layer.cornerRadius = .buttonCornerRadius
         deviceRegisterButton.setTitle(R.string.localizable.screen_device_register_register_btn_name(), for: .normal)
 
         productKeyTextField.autocorrectionType = .no
