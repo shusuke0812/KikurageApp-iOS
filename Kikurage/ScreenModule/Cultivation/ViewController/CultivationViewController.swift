@@ -14,6 +14,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: CultivationViewModel!
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
@@ -30,7 +31,9 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
         super.viewWillAppear(animated)
     }
 }
+
 // MARK: - Initialized
+
 extension CultivationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_cultivation_title())
@@ -42,7 +45,9 @@ extension CultivationViewController {
         viewModel.delegate = self
     }
 }
+
 // MARK: - Private
+
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
         guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
@@ -50,14 +55,18 @@ extension CultivationViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+
 // MARK: - CultivationBaseView Delegate
+
 extension CultivationViewController: CultivationBaseViewDelegate {
     func didTapPostCultivationPageButton() {
         guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
         present(vc, animated: true, completion: nil)
     }
 }
+
 // MARK: - CultivationViewModel Delegate
+
 extension CultivationViewController: CultivationViewModelDelegate {
     func didSuccessGetCultivations() {
         DispatchQueue.main.async {
@@ -74,7 +83,9 @@ extension CultivationViewController: CultivationViewModelDelegate {
         }
     }
 }
+
 // MARK: - UICollectionView Delegate FlowLayout
+
 extension CultivationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horizontalSpace: CGFloat = 1.0
@@ -83,7 +94,9 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellHeight)
     }
 }
+
 // MARK: - UICollectionView Delegate
+
 extension CultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         transitionCultivationDetailPage(indexPath: indexPath)
@@ -91,6 +104,7 @@ extension CultivationViewController: UICollectionViewDelegate {
 }
 
 // MARK: - NotificationCenter
+
 extension CultivationViewController {
     private func setNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(didPostCultivation), name: .updatedCultivations, object: nil)
