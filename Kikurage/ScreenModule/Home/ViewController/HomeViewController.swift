@@ -40,6 +40,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable {
         super.viewWillAppear(animated)
         setDateTimer()
         loadKikurageState()
+        startKikurageStateViewAnimation()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -72,6 +73,18 @@ extension HomeViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
+    private func startKikurageStateViewAnimation() {
+        baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
+        baseView.kikurageStatusViewAnimation(true)
+    }
+}
+
+// MARK: - API
+
+extension HomeViewController {
+    private func loadKikurageState() {
+        viewModel.loadKikurageState()
+    }
 }
 
 // MARK: - Observer
@@ -79,8 +92,7 @@ extension HomeViewController {
 extension HomeViewController {
     @objc private func willEnterForeground() {
         setDateTimer()
-        baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
-        baseView.kikurageStatusViewAnimation(true)
+        startKikurageStateViewAnimation()
     }
     @objc private func didEnterBackground() {
         if let dateTimer = self.dateTimer {
@@ -113,9 +125,6 @@ extension HomeViewController: HomeBaseViewDelegate {
 // MARK: - HomeViewModel Delegate
 
 extension HomeViewController: HomeViewModelDelgate {
-    private func loadKikurageState() {
-        viewModel.loadKikurageState()
-    }
     func didSuccessGetKikurageState() {
         baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
     }
