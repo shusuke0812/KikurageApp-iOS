@@ -15,7 +15,8 @@ protocol CommunicationBaseViewDelegate: AnyObject {
 
 class CommunicationBaseView: UIView {
     @IBOutlet weak var informationLabel: UILabel!
-
+    @IBOutlet weak var informationParentView: UIView!
+    
     weak var delegate: CommunicationBaseViewDelegate?
 
     override func awakeFromNib() {
@@ -33,6 +34,8 @@ extension CommunicationBaseView {
         backgroundColor = .systemGroupedBackground
         
         informationLabel.text = R.string.localizable.screen_communication_information()
-        informationLabel.backgroundColor = .information
+        
+        informationParentView.clipsToBounds = true
+        informationParentView.layer.cornerRadius = 18
     }
 }
