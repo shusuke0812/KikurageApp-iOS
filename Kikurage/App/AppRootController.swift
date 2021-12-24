@@ -45,10 +45,10 @@ extension AppRootController {
 extension AppRootController {
     /// ホーム画面を開く
     private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        guard let nc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
-        let vc = nc.topViewController as! HomeViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
+        let nc = UINavigationController(rootViewController: vc)
         changeViewController(nc)
     }
     /// ログイン画面を開く

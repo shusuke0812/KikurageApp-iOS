@@ -75,9 +75,8 @@ extension LoginViewController: LoginViewModelDelegate {
     }
     private func transitionHomePage() {
         guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
-        let mainVC = vc.topViewController as! HomeViewController // swiftlint:disable:this force_cast
-        mainVC.kikurageUser = viewModel.kikurageUser
-        mainVC.kikurageState = viewModel.kikurageState
+        vc.kikurageUser = viewModel.kikurageUser
+        vc.kikurageState = viewModel.kikurageState
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
