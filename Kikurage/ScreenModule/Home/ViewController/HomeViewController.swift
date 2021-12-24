@@ -57,7 +57,6 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable {
 extension HomeViewController {
     private func setNavigationItem() {
         setNavigationBackButton(buttonTitle: R.string.localizable.common_navigation_back_btn_title(), buttonColor: .black)
-        setNavigationBar(title: R.string.localizable.screen_home_title())
     }
     private func setDateTimer() {
         dateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)

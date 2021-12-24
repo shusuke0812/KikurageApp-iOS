@@ -63,7 +63,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemBackground
+        appearance.backgroundColor = .systemGroupedBackground
         nc.navigationBar.standardAppearance = appearance
         nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
     }
