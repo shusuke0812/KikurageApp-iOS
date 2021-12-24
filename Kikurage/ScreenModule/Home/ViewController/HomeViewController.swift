@@ -80,6 +80,7 @@ extension HomeViewController {
     @objc private func willEnterForeground() {
         setDateTimer()
         baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
+        baseView.kikurageStatusViewAnimation(true)
     }
     @objc private func didEnterBackground() {
         if let dateTimer = self.dateTimer {
