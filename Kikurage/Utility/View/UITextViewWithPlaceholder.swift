@@ -10,11 +10,10 @@ import UIKit
 
 /// UITextViewにコードでPlaceholderを設定できるようにするカスタムクラス
 class UITextViewWithPlaceholder: UITextView {
-    private lazy var placeholderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
+    private var placeholderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
     /// プレースホルダー文字列
     var placeholder: String = "" {
         didSet {
-            guard placeholder.isEmpty else { return }
             placeholderLabel.text = self.placeholder
             placeholderLabel.sizeToFit()
         }
@@ -33,6 +32,7 @@ extension UITextViewWithPlaceholder {
         placeholderLabel.lineBreakMode = .byWordWrapping
         placeholderLabel.numberOfLines = 0
         placeholderLabel.font = self.font
+        placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(self.placeholderLabel)
     }
     func switchPlaceholderDisplay(text: String) {
