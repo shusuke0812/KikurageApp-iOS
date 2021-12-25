@@ -55,6 +55,7 @@ extension HomeViewModel {
             case .success(let kikurageState):
                 DispatchQueue.main.async { [weak self] in
                     self?.kikurageState = kikurageState
+                    self?.kikurageState.convertToStateType()
                     self?.delegate?.didSuccessGetKikurageState()
                 }
             case .failure(let error):
@@ -68,6 +69,7 @@ extension HomeViewModel {
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
+                self?.kikurageState.convertToStateType()
                 self?.delegate?.didChangedKikurageState()
             case .failure(let error):
                 // TODO: エラーが発生した場合はretryする処理を実装する
