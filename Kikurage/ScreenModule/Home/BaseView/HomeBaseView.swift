@@ -39,11 +39,14 @@ class HomeBaseView: UIView {
 
     @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
 
+    @IBOutlet private weak var footerButtonView: FooterButtonView!
+
     weak var delegate: HomeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
+        footerButtonView.delegate = self
     }
 
     // MARK: - Action Method
@@ -136,5 +139,19 @@ extension HomeBaseView {
 extension HomeBaseView {
     func kikurageStatusViewAnimation(_ animation: Bool) {
         (animation == true) ? kikurageStatusView.startAnimating() : kikurageStatusView.stopAnimating()
+    }
+}
+
+// MARK: - FooterButtonView Delegate
+
+extension HomeBaseView: FooterButtonViewDelegate {
+    func footerButtonViewDidTapCultivationButton() {
+        delegate?.didTapCultivationButton()
+    }
+    func footerButtonViewDidTapRecipeButton() {
+        delegate?.didTapRecipeButton()
+    }
+    func footerButtonViewDidTapCommunicationButton() {
+        delegate?.didTapCommunicationButton()
     }
 }
