@@ -43,6 +43,9 @@ extension CultivationBaseView {
     }
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
+        flowLayout.minimumLineSpacing = .collectionViewSpacing * 2
+        flowLayout.minimumInteritemSpacing = .collectionViewSpacing
+        flowLayout.sectionInset = UIEdgeInsets(top: .collectionViewSpacing, left: .collectionViewSpacing, bottom: .collectionViewSpacing, right: .collectionViewSpacing)
         collectionView.register(R.nib.cultivationCollectionViewCell)
     }
 }

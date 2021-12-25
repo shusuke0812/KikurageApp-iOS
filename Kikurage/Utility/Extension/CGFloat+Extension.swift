@@ -9,6 +9,11 @@
 import UIKit
 
 extension CGFloat {
+    // Corner radius
     static let viewCornerRadius: CGFloat = 18
     static let buttonCornerRadius: CGFloat = 5
+    static let cellCornerRadius: CGFloat = 10
+    
+    // Collection view
+    static let collectionViewSpacing: CGFloat = 4
 }

@@ -88,7 +88,7 @@ extension CultivationViewController: CultivationViewModelDelegate {
 
 extension CultivationViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalSpace: CGFloat = 1.0
+        let horizontalSpace: CGFloat = .collectionViewSpacing * 2
         let cellWidth: CGFloat = baseView.bounds.width / 2 - horizontalSpace
         let cellHeight: CGFloat = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)
