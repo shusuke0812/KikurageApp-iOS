@@ -24,6 +24,7 @@ class SideMenuBaseView: UIView {
 extension SideMenuBaseView {
     private func initUI() {
         tableView.backgroundColor = .systemGroupedBackground
+        tableView.isScrollEnabled = false
     }
     private func registerTableViewCell() {
         let nib = UINib(nibName: "SideMenuTableViewCell", bundle: nil)
