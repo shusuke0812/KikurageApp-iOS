@@ -34,6 +34,7 @@ extension RecipeBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
+        tableView.separatorStyle = .none
 
         noRecipeLabel.text = R.string.localizable.screen_recipe_no_recipe()
         noRecipeLabel.textColor = .darkGray

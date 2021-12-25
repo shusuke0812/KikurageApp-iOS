@@ -11,6 +11,8 @@ import Firebase
 import FirebaseFirestore
 
 class RecipeTableViewCell: UITableViewCell {
+    @IBOutlet weak var parentView: UIView!
+    
     @IBOutlet private weak var recipeImageView: UIImageView!
     @IBOutlet private weak var recipeDateLabel: UILabel!
     @IBOutlet private weak var recipeNameLabel: UILabel!
@@ -18,9 +20,26 @@ class RecipeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        initUI()
     }
 }
+
+// MARK: - Initialized
+
+extension RecipeTableViewCell {
+    private func initUI() {
+        backgroundColor = .systemGroupedBackground
+    
+        parentView.clipsToBounds = true
+        parentView.layer.cornerRadius = .cellCornerRadius
+        
+        recipeImageView.clipsToBounds = true
+        recipeImageView.layer.cornerRadius = .cellCornerRadius
+    }
+}
+
 // MARK: - Setting UI
+
 extension RecipeTableViewCell {
     func setUI(recipe: KikurageRecipe) {
         // 文字の設定
