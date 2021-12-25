@@ -15,5 +15,5 @@ extension CGFloat {
     static let cellCornerRadius: CGFloat = 10
     
     // Collection view
-    static let collectionViewSpacing: CGFloat = 4
+    static let cellSpacing: CGFloat = 4
 }
