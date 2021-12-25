@@ -305,6 +305,7 @@ PODS:
   - FirebaseUI/Storage (8.5.1):
     - Firebase/Storage (~> 6.0)
     - SDWebImage (~> 5.6)
+  - FontAwesome.swift (1.9.1)
   - GoogleAppMeasurement (6.9.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/MethodSwizzler (~> 6.7)
@@ -390,6 +391,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseFirestoreSwift (~> 0.2)
   - FirebaseUI/Storage (~> 8.0)
+  - FontAwesome.swift
   - HorizonCalendar
   - IQKeyboardManagerSwift
   - PKHUD (~> 5.0)
@@ -415,6 +417,7 @@ SPEC REPOS:
     - FirebaseRemoteConfig
     - FirebaseStorage
     - FirebaseUI
+    - FontAwesome.swift
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -451,6 +454,7 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 35a729305f254fb15a2e541d4b36f3a379da7fdc
   FirebaseStorage: 15e0f15ef3c7fec3d1899d68623e47d4447066b4
   FirebaseUI: 9df84336a56f1d755ae4c37d5885c237d3084b6b
+  FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -470,6 +474,6 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: bf3193d5877edff8796ec32e0848b043eab4c0c1
+PODFILE CHECKSUM: 74cf662eb2e47023281546fd67e1d3703edd2cc7
 
 COCOAPODS: 1.9.3
