@@ -56,46 +56,8 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4s-4P-Fv2" customClass="HomeAdviceView" customModule="Kikurage" customModuleProvider="target">
-                                <rect key="frame" x="15" y="430" width="384" height="362"/>
+                                <rect key="frame" x="15" y="430" width="384" height="382"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="y85-N9-qG7" userLabel="Button Stack View">
-                                <rect key="frame" x="34" y="807" width="346" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiM-j2-akw">
-                                        <rect key="frame" x="0.0" y="0.0" width="110" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="LJb-QK-gED"/>
-                                        </constraints>
-                                        <state key="normal" image="cultivationButton"/>
-                                        <connections>
-                                            <action selector="didTapCultivationButton:" destination="fri-rL-faW" eventType="touchUpInside" id="bpc-F9-pUw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-LQ-DQW">
-                                        <rect key="frame" x="118" y="0.0" width="110" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="Er6-kM-SHM"/>
-                                        </constraints>
-                                        <state key="normal" image="recipeButton"/>
-                                        <connections>
-                                            <action selector="didTapRecipeButton:" destination="fri-rL-faW" eventType="touchUpInside" id="iaC-6i-LDQ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II1-rE-l8N">
-                                        <rect key="frame" x="236" y="0.0" width="110" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="110" id="wii-Bo-NmX"/>
-                                        </constraints>
-                                        <state key="normal" image="communicationButton"/>
-                                        <connections>
-                                            <action selector="didTapCommunicationButton:" destination="fri-rL-faW" eventType="touchUpInside" id="azM-Ki-TSL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LOX-HG-JSP"/>
-                                </constraints>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThT-WZ-a6t" userLabel="Value Parent">
                                 <rect key="frame" x="15" y="315" width="384" height="100"/>
                                 <subviews>
@@ -194,22 +156,31 @@
                                     <constraint firstItem="9eI-cw-kb6" firstAttribute="top" secondItem="Y50-vB-neh" secondAttribute="bottom" constant="6.5" id="vFp-rY-an5"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqP-qu-naX" customClass="FooterButtonView" customModule="Kikurage" customModuleProvider="target">
+                                <rect key="frame" x="15" y="827" width="384" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XzI-EL-WWK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xhU-Dg-G6Y"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NqP-qu-naX" firstAttribute="bottom" secondItem="xhU-Dg-G6Y" secondAttribute="bottom" constant="15" id="3fI-9j-6LD"/>
                             <constraint firstItem="8cS-Q3-g81" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="15" id="6eb-O4-nX6"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="ThT-WZ-a6t" secondAttribute="trailing" constant="15" id="FW2-i4-Whg"/>
-                            <constraint firstItem="y85-N9-qG7" firstAttribute="centerX" secondItem="fri-rL-faW" secondAttribute="centerX" id="HXT-p2-ATR"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="F4s-4P-Fv2" secondAttribute="trailing" constant="15" id="HnV-xF-JcA"/>
                             <constraint firstItem="o8G-Od-1s5" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="16" id="IEW-gF-H5o"/>
-                            <constraint firstItem="xhU-Dg-G6Y" firstAttribute="bottom" secondItem="y85-N9-qG7" secondAttribute="bottom" constant="5" id="N15-0j-cJp"/>
                             <constraint firstItem="1um-rs-6A0" firstAttribute="top" secondItem="xhU-Dg-G6Y" secondAttribute="top" constant="20" id="Pne-XE-jXi"/>
                             <constraint firstItem="o8G-Od-1s5" firstAttribute="top" secondItem="1um-rs-6A0" secondAttribute="bottom" constant="5" id="PpF-4K-qJU"/>
+                            <constraint firstItem="NqP-qu-naX" firstAttribute="centerX" secondItem="fri-rL-faW" secondAttribute="centerX" id="Qlv-cW-5cU"/>
                             <constraint firstItem="ThT-WZ-a6t" firstAttribute="top" secondItem="8cS-Q3-g81" secondAttribute="bottom" constant="15" id="WVm-2M-YSA"/>
                             <constraint firstItem="1um-rs-6A0" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="16" id="XJM-eo-Pep"/>
                             <constraint firstItem="ThT-WZ-a6t" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="15" id="aaZ-pA-dq2"/>
-                            <constraint firstItem="y85-N9-qG7" firstAttribute="top" secondItem="F4s-4P-Fv2" secondAttribute="bottom" constant="15" id="dHw-L3-8qb"/>
+                            <constraint firstItem="NqP-qu-naX" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="15" id="c8s-ig-SZW"/>
+                            <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="NqP-qu-naX" secondAttribute="trailing" constant="15" id="dBc-84-AIc"/>
+                            <constraint firstItem="NqP-qu-naX" firstAttribute="top" secondItem="F4s-4P-Fv2" secondAttribute="bottom" constant="15" id="dQV-JC-ilG"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="8cS-Q3-g81" secondAttribute="trailing" constant="15" id="enQ-8T-U4X"/>
                             <constraint firstItem="xhU-Dg-G6Y" firstAttribute="trailing" secondItem="o8G-Od-1s5" secondAttribute="trailing" constant="16" id="juc-hb-Mlf"/>
                             <constraint firstItem="F4s-4P-Fv2" firstAttribute="leading" secondItem="xhU-Dg-G6Y" secondAttribute="leading" constant="15" id="lQh-OW-jqX"/>
@@ -262,10 +233,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="communicationButton" width="110" height="50"/>
-        <image name="cultivationButton" width="110" height="50"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
-        <image name="recipeButton" width="110" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

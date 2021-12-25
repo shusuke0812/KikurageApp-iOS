@@ -16,11 +16,16 @@ protocol FooterButtonViewDelegate: AnyObject {
 }
 
 class FooterButtonView: UIView {
+    
+    static let iconSize = CGSize(width: 40, height: 40)
+    static let backgroundColor = UIColor.white
+    static let cornerRadius: CGFloat = .viewCornerRadius
+    
     private var parentView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        v.backgroundColor = backgroundColor
         v.clipsToBounds = true
-        v.layer.cornerRadius = .viewCornerRadius * 2
+        v.layer.cornerRadius = cornerRadius
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -34,24 +39,21 @@ class FooterButtonView: UIView {
     }()
     private var cultivationButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle(String.fontAwesomeIcon(name: .utensils), for: .normal)
-        btn.setTitleColor(.red, for: .normal)
+        btn.setImage(UIImage.fontAwesomeIcon(name: .leaf, style: .solid, textColor: Constants.Color.cultivation.rawValue, size: iconSize), for: .normal)
         btn.addTarget(self, action: #selector(onCultivation(_:)), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     private var recipeButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle(String.fontAwesomeIcon(name: .leaf), for: .normal)
-        btn.setTitleColor(.blue, for: .normal)
+        btn.setImage(UIImage.fontAwesomeIcon(name: .utensils, style: .solid, textColor: Constants.Color.recipe.rawValue, size: iconSize), for: .normal)
         btn.addTarget(self, action: #selector(onRecipe(_:)), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     private var communicationButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle(String.fontAwesomeIcon(name: .handsHelping), for: .normal)
-        btn.setTitleColor(.orange, for: .normal)
+        btn.setImage(UIImage.fontAwesomeIcon(name: .handsHelping, style: .solid, textColor: Constants.Color.communication.rawValue, size: iconSize), for: .normal)
         btn.addTarget(self, action: #selector(onCommunication(_:)), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
@@ -91,11 +93,16 @@ extension FooterButtonView {
         parentView.addSubview(stackView)
         addSubview(parentView)
         
-        parentView.addConstraints([
+        NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 5),
             stackView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 5),
             stackView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -5),
-            stackView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -5)
+            stackView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -5),
+            
+            parentView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            parentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            parentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            parentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
     }
 }
