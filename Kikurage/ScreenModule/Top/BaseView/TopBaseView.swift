@@ -51,6 +51,8 @@ extension TopBaseView {
         backgroundColor = .systemGroupedBackground
         
         topImageView.image = R.image.kikurageDevice()
+        topImageView.clipsToBounds = true
+        topImageView.layer.cornerRadius = .viewCornerRadius
 
         signUpButton.layer.masksToBounds = true
         signUpButton.layer.cornerRadius = .buttonCornerRadius
