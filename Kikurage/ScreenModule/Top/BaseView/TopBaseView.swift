@@ -48,6 +48,8 @@ class TopBaseView: UIView {
 // MARK: - Initialized
 extension TopBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+        
         topImageView.image = R.image.kikurageDevice()
 
         signUpButton.layer.masksToBounds = true

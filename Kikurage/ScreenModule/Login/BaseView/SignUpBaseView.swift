@@ -33,6 +33,8 @@ class SignUpBaseView: UIView {
 // MARK: - Initialized
 extension SignUpBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+
         userRegisterButton.layer.masksToBounds = true
         userRegisterButton.layer.cornerRadius = .buttonCornerRadius
         userRegisterButton.setTitle(R.string.localizable.screen_signup_signup_btn_name(), for: .normal)

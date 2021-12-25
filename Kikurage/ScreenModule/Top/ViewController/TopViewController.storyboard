@@ -13,8 +13,8 @@
         <!--Top View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="TopViewController" customModule="きくらげ君" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="TopBaseView" customModule="きくらげ君" customModuleProvider="target">
+                <viewController id="Y6W-OH-hqX" customClass="TopViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="TopBaseView" customModule="Kikurage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -83,7 +83,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="themeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JBQ-z1-pFQ" secondAttribute="trailing" constant="80" id="166-Yv-Bud"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1Ii-RY-ici" secondAttribute="trailing" constant="40" id="5FG-Je-UMb"/>
@@ -119,9 +119,6 @@
     <resources>
         <namedColor name="subColor">
             <color red="0.86299997568130493" green="0.29800000786781311" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="themeColor">
-            <color red="0.99607843137254903" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

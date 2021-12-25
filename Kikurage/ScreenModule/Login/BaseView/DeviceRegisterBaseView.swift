@@ -36,6 +36,8 @@ class DeviceRegisterBaseView: UIView {
 // MARK: - Initialized
 extension DeviceRegisterBaseView {
     private func initUI() {
+        backgroundColor = .systemGroupedBackground
+
         deviceRegisterButton.layer.masksToBounds = true
         deviceRegisterButton.layer.cornerRadius = .buttonCornerRadius
         deviceRegisterButton.setTitle(R.string.localizable.screen_device_register_register_btn_name(), for: .normal)
