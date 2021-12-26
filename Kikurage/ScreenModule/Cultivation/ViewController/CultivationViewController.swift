@@ -23,11 +23,12 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
         setNotificationCenter()
         setRefreshControl()
         
+        adjustNavigationBarBackgroundColor()
+        
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
-        adjustNavigationBarBackgroundColor()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,7 +62,7 @@ extension CultivationViewController {
     }
 }
 
-// MARK: - Private
+// MARK: - Transition
 
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
