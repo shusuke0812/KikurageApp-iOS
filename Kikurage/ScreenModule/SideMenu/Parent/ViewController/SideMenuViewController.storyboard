@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="210" height="87"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メニュー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEW-Cu-phc">
-                                                <rect key="frame" x="10" y="55" width="190" height="22"/>
+                                                <rect key="frame" x="15" y="55" width="185" height="22"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="bEW-Cu-phc" firstAttribute="leading" secondItem="cm1-qL-gWI" secondAttribute="leading" constant="10" id="9MP-NL-Oy1"/>
+                                            <constraint firstItem="bEW-Cu-phc" firstAttribute="leading" secondItem="cm1-qL-gWI" secondAttribute="leading" constant="15" id="9MP-NL-Oy1"/>
                                             <constraint firstAttribute="trailing" secondItem="bEW-Cu-phc" secondAttribute="trailing" constant="10" id="HUX-ID-i6z"/>
                                             <constraint firstAttribute="bottom" secondItem="bEW-Cu-phc" secondAttribute="bottom" constant="10" id="jzZ-1i-SEQ"/>
                                             <constraint firstAttribute="height" constant="87" id="o8Z-Yt-RyH"/>
