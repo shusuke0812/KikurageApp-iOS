@@ -31,6 +31,7 @@ extension GraphViewController {
     }
     private func loadKikurageUser() {
         guard let userId = LoginHelper.shared.kikurageUserId else { return }
+        baseView.startGraphActivityIndicators()
         viewModel.loadKikurageUser(uid: userId)
     }
     private func loadKikurageStateGraph() {
@@ -51,11 +52,17 @@ extension GraphViewController: GraphBaseViewDelegate {
 
 extension GraphViewController: GraphViewModelDelegate {
     func didSuccessGetKikurageStateGraph() {
-        baseView.setLineChartView(datas: viewModel.humidityGraphDatas, graphDataType: .humidity)
-        baseView.setLineChartView(datas: viewModel.temperatureGraphDatas, graphDataType: .temperature)
+        DispatchQueue.main.async {
+            self.baseView.stopGraphActivityIndicators()
+
+            self.baseView.setLineChartView(datas: self.viewModel.humidityGraphDatas, graphDataType: .humidity)
+            self.baseView.setLineChartView(datas: self.viewModel.temperatureGraphDatas, graphDataType: .temperature)
+        }
     }
     func didFailedGetKikurageStateGraph(errorMessage: String) {
         DispatchQueue.main.async {
+            self.baseView.stopGraphActivityIndicators()
+
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }

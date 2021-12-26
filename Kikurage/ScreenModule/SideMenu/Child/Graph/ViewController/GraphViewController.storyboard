@@ -38,9 +38,16 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0V4-CD-NPR" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="10" y="138" width="394" height="221.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="asM-aQ-3CH">
+                                        <rect key="frame" x="187" y="101" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="asM-aQ-3CH" firstAttribute="centerX" secondItem="0V4-CD-NPR" secondAttribute="centerX" id="8au-ze-BtO"/>
                                     <constraint firstAttribute="width" secondItem="0V4-CD-NPR" secondAttribute="height" multiplier="16:9" id="Ced-uA-FsV"/>
+                                    <constraint firstItem="asM-aQ-3CH" firstAttribute="centerY" secondItem="0V4-CD-NPR" secondAttribute="centerY" id="G8W-jq-pbi"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96e-i6-yWq">
@@ -51,8 +58,15 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9v-nG-Lqq" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="10" y="409.5" width="394" height="222"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4P1-rz-aXX">
+                                        <rect key="frame" x="187" y="101" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="4P1-rz-aXX" firstAttribute="centerX" secondItem="r9v-nG-Lqq" secondAttribute="centerX" id="CNo-Yk-Q6c"/>
+                                    <constraint firstItem="4P1-rz-aXX" firstAttribute="centerY" secondItem="r9v-nG-Lqq" secondAttribute="centerY" id="jmd-f9-NK4"/>
                                     <constraint firstAttribute="width" secondItem="r9v-nG-Lqq" secondAttribute="height" multiplier="16:9" id="wpM-lX-xra"/>
                                 </constraints>
                             </view>
@@ -77,9 +91,11 @@
                             <constraint firstItem="8vh-6Y-Jv2" firstAttribute="trailing" secondItem="n5m-bS-YIJ" secondAttribute="trailing" id="zME-Lb-gGN"/>
                         </constraints>
                         <connections>
+                            <outlet property="humidityActivityIndicator" destination="4P1-rz-aXX" id="yXr-eg-eK5"/>
                             <outlet property="humidityLabel" destination="96e-i6-yWq" id="vNw-IF-AUf"/>
                             <outlet property="humidityLineChartView" destination="r9v-nG-Lqq" id="fwx-vd-ZJP"/>
                             <outlet property="navigationItem" destination="bqu-up-xhg" id="OmL-8C-az4"/>
+                            <outlet property="temperatureActivityIndicator" destination="asM-aQ-3CH" id="xxK-Qy-Xth"/>
                             <outlet property="temperatureLabel" destination="Oef-Md-Gap" id="BlQ-De-m7m"/>
                             <outlet property="temperatureLineChartView" destination="0V4-CD-NPR" id="1nN-HX-TMP"/>
                         </connections>

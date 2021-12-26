@@ -25,6 +25,9 @@ class GraphBaseView: UIView {
     @IBOutlet private weak var humidityLabel: UILabel!
     @IBOutlet private weak var temperatureLineChartView: LineChartView!
     @IBOutlet private weak var humidityLineChartView: LineChartView!
+    
+    @IBOutlet private weak var temperatureActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var humidityActivityIndicator: UIActivityIndicatorView!
 
     weak var delegate: GraphBaseViewDelegate?
 
@@ -52,6 +55,9 @@ extension GraphBaseView {
         humidityLabel.text = R.string.localizable.side_menu_graph_humidity_subtitle()
         // 背景色
         backgroundColor = .systemGroupedBackground
+        // グラフ
+        temperatureLineChartView.noDataText = ""
+        humidityLineChartView.noDataText = ""
     }
 }
 
@@ -93,5 +99,19 @@ extension GraphBaseView {
             humidityLineChartView.leftAxis.addLimitLine(humidityLimitLine)
             humidityLineChartView.xAxis.valueFormatter = chartViewHelper
         }
+    }
+    func startGraphActivityIndicators() {
+        temperatureActivityIndicator.isHidden = false
+        humidityActivityIndicator.isHidden = false
+
+        temperatureActivityIndicator.startAnimating()
+        humidityActivityIndicator.startAnimating()
+    }
+    func stopGraphActivityIndicators() {
+        temperatureActivityIndicator.isHidden = true
+        humidityActivityIndicator.isHidden = true
+
+        temperatureActivityIndicator.stopAnimating()
+        humidityActivityIndicator.stopAnimating()
     }
 }
