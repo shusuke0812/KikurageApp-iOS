@@ -6,7 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AppConfig {
     static let shared = AppConfig()
@@ -16,4 +16,8 @@ class AppConfig {
     var facebookGroupUrl: String?
     var termsUrl: String?
     var privacyPolicyUrl: String?
+    
+    // Navigation bar height / Safe area height
+    var navigationBarHeight: CGFloat?
+    var safeAreaHeight: CGFloat?
 }

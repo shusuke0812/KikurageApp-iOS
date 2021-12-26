@@ -65,6 +65,7 @@
                             <constraint firstItem="WOe-Kw-hb2" firstAttribute="top" secondItem="KJR-Rl-5b5" secondAttribute="top" id="tAd-ee-pEg"/>
                         </constraints>
                         <connections>
+                            <outlet property="headerHeightConstraint" destination="o8Z-Yt-RyH" id="EAj-Hz-Mh8"/>
                             <outlet property="sideMenuParentView" destination="WOe-Kw-hb2" id="gim-IM-4pU"/>
                             <outlet property="tableView" destination="7qV-Zl-ga3" id="Z2D-nv-IiK"/>
                         </connections>

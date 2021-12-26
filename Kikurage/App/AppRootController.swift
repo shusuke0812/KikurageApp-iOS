@@ -63,6 +63,7 @@ extension AppRootController {
     private func changeViewController(_ vc: UIViewController) {
         removeCurrentViewController()
         setCurrentViewController(vc)
+        setScreenHeaderHeight(vc)
     }
     private func setCurrentViewController(_ vc: UIViewController) {
         currentViewController = vc
@@ -91,5 +92,15 @@ extension AppRootController: AppPresenterDelegate {
         DispatchQueue.main.async {
             self.showTopPage()
         }
+    }
+}
+
+// MARK: - Config
+
+extension AppRootController {
+    private func setScreenHeaderHeight(_ vc: UIViewController) {
+        let nc = vc as? UINavigationController
+        AppConfig.shared.navigationBarHeight = nc?.navigationBar.frame.size.height
+        AppConfig.shared.safeAreaHeight = vc.view.window?.windowScene?.statusBarManager?.statusBarFrame.height
     }
 }
