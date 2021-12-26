@@ -35,9 +35,9 @@ class CultivationViewModel: NSObject {
 extension CultivationViewModel {
     private func sortCultivations() {
         cultivations.sort { cultivation1, cultivation2 -> Bool in
-            guard let cultivationCreatedAt1 = cultivation1.cultivation.createdAt?.dateValue() else { return false }
-            guard let cultivationCreatedAt2 = cultivation2.cultivation.createdAt?.dateValue() else { return false }
-            return cultivationCreatedAt1 > cultivationCreatedAt2
+            guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.cultivation.viewDate) else { return false }
+            guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.cultivation.viewDate) else { return false }
+            return cultivationDate1 > cultivationDate2
         }
     }
 }
