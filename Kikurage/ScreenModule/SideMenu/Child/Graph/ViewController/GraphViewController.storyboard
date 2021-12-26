@@ -37,23 +37,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0V4-CD-NPR" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="10" y="138" width="394" height="210"/>
+                                <rect key="frame" x="10" y="138" width="394" height="221.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="0V4-CD-NPR" secondAttribute="height" multiplier="15:8" id="Ced-uA-FsV"/>
+                                    <constraint firstAttribute="width" secondItem="0V4-CD-NPR" secondAttribute="height" multiplier="16:9" id="Ced-uA-FsV"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96e-i6-yWq">
-                                <rect key="frame" x="20" y="388" width="374" height="0.0"/>
+                                <rect key="frame" x="20" y="399.5" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9v-nG-Lqq" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="10" y="398" width="394" height="210.5"/>
+                                <rect key="frame" x="10" y="409.5" width="394" height="222"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="r9v-nG-Lqq" secondAttribute="height" multiplier="15:8" id="wpM-lX-xra"/>
+                                    <constraint firstAttribute="width" secondItem="r9v-nG-Lqq" secondAttribute="height" multiplier="16:9" id="wpM-lX-xra"/>
                                 </constraints>
                             </view>
                         </subviews>
