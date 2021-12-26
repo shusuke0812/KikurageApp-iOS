@@ -47,4 +47,9 @@ struct DateHelper {
         self.originalDateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         return self.originalDateFormatter.string(from: Date())
     }
+    /// String型をDate型に変換する
+    static func formatToDate(dateString: String) -> Date? {
+        self.originalDateFormatter.dateFormat = "yyyy/MM/dd"
+        return originalDateFormatter.date(from: dateString)
+    }
 }

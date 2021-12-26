@@ -29,6 +29,18 @@ class RecipeViewModel: NSObject {
     }
 }
 
+// MARK: - Data Setting
+
+extension RecipeViewModel {
+    private func sortRecipes() {
+        recipes.sort { recipe1, recipe2 -> Bool in
+            guard let recipeDate1 = DateHelper.formatToDate(dateString: recipe1.recipe.cookDate) else { return false }
+            guard let recipeDate2 = DateHelper.formatToDate(dateString: recipe2.recipe.cookDate) else { return false }
+            return recipeDate1 > recipeDate2
+        }
+    }
+}
+
 // MARK: - Firebase Firestore
 
 extension RecipeViewModel {
@@ -38,6 +50,7 @@ extension RecipeViewModel {
             switch response {
             case .success(let recipes):
                 self?.recipes = recipes
+                self?.sortRecipes()
                 self?.delegate?.didSuccessGetRecipes()
             case .failure(let error):
                 self?.delegate?.didFailedGetRecipes(errorMessage: error.description())
