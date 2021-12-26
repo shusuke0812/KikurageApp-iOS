@@ -22,17 +22,22 @@ class CultivationBaseView: UIView {
     weak var delegate: CultivationBaseViewDelegate?
 
     // MARK: - Lifecycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
         setCollectionView()
     }
+    
     // MARK: - Action
+
     @IBAction private func didTapPostCultivationPageButton(_ sender: Any) {
         delegate?.didTapPostCultivationPageButton()
     }
 }
+
 // MARK: - Initialized
+
 extension CultivationBaseView {
     private func initUI() {
         collectionView.backgroundColor = .systemGroupedBackground
@@ -47,5 +52,13 @@ extension CultivationBaseView {
         flowLayout.minimumInteritemSpacing = .cellSpacing
         flowLayout.sectionInset = UIEdgeInsets(top: .cellSpacing, left: .cellSpacing, bottom: .cellSpacing, right: .cellSpacing)
         collectionView.register(R.nib.cultivationCollectionViewCell)
+    }
+}
+
+// MARK: - Config
+
+extension CultivationBaseView {
+    func setRefreshControlInCollectionView(_ refresh: UIRefreshControl) {
+        collectionView.refreshControl = refresh
     }
 }

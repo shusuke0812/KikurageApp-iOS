@@ -21,6 +21,8 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
         setNavigationItem()
         setDelegateDataSource()
         setNotificationCenter()
+        setRefreshControl()
+        
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
@@ -29,6 +31,14 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    // MARK: - Action
+    
+    @objc private func refresh(_ sender: UIRefreshControl) {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+        }
     }
 }
 
@@ -43,6 +53,11 @@ extension CultivationViewController {
         baseView.collectionView.delegate = self
         baseView.collectionView.dataSource = viewModel
         viewModel.delegate = self
+    }
+    private func setRefreshControl() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        baseView.setRefreshControlInCollectionView(refresh)
     }
 }
 
@@ -71,6 +86,8 @@ extension CultivationViewController: CultivationViewModelDelegate {
     func didSuccessGetCultivations() {
         DispatchQueue.main.async {
             HUD.hide()
+            self.baseView.collectionView.refreshControl?.endRefreshing()
+            
             self.baseView.collectionView.reloadData()
             self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
         }
@@ -79,6 +96,8 @@ extension CultivationViewController: CultivationViewModelDelegate {
         print(errorMessage)
         DispatchQueue.main.async {
             HUD.hide()
+            self.baseView.collectionView.refreshControl?.endRefreshing()
+
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
