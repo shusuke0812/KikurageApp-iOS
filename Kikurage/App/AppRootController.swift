@@ -13,6 +13,7 @@ class AppRootController: UIViewController {
     private var presenter: AppPresenter!
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
@@ -33,6 +34,7 @@ class AppRootController: UIViewController {
 }
 
 // MARK: - Initialized
+
 extension AppRootController {
     private func fetchRemoteConfig() {
         presenter.loadFacebookGroupUrl()
@@ -42,6 +44,7 @@ extension AppRootController {
 }
 
 // MARK: - Transition
+
 extension AppRootController {
     /// ホーム画面を開く
     private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
@@ -76,6 +79,7 @@ extension AppRootController {
 }
 
 // MARK: - AppPresenter Delegate
+
 extension AppRootController: AppPresenterDelegate {
     func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         DispatchQueue.main.async {

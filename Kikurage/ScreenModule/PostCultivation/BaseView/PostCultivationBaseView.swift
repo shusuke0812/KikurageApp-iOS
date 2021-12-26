@@ -31,13 +31,16 @@ class PostCultivationBaseView: UIView {
     let maxTextViewNumber = 200
 
     // MARK: - Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCameraCell()
         initUI()
         initDatePicker()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTapPostButton(_ sender: Any) {
         delegate?.didTapPostButton()
     }
@@ -45,7 +48,9 @@ class PostCultivationBaseView: UIView {
         delegate?.didTapCloseButton()
     }
 }
+
 // MARK: - Initialized
+
 extension PostCultivationBaseView {
     private func registerCameraCell() {
         cameraCollectionView.register(R.nib.cameraCell)
@@ -81,7 +86,9 @@ extension PostCultivationBaseView {
         dateTextField.inputView = datePicker
     }
 }
-// MARK: - Setting UI Method
+
+// MARK: - Setting UI
+
 extension PostCultivationBaseView {
     func setCurrentTextViewNumber(text: String) {
         currentTextViewNumberLabel.text = "\(text.count)"

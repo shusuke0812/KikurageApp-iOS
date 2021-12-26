@@ -16,6 +16,7 @@ class SideMenuViewController: UIViewController {
     private let mail = MFMailComposeViewController()
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = SideMenuViewModel()
@@ -25,7 +26,9 @@ class SideMenuViewController: UIViewController {
         super.viewWillAppear(animated)
         setAnimation()
     }
+    
     // MARK: - Action
+    
     // メニューエリア以外をタップした時の処理
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -41,7 +44,9 @@ class SideMenuViewController: UIViewController {
         }
     }
 }
+
 // MARK: - Initialized
+
 extension SideMenuViewController {
     private func setAnimation() {
         // メニューの位置を取得する

@@ -28,12 +28,16 @@ class DeviceRegisterBaseView: UIView {
         initUI()
         initDatePicker()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTappedDeviceRegisterButton(_ sender: Any) {
         delegate?.didTappedDeviceRegisterButton()
     }
 }
+
 // MARK: - Initialized
+
 extension DeviceRegisterBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground

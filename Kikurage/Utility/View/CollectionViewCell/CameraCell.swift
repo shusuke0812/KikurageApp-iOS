@@ -22,16 +22,21 @@ class CameraCell: UICollectionViewCell {
     weak var delegate: CameraCellDelegate?
 
     // MARK: - Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setDefaultImage()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTapImageCancelButton(_ sender: Any) {
         delegate?.didTapImageCancelButton(cell: self)
     }
 }
+
 // MARK: - Setting Image
+
 extension CameraCell {
     /// デフォルトに戻す（キャンセルボタン押下時）
     func setDefaultImage() {

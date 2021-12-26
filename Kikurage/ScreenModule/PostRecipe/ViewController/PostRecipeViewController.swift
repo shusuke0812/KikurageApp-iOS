@@ -22,7 +22,9 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
         adjustNavigationBarBackgroundColor()
     }
 }
+
 // MARK: - Initialized
+
 extension PostRecipeViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
@@ -35,7 +37,9 @@ extension PostRecipeViewController {
         viewModel.delegate = self
     }
 }
-// MARK: - BaseView Delegate
+
+// MARK: - PostRecipeBaseView Delegate
+
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
@@ -49,7 +53,9 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
+
 // MARK: - UITextField Delegate
+
 extension PostRecipeViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == baseView.recipeNameTextField {
@@ -100,7 +106,9 @@ extension PostRecipeViewController: UITextViewDelegate {
         baseView.setCurrentRecipeMemoNumber(text: text)
     }
 }
+
 // MARK: - CameraCell Delegate
+
 extension PostRecipeViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
@@ -108,13 +116,17 @@ extension PostRecipeViewController: CameraCellDelegate {
         baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
+
 // MARK: - UICollectionView Delegate
+
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openImagePicker()
     }
 }
+
 // MARK: - UIImagePickerController Delegage
+
 extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
@@ -128,7 +140,9 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
 // MARK: - PostRecipeViewModel Delegate
+
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
     func didSuccessPostRecipe() {
         // nil要素を取り除き、選択した画像のみData型に変換する

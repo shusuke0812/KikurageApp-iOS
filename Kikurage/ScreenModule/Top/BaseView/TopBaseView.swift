@@ -31,6 +31,7 @@ class TopBaseView: UIView {
     }
 
     // MARK: - Action
+
     @IBAction private func didTappedTermsButton(_ sender: Any) {
         delegate?.didTappedTermsButton()
     }
@@ -46,6 +47,7 @@ class TopBaseView: UIView {
 }
 
 // MARK: - Initialized
+
 extension TopBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground

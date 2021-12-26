@@ -25,12 +25,14 @@ class SignUpBaseView: UIView {
     }
 
     // MARK: - Action
+    
     @IBAction private func didTappedUserRegisterButton(_ sender: Any) {
         delegate?.didTappedUserRegisterButton()
     }
 }
 
 // MARK: - Initialized
+
 extension SignUpBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground

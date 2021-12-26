@@ -49,7 +49,7 @@ class HomeBaseView: UIView {
         footerButtonView.delegate = self
     }
 
-    // MARK: - Action Method
+    // MARK: - Action
 
     @IBAction private func didTapCultivationButton(_ sender: Any) {
         delegate?.didTapCultivationButton()

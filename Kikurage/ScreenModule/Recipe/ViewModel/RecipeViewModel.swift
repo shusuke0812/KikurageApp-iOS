@@ -28,7 +28,9 @@ class RecipeViewModel: NSObject {
         self.recipeRepository = recipeRepository
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
     func loadRecipes(kikurageUserId: String) {
@@ -43,7 +45,9 @@ extension RecipeViewModel {
         }
     }
 }
+
 // MARK: - UITableView DataSource
+
 extension RecipeViewModel: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         sectionNumber

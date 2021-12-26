@@ -29,7 +29,9 @@ class CultivationViewModel: NSObject {
         self.cultivationRepository = cultivationRepository
     }
 }
+
 // MARK: - Private
+
 extension CultivationViewModel {
     private func sortCultivations() {
         cultivations.sort { cultivation1, cultivation2 -> Bool in
@@ -39,7 +41,9 @@ extension CultivationViewModel {
         }
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     func loadCultivations(kikurageUserId: String) {
@@ -55,7 +59,9 @@ extension CultivationViewModel {
         }
     }
 }
+
 // MARK: - CollectionView DataSource Method
+
 extension CultivationViewModel: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sectionNumber

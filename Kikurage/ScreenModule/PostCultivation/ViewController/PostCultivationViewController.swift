@@ -15,6 +15,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
     private var cameraCollectionViewModel: CameraCollectionViewModel!
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
@@ -23,7 +24,9 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
         adjustNavigationBarBackgroundColor()
     }
 }
+
 // MARK: - Initialized
+
 extension PostCultivationViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
@@ -35,7 +38,9 @@ extension PostCultivationViewController {
         viewModel.delegate = self
     }
 }
-// MARK: - BaseView Delegate
+
+// MARK: - PostCultivatioBaseView Delegate
+
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func didTapPostButton() {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
@@ -50,7 +55,9 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
+
 // MARK: - UITextField Delegate
+
 extension PostCultivationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         let dateString = DateHelper.formatToString(date: baseView.datePicker.date)
@@ -58,7 +65,9 @@ extension PostCultivationViewController: UITextFieldDelegate {
         viewModel.cultivation.viewDate = dateString
     }
 }
+
 // MARK: - UITextView Delegate
+
 extension PostCultivationViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         var resultText = ""

@@ -45,7 +45,9 @@ class CarouselCollectionFlowLayout: UICollectionViewFlowLayout {
         return CGPoint(x: attributes.frame.minX - cellLeftMargin, y: collectionView.contentOffset.y)
     }
 }
+
 // MARK: - Private
+
 extension CarouselCollectionFlowLayout {
     /// 画面中央に一番近いセルのattributesを取得する
     private func layoutAttributesForNeabyCenterX(in attributes: [UICollectionViewLayoutAttributes], collectionView: UICollectionView) -> UICollectionViewLayoutAttributes? {

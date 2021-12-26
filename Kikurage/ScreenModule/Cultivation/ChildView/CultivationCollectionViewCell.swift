@@ -19,7 +19,9 @@ class CultivationCollectionViewCell: UICollectionViewCell {
         initUI()
     }
 }
+
 // MARK: - Initialized
+
 extension CultivationCollectionViewCell {
     private func initUI() {
         viewDateLabel.text = ""
@@ -29,7 +31,9 @@ extension CultivationCollectionViewCell {
         layer.cornerRadius = .cellCornerRadius
     }
 }
+
 // MARK: - Setting UI
+
 extension CultivationCollectionViewCell {
     func setUI(cultivation: KikurageCultivation) {
         // 画像を設定

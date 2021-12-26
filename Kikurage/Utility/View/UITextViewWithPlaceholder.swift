@@ -18,13 +18,17 @@ class UITextViewWithPlaceholder: UITextView {
             placeholderLabel.sizeToFit()
         }
     }
+    
     // MARK: - Lifecycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setPlaceholder()
     }
 }
+
 // MARK: - Config
+
 extension UITextViewWithPlaceholder {
     private func setPlaceholder() {
         placeholderLabel.backgroundColor = .clear

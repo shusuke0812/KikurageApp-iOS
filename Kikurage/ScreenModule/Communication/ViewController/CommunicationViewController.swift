@@ -13,6 +13,7 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
     private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()
@@ -20,7 +21,9 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
         adjustNavigationBarBackgroundColor()
     }
 }
-// MARK: - Initialized Method
+
+// MARK: - Initialized
+
 extension CommunicationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_communication_title())
@@ -29,7 +32,9 @@ extension CommunicationViewController {
         baaseView.delegate = self
     }
 }
+
 // MARK: - CommunicationBaseView Delegate
+
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func didTapFacebookButton() {
         if let urlString = AppConfig.shared.facebookGroupUrl {

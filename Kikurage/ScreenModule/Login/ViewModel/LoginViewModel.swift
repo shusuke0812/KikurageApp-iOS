@@ -40,6 +40,7 @@ class LoginViewModel {
 }
 
 // MARK: - Setting Data
+
 extension LoginViewModel {
     private func setLoginInfo() -> (email: String, password: String) {
         (email, password)
@@ -52,6 +53,7 @@ extension LoginViewModel {
 }
 
 // MARK: - Firebase Authentication
+
 extension LoginViewModel {
     func login() {
         let loginInfo = setLoginInfo()
@@ -68,6 +70,7 @@ extension LoginViewModel {
 }
 
 // MARK: - Firebase Firestore
+
 extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {

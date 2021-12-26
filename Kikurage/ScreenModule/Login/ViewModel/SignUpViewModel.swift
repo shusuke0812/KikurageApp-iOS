@@ -31,6 +31,7 @@ class SignUpViewModel {
 }
 
 // MARK: - Setting Data
+
 extension SignUpViewModel {
     private func setRegisterInfo() -> (email: String, password: String) {
         (email, password)
@@ -43,6 +44,7 @@ extension SignUpViewModel {
 }
 
 // MARK: - Firebase Authentication
+
 extension SignUpViewModel {
     /// ユーザー登録する
     func registerUser() {

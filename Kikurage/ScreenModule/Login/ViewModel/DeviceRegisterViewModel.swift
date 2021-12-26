@@ -38,14 +38,18 @@ class DeviceRegisterViewModel {
         self.kikurageUser = KikurageUser()
     }
 }
+
 // MARK: - Setting Data
+
 extension DeviceRegisterViewModel {
     /// ユーザーにステートのリファレンスを登録する
     func setStateReference(productKey: String) {
         kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {

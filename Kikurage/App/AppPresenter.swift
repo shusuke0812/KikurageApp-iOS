@@ -35,6 +35,7 @@ class AppPresenter {
 }
 
 // MARK: - Firebase Firestore
+
 extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
@@ -65,6 +66,7 @@ extension AppPresenter {
 }
 
 // MARK: - Firebase RemoteConfig
+
 extension AppPresenter {
     func loadFacebookGroupUrl() {
         firebaseRemoteCofigRepository.fetch(key: .facebookGroupUrl) { response in

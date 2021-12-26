@@ -21,7 +21,9 @@ class CameraCollectionViewModel: NSObject {
         self.selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
     }
 }
+
 // MARK: - Setting Data
+
 extension CameraCollectionViewModel {
     /// 選択した画像を保持
     /// - Parameters:
@@ -52,7 +54,9 @@ extension CameraCollectionViewModel {
         return imageDatas
     }
 }
+
 // MARK: - CollectionView DataSource
+
 extension CameraCollectionViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         selectedImageMaxNumber

@@ -34,12 +34,16 @@ class GraphBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTapCloseButton(_ sender: Any) {
         delegate?.didTapCloseButton()
     }
 }
+
 // MARK: - Initialized
+
 extension GraphBaseView {
     private func initUI() {
         // タイトル
@@ -50,7 +54,9 @@ extension GraphBaseView {
         backgroundColor = .systemGroupedBackground
     }
 }
+
 // MARK: - Setting UI
+
 extension GraphBaseView {
     // TODO: 温度・湿度のグラフの体裁を設定する処理が同じなのでまとめたい
     /// 折れ線グラフ描画処理

@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // MARK: - Private
+
 extension AppDelegate {
     private func openTopPage() {
         let window = UIWindow()

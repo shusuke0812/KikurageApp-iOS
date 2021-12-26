@@ -21,6 +21,7 @@ class SignUpRepository: SignUpRepositoryProtocol {
 }
 
 // MARK: - Firebase Authentication
+
 extension SignUpRepository {
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void) {
         Auth.auth().createUser(withEmail: registerInfo.email, password: registerInfo.password) { authResult, error in

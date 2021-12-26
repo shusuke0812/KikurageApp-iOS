@@ -24,6 +24,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable {
 }
 
 // MARK: - Initialized
+
 extension LoginViewController {
     private func setDelegate() {
         baseView.delegate = self
@@ -34,6 +35,7 @@ extension LoginViewController {
 }
 
 // MARK: - LoginBaseView Delegate
+
 extension LoginViewController: LoginBaseViewDelegate {
     func didTappedLoginButton() {
         HUD.show(.progress)
@@ -42,6 +44,7 @@ extension LoginViewController: LoginBaseViewDelegate {
 }
 
 // MARK: - UITextField Delegate
+
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -57,6 +60,7 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 // MARK: - LoginViewModel Delegate
+
 extension LoginViewController: LoginViewModelDelegate {
     func didSuccessLogin() {
         DispatchQueue.main.async {

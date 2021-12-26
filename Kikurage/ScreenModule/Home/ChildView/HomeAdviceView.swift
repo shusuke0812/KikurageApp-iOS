@@ -22,6 +22,8 @@ class HomeAdviceView: XibView {
     }
 }
 
+// MARK: - Initialized
+
 extension HomeAdviceView {
     private func initBaseView() {
         baseView.clipsToBounds = true

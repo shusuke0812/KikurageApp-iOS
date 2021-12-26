@@ -12,6 +12,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: TopBaseView { self.view as! TopBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()
@@ -22,6 +23,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable {
 }
 
 // MARK: - Initialized
+
 extension TopViewController {
     private func setDelegate() {
         baseView.delegate = self
@@ -29,6 +31,7 @@ extension TopViewController {
 }
 
 // MARK: - TopBaseView Delegate
+
 extension TopViewController: TopBaseViewDelegate {
     func didTappedTermsButton() {
         if let urlString = AppConfig.shared.termsUrl {

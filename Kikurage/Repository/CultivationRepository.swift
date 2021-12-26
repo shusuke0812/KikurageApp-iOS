@@ -44,7 +44,9 @@ class CultivationRepository: CultivationRepositoryProtocol {
         self.metaData.contentType = "image/jpeg"
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension CultivationRepository {
     func postCultivation(kikurageUserId: String, kikurageCultivation: KikurageCultivation, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
         let db = Firestore.firestore()
@@ -108,7 +110,9 @@ extension CultivationRepository {
         }
     }
 }
+
 // MARK: - Firebase Storage
+
 extension CultivationRepository {
     func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void) {
         // 画像保存後のフルパス格納用

@@ -23,12 +23,16 @@ class CommunicationBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTapFacebookButton(_ sender: Any) {
         delegate?.didTapFacebookButton()
     }
 }
+
 // MARK: - Initialized
+
 extension CommunicationBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground

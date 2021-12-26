@@ -23,7 +23,9 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
         adjustNavigationBarBackgroundColor()
     }
 }
+
 // MARK: - Private
+
 extension CultivationDetailViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_cultivation_detail_title())
@@ -36,13 +38,17 @@ extension CultivationDetailViewController {
         baseView.setUI(cultivation: self.cultivation)
     }
 }
+
 // MARK: - UICollectionView Delegate
+
 extension CultivationDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 画像拡大処理を書く
     }
 }
+
 // MARK: - UICollectionView Delegate FlowLayout
+
 extension CultivationDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horiizontalSpace: CGFloat = 0.0

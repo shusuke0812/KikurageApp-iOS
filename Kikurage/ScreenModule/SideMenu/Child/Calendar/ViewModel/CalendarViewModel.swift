@@ -27,7 +27,9 @@ class CalendarViewModel {
         self.kikurageUserRepository = kikurageUserRepository
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension CalendarViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID

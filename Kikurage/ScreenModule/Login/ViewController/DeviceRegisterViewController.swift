@@ -14,6 +14,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
     private var viewModel: DeviceRegisterViewModel!
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
@@ -27,7 +28,9 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
         super.viewDidAppear(animated)
     }
 }
+
 // MARK: - Initialized
+
 extension DeviceRegisterViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
@@ -37,7 +40,9 @@ extension DeviceRegisterViewController {
         viewModel.delegate = self
     }
 }
+
 // MARK: - UITextField Delegate
+
 extension DeviceRegisterViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -60,7 +65,9 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
         viewModel.kikurageUser?.cultivationStartDate = date
     }
 }
+
 // MARK: - DeviceRegisterBaseView Delegate
+
 extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     func didTappedDeviceRegisterButton() {
         let validate = textFieldValidation()
@@ -84,7 +91,9 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
         return true
     }
 }
+
 // MARK: - LoginViewModel Delegate
+
 extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
     func didSuccessGetKikurageState() {
         viewModel.registerKikurageUser()

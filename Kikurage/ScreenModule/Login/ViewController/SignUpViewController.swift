@@ -14,6 +14,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: SignUpViewModel!
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "ユーザー登録"
@@ -28,6 +29,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
 }
 
 // MARK: - Initialized
+
 extension SignUpViewController {
     private func setDelegate() {
         baseView.delegate = self
@@ -38,6 +40,7 @@ extension SignUpViewController {
 }
 
 // MARK: - SignUpBaseView Delegate
+
 extension SignUpViewController: SignUpBaseViewDelegate {
     func didTappedUserRegisterButton() {
         HUD.show(.progress)
@@ -46,6 +49,7 @@ extension SignUpViewController: SignUpBaseViewDelegate {
 }
 
 // MARK: - UITextField Delegate
+
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -61,6 +65,7 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 // MARK: - SignUpViewModel Delegate
+
 extension SignUpViewController: SignUpViewModelDelegate {
     func didSuccessRegisterUser() {
         DispatchQueue.main.async {

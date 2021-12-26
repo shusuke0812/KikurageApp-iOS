@@ -82,7 +82,7 @@ extension RecipeViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - RecipeViewModel
+// MARK: - RecipeViewModel Delegate
 
 extension RecipeViewController: RecipeViewModelDelegate {
     func didSuccessGetRecipes() {

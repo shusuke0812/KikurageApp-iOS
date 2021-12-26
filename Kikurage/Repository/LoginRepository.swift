@@ -17,6 +17,7 @@ class LoginRepository: LoginRepositoryProtocol {
 }
 
 // MARK: - Firebase Authentication
+
 extension LoginRepository {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void) {
         Auth.auth().signIn(withEmail: loginInfo.email, password: loginInfo.password) { authResult, error in

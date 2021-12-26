@@ -23,13 +23,16 @@ class LoginBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTappedLoginButton(_ sender: Any) {
         delegate?.didTappedLoginButton()
     }
 }
 
 // MARK: - Initialized
+
 extension LoginBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground

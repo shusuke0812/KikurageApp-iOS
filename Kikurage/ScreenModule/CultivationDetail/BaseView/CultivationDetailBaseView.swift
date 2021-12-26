@@ -23,7 +23,9 @@ class CultivationDetailBaseView: UIView {
         setCollectionView()
     }
 }
+
 // MARK: - Initialized
+
 extension CultivationDetailBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
@@ -48,7 +50,9 @@ extension CultivationDetailBaseView {
         collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
     }
 }
+
 // MARK: - Setting UI
+
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
         // 観察日の設定

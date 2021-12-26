@@ -34,7 +34,9 @@ class PostCultivationViewModel {
         self.cultivation = KikurageCultivation()
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension PostCultivationViewModel {
     func postCultivation(kikurageUserId: String) {
         cultivationRepository.postCultivation(kikurageUserId: kikurageUserId, kikurageCultivation: cultivation) { [weak self] response in
@@ -59,7 +61,9 @@ extension PostCultivationViewModel {
         }
     }
 }
+
 // MARK: - Firebase Storage
+
 extension PostCultivationViewModel {
     func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedCultivationDocumentId = postedCultivationDocumentId else {

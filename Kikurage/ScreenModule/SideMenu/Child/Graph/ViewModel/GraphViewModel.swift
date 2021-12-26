@@ -40,7 +40,9 @@ class GraphViewModel {
         self.kikurageUserRepository = kikurageUserRepository
     }
 }
+
 // MARK: - Data Setting
+
 extension GraphViewModel {
     private func setTemperatureGraphData() {
         guard let graphData = kikurageStateGraph.first?.graph else { return }
@@ -63,7 +65,9 @@ extension GraphViewModel {
         humidityGraphDatas.append(graphData.sundayData?.humidity ?? 0)
     }
 }
+
 // MARK: - Firebase Firestore
+
 extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー

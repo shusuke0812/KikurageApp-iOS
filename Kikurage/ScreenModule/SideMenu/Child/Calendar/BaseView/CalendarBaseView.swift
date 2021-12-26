@@ -22,12 +22,16 @@ class CalendarBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
+    
     // MARK: - Action
+    
     @IBAction private func didTapCloseButton(_ sender: Any) {
         delegate?.didTapCloseButton()
     }
 }
+
 // MARK: - Initialized
+
 extension CalendarBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
