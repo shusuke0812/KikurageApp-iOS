@@ -9,12 +9,14 @@
 import UIKit
 
 class CultivationDetailBaseView: UIView {
-    @IBOutlet private weak var viewDateLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: CarouselCollectionFlowLayout!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet private weak var memoTitleLabel: UILabel!
-    @IBOutlet private weak var memoLabel: UILabel!
-
+    @IBOutlet private weak var viewDateLabel: UILabel!
+    @IBOutlet weak var memoTextView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
@@ -28,7 +30,18 @@ extension CultivationDetailBaseView {
         
         viewDateLabel.text = ""
         memoTitleLabel.text = R.string.localizable.screen_cultivation_detail_memo_title()
-        memoLabel.text = ""
+        
+        memoTextView.text = ""
+        memoTextView.clipsToBounds = true
+        memoTextView.layer.cornerRadius = .viewCornerRadius
+        memoTextView.isEditable = false
+        memoTextView.sizeToFit()
+        memoTextView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        
+        iconImageView.clipsToBounds = true
+        iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
+        iconImageView.layer.borderWidth = 0.5
+        iconImageView.layer.borderColor = UIColor.gray.cgColor
     }
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
@@ -41,6 +54,6 @@ extension CultivationDetailBaseView {
         // 観察日の設定
         viewDateLabel.text = cultivation.viewDate
         //  観察メモの設定
-        memoLabel.text = cultivation.memo
+        memoTextView.text = cultivation.memo
     }
 }
