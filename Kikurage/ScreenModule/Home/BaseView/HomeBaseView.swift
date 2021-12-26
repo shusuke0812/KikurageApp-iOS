@@ -114,6 +114,9 @@ extension HomeBaseView {
         if let advice: String = kikurageState?.advice {
             kikurageAdviceView.adviceContentLabel.text = advice
         }
+        #if PRODUCTION
+        nowTimeLabel.isHidden = true
+        #endif
     }
     /// きくらげ名を設定
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
