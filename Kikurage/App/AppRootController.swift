@@ -57,8 +57,8 @@ extension AppRootController {
     /// ログイン画面を開く
     private func showTopPage() {
         guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
-        let navVC = UINavigationController(rootViewController: vc)
-        changeViewController(navVC)
+        let nc = UINavigationController(rootViewController: vc)
+        changeViewController(nc)
     }
     private func changeViewController(_ vc: UIViewController) {
         removeCurrentViewController()
