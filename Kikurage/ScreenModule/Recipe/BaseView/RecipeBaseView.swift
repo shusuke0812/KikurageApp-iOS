@@ -24,12 +24,16 @@ class RecipeBaseView: UIView {
         initUI()
         setTableView()
     }
+    
     // MARK: - Action
+
     @IBAction private func didTapPostRecipePageButton(_ sender: Any) {
         delegate?.didTapPostRecipePageButton()
     }
 }
+
 // MARK: - Initialized Method
+
 extension RecipeBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
@@ -46,5 +50,13 @@ extension RecipeBaseView {
         // セル登録
         tableView.register(R.nib.recipeTableViewCell)
         tableView.tableFooterView = UIView()
+    }
+}
+
+// MARK: - Config
+
+extension RecipeBaseView {
+    func setRefreshControlInTableView(_ refresh: UIRefreshControl) {
+        tableView.refreshControl = refresh
     }
 }

@@ -17,24 +17,37 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
     private let cellHeight: CGFloat = 160.0
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()
         viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
         setDelegateDataSource()
         setNotificationCenter()
+        setRefreshControl()
+        
+        adjustNavigationBarBackgroundColor()
+        
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
-        adjustNavigationBarBackgroundColor()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    // MARK: - Action
+    
+    @objc private func refresh(_ sender: UIRefreshControl) {
+        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+        }
+    }
 }
 
 // MARK: - Initialized
+
 extension RecipeViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_recipe_title())
@@ -45,25 +58,38 @@ extension RecipeViewController {
         baseView.tableView.dataSource = viewModel
         viewModel.delegate = self
     }
+    private func setRefreshControl() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        baseView.setRefreshControlInTableView(refresh)
+    }
 }
+
 // MARK: - RecipeBaseView Delegate
+
 extension RecipeViewController: RecipeBaseViewDelegate {
     func didTapPostRecipePageButton() {
         guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
         present(vc, animated: true, completion: nil)
     }
 }
+
 // MARK: - UITableView Delegate
+
 extension RecipeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         cellHeight
     }
 }
+
 // MARK: - RecipeViewModel
+
 extension RecipeViewController: RecipeViewModelDelegate {
     func didSuccessGetRecipes() {
         DispatchQueue.main.async {
             HUD.hide()
+            self.baseView.tableView.refreshControl?.endRefreshing()
+
             self.baseView.tableView.reloadData()
             self.baseView.noRecipeLabel.isHidden = !(self.viewModel.recipes.isEmpty)
         }
@@ -71,12 +97,15 @@ extension RecipeViewController: RecipeViewModelDelegate {
     func didFailedGetRecipes(errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
+            self.baseView.tableView.refreshControl?.endRefreshing()
+
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }
 
 // MARK: - NotificationCenter
+
 extension RecipeViewController {
     private func setNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(didPostRecipe), name: .updatedRecipes, object: nil)
