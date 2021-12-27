@@ -62,7 +62,7 @@
                                 <rect key="frame" x="15" y="315" width="384" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-a1-55m">
-                                        <rect key="frame" x="99" y="0.0" width="60.5" height="78"/>
+                                        <rect key="frame" x="89" y="0.0" width="60.5" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hof-d1-eRc">
                                                 <rect key="frame" x="0.0" y="0.0" width="31" height="18"/>
@@ -116,7 +116,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-Qq-H8t">
-                                        <rect key="frame" x="234.5" y="0.0" width="63" height="78"/>
+                                        <rect key="frame" x="199.5" y="0.0" width="63" height="78"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="260-Dw-0Od">
                                                 <rect key="frame" x="0.0" y="0.0" width="31" height="18"/>
@@ -144,9 +144,9 @@
                                     <constraint firstAttribute="trailing" secondItem="dVY-ca-2x5" secondAttribute="trailing" constant="8" id="22h-EU-GsO"/>
                                     <constraint firstItem="dVY-ca-2x5" firstAttribute="leading" secondItem="ThT-WZ-a6t" secondAttribute="leading" constant="8" id="9nU-ch-buw"/>
                                     <constraint firstAttribute="trailing" secondItem="Y50-vB-neh" secondAttribute="trailing" constant="8" id="GnS-Zq-yeD"/>
-                                    <constraint firstItem="Zap-Qq-H8t" firstAttribute="leading" secondItem="lJ7-a1-55m" secondAttribute="trailing" constant="75" id="JaU-UJ-Sdd"/>
+                                    <constraint firstItem="Zap-Qq-H8t" firstAttribute="leading" secondItem="lJ7-a1-55m" secondAttribute="trailing" constant="50" id="JaU-UJ-Sdd"/>
                                     <constraint firstItem="lJ7-a1-55m" firstAttribute="top" secondItem="ThT-WZ-a6t" secondAttribute="top" id="cNi-ln-uek"/>
-                                    <constraint firstItem="lJ7-a1-55m" firstAttribute="leading" secondItem="9eI-cw-kb6" secondAttribute="trailing" constant="60" id="dwx-O3-5FZ"/>
+                                    <constraint firstItem="lJ7-a1-55m" firstAttribute="leading" secondItem="9eI-cw-kb6" secondAttribute="trailing" constant="50" id="dwx-O3-5FZ"/>
                                     <constraint firstAttribute="height" constant="100" id="etU-Us-yGu"/>
                                     <constraint firstItem="Zap-Qq-H8t" firstAttribute="top" secondItem="ThT-WZ-a6t" secondAttribute="top" id="hAG-AO-l06"/>
                                     <constraint firstItem="Y50-vB-neh" firstAttribute="top" secondItem="ThT-WZ-a6t" secondAttribute="top" constant="20" symbolic="YES" id="j7t-VW-cpP"/>
