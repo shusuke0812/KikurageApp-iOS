@@ -19,6 +19,7 @@
 "common_load_user_error" = "Faield to load user";
 
 // client error
+"common_error" = "Error";
 "common_network_connection_error" = "Failed to connect network";
 "common_parse_error" = "parse error";
 "common_response_parse_error" = "Failed to parse for response";
@@ -162,3 +163,4 @@
 // mail
 "side_menu_mail_subject" = "[ Kikurage App ] Contact";
 "side_menu_mail_message_body" = "Please send email after entered your question.\n--------------";
+"side_menu_mail_error" = "Please set up Mail App.";

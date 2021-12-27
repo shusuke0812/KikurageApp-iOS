@@ -81,7 +81,7 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
             mail.setMessageBody(R.string.localizable.side_menu_mail_message_body(), isHTML: false)
             present(mail, animated: true, completion: nil)
         } else {
-            print("DEBUG: 送信できません")
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_mail_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
