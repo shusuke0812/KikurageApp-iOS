@@ -17,7 +17,7 @@ class AppConfig {
     var termsUrl: String?
     var privacyPolicyUrl: String?
     
-    // Navigation bar height / Safe area height
+    // Screen header
     var navigationBarHeight: CGFloat?
     var safeAreaHeight: CGFloat?
 }
