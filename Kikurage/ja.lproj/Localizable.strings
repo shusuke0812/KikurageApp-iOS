@@ -140,6 +140,8 @@
  * side menu
  */
 
+"side_menu_title" = "メニュー";
+
 // side menu content
 "side_menu_content_clendar_subtitle" = "カレンダー";
 "side_menu_content_graph_subtitle" = "グラフ";

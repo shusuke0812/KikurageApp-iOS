@@ -10,6 +10,7 @@ import UIKit
 
 class SideMenuBaseView: UIView {
     @IBOutlet private(set) weak var sideMenuParentView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private(set) weak var tableView: UITableView!
     @IBOutlet private weak var headerHeightConstraint: NSLayoutConstraint!
     
@@ -27,6 +28,8 @@ extension SideMenuBaseView {
     private func initUI() {
         tableView.backgroundColor = .systemGroupedBackground
         tableView.isScrollEnabled = false
+        
+        titleLabel.text = R.string.localizable.side_menu_title()
     }
     private func registerTableViewCell() {
         let nib = UINib(nibName: "SideMenuTableViewCell", bundle: nil)

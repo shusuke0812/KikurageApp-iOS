@@ -140,6 +140,8 @@
  * side menu
  */
 
+"side_menu_title" = "Menu";
+
 // side menu content
 "side_menu_content_clendar_subtitle" = "Calendar";
 "side_menu_content_graph_subtitle" = "Graph";
