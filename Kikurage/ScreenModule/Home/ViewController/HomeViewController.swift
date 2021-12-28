@@ -125,7 +125,9 @@ extension HomeViewController: HomeBaseViewDelegate {
 
 extension HomeViewController: HomeViewModelDelgate {
     func didSuccessGetKikurageState() {
-        baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
+        DispatchQueue.main.async {
+            self.baseView.setKikurageStateUI(kikurageState: self.viewModel.kikurageState)
+        }
     }
     func didFailedGetKikurageState(errorMessage: String) {
         DispatchQueue.main.async {

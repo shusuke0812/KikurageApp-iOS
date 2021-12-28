@@ -53,11 +53,9 @@ extension HomeViewModel {
         kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { response in
             switch response {
             case .success(let kikurageState):
-                DispatchQueue.main.async { [weak self] in
-                    self?.kikurageState = kikurageState
-                    self?.kikurageState.convertToStateType()
-                    self?.delegate?.didSuccessGetKikurageState()
-                }
+                self.kikurageState = kikurageState
+                self.kikurageState.convertToStateType()
+                self.delegate?.didSuccessGetKikurageState()
             case .failure(let error):
                 self.kikurageState = nil
                 self.delegate?.didFailedGetKikurageState(errorMessage: error.description())
