@@ -38,14 +38,16 @@ class HomeBaseView: UIView {
     @IBOutlet private weak var expectedHumidityLabel: UILabel!
 
     @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
-
     @IBOutlet private weak var footerButtonView: FooterButtonView!
+    
+    private var kikurageStateEmptyView: UIView!
 
     weak var delegate: HomeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
+        initFailedUI()
         footerButtonView.delegate = self
     }
 
@@ -77,7 +79,6 @@ extension HomeBaseView {
         
         kikurageStatusParentView.clipsToBounds = true
         kikurageStatusParentView.layer.cornerRadius = .viewCornerRadius
-        displayKikurageStateImage(type: .normal)
         
         valueParentView.backgroundColor = .systemGroupedBackground
         nowValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_now_title()
@@ -90,6 +91,25 @@ extension HomeBaseView {
         humidityTitleLabel.text = R.string.localizable.screen_home_humidity_title()
         humidityTextLabel.text = "-"
         expectedHumidityLabel.text = "80% " + R.string.localizable.screen_home_humidity_expected_suffix()
+    }
+    private func initFailedUI() {
+        kikurageStateEmptyView = UIView()
+        kikurageStateEmptyView.backgroundColor = .white
+        kikurageStateEmptyView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let label = UILabel()
+        label.text = R.string.localizable.common_read_error()
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        kikurageStateEmptyView.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: kikurageStateEmptyView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: kikurageStateEmptyView.centerYAnchor)
+        ])
     }
 }
 
@@ -104,6 +124,8 @@ extension HomeBaseView {
         // きくらげの表情を設定
         if let type: KikurageStateType = kikurageState?.type {
             displayKikurageStateImage(type: type)
+        } else {
+            displayFailedKikurageStateImage()
         }
         // 温度湿度を設定
         if let temparature: Int = kikurageState?.temperature, let humidity: Int = kikurageState?.humidity {
@@ -129,11 +151,23 @@ extension HomeBaseView {
         nowTimeLabel.text = DateHelper.now()
     }
     private func displayKikurageStateImage(type: KikurageStateType) {
+        kikurageStateEmptyView.removeFromSuperview()
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
         kikurageStatusImageView.animationImages = KikurageStateHelper.setStateImage(type: type)
         kikurageStatusImageView.animationDuration = 1
         kikurageStatusImageView.animationRepeatCount = 0
         kikurageStatusImageView.startAnimating()
+    }
+    private func displayFailedKikurageStateImage() {
+        kikurageStatusImageView.addSubview(kikurageStateEmptyView)
+        kikurageStatusImageView.image = nil
+        
+        NSLayoutConstraint.activate([
+            kikurageStateEmptyView.topAnchor.constraint(equalTo: kikurageStatusImageView.topAnchor),
+            kikurageStateEmptyView.leadingAnchor.constraint(equalTo: kikurageStatusImageView.leadingAnchor),
+            kikurageStateEmptyView.trailingAnchor.constraint(equalTo: kikurageStatusImageView.trailingAnchor),
+            kikurageStateEmptyView.bottomAnchor.constraint(equalTo: kikurageStatusImageView.bottomAnchor)
+        ])
     }
 }
 

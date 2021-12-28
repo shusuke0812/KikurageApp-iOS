@@ -59,6 +59,7 @@ extension HomeViewModel {
                     self?.delegate?.didSuccessGetKikurageState()
                 }
             case .failure(let error):
+                self.kikurageState = nil
                 self.delegate?.didFailedGetKikurageState(errorMessage: error.description())
             }
         }
@@ -72,7 +73,7 @@ extension HomeViewModel {
                 self?.kikurageState.convertToStateType()
                 self?.delegate?.didChangedKikurageState()
             case .failure(let error):
-                // TODO: エラーが発生した場合はretryする処理を実装する
+                self?.kikurageState = nil
                 fatalError(error.description())
             }
         }
