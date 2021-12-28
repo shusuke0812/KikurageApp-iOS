@@ -24,7 +24,7 @@ class HomeBaseView: UIView {
     @IBOutlet private weak var kikurageStatusLabel: UILabel!
 
     @IBOutlet private weak var kikurageStatusParentView: UIView!
-    @IBOutlet private weak var kikurageStatusView: UIImageView!
+    @IBOutlet private weak var kikurageStatusImageView: UIImageView!
     @IBOutlet private weak var nowTimeLabel: UILabel!
 
     @IBOutlet private weak var valueParentView: UIView!
@@ -130,10 +130,10 @@ extension HomeBaseView {
     }
     private func displayKikurageStateImage(type: KikurageStateType) {
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        kikurageStatusView.animationImages = KikurageStateHelper.setStateImage(type: type)
-        kikurageStatusView.animationDuration = 1
-        kikurageStatusView.animationRepeatCount = 0
-        kikurageStatusView.startAnimating()
+        kikurageStatusImageView.animationImages = KikurageStateHelper.setStateImage(type: type)
+        kikurageStatusImageView.animationDuration = 1
+        kikurageStatusImageView.animationRepeatCount = 0
+        kikurageStatusImageView.startAnimating()
     }
 }
 
@@ -141,7 +141,7 @@ extension HomeBaseView {
 
 extension HomeBaseView {
     func kikurageStatusViewAnimation(_ animation: Bool) {
-        (animation == true) ? kikurageStatusView.startAnimating() : kikurageStatusView.stopAnimating()
+        (animation == true) ? kikurageStatusImageView.startAnimating() : kikurageStatusImageView.stopAnimating()
     }
 }
 

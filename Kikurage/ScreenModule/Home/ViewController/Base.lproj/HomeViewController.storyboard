@@ -197,9 +197,9 @@
                             <outlet property="humidityTitleLabel" destination="260-Dw-0Od" id="MNl-TY-qXT"/>
                             <outlet property="kikurageAdviceView" destination="F4s-4P-Fv2" id="hla-7n-bGe"/>
                             <outlet property="kikurageNameLabel" destination="1um-rs-6A0" id="fDK-gQ-tZo"/>
+                            <outlet property="kikurageStatusImageView" destination="D2w-ln-CB5" id="6RW-Js-PTY"/>
                             <outlet property="kikurageStatusLabel" destination="o8G-Od-1s5" id="Pca-tP-8a9"/>
                             <outlet property="kikurageStatusParentView" destination="8cS-Q3-g81" id="xaU-EN-CJ5"/>
-                            <outlet property="kikurageStatusView" destination="D2w-ln-CB5" id="6RW-Js-PTY"/>
                             <outlet property="nowTimeLabel" destination="RoT-Iq-VWq" id="IGb-sA-pnn"/>
                             <outlet property="nowValueTitleLabel" destination="DjA-dL-2ed" id="mIS-1v-4gW"/>
                             <outlet property="temparatureTextLabel" destination="cDh-P9-m5Q" id="GGf-Mf-Zdp"/>
