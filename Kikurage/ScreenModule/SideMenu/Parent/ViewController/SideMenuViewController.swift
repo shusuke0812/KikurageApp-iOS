@@ -99,6 +99,16 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     }
 }
 
+// MARK: - Acknowledgements
+
+extension SideMenuViewController {
+    private func openSettingApp() {
+        if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+}
+
 // MARK: - UITableView Delegate
 
 extension SideMenuViewController: UITableViewDelegate {
@@ -120,7 +130,7 @@ extension SideMenuViewController: UITableViewDelegate {
         case .setting:
             print("")
         case .license:
-            print("")
+            openSettingApp()
         case .searchRecipe:
             print("")
         case .kikurageDictionary:
