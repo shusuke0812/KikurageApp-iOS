@@ -34,19 +34,13 @@ extension TopViewController {
 
 extension TopViewController: TopBaseViewDelegate {
     func didTappedTermsButton() {
-        if let urlString = AppConfig.shared.termsUrl {
-            transitionSafariViewController(urlString: urlString)
-        } else {
-            // TODO: 利用規約を開けないアラートを出す
-        }
+        let urlString = AppConfig.shared.termsUrl
+        transitionSafariViewController(urlString: urlString, onError: nil)
     }
 
     func didTappedPrivacyPolicyButton() {
-        if let urlString = AppConfig.shared.privacyPolicyUrl {
-            transitionSafariViewController(urlString: urlString)
-        } else {
-            // TODO: プライバシーポリシーを開けないアラートを出す
-        }
+        let urlString = AppConfig.shared.privacyPolicyUrl
+        transitionSafariViewController(urlString: urlString, onError: nil)
     }
 
     func didTappedLoginButton() {

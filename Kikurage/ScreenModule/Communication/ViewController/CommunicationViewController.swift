@@ -37,10 +37,7 @@ extension CommunicationViewController {
 
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func didTapFacebookButton() {
-        if let urlString = AppConfig.shared.facebookGroupUrl {
-            transitionSafariViewController(urlString: urlString)
-        } else {
-            // TODO: Facebookを開けないアラートを出す
-        }
+        let urlString = AppConfig.shared.facebookGroupUrl
+        transitionSafariViewController(urlString: urlString, onError: nil)
     }
 }
