@@ -32,11 +32,17 @@ target 'Kikurage' do
 
 end
 
-# 暫定：M1 Macのシミュレータ向けビルドを通す処理
 post_install do | installer |
+  # 暫定：M1 Macのシミュレータ向けビルドを通す処理
   installer.pods_project.targets.each do | target |
     target.build_configurations.each do | config |
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
     end
   end
+  # 設定アプリへの著作権情報書き出し（https://github.com/CocoaPods/CocoaPods/wiki/Acknowledgements）
+  require 'fileutils'
+  FileUtils.cp_r(
+    'Pods/Target Support Files/Pods-Kikurage/Pods-Kikurage-Acknowledgements.plist', 
+    'Kikurage/Settings.bundle/Acknowledgements.plist', 
+    :remove_destination => true)
 end
