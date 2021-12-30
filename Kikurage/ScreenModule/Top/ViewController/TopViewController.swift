@@ -17,7 +17,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable {
         super.viewDidLoad()
         setDelegate()
 
-        navigationItem.title = "ようこそ！"
+        navigationItem.title = R.string.localizable.screen_top_title()
         adjustNavigationBarBackgroundColor()
     }
 }

@@ -17,7 +17,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "ユーザー登録"
+        navigationItem.title = R.string.localizable.screen_signup_title()
         viewModel = SignUpViewModel(signUpRepository: SignUpRepository())
 
         setDelegate()

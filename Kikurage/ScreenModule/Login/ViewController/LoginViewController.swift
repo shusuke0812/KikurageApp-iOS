@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "ログイン"
+        navigationItem.title = R.string.localizable.screen_login_title()
         viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
 
         setDelegate()

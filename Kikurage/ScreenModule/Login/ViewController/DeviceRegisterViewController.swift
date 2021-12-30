@@ -20,7 +20,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
         viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
 
-        navigationItem.title = "デバイス登録"
+        navigationItem.title = R.string.localizable.screen_device_register_title()
         navigationItem.hidesBackButton = true
         adjustNavigationBarBackgroundColor()
     }

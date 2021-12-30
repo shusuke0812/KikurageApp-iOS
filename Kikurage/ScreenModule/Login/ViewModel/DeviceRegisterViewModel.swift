@@ -67,7 +67,7 @@ extension DeviceRegisterViewModel {
     /// きくらげユーザーを登録する
     func registerKikurageUser() {
         guard let kikurageUser = kikurageUser else {
-            delegate?.didFailedPostKikurageUser(errorMessage: "きくらげユーザーを取得できませんでした")
+            delegate?.didFailedPostKikurageUser(errorMessage: R.string.localizable.common_load_user_error())
             return
         }
         guard let uid = LoginHelper.shared.kikurageUserId else { return }
