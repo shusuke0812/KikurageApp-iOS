@@ -120,9 +120,6 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
         guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         vc.kikurageState = viewModel.kikurageState
         vc.kikurageUser = viewModel.kikurageUser
-        
-        let nc = UINavigationController(rootViewController: vc)
-        nc.modalPresentationStyle = .fullScreen
-        present(nc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

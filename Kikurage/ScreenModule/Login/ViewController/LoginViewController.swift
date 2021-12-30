@@ -81,7 +81,6 @@ extension LoginViewController: LoginViewModelDelegate {
         guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         vc.kikurageUser = viewModel.kikurageUser
         vc.kikurageState = viewModel.kikurageState
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
