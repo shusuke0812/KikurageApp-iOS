@@ -164,3 +164,4 @@
 "side_menu_mail_subject" = "[ Kikurage App ] Contact";
 "side_menu_mail_message_body" = "Please send email after entered your question.\n--------------";
 "side_menu_mail_error" = "Please set up Mail App.";
+"side_menu_license_error" = "Missing to open Setting App";

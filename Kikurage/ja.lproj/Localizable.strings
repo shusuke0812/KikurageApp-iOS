@@ -164,3 +164,4 @@
 "side_menu_mail_subject" = "【きくらげ君アプリ】お問い合わせ";
 "side_menu_mail_message_body" = "質問を入力して送信ボタンを押して下さい。\n--------------";
 "side_menu_mail_error" = "メールアプリを設定してください";
+"side_menu_license_error" = "設定アプリを開けませんでした";
