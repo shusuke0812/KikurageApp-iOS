@@ -165,3 +165,5 @@
 "side_menu_mail_message_body" = "Please send email after entered your question.\n--------------";
 "side_menu_mail_error" = "Please set up Mail App.";
 "side_menu_license_error" = "Missing to open Setting App";
+"side_menu_search_recipe_word" = "wood ear";
+"side_menu_search_recipe_error" = "Missing to open Recipe";

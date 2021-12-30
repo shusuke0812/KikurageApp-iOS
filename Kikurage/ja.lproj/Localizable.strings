@@ -165,3 +165,5 @@
 "side_menu_mail_message_body" = "質問を入力して送信ボタンを押して下さい。\n--------------";
 "side_menu_mail_error" = "メールアプリを設定してください";
 "side_menu_license_error" = "設定アプリを開けませんでした";
+"side_menu_search_recipe_word" = "きくらげ";
+"side_menu_search_recipe_error" = "レシピを検索できませんでした";

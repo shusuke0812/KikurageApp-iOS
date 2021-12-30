@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SideMenuViewController: UIViewController {
+class SideMenuViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SideMenuViewModel!
 
@@ -111,6 +111,18 @@ extension SideMenuViewController {
     }
 }
 
+// MARK: - Search Recipe
+
+extension SideMenuViewController {
+    private func openSearchRecipePage() {
+        let query = (R.string.localizable.side_menu_search_recipe_word()).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        let urlString = "https://cookpad.com/search/\(query)"
+        transitionSafariViewController(urlString: urlString) {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+        }
+    }
+}
+
 // MARK: - UITableView Delegate
 
 extension SideMenuViewController: UITableViewDelegate {
@@ -134,7 +146,7 @@ extension SideMenuViewController: UITableViewDelegate {
         case .license:
             openSettingApp()
         case .searchRecipe:
-            print("")
+            openSearchRecipePage()
         case .kikurageDictionary:
             print("")
         }
