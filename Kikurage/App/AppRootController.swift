@@ -30,6 +30,9 @@ class AppRootController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let vc = currentViewController {
+            setScreenHeaderHeight(vc)
+        }
     }
 }
 
@@ -98,6 +101,7 @@ extension AppRootController: AppPresenterDelegate {
 // MARK: - Config
 
 extension AppRootController {
+    // FIXME: `setScreenHeaderHeight()`は一度だけ呼ぶようにしたい（現状はトップ画面・ホーム画面のview更新タイミングが違い、satatus bar heightを取得できるタイミングが異なるため２箇所で呼んでいる）
     private func setScreenHeaderHeight(_ vc: UIViewController) {
         let nc = vc as? UINavigationController
         AppConfig.shared.navigationBarHeight = nc?.navigationBar.frame.size.height
