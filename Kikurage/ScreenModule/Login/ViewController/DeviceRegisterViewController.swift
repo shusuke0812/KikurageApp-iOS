@@ -14,7 +14,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
     private var viewModel: DeviceRegisterViewModel!
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())

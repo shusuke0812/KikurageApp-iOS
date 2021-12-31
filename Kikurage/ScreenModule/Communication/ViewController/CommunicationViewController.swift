@@ -13,7 +13,7 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
     private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()

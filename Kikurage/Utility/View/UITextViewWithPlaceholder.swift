@@ -18,7 +18,7 @@ class UITextViewWithPlaceholder: UITextView {
             placeholderLabel.sizeToFit()
         }
     }
-    
+
     // MARK: - Lifecycle
 
     override func awakeFromNib() {

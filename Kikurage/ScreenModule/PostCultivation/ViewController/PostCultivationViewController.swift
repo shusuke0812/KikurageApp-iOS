@@ -15,7 +15,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
     private var cameraCollectionViewModel: CameraCollectionViewModel!
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())

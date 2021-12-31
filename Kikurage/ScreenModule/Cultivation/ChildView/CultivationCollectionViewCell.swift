@@ -26,7 +26,7 @@ extension CultivationCollectionViewCell {
     private func initUI() {
         viewDateLabel.text = ""
         imageView.backgroundColor = .lightGray
-        
+
         clipsToBounds = true
         layer.cornerRadius = .cellCornerRadius
     }

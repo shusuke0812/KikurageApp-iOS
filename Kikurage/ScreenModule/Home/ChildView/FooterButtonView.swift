@@ -16,26 +16,25 @@ protocol FooterButtonViewDelegate: AnyObject {
 }
 
 class FooterButtonView: UIView {
-    
     static let iconSize = CGSize(width: 40, height: 40)
     static let backgroundColor = UIColor.white
     static let cornerRadius: CGFloat = .viewCornerRadius
-    
+
     private var parentView: UIView = {
-        let v = UIView()
-        v.backgroundColor = backgroundColor
-        v.clipsToBounds = true
-        v.layer.cornerRadius = cornerRadius
-        v.translatesAutoresizingMaskIntoConstraints = false
-        return v
+        let view = UIView()
+        view.backgroundColor = backgroundColor
+        view.clipsToBounds = true
+        view.layer.cornerRadius = cornerRadius
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     private var stackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .horizontal
-        sv.distribution = .fillEqually
-        sv.spacing = 5
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     private var cultivationButton: UIButton = {
         let btn = UIButton()
@@ -58,7 +57,7 @@ class FooterButtonView: UIView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    
+
     weak var delegate: FooterButtonViewDelegate?
 
     override init(frame: CGRect) {
@@ -69,9 +68,9 @@ class FooterButtonView: UIView {
         super.init(coder: coder)
         initUI()
     }
-    
+
     // MARK: - Action
-    
+
     @objc private func onCultivation(_ sender: UIButton) {
         delegate?.footerButtonViewDidTapCultivationButton()
     }
@@ -92,13 +91,13 @@ extension FooterButtonView {
         stackView.addArrangedSubview(communicationButton)
         parentView.addSubview(stackView)
         addSubview(parentView)
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 5),
             stackView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 5),
             stackView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -5),
             stackView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -5),
-            
+
             parentView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             parentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             parentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),

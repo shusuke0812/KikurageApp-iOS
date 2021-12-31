@@ -10,13 +10,14 @@ import UIKit
 
 class AppConfig {
     static let shared = AppConfig()
+
     private init() {}
-    
+
     // Open URL
     var facebookGroupUrl: String?
     var termsUrl: String?
     var privacyPolicyUrl: String?
-    
+
     // Screen header
     var navigationBarHeight: CGFloat?
     var safeAreaHeight: CGFloat?

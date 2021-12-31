@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable {
         baseView.setKikurageNameUI(kikurageUser: viewModel.kikurageUser)
         setNavigationItem()
         adjustNavigationBarBackgroundColor()
-        
+
         // Other
         makeForeBackgroundObserver()
     }

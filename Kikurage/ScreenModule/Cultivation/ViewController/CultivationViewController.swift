@@ -22,9 +22,9 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
         setDelegateDataSource()
         setNotificationCenter()
         setRefreshControl()
-        
+
         adjustNavigationBarBackgroundColor()
-        
+
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
@@ -33,9 +33,9 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     // MARK: - Action
-    
+
     @objc private func refresh(_ sender: UIRefreshControl) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
@@ -88,7 +88,7 @@ extension CultivationViewController: CultivationViewModelDelegate {
         DispatchQueue.main.async {
             HUD.hide()
             self.baseView.collectionView.refreshControl?.endRefreshing()
-            
+
             self.baseView.collectionView.reloadData()
             self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
         }

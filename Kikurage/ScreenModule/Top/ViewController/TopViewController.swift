@@ -12,7 +12,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: TopBaseView { self.view as! TopBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegate()

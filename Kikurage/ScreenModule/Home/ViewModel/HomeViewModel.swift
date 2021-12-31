@@ -40,7 +40,7 @@ extension HomeViewModel {
     func config(kikurageUser: KikurageUser?, kikurageState: KikurageState?) {
         self.kikurageUser = kikurageUser
         self.kikurageState = kikurageState
-        
+
         self.listenKikurageState()
     }
 }

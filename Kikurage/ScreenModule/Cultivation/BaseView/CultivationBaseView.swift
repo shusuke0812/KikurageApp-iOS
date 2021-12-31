@@ -28,7 +28,7 @@ class CultivationBaseView: UIView {
         initUI()
         setCollectionView()
     }
-    
+
     // MARK: - Action
 
     @IBAction private func didTapPostCultivationPageButton(_ sender: Any) {
@@ -41,7 +41,7 @@ class CultivationBaseView: UIView {
 extension CultivationBaseView {
     private func initUI() {
         collectionView.backgroundColor = .systemGroupedBackground
-        
+
         noCultivationLabel.text = R.string.localizable.screen_cultivation_no_cultivation()
         noCultivationLabel.textColor = .darkGray
         noCultivationLabel.isHidden = true

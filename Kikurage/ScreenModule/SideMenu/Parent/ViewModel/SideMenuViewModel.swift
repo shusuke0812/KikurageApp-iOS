@@ -13,7 +13,7 @@ class SideMenuViewModel: NSObject {
         case history
         case support
         case help
-        
+
         var rows: [SectionRowType] {
             switch self {
             case .history:  return [.calendar, .graph]
@@ -30,7 +30,7 @@ class SideMenuViewModel: NSObject {
         case license
         case searchRecipe
         case kikurageDictionary
-        
+
         var title: String {
             switch self {
             case .calendar:
@@ -49,7 +49,7 @@ class SideMenuViewModel: NSObject {
                 return R.string.localizable.side_menu_content_kikurage_dictionary_subtitle()
             }
         }
-        
+
         var iconImageName: String {
             switch self {
             case .calendar:
@@ -69,9 +69,9 @@ class SideMenuViewModel: NSObject {
             }
         }
     }
-    
+
     private(set) var sections: [Section] = []
-    
+
     override init() {
         super.init()
         setSection()
@@ -85,11 +85,11 @@ extension SideMenuViewModel {
         sections = [.history, .support, .help]
     }
     private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> SideMenuTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell", for: indexPath) as! SideMenuTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.sideMenuTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         let rowType = section.rows[indexPath.row]
-        
+
         cell.setSideMenuContent(title: rowType.title, iconImageName: rowType.iconImageName)
-        
+
         return cell
     }
 }

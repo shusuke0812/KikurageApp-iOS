@@ -39,7 +39,7 @@ class HomeBaseView: UIView {
 
     @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
     @IBOutlet private weak var footerButtonView: FooterButtonView!
-    
+
     private var kikurageStateEmptyView: UIView!
 
     weak var delegate: HomeBaseViewDelegate?
@@ -72,22 +72,22 @@ class HomeBaseView: UIView {
 extension HomeBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
-        
+
         nowTimeLabel.text = DateHelper.now()
         kikurageNameLabel.text = ""
         kikurageStatusLabel.text = ""
-        
+
         kikurageStatusParentView.clipsToBounds = true
         kikurageStatusParentView.layer.cornerRadius = .viewCornerRadius
-        
+
         valueParentView.backgroundColor = .systemGroupedBackground
         nowValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_now_title()
         expectedValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_expected_title()
-        
+
         temperatureTitleLabel.text = R.string.localizable.screen_home_temperature_title()
         temparatureTextLabel.text = "-"
         expectedTemperatureLabel.text = "20-25°C"
-        
+
         humidityTitleLabel.text = R.string.localizable.screen_home_humidity_title()
         humidityTextLabel.text = "-"
         expectedHumidityLabel.text = "80% " + R.string.localizable.screen_home_humidity_expected_suffix()
@@ -96,16 +96,16 @@ extension HomeBaseView {
         kikurageStateEmptyView = UIView()
         kikurageStateEmptyView.backgroundColor = .white
         kikurageStateEmptyView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let label = UILabel()
         label.text = R.string.localizable.common_read_error()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+
         kikurageStateEmptyView.addSubview(label)
-        
+
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: kikurageStateEmptyView.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: kikurageStateEmptyView.centerYAnchor)
@@ -161,7 +161,7 @@ extension HomeBaseView {
     private func displayFailedKikurageStateImage() {
         kikurageStatusImageView.addSubview(kikurageStateEmptyView)
         kikurageStatusImageView.image = nil
-        
+
         NSLayoutConstraint.activate([
             kikurageStateEmptyView.topAnchor.constraint(equalTo: kikurageStatusImageView.topAnchor),
             kikurageStateEmptyView.leadingAnchor.constraint(equalTo: kikurageStatusImageView.leadingAnchor),

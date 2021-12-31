@@ -24,7 +24,7 @@ class RecipeBaseView: UIView {
         initUI()
         setTableView()
     }
-    
+
     // MARK: - Action
 
     @IBAction private func didTapPostRecipePageButton(_ sender: Any) {

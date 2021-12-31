@@ -13,7 +13,7 @@ class CalendarViewController: UIViewController {
     private var viewModel: CalendarViewModel!
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())

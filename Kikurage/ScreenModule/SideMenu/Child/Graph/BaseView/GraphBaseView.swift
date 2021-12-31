@@ -25,7 +25,7 @@ class GraphBaseView: UIView {
     @IBOutlet private weak var humidityLabel: UILabel!
     @IBOutlet private weak var temperatureLineChartView: LineChartView!
     @IBOutlet private weak var humidityLineChartView: LineChartView!
-    
+
     @IBOutlet private weak var temperatureActivityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var humidityActivityIndicator: UIActivityIndicatorView!
 
@@ -37,9 +37,9 @@ class GraphBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
-    
+
     // MARK: - Action
-    
+
     @IBAction private func didTapCloseButton(_ sender: Any) {
         delegate?.didTapCloseButton()
     }

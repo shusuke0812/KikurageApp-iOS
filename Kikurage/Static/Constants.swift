@@ -60,23 +60,23 @@ enum Constants {
         case cultivation
         case recipe
         case communication
-        
+
         typealias RawValue = UIColor
-        
+
         init?(rawValue: RawValue) {
             switch rawValue {
-            case UIColor.init(hex: "4A90E2"):   self = .cultivation
-            case UIColor.init(hex: "F5A623"):   self = .recipe
-            case UIColor.init(hex: "7ED321"):   self = .communication
+            case UIColor(hex: "4A90E2"):   self = .cultivation
+            case UIColor(hex: "F5A623"):   self = .recipe
+            case UIColor(hex: "7ED321"):   self = .communication
             default:    return nil
             }
         }
-        
+
         var rawValue: RawValue {
             switch self {
-            case .cultivation:      return UIColor.init(hex: "4A90E2")
-            case .recipe:           return UIColor.init(hex: "F5A623")
-            case .communication:    return UIColor.init(hex: "7ED321")
+            case .cultivation:      return UIColor(hex: "4A90E2")
+            case .recipe:           return UIColor(hex: "F5A623")
+            case .communication:    return UIColor(hex: "7ED321")
             }
         }
     }

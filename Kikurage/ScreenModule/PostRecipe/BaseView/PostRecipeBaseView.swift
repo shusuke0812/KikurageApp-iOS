@@ -41,9 +41,9 @@ class PostRecipeBaseView: UIView {
         initUI()
         initDatePicker()
     }
-    
+
     // MARK: - Action
-    
+
     @IBAction private func didTapCloseButton(_ sender: Any) {
         delegate?.didTapCloseButton()
     }

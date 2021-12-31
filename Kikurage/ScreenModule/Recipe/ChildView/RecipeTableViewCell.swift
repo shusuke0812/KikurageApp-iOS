@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var parentView: UIView!
-    
+
     @IBOutlet private weak var recipeImageView: UIImageView!
     @IBOutlet private weak var recipeDateLabel: UILabel!
     @IBOutlet private weak var recipeNameLabel: UILabel!
@@ -29,10 +29,10 @@ class RecipeTableViewCell: UITableViewCell {
 extension RecipeTableViewCell {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
-    
+
         parentView.clipsToBounds = true
         parentView.layer.cornerRadius = .cellCornerRadius
-        
+
         recipeImageView.clipsToBounds = true
         recipeImageView.layer.cornerRadius = .cellCornerRadius
     }

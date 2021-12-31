@@ -31,16 +31,16 @@ class PostCultivationBaseView: UIView {
     let maxTextViewNumber = 200
 
     // MARK: - Lifecycle
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         registerCameraCell()
         initUI()
         initDatePicker()
     }
-    
+
     // MARK: - Action
-    
+
     @IBAction private func didTapPostButton(_ sender: Any) {
         delegate?.didTapPostButton()
     }

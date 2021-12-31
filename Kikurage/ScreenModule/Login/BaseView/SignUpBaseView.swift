@@ -25,7 +25,7 @@ class SignUpBaseView: UIView {
     }
 
     // MARK: - Action
-    
+
     @IBAction private func didTappedUserRegisterButton(_ sender: Any) {
         delegate?.didTappedUserRegisterButton()
     }

@@ -51,7 +51,7 @@ class TopBaseView: UIView {
 extension TopBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
-        
+
         topImageView.image = R.image.kikurageDevice()
         topImageView.clipsToBounds = true
         topImageView.layer.cornerRadius = .viewCornerRadius

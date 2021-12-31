@@ -14,7 +14,6 @@ protocol CommunicationViewModelDelegate: AnyObject {
 }
 
 class CommunicationViewModel {
-    
     private(set) var faceboolGroupUrl: String = ""
 
     weak var delegate: CommunicationViewModelDelegate?

@@ -25,9 +25,9 @@ class CalendarBaseView: UIView {
         initUI()
         initCalendarView()
     }
-    
+
     // MARK: - Action
-    
+
     @IBAction private func didTapCloseButton(_ sender: Any) {
         delegate?.didTapCloseButton()
     }
@@ -49,7 +49,7 @@ extension CalendarBaseView {
 
         let calendarView = CalendarView(initialContent: makeContent())
         calendarView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         parentView.addSubview(calendarView)
         contentView.addSubview(parentView)
 
@@ -60,7 +60,7 @@ extension CalendarBaseView {
             parentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             parentView.widthAnchor.constraint(equalToConstant: contentViewWidth),
             parentView.heightAnchor.constraint(equalToConstant: contentViewWidth),
-            
+
             calendarView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 15),
             calendarView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 15),
             calendarView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -15),

@@ -19,7 +19,7 @@ struct KikurageState: Codable {
     var typeString: String?
     /// アドバイス
     var advice: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case temperature
         case humidity
@@ -27,10 +27,10 @@ struct KikurageState: Codable {
         case typeString = "judge"
         case advice
     }
-    
+
     /// タイプ
     var type: KikurageStateType?
-    
+
     /// タイプ文字列を`KikurageStateType`に変換する
     mutating func convertToStateType() {
         if typeString == KikurageStateType.normal.rawValue {

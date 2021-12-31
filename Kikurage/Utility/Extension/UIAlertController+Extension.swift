@@ -9,8 +9,9 @@
 import UIKit
 
 extension UIAlertController {
-    static func showAlert(style: UIAlertController.Style, viewController: UIViewController, title: String?, message: String?, okButtonTitle: String, cancelButtonTitle: String?, completionOk: (() -> Void)?,
-                          file: String = #file, function: String = #function, line: Int = #line, logMessage: String = "") {
+    static func showAlert(
+        style: UIAlertController.Style, viewController: UIViewController, title: String?, message: String?, okButtonTitle: String, cancelButtonTitle: String?, completionOk: (() -> Void)?,
+        file: String = #file, function: String = #function, line: Int = #line, logMessage: String = "") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         // キャンセル｜OK というボタン配置にするためにCancelActionを先にAddする
         if let cancelButtonTitle = cancelButtonTitle {

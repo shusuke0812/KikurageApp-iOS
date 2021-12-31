@@ -13,7 +13,7 @@ class GraphViewController: UIViewController {
     private var viewModel: GraphViewModel!
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())

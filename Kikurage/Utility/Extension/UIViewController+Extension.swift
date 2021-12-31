@@ -64,7 +64,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
     }
     func adjustNavigationBarBackgroundColor() {
         guard let nc = self.navigationController else { return }
-        
+
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .systemGroupedBackground

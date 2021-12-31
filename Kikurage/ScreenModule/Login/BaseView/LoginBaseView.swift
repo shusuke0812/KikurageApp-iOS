@@ -23,9 +23,9 @@ class LoginBaseView: UIView {
         super.awakeFromNib()
         initUI()
     }
-    
+
     // MARK: - Action
-    
+
     @IBAction private func didTappedLoginButton(_ sender: Any) {
         delegate?.didTappedLoginButton()
     }
@@ -36,7 +36,7 @@ class LoginBaseView: UIView {
 extension LoginBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
-        
+
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_login_login_btn_name(), for: .normal)

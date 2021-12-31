@@ -28,9 +28,9 @@ class DeviceRegisterBaseView: UIView {
         initUI()
         initDatePicker()
     }
-    
+
     // MARK: - Action
-    
+
     @IBAction private func didTappedDeviceRegisterButton(_ sender: Any) {
         delegate?.didTappedDeviceRegisterButton()
     }

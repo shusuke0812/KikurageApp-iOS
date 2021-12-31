@@ -16,7 +16,7 @@ class SideMenuViewController: UIViewController, UIViewControllerNavigatable {
     private let mail = MFMailComposeViewController()
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = SideMenuViewModel()
@@ -26,9 +26,9 @@ class SideMenuViewController: UIViewController, UIViewControllerNavigatable {
         super.viewWillAppear(animated)
         setAnimation()
     }
-    
+
     // MARK: - Action
-    
+
     // メニューエリア以外をタップした時の処理
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -115,7 +115,7 @@ extension SideMenuViewController {
 
 extension SideMenuViewController {
     private func openSearchRecipePage() {
-        let query = (R.string.localizable.side_menu_search_recipe_word()).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
+        let query = (R.string.localizable.side_menu_search_recipe_word()).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         let urlString = "https://cookpad.com/search/\(query)"
         transitionSafariViewController(urlString: urlString) {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)

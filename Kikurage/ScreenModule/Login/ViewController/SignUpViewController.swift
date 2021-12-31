@@ -14,7 +14,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: SignUpViewModel!
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_signup_title()

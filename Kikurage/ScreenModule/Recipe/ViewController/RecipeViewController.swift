@@ -25,9 +25,9 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
         setDelegateDataSource()
         setNotificationCenter()
         setRefreshControl()
-        
+
         adjustNavigationBarBackgroundColor()
-        
+
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
@@ -36,9 +36,9 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     // MARK: - Action
-    
+
     @objc private func refresh(_ sender: UIRefreshControl) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
