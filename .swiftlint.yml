@@ -148,7 +148,7 @@ opt_in_rules:
 
 # Lint対象のパス
 included:
-- kikurageApp
+- Kikurage
 
 # Lint対象外のパス
 excluded:
