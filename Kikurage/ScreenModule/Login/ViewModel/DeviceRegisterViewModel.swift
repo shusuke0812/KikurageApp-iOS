@@ -46,6 +46,12 @@ extension DeviceRegisterViewModel {
     func setStateReference(productKey: String) {
         kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
+    private func saveDateComponents() {
+        if let cultivationStartDate = kikurageUser?.cultivationStartDate {
+            let components = DateHelper.getDateComponents(date: cultivationStartDate)
+            AppConfig.shared.cultivationStartDateComponents = components
+        }
+    }
 }
 
 // MARK: - Firebase Firestore
@@ -75,6 +81,8 @@ extension DeviceRegisterViewModel {
             switch responsse {
             case .success():
                 self?.delegate?.didSuccessPostKikurageUser()
+                self?.kikurageUser = kikurageUser
+                self?.saveDateComponents()
             case .failure(let error):
                 self?.delegate?.didFailedPostKikurageUser(errorMessage: error.description())
             }

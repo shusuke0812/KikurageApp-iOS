@@ -52,4 +52,9 @@ struct DateHelper {
         self.originalDateFormatter.dateFormat = "yyyy/MM/dd"
         return originalDateFormatter.date(from: dateString)
     }
+    /// Date型からDateComponentsを取得する
+    /// - Parameter date: 日付（デフォルトは現在時刻）
+    static func getDateComponents(date: Date = Date()) -> DateComponents {
+        Calendar.current.dateComponents([.year, .month, .day], from: date)
+    }
 }

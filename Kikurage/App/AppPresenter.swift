@@ -34,6 +34,17 @@ class AppPresenter {
     }
 }
 
+// MARK: - Setting Data
+
+extension AppPresenter {
+    private func saveDateComponents() {
+        if let cultivationStartDate = kikurageUser?.cultivationStartDate {
+            let components = DateHelper.getDateComponents(date: cultivationStartDate)
+            AppConfig.shared.cultivationStartDateComponents = components
+        }
+    }
+}
+
 // MARK: - Firebase Firestore
 
 extension AppPresenter {
@@ -45,6 +56,7 @@ extension AppPresenter {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
+                self?.saveDateComponents()
             case .failure(let error):
                 self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
             }
