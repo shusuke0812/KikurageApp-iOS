@@ -40,30 +40,57 @@ extension CalendarBaseView {
         navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
     private func initCalendarView(_ cultivationStartDateComponents: DateComponents) {
-        let parentView = UIView()
-        parentView.backgroundColor = .white
-        parentView.clipsToBounds = true
-        parentView.layer.cornerRadius = .viewCornerRadius
-        parentView.translatesAutoresizingMaskIntoConstraints = false
+        // Calendar
+        let calendarParentView = UIView()
+        calendarParentView.backgroundColor = .white
+        calendarParentView.clipsToBounds = true
+        calendarParentView.layer.cornerRadius = .viewCornerRadius
+        calendarParentView.translatesAutoresizingMaskIntoConstraints = false
 
         let calendarView = CalendarView(initialContent: makeContent(cultivationStartDateComponents))
         calendarView.translatesAutoresizingMaskIntoConstraints = false
 
-        parentView.addSubview(calendarView)
-        contentView.addSubview(parentView)
-
         let contentViewWidth = UIScreen.main.bounds.size.width - (15 * 2)
 
-        NSLayoutConstraint.activate([
-            parentView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
-            parentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            parentView.widthAnchor.constraint(equalToConstant: contentViewWidth),
-            parentView.heightAnchor.constraint(equalToConstant: contentViewWidth),
+        // Cultivation start date
+        let dateParentView = UIView()
+        dateParentView.backgroundColor = .white
+        dateParentView.clipsToBounds = true
+        dateParentView.layer.cornerRadius = .viewCornerRadius
+        dateParentView.translatesAutoresizingMaskIntoConstraints = false
 
-            calendarView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 15),
-            calendarView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 15),
-            calendarView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: -15),
-            calendarView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -15)
+        let label = UILabel()
+        label.text = ""
+        label.textAlignment = .center
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        // Constraint
+        calendarParentView.addSubview(calendarView)
+        dateParentView.addSubview(label)
+        contentView.addSubview(calendarParentView)
+        contentView.addSubview(dateParentView)
+
+        NSLayoutConstraint.activate([
+            calendarParentView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
+            calendarParentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            calendarParentView.widthAnchor.constraint(equalToConstant: contentViewWidth),
+            calendarParentView.heightAnchor.constraint(equalToConstant: contentViewWidth),
+
+            calendarView.topAnchor.constraint(equalTo: calendarParentView.topAnchor, constant: 15),
+            calendarView.leadingAnchor.constraint(equalTo: calendarParentView.leadingAnchor, constant: 15),
+            calendarView.trailingAnchor.constraint(equalTo: calendarParentView.trailingAnchor, constant: -15),
+            calendarView.bottomAnchor.constraint(equalTo: calendarParentView.bottomAnchor, constant: -15),
+
+            label.leadingAnchor.constraint(equalTo: dateParentView.leadingAnchor, constant: 15),
+            label.trailingAnchor.constraint(equalTo: dateParentView.trailingAnchor, constant: -15),
+            label.centerYAnchor.constraint(equalTo: dateParentView.centerYAnchor),
+
+            dateParentView.topAnchor.constraint(equalTo: calendarParentView.bottomAnchor, constant: 20),
+            dateParentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            dateParentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            dateParentView.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     private func makeContent(_ cultivationStartDateComponents: DateComponents) -> CalendarViewContent {
