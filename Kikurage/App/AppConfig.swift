@@ -21,8 +21,4 @@ class AppConfig {
     // Screen header
     var navigationBarHeight: CGFloat?
     var safeAreaHeight: CGFloat?
-
-    // Date
-    var nowDateComponents: DateComponents = DateHelper.getDateComponents()
-    var cultivationStartDateComponents: DateComponents?
 }

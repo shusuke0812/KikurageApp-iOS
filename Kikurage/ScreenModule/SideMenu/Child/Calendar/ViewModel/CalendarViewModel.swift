@@ -21,10 +21,22 @@ class CalendarViewModel {
 
     weak var delegate: CalendarViewModelDelegate?
     /// きくらげユーザー
-    var kikurageUser: KikurageUser?
+    private(set) var kikurageUser: KikurageUser?
+    private(set) var cultivationDateComponents: DateComponents
 
     init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
+        self.cultivationDateComponents = DateHelper.getDateComponents()
+    }
+}
+
+// MARK: - Setting Data
+
+extension CalendarViewModel {
+    private func saveDateComponents() {
+        if let cultivationStartDate = kikurageUser?.cultivationStartDate {
+            cultivationDateComponents = DateHelper.getDateComponents(date: cultivationStartDate)
+        }
     }
 }
 
@@ -38,6 +50,7 @@ extension CalendarViewModel {
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
+                self?.saveDateComponents()
                 self?.delegate?.didSuccessGetKikurageUser()
             case .failure(let error):
                 self?.delegate?.didFailedGetKikurageUser(errorMessage: error.description())

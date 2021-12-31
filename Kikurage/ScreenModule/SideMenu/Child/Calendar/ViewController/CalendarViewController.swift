@@ -18,6 +18,10 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
+
+        if let userId = LoginHelper.shared.kikurageUserId {
+            viewModel.loadKikurageUser(uid: userId)
+        }
     }
 }
 
@@ -26,6 +30,7 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
+        viewModel.delegate = self
     }
 }
 
@@ -41,6 +46,7 @@ extension CalendarViewController: CalendarBaseViewDelegate {
 
 extension CalendarViewController: CalendarViewModelDelegate {
     func didSuccessGetKikurageUser() {
+        baseView.initCalendarView(cultivationStartDateComponents: viewModel.cultivationDateComponents)
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         DispatchQueue.main.async {

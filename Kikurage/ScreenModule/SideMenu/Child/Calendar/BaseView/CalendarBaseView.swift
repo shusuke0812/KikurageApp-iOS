@@ -23,7 +23,6 @@ class CalendarBaseView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
-        initCalendarView()
     }
 
     // MARK: - Action
@@ -40,14 +39,14 @@ extension CalendarBaseView {
         contentView.backgroundColor = .systemGroupedBackground
         navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
-    private func initCalendarView() {
+    private func initCalendarView(_ cultivationStartDateComponents: DateComponents) {
         let parentView = UIView()
         parentView.backgroundColor = .white
         parentView.clipsToBounds = true
         parentView.layer.cornerRadius = .viewCornerRadius
         parentView.translatesAutoresizingMaskIntoConstraints = false
 
-        let calendarView = CalendarView(initialContent: makeContent())
+        let calendarView = CalendarView(initialContent: makeContent(cultivationStartDateComponents))
         calendarView.translatesAutoresizingMaskIntoConstraints = false
 
         parentView.addSubview(calendarView)
@@ -67,16 +66,24 @@ extension CalendarBaseView {
             calendarView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -15)
         ])
     }
-    private func makeContent() -> CalendarViewContent {
+    private func makeContent(_ cultivationStartDateComponents: DateComponents) -> CalendarViewContent {
         let calendar = Calendar.current
-        let _defaultComponents = DateHelper.getDateComponents()
-        let startDate = calendar.date(from: AppConfig.shared.cultivationStartDateComponents ?? _defaultComponents)!
-        let endDate = calendar.date(from: AppConfig.shared.nowDateComponents)!
+        let nowDateComponents = DateHelper.getDateComponents()
+        let startDate = calendar.date(from: cultivationStartDateComponents)!
+        let endDate = calendar.date(from: nowDateComponents)!
 
         return CalendarViewContent(
             calendar: calendar,
             visibleDateRange: startDate...endDate,
             monthsLayout: .horizontal(options: HorizontalMonthsLayoutOptions())
         )
+    }
+}
+
+// MARK: - Config
+
+extension CalendarBaseView {
+    func initCalendarView(cultivationStartDateComponents: DateComponents) {
+        initCalendarView(cultivationStartDateComponents)
     }
 }
