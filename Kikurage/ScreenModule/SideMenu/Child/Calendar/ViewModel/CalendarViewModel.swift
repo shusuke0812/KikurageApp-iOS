@@ -23,10 +23,12 @@ class CalendarViewModel {
     /// きくらげユーザー
     private(set) var kikurageUser: KikurageUser?
     private(set) var cultivationDateComponents: DateComponents
+    private(set) var cultivationTerm: Int?
 
     init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
         self.cultivationDateComponents = DateHelper.getDateComponents()
+        self.cultivationTerm = 0
     }
 }
 
@@ -37,6 +39,15 @@ extension CalendarViewModel {
         if let cultivationStartDate = kikurageUser?.cultivationStartDate {
             cultivationDateComponents = DateHelper.getDateComponents(date: cultivationStartDate)
         }
+    }
+    private func calcCultivationTerm() {
+        let calendar = Calendar.current
+        
+        let startDate = calendar.startOfDay(for: kikurageUser?.cultivationStartDate ?? Date())
+        let endDate = calendar.startOfDay(for: Date())
+        
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        cultivationTerm = components.day
     }
 }
 
@@ -51,6 +62,7 @@ extension CalendarViewModel {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.saveDateComponents()
+                self?.calcCultivationTerm()
                 self?.delegate?.didSuccessGetKikurageUser()
             case .failure(let error):
                 self?.delegate?.didFailedGetKikurageUser(errorMessage: error.description())

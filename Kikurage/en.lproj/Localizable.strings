@@ -154,6 +154,7 @@
 
 // calendar
 "side_menu_clendar_title" = "Calendar";
+"side_menu_clendar_term" = "Cultivation term： %1$d Day";
 
 // graph
 "side_menu_graph_title" = "Graph";

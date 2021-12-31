@@ -154,6 +154,7 @@
 
 // calendar
 "side_menu_clendar_title" = "カレンダー";
+"side_menu_clendar_term" = "栽培期間： %1$d 日";
 
 // graph
 "side_menu_graph_title" = "グラフ";

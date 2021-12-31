@@ -46,7 +46,7 @@ extension CalendarViewController: CalendarBaseViewDelegate {
 
 extension CalendarViewController: CalendarViewModelDelegate {
     func didSuccessGetKikurageUser() {
-        baseView.initCalendarView(cultivationStartDateComponents: viewModel.cultivationDateComponents)
+        baseView.initCalendarView(cultivationStartDateComponents: viewModel.cultivationDateComponents, cultivationTerm: (viewModel.cultivationTerm ?? 0))
     }
     func didFailedGetKikurageUser(errorMessage: String) {
         DispatchQueue.main.async {

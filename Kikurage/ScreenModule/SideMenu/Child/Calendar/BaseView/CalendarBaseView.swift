@@ -39,7 +39,7 @@ extension CalendarBaseView {
         contentView.backgroundColor = .systemGroupedBackground
         navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
-    private func initCalendarView(_ cultivationStartDateComponents: DateComponents) {
+    private func initCalendarView(_ cultivationStartDateComponents: DateComponents, _ cultivationTerm: Int) {
         // Calendar
         let calendarParentView = UIView()
         calendarParentView.backgroundColor = .white
@@ -60,7 +60,7 @@ extension CalendarBaseView {
         dateParentView.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
-        label.text = ""
+        label.text = R.string.localizable.side_menu_clendar_term(cultivationTerm)
         label.textAlignment = .center
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -110,7 +110,7 @@ extension CalendarBaseView {
 // MARK: - Config
 
 extension CalendarBaseView {
-    func initCalendarView(cultivationStartDateComponents: DateComponents) {
-        initCalendarView(cultivationStartDateComponents)
+    func initCalendarView(cultivationStartDateComponents: DateComponents, cultivationTerm: Int) {
+        initCalendarView(cultivationStartDateComponents, cultivationTerm)
     }
 }
