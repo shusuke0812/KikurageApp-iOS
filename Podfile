@@ -20,7 +20,7 @@ target 'Kikurage' do
   pod 'IQKeyboardManagerSwift'
   pod 'PKHUD', '~> 5.0'
   pod 'HorizonCalendar'
-	pod 'FontAwesome.swift'
+  pod 'FontAwesome.swift'
   # Other
   pod 'R.swift'
   pod 'RxSwift', '6.2.0'
