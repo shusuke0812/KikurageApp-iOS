@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CropViewController
 
 class SettingViewController: UIViewController {
     private var baseView: SettingBaseView { self.view as! SettingBaseView } // sswiftlint:disable:this force_cast
@@ -36,8 +37,10 @@ extension SettingViewController {
 
 extension SettingViewController: SettingBaseViewDelegate {
     func didTappedUserImageView() {
+        // FIXME: 写真アプリから写真を選んで円形にトリミング（CropViewController）してViewModelにあるKikurageUserを更新する
     }
     func didTappedEditButton() {
+        // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
     }
     func didTappedCloseButton() {
         dismiss(animated: true, completion: nil)
@@ -53,5 +56,8 @@ extension SettingViewController: SettingViewModelDelegate {
         }
     }
     func didFailedGetKikurageUser(errorMessage: String) {
+        DispatchQueue.main.async {
+            self.baseView.setKikurageName(name: nil)
+        }
     }
 }
