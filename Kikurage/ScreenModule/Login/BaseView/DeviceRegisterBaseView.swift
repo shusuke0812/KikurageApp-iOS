@@ -55,7 +55,9 @@ extension DeviceRegisterBaseView {
     }
     private func initDatePicker() {
         // DatePcikerの基本設定
-        datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         datePicker.datePickerMode = .date
         datePicker.timeZone = NSTimeZone.local
         datePicker.locale = Locale.current
