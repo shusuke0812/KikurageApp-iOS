@@ -111,6 +111,15 @@ extension SideMenuViewController {
     }
 }
 
+// MARK: - Kikurage Dictionary
+
+extension SideMenuViewController {
+    private func openKikurageDictionary() {
+        let urlString = "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq"
+        transitionSafariViewController(urlString: urlString, onError: nil)
+    }
+}
+
 // MARK: - UITableView Delegate
 
 extension SideMenuViewController: UITableViewDelegate {
@@ -141,7 +150,7 @@ extension SideMenuViewController: UITableViewDelegate {
         case .searchRecipe:
             openSearchRecipePage()
         case .kikurageDictionary:
-            print("")
+            openKikurageDictionary()
         }
         baseView.tableView.deselectRow(at: indexPath, animated: true)
     }
