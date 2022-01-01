@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kee-XX-2yh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Device Register View Controller-->
+        <scene sceneID="6Qt-bC-tRp">
+            <objects>
+                <viewController id="Kee-XX-2yh" customClass="DeviceRegisterViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bkR-99-1oz" customClass="DeviceRegisterBaseView" customModule="Kikurage" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJX-D5-eV3">
+                                <rect key="frame" x="40" y="271" width="334" height="45"/>
+                                <color key="backgroundColor" name="subColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="EMH-T4-wZ9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <connections>
+                                    <action selector="didTappedDeviceRegisterButton:" destination="bkR-99-1oz" eventType="touchUpInside" id="KlO-sN-faH"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Sg-EvC">
+                                <rect key="frame" x="40" y="202" width="334" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-Hi-49i">
+                                <rect key="frame" x="40" y="84" width="334" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1y-mr-QXt">
+                                <rect key="frame" x="40" y="143" width="334" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="O59-kh-ErE"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v2y-Sg-EvC" firstAttribute="top" secondItem="I1y-mr-QXt" secondAttribute="bottom" constant="25" id="0xo-qL-Ldh"/>
+                            <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="HJX-D5-eV3" secondAttribute="trailing" constant="40" id="1hU-hW-umV"/>
+                            <constraint firstItem="gTz-Hi-49i" firstAttribute="top" secondItem="O59-kh-ErE" secondAttribute="top" constant="40" id="F7o-hz-nZE"/>
+                            <constraint firstItem="HJX-D5-eV3" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="40" id="JoK-bo-10h"/>
+                            <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="v2y-Sg-EvC" secondAttribute="trailing" constant="40" id="dYt-6V-3Lb"/>
+                            <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="gTz-Hi-49i" secondAttribute="trailing" constant="40" id="g5C-9r-rCc"/>
+                            <constraint firstItem="I1y-mr-QXt" firstAttribute="top" secondItem="gTz-Hi-49i" secondAttribute="bottom" constant="25" id="gPy-NB-DlM"/>
+                            <constraint firstItem="v2y-Sg-EvC" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="40" id="mfu-uV-5P3"/>
+                            <constraint firstItem="HJX-D5-eV3" firstAttribute="top" secondItem="v2y-Sg-EvC" secondAttribute="bottom" constant="35" id="obr-Ie-Dki"/>
+                            <constraint firstItem="gTz-Hi-49i" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="40" id="syN-Ga-810"/>
+                            <constraint firstItem="I1y-mr-QXt" firstAttribute="leading" secondItem="O59-kh-ErE" secondAttribute="leading" constant="40" id="tLL-Lb-fAf"/>
+                            <constraint firstItem="O59-kh-ErE" firstAttribute="trailing" secondItem="I1y-mr-QXt" secondAttribute="trailing" constant="40" id="zLO-aG-I0X"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="cultivationStartDateTextField" destination="v2y-Sg-EvC" id="De6-UI-uhV"/>
+                            <outlet property="deviceRegisterButton" destination="HJX-D5-eV3" id="HuU-Jj-fkp"/>
+                            <outlet property="kikurageNameTextField" destination="I1y-mr-QXt" id="hSy-rj-BIl"/>
+                            <outlet property="productKeyTextField" destination="gTz-Hi-49i" id="0IU-PH-Shs"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AlD-pN-eez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-99" y="181"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="subColor">
+            <color red="0.86299997568130493" green="0.29800000786781311" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,175 @@
+/* 
+  Localizable.strings
+  kikurageApp
+
+  Created by Shusuke Ota on 2021/11/6.
+  Copyright © 2021 shusuke. All rights reserved.
+*/
+
+/****
+ * common
+ */
+
+// firebase api error
+"common_create_error" = "作成に失敗しました";
+"common_read_error" = "読み込みに失敗しました";
+"common_delete_error" = "削除に失敗しました";
+"common_update_error" = "更新に失敗しました";
+"common_document_id_error" = "ドキュメントIDが見つかりません";
+"common_load_user_error" = "ユーザー情報の取得に失敗しました";
+
+// client error
+"common_error" = "エラー";
+"common_network_connection_error" = "ネットワーク通信に失敗しました";
+"common_parse_error" = "パースエラー";
+"common_response_parse_error" = "レスポンスの変換に失敗しました";
+"common_api_error" = "サーバーエラー";
+"common_unknown" = "エラーが発生しました";
+"common_save_user_defaults_error" = "UserDefaultsへの保存に失敗しました";
+
+// week
+"common_week_monday" = "月曜";
+"common_week_tuesday" = "火曜";
+"common_week_wednesday" = "水曜";
+"common_week_thursday" = "木曜";
+"common_week_friday" = "金曜";
+"common_week_saturday" = "土曜";
+"common_week_sunday" = "日曜";
+
+// alert
+"common_alert_ok_btn_next" = "次へ";
+"common_alert_ok_btn_ok" = "OK";
+"common_alert_cancel_btn_cancel" = "キャンセル";
+
+// navigation
+"common_navigation_back_btn_title" = "もどる";
+
+/****
+ * error
+ */
+
+// client error
+"error_client_network_connection" = "ネットワーク通信に失敗しました";
+"error_client_parse" = "パースエラー";
+"error_client_response_parse" = "レスポンスの変換に失敗しました";
+"error_client_api" = "サーバーエラー";
+"error_client_unknown" = "エラーが発生しました";
+"error_client_save_user_defaults" = "UserDefaultsへの保存に失敗しました";
+
+// firebase error
+"error_firebase_create" = "作成に失敗しました";
+"error_firebase_read" = "読み込みに失敗しました";
+"error_firebase_delete" = "削除に失敗しました";
+"error_firebase_update" = "更新に失敗しました";
+"error_firebase_document_id" = "ドキュメントIDが見つかりません";
+"error_firebase_load_user" = "ユーザー情報の取得に失敗しました";
+
+/****
+ * screen
+ */
+
+// top
+"screen_top_copy_right" = "©︎ チーム きくらげ大使館";
+"screen_top_title" = "ようこそ！";
+"screen_top_login_btn_name" = "ログイン";
+"screen_top_signup_btn_name" = "新規ユーザー登録";
+"screen_top_app_term" = "利用規約";
+"screen_top_app_privacy" = "個人情報保護方針";
+
+// login
+"screen_login_title" = "ログイン";
+"screen_login_email_textfield_placeholer" = "メールアドレス";
+"screen_login_password_textfield_placeholer" = "パスワード";
+"screen_login_login_btn_name" = "ログイン";
+
+"screen_signup_title" = "ユーザー登録";
+"screen_signup_email_textfield_placeholer" = "メールアドレス";
+"screen_signup_password_textfield_placeholer" = "パスワード";
+"screen_signup_signup_btn_name" = "登録する";
+"screen_signup_register_alert_user_title" = "仮登録完了";
+"screen_signup_register_alert_user_message" = "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください";
+
+"screen_device_register_title" = "デバイス登録";
+"screen_device_register_productkey_textfield_placeholer" = "プロダクトキーを入力してください";
+"screen_device_register_kikurage_name_textfield_placeholer" = "きくらげ君の名前を入力してください";
+"screen_device_register_cultivation_start_date_textfield_placeholer" = "栽培開始日を入力してください";
+"screen_device_register_register_btn_name" = "はじめる";
+
+// home
+"screen_home_title" = "ホーム";
+"screen_home_kikurage_name" = "今日の %@";
+"screen_home_advice_title" = "【アドバイス】";
+"screen_home_temperature_title" = "温度";
+"screen_home_humidity_title" = "湿度";
+"screen_home_temperature_humidity_now_title" = "現在";
+"screen_home_temperature_humidity_expected_title" = "理想";
+"screen_home_humidity_expected_suffix" = "以上";
+
+// cultivation
+"screen_cultivation_title" = "さいばいきろく";
+"screen_cultivation_no_cultivation" = "さいばいきろくがありません";
+
+// cultivation detail
+"screen_cultivation_detail_title" = "さいばいきろく詳細";
+"screen_cultivation_detail_memo_title" = "観察メモ";
+
+// post cultivation
+"screen_post_cultivation_title" = "さいばいきろく保存";
+"screen_post_cultivation_textview_placeholder" = "観察メモ";
+"screen_post_cultivation_date_textfield_placeholder" = "日付を選択";
+"screen_post_cultivation_alert_post_cultivation_title" = "こちらの投稿内容で\n良いですか？";
+"screen_post_cultivation_alert_post_cultivation_success_title" = "栽培記録を保存しました";
+
+// recipe
+"screen_recipe_title" = "りょうりきろく";
+"screen_recipe_no_recipe" = "りょうりきろくがありません";
+
+// post recipe
+"screen_post_recipe_title" = "りょうりきろく保存";
+"screen_post_recipe_recipe_memo_textview_placeholder" = "料理メモ";
+"screen_post_recipe_recipe_name_textfield_placeholder" = "料理名";
+"screen_post_recipe_recipe_date_textfield_placeholder" = "日付を選択";
+"screen_post_recipe_alert_post_recipe_title" = "こちらの投稿内容で\n良いですか？";
+"screen_post_recipe_alert_post_recipe_success_title" = "料理記録を保存しました";
+
+// communication
+"screen_communication_title" = "みんなにそうだん";
+"screen_communication_information" = "【お知らせ】\nキクラゲ栽培者同士でお互いに相談できるFacebookグループです。Facebookアカウントを持っていない方は下記ボタンのリンク先の「新しいアカウントを作成」より設定してください。";
+
+
+/****
+ * side menu
+ */
+
+"side_menu_title" = "メニュー";
+
+// side menu content
+"side_menu_content_clendar_subtitle" = "カレンダー";
+"side_menu_content_graph_subtitle" = "グラフ";
+"side_menu_content_contact_subtitle" = "問い合わせ";
+"side_menu_content_setting_subtitle" = "設定";
+"side_menu_content_license_subtitle" = "著作権";
+"side_menu_content_search_recipe_subtitle" = "料理レシピ検索";
+"side_menu_content_kikurage_dictionary_subtitle" = "きくらげ豆知識";
+
+// calendar
+"side_menu_clendar_title" = "カレンダー";
+"side_menu_clendar_term" = "栽培期間： %1$d 日";
+
+// graph
+"side_menu_graph_title" = "グラフ";
+"side_menu_graph_temperature_subtitle" = "温度";
+"side_menu_graph_humidity_subtitle" = "湿度";
+
+// mail
+"side_menu_mail_subject" = "【きくらげ君アプリ】お問い合わせ";
+"side_menu_mail_message_body" = "質問を入力して送信ボタンを押して下さい。\n--------------";
+"side_menu_mail_error" = "メールアプリを設定してください";
+"side_menu_license_error" = "設定アプリを開けませんでした";
+"side_menu_search_recipe_word" = "きくらげ";
+"side_menu_search_recipe_error" = "レシピを検索できませんでした";
+
+// setting
+"side_menu_setting_title" = "設定";
+"side_menu_setting_edit_btn_title" = "変更する";
+"side_menu_setting_kikurage_name_error" = "名前を読み込めませんでした";

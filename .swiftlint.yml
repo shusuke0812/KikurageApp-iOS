@@ -1,0 +1,180 @@
+# created : 2020/1/22
+# version : 0.42.0
+# document: https://github.com/realm/SwiftLint
+# ref     : https://qiita.com/shtnkgm/items/6dd756aa14926736c6f5
+# info    : 下記以外でLintを無効にする場合はソース内にコメントを添える　例）// swiftlint:disable:this force_cast
+# usage   : 本ファイルを別のプロジェクトにコピーした場合、Lint対象のパスを変更すること！
+
+# script  : xcodeのビルド時にlintを起動させるための targetのbulid phaseに記述するshell script
+# if which swiftlint > /dev/null; then
+#   # gitの差分を見て変更があったファイルのみ静的解析を行う
+#   git diff --name-only | grep .swift | while read filename; do
+#     swiftlint
+#   done
+# else
+#  echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+# fi
+
+# 無効設定
+disabled_rules:
+# defaulutルールで無効にするもの
+- multiple_closures_with_trailing_closure     # 複数のクロージャーでtrailing closureを利用したいため
+- empty_enum_arguments                        # enumの引数を省略したいため
+- function_parameter_count                    # メソッドのパラメータ数に制限は設けない
+- nesting                                     # 入れ子になった構造体内のenumをネストしたいため
+- unused_optional_binding                     # SceneDelegateのguard let _ = ...を許容するため
+- redundant_string_enum_value                 # Response型のプロパティ名とJSONのキーが同じでもenumでそれを明示したいため
+- cyclomatic_complexity                       # enumの初期化メソッドで11以上のcaseを定義したいため
+
+# opt-inルールで無効にするもの
+- discouraged_optional_collection             # AppDelegateの引数で警告が出るため
+- conditional_returns_on_newline              # guard文は一行で記載したいため
+- explicit_type_interface                     # 型推論を利用したいため
+- fatal_error_message                         # メッセージは不要なため
+- no_grouping_extension                       # extensionでグルーピングしたいため
+- switch_case_on_newline                      # caseと同じ行に記述したいため
+- file_header                                 # ファイル作成時にdefaultで入る`©︎`を消す手間を省くため
+- attributes                                  # 属性をメソッド名の前に付けたいため　例）@objc func
+- explicit_acl                                # アクセスレベルは出来る限り省略したいため
+- explicit_top_level_acl                      # ↑同上
+- convenience_type                            # staticプロパティのみを持つ構造体を作りたいため（TODO: enumの方が良い？）
+- file_name                                   # defaultの型をextensionするときはファイル名を UIImage+Extension.swift などとしたいため
+- required_deinit                             # deinitは出来る限り省略したいため
+- private_outlet                              # @IBOutletはBaseViewに切り分け、ViewControllerからアクセスしたいため
+- prohibited_interface_builder                # StoryboardからViewを生成したいため
+- strong_iboutlet                             # IBOutletをweakで宣言したいときもあるため
+- vertical_whitespace_between_cases           # Switch文のcase間に空白行を入れたくない時もあるため
+- type_contents_order                         # 型のプロパティやメソッドの並び順に制限は設けない（TODO: 暫定処置のため必要に応じて適用する）
+- file_types_order                            # 構造体を入れ子にしたいため　例） struct A { struct B {} }　（TODO: 左記の書き方はNG？）
+- explicit_enum_raw_value                     # enumのローバリューを省略することもあるため
+- object_literal                              # UIImage等リテラルで記述したくない時もあるため
+- sorted_imports                              # import文はアルファベット順ではなく標準ライブラリ／UI／Utilityなどと分けて記述したいため
+- implicitly_unwrapped_optional               # 前画面から値を受け取るプロパティやViewModelプロパティは`!`を付けて宣言したいため
+
+# 有効設定
+# opt-inルール
+opt_in_rules:
+- anyobject_protocol
+- array_init
+- closure_body_length
+- closure_end_indentation
+- closure_spacing
+- collection_alignment
+- contains_over_filter_count
+- contains_over_filter_is_empty
+- contains_over_first_not_nil
+- contains_over_range_nil_comparison
+- discouraged_object_literal
+- discouraged_optional_boolean
+- empty_collection_literal
+- empty_count
+- empty_string
+- empty_xctest_method
+- enum_case_associated_values_count
+- expiring_todo
+- explicit_init
+- explicit_self
+- extension_access_modifier
+- fallthrough
+- fatal_error_message
+- file_name
+- file_name_no_space
+- first_where
+- flatmap_over_map_reduce
+- force_unwrapping
+- function_default_parameter_at_end
+- ibinspectable_in_extension
+- identical_operands
+- implicit_return
+- indentation_width
+- joined_default_parameter
+- last_where
+- legacy_multiple
+- legacy_random
+- let_var_whitespace
+- literal_expression_end_indentation
+- lower_acl_than_parent
+- missing_docs
+- modifier_order
+- multiline_arguments
+- multiline_arguments_brackets
+- multiline_function_chains
+- multiline_literal_brackets
+- nimble_operator
+- no_extension_access_modifier
+- no_grouping_extension
+- nslocalizedstring_key
+- nslocalizedstring_require_bundle
+- number_separator
+- operator_usage_whitespace
+- optional_enum_case_matching
+- overridden_super_call
+- override_in_extension
+- pattern_matching_keywords
+- prefer_nimble
+- prefer_self_type_over_type_of_self
+- prefer_zero_over_explicit_init
+- prefixed_toplevel_constant
+- private_action
+- private_outlet
+- prohibited_super_call
+- quick_discouraged_call
+- quick_discouraged_focused_test
+- quick_discouraged_pending_test
+- raw_value_for_camel_cased_codable_enum
+- reduce_into
+- redundant_nil_coalescing
+- redundant_type_annotation
+- required_enum_case
+- single_test_class
+- sorted_first_last
+- static_operator
+- strict_fileprivate
+- switch_case_on_newline
+- test_case_accessibility
+- toggle_bool
+- trailing_closure
+- unavailable_function
+- unneeded_parentheses_in_closure_argument
+- unowned_variable_capture
+- untyped_error_in_catch
+- unused_declaration
+- unused_import
+- vertical_parameter_alignment_on_call
+- vertical_whitespace_closing_braces
+- vertical_whitespace_opening_braces
+- xct_specific_matcher
+- yoda_condition
+
+# Lint対象のパス
+included:
+- Kikurage
+
+# Lint対象外のパス
+excluded:
+- Carthage
+- Pods
+
+# 1行の文字数制限
+line_length:
+- 300 # warning
+- 400 # error
+
+# 変数名の文字数制限
+identifier_name:
+  allowed_symbols: "_"
+  min_length:
+    warning: 2
+  excluded:
+    - id
+    - s     # Storyboard
+    - vc    # ViewController
+    - x
+    - y
+    - i
+    - j
+    - k
+    - r
+    - g
+    - b
+  reporter: "xcode"

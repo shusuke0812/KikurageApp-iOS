@@ -1,37 +1,54 @@
-Development of Wood Ear Mashroom growth supported IoT device／キクラゲ栽培支援IoTデバイス開発
-====
+キクラゲ栽培支援IoTデバイス開発  
+===
+
+## 背景
+きっかけは2018年の夏に行われたStartup Weekendというイベント。  
+きくらげ好きなエンジニアが週末３日間で考えた本プロダクトがイベントで12チーム中3位になり、その後もGUGENやクラウドファンディングに挑戦。  
+現在も個人開発をちょっとずつ進めている。  
+　  
+## 概要
+本アプリは、家庭で きくらげ を育てることができる[きくらげ栽培キット](https://www.midorikoubou.jp/shopdetail/000000000007/)と一緒に使うことを想定した、  
+きくらげ栽培環境のモニタリング・生育の観察記録機能を備える
+
+## 狙い
+- きくらげの家庭栽培を通して国内の農業従事者を増やすことである。子供の時から農産物を育てることに興味を持ってもらい、この課題を解決することが狙いである。
+- 市場流通量が10%にも満たない栄養価も高く歯応えの良い純国産きくらげの生産を増やすことにも貢献できたらと考えている。
 　
-## Overview／概要
-本アプリは、家庭で育てることができるキクラゲ栽培キットと連動したキクラゲ栽培環境のモニタリング・生育の観察記録機能を備える
-　
-## Description／説明
+## 説明
 **【デバイス】**  
 ターゲット：小学校低学年〜高学年の男女  
 利用シーン：夏休みの自由研究  
-狙い　　　：本デバイスを通して、子供の「健康に対する意識」「能動的に学ぶ力」「食への感謝の気持ち」を醸成する  
-コンセプト：大人も子供も手軽に２週間で楽しめるキクラゲ栽培自由研究  
+狙い　　　：子供の「健康に対する意識」「能動的に学ぶ力」「食への感謝の気持ち」を醸成し、農業に興味を持ってもらう  
+コンセプト：大人も子供も手軽に２週間で楽しめるきくらげ栽培自由研究  
 
 
-![main](https://user-images.githubusercontent.com/33107697/63015884-1ae06f00-becd-11e9-911b-f01c537aeb05.png)
+![main](https://user-images.githubusercontent.com/33107697/147388647-d4c4e01c-bebe-4b50-a5ce-085fe798f7a0.png)
 
 
 
 **【アプリ主要機能】**  
-１.リアルタイムにおけるキクラゲ栽培環境の良し悪しを見える化する  
-２.キクラゲ栽培の観察記録（写真・コメント・日付・温度湿度グラフ）が取れる  
-３.キクラゲ栽培者同士で相談ができる（Facebookグループ連携）  
+１.きくらげ栽培環境の良し悪しをリアルタイムで見れる  
+２.きくらげ栽培の観察記録（写真・コメント・日付・温度湿度グラフ）が取れる  
+３.きくらげ栽培者同士で相談ができる（現在はFacebookグループのリンクを貼っているだけ）  
 
 
-![UI](https://user-images.githubusercontent.com/33107697/63015932-3d728800-becd-11e9-82a9-89d18caf1ab6.png)
+![UI](https://user-images.githubusercontent.com/33107697/147388903-2843b851-8d7d-45d6-b3c3-1531cc441c73.png)
 
-　
-## System Outline of IoT／IoTシステム概要
-![system](https://user-images.githubusercontent.com/33107697/63015990-63982800-becd-11e9-91cb-4f032cc0a1be.png)
+## IoTシステム概要
+![system](https://user-images.githubusercontent.com/33107697/147388919-75406b53-610b-4760-a622-d219d019acbe.png)
 
+## 開発環境
+- Xcode 13.0 (13A233)
+- Swift 5.0 
+- CocoaPods 1.9.3  
+- MacOS BigSur 11.4 / MacBook Intel Processor Model
+- 開発ターゲット：iOS 13.0  
 
+## 参考文献
+- 
 
-## Author／著者
-[@shusuke0812](https://github.com/shusuke0812)
+## 著者
+- [@shusuke0812](https://github.com/shusuke0812)
 
-
-
+## その他
+- [コードレビュー内容](https://scrapbox.io/app-dojo-salon/%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E4%BC%9A_2021%2F9%2Fxx(%E3%81%8A%E3%81%8A%E3%81%9F))

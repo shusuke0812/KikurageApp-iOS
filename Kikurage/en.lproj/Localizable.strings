@@ -1,0 +1,175 @@
+/* 
+  Localizable.strings
+  kikurageApp
+
+  Created by Shusuke Ota on 2021/11/6.
+  Copyright © 2021 shusuke. All rights reserved.
+*/
+
+/****
+ * common
+ */
+
+// firebase api error
+"common_create_error" = "Failed to create";
+"common_read_error" = "Failed to read";
+"common_delete_error" = "Failed to delete";
+"common_update_error" = "Failed to update";
+"common_document_id_error" = "Not found document ID";
+"common_load_user_error" = "Faield to load user";
+
+// client error
+"common_error" = "Error";
+"common_network_connection_error" = "Failed to connect network";
+"common_parse_error" = "parse error";
+"common_response_parse_error" = "Failed to parse for response";
+"common_api_error" = "Server error";
+"common_unknown" = "Error";
+"common_save_user_defaults_error" = "Failed to save in UserDefaults";
+
+// week
+"common_week_monday" = "Monday";
+"common_week_tuesday" = "Tuesday";
+"common_week_wednesday" = "Wednesday";
+"common_week_thursday" = "Thursday";
+"common_week_friday" = "Friday";
+"common_week_saturday" = "Saturday";
+"common_week_sunday" = "Sunday";
+
+// alert
+"common_alert_ok_btn_next" = "Next";
+"common_alert_ok_btn_ok" = "OK";
+"common_alert_cancel_btn_cancel" = "Cancel";
+
+// navigation
+"common_navigation_back_btn_title" = "Back";
+
+/****
+ * error
+ */
+
+// client error
+"error_client_network_connection" = "Network error";
+"error_client_parse" = "Parse error";
+"error_client_response_parse" = "Failed to response parse";
+"error_client_api" = "Server error";
+"error_client_unknown" = "Error";
+"error_client_save_user_defaults" = "Failed to save UserDefaults";
+
+// firebase error
+"error_firebase_create" = "Failed to create";
+"error_firebase_read" = "Failed to read";
+"error_firebase_delete" = "Failed to delete";
+"error_firebase_update" = "Failed to update";
+"error_firebase_document_id" = "Not found document id";
+"error_firebase_load_user" = "Failed to get user information";
+
+/****
+ * screen
+ */
+
+// top
+"screen_top_copy_right" = "©︎ Team Kikurage Ambassadors";
+"screen_top_title" = "Welcome！";
+"screen_top_login_btn_name" = "Login";
+"screen_top_signup_btn_name" = "SignUp";
+"screen_top_app_term" = "Terms of Service";
+"screen_top_app_privacy" = "Privacy";
+
+// login
+"screen_login_title" = "Login";
+"screen_login_email_textfield_placeholer" = "Email address";
+"screen_login_password_textfield_placeholer" = "Password";
+"screen_login_login_btn_name" = "Login";
+
+"screen_signup_title" = "User Registration";
+"screen_signup_email_textfield_placeholer" = "Email address";
+"screen_signup_password_textfield_placeholer" = "Password";
+"screen_signup_signup_btn_name" = "SignUp";
+"screen_signup_register_alert_user_title" = "Complete registration";
+"screen_signup_register_alert_user_message" = "Please register from URL link usign your sent email.";
+
+"screen_device_register_title" = "Device Registration";
+"screen_device_register_productkey_textfield_placeholer" = "Please enter product key";
+"screen_device_register_kikurage_name_textfield_placeholer" = "Please enter kikurage name";
+"screen_device_register_cultivation_start_date_textfield_placeholer" = "Please enter cultivation start date";
+"screen_device_register_register_btn_name" = "Start";
+
+// home
+"screen_home_title" = "Home";
+"screen_home_kikurage_name" = "Today's %@";
+"screen_home_advice_title" = "[ Advice ]";
+"screen_home_temperature_title" = "Temperature";
+"screen_home_humidity_title" = "Humidity";
+"screen_home_temperature_humidity_now_title" = "Now";
+"screen_home_temperature_humidity_expected_title" = "Expected";
+"screen_home_humidity_expected_suffix" = "more";
+
+// cultivation
+"screen_cultivation_title" = "Cultivation";
+"screen_cultivation_no_cultivation" = "Not found cultivation record";
+
+// cultivation detail
+"screen_cultivation_detail_title" = "Cultivation Detail";
+"screen_cultivation_detail_memo_title" = "Watching memo";
+
+// post cultivation
+"screen_post_cultivation_title" = "Cultivation Save";
+"screen_post_cultivation_textview_placeholder" = "Watching memo";
+"screen_post_cultivation_date_textfield_placeholder" = "Selecting date";
+"screen_post_cultivation_alert_post_cultivation_title" = "Is it OK this post content?";
+"screen_post_cultivation_alert_post_cultivation_success_title" = "Saved cultivation record.";
+
+// recipe
+"screen_recipe_title" = "Recipe";
+"screen_recipe_no_recipe" = "Not found recipe record";
+
+// post recipe
+"screen_post_recipe_title" = "Recipe Save";
+"screen_post_recipe_recipe_memo_textview_placeholder" = "Recipe memo";
+"screen_post_recipe_recipe_name_textfield_placeholder" = "Recipe name";
+"screen_post_recipe_recipe_date_textfield_placeholder" = "Selecting date";
+"screen_post_recipe_alert_post_recipe_title" = "Is it OK this post content?";
+"screen_post_recipe_alert_post_recipe_success_title" = "Saved recipe record.";
+
+// communication
+"screen_communication_title" = "Communication";
+"screen_communication_information" = "[ Info ]\nHere is you can communicate with friends cativating Kikurage. If you don't have Facebool account, please get its.";
+
+
+/****
+ * side menu
+ */
+
+"side_menu_title" = "Menu";
+
+// side menu content
+"side_menu_content_clendar_subtitle" = "Calendar";
+"side_menu_content_graph_subtitle" = "Graph";
+"side_menu_content_contact_subtitle" = "Contact";
+"side_menu_content_setting_subtitle" = "Setting";
+"side_menu_content_license_subtitle" = "License";
+"side_menu_content_search_recipe_subtitle" = "Searching recipe";
+"side_menu_content_kikurage_dictionary_subtitle" = "Dictionary";
+
+// calendar
+"side_menu_clendar_title" = "Calendar";
+"side_menu_clendar_term" = "Cultivation term： %1$d Day";
+
+// graph
+"side_menu_graph_title" = "Graph";
+"side_menu_graph_temperature_subtitle" = "Temperature";
+"side_menu_graph_humidity_subtitle" = "Humidity";
+
+// mail
+"side_menu_mail_subject" = "[ Kikurage App ] Contact";
+"side_menu_mail_message_body" = "Please send email after entered your question.\n--------------";
+"side_menu_mail_error" = "Please set up Mail App.";
+"side_menu_license_error" = "Missing to open Setting App";
+"side_menu_search_recipe_word" = "wood ear";
+"side_menu_search_recipe_error" = "Missing to open Recipe";
+
+// setting
+"side_menu_setting_title" = "Setting";
+"side_menu_setting_edit_btn_title" = "Edit";
+"side_menu_setting_kikurage_name_error" = "Missing to read your name";

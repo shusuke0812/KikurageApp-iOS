@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "今日の きんちゃん"; ObjectID = "1um-rs-6A0"; */
+"1um-rs-6A0.text" = "今日の きんちゃん";
+
+/* Class = "UILabel"; text = "温度"; ObjectID = "260-Dw-0Od"; */
+"260-Dw-0Od.text" = "温度";
+
+/* Class = "UILabel"; text = "80%以上"; ObjectID = "CGm-D0-3hz"; */
+"CGm-D0-3hz.text" = "80%以上";
+
+/* Class = "UILabel"; text = "現在"; ObjectID = "DjA-dL-2ed"; */
+"DjA-dL-2ed.text" = "現在";
+
+/* Class = "UINavigationItem"; title = "ホーム"; ObjectID = "TeJ-IM-bD8"; */
+"TeJ-IM-bD8.title" = "ホーム";
+
+/* Class = "UILabel"; text = "24℃"; ObjectID = "cDh-P9-m5Q"; */
+"cDh-P9-m5Q.text" = "24℃";
+
+/* Class = "UILabel"; text = "温度"; ObjectID = "hof-d1-eRc"; */
+"hof-d1-eRc.text" = "温度";
+
+/* Class = "UILabel"; text = "のどカラカラや！"; ObjectID = "o8G-Od-1s5"; */
+"o8G-Od-1s5.text" = "のどカラカラや！";
+
+/* Class = "UILabel"; text = "20-25℃"; ObjectID = "oqE-dj-gsL"; */
+"oqE-dj-gsL.text" = "20-25℃";
+
+/* Class = "UILabel"; text = "45%"; ObjectID = "rJF-Di-ePs"; */
+"rJF-Di-ePs.text" = "45%";
+
+/* Class = "UILabel"; text = "理想"; ObjectID = "t9G-RO-STJ"; */
+"t9G-RO-STJ.text" = "理想";

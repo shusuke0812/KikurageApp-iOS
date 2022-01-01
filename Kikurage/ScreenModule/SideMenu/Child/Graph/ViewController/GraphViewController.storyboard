@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cQB-zQ-jsr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Graph View Controller-->
+        <scene sceneID="Br0-ZP-sY7">
+            <objects>
+                <viewController id="cQB-zQ-jsr" customClass="GraphViewController" customModule="Kikurage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rav-Yu-zgV" customClass="GraphBaseView" customModule="Kikurage" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vh-6Y-Jv2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="bqu-up-xhg">
+                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="9Ie-1Q-Syt">
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <connections>
+                                                <action selector="didTapCloseButton:" destination="rav-Yu-zgV" id="JV2-Yq-XdR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oef-Md-Gap">
+                                <rect key="frame" x="20" y="128" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0V4-CD-NPR" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="10" y="138" width="394" height="221.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="asM-aQ-3CH">
+                                        <rect key="frame" x="187" y="101" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="asM-aQ-3CH" firstAttribute="centerX" secondItem="0V4-CD-NPR" secondAttribute="centerX" id="8au-ze-BtO"/>
+                                    <constraint firstAttribute="width" secondItem="0V4-CD-NPR" secondAttribute="height" multiplier="16:9" id="Ced-uA-FsV"/>
+                                    <constraint firstItem="asM-aQ-3CH" firstAttribute="centerY" secondItem="0V4-CD-NPR" secondAttribute="centerY" id="G8W-jq-pbi"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96e-i6-yWq">
+                                <rect key="frame" x="20" y="399.5" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9v-nG-Lqq" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="10" y="409.5" width="394" height="222"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4P1-rz-aXX">
+                                        <rect key="frame" x="187" y="101" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="4P1-rz-aXX" firstAttribute="centerX" secondItem="r9v-nG-Lqq" secondAttribute="centerX" id="CNo-Yk-Q6c"/>
+                                    <constraint firstItem="4P1-rz-aXX" firstAttribute="centerY" secondItem="r9v-nG-Lqq" secondAttribute="centerY" id="jmd-f9-NK4"/>
+                                    <constraint firstAttribute="width" secondItem="r9v-nG-Lqq" secondAttribute="height" multiplier="16:9" id="wpM-lX-xra"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="n5m-bS-YIJ"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="r9v-nG-Lqq" firstAttribute="top" secondItem="96e-i6-yWq" secondAttribute="bottom" constant="10" id="2ah-QI-0HM"/>
+                            <constraint firstItem="Oef-Md-Gap" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="20" id="2oZ-jW-Val"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="r9v-nG-Lqq" secondAttribute="trailing" constant="10" id="3fV-2M-Sld"/>
+                            <constraint firstItem="r9v-nG-Lqq" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="10" id="9K7-aa-0o1"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="96e-i6-yWq" secondAttribute="trailing" constant="20" id="CNJ-fC-1BP"/>
+                            <constraint firstItem="0V4-CD-NPR" firstAttribute="top" secondItem="Oef-Md-Gap" secondAttribute="bottom" constant="10" id="EgL-yr-RbQ"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="0V4-CD-NPR" secondAttribute="trailing" constant="10" id="IUK-Q2-huj"/>
+                            <constraint firstItem="0V4-CD-NPR" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="10" id="MIq-Rm-tvF"/>
+                            <constraint firstItem="96e-i6-yWq" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" constant="20" id="RPv-Oh-DHU"/>
+                            <constraint firstItem="8vh-6Y-Jv2" firstAttribute="leading" secondItem="n5m-bS-YIJ" secondAttribute="leading" id="TQp-Oj-tom"/>
+                            <constraint firstItem="96e-i6-yWq" firstAttribute="top" secondItem="0V4-CD-NPR" secondAttribute="bottom" constant="40" id="dDV-a7-jnz"/>
+                            <constraint firstItem="8vh-6Y-Jv2" firstAttribute="top" secondItem="n5m-bS-YIJ" secondAttribute="top" id="ev3-63-O8m"/>
+                            <constraint firstItem="Oef-Md-Gap" firstAttribute="top" secondItem="8vh-6Y-Jv2" secondAttribute="bottom" constant="40" id="p5Q-jU-XDb"/>
+                            <constraint firstItem="n5m-bS-YIJ" firstAttribute="trailing" secondItem="Oef-Md-Gap" secondAttribute="trailing" constant="20" id="qwr-41-Mqo"/>
+                            <constraint firstItem="8vh-6Y-Jv2" firstAttribute="trailing" secondItem="n5m-bS-YIJ" secondAttribute="trailing" id="zME-Lb-gGN"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="humidityActivityIndicator" destination="4P1-rz-aXX" id="yXr-eg-eK5"/>
+                            <outlet property="humidityLabel" destination="96e-i6-yWq" id="vNw-IF-AUf"/>
+                            <outlet property="humidityLineChartView" destination="r9v-nG-Lqq" id="fwx-vd-ZJP"/>
+                            <outlet property="navigationItem" destination="bqu-up-xhg" id="OmL-8C-az4"/>
+                            <outlet property="temperatureActivityIndicator" destination="asM-aQ-3CH" id="xxK-Qy-Xth"/>
+                            <outlet property="temperatureLabel" destination="Oef-Md-Gap" id="BlQ-De-m7m"/>
+                            <outlet property="temperatureLineChartView" destination="0V4-CD-NPR" id="1nN-HX-TMP"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wir-Gv-Xd0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328.98550724637681" y="111.83035714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
