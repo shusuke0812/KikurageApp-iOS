@@ -130,7 +130,10 @@ extension SideMenuViewController: UITableViewDelegate {
         case .contact:
             openContactMailer()
         case .setting:
-            print("")
+            guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else { return }
+            present(vc, animated: true) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         case .license:
             AcknowledgementControlller.openSettingApp(onError: {
                 UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_license_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)

@@ -168,3 +168,8 @@
 "side_menu_license_error" = "設定アプリを開けませんでした";
 "side_menu_search_recipe_word" = "きくらげ";
 "side_menu_search_recipe_error" = "レシピを検索できませんでした";
+
+// setting
+"side_menu_setting_title" = "設定";
+"side_menu_setting_edit_btn_title" = "変更する";
+"side_menu_setting_kikurage_name_error" = "名前を読み込めませんでした";

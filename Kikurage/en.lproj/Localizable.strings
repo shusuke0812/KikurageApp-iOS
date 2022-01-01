@@ -168,3 +168,8 @@
 "side_menu_license_error" = "Missing to open Setting App";
 "side_menu_search_recipe_word" = "wood ear";
 "side_menu_search_recipe_error" = "Missing to open Recipe";
+
+// setting
+"side_menu_setting_title" = "Setting";
+"side_menu_setting_edit_btn_title" = "Edit";
+"side_menu_setting_kikurage_name_error" = "Missing to read your name";
