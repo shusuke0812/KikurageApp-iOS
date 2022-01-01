@@ -21,6 +21,7 @@ target 'Kikurage' do
   pod 'PKHUD', '~> 5.0'
   pod 'HorizonCalendar'
   pod 'FontAwesome.swift'
+  pod 'CropViewController'
   # Other
   pod 'R.swift'
   pod 'RxSwift', '6.2.0'
