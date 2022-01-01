@@ -99,18 +99,6 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     }
 }
 
-// MARK: - Acknowledgements
-
-extension SideMenuViewController {
-    private func openSettingApp() {
-        if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_license_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
-    }
-}
-
 // MARK: - Search Recipe
 
 extension SideMenuViewController {
@@ -144,7 +132,9 @@ extension SideMenuViewController: UITableViewDelegate {
         case .setting:
             print("")
         case .license:
-            openSettingApp()
+            AcknowledgementControlller.openSettingApp(onError: {
+                UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_license_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+            })
         case .searchRecipe:
             openSearchRecipePage()
         case .kikurageDictionary:
