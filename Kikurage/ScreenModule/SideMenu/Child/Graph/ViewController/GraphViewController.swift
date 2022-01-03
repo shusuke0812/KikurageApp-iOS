@@ -43,7 +43,7 @@ extension GraphViewController {
 // MARK: - GraphBaseView Delegate
 
 extension GraphViewController: GraphBaseViewDelegate {
-    func graphBaseViewDidTapCloseButton() {
+    func graphBaseViewDidTapCloseButton(_ graphBaseView: GraphBaseView) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
