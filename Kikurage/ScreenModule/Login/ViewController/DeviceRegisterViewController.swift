@@ -69,7 +69,7 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
 // MARK: - DeviceRegisterBaseView Delegate
 
 extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
-    func didTappedDeviceRegisterButton() {
+    func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
         let validate = textFieldValidation()
         if validate {
             HUD.show(.progress)
@@ -95,22 +95,22 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
-    func didSuccessGetKikurageState() {
-        viewModel.registerKikurageUser()
+    func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel) {
+        deviceRegisterViewModel.registerKikurageUser()
     }
-    func didFailedGetKikurageState(errorMessage: String) {
+    func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    func didSuccessPostKikurageUser() {
+    func deviceRegisterViewModelDidSuccessPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             self.transitionHomePage()
         }
     }
-    func didFailedPostKikurageUser(errorMessage: String) {
+    func deviceRegisterViewModelDidFailedPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
