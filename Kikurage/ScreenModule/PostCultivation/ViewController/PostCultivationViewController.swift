@@ -42,7 +42,7 @@ extension PostCultivationViewController {
 // MARK: - PostCultivatioBaseView Delegate
 
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
-    func didTapPostButton() {
+    func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView) {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             // HUD表示（始）
             HUD.show(.progress)
@@ -51,7 +51,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
             }
         }
     }
-    func didTapCloseButton() {
+    func postCultivationBaseViewDidTappedCloseButton(_ postCultivationBaseView: PostCultivationBaseView) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
@@ -83,7 +83,9 @@ extension PostCultivationViewController: UITextViewDelegate {
         baseView.setCurrentTextViewNumber(text: text)
     }
 }
+
 // MARK: - CameraCell Delegate
+
 extension PostCultivationViewController: CameraCellDelegate {
     func didTapImageCancelButton(cell: CameraCell) {
         let index = cell.tag
@@ -91,9 +93,11 @@ extension PostCultivationViewController: CameraCellDelegate {
         baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
 }
+
 // MARK: - PostCultivationViewModel Delegate
+
 extension PostCultivationViewController: PostCultivationViewModelDelegate {
-    func didSuccessPostCultivation() {
+    func postCultivationViewModelDidSuccessPostCultivation(_ postCultivationViewModel: PostCultivationViewModel) {
         // nil要素を取り除いた選択した画像のみのData型に変換する
         let postImageData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.8).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
@@ -101,13 +105,13 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
             viewModel.postCultivationImages(kikurageUserId: kikurageUserId, imageData: postImageData)
         }
     }
-    func didFailedPostCultivation(errorMessage: String) {
+    func postCultivationViewModelDidFailedPostCultivation(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    func didSuccessPostCultivationImages() {
+    func postCultivationViewModelDidSuccessPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) {
@@ -116,20 +120,24 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
             }
         }
     }
-    func didFailedPostCultivationImages(errorMessage: String) {
+    func postCultivationViewModelDidFailedPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
 }
+
 // MARK: - UICollectionView Delegate
+
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openImagePicker()
     }
 }
+
 // MARK: - UIImagePickerController Delegate
+
 extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
