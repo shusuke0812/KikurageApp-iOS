@@ -37,7 +37,7 @@ extension CalendarViewController {
 // MARK: - CalendarBaseView Delegate
 
 extension CalendarViewController: CalendarBaseViewDelegate {
-    func didTapCloseButton() {
+    func calendarBaseViewDidTapCloseButton(_ calendarBaseView: CalendarBaseView) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
@@ -45,10 +45,10 @@ extension CalendarViewController: CalendarBaseViewDelegate {
 // MARK: - CalendarViewModel Delegate
 
 extension CalendarViewController: CalendarViewModelDelegate {
-    func didSuccessGetKikurageUser() {
-        baseView.initCalendarView(cultivationStartDateComponents: viewModel.cultivationDateComponents, cultivationTerm: (viewModel.cultivationTerm ?? 0))
+    func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {
+        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, cultivationTerm: (calendarViewModel.cultivationTerm ?? 0))
     }
-    func didFailedGetKikurageUser(errorMessage: String) {
+    func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
