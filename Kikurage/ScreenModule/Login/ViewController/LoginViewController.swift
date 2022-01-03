@@ -37,7 +37,7 @@ extension LoginViewController {
 // MARK: - LoginBaseView Delegate
 
 extension LoginViewController: LoginBaseViewDelegate {
-    func didTappedLoginButton() {
+    func loginBaseViewDidTappedLoginButton(_ loginBaseView: LoginBaseView) {
         HUD.show(.progress)
         viewModel.login()
     }
@@ -62,18 +62,18 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension LoginViewController: LoginViewModelDelegate {
-    func didSuccessLogin() {
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             self.transitionHomePage()
         }
     }
-    func didFailedLogin(errorMessage: String) {
+    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
                 self?.baseView.initTextFields()
-                self?.viewModel.initLoginInfo()
+                loginViewModel.initLoginInfo()
             }
         }
     }

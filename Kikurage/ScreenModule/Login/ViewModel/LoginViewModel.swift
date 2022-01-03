@@ -9,11 +9,8 @@
 import Foundation
 
 protocol LoginViewModelDelegate: AnyObject {
-    /// ログインに成功した
-    func didSuccessLogin()
-    /// ログインに失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedLogin(errorMessage: String)
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel)
+    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String)
 }
 
 class LoginViewModel {
@@ -63,7 +60,7 @@ extension LoginViewModel {
                 self?.loginUser = loginUser
                 self?.loadKikurageUser()
             case .failure(let error):
-                self?.delegate?.didFailedLogin(errorMessage: error.description())
+                self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
     }
@@ -80,7 +77,7 @@ extension LoginViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
             case .failure(let error):
-                self?.delegate?.didFailedLogin(errorMessage: error.description())
+                self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
     }
@@ -91,9 +88,9 @@ extension LoginViewModel {
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
-                self?.delegate?.didSuccessLogin()
+                self?.delegate?.loginViewModelDidSuccessLogin(self!)
             case .failure(let error):
-                self?.delegate?.didFailedLogin(errorMessage: error.description())
+                self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
     }
