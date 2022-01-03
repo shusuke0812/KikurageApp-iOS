@@ -9,13 +9,9 @@
 import Foundation
 
 protocol HomeViewModelDelgate: AnyObject {
-    /// きくらげの状態データ取得に成功した
-    func didSuccessGetKikurageState()
-    /// きくらげの状態データ取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageState(errorMessage: String)
-    /// きくらげの状態データが更新された
-    func didChangedKikurageState()
+    func homeViewModelDidSuccessGetKikurageState(_ homeViewModel: HomeViewModel)
+    func homeViewModelDidFailedGetKikurageState(_ homeViewModel: HomeViewModel, with errorMessage: String)
+    func homeViewModelDidChangedKikurageState(_ homeViewModel: HomeViewModel)
 }
 
 class HomeViewModel {
@@ -50,15 +46,15 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { response in
+        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { [weak self] response in
             switch response {
             case .success(let kikurageState):
-                self.kikurageState = kikurageState
-                self.kikurageState.convertToStateType()
-                self.delegate?.didSuccessGetKikurageState()
+                self?.kikurageState = kikurageState
+                self?.kikurageState.convertToStateType()
+                self?.delegate?.homeViewModelDidSuccessGetKikurageState(self!)
             case .failure(let error):
-                self.kikurageState = nil
-                self.delegate?.didFailedGetKikurageState(errorMessage: error.description())
+                self?.kikurageState = nil
+                self?.delegate?.homeViewModelDidFailedGetKikurageState(self!, with: error.description())
             }
         }
     }
@@ -69,7 +65,7 @@ extension HomeViewModel {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
                 self?.kikurageState.convertToStateType()
-                self?.delegate?.didChangedKikurageState()
+                self?.delegate?.homeViewModelDidChangedKikurageState(self!)
             case .failure(let error):
                 self?.kikurageState = nil
                 fatalError(error.description())

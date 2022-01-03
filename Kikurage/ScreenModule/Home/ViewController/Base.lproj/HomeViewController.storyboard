@@ -210,7 +210,7 @@
                     <navigationItem key="navigationItem" id="TeJ-IM-bD8">
                         <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6">
                             <connections>
-                                <action selector="didTapSideMenuButton:" destination="fri-rL-faW" id="qsh-Fy-CJ8"/>
+                                <action selector="openSideMenu:" destination="fri-rL-faW" id="dzX-yO-IPw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
