@@ -169,13 +169,13 @@ extension HomeBaseView {
 // MARK: - FooterButtonView Delegate
 
 extension HomeBaseView: FooterButtonViewDelegate {
-    func footerButtonViewDidTapCultivationButton() {
+    func footerButtonViewDidTapCultivationButton(_ footerButtonView: FooterButtonView) {
         delegate?.homeBaseViewDidTappedCultivationButton(self)
     }
-    func footerButtonViewDidTapRecipeButton() {
+    func footerButtonViewDidTapRecipeButton(_ footerButtonView: FooterButtonView) {
         delegate?.homeBaseViewDidTappedRecipeButton(self)
     }
-    func footerButtonViewDidTapCommunicationButton() {
+    func footerButtonViewDidTapCommunicationButton(_ footerButtonView: FooterButtonView) {
         delegate?.homeBaseViewDidTappedCommunicationButton(self)
     }
 }
