@@ -75,7 +75,7 @@ extension CultivationViewController {
 // MARK: - CultivationBaseView Delegate
 
 extension CultivationViewController: CultivationBaseViewDelegate {
-    func didTapPostCultivationPageButton() {
+    func cultivationBaseViewDidTapPostCultivationPageButton(_ cultivationBaseView: CultivationBaseView) {
         guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
         present(vc, animated: true, completion: nil)
     }
@@ -84,17 +84,16 @@ extension CultivationViewController: CultivationBaseViewDelegate {
 // MARK: - CultivationViewModel Delegate
 
 extension CultivationViewController: CultivationViewModelDelegate {
-    func didSuccessGetCultivations() {
+    func cultivationViewModelDidSuccessGetCultivations(_ cultivationViewModel: CultivationViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             self.baseView.collectionView.refreshControl?.endRefreshing()
 
             self.baseView.collectionView.reloadData()
-            self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
+            self.baseView.noCultivationLabel.isHidden = !(cultivationViewModel.cultivations.isEmpty)
         }
     }
-    func didFailedGetCultivations(errorMessage: String) {
-        print(errorMessage)
+    func cultivationViewModelDidFailedGetCultivations(_ cultivationViewModel: CultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             self.baseView.collectionView.refreshControl?.endRefreshing()

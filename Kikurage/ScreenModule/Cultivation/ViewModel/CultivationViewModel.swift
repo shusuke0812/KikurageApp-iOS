@@ -10,11 +10,8 @@ import UIKit.UICollectionView
 import Firebase
 
 protocol CultivationViewModelDelegate: AnyObject {
-    /// きくらげ栽培記録の取得に成功した
-    func didSuccessGetCultivations()
-    /// きくらげ栽培記録の取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetCultivations(errorMessage: String)
+    func cultivationViewModelDidSuccessGetCultivations(_ cultivationViewModel: CultivationViewModel)
+    func cultivationViewModelDidFailedGetCultivations(_ cultivationViewModel: CultivationViewModel, with errorMessage: String)
 }
 class CultivationViewModel: NSObject {
     private let cultivationRepository: CultivationRepositoryProtocol
@@ -52,9 +49,9 @@ extension CultivationViewModel {
             case .success(let cultivations):
                 self?.cultivations = cultivations
                 self?.sortCultivations()
-                self?.delegate?.didSuccessGetCultivations()
+                self?.delegate?.cultivationViewModelDidSuccessGetCultivations(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetCultivations(errorMessage: error.description())
+                self?.delegate?.cultivationViewModelDidFailedGetCultivations(self!, with: error.description())
             }
         }
     }
