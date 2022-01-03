@@ -35,7 +35,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTappedLoginButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="9wM-U2-9E6"/>
+                                    <action selector="login:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="IS8-CZ-UCk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FuL-mP-68c">
@@ -49,7 +49,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTappedSignUpButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="xEP-ua-ekS"/>
+                                    <action selector="signUp:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="a3R-Me-d2X"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JBQ-z1-pFQ">
@@ -60,7 +60,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title=""/>
                                         <connections>
-                                            <action selector="didTappedTermsButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="8ud-Vd-OIT"/>
+                                            <action selector="openTerms:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="lIS-ay-wwk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcK-7Q-gF3">
@@ -70,7 +70,7 @@
                                             <color key="titleColor" red="0.25882352941176467" green="0.25882352941176467" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="didTappedPrivacyPolicyButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="IuX-zh-NLD"/>
+                                            <action selector="openPrivacyPolicy:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="HyE-zO-X2O"/>
                                         </connections>
                                     </button>
                                 </subviews>
