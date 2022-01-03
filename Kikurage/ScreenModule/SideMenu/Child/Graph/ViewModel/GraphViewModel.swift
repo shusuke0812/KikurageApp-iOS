@@ -9,16 +9,10 @@
 import Foundation
 
 protocol GraphViewModelDelegate: AnyObject {
-    /// きくらげの状態グラフデータの取得に成功した
-    func didSuccessGetKikurageStateGraph()
-    /// きくらげの状態グラフデータの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageStateGraph(errorMessage: String)
-    /// きくらげユーザーの取得に成功した
-    func didSuccessGetKikurageUser()
-    /// きくらげユーザーの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageUser(errorMessage: String)
+    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel)
+    func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String)
+    func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel)
+    func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String)
 }
 
 class GraphViewModel {
@@ -78,9 +72,9 @@ extension GraphViewModel {
                 self?.kikurageStateGraph = graphs
                 self?.setTemperatureGraphData()
                 self?.setHumidityGraphData()
-                self?.delegate?.didSuccessGetKikurageStateGraph()
+                self?.delegate?.graphViewModelDidSuccessGetKikurageStateGraph(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageStateGraph(errorMessage: error.description())
+                self?.delegate?.graphViewModelDidFailedGetKikurageStateGraph(self!, with: error.description())
             }
         }
     }
@@ -91,9 +85,9 @@ extension GraphViewModel {
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
-                self?.delegate?.didSuccessGetKikurageUser()
+                self?.delegate?.graphViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageUser(errorMessage: error.description())
+                self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
     }
