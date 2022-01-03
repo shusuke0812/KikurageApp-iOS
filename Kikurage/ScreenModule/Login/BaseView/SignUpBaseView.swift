@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SignUpBaseViewDelegate: AnyObject {
-    func didTappedUserRegisterButton()
+    func signUpBaseViewDidTappedRegisterUserButton(_ signUpBaseView: SignUpBaseView)
 }
 
 class SignUpBaseView: UIView {
@@ -26,8 +26,8 @@ class SignUpBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedUserRegisterButton(_ sender: Any) {
-        delegate?.didTappedUserRegisterButton()
+    @IBAction private func registerUser(_ sender: Any) {
+        delegate?.signUpBaseViewDidTappedRegisterUserButton(self)
     }
 }
 
