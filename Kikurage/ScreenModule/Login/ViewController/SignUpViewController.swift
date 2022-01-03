@@ -42,7 +42,7 @@ extension SignUpViewController {
 // MARK: - SignUpBaseView Delegate
 
 extension SignUpViewController: SignUpBaseViewDelegate {
-    func didTappedUserRegisterButton() {
+    func signUpBaseViewDidTappedRegisterUserButton(_ signUpBaseView: SignUpBaseView) {
         HUD.show(.progress)
         viewModel.registerUser()
     }
@@ -67,7 +67,7 @@ extension SignUpViewController: UITextFieldDelegate {
 // MARK: - SignUpViewModel Delegate
 
 extension SignUpViewController: SignUpViewModelDelegate {
-    func didSuccessRegisterUser() {
+    func signUpViewModelDidSuccessRegisterUser(_ signUpViewModel: SignUpViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: "仮登録完了", message: "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください", okButtonTitle: "次へ", cancelButtonTitle: nil) {
@@ -78,11 +78,11 @@ extension SignUpViewController: SignUpViewModelDelegate {
             }
         }
     }
-    func didFailedRegisterUser(errorMessage: String) {
+    func signUpViewModelDidFailedRegisterUser(_ signUpViewModel: SignUpViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
-                self.viewModel.initUserInfo()
+                signUpViewModel.initUserInfo()
                 self.baseView.initTextFields()
             }
         }

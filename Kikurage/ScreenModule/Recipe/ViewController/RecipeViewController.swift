@@ -68,7 +68,7 @@ extension RecipeViewController {
 // MARK: - RecipeBaseView Delegate
 
 extension RecipeViewController: RecipeBaseViewDelegate {
-    func didTapPostRecipePageButton() {
+    func recipeBaseViewDidTapPostRecipePageButton(_ recipeBaseView: RecipeBaseView) {
         guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
         present(vc, animated: true, completion: nil)
     }
@@ -85,16 +85,16 @@ extension RecipeViewController: UITableViewDelegate {
 // MARK: - RecipeViewModel Delegate
 
 extension RecipeViewController: RecipeViewModelDelegate {
-    func didSuccessGetRecipes() {
+    func recipeViewModelDidSuccessGetRecipes(_ recipeViewModel: RecipeViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             self.baseView.tableView.refreshControl?.endRefreshing()
 
             self.baseView.tableView.reloadData()
-            self.baseView.noRecipeLabel.isHidden = !(self.viewModel.recipes.isEmpty)
+            self.baseView.noRecipeLabel.isHidden = !(recipeViewModel.recipes.isEmpty)
         }
     }
-    func didFailedGetRecipes(errorMessage: String) {
+    func recipeViewModelDidFailedGetRecipes(_ recipeViewModel: RecipeViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             self.baseView.tableView.refreshControl?.endRefreshing()

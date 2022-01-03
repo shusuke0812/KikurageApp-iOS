@@ -41,7 +41,7 @@ extension PostRecipeViewController {
 // MARK: - PostRecipeBaseView Delegate
 
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
-    func didTapPostButton() {
+    func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView) {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             HUD.show(.progress)
             if let kikurageUserId = LoginHelper.shared.kikurageUserId {
@@ -49,7 +49,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
             }
         }
     }
-    func didTapCloseButton() {
+    func postRecipeBaseViewDidTappedCloseButton(_ postRecipeBaseView: PostRecipeBaseView) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
@@ -90,7 +90,9 @@ extension PostRecipeViewController: UITextFieldDelegate {
         viewModel.recipe.name = recipeName
     }
 }
+
 // MARK: - UITextView Delegate
+
 extension PostRecipeViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         var resultText = ""
@@ -144,21 +146,21 @@ extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigatio
 // MARK: - PostRecipeViewModel Delegate
 
 extension PostRecipeViewController: PostRecipeViewModelDelegate {
-    func didSuccessPostRecipe() {
+    func postRecipeViewModelDidSuccessPostRecipe(_ postRecipeViewModel: PostRecipeViewModel) {
         // nil要素を取り除き、選択した画像のみData型に変換する
         let postIamgeData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.5).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
+            postRecipeViewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
         }
     }
-    func didFailedPostRecipe(errorMessage: String) {
+    func postRecipeViewModelDidFailedPostRecipe(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    func didSuccessPostRecipeImages() {
+    func postRecipeViewModelDidSuccessPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_success_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) {
@@ -167,7 +169,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
             }
         }
     }
-    func didFailedPostRecipeImages(errorMessage: String) {
+    func postRecipeViewModelDidFailedPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)

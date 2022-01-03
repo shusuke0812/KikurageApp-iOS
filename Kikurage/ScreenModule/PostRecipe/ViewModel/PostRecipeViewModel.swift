@@ -9,16 +9,10 @@
 import Foundation
 
 protocol PostRecipeViewModelDelegate: AnyObject {
-    /// 料理記録の投稿に成功した
-    func didSuccessPostRecipe()
-    /// 料理記録の投稿に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedPostRecipe(errorMessage: String)
-    /// 料理記録画像の投稿に成功した
-    func didSuccessPostRecipeImages()
-    /// 料理記録画像の投稿に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedPostRecipeImages(errorMessage: String)
+    func postRecipeViewModelDidSuccessPostRecipe(_ postRecipeViewModel: PostRecipeViewModel)
+    func postRecipeViewModelDidFailedPostRecipe(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String)
+    func postRecipeViewModelDidSuccessPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel)
+    func postRecipeViewModelDidFailedPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String)
 }
 
 class PostRecipeViewModel {
@@ -44,9 +38,9 @@ extension PostRecipeViewModel {
             switch response {
             case .success(let documentReference):
                 self?.postedRecipeDocumentId = documentReference.documentID
-                self?.delegate?.didSuccessPostRecipe()
+                self?.delegate?.postRecipeViewModelDidSuccessPostRecipe(self!)
             case .failure(let error):
-                self?.delegate?.didFailedPostRecipe(errorMessage: error.description())
+                self?.delegate?.postRecipeViewModelDidFailedPostRecipe(self!, with: error.description())
             }
         }
     }
@@ -55,9 +49,9 @@ extension PostRecipeViewModel {
             switch response {
             case .success(let imageStorageFullPaths):
                 self?.recipe.imageStoragePaths = imageStorageFullPaths
-                self?.delegate?.didSuccessPostRecipeImages()
+                self?.delegate?.postRecipeViewModelDidSuccessPostRecipeImages(self!)
             case .failure(let error):
-                self?.delegate?.didFailedPostRecipeImages(errorMessage: error.description())
+                self?.delegate?.postRecipeViewModelDidFailedPostRecipeImages(self!, with: error.description())
             }
         }
     }
@@ -68,7 +62,7 @@ extension PostRecipeViewModel {
 extension PostRecipeViewModel {
     func postRecipeImages(kikurageUserId: String, imageData: [Data?]) {
         guard let postedRecipeDocumentId = postedRecipeDocumentId else {
-            delegate?.didFailedPostRecipeImages(errorMessage: FirebaseAPIError.documentIdError.description())
+            delegate?.postRecipeViewModelDidFailedPostRecipeImages(self, with: FirebaseAPIError.documentIdError.description())
             return
         }
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.recipes)/\(postedRecipeDocumentId)/images/"
@@ -77,7 +71,7 @@ extension PostRecipeViewModel {
             case .success(let imageStoraageFullPaths):
                 self?.postRecipeImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedRecipeDocumentId, imageStorageFullPaths: imageStoraageFullPaths)
             case .failure(let error):
-                self?.delegate?.didFailedPostRecipeImages(errorMessage: error.description())
+                self?.delegate?.postRecipeViewModelDidFailedPostRecipeImages(self!, with: error.description())
             }
         }
     }

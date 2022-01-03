@@ -25,7 +25,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="10M-c2-k7n">
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
-                                                <action selector="didTappedCloseButton:" destination="5EZ-qb-Rvc" id="JBh-dl-od3"/>
+                                                <action selector="close:" destination="5EZ-qb-Rvc" id="XRe-DB-8aK"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -51,7 +51,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="didTappedEditButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="LBt-ZZ-P2k"/>
+                                    <action selector="edit:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="goT-zP-75p"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sw0-8n-Pej">
@@ -96,10 +96,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Qxc-Qc-uRj" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="qtH-26-XFZ">
                     <connections>
-                        <action selector="didTappedUserImageView:" destination="Qxc-Qc-uRj" id="SUw-3O-C0P"/>
+                        <action selector="editUserImage:" destination="5EZ-qb-Rvc" id="JCA-5O-J2e"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -36,13 +36,13 @@ extension SettingViewController {
 // MARK: - SettingBaseView Delegate
 
 extension SettingViewController: SettingBaseViewDelegate {
-    func didTappedUserImageView() {
+    func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView) {
         // FIXME: 写真アプリから写真を選んで円形にトリミング（CropViewController）してViewModelにあるKikurageUserを更新する
     }
-    func didTappedEditButton() {
+    func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
     }
-    func didTappedCloseButton() {
+    func settingBaseViewDidTappedCloseButton(_ settingBaseView: SettingBaseView) {
         dismiss(animated: true, completion: nil)
     }
 }
@@ -50,12 +50,12 @@ extension SettingViewController: SettingBaseViewDelegate {
 // MARK: - SettingViewModel Delegate
 
 extension SettingViewController: SettingViewModelDelegate {
-    func didSuccessGetKikurageUser() {
+    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: SettingViewModel) {
         DispatchQueue.main.async {
-            self.baseView.setKikurageName(name: self.viewModel.kikurageUser?.kikurageName)
+            self.baseView.setKikurageName(name: settingViewModel.kikurageUser?.kikurageName)
         }
     }
-    func didFailedGetKikurageUser(errorMessage: String) {
+    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: SettingViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             self.baseView.setKikurageName(name: nil)
         }

@@ -20,7 +20,7 @@
                                 <rect key="frame" x="182.5" y="793" width="49" height="49"/>
                                 <state key="normal" image="facebookButton"/>
                                 <connections>
-                                    <action selector="didTapFacebookButton:" destination="d3D-3V-zZU" eventType="touchUpInside" id="CUz-A3-zlG"/>
+                                    <action selector="openFacebook:" destination="d3D-3V-zZU" eventType="touchUpInside" id="6nl-Cp-C22"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="communication" translatesAutoresizingMaskIntoConstraints="NO" id="PZt-uh-Gv7">

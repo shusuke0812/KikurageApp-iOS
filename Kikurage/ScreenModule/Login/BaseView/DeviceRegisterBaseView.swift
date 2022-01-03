@@ -9,8 +9,7 @@
 import UIKit
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {
-    /// ログインボタンを押した時の処理
-    func didTappedDeviceRegisterButton()
+    func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView)
 }
 
 class DeviceRegisterBaseView: UIView {
@@ -31,8 +30,8 @@ class DeviceRegisterBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedDeviceRegisterButton(_ sender: Any) {
-        delegate?.didTappedDeviceRegisterButton()
+    @IBAction private func registerDevice(_ sender: Any) {
+        delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
     }
 }
 

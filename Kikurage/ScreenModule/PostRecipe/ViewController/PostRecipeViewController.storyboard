@@ -25,7 +25,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="Rrb-DO-HFe">
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
-                                                <action selector="didTapCloseButton:" destination="50A-5Z-sZQ" id="o5g-Lj-MJu"/>
+                                                <action selector="close:" destination="50A-5Z-sZQ" id="Ako-vn-JXN"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -136,7 +136,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapPostButton:" destination="50A-5Z-sZQ" eventType="touchUpInside" id="HaU-ny-grY"/>
+                                    <action selector="post:" destination="50A-5Z-sZQ" eventType="touchUpInside" id="l0f-mY-cZ8"/>
                                 </connections>
                             </button>
                         </subviews>

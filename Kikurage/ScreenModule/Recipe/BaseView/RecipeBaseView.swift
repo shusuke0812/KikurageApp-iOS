@@ -9,8 +9,7 @@
 import UIKit
 
 protocol RecipeBaseViewDelegate: AnyObject {
-    /// 料理記録保存画面のボタンをタップした時の処理
-    func didTapPostRecipePageButton()
+    func recipeBaseViewDidTapPostRecipePageButton(_ recipeBaseView: RecipeBaseView)
 }
 
 class RecipeBaseView: UIView {
@@ -27,8 +26,8 @@ class RecipeBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapPostRecipePageButton(_ sender: Any) {
-        delegate?.didTapPostRecipePageButton()
+    @IBAction private func openRecipePost(_ sender: Any) {
+        delegate?.recipeBaseViewDidTapPostRecipePageButton(self)
     }
 }
 

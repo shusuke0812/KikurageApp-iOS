@@ -25,7 +25,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <connections>
-                                    <action selector="didTappedDeviceRegisterButton:" destination="bkR-99-1oz" eventType="touchUpInside" id="KlO-sN-faH"/>
+                                    <action selector="registerDevice:" destination="bkR-99-1oz" eventType="touchUpInside" id="y9W-eQ-3xr"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Sg-EvC">

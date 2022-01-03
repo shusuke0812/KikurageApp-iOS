@@ -9,10 +9,8 @@
 import UIKit
 
 protocol PostRecipeBaseViewDelegate: AnyObject {
-    /// 料理記録を保存するボタンを押した時の処理
-    func didTapPostButton()
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
+    func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView)
+    func postRecipeBaseViewDidTappedCloseButton(_ postRecipeBaseView: PostRecipeBaseView)
 }
 
 class PostRecipeBaseView: UIView {
@@ -44,11 +42,11 @@ class PostRecipeBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
+    @IBAction private func close(_ sender: Any) {
+        delegate?.postRecipeBaseViewDidTappedCloseButton(self)
     }
-    @IBAction private func didTapPostButton(_ sender: Any) {
-        delegate?.didTapPostButton()
+    @IBAction private func post(_ sender: Any) {
+        delegate?.postRecipeBaseViewDidTappedPostButton(self)
     }
 }
 

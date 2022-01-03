@@ -9,9 +9,9 @@
 import UIKit
 
 protocol SettingBaseViewDelegate: AnyObject {
-    func didTappedEditButton()
-    func didTappedUserImageView()
-    func didTappedCloseButton()
+    func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView)
+    func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView)
+    func settingBaseViewDidTappedCloseButton(_ settingBaseView: SettingBaseView)
 }
 
 class SettingBaseView: UIView {
@@ -29,14 +29,14 @@ class SettingBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedEditButton(_ sender: Any) {
-        delegate?.didTappedEditButton()
+    @IBAction private func edit(_ sender: Any) {
+        delegate?.settingBaseViewDidTappedEditButton(self)
     }
-    @IBAction private func didTappedUserImageView(_ sender: Any) {
-        delegate?.didTappedUserImageView()
+    @IBAction private func editUserImage(_ sender: Any) {
+        delegate?.settingBaseViewDidTappedUserImageView(self)
     }
-    @IBAction private func didTappedCloseButton(_ sender: Any) {
-        delegate?.didTappedCloseButton()
+    @IBAction private func close(_ sender: Any) {
+        delegate?.settingBaseViewDidTappedCloseButton(self)
     }
 }
 

@@ -10,16 +10,10 @@ import UIKit
 import Firebase
 
 protocol DeviceRegisterViewModelDelegate: AnyObject {
-    /// きくらげの状態データ取得に成功した
-    func didSuccessGetKikurageState()
-    /// きくらげの状態データ取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageState(errorMessage: String)
-    /// きくらげユーザーの登録に成功した
-    func didSuccessPostKikurageUser()
-    /// きくらげユーザーの登録に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedPostKikurageUser(errorMessage: String)
+    func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel)
+    func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String)
+    func deviceRegisterViewModelDidSuccessPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel)
+    func deviceRegisterViewModelDidFailedPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel, with errorMessage: String)
 }
 
 class DeviceRegisterViewModel {
@@ -58,26 +52,26 @@ extension DeviceRegisterViewModel {
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
-                self?.delegate?.didSuccessGetKikurageState()
+                self?.delegate?.deviceRegisterViewModelDidSuccessGetKikurageState(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageState(errorMessage: error.description())
+                self?.delegate?.deviceRegisterViewModelDidFailedGetKikurageState(self!, with: error.description())
             }
         }
     }
     /// きくらげユーザーを登録する
     func registerKikurageUser() {
         guard let kikurageUser = kikurageUser else {
-            delegate?.didFailedPostKikurageUser(errorMessage: R.string.localizable.common_load_user_error())
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
             return
         }
         guard let uid = LoginHelper.shared.kikurageUserId else { return }
         kikurageUserRepository.postKikurageUser(uid: uid, kikurageUser: kikurageUser) { [weak self] responsse in
             switch responsse {
             case .success():
-                self?.delegate?.didSuccessPostKikurageUser()
+                self?.delegate?.deviceRegisterViewModelDidSuccessPostKikurageUser(self!)
                 self?.kikurageUser = kikurageUser
             case .failure(let error):
-                self?.delegate?.didFailedPostKikurageUser(errorMessage: error.description())
+                self?.delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self!, with: error.description())
             }
         }
     }

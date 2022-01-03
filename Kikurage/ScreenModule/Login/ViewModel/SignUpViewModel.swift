@@ -9,11 +9,8 @@
 import Foundation
 
 protocol SignUpViewModelDelegate: AnyObject {
-    /// ユーザー登録に成功した
-    func didSuccessRegisterUser()
-    /// ユーザー登録に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedRegisterUser(errorMessage: String)
+    func signUpViewModelDidSuccessRegisterUser(_ signUpViewModel: SignUpViewModel)
+    func signUpViewModelDidFailedRegisterUser(_ signUpViewModel: SignUpViewModel, with errorMessage: String)
 }
 
 class SignUpViewModel {
@@ -53,9 +50,9 @@ extension SignUpViewModel {
             switch response {
             case .success(let loginUser):
                 self?.loginUser = loginUser
-                self?.delegate?.didSuccessRegisterUser()
+                self?.delegate?.signUpViewModelDidSuccessRegisterUser(self!)
             case .failure(let error):
-                self?.delegate?.didFailedRegisterUser(errorMessage: error.description())
+                self?.delegate?.signUpViewModelDidFailedRegisterUser(self!, with: error.description())
             }
         }
     }

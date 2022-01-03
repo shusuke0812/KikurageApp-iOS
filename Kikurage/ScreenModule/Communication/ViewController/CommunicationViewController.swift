@@ -36,7 +36,7 @@ extension CommunicationViewController {
 // MARK: - CommunicationBaseView Delegate
 
 extension CommunicationViewController: CommunicationBaseViewDelegate {
-    func didTapFacebookButton() {
+    func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView) {
         let urlString = AppConfig.shared.facebookGroupUrl
         transitionSafariViewController(urlString: urlString, onError: nil)
     }

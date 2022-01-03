@@ -9,11 +9,8 @@
 import Foundation
 
 protocol SettingViewModelDelegate: AnyObject {
-    /// きくらげユーザーの取得に成功した
-    func didSuccessGetKikurageUser()
-    /// きくらげユーザーの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageUser(errorMessage: String)
+    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: SettingViewModel)
+    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: SettingViewModel, with errorMessage: String)
 }
 
 class SettingViewModel {
@@ -36,9 +33,9 @@ extension SettingViewModel {
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
-                self?.delegate?.didSuccessGetKikurageUser()
+                self?.delegate?.settingViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageUser(errorMessage: error.description())
+                self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
     }

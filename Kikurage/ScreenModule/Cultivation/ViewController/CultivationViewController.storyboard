@@ -38,7 +38,7 @@
                                 <rect key="frame" x="331" y="779" width="63" height="63"/>
                                 <state key="normal" image="addMemoButton"/>
                                 <connections>
-                                    <action selector="didTapPostCultivationPageButton:" destination="JsX-gy-r0o" eventType="touchUpInside" id="3b9-pK-IBP"/>
+                                    <action selector="openCultivationPost:" destination="JsX-gy-r0o" eventType="touchUpInside" id="q1I-8A-5h7"/>
                                 </connections>
                             </button>
                         </subviews>

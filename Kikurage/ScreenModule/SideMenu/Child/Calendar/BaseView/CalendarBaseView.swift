@@ -10,8 +10,7 @@ import UIKit
 import HorizonCalendar
 
 protocol CalendarBaseViewDelegate: AnyObject {
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
+    func calendarBaseViewDidTapCloseButton(_ calendarBaseView: CalendarBaseView)
 }
 
 class CalendarBaseView: UIView {
@@ -27,8 +26,8 @@ class CalendarBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
+    @IBAction private func close(_ sender: Any) {
+        delegate?.calendarBaseViewDidTapCloseButton(self)
     }
 }
 

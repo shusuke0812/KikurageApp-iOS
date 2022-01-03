@@ -9,8 +9,7 @@
 import UIKit
 
 protocol CultivationBaseViewDelegate: AnyObject {
-    /// 栽培記録保存画面のボタンをタップした時の処理
-    func didTapPostCultivationPageButton()
+    func cultivationBaseViewDidTapPostCultivationPageButton(_ cultivationBaseView: CultivationBaseView)
 }
 
 class CultivationBaseView: UIView {
@@ -31,8 +30,8 @@ class CultivationBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapPostCultivationPageButton(_ sender: Any) {
-        delegate?.didTapPostCultivationPageButton()
+    @IBAction private func openCultivationPost(_ sender: Any) {
+        delegate?.cultivationBaseViewDidTapPostCultivationPageButton(self)
     }
 }
 

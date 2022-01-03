@@ -104,19 +104,19 @@ extension HomeViewController {
 // MARK: - HomeBaseView Delegate
 
 extension HomeViewController: HomeBaseViewDelegate {
-    func didTapCultivationButton() {
+    func homeBaseViewDidTappedCultivationButton(_ homeBaseView: HomeBaseView) {
         guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
-    func didTapRecipeButton() {
+    func homeBaseViewDidTappedRecipeButton(_ homeBaseView: HomeBaseView) {
         guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
-    func didTapCommunicationButton() {
+    func homeBaseViewDidTappedCommunicationButton(_ homeBaseView: HomeBaseView) {
         guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
-    func didTapSideMenuButton() {
+    func homeBaseViewDidTappedSideMenuButton(_ homeBaseView: HomeBaseView) {
         performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
     }
 }
@@ -124,19 +124,19 @@ extension HomeViewController: HomeBaseViewDelegate {
 // MARK: - HomeViewModel Delegate
 
 extension HomeViewController: HomeViewModelDelgate {
-    func didSuccessGetKikurageState() {
+    func homeViewModelDidSuccessGetKikurageState(_ homeViewModel: HomeViewModel) {
         DispatchQueue.main.async {
-            self.baseView.setKikurageStateUI(kikurageState: self.viewModel.kikurageState)
+            self.baseView.setKikurageStateUI(kikurageState: homeViewModel.kikurageState)
         }
     }
-    func didFailedGetKikurageState(errorMessage: String) {
+    func homeViewModelDidFailedGetKikurageState(_ homeViewModel: HomeViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
-                self?.baseView.setKikurageStateUI(kikurageState: self?.viewModel.kikurageState)
+                self?.baseView.setKikurageStateUI(kikurageState: homeViewModel.kikurageState)
             }
         }
     }
-    func didChangedKikurageState() {
-        baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
+    func homeViewModelDidChangedKikurageState(_ homeViewModel: HomeViewModel) {
+        baseView.setKikurageStateUI(kikurageState: homeViewModel.kikurageState)
     }
 }

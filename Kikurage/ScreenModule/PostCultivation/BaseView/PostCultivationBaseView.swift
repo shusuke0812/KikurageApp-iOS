@@ -9,10 +9,8 @@
 import UIKit
 
 protocol PostCultivationBaseViewDelegate: AnyObject {
-    /// 栽培記録保存するボタンを押した時の処理
-    func didTapPostButton()
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
+    func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView)
+    func postCultivationBaseViewDidTappedCloseButton(_ postCultivationBaseView: PostCultivationBaseView)
 }
 
 class PostCultivationBaseView: UIView {
@@ -41,11 +39,11 @@ class PostCultivationBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapPostButton(_ sender: Any) {
-        delegate?.didTapPostButton()
+    @IBAction private func post(_ sender: Any) {
+        delegate?.postCultivationBaseViewDidTappedPostButton(self)
     }
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
+    @IBAction private func close(_ sender: Any) {
+        delegate?.postCultivationBaseViewDidTappedCloseButton(self)
     }
 }
 

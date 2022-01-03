@@ -10,9 +10,9 @@ import UIKit
 import FontAwesome_swift
 
 protocol FooterButtonViewDelegate: AnyObject {
-    func footerButtonViewDidTapCultivationButton()
-    func footerButtonViewDidTapRecipeButton()
-    func footerButtonViewDidTapCommunicationButton()
+    func footerButtonViewDidTapCultivationButton(_ footerButtonView: FooterButtonView)
+    func footerButtonViewDidTapRecipeButton(_ footerButtonView: FooterButtonView)
+    func footerButtonViewDidTapCommunicationButton(_ footerButtonView: FooterButtonView)
 }
 
 class FooterButtonView: UIView {
@@ -72,13 +72,13 @@ class FooterButtonView: UIView {
     // MARK: - Action
 
     @objc private func onCultivation(_ sender: UIButton) {
-        delegate?.footerButtonViewDidTapCultivationButton()
+        delegate?.footerButtonViewDidTapCultivationButton(self)
     }
     @objc private func onRecipe(_ sender: UIButton) {
-        delegate?.footerButtonViewDidTapRecipeButton()
+        delegate?.footerButtonViewDidTapRecipeButton(self)
     }
     @objc private func onCommunication(_ sender: UIButton) {
-        delegate?.footerButtonViewDidTapCommunicationButton()
+        delegate?.footerButtonViewDidTapCommunicationButton(self)
     }
 }
 

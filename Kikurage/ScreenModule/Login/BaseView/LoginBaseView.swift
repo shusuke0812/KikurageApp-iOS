@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginBaseViewDelegate: AnyObject {
-    func didTappedLoginButton()
+    func loginBaseViewDidTappedLoginButton(_ loginBaseView: LoginBaseView)
 }
 
 class LoginBaseView: UIView {
@@ -26,8 +26,8 @@ class LoginBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedLoginButton(_ sender: Any) {
-        delegate?.didTappedLoginButton()
+    @IBAction private func login(_ sender: Any) {
+        delegate?.loginBaseViewDidTappedLoginButton(self)
     }
 }
 

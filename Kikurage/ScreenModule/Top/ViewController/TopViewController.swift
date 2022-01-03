@@ -33,22 +33,22 @@ extension TopViewController {
 // MARK: - TopBaseView Delegate
 
 extension TopViewController: TopBaseViewDelegate {
-    func didTappedTermsButton() {
+    func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
         let urlString = AppConfig.shared.termsUrl
         transitionSafariViewController(urlString: urlString, onError: nil)
     }
 
-    func didTappedPrivacyPolicyButton() {
+    func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
         let urlString = AppConfig.shared.privacyPolicyUrl
         transitionSafariViewController(urlString: urlString, onError: nil)
     }
 
-    func didTappedLoginButton() {
+    func topBaseViewDidTappedLoginButton(_ topBaseView: TopBaseView) {
         guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func didTappedSignUpButton() {
+    func topBaseViewDidTappedSignUpButton(_ topBaseView: TopBaseView) {
         guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }

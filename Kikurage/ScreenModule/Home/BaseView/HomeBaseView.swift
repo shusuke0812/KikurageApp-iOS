@@ -9,14 +9,10 @@
 import UIKit
 
 protocol HomeBaseViewDelegate: AnyObject {
-    /// 栽培記録ボタンを押した時の処理
-    func didTapCultivationButton()
-    /// 料理記録ボタンを押した時の処理
-    func didTapRecipeButton()
-    /// 相談ボタンを押した時の処理
-    func didTapCommunicationButton()
-    /// サイドメニュー用のハンバーガーアイコンを押した時の処理
-    func didTapSideMenuButton()
+    func homeBaseViewDidTappedCultivationButton(_ homeBaseView: HomeBaseView)
+    func homeBaseViewDidTappedRecipeButton(_ homeBaseView: HomeBaseView)
+    func homeBaseViewDidTappedCommunicationButton(_ homeBaseView: HomeBaseView)
+    func homeBaseViewDidTappedSideMenuButton(_ homeBaseView: HomeBaseView)
 }
 
 class HomeBaseView: UIView {
@@ -53,17 +49,8 @@ class HomeBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapCultivationButton(_ sender: Any) {
-        delegate?.didTapCultivationButton()
-    }
-    @IBAction private func didTapRecipeButton(_ sender: Any) {
-        delegate?.didTapRecipeButton()
-    }
-    @IBAction private func didTapCommunicationButton(_ sender: Any) {
-        delegate?.didTapCommunicationButton()
-    }
-    @IBAction private func didTapSideMenuButton(_ sender: Any) {
-        delegate?.didTapSideMenuButton()
+    @IBAction private func openSideMenu(_ sender: Any) {
+        delegate?.homeBaseViewDidTappedSideMenuButton(self)
     }
 }
 
@@ -182,13 +169,13 @@ extension HomeBaseView {
 // MARK: - FooterButtonView Delegate
 
 extension HomeBaseView: FooterButtonViewDelegate {
-    func footerButtonViewDidTapCultivationButton() {
-        delegate?.didTapCultivationButton()
+    func footerButtonViewDidTapCultivationButton(_ footerButtonView: FooterButtonView) {
+        delegate?.homeBaseViewDidTappedCultivationButton(self)
     }
-    func footerButtonViewDidTapRecipeButton() {
-        delegate?.didTapRecipeButton()
+    func footerButtonViewDidTapRecipeButton(_ footerButtonView: FooterButtonView) {
+        delegate?.homeBaseViewDidTappedRecipeButton(self)
     }
-    func footerButtonViewDidTapCommunicationButton() {
-        delegate?.didTapCommunicationButton()
+    func footerButtonViewDidTapCommunicationButton(_ footerButtonView: FooterButtonView) {
+        delegate?.homeBaseViewDidTappedCommunicationButton(self)
     }
 }

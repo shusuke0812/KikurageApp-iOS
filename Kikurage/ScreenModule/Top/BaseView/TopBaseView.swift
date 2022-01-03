@@ -9,10 +9,10 @@
 import UIKit
 
 protocol TopBaseViewDelegate: AnyObject {
-    func didTappedTermsButton()
-    func didTappedPrivacyPolicyButton()
-    func didTappedLoginButton()
-    func didTappedSignUpButton()
+    func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView)
+    func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView)
+    func topBaseViewDidTappedLoginButton(_ topBaseView: TopBaseView)
+    func topBaseViewDidTappedSignUpButton(_ topBaseView: TopBaseView)
 }
 
 class TopBaseView: UIView {
@@ -32,17 +32,17 @@ class TopBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedTermsButton(_ sender: Any) {
-        delegate?.didTappedTermsButton()
+    @IBAction private func openTerms(_ sender: Any) {
+        delegate?.topBaseViewDidTappedTermsButton(self)
     }
-    @IBAction private func didTappedPrivacyPolicyButton(_ sender: Any) {
-        delegate?.didTappedPrivacyPolicyButton()
+    @IBAction private func openPrivacyPolicy(_ sender: Any) {
+        delegate?.topBaseViewDidTappedPrivacyPolicyButton(self)
     }
-    @IBAction private func didTappedLoginButton(_ sender: Any) {
-        delegate?.didTappedLoginButton()
+    @IBAction private func login(_ sender: Any) {
+        delegate?.topBaseViewDidTappedLoginButton(self)
     }
-    @IBAction private func didTappedSignUpButton(_ sender: Any) {
-        delegate?.didTappedSignUpButton()
+    @IBAction private func signUp(_ sender: Any) {
+        delegate?.topBaseViewDidTappedSignUpButton(self)
     }
 }
 

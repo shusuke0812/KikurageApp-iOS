@@ -15,8 +15,7 @@ enum GraphDataType {
 }
 
 protocol GraphBaseViewDelegate: AnyObject {
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
+    func graphBaseViewDidTapCloseButton(_ graphBaseView: GraphBaseView)
 }
 
 class GraphBaseView: UIView {
@@ -40,8 +39,8 @@ class GraphBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
+    @IBAction private func close(_ sender: Any) {
+        delegate?.graphBaseViewDidTapCloseButton(self)
     }
 }
 

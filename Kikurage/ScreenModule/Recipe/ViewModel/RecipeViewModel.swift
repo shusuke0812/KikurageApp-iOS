@@ -9,10 +9,8 @@
 import UIKit.UITableView
 
 protocol RecipeViewModelDelegate: AnyObject {
-    /// きくらげ料理記録の取得に成功した
-    func didSuccessGetRecipes()
-    /// きくらげ料理記録の取得に失敗した
-    func didFailedGetRecipes(errorMessage: String)
+    func recipeViewModelDidSuccessGetRecipes(_ recipeViewModel: RecipeViewModel)
+    func recipeViewModelDidFailedGetRecipes(_ recipeViewModel: RecipeViewModel, with errorMessage: String)
 }
 
 class RecipeViewModel: NSObject {
@@ -51,9 +49,9 @@ extension RecipeViewModel {
             case .success(let recipes):
                 self?.recipes = recipes
                 self?.sortRecipes()
-                self?.delegate?.didSuccessGetRecipes()
+                self?.delegate?.recipeViewModelDidSuccessGetRecipes(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetRecipes(errorMessage: error.description())
+                self?.delegate?.recipeViewModelDidFailedGetRecipes(self!, with: error.description())
             }
         }
     }

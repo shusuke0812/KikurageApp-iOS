@@ -28,7 +28,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="O0Y-Ez-wft">
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
-                                                <action selector="didTapCloseButton:" destination="uai-5v-WLU" id="sBI-Dz-957"/>
+                                                <action selector="close:" destination="uai-5v-WLU" id="9Tq-5f-uJf"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
