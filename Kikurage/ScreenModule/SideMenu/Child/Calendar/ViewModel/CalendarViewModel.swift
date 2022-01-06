@@ -39,7 +39,7 @@ extension CalendarViewModel {
     }
     private func calcCultivationTerm() {
         let calendar = Calendar.current
-        
+
         let startDate = calendar.startOfDay(for: kikurageUser?.cultivationStartDate ?? Date())
         let endDate = calendar.startOfDay(for: Date())
 
