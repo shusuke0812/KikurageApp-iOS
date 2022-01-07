@@ -30,10 +30,9 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
 extension PostCultivationViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.dateTextField.delegate = self
-        baseView.textView.delegate = self
-        baseView.cameraCollectionView.delegate = self
-        baseView.cameraCollectionView.dataSource = cameraCollectionViewModel
+        baseView.configTextView(delegate: self)
+        baseView.configTextView(delegate: self)
+        baseView.configCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }
