@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
 extension SignUpViewController {
     private func setDelegate() {
         baseView.delegate = self
-        baseView.configTextFieldDelegate(delegate: self)
+        baseView.configTextField(delegate: self)
         viewModel.delegate = self
     }
 }

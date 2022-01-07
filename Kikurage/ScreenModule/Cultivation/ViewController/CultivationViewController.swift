@@ -51,7 +51,7 @@ extension CultivationViewController {
     }
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.configColletionViewDelegateDataSource(delegate: self, dataSource: viewModel)
+        baseView.configColletionView(delegate: self, dataSource: viewModel)
         viewModel.delegate = self
     }
     private func setRefreshControl() {

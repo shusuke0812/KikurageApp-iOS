@@ -34,7 +34,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 extension DeviceRegisterViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.configTextFieldDelegate(delegate: self)
+        baseView.configTextField(delegate: self)
         viewModel.delegate = self
     }
 }

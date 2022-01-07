@@ -68,7 +68,7 @@ extension DeviceRegisterBaseView {
 // MARK: - Config
 
 extension DeviceRegisterBaseView {
-    func configTextFieldDelegate(delegate: UITextFieldDelegate) {
+    func configTextField(delegate: UITextFieldDelegate) {
         productKeyTextField.delegate = delegate
         kikurageNameTextField.delegate = delegate
         cultivationStartDateTextField.delegate = delegate

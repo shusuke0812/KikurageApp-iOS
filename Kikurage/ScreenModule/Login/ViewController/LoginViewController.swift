@@ -29,7 +29,7 @@ extension LoginViewController {
     private func setDelegate() {
         baseView.delegate = self
         viewModel.delegate = self
-        baseView.confgTextFieldDelegate(delegate: self)
+        baseView.confgTextField(delegate: self)
     }
 }
 

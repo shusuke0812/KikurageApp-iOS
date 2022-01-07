@@ -52,7 +52,7 @@ extension LoginBaseView {
 // MARK: - Config
 
 extension LoginBaseView {
-    func confgTextFieldDelegate(delegate: UITextFieldDelegate) {
+    func confgTextField(delegate: UITextFieldDelegate) {
         emailTextField.delegate = delegate
         passwordTextField.delegate = delegate
     }

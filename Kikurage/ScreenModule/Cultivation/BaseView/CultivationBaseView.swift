@@ -60,7 +60,7 @@ extension CultivationBaseView {
     func setRefreshControlInCollectionView(_ refresh: UIRefreshControl) {
         collectionView.refreshControl = refresh
     }
-    func configColletionViewDelegateDataSource(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+    func configColletionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
     }

@@ -60,7 +60,7 @@ extension CultivationDetailBaseView {
         //  観察メモの設定
         memoTextView.text = cultivation.memo
     }
-    func configCollectionViewDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+    func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
     }
