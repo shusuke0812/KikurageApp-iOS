@@ -54,8 +54,7 @@ extension RecipeViewController {
     }
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.tableView.delegate = self
-        baseView.tableView.dataSource = viewModel
+        baseView.configTableView(delegate: self, dataSorce: viewModel)
         viewModel.delegate = self
     }
     private func setRefreshControl() {
@@ -91,7 +90,7 @@ extension RecipeViewController: RecipeViewModelDelegate {
             self.baseView.tableView.refreshControl?.endRefreshing()
 
             self.baseView.tableView.reloadData()
-            self.baseView.noRecipeLabel.isHidden = !(recipeViewModel.recipes.isEmpty)
+            self.baseView.noRecipeLabelIsHidden(!(recipeViewModel.recipes.isEmpty))
         }
     }
     func recipeViewModelDidFailedGetRecipes(_ recipeViewModel: RecipeViewModel, with errorMessage: String) {

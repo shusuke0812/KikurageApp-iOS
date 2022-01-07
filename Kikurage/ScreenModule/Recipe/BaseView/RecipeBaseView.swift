@@ -13,8 +13,8 @@ protocol RecipeBaseViewDelegate: AnyObject {
 }
 
 class RecipeBaseView: UIView {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noRecipeLabel: UILabel!
+    @IBOutlet private(set) weak var tableView: UITableView!
+    @IBOutlet private weak var noRecipeLabel: UILabel!
 
     weak var delegate: RecipeBaseViewDelegate?
 
@@ -57,5 +57,12 @@ extension RecipeBaseView {
 extension RecipeBaseView {
     func setRefreshControlInTableView(_ refresh: UIRefreshControl) {
         tableView.refreshControl = refresh
+    }
+    func configTableView(delegate: UITableViewDelegate, dataSorce: UITableViewDataSource) {
+        tableView.delegate = delegate
+        tableView.dataSource = dataSorce
+    }
+    func noRecipeLabelIsHidden(_ isHidden: Bool) {
+        noRecipeLabel.isHidden = isHidden
     }
 }
