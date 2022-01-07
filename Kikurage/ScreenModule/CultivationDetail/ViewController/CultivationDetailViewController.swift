@@ -31,8 +31,7 @@ extension CultivationDetailViewController {
         setNavigationBar(title: R.string.localizable.screen_cultivation_detail_title())
     }
     private func setDelegateDataSource() {
-        baseView.collectionView.delegate = self
-        baseView.collectionView.dataSource = viewModel
+        baseView.configCollectionViewDelegate(delegate: self, dataSource: viewModel)
     }
     private func setUI() {
         baseView.setUI(cultivation: self.cultivation)

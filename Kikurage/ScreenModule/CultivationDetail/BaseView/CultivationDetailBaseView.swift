@@ -9,13 +9,13 @@
 import UIKit
 
 class CultivationDetailBaseView: UIView {
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private(set) weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: CarouselCollectionFlowLayout!
 
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var memoTitleLabel: UILabel!
     @IBOutlet private weak var viewDateLabel: UILabel!
-    @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet private weak var memoTextView: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,7 +51,7 @@ extension CultivationDetailBaseView {
     }
 }
 
-// MARK: - Setting UI
+// MARK: - Config
 
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
@@ -59,5 +59,9 @@ extension CultivationDetailBaseView {
         viewDateLabel.text = cultivation.viewDate
         //  観察メモの設定
         memoTextView.text = cultivation.memo
+    }
+    func configCollectionViewDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
     }
 }
