@@ -14,9 +14,9 @@ protocol CultivationBaseViewDelegate: AnyObject {
 
 class CultivationBaseView: UIView {
     @IBOutlet private weak var postPageButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private(set) weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var noCultivationLabel: UILabel!
+    @IBOutlet private weak var noCultivationLabel: UILabel!
 
     weak var delegate: CultivationBaseViewDelegate?
 
@@ -59,5 +59,12 @@ extension CultivationBaseView {
 extension CultivationBaseView {
     func setRefreshControlInCollectionView(_ refresh: UIRefreshControl) {
         collectionView.refreshControl = refresh
+    }
+    func configColletionViewDelegateDataSource(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
+    }
+    func noCultivationLabelIsHidden(_ isHidden: Bool) {
+        noCultivationLabel.isHidden = isHidden
     }
 }
