@@ -13,8 +13,8 @@ protocol SignUpBaseViewDelegate: AnyObject {
 }
 
 class SignUpBaseView: UIView {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private(set) weak var emailTextField: UITextField!
+    @IBOutlet private(set) weak var passwordTextField: UITextField!
     @IBOutlet private weak var userRegisterButton: UIButton!
 
     weak var delegate: SignUpBaseViewDelegate?
@@ -46,6 +46,15 @@ extension SignUpBaseView {
 
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = R.string.localizable.screen_signup_password_textfield_placeholer()
+    }
+}
+
+// MARK: - Config
+
+extension SignUpBaseView {
+    func configTextField(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     func initTextFields() {
         emailTextField.text = ""

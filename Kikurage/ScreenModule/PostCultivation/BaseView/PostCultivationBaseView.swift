@@ -15,11 +15,11 @@ protocol PostCultivationBaseViewDelegate: AnyObject {
 
 class PostCultivationBaseView: UIView {
     @IBOutlet private weak var navigationItem: UINavigationItem!
-    @IBOutlet weak var cameraCollectionView: UICollectionView!
-    @IBOutlet weak var textView: UITextViewWithPlaceholder!
+    @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
+    @IBOutlet private(set) weak var textView: UITextViewWithPlaceholder!
     @IBOutlet private weak var currentTextViewNumberLabel: UILabel!
     @IBOutlet private weak var maxTextViewNumberLabel: UILabel!
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet private(set) weak var dateTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
 
     weak var delegate: PostCultivationBaseViewDelegate?
@@ -87,10 +87,20 @@ extension PostCultivationBaseView {
     }
 }
 
-// MARK: - Setting UI
+// MARK: - Config
 
 extension PostCultivationBaseView {
     func setCurrentTextViewNumber(text: String) {
         currentTextViewNumberLabel.text = "\(text.count)"
+    }
+    func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        cameraCollectionView.delegate = delegate
+        cameraCollectionView.dataSource = dataSource
+    }
+    func configTextView(delegate: UITextViewDelegate) {
+        textView.delegate = delegate
+    }
+    func configTextField(delegate: UITextFieldDelegate) {
+        dateTextField.delegate = delegate
     }
 }

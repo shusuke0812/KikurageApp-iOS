@@ -28,9 +28,8 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable {
 extension LoginViewController {
     private func setDelegate() {
         baseView.delegate = self
-        baseView.emailTextField.delegate = self
-        baseView.passwordTextField.delegate = self
         viewModel.delegate = self
+        baseView.confgTextField(delegate: self)
     }
 }
 

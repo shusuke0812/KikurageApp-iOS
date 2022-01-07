@@ -51,8 +51,7 @@ extension CultivationViewController {
     }
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.collectionView.delegate = self
-        baseView.collectionView.dataSource = viewModel
+        baseView.configColletionView(delegate: self, dataSource: viewModel)
         viewModel.delegate = self
     }
     private func setRefreshControl() {
@@ -90,7 +89,7 @@ extension CultivationViewController: CultivationViewModelDelegate {
             self.baseView.collectionView.refreshControl?.endRefreshing()
 
             self.baseView.collectionView.reloadData()
-            self.baseView.noCultivationLabel.isHidden = !(cultivationViewModel.cultivations.isEmpty)
+            self.baseView.noCultivationLabelIsHidden(!(cultivationViewModel.cultivations.isEmpty))
         }
     }
     func cultivationViewModelDidFailedGetCultivations(_ cultivationViewModel: CultivationViewModel, with errorMessage: String) {
