@@ -28,11 +28,9 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
 extension PostRecipeViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.recipeNameTextField.delegate = self
-        baseView.dateTextField.delegate = self
-        baseView.recipeMemoTextView.delegate = self
-        baseView.cameraCollectionView.delegate = self
-        baseView.cameraCollectionView.dataSource = cameraCollectionViewModel
+        baseView.configTextField(delegate: self)
+        baseView.configTextView(delegate: self)
+        baseView.cofigCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }

@@ -15,14 +15,14 @@ protocol PostRecipeBaseViewDelegate: AnyObject {
 
 class PostRecipeBaseView: UIView {
     @IBOutlet private weak var navigationItem: UINavigationItem!
-    @IBOutlet weak var cameraCollectionView: UICollectionView!
-    @IBOutlet weak var recipeNameTextField: UITextField!
+    @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
+    @IBOutlet private(set) weak var recipeNameTextField: UITextField!
     @IBOutlet private weak var currentRecipeNameNumberLabel: UILabel!
     @IBOutlet private weak var maxRecipeNameNumberLabel: UILabel!
-    @IBOutlet weak var recipeMemoTextView: UITextViewWithPlaceholder!
+    @IBOutlet private(set) weak var recipeMemoTextView: UITextViewWithPlaceholder!
     @IBOutlet private weak var currentRecipeMemoNumberLabel: UILabel!
     @IBOutlet private weak var maxRecipeMemoNumberLabel: UILabel!
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet private(set) weak var dateTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
 
     weak var delegate: PostRecipeBaseViewDelegate?
@@ -92,7 +92,7 @@ extension PostRecipeBaseView {
     }
 }
 
-// MARK: - Setting UI
+// MARK: - Config
 
 extension PostRecipeBaseView {
     func setCurrentRecipeNameNumber(text: String) {
@@ -100,5 +100,16 @@ extension PostRecipeBaseView {
     }
     func setCurrentRecipeMemoNumber(text: String) {
         currentRecipeMemoNumberLabel.text = "\(text.count)"
+    }
+    func cofigCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        cameraCollectionView.delegate = delegate
+        cameraCollectionView.dataSource = dataSource
+    }
+    func configTextField(delegate: UITextFieldDelegate) {
+        recipeNameTextField.delegate = delegate
+        dateTextField.delegate = delegate
+    }
+    func configTextView(delegate: UITextViewDelegate) {
+        recipeMemoTextView.delegate = delegate
     }
 }
