@@ -13,8 +13,8 @@ protocol CommunicationBaseViewDelegate: AnyObject {
 }
 
 class CommunicationBaseView: UIView {
-    @IBOutlet weak var informationLabel: UILabel!
-    @IBOutlet weak var informationParentView: UIView!
+    @IBOutlet private weak var informationLabel: UILabel!
+    @IBOutlet private weak var informationParentView: UIView!
 
     weak var delegate: CommunicationBaseViewDelegate?
 
