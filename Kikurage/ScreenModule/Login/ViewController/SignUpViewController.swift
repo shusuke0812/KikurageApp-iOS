@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import RxCocoa
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: SignUpBaseView { self.view as! SignUpBaseView } // swiftlint:disable:this force_cast
@@ -33,8 +34,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
 extension SignUpViewController {
     private func setDelegate() {
         baseView.delegate = self
-        baseView.emailTextField.delegate = self
-        baseView.passwordTextField.delegate = self
+        baseView.configTextFieldDelegate(delegate: self)
         viewModel.delegate = self
     }
 }
