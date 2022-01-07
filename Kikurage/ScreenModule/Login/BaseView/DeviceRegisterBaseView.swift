@@ -13,9 +13,9 @@ protocol DeviceRegisterBaseViewDelegate: AnyObject {
 }
 
 class DeviceRegisterBaseView: UIView {
-    @IBOutlet weak var productKeyTextField: UITextField!
-    @IBOutlet weak var kikurageNameTextField: UITextField!
-    @IBOutlet weak var cultivationStartDateTextField: UITextField!
+    @IBOutlet private(set) weak var productKeyTextField: UITextField!
+    @IBOutlet private(set) weak var kikurageNameTextField: UITextField!
+    @IBOutlet private(set) weak var cultivationStartDateTextField: UITextField!
     @IBOutlet private weak var deviceRegisterButton: UIButton!
 
     weak var delegate: DeviceRegisterBaseViewDelegate?
@@ -62,5 +62,15 @@ extension DeviceRegisterBaseView {
         datePicker.locale = Locale.current
         // TextFieldの入力にDatePickerを接続
         cultivationStartDateTextField.inputView = datePicker
+    }
+}
+
+// MARK: - Config
+
+extension DeviceRegisterBaseView {
+    func configTextFieldDelegate(delegate: UITextFieldDelegate) {
+        productKeyTextField.delegate = delegate
+        kikurageNameTextField.delegate = delegate
+        cultivationStartDateTextField.delegate = delegate
     }
 }
