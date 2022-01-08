@@ -25,10 +25,6 @@ enum Constants {
         /// 画像選択の最大数
         static let maxNumber = 8
     }
-    enum Image {
-        /// 画像読み込み中の表示
-        static let loading = R.image.loading()
-    }
     enum UserDefaultsKey {
         static let firebaseUser = "firebase_user"
     }
