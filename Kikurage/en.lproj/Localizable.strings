@@ -44,6 +44,9 @@
 // navigation
 "common_navigation_back_btn_title" = "Back";
 
+// view
+"loading_thumbnail_view" = "Loading...";
+
 /****
  * error
  */
