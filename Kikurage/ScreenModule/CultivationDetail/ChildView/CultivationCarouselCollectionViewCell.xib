@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CultivationCarouselCollectionViewCell" id="gTV-IL-0wX" customClass="CultivationCarouselCollectionViewCell" customModule="きくらげ君" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CultivationCarouselCollectionViewCell" id="gTV-IL-0wX" customClass="CultivationCarouselCollectionViewCell" customModule="Kikurage" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -21,6 +21,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUe-4T-MQH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="520-MZ-M1P" customClass="LoadingThumbnailView" customModule="Kikurage" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZsS-c4-JNh">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
                             </imageView>
@@ -28,9 +32,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ZsS-c4-JNh" secondAttribute="bottom" id="0Sa-EV-16C"/>
+                            <constraint firstItem="520-MZ-M1P" firstAttribute="top" secondItem="XUe-4T-MQH" secondAttribute="top" id="2bC-U7-j2I"/>
                             <constraint firstAttribute="trailing" secondItem="ZsS-c4-JNh" secondAttribute="trailing" id="AbN-yw-5Bt"/>
                             <constraint firstItem="ZsS-c4-JNh" firstAttribute="leading" secondItem="XUe-4T-MQH" secondAttribute="leading" id="C8u-Su-XPv"/>
+                            <constraint firstAttribute="bottom" secondItem="520-MZ-M1P" secondAttribute="bottom" id="NMK-HE-uIu"/>
                             <constraint firstItem="ZsS-c4-JNh" firstAttribute="top" secondItem="XUe-4T-MQH" secondAttribute="top" id="VHW-UK-PhM"/>
+                            <constraint firstAttribute="trailing" secondItem="520-MZ-M1P" secondAttribute="trailing" id="jZp-io-l2R"/>
+                            <constraint firstItem="520-MZ-M1P" firstAttribute="leading" secondItem="XUe-4T-MQH" secondAttribute="leading" id="tqP-la-BMZ"/>
                         </constraints>
                     </view>
                 </subviews>
