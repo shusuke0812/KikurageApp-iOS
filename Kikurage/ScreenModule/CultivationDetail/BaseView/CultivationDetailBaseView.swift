@@ -17,6 +17,8 @@ class CultivationDetailBaseView: UIView {
     @IBOutlet private weak var viewDateLabel: UILabel!
     @IBOutlet private weak var memoTextView: UITextView!
 
+    @IBOutlet private weak var pageControl: UIPageControl!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
@@ -44,6 +46,10 @@ extension CultivationDetailBaseView {
         iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
         iconImageView.layer.borderWidth = 0.5
         iconImageView.layer.borderColor = UIColor.gray.cgColor
+
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .gray
+        pageControl.pageIndicatorTintColor = .white
     }
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
@@ -63,5 +69,15 @@ extension CultivationDetailBaseView {
     func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
+    }
+    func configPageControl(imageCount: Int) {
+        if imageCount <= 1 {
+            pageControl.numberOfPages = 0
+        } else {
+            pageControl.numberOfPages = imageCount
+        }
+    }
+    func configPageControl(didChangedCurrentPage index: Int) {
+        pageControl.currentPage = index
     }
 }
