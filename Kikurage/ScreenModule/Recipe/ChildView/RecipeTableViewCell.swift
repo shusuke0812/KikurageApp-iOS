@@ -49,7 +49,7 @@ extension RecipeTableViewCell {
         guard let imageStoragePath = recipe.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            recipeImageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
+            recipeImageView.sd_setImage(with: storageReference, placeholderImage: nil)
         }
     }
 }
