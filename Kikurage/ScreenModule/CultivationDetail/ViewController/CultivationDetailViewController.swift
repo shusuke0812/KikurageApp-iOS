@@ -35,6 +35,7 @@ extension CultivationDetailViewController {
     }
     private func setUI() {
         baseView.setUI(cultivation: self.cultivation)
+        baseView.configPageControl(imageCount: self.cultivation.imageStoragePaths.count)
     }
 }
 
@@ -43,6 +44,11 @@ extension CultivationDetailViewController {
 extension CultivationDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 画像拡大処理を書く
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            self.baseView.configPageControl(didChangedCurrentPage: indexPath.row)
+        }
     }
 }
 
