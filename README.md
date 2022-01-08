@@ -51,4 +51,4 @@
 - [@shusuke0812](https://github.com/shusuke0812)
 
 ## その他
-- [コードレビュー内容](https://scrapbox.io/app-dojo-salon/%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E4%BC%9A_2021%2F9%2Fxx(%E3%81%8A%E3%81%8A%E3%81%9F))
+- [コードレビュー内容](https://www.notion.so/KikurageApp-iOS-1c008377610146a382225e0b4b2ad47e)
