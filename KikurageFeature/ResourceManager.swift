@@ -10,7 +10,7 @@ import UIKit
 
 /**
  * Assets / Localizable からデータを取得するManagerクラス
- * （framework内のbundleが呼ばれない対策）
+ * （bundleを指定しないとframework内のbundleが呼ばれないため）
  */
 class ResorceManager {
 
