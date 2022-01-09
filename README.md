@@ -45,7 +45,8 @@
 - 開発ターゲット：iOS 13.0  
 
 ## 参考文献
-- 
+- Swift
+  - [Heart of Swift](https://heart-of-swift.github.io/)
 
 ## 著者
 - [@shusuke0812](https://github.com/shusuke0812)
