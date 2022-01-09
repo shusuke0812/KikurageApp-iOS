@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "kikurage_son.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

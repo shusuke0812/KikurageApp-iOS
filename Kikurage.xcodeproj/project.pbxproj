@@ -97,11 +97,11 @@
 		9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3352537FD96005BED9C /* KikurageUser.swift */; };
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
-		9CAC93112789E4E60033DA33 /* KikurageFeature.docc in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC93102789E4E60033DA33 /* KikurageFeature.docc */; };
 		9CAC93122789E4E60033DA33 /* KikurageFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CAC930F2789E4E50033DA33 /* KikurageFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; };
 		9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CAC931D2789E5E90033DA33 /* KikurageHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */; };
+		9CAC9322278A5A950033DA33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CAC9321278A5A950033DA33 /* Assets.xcassets */; };
 		9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */; };
 		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
@@ -273,8 +273,8 @@
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAC930F2789E4E50033DA33 /* KikurageFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageFeature.h; sourceTree = "<group>"; };
-		9CAC93102789E4E60033DA33 /* KikurageFeature.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = KikurageFeature.docc; sourceTree = "<group>"; };
 		9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageHUD.swift; sourceTree = "<group>"; };
+		9CAC9321278A5A950033DA33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewModel.swift; sourceTree = "<group>"; };
 		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
@@ -1017,11 +1017,19 @@
 		9CAC930E2789E4E50033DA33 /* KikurageFeature */ = {
 			isa = PBXGroup;
 			children = (
+				9CAC931E278A53750033DA33 /* HUD */,
 				9CAC930F2789E4E50033DA33 /* KikurageFeature.h */,
-				9CAC93102789E4E60033DA33 /* KikurageFeature.docc */,
-				9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */,
+				9CAC9321278A5A950033DA33 /* Assets.xcassets */,
 			);
 			path = KikurageFeature;
+			sourceTree = "<group>";
+		};
+		9CAC931E278A53750033DA33 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		9CAFDBFB27800CCC00C40094 /* Acknowledgement */ = {
@@ -1311,6 +1319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CAC9322278A5A950033DA33 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1412,7 +1421,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1590,7 +1599,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CAC931D2789E5E90033DA33 /* KikurageHUD.swift in Sources */,
-				9CAC93112789E4E60033DA33 /* KikurageFeature.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
