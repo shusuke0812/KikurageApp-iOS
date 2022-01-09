@@ -23,7 +23,6 @@ class CultivationCarouselCollectionViewCell: UICollectionViewCell {
 
 extension CultivationCarouselCollectionViewCell {
     private func initUI() {
-        imageView.backgroundColor = .lightGray
     }
 }
 
