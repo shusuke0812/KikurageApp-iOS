@@ -15,6 +15,7 @@ class AppRootController: UIViewController {
 
     private let kikurageHUD: KikurageHUD = {
         let hud = KikurageHUD()
+        hud.startRotateAnimation(duration: 1.0, rotateAxis: .y)
         hud.translatesAutoresizingMaskIntoConstraints = false
         return hud
     }()
@@ -84,6 +85,8 @@ extension AppRootController {
         removeCurrentViewController()
         setCurrentViewController(vc)
         setScreenHeaderHeight(vc)
+
+        kikurageHUD.stopRotateAnimation()
     }
     private func setCurrentViewController(_ vc: UIViewController) {
         currentViewController = vc
