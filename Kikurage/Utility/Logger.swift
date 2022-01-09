@@ -21,7 +21,7 @@ struct Logger {
 
     private static func printToConsole(logLevel: LogLevel, file: String, function: String, line: Int, message: String) {
         #if DEBUG
-        print("\(dateString) [\(logLevel.rawValue.uppercased())] \(self.className(from: file)).\(function) #\(line): \(message)")
+        print("DEBUG: " + "\(dateString) [\(logLevel.rawValue.uppercased())] \(self.className(from: file)).\(function) #\(line): \(message)")
         #endif
     }
 

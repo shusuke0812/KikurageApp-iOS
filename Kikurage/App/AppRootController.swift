@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
     private var presenter: AppPresenter!
 
+    private let kikurageHUD: KikurageHUD = {
+        let hud = KikurageHUD()
+        hud.startRotateAnimation(duration: 1.0, rotateAxis: .y)
+        hud.translatesAutoresizingMaskIntoConstraints = false
+        return hud
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initHUD()
+
         presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
 
@@ -44,6 +54,14 @@ extension AppRootController {
         presenter.loadTermsUrl()
         presenter.loadPrivacyPolicyUrl()
     }
+    private func initHUD() {
+        view.addSubview(kikurageHUD)
+
+        NSLayoutConstraint.activate([
+            kikurageHUD.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            kikurageHUD.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
 }
 
 // MARK: - Transition
@@ -67,6 +85,8 @@ extension AppRootController {
         removeCurrentViewController()
         setCurrentViewController(vc)
         setScreenHeaderHeight(vc)
+
+        kikurageHUD.stopRotateAnimation()
     }
     private func setCurrentViewController(_ vc: UIViewController) {
         currentViewController = vc

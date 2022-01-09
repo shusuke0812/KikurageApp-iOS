@@ -31,6 +31,10 @@ target 'Kikurage' do
     inherit! :search_paths
   end
 
+  target 'KikurageFeature' do
+    inherit! :search_paths
+  end
+
 end
 
 post_install do | installer |
