@@ -13,6 +13,16 @@ import UIKit
  * （framework内のbundleが呼ばれない対策）
  */
 class ResorceManager {
+
+    // MARK: Localizable
+
+    /// Localizable.stringデータから文字列を取得する
+    static func getLocalizedString(_ string: String) -> String {
+        NSLocalizedString(string, tableName: nil, bundle: Bundle(for: self), comment: string)
+    }
+    
+    // MARK: Assets
+
     /// AssetsデータからUIImageを取得する
     static func getImage(name: String) -> UIImage? {
         UIImage(named: name, in: Bundle(for: self), compatibleWith: nil)

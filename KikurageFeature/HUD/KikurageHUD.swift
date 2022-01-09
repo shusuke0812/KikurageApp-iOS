@@ -14,7 +14,7 @@ public class KikurageHUD: UIView {
     
     private var loadingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ResorceManager.getImage(name: "kikurage_son")
+        imageView.image = ResorceManager.getImage(name: "hakase")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -22,9 +22,9 @@ public class KikurageHUD: UIView {
     
     private var loadingLabel: UILabel = {
         let label = UILabel()
-        label.text = "読み込み中"
+        label.text = ResorceManager.getLocalizedString("loading_text")
         label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        label.textColor = .systemGray4
+        label.textColor = .gray
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -53,7 +53,7 @@ extension KikurageHUD {
         stackView.alignment = .center
         stackView.distribution = .fillEqually
         stackView.contentMode = .scaleToFill
-        stackView.spacing = 5
+        stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.addArrangedSubview(loadingImageView)
