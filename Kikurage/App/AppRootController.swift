@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
     private var presenter: AppPresenter!
 
+    private let kikurageHUD: KikurageHUD = {
+        let hud = KikurageHUD()
+        hud.translatesAutoresizingMaskIntoConstraints = false
+        return hud
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initHUD()
+
         presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
 
@@ -43,6 +52,14 @@ extension AppRootController {
         presenter.loadFacebookGroupUrl()
         presenter.loadTermsUrl()
         presenter.loadPrivacyPolicyUrl()
+    }
+    private func initHUD() {
+        view.addSubview(kikurageHUD)
+
+        NSLayoutConstraint.activate([
+            kikurageHUD.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            kikurageHUD.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 
