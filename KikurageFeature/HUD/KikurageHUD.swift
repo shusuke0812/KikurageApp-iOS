@@ -45,6 +45,9 @@ public class KikurageHUD: UIView {
 // MARK: - Config
 
 extension KikurageHUD {
+    
+    // Private
+    
     private func initUI() {
         backgroundColor = .clear
         
@@ -70,5 +73,17 @@ extension KikurageHUD {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    // Public（TODO: 色々なアニメーションを追加してみる）
+    
+    public func startFlashAnimation(duration: TimeInterval = 0.8, delay: TimeInterval = 0.0) {
+        UIView.animate(withDuration: duration, delay: delay, options: .repeat, animations: { [weak self] in
+            self?.alpha = 0.0
+        }, completion: nil)
+    }
+    public func stopFlashAnimation() {
+        layer.removeAllAnimations()
+        alpha = 1.0
     }
 }
