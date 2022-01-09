@@ -13,6 +13,7 @@ import FirebaseFirestore
 class CultivationCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var viewDateLabel: UILabel!
+    @IBOutlet private weak var loadingThumbnailView: LoadingThumbnailView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,6 @@ class CultivationCollectionViewCell: UICollectionViewCell {
 extension CultivationCollectionViewCell {
     private func initUI() {
         viewDateLabel.text = ""
-        imageView.backgroundColor = .lightGray
 
         clipsToBounds = true
         layer.cornerRadius = .cellCornerRadius
@@ -40,9 +40,14 @@ extension CultivationCollectionViewCell {
         guard let imageStoragePath = cultivation.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            imageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
+            imageView.sd_setImage(with: storageReference, placeholderImage: nil) { [weak self] _, error, _, _ in
+                if let error = error {
+                    Logger.verbose(error.localizedDescription)
+                    return
+                }
+                // 日付を設定
+                self?.viewDateLabel.text = cultivation.viewDate
+            }
         }
-        // 日付を設定
-        viewDateLabel.text = cultivation.viewDate
     }
 }

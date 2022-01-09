@@ -104,6 +104,7 @@
 		9CAC9322278A5A950033DA33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CAC9321278A5A950033DA33 /* Assets.xcassets */; };
 		9CAC9363278A9AC70033DA33 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC9362278A9AC70033DA33 /* ResourceManager.swift */; };
 		9CAC9366278AB4660033DA33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CAC9368278AB4660033DA33 /* Localizable.strings */; };
+		9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */; };
 		9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */; };
 		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
@@ -280,6 +281,7 @@
 		9CAC9362278A9AC70033DA33 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		9CAC9367278AB4660033DA33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CAC9369278AB4690033DA33 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewModel.swift; sourceTree = "<group>"; };
 		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 			children = (
 				9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */,
 				9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */,
+				9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
 				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 			);
@@ -1552,6 +1555,7 @@
 				9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */,
+				9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */,
 				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
 				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
