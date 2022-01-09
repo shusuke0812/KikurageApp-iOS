@@ -14,8 +14,9 @@ public class KikurageHUD: UIView {
     
     private var loadingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ResorceManager.getImage(name: "hakase")
+        imageView.image = ResorceManager.getImage(name: "hakase")?.withRenderingMode(.alwaysTemplate)
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .gray
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -29,6 +30,8 @@ public class KikurageHUD: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private let loadingImageWidth: CGFloat = 60
     
     // MARK: Initialized
 
@@ -65,14 +68,21 @@ extension KikurageHUD {
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            loadingImageView.widthAnchor.constraint(equalToConstant: 60),
-            loadingImageView.heightAnchor.constraint(equalToConstant: 60),
+            loadingImageView.widthAnchor.constraint(equalToConstant: loadingImageWidth),
+            loadingImageView.heightAnchor.constraint(equalToConstant: loadingImageWidth),
             
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    private func makeCircleBorderToImageView() {
+        loadingImageView.clipsToBounds = true
+        loadingImageView.layer.cornerRadius = loadingImageWidth / 2
+        loadingImageView.layer.borderWidth = 0.5
+        loadingImageView.layer.borderColor = UIColor.gray.cgColor
     }
     
     // Public（TODO: 色々なアニメーションを追加してみる）
@@ -85,5 +95,24 @@ extension KikurageHUD {
     public func stopFlashAnimation() {
         layer.removeAllAnimations()
         alpha = 1.0
+    }
+    
+    public enum RotateAxis: String {
+        case x = "transform.rotation.x"
+        case y = "transform.rotation.y"
+        case z = "transform.rotation.z"
+    }
+    public func startRotateAnimation(duration: TimeInterval, rotateAxis: RotateAxis) {
+        makeCircleBorderToImageView()
+        
+        let rotationAnimation = CABasicAnimation(keyPath: rotateAxis.rawValue)
+        rotationAnimation.toValue = CGFloat(Double.pi / 180 * 360)
+        rotationAnimation.duration = duration
+        rotationAnimation.repeatCount = .infinity
+        
+        loadingImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
+    }
+    public func stopRotateAnimation() {
+        layer.removeAllAnimations()
     }
 }
