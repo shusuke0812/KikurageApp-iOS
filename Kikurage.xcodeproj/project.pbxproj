@@ -102,6 +102,7 @@
 		9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CAC931D2789E5E90033DA33 /* KikurageHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */; };
 		9CAC9322278A5A950033DA33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CAC9321278A5A950033DA33 /* Assets.xcassets */; };
+		9CAC9363278A9AC70033DA33 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC9362278A9AC70033DA33 /* ResourceManager.swift */; };
 		9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */; };
 		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
@@ -275,6 +276,7 @@
 		9CAC930F2789E4E50033DA33 /* KikurageFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageFeature.h; sourceTree = "<group>"; };
 		9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageHUD.swift; sourceTree = "<group>"; };
 		9CAC9321278A5A950033DA33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CAC9362278A9AC70033DA33 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewModel.swift; sourceTree = "<group>"; };
 		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
@@ -1017,6 +1019,7 @@
 		9CAC930E2789E4E50033DA33 /* KikurageFeature */ = {
 			isa = PBXGroup;
 			children = (
+				9CAC9362278A9AC70033DA33 /* ResourceManager.swift */,
 				9CAC931E278A53750033DA33 /* HUD */,
 				9CAC930F2789E4E50033DA33 /* KikurageFeature.h */,
 				9CAC9321278A5A950033DA33 /* Assets.xcassets */,
@@ -1599,6 +1602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CAC931D2789E5E90033DA33 /* KikurageHUD.swift in Sources */,
+				9CAC9363278A9AC70033DA33 /* ResourceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2025,7 +2029,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 shusuke. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2035,6 +2039,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2099,7 +2104,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 shusuke. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2112,6 +2117,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -2179,7 +2185,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 shusuke. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2192,6 +2198,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

@@ -8,13 +8,14 @@
 
 import UIKit
 
-class KikurageHUD: UIView {
+public class KikurageHUD: UIView {
     
     // MARK: Property
     
     private var loadingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "kikurage_son")
+        imageView.image = ResorceManager.getImage(name: "kikurage_son")
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -49,7 +50,9 @@ extension KikurageHUD {
         
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.contentMode = .scaleToFill
         stackView.spacing = 5
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -59,6 +62,9 @@ extension KikurageHUD {
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
+            loadingImageView.widthAnchor.constraint(equalToConstant: 60),
+            loadingImageView.heightAnchor.constraint(equalToConstant: 60),
+            
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
