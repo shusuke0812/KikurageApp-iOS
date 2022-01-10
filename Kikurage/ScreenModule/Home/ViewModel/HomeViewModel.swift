@@ -14,7 +14,7 @@ protocol HomeViewModelInput {
 }
 
 protocol HomeViewModelOutput {
-    var kikurageState: Observable<KikurageState>? { get }
+    var kikurageState: Observable<KikurageState?> { get }
 }
 
 protocol HomeViewModelType {
@@ -30,7 +30,7 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     var output: HomeViewModelOutput { return self }
     
     var kikurageUser: KikurageUser
-    var kikurageState: Observable<KikurageState>?
+    var kikurageState: Observable<KikurageState?>
 
     init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
@@ -60,7 +60,11 @@ extension HomeViewModel {
                 }
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
-                self?.kikurageState = nil
+                self?.kikurageState = Observable.create { observer in
+                    observer.onNext(nil)
+                    observer.onError(error)
+                    return Disposables.create()
+                }
             }
         }
     }
@@ -75,7 +79,11 @@ extension HomeViewModel {
                 }
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
-                self?.kikurageState = nil
+                self?.kikurageState = Observable.create { observer in
+                    observer.onNext(nil)
+                    observer.onError(error)
+                    return Disposables.create()
+                }
             }
         }
     }
