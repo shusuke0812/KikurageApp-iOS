@@ -13,6 +13,8 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: HomeViewModel!
 
+    @IBOutlet private weak var sideMenuBarButtonItem: UIBarButtonItem!
+
     private let disposeBag = RxSwift.DisposeBag()
     private var dateTimer: Timer?
 
@@ -35,6 +37,9 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable {
 
         // Other
         makeForeBackgroundObserver()
+
+        // Rx
+        rxTransition()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,7 +71,6 @@ extension HomeViewController {
     }
     private func setDelegateDataSource() {
         viewModel.delegate = self
-        baseView.delegate = self
     }
     private func makeForeBackgroundObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -75,6 +79,43 @@ extension HomeViewController {
     private func startKikurageStateViewAnimation() {
         baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
         baseView.kikurageStatusViewAnimation(true)
+    }
+}
+
+// MARK: - Rx
+
+extension HomeViewController {
+    private func rxTransition() {
+        baseView.footerButtonView.cultivationButton.rx.tap.subscribe(
+            onNext: { [weak self] in
+                guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        )
+        .disposed(by: disposeBag)
+
+        baseView.footerButtonView.recipeButton.rx.tap.subscribe(
+            onNext: { [weak self] in
+                guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        )
+        .disposed(by: disposeBag)
+
+        baseView.footerButtonView.communicationButton.rx.tap.subscribe(
+            onNext: { [weak self] in
+                guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        )
+        .disposed(by: disposeBag)
+
+        sideMenuBarButtonItem.rx.tap.subscribe(
+            onNext: { [weak self] in
+                self?.performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
+            }
+        )
+        .disposed(by: disposeBag)
     }
 }
 
@@ -98,26 +139,6 @@ extension HomeViewController {
             dateTimer.invalidate()
         }
         baseView.kikurageStatusViewAnimation(false)
-    }
-}
-
-// MARK: - HomeBaseView Delegate
-
-extension HomeViewController: HomeBaseViewDelegate {
-    func homeBaseViewDidTappedCultivationButton(_ homeBaseView: HomeBaseView) {
-        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    func homeBaseViewDidTappedRecipeButton(_ homeBaseView: HomeBaseView) {
-        guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    func homeBaseViewDidTappedCommunicationButton(_ homeBaseView: HomeBaseView) {
-        guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    func homeBaseViewDidTappedSideMenuButton(_ homeBaseView: HomeBaseView) {
-        performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
     }
 }
 

@@ -8,13 +8,6 @@
 
 import UIKit
 
-protocol HomeBaseViewDelegate: AnyObject {
-    func homeBaseViewDidTappedCultivationButton(_ homeBaseView: HomeBaseView)
-    func homeBaseViewDidTappedRecipeButton(_ homeBaseView: HomeBaseView)
-    func homeBaseViewDidTappedCommunicationButton(_ homeBaseView: HomeBaseView)
-    func homeBaseViewDidTappedSideMenuButton(_ homeBaseView: HomeBaseView)
-}
-
 class HomeBaseView: UIView {
     @IBOutlet private weak var kikurageNameLabel: UILabel!
     @IBOutlet private weak var kikurageStatusLabel: UILabel!
@@ -34,23 +27,14 @@ class HomeBaseView: UIView {
     @IBOutlet private weak var expectedHumidityLabel: UILabel!
 
     @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
-    @IBOutlet private weak var footerButtonView: FooterButtonView!
+    @IBOutlet private(set) weak var footerButtonView: FooterButtonView!
 
     private var kikurageStateEmptyView: UIView!
-
-    weak var delegate: HomeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
         initFailedUI()
-        footerButtonView.delegate = self
-    }
-
-    // MARK: - Action
-
-    @IBAction private func openSideMenu(_ sender: Any) {
-        delegate?.homeBaseViewDidTappedSideMenuButton(self)
     }
 }
 
@@ -163,19 +147,5 @@ extension HomeBaseView {
 extension HomeBaseView {
     func kikurageStatusViewAnimation(_ animation: Bool) {
         (animation == true) ? kikurageStatusImageView.startAnimating() : kikurageStatusImageView.stopAnimating()
-    }
-}
-
-// MARK: - FooterButtonView Delegate
-
-extension HomeBaseView: FooterButtonViewDelegate {
-    func footerButtonViewDidTapCultivationButton(_ footerButtonView: FooterButtonView) {
-        delegate?.homeBaseViewDidTappedCultivationButton(self)
-    }
-    func footerButtonViewDidTapRecipeButton(_ footerButtonView: FooterButtonView) {
-        delegate?.homeBaseViewDidTappedRecipeButton(self)
-    }
-    func footerButtonViewDidTapCommunicationButton(_ footerButtonView: FooterButtonView) {
-        delegate?.homeBaseViewDidTappedCommunicationButton(self)
     }
 }
