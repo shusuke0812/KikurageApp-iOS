@@ -43,7 +43,8 @@ extension KikurageStateRepository {
                 return
             }
             do {
-                let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                kikurageState.convertToStateType()
                 completion(.success(kikurageState))
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
