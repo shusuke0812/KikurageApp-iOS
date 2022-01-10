@@ -25,16 +25,16 @@ protocol HomeViewModelType {
 class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
-    
-    var input: HomeViewModelInput { return self }
-    var output: HomeViewModelOutput { return self }
-    
+
+    var input: HomeViewModelInput { self }
+    var output: HomeViewModelOutput { self }
+
     var kikurageUser: KikurageUser
-    var kikurageState: Observable<KikurageState?>
+    var kikurageState: Observable<KikurageState?> = Observable.of(nil)
 
     init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
-        
+
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
     }
