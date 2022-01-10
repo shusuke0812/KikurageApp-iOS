@@ -86,7 +86,8 @@ extension HomeViewController {
 
 extension HomeViewController {
     private func rxTransition() {
-        baseView.footerButtonView.cultivationButton.rx.tap.subscribe(
+        baseView.footerButtonView.cultivationButton.rx.tap.asDriver()
+            .drive(
             onNext: { [weak self] in
                 guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -94,7 +95,8 @@ extension HomeViewController {
         )
         .disposed(by: disposeBag)
 
-        baseView.footerButtonView.recipeButton.rx.tap.subscribe(
+        baseView.footerButtonView.recipeButton.rx.tap.asDriver()
+            .drive(
             onNext: { [weak self] in
                 guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -102,7 +104,8 @@ extension HomeViewController {
         )
         .disposed(by: disposeBag)
 
-        baseView.footerButtonView.communicationButton.rx.tap.subscribe(
+        baseView.footerButtonView.communicationButton.rx.tap.asDriver()
+            .drive(
             onNext: { [weak self] in
                 guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
                 self?.navigationController?.pushViewController(vc, animated: true)
@@ -110,7 +113,8 @@ extension HomeViewController {
         )
         .disposed(by: disposeBag)
 
-        sideMenuBarButtonItem.rx.tap.subscribe(
+        sideMenuBarButtonItem.rx.tap.asDriver()
+            .drive(
             onNext: { [weak self] in
                 self?.performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
             }
