@@ -7,23 +7,34 @@
 //
 
 import Foundation
+import RxSwift
 
-protocol HomeViewModelDelgate: AnyObject {
-    func homeViewModelDidSuccessGetKikurageState(_ homeViewModel: HomeViewModel)
-    func homeViewModelDidFailedGetKikurageState(_ homeViewModel: HomeViewModel, with errorMessage: String)
-    func homeViewModelDidChangedKikurageState(_ homeViewModel: HomeViewModel)
+protocol HomeViewModelInput {
+    var kikurageUser: KikurageUser { get }
 }
 
-class HomeViewModel {
+protocol HomeViewModelOutput {
+    var kikurageState: Observable<KikurageState>? { get }
+}
+
+protocol HomeViewModelType {
+    var input: HomeViewModelInput { get }
+    var output: HomeViewModelOutput { get }
+}
+
+class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
+    
+    var input: HomeViewModelInput { return self }
+    var output: HomeViewModelOutput { return self }
+    
+    var kikurageUser: KikurageUser
+    var kikurageState: Observable<KikurageState>?
 
-    private(set) var kikurageState: KikurageState!
-    private(set) var kikurageUser: KikurageUser!
-
-    weak var delegate: HomeViewModelDelgate?
-
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
+    init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
+        self.kikurageUser = kikurageUser
+        
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
     }
@@ -32,13 +43,7 @@ class HomeViewModel {
 // MARK: - Config
 
 extension HomeViewModel {
-    /// きくらげ状態変数とリスナーを設定する
-    func config(kikurageUser: KikurageUser?, kikurageState: KikurageState?) {
-        self.kikurageUser = kikurageUser
-        self.kikurageState = kikurageState
-
-        self.listenKikurageState()
-    }
+    // noting
 }
 
 // MARK: - Firebase Firestore
@@ -49,26 +54,28 @@ extension HomeViewModel {
         kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { [weak self] response in
             switch response {
             case .success(let kikurageState):
-                self?.kikurageState = kikurageState
-                self?.kikurageState.convertToStateType()
-                self?.delegate?.homeViewModelDidSuccessGetKikurageState(self!)
+                self?.kikurageState = Observable.create { observer in
+                    observer.onNext(kikurageState)
+                    return Disposables.create()
+                }
             case .failure(let error):
+                Logger.verbose(error.localizedDescription)
                 self?.kikurageState = nil
-                self?.delegate?.homeViewModelDidFailedGetKikurageState(self!, with: error.description())
             }
         }
     }
     /// きくらげの状態をリッスンする
-    private func listenKikurageState() {
+    func listenKikurageState() {
         kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { [weak self] response in
             switch response {
             case .success(let kikurageState):
-                self?.kikurageState = kikurageState
-                self?.kikurageState.convertToStateType()
-                self?.delegate?.homeViewModelDidChangedKikurageState(self!)
+                self?.kikurageState = Observable.create { observer in
+                    observer.onNext(kikurageState)
+                    return Disposables.create()
+                }
             case .failure(let error):
+                Logger.verbose(error.localizedDescription)
                 self?.kikurageState = nil
-                fatalError(error.description())
             }
         }
     }
