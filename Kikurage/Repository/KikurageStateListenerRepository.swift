@@ -7,10 +7,12 @@
 //
 
 import Firebase
+import RxSwift
 
 protocol KikurageStateListenerRepositoryProtocol {
     /// きくらげの状態を監視して更新を通知する
     func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
+    func rx_listenKikurageState(productKey: String) -> Observable<KikurageState>
 }
 
 class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
@@ -42,6 +44,33 @@ extension KikurageStateListenerRepository {
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }
+        }
+    }
+    func rx_listenKikurageState(productKey: String) -> Observable<KikurageState> {
+        return Observable<KikurageState>.create { observer in
+            let db = Firestore.firestore()
+            let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productKey)
+            
+            docRef.addSnapshotListener { snapshot, error in
+                if let error = error {
+                    dump(error)
+                    observer.onError(ClientError.apiError(.readError))
+                    return
+                }
+                guard let snapshotData = snapshot?.data() else {
+                    observer.onError(ClientError.apiError(.readError))
+                    return
+                }
+                do {
+                    var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                    kikurageState.convertToStateType()
+                    observer.onNext(kikurageState)
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(ClientError.responseParseError(error))
+                }
+            }
+            return Disposables.create()
         }
     }
 }
