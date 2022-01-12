@@ -8,6 +8,7 @@
 
 import Firebase
 import FirebaseFirestoreSwift
+import RxSwift
 
 protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む
@@ -15,6 +16,7 @@ protocol KikurageStateRepositoryProtocol {
     ///   - productId: プロダクトキー（ドキュメントID）
     ///   - completion: 読み込み成功、失敗のハンドル
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
+    func rx_getKikurageState(productId: String) -> Observable<KikurageState>
     /// グラフデータを読み込む
     /// - Parameters:
     ///   - productId: プロダクトキー（ドキュメントID）
@@ -49,6 +51,33 @@ extension KikurageStateRepository {
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }
+        }
+    }
+    func rx_getKikurageState(productId: String) -> Observable<KikurageState> {
+        return Observable<KikurageState>.create { observer in
+            let db = Firestore.firestore()
+            let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productId)
+            
+            docRef.getDocument { snapshot, error in
+                if let error = error {
+                    dump(error)
+                    observer.onError(ClientError.apiError(.readError))
+                    return
+                }
+                guard let snapshotData = snapshot?.data() else {
+                    observer.onError(ClientError.apiError(.readError))
+                    return
+                }
+                do {
+                    var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                    kikurageState.convertToStateType()
+                    observer.onNext(kikurageState)
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(ClientError.responseParseError(error))
+                }
+            }
+            return Disposables.create()
         }
     }
     func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void) {
