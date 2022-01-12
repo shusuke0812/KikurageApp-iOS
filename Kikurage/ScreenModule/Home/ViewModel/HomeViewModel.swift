@@ -51,39 +51,27 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { [weak self] response in
+        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { /*[weak self]*/ response in
             switch response {
             case .success(let kikurageState):
-                self?.kikurageState = Observable.create { observer in
-                    observer.onNext(kikurageState)
-                    return Disposables.create()
-                }
+                Logger.verbose("\(kikurageState)")
+                //self?.kikurageState = kikurageState
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
-                self?.kikurageState = Observable.create { observer in
-                    observer.onNext(nil)
-                    observer.onError(error)
-                    return Disposables.create()
-                }
+                //self?.kikurageState = nil
             }
         }
     }
     /// きくらげの状態をリッスンする
     func listenKikurageState() {
-        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { [weak self] response in
+        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { /*[weak self]*/ response in
             switch response {
             case .success(let kikurageState):
-                self?.kikurageState = Observable.create { observer in
-                    observer.onNext(kikurageState)
-                    return Disposables.create()
-                }
+                Logger.verbose("\(kikurageState)")
+                //self?.kikurageState = kikurageState
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
-                self?.kikurageState = Observable.create { observer in
-                    observer.onNext(nil)
-                    observer.onError(error)
-                    return Disposables.create()
-                }
+                //self?.kikurageState = nil
             }
         }
     }
