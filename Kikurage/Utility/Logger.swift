@@ -31,7 +31,7 @@ struct Logger {
     }
 
     static func verbose(file: String = #file, function: String = #function, line: Int = #line, _ message: String = "") {
-        printToConsole(logLevel: .debug, file: file, function: function, line: line, message: message)
+        printToConsole(logLevel: .verbose, file: file, function: function, line: line, message: message)
     }
 
     static func debug(file: String = #file, function: String = #function, line: Int = #line, _ message: String = "") {
