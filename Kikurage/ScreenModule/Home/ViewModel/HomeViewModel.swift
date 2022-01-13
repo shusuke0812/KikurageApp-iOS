@@ -14,7 +14,7 @@ protocol HomeViewModelInput {
 }
 
 protocol HomeViewModelOutput {
-    var kikurageState: Observable<KikurageState?> { get }
+    var kikurageState: Observable<KikurageState> { get }
 }
 
 protocol HomeViewModelType {
@@ -30,13 +30,15 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     var output: HomeViewModelOutput { self }
 
     var kikurageUser: KikurageUser
-    var kikurageState: Observable<KikurageState?> = Observable.of(nil)
+    var kikurageState: Observable<KikurageState>
 
     init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
 
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
+        
+        // TODO: kikurageState init
     }
 }
 
