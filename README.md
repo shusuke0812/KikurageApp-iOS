@@ -47,6 +47,7 @@
 ## 参考文献
 - Swift
   - [Heart of Swift](https://heart-of-swift.github.io/)
+  - [Swift API Guidelines](https://www.swift.org/documentation/api-design-guidelines/#strive-for-fluent-usage)
 
 ## 著者
 - [@shusuke0812](https://github.com/shusuke0812)
