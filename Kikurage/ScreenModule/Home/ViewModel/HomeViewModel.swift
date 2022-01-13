@@ -26,19 +26,19 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
+    private let subject = PublishSubject<KikurageState>()
+
     var input: HomeViewModelInput { self }
     var output: HomeViewModelOutput { self }
 
     var kikurageUser: KikurageUser
-    var kikurageState: Observable<KikurageState>
+    var kikurageState: Observable<KikurageState> { subject.asObservable() }
 
     init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
 
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
-        
-        // TODO: kikurageState init
     }
 }
 
@@ -53,27 +53,27 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { /*[weak self]*/ response in
+        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 Logger.verbose("\(kikurageState)")
-                //self?.kikurageState = kikurageState
+                self?.subject.onNext(kikurageState)
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
-                //self?.kikurageState = nil
+                self?.subject.onError(error)
             }
         }
     }
     /// きくらげの状態をリッスンする
     func listenKikurageState() {
-        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { /*[weak self]*/ response in
+        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 Logger.verbose("\(kikurageState)")
-                //self?.kikurageState = kikurageState
+                self?.subject.onNext(kikurageState)
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
-                //self?.kikurageState = nil
+                self?.subject.onError(error)
             }
         }
     }

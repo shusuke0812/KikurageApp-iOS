@@ -84,7 +84,6 @@ extension HomeViewController {
     private func rxBaseView() {
         viewModel.output.kikurageState.subscribe(
             onNext: { [weak self] kikurageState in
-                guard let kikurageState = kikurageState else { return }
                 self?.baseView.setKikurageStateUI(kikurageState: kikurageState)
             },
             onError: { error in
