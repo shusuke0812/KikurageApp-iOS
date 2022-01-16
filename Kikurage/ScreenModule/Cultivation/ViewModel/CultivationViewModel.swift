@@ -8,34 +8,46 @@
 
 import UIKit.UICollectionView
 import Firebase
+import RxSwift
 
-protocol CultivationViewModelDelegate: AnyObject {
-    func cultivationViewModelDidSuccessGetCultivations(_ cultivationViewModel: CultivationViewModel)
-    func cultivationViewModelDidFailedGetCultivations(_ cultivationViewModel: CultivationViewModel, with errorMessage: String)
+protocol CultivationViewModelInput {}
+
+protocol CultivationViewModelOutput {
+    var cultivations: Observable<[(cultivation: KikurageCultivation, documentId: String)]> { get }
 }
-class CultivationViewModel: NSObject {
+
+protocol CultivationViewModelType {
+    var input: CultivationViewModelInput { get }
+    var output: CultivationViewModelOutput { get }
+}
+
+class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
-
-    weak var delegate: CultivationViewModelDelegate?
-    /// きくらげ栽培記録データ
-    var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
-
     private let sectionNumber = 1
+    
+    private let subject = PublishSubject<[(cultivation: KikurageCultivation, documentId: String)]>()
+    
+    var input: CultivationViewModelInput { self }
+    var output: CultivationViewModelOutput { self }
+    
+    var cultivations: Observable<[(cultivation: KikurageCultivation, documentId: String)]> { subject.asObservable() }
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
     }
 }
 
-// MARK: - Private
+// MARK: - Config
 
 extension CultivationViewModel {
     private func sortCultivations() {
+        /* For Not Observable object
         cultivations.sort { cultivation1, cultivation2 -> Bool in
             guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.cultivation.viewDate) else { return false }
             guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.cultivation.viewDate) else { return false }
             return cultivationDate1 > cultivationDate2
         }
+        */
     }
 }
 
@@ -47,28 +59,26 @@ extension CultivationViewModel {
         cultivationRepository.getCultivations(kikurageUserId: kikurageUserId) { [weak self] response in
             switch response {
             case .success(let cultivations):
-                self?.cultivations = cultivations
-                self?.sortCultivations()
-                self?.delegate?.cultivationViewModelDidSuccessGetCultivations(self!)
+                Logger.verbose("\(cultivations)")
+                // TODO: 降順にソートさせる
+                self?.subject.onNext(cultivations)
             case .failure(let error):
-                self?.delegate?.cultivationViewModelDidFailedGetCultivations(self!, with: error.description())
+                Logger.verbose(error.localizedDescription)
+                self?.subject.onError(error)
             }
         }
     }
 }
 
 // MARK: - CollectionView DataSource Method
-
-extension CultivationViewModel: UICollectionViewDataSource {
+// TODO:
+/*
+extension CultivationViewModel: UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sectionNumber
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         cultivations.count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        cell.setUI(cultivation: cultivations[indexPath.row].cultivation)
-        return cell
-    }
 }
+*/
