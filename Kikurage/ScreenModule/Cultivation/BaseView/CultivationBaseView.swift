@@ -8,17 +8,11 @@
 
 import UIKit
 
-protocol CultivationBaseViewDelegate: AnyObject {
-    func cultivationBaseViewDidTapPostCultivationPageButton(_ cultivationBaseView: CultivationBaseView)
-}
-
 class CultivationBaseView: UIView {
-    @IBOutlet private weak var postPageButton: UIButton!
+    @IBOutlet private(set) weak var postPageButton: UIButton!
     @IBOutlet private(set) weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet private weak var noCultivationLabel: UILabel!
-
-    weak var delegate: CultivationBaseViewDelegate?
 
     // MARK: - Lifecycle
 
@@ -26,12 +20,6 @@ class CultivationBaseView: UIView {
         super.awakeFromNib()
         initUI()
         setCollectionView()
-    }
-
-    // MARK: - Action
-
-    @IBAction private func openCultivationPost(_ sender: Any) {
-        delegate?.cultivationBaseViewDidTapPostCultivationPageButton(self)
     }
 }
 
@@ -59,10 +47,6 @@ extension CultivationBaseView {
 extension CultivationBaseView {
     func setRefreshControlInCollectionView(_ refresh: UIRefreshControl) {
         collectionView.refreshControl = refresh
-    }
-    func configColletionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
-        collectionView.delegate = delegate
-        collectionView.dataSource = dataSource
     }
     func noCultivationLabelIsHidden(_ isHidden: Bool) {
         noCultivationLabel.isHidden = isHidden

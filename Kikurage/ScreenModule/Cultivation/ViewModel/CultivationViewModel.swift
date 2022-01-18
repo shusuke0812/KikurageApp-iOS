@@ -23,14 +23,14 @@ protocol CultivationViewModelType {
 
 class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
-    private let sectionNumber = 1
-    
+
     private let subject = PublishSubject<[(cultivation: KikurageCultivation, documentId: String)]>()
-    
+
     var input: CultivationViewModelInput { self }
     var output: CultivationViewModelOutput { self }
-    
+
     var cultivations: Observable<[(cultivation: KikurageCultivation, documentId: String)]> { subject.asObservable() }
+    private var cultivationCount: Int = 0
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
@@ -60,6 +60,7 @@ extension CultivationViewModel {
             switch response {
             case .success(let cultivations):
                 Logger.verbose("\(cultivations)")
+                self?.cultivationCount = cultivations.count
                 // TODO: 降順にソートさせる
                 self?.subject.onNext(cultivations)
             case .failure(let error):
@@ -69,16 +70,3 @@ extension CultivationViewModel {
         }
     }
 }
-
-// MARK: - CollectionView DataSource Method
-// TODO:
-/*
-extension CultivationViewModel: UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sectionNumber
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cultivations.count
-    }
-}
-*/
