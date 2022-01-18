@@ -30,7 +30,6 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
     var output: CultivationViewModelOutput { self }
 
     var cultivations: Observable<[(cultivation: KikurageCultivation, documentId: String)]> { subject.asObservable() }
-    private var cultivationCount: Int = 0
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
