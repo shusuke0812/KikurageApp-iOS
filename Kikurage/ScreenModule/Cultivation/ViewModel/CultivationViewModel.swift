@@ -59,7 +59,6 @@ extension CultivationViewModel {
             switch response {
             case .success(let cultivations):
                 Logger.verbose("\(cultivations)")
-                self?.cultivationCount = cultivations.count
                 // TODO: 降順にソートさせる
                 self?.subject.onNext(cultivations)
             case .failure(let error):
