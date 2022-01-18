@@ -33,7 +33,7 @@ protocol CultivationRepositoryProtocol {
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - completion: 投稿成功、失敗のハンドル
-    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], ClientError>) -> Void)
+    func getCultivations(kikurageUserId: String, completion: @escaping (Result<Cultivations, ClientError>) -> Void)
 }
 class CultivationRepository: CultivationRepositoryProtocol {
     /// Storageへ保存するデータのメタデータ
@@ -84,7 +84,7 @@ extension CultivationRepository {
             }
         }
     }
-    func getCultivations(kikurageUserId: String, completion: @escaping (Result<[(cultivation: KikurageCultivation, documentId: String)], ClientError>) -> Void) {
+    func getCultivations(kikurageUserId: String, completion: @escaping (Result<Cultivations, ClientError>) -> Void) {
         let db = Firestore.firestore()
         let collectionReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations)
         collectionReference.getDocuments { snapshot, error in
@@ -97,7 +97,7 @@ extension CultivationRepository {
                 completion(.failure(ClientError.apiError(.readError)))
                 return
             }
-            var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
+            var cultivations: Cultivations = []
             do {
                 for document in snapshot.documents {
                     let cultivation = try Firestore.Decoder().decode(KikurageCultivation.self, from: document.data())

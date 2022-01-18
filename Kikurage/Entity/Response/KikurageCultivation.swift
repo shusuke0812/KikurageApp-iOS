@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+internal typealias Cultivations = [(cultivation: KikurageCultivation, documentId: String)]
+
 struct KikurageCultivation: Codable {
     /// 栽培メモ
     var memo: String = ""

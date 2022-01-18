@@ -13,7 +13,7 @@ import RxSwift
 protocol CultivationViewModelInput {}
 
 protocol CultivationViewModelOutput {
-    var cultivations: Observable<[(cultivation: KikurageCultivation, documentId: String)]> { get }
+    var cultivations: Observable<Cultivations> { get }
 }
 
 protocol CultivationViewModelType {
@@ -24,12 +24,12 @@ protocol CultivationViewModelType {
 class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
 
-    private let subject = PublishSubject<[(cultivation: KikurageCultivation, documentId: String)]>()
+    private let subject = PublishSubject<Cultivations>()
 
     var input: CultivationViewModelInput { self }
     var output: CultivationViewModelOutput { self }
 
-    var cultivations: Observable<[(cultivation: KikurageCultivation, documentId: String)]> { subject.asObservable() }
+    var cultivations: Observable<Cultivations> { subject.asObservable() }
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
@@ -39,7 +39,7 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
 // MARK: - Config
 
 extension CultivationViewModel {
-    private func sortCultivations(cultivations: [(cultivation: KikurageCultivation, documentId: String)]) -> [(cultivation: KikurageCultivation, documentId: String)] {
+    private func sortCultivations(cultivations: Cultivations) -> Cultivations {
         cultivations.sorted { cultivation1, cultivation2 -> Bool in
             guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.cultivation.viewDate) else { return false }
             guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.cultivation.viewDate) else { return false }
