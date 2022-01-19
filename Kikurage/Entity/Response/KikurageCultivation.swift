@@ -6,10 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Firebase
 
-internal typealias Cultivations = [(cultivation: KikurageCultivation, documentId: String)]
+internal typealias KikurageCultivationTuple = (cultivation: KikurageCultivation, documentId: String)
 
 struct KikurageCultivation: Codable {
     /// 栽培メモ

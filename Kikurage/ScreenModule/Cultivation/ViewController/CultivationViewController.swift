@@ -100,19 +100,27 @@ extension CultivationViewController {
         )
         .disposed(by: disposeBag)
 
-        baseView.collectionView.rx.itemSelected.subscribe(
-            onNext: { indexPath in
-                // TODO: セルをタップして詳細画面へ遷移させる処理を書く
-            }
-        )
-        .disposed(by: disposeBag)
+        baseView.collectionView.rx.itemSelected
+            .bind(to: viewModel.input.itemSelected)
+            .disposed(by: disposeBag)
     }
     private func rxTransition() {
         baseView.postPageButton.rx.tap.asDriver()
             .drive(
             onNext: { [weak self] in
+                Logger.debug("\(Thread.main)")
                 guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
                 self?.present(vc, animated: true, completion: nil)
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.cultivation.subscribe(
+            onNext: { [weak self] cultivation in
+                Logger.debug("\(Thread.main)")
+                guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
+                vc.cultivation = cultivation.cultivation
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         )
         .disposed(by: disposeBag)
