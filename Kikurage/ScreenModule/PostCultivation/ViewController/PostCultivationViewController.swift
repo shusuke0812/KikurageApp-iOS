@@ -33,6 +33,7 @@ extension PostCultivationViewController {
         baseView.configTextView(delegate: self)
         baseView.configTextView(delegate: self)
         baseView.configCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
+        baseView.configTextField(delegate: self)
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }
