@@ -6,32 +6,73 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import Foundation
 import UIKit.UICollectionView
 import Firebase
+import RxSwift
+import RxCocoa
 
-protocol CultivationViewModelDelegate: AnyObject {
-    func cultivationViewModelDidSuccessGetCultivations(_ cultivationViewModel: CultivationViewModel)
-    func cultivationViewModelDidFailedGetCultivations(_ cultivationViewModel: CultivationViewModel, with errorMessage: String)
+protocol CultivationViewModelInput {
+    var itemSelected: AnyObserver<IndexPath> { get }
 }
-class CultivationViewModel: NSObject {
+
+protocol CultivationViewModelOutput {
+    var cultivations: Observable<[KikurageCultivationTuple]> { get }
+    var cultivation: Observable<KikurageCultivationTuple> { get }
+}
+
+protocol CultivationViewModelType {
+    var input: CultivationViewModelInput { get }
+    var output: CultivationViewModelOutput { get }
+}
+
+class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
 
-    weak var delegate: CultivationViewModelDelegate?
-    /// きくらげ栽培記録データ
-    var cultivations: [(cultivation: KikurageCultivation, documentId: String)] = []
+    private let disposeBag = RxSwift.DisposeBag()
+    private let subject = PublishSubject<[KikurageCultivationTuple]>()
 
-    private let sectionNumber = 1
+    var input: CultivationViewModelInput { self }
+    var output: CultivationViewModelOutput { self }
+
+    let itemSelected: AnyObserver<IndexPath>
+
+    var cultivations: Observable<[KikurageCultivationTuple]> { subject.asObservable() }
+    let cultivation: Observable<KikurageCultivationTuple>
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
+
+        // for selected collection view item
+        let _cultivation = PublishRelay<KikurageCultivationTuple>()
+        self.cultivation = _cultivation.asObservable()
+
+        let _itemSelected = PublishRelay<IndexPath>()
+        self.itemSelected = AnyObserver<IndexPath> { event in
+            guard let indexPath = event.element else {
+                return
+            }
+            _itemSelected.accept(indexPath)
+        }
+
+        _itemSelected
+            .withLatestFrom(cultivations) { ($0.row, $1) }
+            .flatMap { index, cultivations -> Observable<KikurageCultivationTuple> in
+                guard index < cultivations.count else {
+                    return .empty()
+                }
+                return .just(cultivations[index])
+            }
+            .bind(to: _cultivation)
+            .disposed(by: disposeBag)
     }
 }
 
-// MARK: - Private
+// MARK: - Config
 
 extension CultivationViewModel {
-    private func sortCultivations() {
-        cultivations.sort { cultivation1, cultivation2 -> Bool in
+    private func sortCultivations(cultivations: [KikurageCultivationTuple]) -> [KikurageCultivationTuple] {
+        cultivations.sorted { cultivation1, cultivation2 -> Bool in
             guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.cultivation.viewDate) else { return false }
             guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.cultivation.viewDate) else { return false }
             return cultivationDate1 > cultivationDate2
@@ -45,30 +86,19 @@ extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     func loadCultivations(kikurageUserId: String) {
         cultivationRepository.getCultivations(kikurageUserId: kikurageUserId) { [weak self] response in
+            guard let `self` = self else {
+                self?.subject.onError(ClientError.unknown)
+                return
+            }
             switch response {
             case .success(let cultivations):
-                self?.cultivations = cultivations
-                self?.sortCultivations()
-                self?.delegate?.cultivationViewModelDidSuccessGetCultivations(self!)
+                Logger.verbose("\(cultivations)")
+                let cultivations = self.sortCultivations(cultivations: cultivations)
+                self.subject.onNext(cultivations)
             case .failure(let error):
-                self?.delegate?.cultivationViewModelDidFailedGetCultivations(self!, with: error.description())
+                Logger.verbose(error.localizedDescription)
+                self.subject.onError(error)
             }
         }
-    }
-}
-
-// MARK: - CollectionView DataSource Method
-
-extension CultivationViewModel: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sectionNumber
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cultivations.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        cell.setUI(cultivation: cultivations[indexPath.row].cultivation)
-        return cell
     }
 }

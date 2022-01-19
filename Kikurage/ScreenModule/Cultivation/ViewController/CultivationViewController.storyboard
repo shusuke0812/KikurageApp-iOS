@@ -37,9 +37,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeL-SW-wEN">
                                 <rect key="frame" x="331" y="779" width="63" height="63"/>
                                 <state key="normal" image="addMemoButton"/>
-                                <connections>
-                                    <action selector="openCultivationPost:" destination="JsX-gy-r0o" eventType="touchUpInside" id="q1I-8A-5h7"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jar-At-3Vx"/>
