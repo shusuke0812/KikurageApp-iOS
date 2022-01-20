@@ -9,11 +9,13 @@
 import UIKit
 import SafariServices
 import PKHUD
+import RxSwift
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: RecipeViewModel!
 
+    private let diposeBag = RxSwift.DisposeBag()
     private let cellHeight: CGFloat = 160.0
 
     // MARK: - Lifecycle
@@ -32,6 +34,9 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
             HUD.show(.progress)
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
+
+        // Rx
+        rxTransition()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,7 +58,6 @@ extension RecipeViewController {
         setNavigationBar(title: R.string.localizable.screen_recipe_title())
     }
     private func setDelegateDataSource() {
-        baseView.delegate = self
         baseView.configTableView(delegate: self, dataSorce: viewModel)
         viewModel.delegate = self
     }
@@ -64,12 +68,20 @@ extension RecipeViewController {
     }
 }
 
-// MARK: - RecipeBaseView Delegate
+// MARK: - Rx
 
-extension RecipeViewController: RecipeBaseViewDelegate {
-    func recipeBaseViewDidTapPostRecipePageButton(_ recipeBaseView: RecipeBaseView) {
-        guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
+extension RecipeViewController {
+    private func rxBaseView() {
+    }
+    private func rxTransition() {
+        baseView.postPageButton.rx.tap.asDriver()
+            .drive(
+                onNext: { [weak self] in
+                    guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
+                    self?.present(vc, animated: true, completion: nil)
+                }
+            )
+            .disposed(by: diposeBag)
     }
 }
 

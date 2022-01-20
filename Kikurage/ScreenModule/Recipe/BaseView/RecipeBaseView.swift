@@ -8,26 +8,15 @@
 
 import UIKit
 
-protocol RecipeBaseViewDelegate: AnyObject {
-    func recipeBaseViewDidTapPostRecipePageButton(_ recipeBaseView: RecipeBaseView)
-}
-
 class RecipeBaseView: UIView {
     @IBOutlet private(set) weak var tableView: UITableView!
     @IBOutlet private weak var noRecipeLabel: UILabel!
-
-    weak var delegate: RecipeBaseViewDelegate?
+    @IBOutlet private(set) weak var postPageButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
         setTableView()
-    }
-
-    // MARK: - Action
-
-    @IBAction private func openRecipePost(_ sender: Any) {
-        delegate?.recipeBaseViewDidTapPostRecipePageButton(self)
     }
 }
 

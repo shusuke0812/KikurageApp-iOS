@@ -30,9 +30,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3g-dt-07M">
                                 <rect key="frame" x="331" y="779" width="63" height="63"/>
                                 <state key="normal" image="addMemoButton"/>
-                                <connections>
-                                    <action selector="openRecipePost:" destination="uu3-0x-fob" eventType="touchUpInside" id="fYC-gf-7wu"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="49h-m6-Xnv"/>
@@ -51,6 +48,7 @@
                         </constraints>
                         <connections>
                             <outlet property="noRecipeLabel" destination="2F5-2R-J3a" id="mUU-2N-ldh"/>
+                            <outlet property="postPageButton" destination="q3g-dt-07M" id="wYH-jc-r9o"/>
                             <outlet property="tableView" destination="x1J-99-6qg" id="7qg-4c-geG"/>
                         </connections>
                     </view>
