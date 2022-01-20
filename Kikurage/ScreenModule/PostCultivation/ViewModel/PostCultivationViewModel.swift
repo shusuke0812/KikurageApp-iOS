@@ -29,6 +29,20 @@ class PostCultivationViewModel {
     }
 }
 
+// MARK: - Validation
+
+extension PostCultivationViewModel {
+    func postValidation() -> Bool {
+        if cultivation.viewDate.isEmpty {
+            return false
+        }
+        if cultivation.memo.isEmpty {
+            cultivation.memo = R.string.localizable.screen_post_cultivation_valid_memo()
+        }
+        return true
+    }
+}
+
 // MARK: - Firebase Firestore
 
 extension PostCultivationViewModel {

@@ -122,6 +122,8 @@
 "screen_post_cultivation_date_textfield_placeholder" = "Selecting date";
 "screen_post_cultivation_alert_post_cultivation_title" = "Is it OK this post content?";
 "screen_post_cultivation_alert_post_cultivation_success_title" = "Saved cultivation record.";
+"screen_post_cultivation_valid_memo" = "No memo";
+"screen_post_cultivation_valid_view_date" = "Must select view date";
 
 // recipe
 "screen_recipe_title" = "Recipe";

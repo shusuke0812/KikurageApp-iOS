@@ -122,6 +122,8 @@
 "screen_post_cultivation_date_textfield_placeholder" = "日付を選択";
 "screen_post_cultivation_alert_post_cultivation_title" = "こちらの投稿内容で\n良いですか？";
 "screen_post_cultivation_alert_post_cultivation_success_title" = "栽培記録を保存しました";
+"screen_post_cultivation_valid_memo" = "メモが登録されていません";
+"screen_post_cultivation_valid_view_date" = "観察日を選択してください";
 
 // recipe
 "screen_recipe_title" = "りょうりきろく";
