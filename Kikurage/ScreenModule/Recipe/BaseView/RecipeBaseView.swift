@@ -47,9 +47,8 @@ extension RecipeBaseView {
     func setRefreshControlInTableView(_ refresh: UIRefreshControl) {
         tableView.refreshControl = refresh
     }
-    func configTableView(delegate: UITableViewDelegate, dataSorce: UITableViewDataSource) {
+    func configTableView(delegate: UITableViewDelegate) {
         tableView.delegate = delegate
-        tableView.dataSource = dataSorce
     }
     func noRecipeLabelIsHidden(_ isHidden: Bool) {
         noRecipeLabel.isHidden = isHidden

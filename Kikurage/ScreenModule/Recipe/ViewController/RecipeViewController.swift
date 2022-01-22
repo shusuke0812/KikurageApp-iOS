@@ -36,6 +36,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
         }
 
         // Rx
+        rxBaseView()
         rxTransition()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -58,8 +59,7 @@ extension RecipeViewController {
         setNavigationBar(title: R.string.localizable.screen_recipe_title())
     }
     private func setDelegateDataSource() {
-        baseView.configTableView(delegate: self, dataSorce: viewModel)
-        viewModel.delegate = self
+        baseView.configTableView(delegate: self)
     }
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
@@ -72,6 +72,35 @@ extension RecipeViewController {
 
 extension RecipeViewController {
     private func rxBaseView() {
+        viewModel.output.recipes.bind(to: baseView.tableView.rx.items) { tableview, row, element in
+            let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
+            let cell = tableview.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
+            cell.setUI(recipe: element.recipe)
+            return cell
+        }
+        .disposed(by: diposeBag)
+
+        viewModel.output.recipes.subscribe(
+            onNext: { [weak self] recipes in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self?.baseView.tableView.refreshControl?.endRefreshing()
+                    self?.baseView.tableView.reloadData()
+                    self?.baseView.noRecipeLabelIsHidden(!recipes.isEmpty)
+                }
+            }, onError: { error in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self.baseView.tableView.refreshControl?.endRefreshing()
+
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                }
+            }
+        )
+        .disposed(by: diposeBag)
+        
+        // MEMO: item on table view selected（nothing）
     }
     private func rxTransition() {
         baseView.postPageButton.rx.tap.asDriver()
@@ -82,6 +111,8 @@ extension RecipeViewController {
                 }
             )
             .disposed(by: diposeBag)
+        
+        // MEMO: subscrive to selected item on table view（nothing）
     }
 }
 
@@ -90,28 +121,6 @@ extension RecipeViewController {
 extension RecipeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         cellHeight
-    }
-}
-
-// MARK: - RecipeViewModel Delegate
-
-extension RecipeViewController: RecipeViewModelDelegate {
-    func recipeViewModelDidSuccessGetRecipes(_ recipeViewModel: RecipeViewModel) {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.tableView.refreshControl?.endRefreshing()
-
-            self.baseView.tableView.reloadData()
-            self.baseView.noRecipeLabelIsHidden(!(recipeViewModel.recipes.isEmpty))
-        }
-    }
-    func recipeViewModelDidFailedGetRecipes(_ recipeViewModel: RecipeViewModel, with errorMessage: String) {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.tableView.refreshControl?.endRefreshing()
-
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
     }
 }
 
