@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Logger {
+@available(*, deprecated, message: "there is Logger which is able to user for iOS14 or newer")
+struct KLogger {
     private static var dateString: String = DateHelper.formatToStringForLog()
 
     enum LogLevel: String {

@@ -42,7 +42,7 @@ extension CultivationCollectionViewCell {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
             imageView.sd_setImage(with: storageReference, placeholderImage: nil) { [weak self] _, error, _, _ in
                 if let error = error {
-                    Logger.verbose(error.localizedDescription)
+                    KLogger.verbose(error.localizedDescription)
                     return
                 }
                 // 日付を設定
