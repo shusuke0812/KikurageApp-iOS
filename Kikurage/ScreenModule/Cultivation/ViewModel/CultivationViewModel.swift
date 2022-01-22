@@ -45,10 +45,10 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
 
         // for selected collection view item
         let _cultivation = PublishRelay<KikurageCultivationTuple>()
-        self.cultivation = _cultivation.asObservable()
+        cultivation = _cultivation.asObservable()
 
         let _itemSelected = PublishRelay<IndexPath>()
-        self.itemSelected = AnyObserver<IndexPath> { event in
+        itemSelected = AnyObserver<IndexPath> { event in
             guard let indexPath = event.element else {
                 return
             }
