@@ -48,6 +48,7 @@
 - Swift
   - [Heart of Swift](https://heart-of-swift.github.io/)
   - [Swift API Guidelines](https://www.swift.org/documentation/api-design-guidelines/#strive-for-fluent-usage)
+  - [Logging: WWDC2020](https://developer.apple.com/videos/play/wwdc2020/10168/)
 
 ## 著者
 - [@shusuke0812](https://github.com/shusuke0812)
