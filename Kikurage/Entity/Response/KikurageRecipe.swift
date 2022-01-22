@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+typealias KikurageRecipeTuple = (recipe: KikurageRecipe, documentId: String)
+
 struct KikurageRecipe: Codable {
     /// 料理名
     var name: String = ""
