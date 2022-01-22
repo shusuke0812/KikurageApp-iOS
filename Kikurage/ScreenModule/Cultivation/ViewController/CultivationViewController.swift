@@ -72,7 +72,7 @@ extension CultivationViewController {
 extension CultivationViewController {
     private func rxBaseView() {
         viewModel.output.cultivations.bind(to: baseView.collectionView.rx.items) { collectionView, row, element in
-            let indexPath = IndexPath(index: row)
+            let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
             cell.setUI(cultivation: element.cultivation)
             return cell
