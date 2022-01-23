@@ -38,7 +38,7 @@
 ![system](https://user-images.githubusercontent.com/33107697/147388919-75406b53-610b-4760-a622-d219d019acbe.png)
 
 ## 開発環境
-- Xcode 13.0 (13A233)
+- Xcode 13.2.1 (13C100)
 - Swift 5.0 
 - CocoaPods 1.9.3  
 - MacOS BigSur 11.4 / MacBook Intel Processor Model
