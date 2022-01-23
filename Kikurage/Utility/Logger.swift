@@ -9,6 +9,11 @@
 import Foundation
 import os
 
+/**
+ * For getting iPhone/iPad Logs
+ * - Usage: KLogmanger.error("\(value, privacy: .public)") → change root user in MacBook  → In terminal, run # log collect --device --start '2022-01-23 16:00:00' --output kikurage.logarchive → open kikurage.logarchive using Console.app → search logs using Bundle ID
+ * - Attension: to save log and watch, set  `.public` of OSLogPrivacy with message arg
+ */
 @available(iOS 14, *)
 struct KLogManager {
 
