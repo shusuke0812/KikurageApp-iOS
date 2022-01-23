@@ -52,6 +52,13 @@ extension HomeViewModelTests {
     /*
     func testXXX() {
         homeViewModel.XXX()
+     
+        // MARK: Test flow
+        // given
+     
+        // when
+     
+        // then
     }
     */
 }
