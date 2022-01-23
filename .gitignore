@@ -105,4 +105,7 @@ iOSInjectionProject/
 # R.swift
 *.generated.swift
 
+# Log file
+*.logarchive
+
 #EOF
