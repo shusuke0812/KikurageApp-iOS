@@ -15,12 +15,12 @@
 <!-- 都度確認して変更すること -->
 - 開発環境
   - MacOS BigSur version 11.4
-  - Xcode version 13.0 (13A233)
+  - Xcode version 13.2.1 (13C100)
   - Swift version unspecified
   - CocoaPods version 1.9.3
 - テスト
-  - 実機 iPhone 11 Pro iOS 14.4.2
-  - シミュレータ iPhone 11 Pro iOS 14.4.2
+  - 実機 iPhone 11 Pro iOS 15.1
+  - シミュレータ iPhone 11 Pro iOS 15.0
 
 ## 確認したこと
 <!-- バグの場合はここに再現できる手順を書く -->
