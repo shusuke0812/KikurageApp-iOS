@@ -95,6 +95,7 @@ extension CultivationViewModel {
                 Logger.verbose("\(cultivations)")
                 let cultivations = self.sortCultivations(cultivations: cultivations)
                 self.subject.onNext(cultivations)
+                self.subject.onCompleted()
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
                 self.subject.onError(error)
