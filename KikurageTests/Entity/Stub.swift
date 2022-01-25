@@ -13,7 +13,7 @@ enum Stub {
     static let kikurageState = KikurageState(temperature: 20,
                                              humidity: 50,
                                              message: "test message",
-                                             judge: "test judge",
+                                             typeString: "normal",
                                              advice: "test advice")
     static let kikurageStateGraph = KikurageUser(productKey: "test",
                                                  kikurageName: "test",
@@ -21,4 +21,10 @@ enum Stub {
                                                  stateRef: nil,
                                                  createdAt: nil,
                                                  updatedAt: nil)
+    static let kikurageUser = KikurageUser(productKey: "testcode",
+                                           kikurageName: "test name",
+                                           cultivationStartDate: Date(),
+                                           stateRef: nil,
+                                           createdAt: nil,
+                                           updatedAt: nil)
 }
