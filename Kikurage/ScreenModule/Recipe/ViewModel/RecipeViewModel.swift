@@ -92,6 +92,7 @@ extension RecipeViewModel {
             case .success(let recipes):
                 let recipes = self.sortRecipes(recipes: recipes)
                 self.subject.onNext(recipes)
+                self.subject.onCompleted()
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
                 self.subject.onError(error)
