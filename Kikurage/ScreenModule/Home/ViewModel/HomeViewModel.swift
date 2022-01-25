@@ -58,6 +58,7 @@ extension HomeViewModel {
             case .success(let kikurageState):
                 Logger.verbose("\(kikurageState)")
                 self?.subject.onNext(kikurageState)
+                self?.subject.onCompleted()
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
                 self?.subject.onError(error)
@@ -71,6 +72,7 @@ extension HomeViewModel {
             case .success(let kikurageState):
                 Logger.verbose("\(kikurageState)")
                 self?.subject.onNext(kikurageState)
+                self?.subject.onCompleted()
             case .failure(let error):
                 Logger.verbose(error.localizedDescription)
                 self?.subject.onError(error)
