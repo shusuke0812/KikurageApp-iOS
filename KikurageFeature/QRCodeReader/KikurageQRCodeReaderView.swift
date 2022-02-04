@@ -58,6 +58,14 @@ extension KikurageQRCodeReaderView {
     }
 }
 
+// MARK: - Session
+
+extension KikurageQRCodeReaderView {
+    public func startRunning() {
+        session.startRunning()
+    }
+}
+
 // MARK: - AVCaptureMetadataOutputObjects Delegate
 
 extension KikurageQRCodeReaderView: AVCaptureMetadataOutputObjectsDelegate {
