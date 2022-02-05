@@ -21,7 +21,8 @@ public class KikurageQRCodeReaderView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        nil
+        super.init(coder: coder)
+        initDeviceCamera()
     }
 }
 
@@ -41,7 +42,7 @@ extension KikurageQRCodeReaderView {
         }
     }
     private func initiate(deviceInput: AVCaptureDeviceInput) {
-        if session.canAddInput(deviceInput) { return }
+        if !session.canAddInput(deviceInput) { return }
         session.addInput(deviceInput)
         
         let metadataOutput = AVCaptureMetadataOutput()
