@@ -112,6 +112,7 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
         guard baseView.kikurageQrcodeReaderView.isHidden else { return }
         baseView.showKikurageQrcodeReaderView(isHidden: false)
         queue.async { [weak self] in
+            // TODO: KikurageFeature内にてAVCaptureSessionとCaptureをUIViewに反映する処理を分ける（baseViewのメソッドをserial queueで実行すると`UIViewController.view must be used from main thread only`アラートが出てしまうため）
             self?.baseView.kikurageQrcodeReaderView.startRunning()
         }
     }
