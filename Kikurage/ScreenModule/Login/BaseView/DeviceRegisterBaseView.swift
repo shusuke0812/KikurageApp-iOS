@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import KikurageFeature
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {
     func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView)
+    func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView)
 }
 
 class DeviceRegisterBaseView: UIView {
     @IBOutlet private(set) weak var productKeyTextField: UITextField!
     @IBOutlet private(set) weak var kikurageNameTextField: UITextField!
     @IBOutlet private(set) weak var cultivationStartDateTextField: UITextField!
+    @IBOutlet private(set) weak var kikurageQrcodeReaderView: KikurageQRCodeReaderView!
+    @IBOutlet private weak var kikurageQrcodeReaderViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var deviceRegisterButton: UIButton!
+    @IBOutlet private weak var kikurageQrcodeReaderButton: UIButton!
+
+    private let kikurageQrcodeReaderViewHeight: CGFloat = 240
 
     weak var delegate: DeviceRegisterBaseViewDelegate?
 
@@ -32,6 +39,9 @@ class DeviceRegisterBaseView: UIView {
 
     @IBAction private func registerDevice(_ sender: Any) {
         delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
+    }
+    @IBAction private func openQrcodeReader(_ sender: Any) {
+        delegate?.deviceRegisterBaseViewDidTappedQrcodeReaderButton(self)
     }
 }
 
@@ -51,6 +61,10 @@ extension DeviceRegisterBaseView {
         kikurageNameTextField.placeholder = R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer()
 
         cultivationStartDateTextField.placeholder = R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
+
+        kikurageQrcodeReaderViewHeightConstraint.constant = kikurageQrcodeReaderViewHeight
+
+        kikurageQrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
     }
     private func initDatePicker() {
         // DatePcikerの基本設定
@@ -72,5 +86,12 @@ extension DeviceRegisterBaseView {
         productKeyTextField.delegate = delegate
         kikurageNameTextField.delegate = delegate
         cultivationStartDateTextField.delegate = delegate
+    }
+    func showKikurageQrcodeReaderView(isHidden: Bool) {
+        kikurageQrcodeReaderView.isHidden = isHidden
+        kikurageQrcodeReaderViewHeightConstraint.constant = isHidden ? 0 : kikurageQrcodeReaderViewHeight
+    }
+    func setProductKeyText(_ text: String) {
+        productKeyTextField.text = text
     }
 }

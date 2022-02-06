@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import KikurageFeature
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
@@ -23,6 +24,14 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
         navigationItem.title = R.string.localizable.screen_device_register_title()
         navigationItem.hidesBackButton = true
         adjustNavigationBarBackgroundColor()
+
+        baseView.showKikurageQrcodeReaderView(isHidden: true)
+        baseView.kikurageQrcodeReaderView.readQRcodeString = { [weak self] qrcode in
+            self?.baseView.showKikurageQrcodeReaderView(isHidden: true)
+            self?.baseView.setProductKeyText(qrcode)
+            self?.viewModel.kikurageUser?.productKey = qrcode
+            self?.viewModel.setStateReference(productKey: qrcode)
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -87,6 +96,11 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
             return false
         }
         return true
+    }
+    func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
+        guard baseView.kikurageQrcodeReaderView.isHidden else { return }
+        baseView.showKikurageQrcodeReaderView(isHidden: false)
+        baseView.kikurageQrcodeReaderView.startRunning()
     }
 }
 

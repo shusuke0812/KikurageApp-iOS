@@ -97,6 +97,7 @@
 "screen_device_register_kikurage_name_textfield_placeholer" = "Please enter kikurage name";
 "screen_device_register_cultivation_start_date_textfield_placeholer" = "Please enter cultivation start date";
 "screen_device_register_register_btn_name" = "Start";
+"screen_device_register_qrcode_btn_name" = "- Read product key -";
 
 // home
 "screen_home_title" = "Home";

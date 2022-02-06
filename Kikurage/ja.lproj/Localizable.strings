@@ -97,6 +97,7 @@
 "screen_device_register_kikurage_name_textfield_placeholer" = "きくらげ君の名前を入力してください";
 "screen_device_register_cultivation_start_date_textfield_placeholer" = "栽培開始日を入力してください";
 "screen_device_register_register_btn_name" = "はじめる";
+"screen_device_register_qrcode_btn_name" = "- プロダクトキー読み込み -";
 
 // home
 "screen_home_title" = "ホーム";
