@@ -13,7 +13,7 @@ public class KikurageQRCodeReaderView: UIView {
 
     public var readQRcodeString: ((String) -> Void)?
     
-    private let session = AVCaptureSession()
+    private let captureSession = AVCaptureSession()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,19 +42,19 @@ extension KikurageQRCodeReaderView {
         }
     }
     private func initiate(deviceInput: AVCaptureDeviceInput) {
-        if !session.canAddInput(deviceInput) { return }
-        session.addInput(deviceInput)
+        if !captureSession.canAddInput(deviceInput) { return }
+        captureSession.addInput(deviceInput)
         
         let metadataOutput = AVCaptureMetadataOutput()
-        if !session.canAddOutput(metadataOutput) { return }
-        session.addOutput(metadataOutput)
+        if !captureSession.canAddOutput(metadataOutput) { return }
+        captureSession.addOutput(metadataOutput)
         
         metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         metadataOutput.metadataObjectTypes = [.qr]
     }
     // MEMO: 呼び出し元の`viewDidLayoutSubviews()`で実行しないとautolayoutが崩れるためpublicメソッドにした
     public func configPreviewLayer() {
-        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(previewLayer)
@@ -65,8 +65,8 @@ extension KikurageQRCodeReaderView {
 
 extension KikurageQRCodeReaderView {
     public func startRunning() {
-        guard !session.isRunning else { return }
-        self.session.startRunning()
+        guard !captureSession.isRunning else { return }
+        captureSession.startRunning()
     }
 }
 
@@ -77,7 +77,7 @@ extension KikurageQRCodeReaderView: AVCaptureMetadataOutputObjectsDelegate {
         for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] {
             guard let value = metadata.stringValue else { return }
             
-            session.stopRunning()
+            captureSession.stopRunning()
             readQRcodeString?(value)
         }
     }
