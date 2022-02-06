@@ -12,6 +12,7 @@ import AVFoundation
 public class KikurageQRCodeReaderView: UIView {
 
     public var readQRcodeString: ((String) -> Void)?
+    public var catchError: ((Error) -> Void)?
     
     private let captureSession = AVCaptureSession()
 
@@ -37,7 +38,7 @@ extension KikurageQRCodeReaderView {
                 let deviceInput = try AVCaptureDeviceInput(device: backCamera)
                 initiate(deviceInput: deviceInput)
             } catch {
-                print("Error while creating video device input : \(error)")
+                catchError?(error)
             }
         }
     }

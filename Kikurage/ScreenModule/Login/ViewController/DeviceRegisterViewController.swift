@@ -34,6 +34,11 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
             self?.viewModel.kikurageUser?.productKey = qrcode
             self?.viewModel.setStateReference(productKey: qrcode)
         }
+        baseView.kikurageQrcodeReaderView.catchError = { error in
+            if #available(iOS 14, *) {
+                KLogManager.error(error.localizedDescription)
+            }
+        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
