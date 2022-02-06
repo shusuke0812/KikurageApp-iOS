@@ -14,6 +14,8 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     private var viewModel: DeviceRegisterViewModel!
 
+    private let queue = DispatchQueue.global(qos: .userInitiated)
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -32,6 +34,10 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
             self?.viewModel.kikurageUser?.productKey = qrcode
             self?.viewModel.setStateReference(productKey: qrcode)
         }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        baseView.kikurageQrcodeReaderView.configPreviewLayer()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -100,7 +106,9 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
         guard baseView.kikurageQrcodeReaderView.isHidden else { return }
         baseView.showKikurageQrcodeReaderView(isHidden: false)
-        baseView.kikurageQrcodeReaderView.startRunning()
+        queue.async { [weak self] in
+            self?.baseView.kikurageQrcodeReaderView.startRunning()
+        }
     }
 }
 
