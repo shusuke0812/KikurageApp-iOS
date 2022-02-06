@@ -63,6 +63,7 @@ extension DeviceRegisterBaseView {
         cultivationStartDateTextField.placeholder = R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
 
         kikurageQrcodeReaderViewHeightConstraint.constant = kikurageQrcodeReaderViewHeight
+        kikurageQrcodeReaderView.backgroundColor = .white
 
         kikurageQrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
     }
