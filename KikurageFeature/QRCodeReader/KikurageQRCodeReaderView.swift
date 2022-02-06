@@ -51,9 +51,11 @@ extension KikurageQRCodeReaderView {
         
         metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         metadataOutput.metadataObjectTypes = [.qr]
-        
+    }
+    // MEMO: 呼び出し元の`viewDidLayoutSubviews()`で実行しないとautolayoutが崩れるためpublicメソッドにした
+    public func configPreviewLayer() {
         let previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        previewLayer.frame = bounds
+        previewLayer.frame = layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(previewLayer)
     }
@@ -63,7 +65,8 @@ extension KikurageQRCodeReaderView {
 
 extension KikurageQRCodeReaderView {
     public func startRunning() {
-        session.startRunning()
+        guard !session.isRunning else { return }
+        self.session.startRunning()
     }
 }
 
