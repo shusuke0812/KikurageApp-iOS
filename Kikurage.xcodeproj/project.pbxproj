@@ -67,6 +67,8 @@
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
 		9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125325B69EA0007BCECB /* CalendarViewModel.swift */; };
 		9C91306E27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */; };
+		9C9145C727B1E77C0051BE1F /* KikurageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C627B1E77C0051BE1F /* KikurageUITests.swift */; };
+		9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */; };
 		9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */; };
 		9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */; };
 		9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */; };
@@ -143,6 +145,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9C9145CA27B1E77C0051BE1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C1ACF3F2225768A00A3D4D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C1ACF462225768A00A3D4D1;
+			remoteInfo = Kikurage;
+		};
 		9C96F7052768E97300C2E778 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9C1ACF3F2225768A00A3D4D1 /* Project object */;
@@ -244,6 +253,9 @@
 		9C91125025B68F2E007BCECB /* CalendarBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBaseView.swift; sourceTree = "<group>"; };
 		9C91125325B69EA0007BCECB /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageQRCodeReaderView.swift; sourceTree = "<group>"; };
+		9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C9145C627B1E77C0051BE1F /* KikurageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITests.swift; sourceTree = "<group>"; };
+		9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
@@ -337,6 +349,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C9145C127B1E77B0051BE1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C96F6FE2768E97300C2E778 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +412,7 @@
 				9C1ACF492225768A00A3D4D1 /* Kikurage */,
 				9CAC930E2789E4E50033DA33 /* KikurageFeature */,
 				9C96F7022768E97300C2E778 /* KikurageTests */,
+				9C9145C527B1E77C0051BE1F /* KikurageUITests */,
 				9C1ACF482225768A00A3D4D1 /* Products */,
 				923FE88E53278C489EBA6831 /* Frameworks */,
 				6B737EAC71CBD10DBFDF0B04 /* Pods */,
@@ -405,6 +425,7 @@
 				9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */,
 				9C96F7012768E97300C2E778 /* KikurageTests.xctest */,
 				9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */,
+				9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -474,6 +495,15 @@
 				9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */,
 			);
 			path = QRCodeReader;
+			sourceTree = "<group>";
+		};
+		9C9145C527B1E77C0051BE1F /* KikurageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9C9145C627B1E77C0051BE1F /* KikurageUITests.swift */,
+				9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */,
+			);
+			path = KikurageUITests;
 			sourceTree = "<group>";
 		};
 		9C96F7022768E97300C2E778 /* KikurageTests */ = {
@@ -1212,6 +1242,24 @@
 			productReference = 9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9C9145C327B1E77B0051BE1F /* KikurageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C9145CF27B1E77C0051BE1F /* Build configuration list for PBXNativeTarget "KikurageUITests" */;
+			buildPhases = (
+				9C9145C027B1E77B0051BE1F /* Sources */,
+				9C9145C127B1E77B0051BE1F /* Frameworks */,
+				9C9145C227B1E77B0051BE1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C9145CB27B1E77C0051BE1F /* PBXTargetDependency */,
+			);
+			name = KikurageUITests;
+			productName = KikurageUITests;
+			productReference = 9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9C96F7002768E97300C2E778 /* KikurageTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C96F70A2768E97300C2E778 /* Build configuration list for PBXNativeTarget "KikurageTests" */;
@@ -1256,12 +1304,16 @@
 		9C1ACF3F2225768A00A3D4D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = shusuke;
 				TargetAttributes = {
 					9C1ACF462225768A00A3D4D1 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					9C9145C327B1E77B0051BE1F = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 9C1ACF462225768A00A3D4D1;
 					};
 					9C96F7002768E97300C2E778 = {
 						CreatedOnToolsVersion = 13.0;
@@ -1289,6 +1341,7 @@
 				9C1ACF462225768A00A3D4D1 /* Kikurage */,
 				9C96F7002768E97300C2E778 /* KikurageTests */,
 				9CAC930C2789E4E50033DA33 /* KikurageFeature */,
+				9C9145C327B1E77B0051BE1F /* KikurageUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1326,6 +1379,13 @@
 				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 				9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C9145C227B1E77B0051BE1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1607,6 +1667,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C9145C027B1E77B0051BE1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */,
+				9C9145C727B1E77C0051BE1F /* KikurageUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9C96F6FD2768E97300C2E778 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1630,6 +1699,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9C9145CB27B1E77C0051BE1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C1ACF462225768A00A3D4D1 /* Kikurage */;
+			targetProxy = 9C9145CA27B1E77C0051BE1F /* PBXContainerItemProxy */;
+		};
 		9C96F7062768E97300C2E778 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9C1ACF462225768A00A3D4D1 /* Kikurage */;
@@ -1864,6 +1938,158 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PRODUCTION;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Production;
+		};
+		9C9145CC27B1E77C0051BE1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kikurage;
+			};
+			name = Debug;
+		};
+		9C9145CD27B1E77C0051BE1F /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kikurage;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging;
+		};
+		9C9145CE27B1E77C0051BE1F /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kikurage;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Production;
 		};
@@ -2351,6 +2577,16 @@
 				9C1ACF5A2225768A00A3D4D1 /* Debug */,
 				9CE3FE71275B504000FFDF19 /* Staging */,
 				9C1ACF5B2225768A00A3D4D1 /* Production */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Production;
+		};
+		9C9145CF27B1E77C0051BE1F /* Build configuration list for PBXNativeTarget "KikurageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C9145CC27B1E77C0051BE1F /* Debug */,
+				9C9145CD27B1E77C0051BE1F /* Staging */,
+				9C9145CE27B1E77C0051BE1F /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;

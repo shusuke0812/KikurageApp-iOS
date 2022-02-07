@@ -22,6 +22,16 @@
                ReferencedContainer = "container:Kikurage.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C9145C327B1E77B0051BE1F"
+               BuildableName = "KikurageUITests.xctest"
+               BlueprintName = "KikurageUITests"
+               ReferencedContainer = "container:Kikurage.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
