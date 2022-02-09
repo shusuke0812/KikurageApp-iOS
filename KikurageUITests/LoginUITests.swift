@@ -1,6 +1,6 @@
 //
-//  KikurageUITests.swift
-//  KikurageUITests
+//  LoginUITests.swift
+//  LoginUITests
 //
 //  Created by Shusuke Ota on 2022/2/8.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class KikurageUITests: XCTestCase {
+class LoginUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
