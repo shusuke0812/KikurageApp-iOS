@@ -154,6 +154,8 @@ included:
 excluded:
 - Carthage
 - Pods
+- KikurageTests
+- KikurageUITests
 
 # 1行の文字数制限
 line_length:
