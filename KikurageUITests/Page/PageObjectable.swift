@@ -17,3 +17,20 @@ protocol PageObjectable {
     
     func elementsExist(_ elements: [XCUIElement], timeout: Double) -> Bool
 }
+
+extension PageObjectable {
+    var app: XCUIApplication {
+        XCUIApplication()
+    }
+    var exists: Bool {
+        elementsExist([pageTitle], timeout: 5)
+    }
+    func elementsExist(_ elements: [XCUIElement], timeout: Double) -> Bool {
+        for element in elements {
+            if !element.waitForExistence(timeout: timeout) {
+                return false
+            }
+        }
+        return true
+    }
+}
