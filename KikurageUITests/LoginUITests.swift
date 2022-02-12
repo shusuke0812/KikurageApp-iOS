@@ -29,7 +29,7 @@ class LoginUITests: XCTestCase {
 
 }
 
-// MARK: -
+// MARK: - Test
 
 extension LoginUITests {
     private func testLogin() {
@@ -39,7 +39,7 @@ extension LoginUITests {
 
         let emailTextField = app.textFields["LoginBaseView_email_textfield"]
         emailTextField.tap()
-        emailTextField.typeText("test@kikurage.com")
+        emailTextField.typeText(createUniqueEmail())
 
         let passwordTextField = app.secureTextFields["LoginBaseView_password_textfield"]
         passwordTextField.tap()
@@ -47,5 +47,13 @@ extension LoginUITests {
 
         let loginButton = app.buttons["LoginBaseView_login_button"]
         loginButton.tap()
+    }
+}
+
+// MARK: - Stub
+
+extension LoginUITests {
+    private func createUniqueEmail() -> String {
+        "test+\(Date().timeIntervalSince1970)@kikurage.com"
     }
 }
