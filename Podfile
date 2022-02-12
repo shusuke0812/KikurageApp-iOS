@@ -9,6 +9,7 @@ def common_pods
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift', '~> 0.2'
   pod 'FirebaseUI/Storage', '~> 8.0'
+  pod 'Firebase/RemoteConfig'
   # UI
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
@@ -28,7 +29,6 @@ target 'Kikurage' do
   
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
-  pod 'Firebase/RemoteConfig'
 end
 
 target 'KikurageFeature' do
