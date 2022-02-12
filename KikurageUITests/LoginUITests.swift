@@ -34,18 +34,18 @@ class LoginUITests: XCTestCase {
 extension LoginUITests {
     private func testLogin() {
         // FIXME: AccessibilityIDの設定方法を考える（Kikurageモジュールで定義したManagerは使えない、理由は不明）
-        let button = app.buttons["TopBaseView_login_button"]
+        let button = app.buttons["TopBaseView_login_button"].firstMatch
         button.tap()
 
-        let emailTextField = app.textFields["LoginBaseView_email_textfield"]
+        let emailTextField = app.textFields["LoginBaseView_email_textfield"].firstMatch
         emailTextField.tap()
         emailTextField.typeText(createUniqueEmail())
 
-        let passwordTextField = app.secureTextFields["LoginBaseView_password_textfield"]
+        let passwordTextField = app.secureTextFields["LoginBaseView_password_textfield"].firstMatch
         passwordTextField.tap()
         passwordTextField.typeText("test123")
 
-        let loginButton = app.buttons["LoginBaseView_login_button"]
+        let loginButton = app.buttons["LoginBaseView_login_button"].firstMatch
         loginButton.tap()
     }
 }
