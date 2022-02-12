@@ -35,5 +35,16 @@ extension LoginUITests {
     private func testLogin() {
         let button = app.buttons["TopBaseView_login_button"]
         button.tap()
+
+        let emailTextField = app.textFields["LoginBaseView_email_textfield"]
+        emailTextField.tap()
+        emailTextField.typeText("test@kikurage.com")
+
+        let passwordTextField = app.secureTextFields["LoginBaseView_password_textfield"]
+        passwordTextField.tap()
+        passwordTextField.typeText("test123")
+
+        let loginButton = app.buttons["LoginBaseView_login_button"]
+        loginButton.tap()
     }
 }
