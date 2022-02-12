@@ -33,6 +33,7 @@ class LoginUITests: XCTestCase {
 
 extension LoginUITests {
     private func testLogin() {
+        // FIXME: AccessibilityIDの設定方法を考える（Kikurageモジュールで定義したManagerは使えない、理由は不明）
         let button = app.buttons["TopBaseView_login_button"]
         button.tap()
 
