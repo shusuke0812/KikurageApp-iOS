@@ -35,5 +35,6 @@ extension LoginUITests {
     private func testLogin() {
         let loginPage = TopPage().goToLogin()
         loginPage.login()
+        // XCTAssertテストを書く（ex. ログイン後に◯◯Labelが表示されている）
     }
 }
