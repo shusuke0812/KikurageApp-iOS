@@ -40,12 +40,15 @@ extension LoginBaseView {
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_login_login_btn_name(), for: .normal)
+        loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.loginLoginButton()
 
         emailTextField.autocorrectionType = .no
         emailTextField.placeholder = R.string.localizable.screen_login_email_textfield_placeholer()
+        emailTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginEmailTextField()
 
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = R.string.localizable.screen_login_password_textfield_placeholer()
+        passwordTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginPasswordTextField()
     }
 }
 

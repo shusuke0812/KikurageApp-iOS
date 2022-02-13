@@ -11,15 +11,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9C1ACF462225768A00A3D4D1"
-            BuildableName = "&#x304d;&#x304f;&#x3089;&#x3051;&#x3099;&#x541b;.app"
-            BlueprintName = "kikurageApp"
-            ReferencedContainer = "container:kikurageApp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -28,6 +19,16 @@
                BlueprintIdentifier = "9C96F7002768E97300C2E778"
                BuildableName = "KikurageTests.xctest"
                BlueprintName = "KikurageTests"
+               ReferencedContainer = "container:Kikurage.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C9145C327B1E77B0051BE1F"
+               BuildableName = "KikurageUITests.xctest"
+               BlueprintName = "KikurageUITests"
                ReferencedContainer = "container:Kikurage.xcodeproj">
             </BuildableReference>
          </TestableReference>
