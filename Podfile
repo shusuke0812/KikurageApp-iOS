@@ -33,7 +33,7 @@ end
 
 target 'KikurageFeature' do
   #inherit! :search_paths
-  common_pods
+  #common_podsは含めいないようにする（特にFirebaseを含めると`LoginHelper`で行うData型からUser型へのキャストができなくなる）
 end
 
 target 'KikurageTests' do
