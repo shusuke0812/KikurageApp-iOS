@@ -31,14 +31,14 @@ extension PushNavigationProtocol {
 protocol ModalNavigationProtocol {
     var viewController: UIViewController { get }
 
-    func present(to vc: UIViewController, style: UIModalPresentationStyle)
+    func present(to vc: UIViewController, style: UIModalPresentationStyle, completion: (() -> Void)?)
 }
 
 extension ModalNavigationProtocol {
-    func present(to vc: UIViewController, style: UIModalPresentationStyle  = .fullScreen) {
+    func present(to vc: UIViewController, style: UIModalPresentationStyle  = .fullScreen, completion: (() -> Void)? = nil) {
         let nc = CustomNavigationController(rootViewController: vc)
         nc.modalPresentationStyle = style
-        viewController.present(nc, animated: true, completion: nil)
+        viewController.present(nc, animated: true, completion: completion)
     }
 }
 

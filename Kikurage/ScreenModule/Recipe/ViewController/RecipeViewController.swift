@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import PKHUD
 
-class RecipeViewController: UIViewController, UIViewControllerNavigatable {
+class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: RecipeViewModel!
 
@@ -68,8 +68,7 @@ extension RecipeViewController {
 
 extension RecipeViewController: RecipeBaseViewDelegate {
     func recipeBaseViewDidTapPostRecipePageButton(_ recipeBaseView: RecipeBaseView) {
-        guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
+        modalToPostRecipe()
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class HomeViewController: UIViewController, UIViewControllerNavigatable {
+class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
     private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: HomeViewModel!
 
@@ -105,16 +105,13 @@ extension HomeViewController {
 
 extension HomeViewController: HomeBaseViewDelegate {
     func homeBaseViewDidTappedCultivationButton(_ homeBaseView: HomeBaseView) {
-        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToCultivation()
     }
     func homeBaseViewDidTappedRecipeButton(_ homeBaseView: HomeBaseView) {
-        guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToRecipe()
     }
     func homeBaseViewDidTappedCommunicationButton(_ homeBaseView: HomeBaseView) {
-        guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToCommunication()
     }
     func homeBaseViewDidTappedSideMenuButton(_ homeBaseView: HomeBaseView) {
         performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)

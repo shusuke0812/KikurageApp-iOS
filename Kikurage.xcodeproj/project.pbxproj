@@ -140,11 +140,15 @@
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
+		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
+		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
+		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
+		9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */; };
 		9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CFDB09426F2420B0093A770 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFDB09326F2420B0093A770 /* Logger.swift */; };
@@ -339,11 +343,15 @@
 		9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
+		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
+		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
+		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Cultivation.swift"; sourceTree = "<group>"; };
 		9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CFDB09326F2420B0093A770 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1237,6 +1245,10 @@
 			children = (
 				9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */,
 				9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */,
+				9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */,
+				9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */,
+				9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */,
+				9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1608,7 +1620,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1715,8 +1727,10 @@
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
 				9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */,
 				9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */,
+				9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */,
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
 				9CAFDC0F2780482900C40094 /* SettingViewModel.swift in Sources */,
+				9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */,
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
@@ -1735,6 +1749,7 @@
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
+				9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
 				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
 				9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */,
@@ -1756,6 +1771,7 @@
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */,
 				9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */,
+				9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */,
 				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
 				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
