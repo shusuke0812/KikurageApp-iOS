@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class CultivationViewController: UIViewController, UIViewControllerNavigatable {
+class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
     private var viewModel: CultivationViewModel!
 
@@ -65,9 +65,7 @@ extension CultivationViewController {
 
 extension CultivationViewController {
     private func transitionCultivationDetailPage(indexPath: IndexPath) {
-        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
-        vc.cultivation = viewModel.cultivations[indexPath.row].cultivation
-        navigationController?.pushViewController(vc, animated: true)
+        pushToCultivationDetail(cultivation: viewModel.cultivations[indexPath.row].cultivation)
     }
 }
 
@@ -75,8 +73,7 @@ extension CultivationViewController {
 
 extension CultivationViewController: CultivationBaseViewDelegate {
     func cultivationBaseViewDidTapPostCultivationPageButton(_ cultivationBaseView: CultivationBaseView) {
-        guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
+        modalToPostCultivation()
     }
 }
 

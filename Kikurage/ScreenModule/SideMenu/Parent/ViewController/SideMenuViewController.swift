@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SideMenuViewController: UIViewController, UIViewControllerNavigatable {
+class SideMenuViewController: UIViewController, UIViewControllerNavigatable, MenuAccessable {
     private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SideMenuViewModel!
 
@@ -127,22 +127,37 @@ extension SideMenuViewController: UITableViewDelegate {
         let sectionRow = viewModel.sections[indexPath.section].rows[indexPath.row]
         switch sectionRow {
         case .calendar:
+            modalToCalendar() { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            /*
             guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
             present(vc, animated: true) { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
+             */
         case .graph:
+            modalToGraph() { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            /*
             guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
             present(vc, animated: true) { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
+             */
         case .contact:
             openContactMailer()
         case .setting:
+            modalToSetting() { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            /*
             guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else { return }
             present(vc, animated: true) { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
+             */
         case .license:
             AcknowledgementControlller.openSettingApp(onError: {
                 UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_license_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
