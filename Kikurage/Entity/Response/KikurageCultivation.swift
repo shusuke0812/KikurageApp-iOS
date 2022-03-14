@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-internal typealias KikurageCultivationTuple = (cultivation: KikurageCultivation, documentId: String)
+typealias KikurageCultivationTuple = (cultivation: KikurageCultivation, documentId: String)
 
 struct KikurageCultivation: Codable {
     /// 栽培メモ
