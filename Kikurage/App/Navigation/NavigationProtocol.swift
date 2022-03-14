@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 // MARK: - Push
 
@@ -45,5 +46,31 @@ extension ModalNavigationProtocol {
 extension ModalNavigationProtocol where Self: UIViewController {
     var viewController: UIViewController {
         self
+    }
+}
+
+// MARK: - SafariView
+
+protocol SafariViewNavigationProtocol {
+    func presentSafariView(from vc: UIViewController, urlString: String?, onError:(() -> Void)?)
+}
+
+extension SafariViewNavigationProtocol {
+    func presentSafariView(from vc: UIViewController, urlString: String?, onError:(() -> Void)?) {
+        let url: URL?
+        guard let urlString = urlString else { onError?(); return }
+        // 不正なURLであるかを判定する（不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
+        if urlString.hasPrefix("http://") || urlString.hasPrefix("https") {
+            url = URL(string: urlString)
+        } else {
+            url = URL(string: "https://" + urlString)
+        }
+
+        if let url = url {
+            let safariVC = SFSafariViewController(url: url)
+            vc.present(safariVC, animated: true, completion: nil)
+        } else {
+            onError?()
+        }
     }
 }

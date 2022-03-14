@@ -8,13 +8,16 @@
 
 import UIKit
 
-protocol MenuAccessable: ModalNavigationProtocol {
+protocol MenuAccessable: ModalNavigationProtocol, SafariViewNavigationProtocol {
     func modalToCalendar(completion: (() -> Void)?)
     func modalToGraph(completion: (() -> Void)?)
     func modalToSetting(completion: (() -> Void)?)
+    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
 }
 
 extension MenuAccessable {
+    // MARK: - Modal
+
     func modalToCalendar(completion: (() -> Void)? = nil) {
         guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
         present(to: vc, style: .automatic, completion: completion)
@@ -26,5 +29,11 @@ extension MenuAccessable {
     func modalToSetting(completion: (() -> Void)? = nil) {
         guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else { return }
         present(to: vc, style: .automatic, completion: completion)
+    }
+
+    // MARK: - SafariView
+
+    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)? = nil){
+        presentSafariView(from: vc, urlString: urlString, onError: onError)
     }
 }

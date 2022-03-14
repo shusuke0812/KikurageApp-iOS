@@ -105,9 +105,9 @@ extension SideMenuViewController {
     private func openSearchRecipePage() {
         let query = (R.string.localizable.side_menu_search_recipe_word()).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         let urlString = "https://cookpad.com/search/\(query)"
-        transitionSafariViewController(urlString: urlString) {
+        presentSafariView(from: self, urlString: urlString, onError: {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
+        })
     }
 }
 
@@ -116,7 +116,9 @@ extension SideMenuViewController {
 extension SideMenuViewController {
     private func openKikurageDictionary() {
         let urlString = "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq"
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        presentSafariView(from: self, urlString: urlString, onError: {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+        })
     }
 }
 
@@ -137,7 +139,7 @@ extension SideMenuViewController: UITableViewDelegate {
             }
              */
         case .graph:
-            modalToGraph() { [weak self] in
+            modalToGraph { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
             /*
@@ -149,7 +151,7 @@ extension SideMenuViewController: UITableViewDelegate {
         case .contact:
             openContactMailer()
         case .setting:
-            modalToSetting() { [weak self] in
+            modalToSetting { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
             /*

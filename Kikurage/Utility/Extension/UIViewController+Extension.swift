@@ -20,11 +20,6 @@ protocol UIViewControllerNavigatable {
     ///   - buttonTitle: 戻るボタン名（例：戻る、空文字""）
     ///   - buttonColor: 戻るボタン色
     func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor)
-    /// Safariで指定したURLのページを開く
-    /// - Parameters:
-    ///   - urlString: URL
-    ///   - onError: エラー時のハンドリング
-    func transitionSafariViewController(urlString: String?, onError: (() -> Void)?)
     /// ImagePicker起動
     func openImagePicker()
     ///  iOS15対策：NavigationBarの背景色を設定（iOS15、NavBar背景色が透明になる）
@@ -38,23 +33,6 @@ extension UIViewControllerNavigatable where Self: UIViewController {
     func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = buttonColor
-    }
-    func transitionSafariViewController(urlString: String?, onError: (() -> Void)?) {
-        let url: URL?
-        guard let urlString = urlString else { onError?(); return }
-        // 不正なURLであるかを判定する（不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
-        if urlString.hasPrefix("http://") || urlString.hasPrefix("https") {
-            url = URL(string: urlString)
-        } else {
-            url = URL(string: "https://" + urlString)
-        }
-
-        if let url = url {
-            let safariVC = SFSafariViewController(url: url)
-            self.present(safariVC, animated: true, completion: nil)
-        } else {
-            onError?()
-        }
     }
     func openImagePicker() {
         let picker = UIImagePickerController()
