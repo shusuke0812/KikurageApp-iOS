@@ -16,7 +16,7 @@ protocol KikurageStateRepositoryProtocol {
     ///   - productId: プロダクトキー（ドキュメントID）
     ///   - completion: 読み込み成功、失敗のハンドル
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
-    func rx_getKikurageState(productId: String) -> Observable<KikurageState>
+    func getKikurageState(productId: String) -> Single<KikurageState>
     /// グラフデータを読み込む
     /// - Parameters:
     ///   - productId: プロダクトキー（ドキュメントID）
@@ -53,28 +53,27 @@ extension KikurageStateRepository {
             }
         }
     }
-    func rx_getKikurageState(productId: String) -> Observable<KikurageState> {
-        return Observable<KikurageState>.create { observer in
+    func getKikurageState(productId: String) -> Single<KikurageState> {
+        return Single<KikurageState>.create { single in
             let db = Firestore.firestore()
             let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productId)
             
             docRef.getDocument { snapshot, error in
                 if let error = error {
                     dump(error)
-                    observer.onError(ClientError.apiError(.readError))
+                    single(.failure(ClientError.apiError(.readError)))
                     return
                 }
                 guard let snapshotData = snapshot?.data() else {
-                    observer.onError(ClientError.apiError(.readError))
+                    single(.failure(ClientError.apiError(.readError)))
                     return
                 }
                 do {
                     var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                     kikurageState.convertToStateType()
-                    observer.onNext(kikurageState)
-                    observer.onCompleted()
+                    single(.success(kikurageState))
                 } catch {
-                    observer.onError(ClientError.responseParseError(error))
+                    single(.failure(ClientError.responseParseError(error)))
                 }
             }
             return Disposables.create()
