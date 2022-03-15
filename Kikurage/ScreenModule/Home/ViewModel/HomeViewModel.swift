@@ -70,16 +70,18 @@ extension HomeViewModel {
     }
     /// きくらげの状態をリッスンする
     func listenKikurageState() {
-        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { [weak self] response in
-            switch response {
-            case .success(let kikurageState):
-                Logger.verbose("\(kikurageState)")
-                self?.subject.onNext(kikurageState)
-                self?.subject.onCompleted()
-            case .failure(let error):
-                Logger.verbose(error.localizedDescription)
-                self?.subject.onError(error)
-            }
-        }
+        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
+            .subscribe(
+                onSuccess: { [weak self] kikurageState in
+                    Logger.verbose("\(kikurageState)")
+                    self?.subject.onNext(kikurageState)
+                    self?.subject.onCompleted()
+                },
+                onFailure: { [weak self] error in
+                    Logger.verbose(error.localizedDescription)
+                    self?.subject.onError(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
