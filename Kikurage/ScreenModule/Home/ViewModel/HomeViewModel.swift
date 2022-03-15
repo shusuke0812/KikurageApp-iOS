@@ -27,6 +27,7 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
     private let subject = PublishSubject<KikurageState>()
+    private let disposeBag = DisposeBag()
 
     var input: HomeViewModelInput { self }
     var output: HomeViewModelOutput { self }
@@ -53,17 +54,19 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { [weak self] response in
-            switch response {
-            case .success(let kikurageState):
-                Logger.verbose("\(kikurageState)")
-                self?.subject.onNext(kikurageState)
-                self?.subject.onCompleted()
-            case .failure(let error):
-                Logger.verbose(error.localizedDescription)
-                self?.subject.onError(error)
-            }
-        }
+        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey)
+            .subscribe(
+                onSuccess: { [weak self] kikurageState in
+                    Logger.verbose("\(kikurageState)")
+                    self?.subject.onNext(kikurageState)
+                    self?.subject.onCompleted()
+                },
+                onFailure: { [weak self] error in
+                    Logger.verbose(error.localizedDescription)
+                    self?.subject.onError(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
     /// きくらげの状態をリッスンする
     func listenKikurageState() {
