@@ -54,10 +54,10 @@ extension KikurageStateRepository {
         }
     }
     func getKikurageState(productId: String) -> Single<KikurageState> {
-        return Single<KikurageState>.create { single in
+        Single<KikurageState>.create { single in
             let db = Firestore.firestore()
             let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productId)
-            
+
             docRef.getDocument { snapshot, error in
                 if let error = error {
                     dump(error)
