@@ -12,7 +12,7 @@ import RxSwift
 protocol KikurageStateListenerRepositoryProtocol {
     /// きくらげの状態を監視して更新を通知する
     func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
-    func rx_listenKikurageState(productKey: String) -> Observable<KikurageState>
+    func listenKikurageState(productKey: String) -> Single<KikurageState>
 }
 
 class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
@@ -46,28 +46,27 @@ extension KikurageStateListenerRepository {
             }
         }
     }
-    func rx_listenKikurageState(productKey: String) -> Observable<KikurageState> {
-        return Observable<KikurageState>.create { observer in
+    func listenKikurageState(productKey: String) -> Single<KikurageState> {
+        Single<KikurageState>.create { single in
             let db = Firestore.firestore()
             let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productKey)
-            
+
             docRef.addSnapshotListener { snapshot, error in
                 if let error = error {
                     dump(error)
-                    observer.onError(ClientError.apiError(.readError))
+                    single(.failure(ClientError.apiError(.readError)))
                     return
                 }
                 guard let snapshotData = snapshot?.data() else {
-                    observer.onError(ClientError.apiError(.readError))
+                    single(.failure(ClientError.apiError(.readError)))
                     return
                 }
                 do {
                     var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                     kikurageState.convertToStateType()
-                    observer.onNext(kikurageState)
-                    observer.onCompleted()
+                    single(.success(kikurageState))
                 } catch {
-                    observer.onError(ClientError.responseParseError(error))
+                    single(.failure(ClientError.responseParseError(error)))
                 }
             }
             return Disposables.create()
