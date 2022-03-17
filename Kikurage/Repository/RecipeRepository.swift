@@ -37,8 +37,8 @@ protocol RecipeRepositoryProtocol {
     /// - Parameters:
     ///   - kikurageUserId: ユーザーID
     ///   - completion: 投稿成功、失敗のハンドル
-    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[(recipe: KikurageRecipe, documentId: String)], ClientError>) -> Void)
-    func getRecipes(kikurageUserId: String) -> Single<[(recipe: KikurageRecipe, documentId: String)]>
+    func getRecipes(kikurageUserId: String, completion: @escaping (Result<[KikurageRecipeTuple], ClientError>) -> Void)
+    func getRecipes(kikurageUserId: String) -> Single<[KikurageRecipeTuple]>
 }
 
 class RecipeRepository: RecipeRepositoryProtocol {
@@ -157,7 +157,7 @@ extension RecipeRepository {
         }
     }
     func getRecipes(kikurageUserId: String) -> Single<[(recipe: KikurageRecipe, documentId: String)]> {
-        Single<[(recipe: KikurageRecipe, documentId: String)]>.create { single in
+        Single<[KikurageRecipeTuple]>.create { single in
             let db = Firestore.firestore()
             let collectionReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes)
             collectionReference.getDocuments { snapshot, error in
