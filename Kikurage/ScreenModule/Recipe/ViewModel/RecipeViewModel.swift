@@ -83,20 +83,19 @@ extension RecipeViewModel {
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
     func loadRecipes(kikurageUserId: String) {
-        recipeRepository.getRecipes(kikurageUserId: kikurageUserId) { [weak self] response in
-            guard let `self` = self else {
-                self?.subject.onError(ClientError.unknown)
-                return
-            }
-            switch response {
-            case .success(let recipes):
-                let recipes = self.sortRecipes(recipes: recipes)
-                self.subject.onNext(recipes)
-                self.subject.onCompleted()
-            case .failure(let error):
-                Logger.verbose(error.localizedDescription)
-                self.subject.onError(error)
-            }
-        }
+        recipeRepository.getRecipes(kikurageUserId: kikurageUserId)
+            .subscribe(
+                onSuccess: { [weak self] recipes in
+                    guard let `self` = self else { return }
+                    let recipes = self.sortRecipes(recipes: recipes)
+                    self.subject.onNext(recipes)
+                    self.subject.onCompleted()
+                },
+                onFailure: { [weak self] error in
+                    Logger.verbose(error.localizedDescription)
+                    self?.subject.onError(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
