@@ -85,21 +85,20 @@ extension CultivationViewModel {
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     func loadCultivations(kikurageUserId: String) {
-        cultivationRepository.getCultivations(kikurageUserId: kikurageUserId) { [weak self] response in
-            guard let `self` = self else {
-                self?.subject.onError(ClientError.unknown)
-                return
-            }
-            switch response {
-            case .success(let cultivations):
-                Logger.verbose("\(cultivations)")
-                let cultivations = self.sortCultivations(cultivations: cultivations)
-                self.subject.onNext(cultivations)
-                self.subject.onCompleted()
-            case .failure(let error):
-                Logger.verbose(error.localizedDescription)
-                self.subject.onError(error)
-            }
-        }
+        cultivationRepository.getCultivations(kikurageUserId: kikurageUserId)
+            .subscribe(
+                onSuccess: { [weak self] cultivations in
+                    Logger.verbose("\(cultivations)")
+                    guard let `self` = self else { return }
+                    let cultivations = self.sortCultivations(cultivations: cultivations)
+                    self.subject.onNext(cultivations)
+                    self.subject.onCompleted()
+                },
+                onFailure: { [weak self] error in
+                    Logger.verbose(error.localizedDescription)
+                    self?.subject.onError(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
