@@ -21,7 +21,7 @@ protocol KikurageStateRepositoryProtocol {
     /// - Parameters:
     ///   - productId: プロダクトキー（ドキュメントID）
     ///   - completion: 読み込み成功、失敗のハンドル
-    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void)
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -79,7 +79,7 @@ extension KikurageStateRepository {
             return Disposables.create()
         }
     }
-    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void) {
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         let db = Firestore.firestore()
         let collectionRef: CollectionReference = db.collection(Constants.FirestoreCollectionName.states).document(productId).collection(Constants.FirestoreCollectionName.graph)
 
