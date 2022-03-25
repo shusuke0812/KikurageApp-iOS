@@ -31,6 +31,11 @@ Moblie App parts of this IoT product can be monitoring and observing to Kikurage
 ## Author
 - [@shusuke0812](https://github.com/shusuke0812)
 
+## License
+
+The author do not take any responsibility for your using this sorce. For more information see our full [license](https://github.com/shusuke0812/KikurageApp-iOS/blob/develop/LICENSE).
+
+
 <br>
 
 <details>
