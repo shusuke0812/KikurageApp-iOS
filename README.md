@@ -1,6 +1,16 @@
 Kikurage Cultivation App  
 ===
 
+## What is Kikurage ?
+Wood ear which is kind of mushroom is called `Kikurage` in Japanese.
+
+## Backgroud
+In 2018 summer, we participated Startup Weekend in Tokyo.  
+Developers who like Kikurage made an IoT product, this won a third prize in this event with 12 teams. After that, we challenged Crowdfunding and [GUGEN](https://gugen.jp/). Now on continuing to develop.
+
+## About
+Moblie App parts of this IoT product can be monitoring and observing to Kikurage cultivation state. This app use with [Kikurage cultivatuion kits](https://www.midorikoubou.jp/shopdetail/000000000007/).
+
 <br>
 
 <details>
