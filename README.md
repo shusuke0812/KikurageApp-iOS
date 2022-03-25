@@ -1,4 +1,4 @@
-キクラゲ栽培支援IoTデバイス開発  
+Kikurage Cultivation App  
 ===
 
 ## 背景
