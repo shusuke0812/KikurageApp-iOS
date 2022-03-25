@@ -1,6 +1,14 @@
 Kikurage Cultivation App  
 ===
 
+<br>
+
+<details>
+<summary><b>In Japanese</b></summary>
+<div>
+
+<br>
+
 ## 背景
 きっかけは2018年の夏に行われたStartup Weekendというイベント。  
 きくらげ好きなエンジニアが週末３日間で考えた本プロダクトがイベントで12チーム中3位になり、その後もGUGENやクラウドファンディングに挑戦。  
@@ -55,3 +63,6 @@ Kikurage Cultivation App
 
 ## その他
 - [コードレビュー内容](https://www.notion.so/KikurageApp-iOS-1c008377610146a382225e0b4b2ad47e)
+
+</div>
+</details>
