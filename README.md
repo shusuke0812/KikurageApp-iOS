@@ -11,6 +11,17 @@ Developers who like Kikurage made an IoT product, this won a third prize in this
 ## About
 Moblie App parts of this IoT product can be monitoring and observing to Kikurage cultivation state. This app use with [Kikurage cultivatuion kits](https://www.midorikoubou.jp/shopdetail/000000000007/).
 
+### IoT system
+![iot_system](https://user-images.githubusercontent.com/33107697/160153702-cb5e7b65-3795-4dfe-8902-1a273e7d30ae.png)
+
+### Contents
+1. Can watch Condition good or bad of Kikurage cultivation environment.
+2. Can record Kikurage cultivating condition with using photo, memo and date.
+3. Can ask the other users in Facebook group.
+
+![ui](https://user-images.githubusercontent.com/33107697/160155691-1730da8b-0ea7-4f0b-b703-7790fc54d552.png)
+
+
 <br>
 
 <details>
