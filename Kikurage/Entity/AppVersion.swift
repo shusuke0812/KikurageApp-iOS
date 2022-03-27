@@ -34,6 +34,30 @@ struct AppVersion {
     }
 }
 
+// MARK: - Comparable
+
+extension AppVersion: Comparable {
+    static func < (lhs: AppVersion, rhs: AppVersion) -> Bool {
+        if lhs.major < rhs.major {
+            return true
+        } else if lhs.major > rhs.major {
+            return false
+        }
+        
+        if lhs.minor < rhs.minor {
+            return true
+        } else if lhs.minor > rhs.minor {
+            return false
+        }
+        
+        if lhs.patch < rhs.patch {
+            return true
+        }
+        
+        return false
+    }
+}
+
 // MARK: - Private
 
 private let separator: Character = "."
