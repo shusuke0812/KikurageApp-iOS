@@ -92,6 +92,7 @@
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
+		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
 		9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */; };
 		9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */; };
@@ -295,6 +296,7 @@
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97679526EF798100126F80 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
+		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -1112,6 +1114,7 @@
 			children = (
 				9C7DCE9A26EE156B00F62DF8 /* Error */,
 				9C73CCCF26D53ECB00B4DE55 /* Response */,
+				9C9B273527F00F11000743D0 /* AppVersion.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1737,6 +1740,7 @@
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
+				9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */,
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
 				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
