@@ -58,6 +58,21 @@ extension AppVersion: Comparable {
     }
 }
 
+// MARK: - Equatable
+
+extension AppVersion: Equatable {
+    static func == (lhs: AppVersion, rhs: AppVersion) -> Bool {
+        if lhs.major == rhs.major {
+            return true
+        } else if lhs.minor == rhs.minor {
+            return true
+        } else if lhs.patch == rhs.patch {
+            return true
+        }
+        return false
+    }
+}
+
 // MARK: - Private
 
 private let separator: Character = "."
