@@ -53,6 +53,7 @@ extension AppRootController {
         presenter.loadFacebookGroupUrl()
         presenter.loadTermsUrl()
         presenter.loadPrivacyPolicyUrl()
+        presenter.loadLatestAppVersion()
     }
     private func initHUD() {
         view.addSubview(kikurageHUD)

@@ -98,4 +98,15 @@ extension AppPresenter {
             }
         }
     }
+    func loadLatestAppVersion() {
+        firebaseRemoteCofigRepository.fetch(key: .latestAppVersion) { response in
+            switch response {
+            case .success(let appVersionString):
+                let appVersion = AppVersion(versionString: appVersionString)
+                AppConfig.shared.latestAppVersion = appVersion
+            case .failure(let error):
+                KLogger.verbose("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
+            }
+        }
+    }
 }
