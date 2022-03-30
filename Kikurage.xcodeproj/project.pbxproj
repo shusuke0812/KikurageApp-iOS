@@ -148,6 +148,10 @@
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
+		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
+		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
+		9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */; };
+		9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
 		9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */; };
@@ -353,6 +357,10 @@
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
+		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
+		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
+		9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryViewController.storyboard; sourceTree = "<group>"; };
+		9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Cultivation.swift"; sourceTree = "<group>"; };
@@ -642,6 +650,7 @@
 				9CA20452271C785E00D65DD7 /* Graph */,
 				9CAFDC042780211000C40094 /* Setting */,
 				9CAFDBFB27800CCC00C40094 /* Acknowledgement */,
+				9CE029A527F48FA2002BDD30 /* Dictionary */,
 			);
 			path = Child;
 			sourceTree = "<group>";
@@ -1245,6 +1254,41 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		9CE029A527F48FA2002BDD30 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				9CE029A627F48FD4002BDD30 /* BaseView */,
+				9CE029A727F48FDE002BDD30 /* ViewController */,
+				9CE029A827F48FE8002BDD30 /* ViewModel */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		9CE029A627F48FD4002BDD30 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		9CE029A727F48FDE002BDD30 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */,
+				9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CE029A827F48FE8002BDD30 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9CE1EE3C27D4B8DF00B5BE9C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1465,6 +1509,7 @@
 				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
 				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9CAFDC0B27802F4300C40094 /* SettingViewController.storyboard in Resources */,
+				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
 				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 				9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */,
@@ -1773,6 +1818,7 @@
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
 				9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */,
 				9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */,
+				9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */,
 				9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */,
 				9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
@@ -1787,6 +1833,7 @@
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */,
+				9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
@@ -1810,6 +1857,7 @@
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
 				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
+				9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */,
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
 				9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
