@@ -149,7 +149,9 @@ extension SideMenuViewController: UITableViewDelegate {
         case .searchRecipe:
             openSearchRecipePage()
         case .kikurageDictionary:
-            openKikurageDictionary()
+            modalToDictionary { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
         baseView.tableView.deselectRow(at: indexPath, animated: true)
     }

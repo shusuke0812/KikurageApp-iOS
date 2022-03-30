@@ -30,10 +30,14 @@ extension MenuAccessable {
         guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else { return }
         present(to: vc, style: .automatic, completion: completion)
     }
+    func modalToDictionary(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.dictionaryViewController.instantiateInitialViewController() else { return }
+        present(to: vc, style: .automatic, completion: completion)
+    }
 
     // MARK: - SafariView
 
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)? = nil){
+    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)? = nil) {
         presentSafariView(from: vc, urlString: urlString, onError: onError)
     }
 }
