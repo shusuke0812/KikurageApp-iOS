@@ -16,8 +16,25 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="DictionaryBaseView" customModule="Kikurage" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G5-vh-jAv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="BZD-3P-Dkz">
+                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="3rz-de-TpT">
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2G5-vh-jAv" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kAP-tf-qxl"/>
+                            <constraint firstItem="2G5-vh-jAv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ond-Sy-D2b"/>
+                            <constraint firstItem="2G5-vh-jAv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yNg-O5-rBL"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -26,6 +43,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
