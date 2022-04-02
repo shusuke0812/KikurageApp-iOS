@@ -40,9 +40,6 @@
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esU-SI-Rh3">
                                 <rect key="frame" x="0.0" y="91" width="414" height="771"/>
-                                <connections>
-                                    <segue destination="eYA-eq-aZ4" kind="embed" id="Gcw-e6-dRt"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -69,14 +66,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="183" y="-83"/>
-        </scene>
-        <!--DictionaryTriviaViewController-->
-        <scene sceneID="dz0-uV-GgX">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DictionaryTriviaViewController" id="eYA-eq-aZ4" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iKV-5W-Eik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="887" y="-83"/>
         </scene>
     </scenes>
     <resources>
