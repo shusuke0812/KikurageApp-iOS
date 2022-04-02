@@ -9,9 +9,9 @@
 import UIKit
 
 class DictionaryViewController: UIViewController {
+    private var baseView: DictionaryBaseView { self.view as! DictionaryBaseView } // swiftlint:disable:this force_cast
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
