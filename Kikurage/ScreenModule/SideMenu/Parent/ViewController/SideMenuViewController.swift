@@ -111,17 +111,6 @@ extension SideMenuViewController {
     }
 }
 
-// MARK: - Kikurage Dictionary
-
-extension SideMenuViewController {
-    private func openKikurageDictionary() {
-        let urlString = "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq"
-        presentSafariView(from: self, urlString: urlString, onError: {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        })
-    }
-}
-
 // MARK: - UITableView Delegate
 
 extension SideMenuViewController: UITableViewDelegate {

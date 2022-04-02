@@ -38,13 +38,25 @@
                                     <action selector="changeViews:" destination="5EZ-qb-Rvc" eventType="valueChanged" id="2tM-IN-LFx"/>
                                 </connections>
                             </segmentedControl>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWt-Pp-eac">
+                                <rect key="frame" x="0.0" y="91" width="414" height="771"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="XWt-Pp-eac" firstAttribute="top" secondItem="kyO-hk-xK2" secondAttribute="bottom" constant="8" id="1ty-Bn-jnV"/>
                             <constraint firstItem="2G5-vh-jAv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="2cq-dG-IWN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kyO-hk-xK2" secondAttribute="trailing" constant="8" id="2m4-NW-gOW"/>
+                            <constraint firstItem="XWt-Pp-eac" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7dz-eU-vqo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XWt-Pp-eac" secondAttribute="trailing" id="DH0-Dw-Xeq"/>
                             <constraint firstItem="kyO-hk-xK2" firstAttribute="top" secondItem="2G5-vh-jAv" secondAttribute="bottom" constant="8" id="TN6-Cz-Vfk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XWt-Pp-eac" secondAttribute="bottom" id="etF-yM-fia"/>
                             <constraint firstItem="2G5-vh-jAv" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kAP-tf-qxl"/>
                             <constraint firstItem="kyO-hk-xK2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="x3B-da-eza"/>
                             <constraint firstItem="2G5-vh-jAv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yNg-O5-rBL"/>
@@ -52,6 +64,7 @@
                         <connections>
                             <outlet property="navigationItem" destination="BZD-3P-Dkz" id="ZEy-Jg-3qP"/>
                             <outlet property="segmentedControl" destination="kyO-hk-xK2" id="kmA-Sj-7qp"/>
+                            <outlet property="webView" destination="XWt-Pp-eac" id="TRT-0j-m9S"/>
                         </connections>
                     </view>
                 </viewController>
