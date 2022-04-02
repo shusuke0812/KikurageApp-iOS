@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class DictionaryTriviaViewController: UIViewController {
     private var baseView: DictionaryTriviaBaseView { self.view as! DictionaryTriviaBaseView } // swiftlint:disable:this force_cast
@@ -26,7 +27,7 @@ class DictionaryTriviaViewController: UIViewController {
 // MARK: - DictionaryTriviaBaseViewDelegate
 
 extension DictionaryTriviaViewController: DictionaryTriviaBaseViewDelegate {
-    func didFinishLoadWebSite(_ dictionaryTriviaBaseView: DictionaryTriviaBaseView) {
+    func dictonaryTriviaBaseView(_ dictionaryTriviaBaseView: DictionaryTriviaBaseView, didFinish navigation: WKNavigation!) {
         baseView.stopLoadingIndicator()
     }
 }

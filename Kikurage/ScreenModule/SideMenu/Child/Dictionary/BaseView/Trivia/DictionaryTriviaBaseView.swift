@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 protocol DictionaryTriviaBaseViewDelegate: AnyObject {
-    func didFinishLoadWebSite(_ dictionaryTriviaBaseView: DictionaryTriviaBaseView)
+    func dictonaryTriviaBaseView(_ dictionaryTriviaBaseView: DictionaryTriviaBaseView, didFinish navigation: WKNavigation!)
 }
 
 class DictionaryTriviaBaseView: UIView {
@@ -38,7 +38,7 @@ extension DictionaryTriviaBaseView {
 
 extension DictionaryTriviaBaseView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        delegate?.didFinishLoadWebSite(self)
+        delegate?.dictonaryTriviaBaseView(self, didFinish: navigation)
     }
 }
 
