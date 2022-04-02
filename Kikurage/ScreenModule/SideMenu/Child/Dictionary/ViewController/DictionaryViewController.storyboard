@@ -46,10 +46,14 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZAc-Hs-Kw4">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZAc-Hs-Kw4" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="1c4-Vg-wKZ"/>
                             <constraint firstItem="XWt-Pp-eac" firstAttribute="top" secondItem="kyO-hk-xK2" secondAttribute="bottom" constant="8" id="1ty-Bn-jnV"/>
                             <constraint firstItem="2G5-vh-jAv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="2cq-dG-IWN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kyO-hk-xK2" secondAttribute="trailing" constant="8" id="2m4-NW-gOW"/>
@@ -60,8 +64,10 @@
                             <constraint firstItem="2G5-vh-jAv" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kAP-tf-qxl"/>
                             <constraint firstItem="kyO-hk-xK2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="x3B-da-eza"/>
                             <constraint firstItem="2G5-vh-jAv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yNg-O5-rBL"/>
+                            <constraint firstItem="ZAc-Hs-Kw4" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ySx-ES-mTz"/>
                         </constraints>
                         <connections>
+                            <outlet property="loadingIndicatorView" destination="ZAc-Hs-Kw4" id="8We-32-09b"/>
                             <outlet property="navigationItem" destination="BZD-3P-Dkz" id="ZEy-Jg-3qP"/>
                             <outlet property="segmentedControl" destination="kyO-hk-xK2" id="kmA-Sj-7qp"/>
                             <outlet property="webView" destination="XWt-Pp-eac" id="TRT-0j-m9S"/>

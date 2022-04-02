@@ -13,6 +13,7 @@ class DictionaryBaseView: UIView {
     @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var webView: WKWebView!
+    @IBOutlet private weak var loadingIndicatorView: UIActivityIndicatorView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,5 +36,29 @@ extension DictionaryBaseView {
         if let url = URL(string: "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq") {
             webView.load(URLRequest(url: url))
         }
+        webView.navigationDelegate = self
+
+        startLoadingIndicator()
+    }
+}
+
+// MARK: - WKUIDelegate
+
+extension DictionaryBaseView: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        stopLoadingIndicator()
+    }
+}
+
+// MARK: - Config
+
+extension DictionaryBaseView {
+    func stopLoadingIndicator() {
+        loadingIndicatorView.stopAnimating()
+        loadingIndicatorView.isHidden = true
+    }
+    func startLoadingIndicator() {
+        loadingIndicatorView.startAnimating()
+        loadingIndicatorView.isHidden = false
     }
 }
