@@ -6,6 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+// Doc: https://developer.apple.com/documentation/uikit/view_controllers/creating_a_custom_container_view_controller
+
 import UIKit
 
 class DictionaryViewController: UIViewController {
@@ -15,8 +17,49 @@ class DictionaryViewController: UIViewController {
         let vc = R.storyboard.dictionaryTriviaViewController().instantiateInitialViewController() as! DictionaryTriviaViewController // swiftlint:disable:this force_cast
         return vc
     }()
+    private lazy var dictonaryTwitterVC: DictionaryTwitterViewController = {
+        let vc = R.storyboard.dictionaryTwitterViewController().instantiateInitialViewController() as! DictionaryTwitterViewController // swiftlint:disable:this force_cast
+        return vc
+    }()
+    private var currentViewController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        baseView.delegate = self
+
+        setContainerViewController(dictionaryTriviaVC)
+    }
+}
+
+// MARK: - Initialized
+
+extension DictionaryViewController {
+    private func setContainerViewController(_ vc: UIViewController) {
+        currentViewController = vc
+        addChild(vc)
+        baseView.addContainerView(vc.view)
+        vc.didMove(toParent: self)
+    }
+    private func removeContainerViewController() {
+        guard let vc = currentViewController else { return }
+        vc.willMove(toParent: nil)
+        vc.view.removeFromSuperview()
+        vc.removeFromParent()
+    }
+    private func showContainerView(index: Int) {
+        removeContainerViewController()
+        if index == 0 {
+            setContainerViewController(dictionaryTriviaVC)
+        } else if index == 1 {
+            setContainerViewController(dictonaryTwitterVC)
+        }
+    }
+}
+
+// MARK: - DictionaryBaseViewDelegate
+
+extension DictionaryViewController: DictionaryBaseViewDelegate {
+    func dictionaryBaseView(_ dictionaryBaseView: DictionaryBaseView, didChangeSegmentedAt index: Int) {
+        showContainerView(index: index)
     }
 }
