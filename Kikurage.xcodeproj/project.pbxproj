@@ -53,6 +53,9 @@
 		9C84701527F83ED900E5F05A /* DictionaryTriviaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */; };
 		9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */; };
 		9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */; };
+		9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */; };
+		9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */; };
+		9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */; };
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
 		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
@@ -262,6 +265,9 @@
 		9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaViewController.swift; sourceTree = "<group>"; };
 		9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTriviaViewController.storyboard; sourceTree = "<group>"; };
 		9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaBaseView.swift; sourceTree = "<group>"; };
+		9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewController.swift; sourceTree = "<group>"; };
+		9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTwitterViewController.storyboard; sourceTree = "<group>"; };
+		9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterBaseView.swift; sourceTree = "<group>"; };
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
 		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -575,6 +581,7 @@
 		9C84701B27F879E000E5F05A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -591,6 +598,8 @@
 		9C84701D27F879F800E5F05A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */,
+				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -1529,6 +1538,7 @@
 				9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */,
 				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
 				9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */,
+				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
 				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
@@ -1811,6 +1821,7 @@
 				9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */,
 				9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */,
 				9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */,
+				9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
@@ -1854,6 +1865,7 @@
 				9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */,
 				9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */,
 				9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */,
+				9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */,
 				9CFDB09426F2420B0093A770 /* Logger.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
 				9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */,
