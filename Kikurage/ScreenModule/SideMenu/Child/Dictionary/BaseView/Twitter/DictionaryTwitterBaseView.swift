@@ -13,6 +13,8 @@ class DictionaryTwitterBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        tableView.register(R.nib.tweetTableViewCell)
     }
 }
 

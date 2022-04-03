@@ -73,6 +73,7 @@
 		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
 		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
 		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
+		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
@@ -287,6 +288,7 @@
 		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
 		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
+		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
@@ -616,6 +618,14 @@
 				9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		9C8DD2DE27F98C0100C1C7A4 /* Tweet */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */,
+			);
+			path = Tweet;
 			sourceTree = "<group>";
 		};
 		9C91306C27AC2B2C0024AAF3 /* QRCodeReader */ = {
@@ -1348,6 +1358,7 @@
 		9CE029A827F48FE8002BDD30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9C8DD2DE27F98C0100C1C7A4 /* Tweet */,
 				9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1919,6 +1930,7 @@
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */,
 				9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */,
 				9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */,
 				9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */,
