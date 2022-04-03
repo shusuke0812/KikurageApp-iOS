@@ -105,6 +105,7 @@
 		9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */; };
 		9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D327F9AE8D0068FD61 /* Tweet.swift */; };
 		9C9981D627F9C3330068FD61 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D527F9C3330068FD61 /* APIClient.swift */; };
+		9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
@@ -327,6 +328,7 @@
 		9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSearchRequest.swift; sourceTree = "<group>"; };
 		9C9981D327F9AE8D0068FD61 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		9C9981D527F9C3330068FD61 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSeachRepository.swift; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
@@ -1240,6 +1242,7 @@
 				9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */,
 				9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */,
 				9C9981D527F9C3330068FD61 /* APIClient.swift */,
+				9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1912,6 +1915,7 @@
 				9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */,
 				9CAFDC0927802F1F00C40094 /* SettingViewController.swift in Sources */,
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
+				9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */,
