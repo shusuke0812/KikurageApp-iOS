@@ -104,6 +104,7 @@
 		9C9981D027F9A9CF0068FD61 /* APIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */; };
 		9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */; };
 		9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D327F9AE8D0068FD61 /* Tweet.swift */; };
+		9C9981D627F9C3330068FD61 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D527F9C3330068FD61 /* APIClient.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
@@ -325,6 +326,7 @@
 		9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestProtocol.swift; sourceTree = "<group>"; };
 		9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSearchRequest.swift; sourceTree = "<group>"; };
 		9C9981D327F9AE8D0068FD61 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		9C9981D527F9C3330068FD61 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
@@ -1237,6 +1239,7 @@
 				9CA0CDA926E8FED800116896 /* SignUpRepository.swift */,
 				9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */,
 				9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */,
+				9C9981D527F9C3330068FD61 /* APIClient.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1970,6 +1973,7 @@
 				9CC103B1270818A200067823 /* LoginUser.swift in Sources */,
 				9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */,
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
+				9C9981D627F9C3330068FD61 /* APIClient.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
 				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
