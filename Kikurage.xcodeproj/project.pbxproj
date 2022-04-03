@@ -522,6 +522,7 @@
 		9C73CCD026D53F3C00B4DE55 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				9C8DD2E127F9992000C1C7A4 /* AccessToken */,
 				9C9145D027B1E93F0051BE1F /* Manager */,
 				9CE3FE72275B582000FFDF19 /* Plist */,
 				9CA2045A271C799C00D65DD7 /* View */,
@@ -626,6 +627,13 @@
 				9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */,
 			);
 			path = Tweet;
+			sourceTree = "<group>";
+		};
+		9C8DD2E127F9992000C1C7A4 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AccessToken;
 			sourceTree = "<group>";
 		};
 		9C91306C27AC2B2C0024AAF3 /* QRCodeReader */ = {
