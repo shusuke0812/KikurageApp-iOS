@@ -71,6 +71,8 @@
 		9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD7259870970036CD0F /* RecipeRepository.swift */; };
 		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
 		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
+		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
+		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
@@ -283,6 +285,8 @@
 		9C8B0BD7259870970036CD0F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
 		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
+		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
@@ -581,6 +585,7 @@
 		9C84701B27F879E000E5F05A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
+				9C8DD2D927F948C200C1C7A4 /* TableViewCell */,
 				9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */,
 			);
 			path = Twitter;
@@ -602,6 +607,15 @@
 				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
 			);
 			path = Twitter;
+			sourceTree = "<group>";
+		};
+		9C8DD2D927F948C200C1C7A4 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */,
+				9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		9C91306C27AC2B2C0024AAF3 /* QRCodeReader */ = {
@@ -1553,6 +1567,7 @@
 				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
+				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
@@ -1899,6 +1914,7 @@
 				9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */,
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
+				9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
