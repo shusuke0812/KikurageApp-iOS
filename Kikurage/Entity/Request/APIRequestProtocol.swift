@@ -10,6 +10,7 @@ import Foundation
 
 protocol APIRequestProtocol {
     associatedtype Response: Decodable
+    associatedtype ErrorResponse: Error
 
     var baseUrl: String { get }
     var path: String { get }
@@ -17,7 +18,7 @@ protocol APIRequestProtocol {
     var parameters: [URLQueryItem]? { get }
     var header: [String: String]? { get }
     var body: Data? { get }
-    
+
     func buildUrlRequest() -> URLRequest
 }
 
@@ -31,14 +32,14 @@ extension APIRequestProtocol {
         default:
             fatalError("this is not supported http method: \(method)")
         }
-        
+
         var urlRequest = URLRequest(url: url)
         urlRequest.url = components?.url
         urlRequest.httpMethod = method.rawValue
         header?.forEach { key, value in
             urlRequest.addValue(value, forHTTPHeaderField: key)
         }
-        
+
         return urlRequest
     }
 }

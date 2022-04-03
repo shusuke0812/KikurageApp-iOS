@@ -18,6 +18,7 @@ struct TwitterSearchRequest: APIRequestProtocol {
     let bearerToken: String
 
     typealias Response = Tweet
+    typealias ErrorResponse = ClientError
 
     var baseUrl: String {
         "https://api.twitter.com/1.1"

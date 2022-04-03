@@ -9,10 +9,10 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void)
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, T.ErrorResponse>) -> Void)
 }
 
 struct APIClient: APIClientProtocol {
-    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void) {
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, T.ErrorResponse>) -> Void) {
     }
 }
