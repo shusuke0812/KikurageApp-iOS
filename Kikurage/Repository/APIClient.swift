@@ -38,6 +38,7 @@ struct APIClient: APIClientProtocol {
                     completion(.failure(errorResponse))
                 }
             } else {
+                // TODO: decode in case of custom error type
                 completion(.failure(errorResponse))
             }
         }
