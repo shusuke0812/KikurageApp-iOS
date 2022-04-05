@@ -21,6 +21,7 @@ def common_pods
   pod 'R.swift'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'SDWebImage'
 end
 
 target 'Kikurage' do
