@@ -15,10 +15,24 @@ struct TwitterSearchRequest: APIRequestProtocol {
     let searchCount: Int
     let maxId: Int64?
     let sinceId: Int64?
-    let bearerToken: String
 
     typealias Response = Tweet
     typealias ErrorResponse = ClientError
+
+    var bearerToken: String {
+        guard let url = Bundle.main.url(forResource: "TwitterAccessKey", withExtension: "json") else {
+            fatalError("can not read access token file")
+        }
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("can not read access token data")
+        }
+        guard let accessToken = try? JSONDecoder().decode(AccessToken.self, from: data) else {
+            fatalError("can not parse access token data to JSON")
+        }
+        return accessToken.bearerToken
+    }
+
+    // MARK: APIRequestProtocol properties
 
     var baseUrl: String {
         "https://api.twitter.com/1.1"
