@@ -57,4 +57,12 @@ struct DateHelper {
     static func getDateComponents(date: Date = Date()) -> DateComponents {
         Calendar.current.dateComponents([.year, .month, .day], from: date)
     }
+    /// `TwitterSearchAPI`レスポンスに使用する
+    static let twitterSearchDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
 }
