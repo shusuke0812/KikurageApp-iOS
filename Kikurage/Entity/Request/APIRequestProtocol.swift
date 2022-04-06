@@ -10,7 +10,6 @@ import Foundation
 
 protocol APIRequestProtocol {
     associatedtype Response: Decodable
-    associatedtype ErrorResponse: Error
 
     var baseUrl: String { get }
     var path: String { get }

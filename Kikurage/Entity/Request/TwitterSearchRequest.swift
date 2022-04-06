@@ -17,7 +17,6 @@ struct TwitterSearchRequest: APIRequestProtocol {
     let sinceId: Int64?
 
     typealias Response = Tweet
-    typealias ErrorResponse = ClientError
 
     var bearerToken: String {
         guard let url = Bundle.main.url(forResource: "TwitterAccessKey", withExtension: "json") else {
