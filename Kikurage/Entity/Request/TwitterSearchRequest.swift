@@ -59,4 +59,12 @@ struct TwitterSearchRequest: APIRequestProtocol {
     var body: Data? {
         nil
     }
+
+    // MARK: - Response decoder
+
+    func decodeData<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateHelper.twitterSearchDateFormat)
+        return try decoder.decode(type, from: data)
+    }
 }

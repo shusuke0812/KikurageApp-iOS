@@ -25,13 +25,9 @@ struct APIClient: APIClientProtocol {
                 completion(.failure(.unknown))
                 return
             }
-            // TODO: write decode method outside this type
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-
             if (200 ..< 300).contains(response.statusCode) {
                 do {
-                    let apiResponse = try decoder.decode(T.Response.self, from: data)
+                    let apiResponse = try request.decodeData(T.Response.self, from: data)
                     completion(.success(apiResponse))
                 } catch {
                     completion(.failure(.responseParseError(error)))
