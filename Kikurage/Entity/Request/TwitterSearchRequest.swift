@@ -52,7 +52,7 @@ struct TwitterSearchRequest: APIRequestProtocol {
     }
     var header: [String: String]? {
         [
-            "Content-type": "application/x-www-form-urlencoded;charset=UUTF-8",
+            "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
             "Authorization": "Bearer \(bearerToken)"
         ]
     }
