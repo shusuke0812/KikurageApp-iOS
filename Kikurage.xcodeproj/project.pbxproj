@@ -1236,6 +1236,7 @@
 		9CA7F36D25381EF8005BED9C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				9C9981D527F9C3330068FD61 /* APIClient.swift */,
 				9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */,
 				9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */,
 				9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */,
@@ -1244,7 +1245,6 @@
 				9CA0CDA926E8FED800116896 /* SignUpRepository.swift */,
 				9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */,
 				9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */,
-				9C9981D527F9C3330068FD61 /* APIClient.swift */,
 				9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */,
 			);
 			path = Repository;

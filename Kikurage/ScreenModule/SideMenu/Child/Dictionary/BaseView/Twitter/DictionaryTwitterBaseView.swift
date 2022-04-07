@@ -9,7 +9,7 @@
 import UIKit
 
 class DictionaryTwitterBaseView: UIView {
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private(set) weak var tableView: UITableView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

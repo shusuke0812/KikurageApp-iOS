@@ -14,12 +14,28 @@ class DictionaryTwitterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = DictionaryTwitterViewModel()
+        viewModel = DictionaryTwitterViewModel(twitterSearchRepository: TwitterSearchRepository())
+        viewModel.delegate = self
         baseView.configTableView(delegate: self, dataSource: viewModel)
+
+        viewModel.loadTweets()
     }
 }
 
 // MARK: - UITableViewDelegate
 
 extension DictionaryTwitterViewController: UITableViewDelegate {
+}
+
+// MARK: - DictionaryTwitterViewModelDelegate
+
+extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
+    func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel) {
+        DispatchQueue.main.async {
+            self.baseView.tableView.reloadData()
+        }
+    }
+    func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String) {
+        print(errorMessage)
+    }
 }
