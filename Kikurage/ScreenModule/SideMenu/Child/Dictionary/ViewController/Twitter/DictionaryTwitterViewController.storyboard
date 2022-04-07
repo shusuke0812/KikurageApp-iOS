@@ -21,23 +21,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7PY-iY-LUd">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="7PY-iY-LUd" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1Wv-Hd-2hU"/>
                             <constraint firstItem="pcl-nV-vM4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EJc-1z-Dr7"/>
                             <constraint firstAttribute="bottom" secondItem="pcl-nV-vM4" secondAttribute="bottom" id="OVT-X0-l4n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pcl-nV-vM4" secondAttribute="trailing" id="UaM-dm-4iL"/>
+                            <constraint firstItem="7PY-iY-LUd" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="rF4-C5-qYr"/>
                             <constraint firstItem="pcl-nV-vM4" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="tup-lc-wM3"/>
                         </constraints>
                         <connections>
+                            <outlet property="loadingIndicatorView" destination="7PY-iY-LUd" id="XYw-XR-yUL"/>
                             <outlet property="tableView" destination="pcl-nV-vM4" id="9Aq-Mr-cje"/>
                         </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="75"/>
+            <point key="canvasLocation" x="-23.188405797101453" y="75"/>
         </scene>
     </scenes>
     <resources>

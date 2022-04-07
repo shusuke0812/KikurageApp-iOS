@@ -18,6 +18,15 @@ class DictionaryTwitterViewController: UIViewController {
         viewModel.delegate = self
         baseView.configTableView(delegate: self, dataSource: viewModel)
 
+        loadTweets()
+    }
+}
+
+// MARK: - WebAPI
+
+extension DictionaryTwitterViewController {
+    private func loadTweets() {
+        baseView.startLoadingIndicator()
         viewModel.loadTweets()
     }
 }
@@ -32,10 +41,12 @@ extension DictionaryTwitterViewController: UITableViewDelegate {
 extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel) {
         DispatchQueue.main.async {
+            self.baseView.stopLoadingIndicator()
             self.baseView.tableView.reloadData()
         }
     }
     func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String) {
+        baseView.stopLoadingIndicator()
         print(errorMessage)
     }
 }
