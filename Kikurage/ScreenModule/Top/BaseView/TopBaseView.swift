@@ -63,6 +63,7 @@ extension TopBaseView {
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_top_login_btn_name(), for: .normal)
+        loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.topLoginButton()
 
         let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
         let termsButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_term(), attributes: attributes)

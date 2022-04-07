@@ -21,4 +21,7 @@ class AppConfig {
     // Screen header
     var navigationBarHeight: CGFloat?
     var safeAreaHeight: CGFloat?
+    
+    // iOS latest version
+    var latestAppVersion: AppVersion?
 }

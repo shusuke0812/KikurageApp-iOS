@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SideMenuViewController: UIViewController, UIViewControllerNavigatable {
+class SideMenuViewController: UIViewController, UIViewControllerNavigatable, MenuAccessable {
     private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SideMenuViewModel!
 
@@ -105,18 +105,9 @@ extension SideMenuViewController {
     private func openSearchRecipePage() {
         let query = (R.string.localizable.side_menu_search_recipe_word()).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         let urlString = "https://cookpad.com/search/\(query)"
-        transitionSafariViewController(urlString: urlString) {
+        presentSafariView(from: self, urlString: urlString, onError: {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
-    }
-}
-
-// MARK: - Kikurage Dictionary
-
-extension SideMenuViewController {
-    private func openKikurageDictionary() {
-        let urlString = "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq"
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        })
     }
 }
 
@@ -127,20 +118,17 @@ extension SideMenuViewController: UITableViewDelegate {
         let sectionRow = viewModel.sections[indexPath.section].rows[indexPath.row]
         switch sectionRow {
         case .calendar:
-            guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
-            present(vc, animated: true) { [weak self] in
+            modalToCalendar { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         case .graph:
-            guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
-            present(vc, animated: true) { [weak self] in
+            modalToGraph { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         case .contact:
             openContactMailer()
         case .setting:
-            guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else { return }
-            present(vc, animated: true) { [weak self] in
+            modalToSetting { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         case .license:
@@ -150,7 +138,9 @@ extension SideMenuViewController: UITableViewDelegate {
         case .searchRecipe:
             openSearchRecipePage()
         case .kikurageDictionary:
-            openKikurageDictionary()
+            modalToDictionary { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
         baseView.tableView.deselectRow(at: indexPath, animated: true)
     }

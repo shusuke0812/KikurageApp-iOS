@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class HomeViewController: UIViewController, UIViewControllerNavigatable {
+class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
     private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: HomeViewModel!
 
@@ -97,8 +97,7 @@ extension HomeViewController {
         baseView.footerButtonView.cultivationButton.rx.tap.asDriver()
             .drive(
             onNext: { [weak self] in
-                guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.pushToCultivation()
             }
         )
         .disposed(by: disposeBag)
@@ -106,8 +105,7 @@ extension HomeViewController {
         baseView.footerButtonView.recipeButton.rx.tap.asDriver()
             .drive(
             onNext: { [weak self] in
-                guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else { return }
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.pushToRecipe()
             }
         )
         .disposed(by: disposeBag)
@@ -115,8 +113,7 @@ extension HomeViewController {
         baseView.footerButtonView.communicationButton.rx.tap.asDriver()
             .drive(
             onNext: { [weak self] in
-                guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
-                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.pushToCommunication()
             }
         )
         .disposed(by: disposeBag)

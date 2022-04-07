@@ -1,20 +1,15 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
+use_frameworks!
 
-target 'Kikurage' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for kikurageApp
+def common_pods
   # Firebase
   pod 'Firebase/Auth'
-  pod 'Firebase/Crashlytics'
-  pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'Firebase/RemoteConfig'
   pod 'FirebaseFirestoreSwift', '~> 0.2'
   pod 'FirebaseUI/Storage', '~> 8.0'
+  pod 'Firebase/RemoteConfig'
   # UI
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
@@ -26,15 +21,30 @@ target 'Kikurage' do
   pod 'R.swift'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
+  pod 'SDWebImage'
+end
 
-  target 'KikurageTests' do
-    inherit! :search_paths
-  end
+target 'Kikurage' do
+  # Pods for kikurageApp
+  common_pods
+  
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+end
 
-  target 'KikurageFeature' do
-    inherit! :search_paths
-  end
+target 'KikurageFeature' do
+  #inherit! :search_paths
+  #common_podsは含めいないようにする（特にFirebaseを含めると`LoginHelper`で行うData型からUser型へのキャストができなくなる）
+end
 
+target 'KikurageTests' do
+  #inherit! :search_paths
+  common_pods
+end
+
+target 'KikurageUITests' do
+  #inherit! :search_paths
+  common_pods
 end
 
 post_install do | installer |

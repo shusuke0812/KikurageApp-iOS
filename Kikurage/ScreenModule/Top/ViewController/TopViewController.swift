@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopViewController: UIViewController, UIViewControllerNavigatable {
+class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: TopBaseView { self.view as! TopBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
@@ -35,21 +35,19 @@ extension TopViewController {
 extension TopViewController: TopBaseViewDelegate {
     func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
         let urlString = AppConfig.shared.termsUrl
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        presentSafariView(from: self, urlString: urlString, onError: nil)
     }
 
     func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
         let urlString = AppConfig.shared.privacyPolicyUrl
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        presentSafariView(from: self, urlString: urlString, onError: nil)
     }
 
     func topBaseViewDidTappedLoginButton(_ topBaseView: TopBaseView) {
-        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToLogin()
     }
 
     func topBaseViewDidTappedSignUpButton(_ topBaseView: TopBaseView) {
-        guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToSignUp()
     }
 }

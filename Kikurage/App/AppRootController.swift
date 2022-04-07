@@ -53,6 +53,7 @@ extension AppRootController {
         presenter.loadFacebookGroupUrl()
         presenter.loadTermsUrl()
         presenter.loadPrivacyPolicyUrl()
+        presenter.loadLatestAppVersion()
     }
     private func initHUD() {
         view.addSubview(kikurageHUD)
@@ -78,7 +79,7 @@ extension AppRootController {
     /// ログイン画面を開く
     private func showTopPage() {
         guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
     private func changeViewController(_ vc: UIViewController) {

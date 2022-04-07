@@ -8,10 +8,13 @@
 
 import UIKit
 import PKHUD
+import KikurageFeature
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     private var viewModel: DeviceRegisterViewModel!
+
+    private let queue = DispatchQueue.global(qos: .userInitiated)
 
     // MARK: - Lifecycle
 
@@ -23,6 +26,23 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
         navigationItem.title = R.string.localizable.screen_device_register_title()
         navigationItem.hidesBackButton = true
         adjustNavigationBarBackgroundColor()
+
+        baseView.showKikurageQrcodeReaderView(isHidden: true)
+        baseView.kikurageQrcodeReaderView.readQRcodeString = { [weak self] qrcode in
+            self?.baseView.showKikurageQrcodeReaderView(isHidden: true)
+            self?.baseView.setProductKeyText(qrcode)
+            self?.viewModel.kikurageUser?.productKey = qrcode
+            self?.viewModel.setStateReference(productKey: qrcode)
+        }
+        baseView.kikurageQrcodeReaderView.catchError = { error in
+            if #available(iOS 14, *) {
+                KLogManager.error(error.localizedDescription)
+            }
+        }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        baseView.kikurageQrcodeReaderView.configPreviewLayer()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -87,6 +107,14 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
             return false
         }
         return true
+    }
+    func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
+        guard baseView.kikurageQrcodeReaderView.isHidden else { return }
+        baseView.showKikurageQrcodeReaderView(isHidden: false)
+        queue.async { [weak self] in
+            // TODO: KikurageFeature内にてAVCaptureSessionとCaptureをUIViewに反映する処理を分ける（baseViewのメソッドをserial queueで実行すると`UIViewController.view must be used from main thread only`アラートが出てしまうため）
+            self?.baseView.kikurageQrcodeReaderView.startRunning()
+        }
     }
 }
 

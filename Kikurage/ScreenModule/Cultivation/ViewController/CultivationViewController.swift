@@ -10,7 +10,7 @@ import UIKit
 import PKHUD
 import RxSwift
 
-class CultivationViewController: UIViewController, UIViewControllerNavigatable {
+class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
     private var viewModel: CultivationViewModel!
 
@@ -108,19 +108,14 @@ extension CultivationViewController {
         baseView.postPageButton.rx.tap.asDriver()
             .drive(
             onNext: { [weak self] in
-                Logger.debug("\(Thread.main)")
-                guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
-                self?.present(vc, animated: true, completion: nil)
+                self?.modalToPostCultivation()
             }
         )
         .disposed(by: disposeBag)
 
         viewModel.output.cultivation.subscribe(
             onNext: { [weak self] cultivation in
-                Logger.debug("\(Thread.main)")
-                guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
-                vc.cultivation = cultivation.cultivation
-                self?.navigationController?.pushViewController(vc, animated: true)
+                transitionCultivationDetailPage(cultivation: cultivation)
             }
         )
         .disposed(by: disposeBag)
@@ -131,9 +126,7 @@ extension CultivationViewController {
 
 extension CultivationViewController {
     private func transitionCultivationDetailPage(cultivation: KikurageCultivation) {
-        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
-        vc.cultivation = cultivation
-        navigationController?.pushViewController(vc, animated: true)
+        pushToCultivationDetail(cultivation: cultivation.cultivation)
     }
 }
 

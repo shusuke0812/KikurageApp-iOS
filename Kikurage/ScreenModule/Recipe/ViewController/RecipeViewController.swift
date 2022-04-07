@@ -11,7 +11,7 @@ import SafariServices
 import PKHUD
 import RxSwift
 
-class RecipeViewController: UIViewController, UIViewControllerNavigatable {
+class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: RecipeViewModel!
 
@@ -106,8 +106,7 @@ extension RecipeViewController {
         baseView.postPageButton.rx.tap.asDriver()
             .drive(
                 onNext: { [weak self] in
-                    guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
-                    self?.present(vc, animated: true, completion: nil)
+                    self?.modalToPostRecipe()
                 }
             )
             .disposed(by: diposeBag)

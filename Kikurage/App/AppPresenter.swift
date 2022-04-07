@@ -74,7 +74,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupUrl = urlString
             case .failure(let error):
-                Logger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
+                KLogger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -84,7 +84,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.termsUrl = urlString
             case .failure(let error):
-                Logger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
+                KLogger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -94,7 +94,18 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.privacyPolicyUrl = urlString
             case .failure(let error):
-                Logger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+                KLogger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+            }
+        }
+    }
+    func loadLatestAppVersion() {
+        firebaseRemoteCofigRepository.fetch(key: .latestAppVersion) { response in
+            switch response {
+            case .success(let appVersionString):
+                let appVersion = AppVersion(versionString: appVersionString)
+                AppConfig.shared.latestAppVersion = appVersion
+            case .failure(let error):
+                KLogger.verbose("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
             }
         }
     }

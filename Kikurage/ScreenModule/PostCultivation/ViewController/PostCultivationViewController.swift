@@ -33,6 +33,7 @@ extension PostCultivationViewController {
         baseView.configTextView(delegate: self)
         baseView.configTextView(delegate: self)
         baseView.configCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
+        baseView.configTextField(delegate: self)
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }
@@ -42,12 +43,16 @@ extension PostCultivationViewController {
 
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView) {
-        UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
-            // HUD表示（始）
-            HUD.show(.progress)
-            if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-                self.viewModel.postCultivation(kikurageUserId: kikurageUserId)
+        if viewModel.postValidation() {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
+                // HUD表示（始）
+                HUD.show(.progress)
+                if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+                    self.viewModel.postCultivation(kikurageUserId: kikurageUserId)
+                }
             }
+        } else {
+            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_valid_view_date(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
     func postCultivationBaseViewDidTappedCloseButton(_ postCultivationBaseView: PostCultivationBaseView) {
