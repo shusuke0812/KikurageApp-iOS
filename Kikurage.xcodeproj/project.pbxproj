@@ -50,6 +50,12 @@
 		9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B42325305E6C00E650B5 /* UIView+Extension.swift */; };
 		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
 		9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */; };
+		9C84701527F83ED900E5F05A /* DictionaryTriviaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */; };
+		9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */; };
+		9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */; };
+		9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */; };
+		9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */; };
+		9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */; };
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
 		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
@@ -65,6 +71,9 @@
 		9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD7259870970036CD0F /* RecipeRepository.swift */; };
 		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
 		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
+		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
+		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
+		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
@@ -91,6 +100,12 @@
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
+		9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C9981CC27F9A5060068FD61 /* TwitterAccessKey.json */; };
+		9C9981D027F9A9CF0068FD61 /* APIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */; };
+		9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */; };
+		9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D327F9AE8D0068FD61 /* Tweet.swift */; };
+		9C9981D627F9C3330068FD61 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D527F9C3330068FD61 /* APIClient.swift */; };
+		9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
@@ -145,9 +160,14 @@
 		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
+		9CC47ACB27FC80E900F2DC17 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
+		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
+		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
+		9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */; };
+		9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
 		9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */; };
@@ -252,6 +272,12 @@
 		9C82B42325305E6C00E650B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateListenerRepository.swift; sourceTree = "<group>"; };
+		9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaViewController.swift; sourceTree = "<group>"; };
+		9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTriviaViewController.storyboard; sourceTree = "<group>"; };
+		9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaBaseView.swift; sourceTree = "<group>"; };
+		9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewController.swift; sourceTree = "<group>"; };
+		9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTwitterViewController.storyboard; sourceTree = "<group>"; };
+		9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterBaseView.swift; sourceTree = "<group>"; };
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
 		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -267,6 +293,9 @@
 		9C8B0BD7259870970036CD0F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
 		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
+		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
+		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
+		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
@@ -295,6 +324,12 @@
 		9C96997C2566118B00D655DA /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97679526EF798100126F80 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
+		9C9981CC27F9A5060068FD61 /* TwitterAccessKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TwitterAccessKey.json; sourceTree = "<group>"; };
+		9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestProtocol.swift; sourceTree = "<group>"; };
+		9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSearchRequest.swift; sourceTree = "<group>"; };
+		9C9981D327F9AE8D0068FD61 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		9C9981D527F9C3330068FD61 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSeachRepository.swift; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
@@ -350,9 +385,14 @@
 		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
+		9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
+		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
+		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
+		9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryViewController.storyboard; sourceTree = "<group>"; };
+		9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Cultivation.swift"; sourceTree = "<group>"; };
@@ -489,6 +529,7 @@
 				9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */,
 				9C70C44425AFDC8900069F8F /* KikurageStateGraph.swift */,
 				9CC103B0270818A200067823 /* LoginUser.swift */,
+				9C9981D327F9AE8D0068FD61 /* Tweet.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -496,6 +537,7 @@
 		9C73CCD026D53F3C00B4DE55 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				9C8DD2E127F9992000C1C7A4 /* AccessToken */,
 				9C9145D027B1E93F0051BE1F /* Manager */,
 				9CE3FE72275B582000FFDF19 /* Plist */,
 				9CA2045A271C799C00D65DD7 /* View */,
@@ -550,6 +592,66 @@
 			path = Static;
 			sourceTree = "<group>";
 		};
+		9C84701A27F879D900E5F05A /* Trivia */ = {
+			isa = PBXGroup;
+			children = (
+				9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */,
+			);
+			path = Trivia;
+			sourceTree = "<group>";
+		};
+		9C84701B27F879E000E5F05A /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DD2D927F948C200C1C7A4 /* TableViewCell */,
+				9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		9C84701C27F879F200E5F05A /* Trivia */ = {
+			isa = PBXGroup;
+			children = (
+				9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */,
+				9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */,
+			);
+			path = Trivia;
+			sourceTree = "<group>";
+		};
+		9C84701D27F879F800E5F05A /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */,
+				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		9C8DD2D927F948C200C1C7A4 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */,
+				9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		9C8DD2DE27F98C0100C1C7A4 /* Tweet */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */,
+			);
+			path = Tweet;
+			sourceTree = "<group>";
+		};
+		9C8DD2E127F9992000C1C7A4 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+				9C9981CC27F9A5060068FD61 /* TwitterAccessKey.json */,
+			);
+			path = AccessToken;
+			sourceTree = "<group>";
+		};
 		9C91306C27AC2B2C0024AAF3 /* QRCodeReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +686,15 @@
 				9CBF671E276DF35700081340 /* ViewModel */,
 			);
 			path = KikurageTests;
+			sourceTree = "<group>";
+		};
+		9C9981CE27F9A9A40068FD61 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */,
+				9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		9C9A8D9F26DFB990006C31E7 /* App */ = {
@@ -642,6 +753,7 @@
 				9CA20452271C785E00D65DD7 /* Graph */,
 				9CAFDC042780211000C40094 /* Setting */,
 				9CAFDBFB27800CCC00C40094 /* Acknowledgement */,
+				9CE029A527F48FA2002BDD30 /* Dictionary */,
 			);
 			path = Child;
 			sourceTree = "<group>";
@@ -1114,7 +1226,9 @@
 			children = (
 				9C7DCE9A26EE156B00F62DF8 /* Error */,
 				9C73CCCF26D53ECB00B4DE55 /* Response */,
+				9C9981CE27F9A9A40068FD61 /* Request */,
 				9C9B273527F00F11000743D0 /* AppVersion.swift */,
+				9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1122,6 +1236,7 @@
 		9CA7F36D25381EF8005BED9C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				9C9981D527F9C3330068FD61 /* APIClient.swift */,
 				9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */,
 				9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */,
 				9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */,
@@ -1130,6 +1245,7 @@
 				9CA0CDA926E8FED800116896 /* SignUpRepository.swift */,
 				9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */,
 				9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */,
+				9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1243,6 +1359,46 @@
 				9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		9CE029A527F48FA2002BDD30 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				9CE029A627F48FD4002BDD30 /* BaseView */,
+				9CE029A727F48FDE002BDD30 /* ViewController */,
+				9CE029A827F48FE8002BDD30 /* ViewModel */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		9CE029A627F48FD4002BDD30 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9C84701B27F879E000E5F05A /* Twitter */,
+				9C84701A27F879D900E5F05A /* Trivia */,
+				9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		9CE029A727F48FDE002BDD30 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C84701D27F879F800E5F05A /* Twitter */,
+				9C84701C27F879F200E5F05A /* Trivia */,
+				9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */,
+				9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CE029A827F48FE8002BDD30 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DD2DE27F98C0100C1C7A4 /* Tweet */,
+				9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CE1EE3C27D4B8DF00B5BE9C /* Navigation */ = {
@@ -1442,7 +1598,9 @@
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
 				9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */,
+				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
 				9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */,
+				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
 				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
@@ -1455,8 +1613,10 @@
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
+				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
+				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
@@ -1465,6 +1625,7 @@
 				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
 				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9CAFDC0B27802F4300C40094 /* SettingViewController.storyboard in Resources */,
+				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
 				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 				9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */,
@@ -1720,9 +1881,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */,
+				9C84701527F83ED900E5F05A /* DictionaryTriviaViewController.swift in Sources */,
 				9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */,
 				9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */,
 				9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */,
+				9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
@@ -1746,6 +1909,7 @@
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
 				9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */,
+				9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
 				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
@@ -1754,6 +1918,7 @@
 				9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */,
 				9CAFDC0927802F1F00C40094 /* SettingViewController.swift in Sources */,
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
+				9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */,
@@ -1765,6 +1930,7 @@
 				9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */,
 				9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */,
 				9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */,
+				9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */,
 				9CFDB09426F2420B0093A770 /* Logger.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
 				9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */,
@@ -1773,6 +1939,7 @@
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
 				9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */,
 				9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */,
+				9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */,
 				9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */,
 				9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
@@ -1782,12 +1949,15 @@
 				9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */,
 				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
 				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
+				9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */,
+				9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
+				9C9981D027F9A9CF0068FD61 /* APIRequestProtocol.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
 				9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */,
@@ -1795,11 +1965,14 @@
 				9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */,
 				9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */,
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
+				9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
+				9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */,
 				9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */,
 				9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */,
 				9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */,
@@ -1807,9 +1980,11 @@
 				9CC103B1270818A200067823 /* LoginUser.swift in Sources */,
 				9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */,
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
+				9C9981D627F9C3330068FD61 /* APIClient.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
 				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
+				9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */,
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
 				9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
@@ -1818,6 +1993,7 @@
 				9C7E588527761AD400A151C0 /* FooterButtonView.swift in Sources */,
 				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 				9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */,
+				9CC47ACB27FC80E900F2DC17 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
