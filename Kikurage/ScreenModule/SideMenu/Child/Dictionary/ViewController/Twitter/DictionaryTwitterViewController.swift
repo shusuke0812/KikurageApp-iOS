@@ -46,7 +46,10 @@ extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
         }
     }
     func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String) {
-        baseView.stopLoadingIndicator()
-        print(errorMessage)
+        DispatchQueue.main.async {
+            self.baseView.stopLoadingIndicator()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
+            }
+        }
     }
 }
