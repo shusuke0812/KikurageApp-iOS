@@ -19,7 +19,7 @@ class DictionaryTwitterViewModel: NSObject {
 
     weak var delegate: DictionaryTwitterViewModelDelegate?
 
-    private var tweets: [Tweet.Status] = []
+    private(set) var tweets: [Tweet.Status] = []
 
     init(twitterSearchRepository: TwitterSearchRepositoryProtocol) {
         self.twitterSearchRepository = twitterSearchRepository

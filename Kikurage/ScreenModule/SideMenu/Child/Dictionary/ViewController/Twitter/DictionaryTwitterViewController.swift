@@ -42,6 +42,7 @@ extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel) {
         DispatchQueue.main.async {
             self.baseView.stopLoadingIndicator()
+            self.baseView.showTweetsEmptyView(isEmpty: dictionaryTwitterViewModel.tweets.isEmpty)
             self.baseView.tableView.reloadData()
         }
     }
@@ -49,6 +50,7 @@ extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
         DispatchQueue.main.async {
             self.baseView.stopLoadingIndicator()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
+                self?.baseView.showTweetsEmptyView(isEmpty: dictionaryTwitterViewModel.tweets.isEmpty)
             }
         }
     }
