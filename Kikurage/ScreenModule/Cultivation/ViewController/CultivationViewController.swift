@@ -20,7 +20,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
+        viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
 
         setDelegateDataSource()
         setNavigationItem()
