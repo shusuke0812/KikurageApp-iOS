@@ -114,19 +114,11 @@ extension CultivationViewController {
         .disposed(by: disposeBag)
 
         viewModel.output.cultivation.subscribe(
-            onNext: { [weak self] cultivation in
-                transitionCultivationDetailPage(cultivation: cultivation)
+            onNext: { [weak self] cultivationTuple in
+                self?.pushToCultivationDetail(cultivation: cultivationTuple.cultivation)
             }
         )
         .disposed(by: disposeBag)
-    }
-}
-
-// MARK: - Transition
-
-extension CultivationViewController {
-    private func transitionCultivationDetailPage(cultivation: KikurageCultivation) {
-        pushToCultivationDetail(cultivation: cultivation.cultivation)
     }
 }
 
