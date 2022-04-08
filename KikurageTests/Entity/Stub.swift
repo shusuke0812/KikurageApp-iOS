@@ -21,4 +21,10 @@ enum Stub {
                                                  stateRef: nil,
                                                  createdAt: nil,
                                                  updatedAt: nil)
+    static let kikurageUser = KikurageUser(productKey: "testcode",
+                                           kikurageName: "test name",
+                                           cultivationStartDate: Date(),
+                                           stateRef: nil,
+                                           createdAt: nil,
+                                           updatedAt: nil)
 }

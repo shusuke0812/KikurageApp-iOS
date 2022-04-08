@@ -208,13 +208,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="TeJ-IM-bD8">
-                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6">
-                            <connections>
-                                <action selector="openSideMenu:" destination="fri-rL-faW" id="dzX-yO-IPw"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="v7k-rS-zX6"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="sideMenuBarButtonItem" destination="v7k-rS-zX6" id="JP5-ym-5Yk"/>
                         <segue destination="Leo-91-yKm" kind="presentation" identifier="SideMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="nuy-Rx-qvg"/>
                     </connections>
                 </viewController>

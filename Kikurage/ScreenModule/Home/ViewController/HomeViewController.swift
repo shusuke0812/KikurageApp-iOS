@@ -13,6 +13,8 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
     private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: HomeViewModel!
 
+    @IBOutlet private weak var sideMenuBarButtonItem: UIBarButtonItem!
+
     private let disposeBag = RxSwift.DisposeBag()
     private var dateTimer: Timer?
 
@@ -23,18 +25,21 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Util
-        viewModel = HomeViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository())
-        viewModel.config(kikurageUser: kikurageUser, kikurageState: kikurageState)
-        setDelegateDataSource()
+        // Config
+        viewModel = HomeViewModel(kikurageUser: kikurageUser, kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository())
+        viewModel.listenKikurageState()
 
         // UI
-        baseView.setKikurageNameUI(kikurageUser: viewModel.kikurageUser)
+        baseView.setKikurageNameUI(kikurageUser: kikurageUser)
         setNavigationItem()
         adjustNavigationBarBackgroundColor()
 
         // Other
         makeForeBackgroundObserver()
+
+        // Rx
+        rxTransition()
+        rxBaseView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,17 +69,62 @@ extension HomeViewController {
     @objc private func updateUI() {
         baseView.updateTimeLabel()
     }
-    private func setDelegateDataSource() {
-        viewModel.delegate = self
-        baseView.delegate = self
-    }
     private func makeForeBackgroundObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     private func startKikurageStateViewAnimation() {
-        baseView.setKikurageStateUI(kikurageState: viewModel.kikurageState)
         baseView.kikurageStatusViewAnimation(true)
+    }
+}
+
+// MARK: - Rx
+
+extension HomeViewController {
+    private func rxBaseView() {
+        viewModel.output.kikurageState.subscribe(
+            onNext: { [weak self] kikurageState in
+                self?.baseView.setKikurageStateUI(kikurageState: kikurageState)
+            },
+            onError: { error in
+                guard let error = error as? ClientError else { return }
+                self.onFailedLoadingKikurageState(errorMessage: error.description())
+            }
+        )
+        .disposed(by: disposeBag)
+    }
+    private func rxTransition() {
+        baseView.footerButtonView.cultivationButton.rx.tap.asDriver()
+            .drive(
+            onNext: { [weak self] in
+                self?.pushToCultivation()
+            }
+        )
+        .disposed(by: disposeBag)
+
+        baseView.footerButtonView.recipeButton.rx.tap.asDriver()
+            .drive(
+            onNext: { [weak self] in
+                self?.pushToRecipe()
+            }
+        )
+        .disposed(by: disposeBag)
+
+        baseView.footerButtonView.communicationButton.rx.tap.asDriver()
+            .drive(
+            onNext: { [weak self] in
+                self?.pushToCommunication()
+            }
+        )
+        .disposed(by: disposeBag)
+
+        sideMenuBarButtonItem.rx.tap.asDriver()
+            .drive(
+            onNext: { [weak self] in
+                self?.performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
+            }
+        )
+        .disposed(by: disposeBag)
     }
 }
 
@@ -101,39 +151,14 @@ extension HomeViewController {
     }
 }
 
-// MARK: - HomeBaseView Delegate
+// MARK: - Error
 
-extension HomeViewController: HomeBaseViewDelegate {
-    func homeBaseViewDidTappedCultivationButton(_ homeBaseView: HomeBaseView) {
-        pushToCultivation()
-    }
-    func homeBaseViewDidTappedRecipeButton(_ homeBaseView: HomeBaseView) {
-        pushToRecipe()
-    }
-    func homeBaseViewDidTappedCommunicationButton(_ homeBaseView: HomeBaseView) {
-        pushToCommunication()
-    }
-    func homeBaseViewDidTappedSideMenuButton(_ homeBaseView: HomeBaseView) {
-        performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
-    }
-}
-
-// MARK: - HomeViewModel Delegate
-
-extension HomeViewController: HomeViewModelDelgate {
-    func homeViewModelDidSuccessGetKikurageState(_ homeViewModel: HomeViewModel) {
-        DispatchQueue.main.async {
-            self.baseView.setKikurageStateUI(kikurageState: homeViewModel.kikurageState)
-        }
-    }
-    func homeViewModelDidFailedGetKikurageState(_ homeViewModel: HomeViewModel, with errorMessage: String) {
+extension HomeViewController {
+    private func onFailedLoadingKikurageState(errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
-                self?.baseView.setKikurageStateUI(kikurageState: homeViewModel.kikurageState)
+                self?.baseView.setKikurageStateUI(kikurageState: nil)
             }
         }
-    }
-    func homeViewModelDidChangedKikurageState(_ homeViewModel: HomeViewModel) {
-        baseView.setKikurageStateUI(kikurageState: homeViewModel.kikurageState)
     }
 }

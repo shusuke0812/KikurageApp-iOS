@@ -8,6 +8,7 @@
 
 import Firebase
 import FirebaseFirestoreSwift
+import RxSwift
 
 protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む
@@ -15,11 +16,12 @@ protocol KikurageStateRepositoryProtocol {
     ///   - productId: プロダクトキー（ドキュメントID）
     ///   - completion: 読み込み成功、失敗のハンドル
     func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
+    func getKikurageState(productId: String) -> Single<KikurageState>
     /// グラフデータを読み込む
     /// - Parameters:
     ///   - productId: プロダクトキー（ドキュメントID）
     ///   - completion: 読み込み成功、失敗のハンドル
-    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void)
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -43,14 +45,41 @@ extension KikurageStateRepository {
                 return
             }
             do {
-                let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                kikurageState.convertToStateType()
                 completion(.success(kikurageState))
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }
         }
     }
-    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void) {
+    func getKikurageState(productId: String) -> Single<KikurageState> {
+        Single<KikurageState>.create { single in
+            let db = Firestore.firestore()
+            let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productId)
+
+            docRef.getDocument { snapshot, error in
+                if let error = error {
+                    dump(error)
+                    single(.failure(ClientError.apiError(.readError)))
+                    return
+                }
+                guard let snapshotData = snapshot?.data() else {
+                    single(.failure(ClientError.apiError(.readError)))
+                    return
+                }
+                do {
+                    var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
+                    kikurageState.convertToStateType()
+                    single(.success(kikurageState))
+                } catch {
+                    single(.failure(ClientError.responseParseError(error)))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         let db = Firestore.firestore()
         let collectionRef: CollectionReference = db.collection(Constants.FirestoreCollectionName.states).document(productId).collection(Constants.FirestoreCollectionName.graph)
 

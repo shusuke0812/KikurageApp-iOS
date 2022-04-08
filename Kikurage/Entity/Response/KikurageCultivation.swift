@@ -6,8 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Firebase
+
+typealias KikurageCultivationTuple = (cultivation: KikurageCultivation, documentId: String)
 
 struct KikurageCultivation: Codable {
     /// 栽培メモ

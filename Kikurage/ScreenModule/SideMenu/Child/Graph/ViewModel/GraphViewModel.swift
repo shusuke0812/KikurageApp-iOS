@@ -21,7 +21,7 @@ class GraphViewModel {
 
     weak var delegate: GraphViewModelDelegate?
     /// きくらげの１週間データ
-    var kikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []
+    var kikurageStateGraph: [KikurageStateGraphTuple] = []
     /// きくらげの１週間の温度データ
     var temperatureGraphDatas: [Int] = []
     /// きくらげの１週間の湿度データ

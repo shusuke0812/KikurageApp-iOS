@@ -6,8 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Firebase
+
+typealias KikurageRecipeTuple = (recipe: KikurageRecipe, documentId: String)
 
 struct KikurageRecipe: Codable {
     /// 料理名

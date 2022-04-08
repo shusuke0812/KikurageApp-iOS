@@ -8,18 +8,22 @@
 
 import UIKit
 import PKHUD
+import RxSwift
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
     private var viewModel: CultivationViewModel!
+
+    private let disposeBag = RxSwift.DisposeBag()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
-        setNavigationItem()
+
         setDelegateDataSource()
+        setNavigationItem()
         setNotificationCenter()
         setRefreshControl()
 
@@ -29,6 +33,10 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
             HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
+
+        // RX
+        rxBaseView()
+        rxTransition()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,53 +57,68 @@ extension CultivationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_cultivation_title())
     }
-    private func setDelegateDataSource() {
-        baseView.delegate = self
-        baseView.configColletionView(delegate: self, dataSource: viewModel)
-        viewModel.delegate = self
-    }
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         baseView.setRefreshControlInCollectionView(refresh)
     }
+    private func setDelegateDataSource() {
+        baseView.collectionView.delegate = self
+    }
 }
 
-// MARK: - Transition
+// MARK: - Rx
 
 extension CultivationViewController {
-    private func transitionCultivationDetailPage(indexPath: IndexPath) {
-        pushToCultivationDetail(cultivation: viewModel.cultivations[indexPath.row].cultivation)
-    }
-}
-
-// MARK: - CultivationBaseView Delegate
-
-extension CultivationViewController: CultivationBaseViewDelegate {
-    func cultivationBaseViewDidTapPostCultivationPageButton(_ cultivationBaseView: CultivationBaseView) {
-        modalToPostCultivation()
-    }
-}
-
-// MARK: - CultivationViewModel Delegate
-
-extension CultivationViewController: CultivationViewModelDelegate {
-    func cultivationViewModelDidSuccessGetCultivations(_ cultivationViewModel: CultivationViewModel) {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.collectionView.refreshControl?.endRefreshing()
-
-            self.baseView.collectionView.reloadData()
-            self.baseView.noCultivationLabelIsHidden(!(cultivationViewModel.cultivations.isEmpty))
+    private func rxBaseView() {
+        viewModel.output.cultivations.bind(to: baseView.collectionView.rx.items) { collectionView, row, element in
+            let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
+            cell.setUI(cultivation: element.cultivation)
+            return cell
         }
-    }
-    func cultivationViewModelDidFailedGetCultivations(_ cultivationViewModel: CultivationViewModel, with errorMessage: String) {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.collectionView.refreshControl?.endRefreshing()
+        .disposed(by: disposeBag)
 
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
+        viewModel.output.cultivations.subscribe(
+            onNext: { [weak self] cultivations in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self?.baseView.collectionView.refreshControl?.endRefreshing()
+                    self?.baseView.collectionView.reloadData()
+                    self?.baseView.noCultivationLabelIsHidden(!cultivations.isEmpty)
+                }
+            },
+            onError: { error in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self.baseView.collectionView.refreshControl?.endRefreshing()
+
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                }
+            }
+        )
+        .disposed(by: disposeBag)
+
+        baseView.collectionView.rx.itemSelected
+            .bind(to: viewModel.input.itemSelected)
+            .disposed(by: disposeBag)
+    }
+    private func rxTransition() {
+        baseView.postPageButton.rx.tap.asDriver()
+            .drive(
+            onNext: { [weak self] in
+                self?.modalToPostCultivation()
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.cultivation.subscribe(
+            onNext: { [weak self] cultivationTuple in
+                self?.pushToCultivationDetail(cultivation: cultivationTuple.cultivation)
+            }
+        )
+        .disposed(by: disposeBag)
     }
 }
 
@@ -107,14 +130,6 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth: CGFloat = baseView.bounds.width / 2 - horizontalSpace
         let cellHeight: CGFloat = cellWidth
         return CGSize(width: cellWidth, height: cellHeight)
-    }
-}
-
-// MARK: - UICollectionView Delegate
-
-extension CultivationViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        transitionCultivationDetailPage(indexPath: indexPath)
     }
 }
 

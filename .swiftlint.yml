@@ -50,6 +50,7 @@ disabled_rules:
 - object_literal                              # UIImage等リテラルで記述したくない時もあるため
 - sorted_imports                              # import文はアルファベット順ではなく標準ライブラリ／UI／Utilityなどと分けて記述したいため
 - implicitly_unwrapped_optional               # 前画面から値を受け取るプロパティやViewModelプロパティは`!`を付けて宣言したいため
+- trailing_closure                            # RxSwiftの記述方法を柔軟に変えたいため
 
 # 有効設定
 # opt-inルール
@@ -133,7 +134,6 @@ opt_in_rules:
 - switch_case_on_newline
 - test_case_accessibility
 - toggle_bool
-- trailing_closure
 - unavailable_function
 - unneeded_parentheses_in_closure_argument
 - unowned_variable_capture
