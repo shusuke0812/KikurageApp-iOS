@@ -57,12 +57,10 @@ extension HomeViewModel {
         kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey)
             .subscribe(
                 onSuccess: { [weak self] kikurageState in
-                    Logger.verbose("\(kikurageState)")
                     self?.subject.onNext(kikurageState)
                     self?.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
-                    Logger.verbose(error.localizedDescription)
                     self?.subject.onError(error)
                 }
             )
@@ -73,12 +71,10 @@ extension HomeViewModel {
         kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
             .subscribe(
                 onSuccess: { [weak self] kikurageState in
-                    Logger.verbose("\(kikurageState)")
                     self?.subject.onNext(kikurageState)
                     self?.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
-                    Logger.verbose(error.localizedDescription)
                     self?.subject.onError(error)
                 }
             )

@@ -88,14 +88,12 @@ extension CultivationViewModel {
         cultivationRepository.getCultivations(kikurageUserId: kikurageUserId)
             .subscribe(
                 onSuccess: { [weak self] cultivations in
-                    Logger.verbose("\(cultivations)")
                     guard let `self` = self else { return }
                     let cultivations = self.sortCultivations(cultivations: cultivations)
                     self.subject.onNext(cultivations)
                     self.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
-                    Logger.verbose(error.localizedDescription)
                     self?.subject.onError(error)
                 }
             )

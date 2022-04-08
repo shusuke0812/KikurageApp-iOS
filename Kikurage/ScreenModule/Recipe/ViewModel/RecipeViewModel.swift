@@ -92,7 +92,6 @@ extension RecipeViewModel {
                     self.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
-                    Logger.verbose(error.localizedDescription)
                     self?.subject.onError(error)
                 }
             )
