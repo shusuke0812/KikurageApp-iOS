@@ -75,6 +75,8 @@
 		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
 		9C8ED2D32801A59B005527F8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */; };
+		9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */; };
+		9C8ED2D72801C2A2005527F8 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D62801C2A2005527F8 /* FirebaseClient.swift */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
@@ -299,6 +301,8 @@
 		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRequest.swift; sourceTree = "<group>"; };
+		9C8ED2D62801C2A2005527F8 /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
@@ -699,6 +703,7 @@
 				9CD984EE280174AA009D52A9 /* FirebaseRequestProtocol.swift */,
 				9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */,
 				9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */,
+				9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1243,6 +1248,7 @@
 			isa = PBXGroup;
 			children = (
 				9C9981D527F9C3330068FD61 /* APIClient.swift */,
+				9C8ED2D62801C2A2005527F8 /* FirebaseClient.swift */,
 				9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */,
 				9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */,
 				9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */,
@@ -1959,6 +1965,7 @@
 				9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */,
+				9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */,
@@ -1996,6 +2003,7 @@
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
 				9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */,
 				9CA7F3362537FD96005BED9C /* KikurageUser.swift in Sources */,
+				9C8ED2D72801C2A2005527F8 /* FirebaseClient.swift in Sources */,
 				9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */,
 				9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */,
 				9C7E588527761AD400A151C0 /* FooterButtonView.swift in Sources */,

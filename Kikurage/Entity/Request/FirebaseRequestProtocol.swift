@@ -11,6 +11,7 @@ import Firebase
 
 protocol FirebaseRequestProtocol {
     associatedtype Response: Decodable
-    
-    var documentReference: DocumentReference { get }
+
+    var documentReference: DocumentReference? { get }
+    var collectionReference: CollectionReference? { get }
 }
