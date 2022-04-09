@@ -74,6 +74,7 @@
 		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
 		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
+		9C8ED2D32801A59B005527F8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
@@ -297,6 +298,7 @@
 		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
+		9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 		9C9981CE27F9A9A40068FD61 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */,
 				9CD984EE280174AA009D52A9 /* FirebaseRequestProtocol.swift */,
 				9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */,
 				9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */,
@@ -1987,6 +1990,7 @@
 				9C9981D627F9C3330068FD61 /* APIClient.swift in Sources */,
 				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
+				9C8ED2D32801A59B005527F8 /* HTTPMethod.swift in Sources */,
 				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
 				9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */,
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
