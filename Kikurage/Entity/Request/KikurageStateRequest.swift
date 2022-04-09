@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import Firebase
+
+struct KikurageStateRequest: FirebaseRequestProtocol {
+    typealias Response = KikurageState
+
+    var productId: String = ""
+
+    var documentReference: DocumentReference? {
+        let db = Firestore.firestore()
+        return db.collection(Constants.FirestoreCollectionName.states).document(productId)
+    }
+    var collectionReference: CollectionReference? = nil
+}
