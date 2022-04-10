@@ -15,6 +15,7 @@ protocol FirestoreClientProtocol {
     func listenDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
     func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
     func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
+    func putDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
 }
 
 protocol FirebaseStorageClientProtocol {}
@@ -121,6 +122,23 @@ struct FirebaseClient: FirestoreClientProtocol, FirebaseStorageClientProtocol {
         }
         dispatchGroup.notify(queue: .main) {
             completion(.success(documentReference))
+        }
+    }
+    
+    // MARK: - PUT
+    
+    func putDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void) {
+        guard let body = request.body else {
+            completion(.failure(ClientError.unknown))
+            return
+        }
+        request.documentReference?.updateData(body) { error in
+            if let error = error {
+                dump(error)
+                completion(.failure(ClientError.apiError(.updateError)))
+            } else {
+                completion(.success(()))
+            }
         }
     }
 }
