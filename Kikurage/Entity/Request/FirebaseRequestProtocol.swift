@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 protocol FirebaseRequestProtocol {
-    associatedtype Response: Decodable
+    associatedtype Response: Codable
 
     var documentReference: DocumentReference? { get }
     var collectionReference: CollectionReference? { get }
