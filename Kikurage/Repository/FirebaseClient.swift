@@ -12,6 +12,7 @@ import Firebase
 protocol FirebaseClientProtocol {
     func getDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void)
     func getDocumentsRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<[T.Response], ClientError>) -> Void)
+    func listenDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
 }
 
 struct FirebaseClient: FirebaseClientProtocol {
@@ -52,6 +53,25 @@ struct FirebaseClient: FirebaseClientProtocol {
                     firebaseReponses.append(firebaseResponse)
                 }
                 completion(.success(firebaseReponses))
+            } catch {
+                completion(.failure(ClientError.responseParseError(error)))
+            }
+        }
+    }
+    func listenDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration? {
+        return request.documentReference?.addSnapshotListener { snapshot, error in
+            if let error = error {
+                dump(error)
+                completion(.failure(ClientError.apiError(.readError)))
+                return
+            }
+            guard let snapshotData = snapshot?.data() else {
+                completion(.failure(ClientError.apiError(.readError)))
+                return
+            }
+            do {
+                let apiResponse = try Firestore.Decoder().decode(T.Response.self, from: snapshotData)
+                completion(.success(apiResponse))
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }
