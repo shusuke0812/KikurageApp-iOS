@@ -18,5 +18,9 @@ struct KikurageStateRequest: FirebaseRequestProtocol {
         let db = Firestore.firestore()
         return db.collection(Constants.FirestoreCollectionName.states).document(productId)
     }
+    
+    // MARK: Not using
+
     var collectionReference: CollectionReference? = nil
+    var response: [String : Any]? = nil
 }

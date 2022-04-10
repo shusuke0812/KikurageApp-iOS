@@ -14,4 +14,6 @@ protocol FirebaseRequestProtocol {
 
     var documentReference: DocumentReference? { get }
     var collectionReference: CollectionReference? { get }
+    
+    var body: [String : Any]? { get set }
 }
