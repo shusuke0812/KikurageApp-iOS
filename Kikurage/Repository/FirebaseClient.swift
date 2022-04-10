@@ -9,14 +9,16 @@
 import Foundation
 import Firebase
 
-protocol FirebaseClientProtocol {
+protocol FirestoreClientProtocol {
     func getDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void)
     func getDocumentsRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<[T.Response], ClientError>) -> Void)
     func listenDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
     func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
 }
 
-struct FirebaseClient: FirebaseClientProtocol {
+protocol FirebaseStorageClientProtocol {}
+
+struct FirebaseClient: FirestoreClientProtocol, FirebaseStorageClientProtocol {
     // MARK: - GET
 
     func getDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) {
