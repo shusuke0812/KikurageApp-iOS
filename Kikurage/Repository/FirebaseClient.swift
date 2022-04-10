@@ -13,9 +13,12 @@ protocol FirebaseClientProtocol {
     func getDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void)
     func getDocumentsRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<[T.Response], ClientError>) -> Void)
     func listenDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
+    func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
 }
 
 struct FirebaseClient: FirebaseClientProtocol {
+    // MARK: - GET
+
     func getDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) {
         request.documentReference?.getDocument { snapshot, error in
             if let error = error {
@@ -75,6 +78,27 @@ struct FirebaseClient: FirebaseClientProtocol {
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }
+        }
+    }
+    
+    // MARK: - Post
+    
+    func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void) {
+        guard let body = request.body else {
+            completion(.failure(ClientError.unknown))
+            return
+        }
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        request.documentReference?.setData(body) { error in
+            if let error = error {
+                dump(error)
+                completion(.failure(ClientError.apiError(.createError)))
+            }
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(.success(()))
         }
     }
 }
