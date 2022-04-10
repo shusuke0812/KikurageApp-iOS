@@ -14,6 +14,7 @@ protocol FirestoreClientProtocol {
     func getDocumentsRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<[T.Response], ClientError>) -> Void)
     func listenDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
     func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
+    func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
 }
 
 protocol FirebaseStorageClientProtocol {}
@@ -101,6 +102,25 @@ struct FirebaseClient: FirestoreClientProtocol, FirebaseStorageClientProtocol {
         }
         dispatchGroup.notify(queue: .main) {
             completion(.success(()))
+        }
+    }
+    /// In case of saving data with using document ID into Firebase Storage
+    func postDocumentRequest<T: FirebaseRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
+        guard let body = request.body, let collectionReference = request.collectionReference else {
+            completion(.failure(ClientError.unknown))
+            return
+        }
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        let documentReference: DocumentReference = collectionReference.addDocument(data: body) { error in
+            if let error = error {
+                dump(error)
+                completion(.failure(ClientError.apiError(.createError)))
+            }
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(.success(documentReference))
         }
     }
 }
