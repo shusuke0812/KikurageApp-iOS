@@ -22,5 +22,5 @@ struct KikurageStateRequest: FirebaseRequestProtocol {
     // MARK: Not using
 
     var collectionReference: CollectionReference? = nil
-    var response: [String : Any]? = nil
+    var body: [String : Any]? = nil
 }
