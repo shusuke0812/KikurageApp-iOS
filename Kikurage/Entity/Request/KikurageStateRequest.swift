@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct KikurageStateRequest: FirebaseRequestProtocol {
+struct KikurageStateRequest: FirestoreRequestProtocol {
     typealias Response = KikurageState
 
     var productId: String = ""
@@ -18,9 +18,9 @@ struct KikurageStateRequest: FirebaseRequestProtocol {
         let db = Firestore.firestore()
         return db.collection(Constants.FirestoreCollectionName.states).document(productId)
     }
-    
+
     // MARK: Not using
 
-    var collectionReference: CollectionReference? = nil
-    var body: [String : Any]? = nil
+    var collectionReference: CollectionReference?
+    var body: [String: Any]?
 }

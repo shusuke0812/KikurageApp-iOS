@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-protocol FirebaseRequestProtocol {
+protocol FirestoreRequestProtocol {
     associatedtype Response: Codable
 
     var documentReference: DocumentReference? { get }
