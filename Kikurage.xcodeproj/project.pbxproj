@@ -126,6 +126,7 @@
 		9CA7F33A2537FF1B005BED9C /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F3392537FF1B005BED9C /* KikurageState.swift */; };
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
 		9CAAF9DD2805C169000C671D /* KikurageUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */; };
+		9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */; };
 		9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */; };
 		9CAC93122789E4E60033DA33 /* KikurageFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CAC930F2789E4E50033DA33 /* KikurageFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; };
@@ -355,6 +356,7 @@
 		9CA7F3392537FF1B005BED9C /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRequest.swift; sourceTree = "<group>"; };
+		9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivationRequest.swift; sourceTree = "<group>"; };
 		9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAC930F2789E4E50033DA33 /* KikurageFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageFeature.h; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */,
 				9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */,
 				9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */,
+				9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1917,6 +1920,7 @@
 				9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */,
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
+				9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
 				9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */,
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
