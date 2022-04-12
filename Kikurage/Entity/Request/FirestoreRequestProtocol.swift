@@ -14,6 +14,18 @@ protocol FirestoreRequestProtocol {
 
     var documentReference: DocumentReference? { get }
     var collectionReference: CollectionReference? { get }
-    
-    var body: [String : Any]? { get set }
+
+    var body: [String: Any]? { get set }
+
+    func buildBody(from data: Self.Response) -> [String: Any]?
+}
+
+extension FirestoreRequestProtocol {
+    func buildBody(from data: Self.Response) -> [String: Any]? {
+        do {
+            return try Firestore.Encoder().encode(data)
+        } catch {
+            return nil
+        }
+    }
 }
