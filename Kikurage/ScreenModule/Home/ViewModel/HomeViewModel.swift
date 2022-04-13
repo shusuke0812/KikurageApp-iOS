@@ -58,7 +58,6 @@ extension HomeViewModel {
             .subscribe(
                 onSuccess: { [weak self] kikurageState in
                     self?.subject.onNext(kikurageState)
-                    self?.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
                     self?.subject.onError(error)
@@ -70,11 +69,10 @@ extension HomeViewModel {
     func listenKikurageState() {
         kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
             .subscribe(
-                onSuccess: { [weak self] kikurageState in
+                onNext: { [weak self] kikurageState in
                     self?.subject.onNext(kikurageState)
-                    self?.subject.onCompleted()
                 },
-                onFailure: { [weak self] error in
+                onError: { [weak self] error in
                     self?.subject.onError(error)
                 }
             )

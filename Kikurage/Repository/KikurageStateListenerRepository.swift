@@ -12,7 +12,7 @@ import RxSwift
 protocol KikurageStateListenerRepositoryProtocol {
     /// きくらげの状態を監視して更新を通知する
     func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
-    func listenKikurageState(productKey: String) -> Single<KikurageState>
+    func listenKikurageState(productKey: String) -> Observable<KikurageState>
 }
 
 class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
@@ -46,27 +46,27 @@ extension KikurageStateListenerRepository {
             }
         }
     }
-    func listenKikurageState(productKey: String) -> Single<KikurageState> {
-        Single<KikurageState>.create { single in
+    func listenKikurageState(productKey: String) -> Observable<KikurageState> {
+        Observable<KikurageState>.create { [weak self] observer in
             let db = Firestore.firestore()
             let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productKey)
 
-            docRef.addSnapshotListener { snapshot, error in
+            self?.kikurageStateListener = docRef.addSnapshotListener { snapshot, error in
                 if let error = error {
                     dump(error)
-                    single(.failure(ClientError.apiError(.readError)))
+                    observer.onError(ClientError.apiError(.readError))
                     return
                 }
                 guard let snapshotData = snapshot?.data() else {
-                    single(.failure(ClientError.apiError(.readError)))
+                    observer.onError(ClientError.apiError(.readError))
                     return
                 }
                 do {
                     var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                     kikurageState.convertToStateType()
-                    single(.success(kikurageState))
+                    observer.onNext(kikurageState)
                 } catch {
-                    single(.failure(ClientError.responseParseError(error)))
+                    observer.onError(ClientError.responseParseError(error))
                 }
             }
             return Disposables.create()
