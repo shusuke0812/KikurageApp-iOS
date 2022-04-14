@@ -23,9 +23,7 @@ protocol FirestoreClientProtocol {
     func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, listenerRegistrationHandler: @escaping ((ListenerRegistration?) -> Void)) -> Observable<T.Response>
 }
 
-protocol FirebaseStorageClientProtocol {}
-
-struct FirebaseClient: FirestoreClientProtocol, FirebaseStorageClientProtocol {
+struct FirestoreClient: FirestoreClientProtocol {
     // MARK: - GET
 
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) {
