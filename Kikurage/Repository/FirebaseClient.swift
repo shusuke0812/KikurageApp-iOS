@@ -20,6 +20,7 @@ protocol FirestoreClientProtocol {
 
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response>
     func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[T.Response]>
+    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, listenerRegistrationHandler: @escaping ((ListenerRegistration?) -> Void)) -> Observable<T.Response>
 }
 
 protocol FirebaseStorageClientProtocol {}
@@ -132,6 +133,29 @@ struct FirebaseClient: FirestoreClientProtocol, FirebaseStorageClientProtocol {
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }
+        }
+    }
+    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, listenerRegistrationHandler: @escaping ((ListenerRegistration?) -> Void)) -> Observable<T.Response> {
+        Observable<T.Response>.create { observer in
+            let listenerRegistration = request.documentReference?.addSnapshotListener { snapshot, error in
+                if error != nil {
+                    observer.onError(ClientError.apiError(.readError))
+                    return
+                }
+                guard let snapshotData = snapshot?.data() else {
+                    observer.onError(ClientError.apiError(.readError))
+                    return
+                }
+                do {
+                    let firebaseResponse = try Firestore.Decoder().decode(T.Response.self, from: snapshotData)
+                    observer.onNext(firebaseResponse)
+                } catch {
+                    observer.onError(ClientError.responseParseError(error))
+                }
+            }
+            listenerRegistrationHandler(listenerRegistration)
+
+            return Disposables.create()
         }
     }
 
