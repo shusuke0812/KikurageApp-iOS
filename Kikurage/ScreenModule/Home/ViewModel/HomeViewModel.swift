@@ -54,7 +54,8 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey)
+        let request = KikurageStateRequest(productId: kikurageUser.productKey)
+        kikurageStateRepository.getKikurageState(request: request)
             .subscribe(
                 onSuccess: { [weak self] kikurageState in
                     self?.subject.onNext(kikurageState)

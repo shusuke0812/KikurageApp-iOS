@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias KikurageStateGraphTuple = (graph: KikurageStateGraph, documentId: String)
+typealias KikurageStateGraphTuple = (data: KikurageStateGraph, documentId: String)
 
 struct KikurageStateGraph: Codable {
     var mondayData: TimeData?

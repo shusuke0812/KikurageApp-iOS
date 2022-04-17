@@ -12,7 +12,7 @@ import RxSwift
 
 protocol FirestoreClientProtocol {
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void)
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[T.Response], ClientError>) -> Void)
+    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentId: String)], ClientError>) -> Void)
     func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
     func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
     func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
@@ -65,7 +65,7 @@ struct FirestoreClient: FirestoreClientProtocol {
             return Disposables.create()
         }
     }
-    func getDocumentsRequest<T>(_ request: T, completion: @escaping (Result<[T.Response], ClientError>) -> Void) where T: FirestoreRequestProtocol {
+    func getDocumentsRequest<T>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentId: String)], ClientError>) -> Void) where T: FirestoreRequestProtocol {
         request.collectionReference?.getDocuments { snapshot, error in
             if let error = error {
                 dump(error)
@@ -76,13 +76,13 @@ struct FirestoreClient: FirestoreClientProtocol {
                 completion(.failure(ClientError.apiError(.readError)))
                 return
             }
-            var firebaseReponses: [T.Response] = []
+            var firebaseResponses: [(data: T.Response, documentId: String)] = []
             do {
                 for document in snapshot.documents {
                     let firebaseResponse = try Firestore.Decoder().decode(T.Response.self, from: document.data())
-                    firebaseReponses.append(firebaseResponse)
+                    firebaseResponses.append((data: firebaseResponse, documentId: document.documentID))
                 }
-                completion(.success(firebaseReponses))
+                completion(.success(firebaseResponses))
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
             }

@@ -29,16 +29,15 @@ struct KikurageState: Codable {
     }
 
     /// タイプ
-    var type: KikurageStateType?
-
-    /// タイプ文字列を`KikurageStateType`に変換する
-    mutating func convertToStateType() {
+    var type: KikurageStateType? {
         if typeString == KikurageStateType.normal.rawValue {
-            type = .normal
+            return .normal
         } else if typeString == KikurageStateType.wet.rawValue {
-            type = .wet
+            return .wet
         } else if typeString == KikurageStateType.dry.rawValue {
-            type = .dry
+            return .dry
+        } else {
+            return nil
         }
     }
 }

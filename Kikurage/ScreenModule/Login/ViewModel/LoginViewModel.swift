@@ -84,7 +84,8 @@ extension LoginViewModel {
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
         let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let request = KikurageStateRequest(productId: productId)
+        kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState

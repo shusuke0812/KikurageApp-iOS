@@ -48,7 +48,8 @@ extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let request = KikurageStateRequest(productId: productId)
+        kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
