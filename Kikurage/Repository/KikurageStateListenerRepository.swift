@@ -38,8 +38,7 @@ extension KikurageStateListenerRepository {
                 return
             }
             do {
-                var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
-                kikurageState.convertToStateType()
+                let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                 completion(.success(kikurageState))
             } catch {
                 completion(.failure(ClientError.responseParseError(error)))
@@ -62,8 +61,7 @@ extension KikurageStateListenerRepository {
                     return
                 }
                 do {
-                    var kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
-                    kikurageState.convertToStateType()
+                    let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
                     observer.onNext(kikurageState)
                 } catch {
                     observer.onError(ClientError.responseParseError(error))
