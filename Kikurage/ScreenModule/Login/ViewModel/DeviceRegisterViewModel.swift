@@ -65,8 +65,13 @@ extension DeviceRegisterViewModel {
             delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
             return
         }
-        guard let uid = LoginHelper.shared.kikurageUserId else { return }
-        kikurageUserRepository.postKikurageUser(uid: uid, kikurageUser: kikurageUser) { [weak self] responsse in
+        guard let uid = LoginHelper.shared.kikurageUserId else {
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
+            return
+        }
+        var request = KikurageUserRequest(uid: uid)
+        request.body = request.buildBody(from: kikurageUser)
+        kikurageUserRepository.postKikurageUser(request: request) { [weak self] responsse in
             switch responsse {
             case .success():
                 self?.delegate?.deviceRegisterViewModelDidSuccessPostKikurageUser(self!)

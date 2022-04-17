@@ -40,7 +40,8 @@ extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
     func loadKikurageUser(userId: String) {
-        kikurageUserRepository.getKikurageUser(uid: userId) { [weak self] response in
+        let request = KikurageUserRequest(uid: userId)
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser

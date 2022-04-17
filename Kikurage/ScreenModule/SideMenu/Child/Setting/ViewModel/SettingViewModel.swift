@@ -29,7 +29,8 @@ class SettingViewModel {
 
 extension SettingViewModel {
     func loadKikurageUser(uid: String) {
-        kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+        let request = KikurageUserRequest(uid: uid)
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser

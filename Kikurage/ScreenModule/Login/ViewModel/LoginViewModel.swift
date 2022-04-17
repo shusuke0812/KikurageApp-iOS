@@ -71,7 +71,8 @@ extension LoginViewModel {
 extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {
-        kikurageUserRepository.getKikurageUser(uid: (loginUser?.uid)!) { [weak self] response in   // swiftlint:disable:this force_unwrapping
+        let request = KikurageUserRequest(uid: (loginUser?.uid)!)
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in   // swiftlint:disable:this force_unwrapping
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser

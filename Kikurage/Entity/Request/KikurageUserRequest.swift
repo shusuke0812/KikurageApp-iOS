@@ -19,8 +19,9 @@ struct KikurageUserRequest: FirestoreRequestProtocol {
         return db.collection(Constants.FirestoreCollectionName.users).document(uid)
     }
 
+    var body: [String: Any]? = [:]
+
     // MARK: Not using
 
     var collectionReference: CollectionReference?
-    var body: [String: Any]?
 }
