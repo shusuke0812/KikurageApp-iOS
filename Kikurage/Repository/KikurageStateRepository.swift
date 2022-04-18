@@ -20,9 +20,11 @@ protocol KikurageStateRepositoryProtocol {
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
     private let firestoreClient: FirestoreClientProtocol
+    private let rxFirestoreClient: RxFirestoreClientProtocol
 
-    init(firestoreClient: FirestoreClientProtocol = FirestoreClient()) {
+    init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
         self.firestoreClient = firestoreClient
+        self.rxFirestoreClient = rxFirestoreClient
     }
 }
 
@@ -40,7 +42,7 @@ extension KikurageStateRepository {
         }
     }
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
-        firestoreClient.getDocumentRequest(request)
+        rxFirestoreClient.getDocumentRequest(request)
     }
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
