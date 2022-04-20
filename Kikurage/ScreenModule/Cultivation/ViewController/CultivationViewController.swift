@@ -74,7 +74,7 @@ extension CultivationViewController {
         viewModel.output.cultivations.bind(to: baseView.collectionView.rx.items) { collectionView, row, element in
             let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-            cell.setUI(cultivation: element.cultivation)
+            cell.setUI(cultivation: element.data)
             return cell
         }
         .disposed(by: disposeBag)
@@ -115,7 +115,7 @@ extension CultivationViewController {
 
         viewModel.output.cultivation.subscribe(
             onNext: { [weak self] cultivationTuple in
-                self?.pushToCultivationDetail(cultivation: cultivationTuple.cultivation)
+                self?.pushToCultivationDetail(cultivation: cultivationTuple.data)
             }
         )
         .disposed(by: disposeBag)

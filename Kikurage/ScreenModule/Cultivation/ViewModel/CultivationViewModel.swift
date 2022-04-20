@@ -73,8 +73,8 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
 extension CultivationViewModel {
     private func sortCultivations(cultivations: [KikurageCultivationTuple]) -> [KikurageCultivationTuple] {
         cultivations.sorted { cultivation1, cultivation2 -> Bool in
-            guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.cultivation.viewDate) else { return false }
-            guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.cultivation.viewDate) else { return false }
+            guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.data.viewDate) else { return false }
+            guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.data.viewDate) else { return false }
             return cultivationDate1 > cultivationDate2
         }
     }
@@ -85,7 +85,8 @@ extension CultivationViewModel {
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     func loadCultivations(kikurageUserId: String) {
-        cultivationRepository.getCultivations(kikurageUserId: kikurageUserId)
+        let request = KikurageCultivationRequest(kikurageUserId: kikurageUserId)
+        cultivationRepository.getCultivations(request: request)
             .subscribe(
                 onSuccess: { [weak self] cultivations in
                     guard let `self` = self else { return }

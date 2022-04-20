@@ -21,7 +21,7 @@ protocol FirestoreClientProtocol {
 
 protocol RxFirestoreClientProtocol {
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response>
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[T.Response]>
+    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentId: String)]>
 }
 
 struct FirestoreClient: FirestoreClientProtocol {
@@ -147,7 +147,6 @@ struct FirestoreClient: FirestoreClientProtocol {
     }
 }
 
-
 struct RxFirestoreClient: RxFirestoreClientProtocol {
     // MARK: - GET
 
@@ -172,8 +171,8 @@ struct RxFirestoreClient: RxFirestoreClientProtocol {
             return Disposables.create()
         }
     }
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[T.Response]> {
-        Single<[T.Response]>.create { single in
+    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentId: String)]> {
+        Single<[(data: T.Response, documentId: String)]>.create { single in
             request.collectionReference?.getDocuments { snapshot, error in
                 if error != nil {
                     single(.failure(ClientError.apiError(.readError)))
@@ -183,11 +182,11 @@ struct RxFirestoreClient: RxFirestoreClientProtocol {
                     single(.failure(ClientError.apiError(.readError)))
                     return
                 }
-                var firebaseResponses: [T.Response] = []
+                var firebaseResponses: [(data: T.Response, documentId: String)] = []
                 do {
                     for document in snapshot.documents {
                         let firebaseResponse = try Firestore.Decoder().decode(T.Response.self, from: document.data())
-                        firebaseResponses.append(firebaseResponse)
+                        firebaseResponses.append((data: firebaseResponse, documentId: document.documentID))
                     }
                     single(.success(firebaseResponses))
                 } catch {
