@@ -34,7 +34,9 @@ class PostRecipeViewModel {
 
 extension PostRecipeViewModel {
     func postRecipe(kikurageUserId: String) {
-        recipeRepository.postRecipe(kikurageUserId: kikurageUserId, kikurageRecipe: recipe) { [weak self] response in
+        var request = KikurageRecipeRequest(kikurageUserId: kikurageUserId)
+        request.body = request.buildBody(from: recipe)
+        recipeRepository.postRecipe(request: request) { [weak self] response in
             switch response {
             case .success(let documentReference):
                 self?.postedRecipeDocumentId = documentReference.documentID
@@ -45,10 +47,10 @@ extension PostRecipeViewModel {
         }
     }
     private func postRecipeImages(kikurageUserId: String, firestoreDocumentId: String, imageStorageFullPaths: [String]) {
-        recipeRepository.putRecipeImage(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths) { [weak self] response in
+        let request = KikurageRecipeRequest(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths)
+        recipeRepository.putRecipeImage(request: request) { [weak self] response in
             switch response {
-            case .success(let imageStorageFullPaths):
-                self?.recipe.imageStoragePaths = imageStorageFullPaths
+            case .success():
                 self?.delegate?.postRecipeViewModelDidSuccessPostRecipeImages(self!)
             case .failure(let error):
                 self?.delegate?.postRecipeViewModelDidFailedPostRecipeImages(self!, with: error.description())

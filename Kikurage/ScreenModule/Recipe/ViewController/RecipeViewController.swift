@@ -75,7 +75,7 @@ extension RecipeViewController {
         viewModel.output.recipes.bind(to: baseView.tableView.rx.items) { tableview, row, element in
             let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
             let cell = tableview.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-            cell.setUI(recipe: element.recipe)
+            cell.setUI(recipe: element.data)
             return cell
         }
         .disposed(by: diposeBag)
@@ -99,7 +99,7 @@ extension RecipeViewController {
             }
         )
         .disposed(by: diposeBag)
-        
+
         // MEMO: item on table view selected（nothing）
     }
     private func rxTransition() {
@@ -110,7 +110,7 @@ extension RecipeViewController {
                 }
             )
             .disposed(by: diposeBag)
-        
+
         // MEMO: subscrive to selected item on table view（nothing）
     }
 }

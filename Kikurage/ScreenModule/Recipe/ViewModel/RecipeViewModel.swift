@@ -71,8 +71,8 @@ class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewMode
 extension RecipeViewModel {
     private func sortRecipes(recipes: [KikurageRecipeTuple]) -> [KikurageRecipeTuple] {
         recipes.sorted { recipe1, recipe2 -> Bool in
-            guard let recipeDate1 = DateHelper.formatToDate(dateString: recipe1.recipe.cookDate) else { return false }
-            guard let recipeDate2 = DateHelper.formatToDate(dateString: recipe2.recipe.cookDate) else { return false }
+            guard let recipeDate1 = DateHelper.formatToDate(dateString: recipe1.data.cookDate) else { return false }
+            guard let recipeDate2 = DateHelper.formatToDate(dateString: recipe2.data.cookDate) else { return false }
             return recipeDate1 > recipeDate2
         }
     }
@@ -83,7 +83,8 @@ extension RecipeViewModel {
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
     func loadRecipes(kikurageUserId: String) {
-        recipeRepository.getRecipes(kikurageUserId: kikurageUserId)
+        let request = KikurageRecipeRequest(kikurageUserId: kikurageUserId)
+        recipeRepository.getRecipes(request: request)
             .subscribe(
                 onSuccess: { [weak self] recipes in
                     guard let `self` = self else { return }

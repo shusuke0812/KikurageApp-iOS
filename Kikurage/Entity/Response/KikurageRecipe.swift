@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-typealias KikurageRecipeTuple = (recipe: KikurageRecipe, documentId: String)
+typealias KikurageRecipeTuple = (data: KikurageRecipe, documentId: String)
 
 struct KikurageRecipe: Codable {
     /// 料理名
