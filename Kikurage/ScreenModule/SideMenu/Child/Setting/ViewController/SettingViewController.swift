@@ -8,10 +8,13 @@
 
 import UIKit
 import CropViewController
+import KikurageFeature
 
 class SettingViewController: UIViewController {
     private var baseView: SettingBaseView { self.view as! SettingBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: SettingViewModel!
+    
+    private let bluetooth: KikurageBluetooth = KikurageBluetooth()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,8 @@ extension SettingViewController: SettingBaseViewDelegate {
     }
     func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
+        print("DEBUG: ボタンがタップされました")
+        bluetooth.find()
     }
     func settingBaseViewDidTappedCloseButton(_ settingBaseView: SettingBaseView) {
         dismiss(animated: true, completion: nil)
