@@ -141,6 +141,9 @@ extension SideMenuViewController: UITableViewDelegate {
             modalToDictionary { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
+        case .debugTry:
+            // do nothing
+            break
         }
         baseView.tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -13,12 +13,14 @@ class SideMenuViewModel: NSObject {
         case history
         case support
         case help
+        case debug
 
         var rows: [SectionRowType] {
             switch self {
             case .history:  return [.calendar, .graph]
             case .support:  return [.contact, .setting, .license]
             case .help:     return [.searchRecipe, .kikurageDictionary]
+            case .debug:    return [.debugTry]
             }
         }
     }
@@ -30,6 +32,7 @@ class SideMenuViewModel: NSObject {
         case license
         case searchRecipe
         case kikurageDictionary
+        case debugTry
 
         var title: String {
             switch self {
@@ -47,6 +50,9 @@ class SideMenuViewModel: NSObject {
                 return R.string.localizable.side_menu_content_search_recipe_subtitle()
             case .kikurageDictionary:
                 return R.string.localizable.side_menu_content_kikurage_dictionary_subtitle()
+            case .debugTry:
+                return R.string.localizable.side_menu_content_debug_try_subtitle()
+                
             }
         }
 
@@ -66,6 +72,8 @@ class SideMenuViewModel: NSObject {
                 return "magnifyingglass"
             case .kikurageDictionary:
                 return "doc.text"
+            case .debugTry:
+                return "checkmark.seal.fill"
             }
         }
     }
@@ -82,7 +90,11 @@ class SideMenuViewModel: NSObject {
 
 extension SideMenuViewModel {
     private func setSection() {
+        #if PRODUCTION
         sections = [.history, .support, .help]
+        #else
+        sections = [.history, .support, .help, .debug]
+        #endif
     }
     private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> SideMenuTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.sideMenuTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
