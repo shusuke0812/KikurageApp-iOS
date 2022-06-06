@@ -142,8 +142,9 @@ extension SideMenuViewController: UITableViewDelegate {
                 self?.dismiss(animated: true, completion: nil)
             }
         case .debugTry:
-            // do nothing
-            break
+            modalToDebug { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
         baseView.tableView.deselectRow(at: indexPath, animated: true)
     }

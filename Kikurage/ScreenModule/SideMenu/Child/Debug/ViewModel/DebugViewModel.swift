@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+protocol DebugViewModelDelegate: AnyObject {}
+
+class DebugViewModel {
+    weak var delegate: DebugViewModelDelegate?
+
+    init() {
+    }
+}
