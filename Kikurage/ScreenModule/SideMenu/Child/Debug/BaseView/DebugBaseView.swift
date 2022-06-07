@@ -8,10 +8,23 @@
 
 import UIKit
 
+protocol DebugBaseViewDelegate: AnyObject {
+    func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView)
+}
+
 class DebugBaseView: UIView {
+    @IBOutlet weak var forceRestartButton: UIButton!
+
+    weak var delegate: DebugBaseViewDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
+    }
+
+    // MARK: Action
+    @IBAction private func didTappedForceRestartButton(_ sender: UIButton) {
+        delegate?.debugBaseViewDidTappedForceRestrart(self)
     }
 }
 
@@ -19,5 +32,6 @@ class DebugBaseView: UIView {
 
 extension DebugBaseView {
     private func initUI() {
+        forceRestartButton.setTitle("Force logout and restart app after 2min", for: .normal)
     }
 }
