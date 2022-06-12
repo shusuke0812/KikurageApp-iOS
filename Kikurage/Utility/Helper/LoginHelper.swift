@@ -72,4 +72,10 @@ class LoginHelper {
             print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
+    func logout() {
+        let rootVC = UIApplication.shared.windows.first?.rootViewController
+        if rootVC is AppRootController, let vc = rootVC as? AppRootController {
+            vc.logout()
+        }
+    }
 }
