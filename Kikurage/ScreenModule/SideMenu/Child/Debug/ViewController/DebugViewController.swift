@@ -23,5 +23,6 @@ class DebugViewController: UIViewController {
 
 extension DebugViewController: DebugBaseViewDelegate {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView) {
+        LoginHelper.shared.logout()
     }
 }
