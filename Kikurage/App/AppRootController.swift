@@ -101,11 +101,12 @@ extension AppRootController {
         vc.view.removeFromSuperview()
         vc.removeFromParent()
     }
-    func logout() {
+    func logout(vc: UIViewController) {
         // FIXME: dismissするだけだと全てのVCが破棄されない。全て破棄されるようにする
-        self.dismiss(animated: true)
-        DispatchQueue.main.async {
-            self.showTopPage()
+        vc.dismiss(animated: true) {
+            DispatchQueue.main.async {
+                self.showTopPage()
+            }
         }
     }
 }
