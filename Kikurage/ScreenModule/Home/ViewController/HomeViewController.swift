@@ -147,9 +147,8 @@ extension HomeViewController {
         startKikurageStateViewAnimation()
     }
     @objc private func didEnterBackground() {
-        if let dateTimer = self.dateTimer {
-            dateTimer.invalidate()
-        }
+        dateTimer?.invalidate()
+        dateTimer = nil
         baseView.kikurageStatusViewAnimation(false)
     }
 }
