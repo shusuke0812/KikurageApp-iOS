@@ -53,10 +53,9 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // メモリ節約のため、他ViewControllerに移動する前にタイマーを停止する
-        if let dateTimer = self.dateTimer {
-            dateTimer.invalidate()
-        }
+        // For prevented memory over usage, timer is stopped and disposed before screen transition
+        dateTimer?.invalidate()
+        dateTimer = nil
         baseView.kikurageStatusViewAnimation(false)
     }
 }
