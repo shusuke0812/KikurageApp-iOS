@@ -21,6 +21,10 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
     var kikurageState: KikurageState!
     var kikurageUser: KikurageUser!
 
+    deinit {
+        KLogger.debug("call deinit")
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
