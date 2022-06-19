@@ -75,8 +75,8 @@ class LoginHelper {
     func logout(onError: (() -> Void)? = nil) {
         // FIXME: Auth.auth().signOutを追加
         let rootVC = UIApplication.shared.windows.first?.rootViewController
-        if rootVC is AppRootController, let vc = rootVC as? AppRootController {
-            vc.logout(vc: vc)
+        if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
+            rootVC.logout(rootVC: rootVC)
         } else {
             onError?()
         }
