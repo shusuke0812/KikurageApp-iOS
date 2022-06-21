@@ -72,4 +72,13 @@ class LoginHelper {
             print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
+    func logout(onError: (() -> Void)? = nil) {
+        // FIXME: Auth.auth().signOutを追加
+        let rootVC = UIApplication.shared.windows.first?.rootViewController
+        if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
+            rootVC.logout(rootVC: rootVC)
+        } else {
+            onError?()
+        }
+    }
 }

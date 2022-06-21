@@ -68,15 +68,13 @@ extension AppRootController {
 // MARK: - Transition
 
 extension AppRootController {
-    /// ホーム画面を開く
     private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
-    /// ログイン画面を開く
     private func showTopPage() {
         guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
         let nc = CustomNavigationController(rootViewController: vc)
@@ -100,6 +98,20 @@ extension AppRootController {
         vc.willMove(toParent: nil)
         vc.view.removeFromSuperview()
         vc.removeFromParent()
+    }
+    func logout(rootVC: AppRootController) {
+        closeAllViewControllers(rootVC: rootVC) { [weak self] in
+            DispatchQueue.main.async {
+                self?.showTopPage()
+            }
+        }
+    }
+    private func closeAllViewControllers(rootVC: AppRootController, completion: (() -> Void)?) {
+        let nc = currentViewController as? CustomNavigationController
+        nc?.popToRootViewController(animated: false)
+        rootVC.dismiss(animated: false) {
+            completion?()
+        }
     }
 }
 
