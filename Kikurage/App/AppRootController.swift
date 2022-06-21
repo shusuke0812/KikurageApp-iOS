@@ -73,7 +73,7 @@ extension AppRootController {
         guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
     /// ログイン画面を開く
