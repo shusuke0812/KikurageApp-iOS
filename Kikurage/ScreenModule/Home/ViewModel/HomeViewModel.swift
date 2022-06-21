@@ -41,6 +41,10 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
     }
+
+    deinit {
+        KLogger.debug("call deinit")
+    }
 }
 
 // MARK: - Config
