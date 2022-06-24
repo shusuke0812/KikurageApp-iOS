@@ -7,14 +7,14 @@
 //
 
 import Foundation
+import RxSwift
 @testable import Kikurage
 
 class StubKikurageStateRepository: KikurageStateRepositoryProtocol {
     private var returnKikurageState: KikurageState
-    private var returnKikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)]
-    private var argProductId: String?
+    private var returnKikurageStateGraph: [KikurageStateGraphTuple]
     
-    init(kikurageState: KikurageState, kikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)]) {
+    init(kikurageState: KikurageState, kikurageStateGraph: [KikurageStateGraphTuple]) {
         self.returnKikurageState = kikurageState
         self.returnKikurageStateGraph = kikurageStateGraph
     }
@@ -23,13 +23,20 @@ class StubKikurageStateRepository: KikurageStateRepositoryProtocol {
 // MARK: - Call Firebase
 
 extension StubKikurageStateRepository {
-    func getKikurageState(productId: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
-        self.argProductId = productId
+    func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
         completion(.success(self.returnKikurageState))
     }
 
-    func getKikurageStateGraph(productId: String, completion: @escaping (Result<[(graph: KikurageStateGraph, documentId: String)], ClientError>) -> Void) {
-        self.argProductId = productId
+    func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         completion(.success(self.returnKikurageStateGraph))
+    }
+    
+    func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
+        Single<KikurageState>.create { [weak self] single in
+            if let _self = self {
+                single(.success(_self.returnKikurageState))
+            }
+            return Disposables.create()
+        }
     }
 }
