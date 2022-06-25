@@ -9,9 +9,7 @@
 import UIKit.UICollectionView
 
 class CultivationDetailViewModel: NSObject {
-    /// きくらげ 栽培記録データ
     private(set) var cultivation: KikurageCultivation
-
     private let sectionNumber = 1
 
     init(cultivation: KikurageCultivation) {
