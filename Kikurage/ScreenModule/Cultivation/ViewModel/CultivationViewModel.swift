@@ -19,6 +19,7 @@ protocol CultivationViewModelInput {
 protocol CultivationViewModelOutput {
     var cultivations: Observable<[KikurageCultivationTuple]> { get }
     var cultivation: Observable<KikurageCultivationTuple> { get }
+    var error: Observable<ClientError> { get }
 }
 
 protocol CultivationViewModelType {
@@ -31,6 +32,7 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
 
     private let disposeBag = RxSwift.DisposeBag()
     private let subject = PublishSubject<[KikurageCultivationTuple]>()
+    private let errorSubject = PublishSubject<ClientError>()
 
     var input: CultivationViewModelInput { self }
     var output: CultivationViewModelOutput { self }
@@ -39,6 +41,7 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
 
     var cultivations: Observable<[KikurageCultivationTuple]> { subject.asObservable() }
     let cultivation: Observable<KikurageCultivationTuple>
+    var error: Observable<ClientError> { errorSubject.asObserver() }
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
@@ -94,7 +97,8 @@ extension CultivationViewModel {
                     self.subject.onNext(cultivations)
                 },
                 onFailure: { [weak self] error in
-                    self?.subject.onError(error)
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(error)
                 }
             )
             .disposed(by: disposeBag)
