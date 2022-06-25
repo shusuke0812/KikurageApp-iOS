@@ -90,7 +90,6 @@ extension RecipeViewModel {
                     guard let `self` = self else { return }
                     let recipes = self.sortRecipes(recipes: recipes)
                     self.subject.onNext(recipes)
-                    self.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
                     self?.subject.onError(error)
