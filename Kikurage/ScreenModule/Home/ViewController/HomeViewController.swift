@@ -88,9 +88,12 @@ extension HomeViewController {
         viewModel.output.kikurageState.subscribe(
             onNext: { [weak self] kikurageState in
                 self?.baseView.setKikurageStateUI(kikurageState: kikurageState)
-            },
-            onError: { [weak self] error in
-                guard let error = error as? ClientError else { return }
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.error.subscribe(
+            onNext: { [weak self] error in
                 self?.onFailedLoadingKikurageState(errorMessage: error.description())
             }
         )
