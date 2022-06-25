@@ -11,7 +11,7 @@ import UIKit
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
     private var viewModel: CultivationDetailViewModel!
-    /// 前画面から渡された栽培記録データ
+
     var cultivation: KikurageCultivation!
 
     override func viewDidLoad() {
