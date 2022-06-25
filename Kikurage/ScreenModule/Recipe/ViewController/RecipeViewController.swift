@@ -131,6 +131,7 @@ extension RecipeViewController {
     }
     @objc private func didPostRecipe(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            HUD.show(.progress)
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
