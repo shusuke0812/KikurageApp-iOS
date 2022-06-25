@@ -33,8 +33,8 @@ extension StubKikurageStateRepository {
     
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
         Single<KikurageState>.create { [weak self] single in
-            if let _self = self {
-                single(.success(_self.returnKikurageState))
+            if let `self` = self {
+                single(.success(self.returnKikurageState))
             }
             return Disposables.create()
         }
