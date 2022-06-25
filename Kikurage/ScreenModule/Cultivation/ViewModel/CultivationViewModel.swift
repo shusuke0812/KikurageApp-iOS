@@ -92,7 +92,7 @@ extension CultivationViewModel {
                     guard let `self` = self else { return }
                     let cultivations = self.sortCultivations(cultivations: cultivations)
                     self.subject.onNext(cultivations)
-                    self.subject.onCompleted()
+                    // self.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
                     self?.subject.onError(error)
