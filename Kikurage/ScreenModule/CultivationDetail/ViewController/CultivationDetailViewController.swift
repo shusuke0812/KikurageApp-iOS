@@ -45,9 +45,10 @@ extension CultivationDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 画像拡大処理を書く
     }
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page = viewModel.currentPage(on: scrollView)
         DispatchQueue.main.async {
-            self.baseView.configPageControl(didChangedCurrentPage: indexPath.row)
+            self.baseView.configPageControl(didChangedCurrentPage: page)
         }
     }
 }

@@ -19,6 +19,16 @@ class CultivationDetailViewModel: NSObject {
     }
 }
 
+// MARK: - Config
+
+extension CultivationDetailViewModel {
+    func currentPage(on scrollView: UIScrollView) -> Int {
+        let left = scrollView.contentOffset.x
+        let width = scrollView.bounds.size.width
+        return Int(left / width)
+    }
+}
+
 // MARK: - UICollectionView DataSource
 
 extension CultivationDetailViewModel: UICollectionViewDataSource {
