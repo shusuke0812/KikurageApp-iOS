@@ -141,6 +141,7 @@ extension CultivationViewController {
     }
     @objc private func didPostCultivation(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
