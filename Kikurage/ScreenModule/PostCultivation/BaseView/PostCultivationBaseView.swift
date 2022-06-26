@@ -10,11 +10,9 @@ import UIKit
 
 protocol PostCultivationBaseViewDelegate: AnyObject {
     func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView)
-    func postCultivationBaseViewDidTappedCloseButton(_ postCultivationBaseView: PostCultivationBaseView)
 }
 
 class PostCultivationBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
     @IBOutlet private(set) weak var textView: UITextViewWithPlaceholder!
     @IBOutlet private weak var currentTextViewNumberLabel: UILabel!
@@ -42,9 +40,6 @@ class PostCultivationBaseView: UIView {
     @IBAction private func post(_ sender: Any) {
         delegate?.postCultivationBaseViewDidTappedPostButton(self)
     }
-    @IBAction private func close(_ sender: Any) {
-        delegate?.postCultivationBaseViewDidTappedCloseButton(self)
-    }
 }
 
 // MARK: - Initialized
@@ -54,8 +49,6 @@ extension PostCultivationBaseView {
         cameraCollectionView.register(R.nib.cameraCell)
     }
     private func initUI() {
-        // タイトル
-        navigationItem.title = R.string.localizable.screen_post_cultivation_title()
         // 背景色
         backgroundColor = .systemGroupedBackground
         cameraCollectionView.backgroundColor = .systemGroupedBackground
