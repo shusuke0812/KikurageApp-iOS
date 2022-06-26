@@ -11,11 +11,9 @@ import UIKit
 protocol SettingBaseViewDelegate: AnyObject {
     func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView)
     func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView)
-    func settingBaseViewDidTappedCloseButton(_ settingBaseView: SettingBaseView)
 }
 
 class SettingBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private weak var userImageView: UIImageView!
     @IBOutlet private weak var kikurageNameTextField: UITextField!
     @IBOutlet private weak var editButton: UIButton!
@@ -35,16 +33,12 @@ class SettingBaseView: UIView {
     @IBAction private func editUserImage(_ sender: Any) {
         delegate?.settingBaseViewDidTappedUserImageView(self)
     }
-    @IBAction private func close(_ sender: Any) {
-        delegate?.settingBaseViewDidTappedCloseButton(self)
-    }
 }
 
 // MARK: - Initialized
 
 extension SettingBaseView {
     private func initUI() {
-        navigationItem.title = R.string.localizable.side_menu_setting_title()
         backgroundColor = .systemGroupedBackground
 
         userImageView.image = R.image.hakase()
