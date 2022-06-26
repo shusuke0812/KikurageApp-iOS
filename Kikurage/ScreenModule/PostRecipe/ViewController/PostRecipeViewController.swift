@@ -19,7 +19,14 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
         cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
         viewModel = PostRecipeViewModel(recipeRepository: RecipeRepository())
         setDelegateDataSource()
+        setNavigation()
         adjustNavigationBarBackgroundColor()
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -33,6 +40,11 @@ extension PostRecipeViewController {
         baseView.cofigCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
+    }
+    private func setNavigation() {
+        let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeButtonItem]
+        navigationItem.title = R.string.localizable.screen_post_recipe_title()
     }
 }
 

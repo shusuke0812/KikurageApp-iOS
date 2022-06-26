@@ -10,11 +10,9 @@ import UIKit
 
 protocol PostRecipeBaseViewDelegate: AnyObject {
     func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView)
-    func postRecipeBaseViewDidTappedCloseButton(_ postRecipeBaseView: PostRecipeBaseView)
 }
 
 class PostRecipeBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
     @IBOutlet private(set) weak var recipeNameTextField: UITextField!
     @IBOutlet private weak var currentRecipeNameNumberLabel: UILabel!
@@ -42,9 +40,6 @@ class PostRecipeBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func close(_ sender: Any) {
-        delegate?.postRecipeBaseViewDidTappedCloseButton(self)
-    }
     @IBAction private func post(_ sender: Any) {
         delegate?.postRecipeBaseViewDidTappedPostButton(self)
     }
@@ -57,8 +52,6 @@ extension PostRecipeBaseView {
         cameraCollectionView.register(R.nib.cameraCell)
     }
     private func initUI() {
-        // タイトル
-        navigationItem.title = R.string.localizable.screen_post_recipe_title()
         // 背景色
         backgroundColor = .systemGroupedBackground
         cameraCollectionView.backgroundColor = .systemGroupedBackground
