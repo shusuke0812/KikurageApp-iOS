@@ -14,7 +14,6 @@ protocol DictionaryBaseViewDelegate: AnyObject {
 }
 
 class DictionaryBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
 
