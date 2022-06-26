@@ -18,7 +18,14 @@ class GraphViewController: UIViewController {
         super.viewDidLoad()
         viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
+        setNavigation()
         loadKikurageUser()
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -26,8 +33,12 @@ class GraphViewController: UIViewController {
 
 extension GraphViewController {
     private func setDelegateDataSource() {
-        baseView.delegate = self
         viewModel.delegate = self
+    }
+    private func setNavigation() {
+        let closeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeBarButtonItem]
+        navigationItem.title = R.string.localizable.side_menu_graph_title()
     }
     private func loadKikurageUser() {
         guard let userId = LoginHelper.shared.kikurageUserId else { return }
@@ -37,14 +48,6 @@ extension GraphViewController {
     private func loadKikurageStateGraph() {
         guard let kikurageUser = viewModel.kikurageUser else { return }
         viewModel.loadKikurageStateGraph(productId: kikurageUser.productKey)
-    }
-}
-
-// MARK: - GraphBaseView Delegate
-
-extension GraphViewController: GraphBaseViewDelegate {
-    func graphBaseViewDidTapCloseButton(_ graphBaseView: GraphBaseView) {
-        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 

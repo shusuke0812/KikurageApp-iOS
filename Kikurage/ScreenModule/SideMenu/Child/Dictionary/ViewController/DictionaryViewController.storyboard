@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,17 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G5-vh-jAv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="BZD-3P-Dkz">
-                                        <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="3rz-de-TpT">
-                                            <color key="tintColor" systemColor="labelColor"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kyO-hk-xK2">
                                 <rect key="frame" x="8" y="52" width="398" height="32"/>
                                 <segments>
@@ -45,20 +34,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2G5-vh-jAv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="2cq-dG-IWN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kyO-hk-xK2" secondAttribute="trailing" constant="8" id="2m4-NW-gOW"/>
                             <constraint firstItem="esU-SI-Rh3" firstAttribute="top" secondItem="kyO-hk-xK2" secondAttribute="bottom" constant="8" id="7bA-7U-TPU"/>
-                            <constraint firstItem="kyO-hk-xK2" firstAttribute="top" secondItem="2G5-vh-jAv" secondAttribute="bottom" constant="8" id="TN6-Cz-Vfk"/>
+                            <constraint firstItem="kyO-hk-xK2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="Kjd-Tc-XQS"/>
                             <constraint firstItem="esU-SI-Rh3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="UUP-rz-kU3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="esU-SI-Rh3" secondAttribute="bottom" id="YFA-qX-y88"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="esU-SI-Rh3" secondAttribute="trailing" id="gwF-5q-V1y"/>
-                            <constraint firstItem="2G5-vh-jAv" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kAP-tf-qxl"/>
                             <constraint firstItem="kyO-hk-xK2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="x3B-da-eza"/>
-                            <constraint firstItem="2G5-vh-jAv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yNg-O5-rBL"/>
                         </constraints>
                         <connections>
                             <outlet property="containerView" destination="esU-SI-Rh3" id="upp-3d-TL6"/>
-                            <outlet property="navigationItem" destination="BZD-3P-Dkz" id="ZEy-Jg-3qP"/>
                             <outlet property="segmentedControl" destination="kyO-hk-xK2" id="kmA-Sj-7qp"/>
                         </connections>
                     </view>
@@ -69,10 +54,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
