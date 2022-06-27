@@ -87,13 +87,16 @@ extension CultivationViewController {
                     self?.baseView.collectionView.reloadData()
                     self?.baseView.noCultivationLabelIsHidden(!cultivations.isEmpty)
                 }
-            },
-            onError: { error in
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.error.subscribe(
+            onNext: { [weak self] error in
+                guard let `self` = self else { return }
                 DispatchQueue.main.async {
                     HUD.hide()
                     self.baseView.collectionView.refreshControl?.endRefreshing()
-
-                    let error = error as! ClientError // swiftlint:disable:this force_cast
                     UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
                 }
             }
@@ -141,6 +144,7 @@ extension CultivationViewController {
     }
     @objc private func didPostCultivation(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            HUD.show(.progress)
             viewModel.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }

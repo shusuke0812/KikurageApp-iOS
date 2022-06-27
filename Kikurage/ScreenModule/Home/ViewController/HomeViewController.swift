@@ -21,6 +21,10 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
     var kikurageState: KikurageState!
     var kikurageUser: KikurageUser!
 
+    deinit {
+        KLogger.debug("call deinit")
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -49,10 +53,9 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // メモリ節約のため、他ViewControllerに移動する前にタイマーを停止する
-        if let dateTimer = self.dateTimer {
-            dateTimer.invalidate()
-        }
+        // For prevented memory over usage, timer is stopped and disposed before screen transition
+        dateTimer?.invalidate()
+        dateTimer = nil
         baseView.kikurageStatusViewAnimation(false)
     }
 }
@@ -85,10 +88,13 @@ extension HomeViewController {
         viewModel.output.kikurageState.subscribe(
             onNext: { [weak self] kikurageState in
                 self?.baseView.setKikurageStateUI(kikurageState: kikurageState)
-            },
-            onError: { error in
-                guard let error = error as? ClientError else { return }
-                self.onFailedLoadingKikurageState(errorMessage: error.description())
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.error.subscribe(
+            onNext: { [weak self] error in
+                self?.onFailedLoadingKikurageState(errorMessage: error.description())
             }
         )
         .disposed(by: disposeBag)
@@ -144,9 +150,8 @@ extension HomeViewController {
         startKikurageStateViewAnimation()
     }
     @objc private func didEnterBackground() {
-        if let dateTimer = self.dateTimer {
-            dateTimer.invalidate()
-        }
+        dateTimer?.invalidate()
+        dateTimer = nil
         baseView.kikurageStatusViewAnimation(false)
     }
 }

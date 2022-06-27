@@ -25,9 +25,16 @@ class DictionaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigation()
         baseView.delegate = self
 
         setContainerViewController(dictionaryTriviaVC)
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -39,6 +46,11 @@ extension DictionaryViewController {
         addChild(vc)
         baseView.addContainerView(vc.view)
         vc.didMove(toParent: self)
+    }
+    private func setNavigation() {
+        let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeButtonItem]
+        navigationItem.title = ""
     }
     private func removeContainerViewController() {
         guard let vc = currentViewController else { return }

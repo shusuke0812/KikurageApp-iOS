@@ -18,10 +18,17 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
+        setNavigation()
 
         if let userId = LoginHelper.shared.kikurageUserId {
             viewModel.loadKikurageUser(uid: userId)
         }
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -29,16 +36,12 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController {
     private func setDelegateDataSource() {
-        baseView.delegate = self
         viewModel.delegate = self
     }
-}
-
-// MARK: - CalendarBaseView Delegate
-
-extension CalendarViewController: CalendarBaseViewDelegate {
-    func calendarBaseViewDidTapCloseButton(_ calendarBaseView: CalendarBaseView) {
-        presentingViewController?.dismiss(animated: true, completion: nil)
+    private func setNavigation() {
+        let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeButtonItem]
+        navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
 }
 

@@ -17,6 +17,7 @@ protocol RecipeViewModelInput {
 protocol RecipeViewModelOutput {
     var recipes: Observable<[KikurageRecipeTuple]> { get }
     var recipe: Observable<KikurageRecipeTuple> { get }
+    var error: Observable<ClientError> { get }
 }
 
 protocol RecipeViewModelType {
@@ -29,6 +30,7 @@ class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewMode
 
     private let disposeBag = RxSwift.DisposeBag()
     private let subject = PublishSubject<[KikurageRecipeTuple]>()
+    private let errorSubject = PublishSubject<ClientError>()
 
     var input: RecipeViewModelInput { self }
     var output: RecipeViewModelOutput { self }
@@ -37,6 +39,7 @@ class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewMode
 
     var recipes: Observable<[KikurageRecipeTuple]> { subject.asObservable() }
     var recipe: Observable<KikurageRecipeTuple>
+    var error: Observable<ClientError> { errorSubject.asObserver() }
 
     init(recipeRepository: RecipeRepositoryProtocol) {
         self.recipeRepository = recipeRepository
@@ -90,10 +93,10 @@ extension RecipeViewModel {
                     guard let `self` = self else { return }
                     let recipes = self.sortRecipes(recipes: recipes)
                     self.subject.onNext(recipes)
-                    self.subject.onCompleted()
                 },
                 onFailure: { [weak self] error in
-                    self?.subject.onError(error)
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(error)
                 }
             )
             .disposed(by: disposeBag)

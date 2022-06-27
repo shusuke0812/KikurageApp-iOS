@@ -15,6 +15,7 @@ protocol HomeViewModelInput {
 
 protocol HomeViewModelOutput {
     var kikurageState: Observable<KikurageState> { get }
+    var error: Observable<ClientError> { get }
 }
 
 protocol HomeViewModelType {
@@ -27,6 +28,7 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
     private let subject = PublishSubject<KikurageState>()
+    private let errorSubject = PublishSubject<ClientError>()
     private let disposeBag = DisposeBag()
 
     var input: HomeViewModelInput { self }
@@ -34,12 +36,17 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
 
     var kikurageUser: KikurageUser
     var kikurageState: Observable<KikurageState> { subject.asObservable() }
+    var error: Observable<ClientError> { errorSubject.asObservable() }
 
     init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
 
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
+    }
+
+    deinit {
+        KLogger.debug("call deinit")
     }
 }
 
@@ -61,7 +68,8 @@ extension HomeViewModel {
                     self?.subject.onNext(kikurageState)
                 },
                 onFailure: { [weak self] error in
-                    self?.subject.onError(error)
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(error)
                 }
             )
             .disposed(by: disposeBag)
@@ -74,7 +82,8 @@ extension HomeViewModel {
                     self?.subject.onNext(kikurageState)
                 },
                 onError: { [weak self] error in
-                    self?.subject.onError(error)
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(error)
                 }
             )
             .disposed(by: disposeBag)

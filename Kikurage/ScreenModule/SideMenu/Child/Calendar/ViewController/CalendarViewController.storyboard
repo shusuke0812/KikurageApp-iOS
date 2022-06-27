@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pht-LK-BIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pht-LK-BIt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,37 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbj-K3-STj">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKv-ph-VyN">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="wls-fy-12Z">
-                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="O0Y-Ez-wft">
-                                            <color key="tintColor" systemColor="labelColor"/>
-                                            <connections>
-                                                <action selector="close:" destination="uai-5v-WLU" id="9Tq-5f-uJf"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vQh-Z5-JeZ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Cbj-K3-STj" secondAttribute="bottom" id="1O4-XG-0sF"/>
                             <constraint firstItem="vQh-Z5-JeZ" firstAttribute="trailing" secondItem="Cbj-K3-STj" secondAttribute="trailing" id="Dsf-hJ-J37"/>
-                            <constraint firstItem="DKv-ph-VyN" firstAttribute="leading" secondItem="vQh-Z5-JeZ" secondAttribute="leading" id="a2r-K9-Va7"/>
-                            <constraint firstItem="DKv-ph-VyN" firstAttribute="trailing" secondItem="vQh-Z5-JeZ" secondAttribute="trailing" id="aoI-oB-94G"/>
-                            <constraint firstItem="DKv-ph-VyN" firstAttribute="top" secondItem="vQh-Z5-JeZ" secondAttribute="top" id="mwm-Ov-sc8"/>
-                            <constraint firstItem="Cbj-K3-STj" firstAttribute="top" secondItem="DKv-ph-VyN" secondAttribute="bottom" id="nU8-1s-ooB"/>
                             <constraint firstItem="Cbj-K3-STj" firstAttribute="leading" secondItem="vQh-Z5-JeZ" secondAttribute="leading" id="rXj-HJ-ZWe"/>
+                            <constraint firstItem="Cbj-K3-STj" firstAttribute="top" secondItem="vQh-Z5-JeZ" secondAttribute="top" id="rge-3S-qJ1"/>
                         </constraints>
                         <connections>
                             <outlet property="contentView" destination="Cbj-K3-STj" id="xLd-0r-ATc"/>
-                            <outlet property="navigationItem" destination="wls-fy-12Z" id="EFP-5v-lrM"/>
                         </connections>
                     </view>
                 </viewController>
@@ -58,10 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

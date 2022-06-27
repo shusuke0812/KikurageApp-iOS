@@ -157,6 +157,7 @@
 "side_menu_content_license_subtitle" = "著作権";
 "side_menu_content_search_recipe_subtitle" = "料理レシピ検索";
 "side_menu_content_kikurage_dictionary_subtitle" = "きくらげ豆知識";
+"side_menu_content_debug_try_subtitle" = "デバッグ";
 
 // calendar
 "side_menu_clendar_title" = "カレンダー";

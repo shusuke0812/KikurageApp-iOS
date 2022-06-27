@@ -20,7 +20,7 @@ class HomeViewModelTests: XCTestCase {
         
         let testKikurageState = Stub.kikurageState
         let testKikurageUser = Stub.kikurageUser
-        let testKikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []
+        let testKikurageStateGraph: [KikurageStateGraphTuple] = []
         
         // Repository / ViewModel
         

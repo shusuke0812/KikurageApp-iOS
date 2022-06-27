@@ -16,14 +16,23 @@ class SettingViewController: UIViewController {
     
     private let bluetooth: KikurageBluetooth = KikurageBluetooth()
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = SettingViewModel(kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
+        setNavigation()
 
         if let userId = LoginHelper.shared.kikurageUserId {
             viewModel.loadKikurageUser(uid: userId)
         }
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -33,6 +42,11 @@ extension SettingViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
         viewModel.delegate = self
+    }
+    private func setNavigation() {
+        let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeButtonItem]
+        navigationItem.title = R.string.localizable.side_menu_setting_title()
     }
 }
 
@@ -46,9 +60,6 @@ extension SettingViewController: SettingBaseViewDelegate {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
         print("DEBUG: ボタンがタップされました")
         bluetooth.find()
-    }
-    func settingBaseViewDidTappedCloseButton(_ settingBaseView: SettingBaseView) {
-        dismiss(animated: true, completion: nil)
     }
 }
 

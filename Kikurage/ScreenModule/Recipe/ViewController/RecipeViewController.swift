@@ -88,12 +88,16 @@ extension RecipeViewController {
                     self?.baseView.tableView.reloadData()
                     self?.baseView.noRecipeLabelIsHidden(!recipes.isEmpty)
                 }
-            }, onError: { error in
+            }
+        )
+        .disposed(by: diposeBag)
+        
+        viewModel.output.error.subscribe(
+            onNext: { [weak self] error in
                 DispatchQueue.main.async {
                     HUD.hide()
+                    guard let `self` = self else { return }
                     self.baseView.tableView.refreshControl?.endRefreshing()
-
-                    let error = error as! ClientError // swiftlint:disable:this force_cast
                     UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
                 }
             }
@@ -131,6 +135,7 @@ extension RecipeViewController {
     }
     @objc private func didPostRecipe(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+            HUD.show(.progress)
             viewModel.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }

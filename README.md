@@ -24,8 +24,8 @@ Moblie App parts of this IoT product can be monitoring and observing to Kikurage
 ![ui](https://user-images.githubusercontent.com/33107697/160155691-1730da8b-0ea7-4f0b-b703-7790fc54d552.png)
 
 ## Development
-- Xcode 13.2.1 (13C100)
-- Swift 5.0 
+- Xcode 13.3.1 (13E500a)
+- Swift 5.6 
 - CocoaPods 1.9.3  
 - MacOS Monterey 12.3.1 / MacBook Intel Processor Model
 - Target OS：iOS 13.0 

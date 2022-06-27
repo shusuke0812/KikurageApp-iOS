@@ -157,6 +157,7 @@
 "side_menu_content_license_subtitle" = "License";
 "side_menu_content_search_recipe_subtitle" = "Searching recipe";
 "side_menu_content_kikurage_dictionary_subtitle" = "Dictionary";
+"side_menu_content_debug_try_subtitle" = "Debug";
 
 // calendar
 "side_menu_clendar_title" = "Calendar";
