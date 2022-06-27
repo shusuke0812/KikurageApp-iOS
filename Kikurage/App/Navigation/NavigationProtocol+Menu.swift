@@ -36,7 +36,7 @@ extension MenuAccessable {
     }
     func modalToDebug(completion: (() -> Void)? = nil) {
         guard let vc = R.storyboard.debugViewController.instantiateInitialViewController() else { return }
-        present(to: vc, style: .automatic, completion: completion)
+        present(to: vc, style: .fullScreen, completion: completion)
     }
 
     // MARK: - SafariView

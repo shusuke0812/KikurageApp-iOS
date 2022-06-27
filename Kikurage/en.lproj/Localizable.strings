@@ -185,3 +185,6 @@
 "side_menu_dictionary_segment_title_trivia" = "Trivia";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
 "side_menu_dictionary_twitter_no_tweets" = "No Tweets";
+
+// debug
+"side_menu_debug_title" = "Debug";
