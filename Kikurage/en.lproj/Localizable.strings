@@ -181,7 +181,7 @@
 "side_menu_setting_edit_btn_title" = "Edit";
 "side_menu_setting_kikurage_name_error" = "Missing to read your name";
 
-// Dictonary
+// dictonary
 "side_menu_dictionary_segment_title_trivia" = "Trivia";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
 "side_menu_dictionary_twitter_no_tweets" = "No Tweets";

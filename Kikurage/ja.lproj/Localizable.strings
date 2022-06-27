@@ -181,7 +181,7 @@
 "side_menu_setting_edit_btn_title" = "変更する";
 "side_menu_setting_kikurage_name_error" = "名前を読み込めませんでした";
 
-// Dictonary
+// dictonary
 "side_menu_dictionary_segment_title_trivia" = "豆知識";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
 "side_menu_dictionary_twitter_no_tweets" = "ツイートがありません";
