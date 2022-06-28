@@ -35,12 +35,11 @@ class GraphBaseView: UIView {
 
 extension GraphBaseView {
     private func initUI() {
-        // タイトル
         temperatureLabel.text = R.string.localizable.side_menu_graph_temperature_subtitle()
         humidityLabel.text = R.string.localizable.side_menu_graph_humidity_subtitle()
-        // 背景色
+
         backgroundColor = .systemGroupedBackground
-        // グラフ
+
         temperatureLineChartView.noDataText = ""
         humidityLineChartView.noDataText = ""
     }

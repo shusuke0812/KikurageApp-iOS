@@ -17,7 +17,7 @@ class CalendarViewModel {
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
     weak var delegate: CalendarViewModelDelegate?
-    /// きくらげユーザー
+
     private(set) var kikurageUser: KikurageUser?
     private(set) var cultivationDateComponents: DateComponents
     private(set) var cultivationTerm: Int?
