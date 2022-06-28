@@ -17,7 +17,7 @@ protocol KLoggerProtocol {
 extension KLoggerProtocol {
     static func devFatalError(_ message: String, className: String = className(from: #file), function: String = #function, line: Int = #line) {
         #if DEBUG
-        fatalError("DEBUG: [Fatal] \(className).\(function) # \(line): \(message)")
+        fatalError("DEBUG: [Fatal] \(className).\(function) #\(line): \(message)")
         #endif
     }
     static func className(from filepath: String) -> String {
