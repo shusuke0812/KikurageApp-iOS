@@ -61,9 +61,7 @@ extension CultivationDetailBaseView {
 
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
-        // 観察日の設定
         viewDateLabel.text = cultivation.viewDate
-        //  観察メモの設定
         memoTextView.text = cultivation.memo
     }
     func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {

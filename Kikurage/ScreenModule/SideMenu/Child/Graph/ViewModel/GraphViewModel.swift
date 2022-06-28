@@ -26,7 +26,6 @@ class GraphViewModel {
     var temperatureGraphDatas: [Int] = []
     /// きくらげの１週間の湿度データ
     var humidityGraphDatas: [Int] = []
-    /// きくらげユーザー
     var kikurageUser: KikurageUser?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {

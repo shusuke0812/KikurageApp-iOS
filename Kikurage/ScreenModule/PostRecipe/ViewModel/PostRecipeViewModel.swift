@@ -19,9 +19,8 @@ class PostRecipeViewModel {
     private let recipeRepository: RecipeRepositoryProtocol
 
     weak var delegate: PostRecipeViewModelDelegate?
-    /// 料理記録
+
     var recipe: KikurageRecipe
-    /// 料理記録のFirestore Document ID
     var postedRecipeDocumentId: String?
 
     init(recipeRepository: RecipeRepositoryProtocol) {

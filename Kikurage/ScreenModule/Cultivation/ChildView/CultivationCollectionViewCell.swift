@@ -36,7 +36,6 @@ extension CultivationCollectionViewCell {
 
 extension CultivationCollectionViewCell {
     func setUI(cultivation: KikurageCultivation) {
-        // 画像を設定
         guard let imageStoragePath = cultivation.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
@@ -45,7 +44,6 @@ extension CultivationCollectionViewCell {
                     KLogger.verbose(error.localizedDescription)
                     return
                 }
-                // 日付を設定
                 self?.viewDateLabel.text = cultivation.viewDate
             }
         }
