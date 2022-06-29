@@ -39,7 +39,7 @@ extension DebugBaseView {
     private func initUI() {
         forceRestartButton.setTitle("Force logout and restart app after 2min", for: .normal)
 
-        konashiFindButton.setTitle("Konashi Find", for: .normal)
+        konashiFindButton.setTitle("Find Konashi", for: .normal)
         konashiFindButton.layer.masksToBounds = true
         konashiFindButton.layer.cornerRadius = .buttonCornerRadius
         konashiFindButton.tintColor = .white
