@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class DebugViewController: UIViewController {
     private var baseView: DebugBaseView { self.view as! DebugBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: DebugViewModel!
+
+    private let konashi = KonashiBluetooth()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,5 +44,8 @@ extension DebugViewController {
 extension DebugViewController: DebugBaseViewDelegate {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView) {
         LoginHelper.shared.logout()
+    }
+    func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView) {
+        konashi.find()
     }
 }

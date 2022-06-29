@@ -10,10 +10,12 @@ import UIKit
 
 protocol DebugBaseViewDelegate: AnyObject {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView)
+    func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView)
 }
 
 class DebugBaseView: UIView {
-    @IBOutlet weak var forceRestartButton: UIButton!
+    @IBOutlet private weak var forceRestartButton: UIButton!
+    @IBOutlet private weak var konashiFindButton: UIButton!
 
     weak var delegate: DebugBaseViewDelegate?
 
@@ -26,6 +28,9 @@ class DebugBaseView: UIView {
     @IBAction private func didTappedForceRestartButton(_ sender: UIButton) {
         delegate?.debugBaseViewDidTappedForceRestrart(self)
     }
+    @IBAction private func didTappedKonashiFindButton(_ sender: UIButton) {
+        delegate?.debugBaseViewDidTappedKonashiFind(self)
+    }
 }
 
 // MARK: - Initialized
@@ -33,5 +38,11 @@ class DebugBaseView: UIView {
 extension DebugBaseView {
     private func initUI() {
         forceRestartButton.setTitle("Force logout and restart app after 2min", for: .normal)
+
+        konashiFindButton.setTitle("Konashi Find", for: .normal)
+        konashiFindButton.layer.masksToBounds = true
+        konashiFindButton.layer.cornerRadius = .buttonCornerRadius
+        konashiFindButton.tintColor = .white
+        konashiFindButton.backgroundColor = .systemBlue
     }
 }

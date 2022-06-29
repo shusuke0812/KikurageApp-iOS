@@ -13,8 +13,6 @@ import KikurageFeature
 class SettingViewController: UIViewController {
     private var baseView: SettingBaseView { self.view as! SettingBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: SettingViewModel!
-    
-    private let bluetooth: KikurageBluetooth = KikurageBluetooth()
 
     // MARK: - Lifecycle
 
@@ -59,7 +57,6 @@ extension SettingViewController: SettingBaseViewDelegate {
     func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
         print("DEBUG: ボタンがタップされました")
-        bluetooth.find()
     }
 }
 

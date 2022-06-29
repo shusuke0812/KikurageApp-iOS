@@ -22,29 +22,45 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qv4-mY-E3t">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sW-hw-XSv">
+                                                <rect key="frame" x="15" y="30" width="384" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="didTappedForceRestartButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="4Vz-Pp-sbY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUS-kA-Jgz">
+                                                <rect key="frame" x="15" y="101" width="384" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="0MH-RU-8YQ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="didTappedKonashiFindButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="c5P-Y0-SqW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="eUS-kA-Jgz" secondAttribute="trailing" constant="15" id="AF0-J6-zNS"/>
+                                            <constraint firstItem="eUS-kA-Jgz" firstAttribute="top" secondItem="9sW-hw-XSv" secondAttribute="bottom" constant="40" id="AR4-ov-UX7"/>
+                                            <constraint firstItem="9sW-hw-XSv" firstAttribute="top" secondItem="qv4-mY-E3t" secondAttribute="top" constant="30" id="Em8-sU-jKe"/>
+                                            <constraint firstAttribute="trailing" secondItem="9sW-hw-XSv" secondAttribute="trailing" constant="15" id="hu1-Ow-Hpa"/>
                                             <constraint firstAttribute="height" constant="1000" id="tR4-QR-LcB"/>
+                                            <constraint firstItem="9sW-hw-XSv" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="xcG-8U-50Z"/>
+                                            <constraint firstItem="eUS-kA-Jgz" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="yuJ-Gu-AZJ"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sW-hw-XSv">
-                                        <rect key="frame" x="15" y="30" width="384" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        <connections>
-                                            <action selector="didTappedForceRestartButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="4Vz-Pp-sbY"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="qv4-mY-E3t" secondAttribute="bottom" id="5Zx-V2-izJ"/>
                                     <constraint firstAttribute="trailing" secondItem="qv4-mY-E3t" secondAttribute="trailing" id="7h3-ld-QUx"/>
-                                    <constraint firstAttribute="trailing" secondItem="9sW-hw-XSv" secondAttribute="trailing" constant="15" id="FVh-q4-MfF"/>
                                     <constraint firstItem="qv4-mY-E3t" firstAttribute="top" secondItem="ufR-2q-4JD" secondAttribute="top" id="OaS-xn-MIi"/>
                                     <constraint firstItem="qv4-mY-E3t" firstAttribute="width" secondItem="ufR-2q-4JD" secondAttribute="width" id="fKL-XU-3Io"/>
-                                    <constraint firstItem="9sW-hw-XSv" firstAttribute="leading" secondItem="ufR-2q-4JD" secondAttribute="leading" constant="15" id="pA4-GU-5h3"/>
                                     <constraint firstItem="qv4-mY-E3t" firstAttribute="leading" secondItem="ufR-2q-4JD" secondAttribute="leading" id="s6F-Di-Nce"/>
-                                    <constraint firstItem="9sW-hw-XSv" firstAttribute="top" secondItem="ufR-2q-4JD" secondAttribute="top" constant="30" id="yoF-Cf-DRh"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="942-HI-Djf"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="urZ-zP-kJV"/>
@@ -60,6 +76,7 @@
                         </constraints>
                         <connections>
                             <outlet property="forceRestartButton" destination="9sW-hw-XSv" id="xMb-Oh-bWI"/>
+                            <outlet property="konashiFindButton" destination="eUS-kA-Jgz" id="nCi-wS-fmH"/>
                         </connections>
                     </view>
                 </viewController>
