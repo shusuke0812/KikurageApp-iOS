@@ -111,7 +111,7 @@
 		9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
 		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
-		9C9B27C92812F42A00B391E3 /* KikurageBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B27C82812F42A00B391E3 /* KikurageBluetooth.swift */; };
+		9C9B27C92812F42A00B391E3 /* KonashiBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
 		9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */; };
 		9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */; };
@@ -348,7 +348,7 @@
 		9C9981D727F9ED4D0068FD61 /* TwitterSeachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSeachRepository.swift; sourceTree = "<group>"; };
 		9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootController.swift; sourceTree = "<group>"; };
 		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
-		9C9B27C82812F42A00B391E3 /* KikurageBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetooth.swift; sourceTree = "<group>"; };
+		9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonashiBluetooth.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -745,7 +745,7 @@
 		9C9B27C72812F3FE00B391E3 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B27C82812F42A00B391E3 /* KikurageBluetooth.swift */,
+				9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -2117,7 +2117,7 @@
 				9C91306E27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift in Sources */,
 				9CAC931D2789E5E90033DA33 /* KikurageHUD.swift in Sources */,
 				9CAC9363278A9AC70033DA33 /* ResourceManager.swift in Sources */,
-				9C9B27C92812F42A00B391E3 /* KikurageBluetooth.swift in Sources */,
+				9C9B27C92812F42A00B391E3 /* KonashiBluetooth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

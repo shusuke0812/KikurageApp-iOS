@@ -9,7 +9,7 @@
 import Foundation
 import konashi_ios_sdk
 
-public class KikurageBluetooth: NSObject {
+public class KonashiBluetooth: NSObject {
     public override init() {
         Konashi.shared().readyHandler = { () -> Void in
             Konashi.pinMode(KonashiDigitalIOPin.LED2, mode: KonashiPinMode.output)
