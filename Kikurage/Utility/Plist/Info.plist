@@ -43,5 +43,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>to connect kikurage device</string>
 </dict>
 </plist>
