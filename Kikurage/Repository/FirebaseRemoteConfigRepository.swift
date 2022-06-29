@@ -50,7 +50,7 @@ extension FirebaseRemoteConfigRepository {
             case .error:
                 completion(.failure(ClientError.apiError(.readError)))
             @unknown default:
-                fatalError()
+                KLogger.devFatalError("remote config")
             }
         }
     }

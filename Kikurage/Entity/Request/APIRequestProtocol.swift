@@ -30,7 +30,7 @@ extension APIRequestProtocol {
         case .get:
             components?.queryItems = parameters
         default:
-            fatalError("this is not supported http method: \(method)")
+            KLogger.devFatalError("this is not supported http method: \(method)")
         }
 
         var urlRequest = URLRequest(url: url)
