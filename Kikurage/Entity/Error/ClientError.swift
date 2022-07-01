@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: rename to `APIClientError`
 enum ClientError: Error {
     /// 通信に失敗（ex. 端末オフライン、URLホストが見つからない etc）
     case networkConnectionError(Error)
