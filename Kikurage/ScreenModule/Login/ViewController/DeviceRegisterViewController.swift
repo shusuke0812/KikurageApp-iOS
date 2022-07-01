@@ -99,11 +99,9 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     // TODO: TextFieldバリデーションはViewModelに書く
     private func textFieldValidation() -> Bool {
         guard let productKey = baseView.productKeyTextField.text, let kikurageName = baseView.kikurageNameTextField.text, let cultivationStartDate = baseView.cultivationStartDateTextField.text else {
-            print("DEBUG: 入力されていない項目があります")
             return false
         }
         if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDate.isEmpty {
-            print("DEBUG: 入力されていない項目があります")
             return false
         }
         return true

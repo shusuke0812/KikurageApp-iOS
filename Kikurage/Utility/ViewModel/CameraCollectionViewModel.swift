@@ -31,7 +31,6 @@ extension CameraCollectionViewModel {
     ///   - index: CollectionViewのセル番号
     func setImage(selectedImage: UIImage, index: Int) {
         if index >= selectedImageMaxNumber {
-            print("DEBUG: 指定した配列の要素数よりも大きい要素数です")
             return
         }
         selectedImages[index] = selectedImage
@@ -40,7 +39,6 @@ extension CameraCollectionViewModel {
     /// - Parameter index: CollectionViewのセル番号
     func cancelImage(index: Int) {
         if index >= selectedImageMaxNumber {
-            print("DEBUG: 指定した配列の要素数よりも大きい要素数です")
             return
         }
         selectedImages[index] = nil
