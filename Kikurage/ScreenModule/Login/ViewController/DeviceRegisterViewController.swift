@@ -88,23 +88,16 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
 
 extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
     func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
-        let validate = textFieldValidation()
+        let validate = viewModel.validateRegistration(
+            productKey: baseView.productKeyTextField.text,
+            kikurageName: baseView.kikurageNameTextField.text,
+            cultivationStartDateString: baseView.cultivationStartDateTextField.text)
         if validate {
             HUD.show(.progress)
             viewModel.loadKikurageState()
         } else {
             UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
-    }
-    // TODO: TextFieldバリデーションはViewModelに書く
-    private func textFieldValidation() -> Bool {
-        guard let productKey = baseView.productKeyTextField.text, let kikurageName = baseView.kikurageNameTextField.text, let cultivationStartDate = baseView.cultivationStartDateTextField.text else {
-            return false
-        }
-        if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDate.isEmpty {
-            return false
-        }
-        return true
     }
     func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
         guard baseView.kikurageQrcodeReaderView.isHidden else { return }

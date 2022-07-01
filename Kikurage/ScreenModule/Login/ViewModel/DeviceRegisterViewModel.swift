@@ -40,6 +40,15 @@ extension DeviceRegisterViewModel {
     func setStateReference(productKey: String) {
         kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
+    func validateRegistration(productKey: String?, kikurageName: String?, cultivationStartDateString: String?) -> Bool {
+        guard let productKey = productKey, let kikurageName = kikurageName, let cultivationStartDateString = cultivationStartDateString else {
+            return false
+        }
+        if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDateString.isEmpty {
+            return false
+        }
+        return true
+    }
 }
 
 // MARK: - Firebase Firestore
