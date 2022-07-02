@@ -12,15 +12,10 @@ import Firebase
 typealias KikurageCultivationTuple = (data: KikurageCultivation, documentId: String)
 
 struct KikurageCultivation: Codable {
-    /// 栽培メモ
     var memo: String = ""
-    /// 栽培写真
     var imageStoragePaths: [String] = []
-    /// 栽培観察日
     var viewDate: String = ""
-    /// 投稿日
     var createdAt: Timestamp?
-    /// 更新日
     var updatedAt: Timestamp?
 
     enum CodingKeys: String, CodingKey {

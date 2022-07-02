@@ -9,15 +9,10 @@
 import Foundation
 
 struct KikurageState: Codable {
-    /// 温度
     var temperature: Int?
-    /// 湿度
     var humidity: Int?
-    /// 状態メッセージ
     var message: String?
-    /// タイプ文字列（dry, normal, hot）
-    var typeString: String?
-    /// アドバイス
+    var typeString: String? // dry, normal, hot
     var advice: String?
 
     enum CodingKeys: String, CodingKey {
