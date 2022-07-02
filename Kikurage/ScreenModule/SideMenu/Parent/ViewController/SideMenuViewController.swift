@@ -87,13 +87,13 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case .cancelled:
-            print("DEBUG: キャンセル")
+            break
         case .saved:
-            print("DEBUG: 下書き保存")
+            break
         case .sent:
-            print("DEBUG: 送信成功")
+            break
         default:
-            print("DEBUG: 送信失敗")
+            break
         }
         presentingViewController?.dismiss(animated: true, completion: nil)
     }

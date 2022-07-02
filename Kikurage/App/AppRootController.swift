@@ -124,7 +124,6 @@ extension AppRootController: AppPresenterDelegate {
         }
     }
     func didFailedGetKikurageInfo(errorMessage: String) {
-        print("DEBUG: \(errorMessage)")
         DispatchQueue.main.async {
             self.showTopPage()
         }
