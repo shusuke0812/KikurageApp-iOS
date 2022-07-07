@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import KikurageFeature
 
 protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
