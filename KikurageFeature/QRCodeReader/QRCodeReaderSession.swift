@@ -89,6 +89,8 @@ class QRCodeReaderSession: NSObject {
             } catch {
                 return nil
             }
+        } else {
+            return nil
         }
     }
 }
