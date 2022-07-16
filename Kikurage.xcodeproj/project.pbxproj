@@ -159,6 +159,7 @@
 		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBA06D028748AA7006F2259 /* KikurageLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */; };
+		9CBAC0B52882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAC0B42882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift */; };
 		9CBB0BF0280B179700FFC7BF /* KikurageStateGraphRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
 		9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */; };
@@ -397,6 +398,7 @@
 		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageLogger.swift; sourceTree = "<group>"; };
+		9CBAC0B42882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateGraphRequest.swift; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB32D427365E3900A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 				9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */,
 				9CBBEBD12881A3DC00424DC8 /* QRCodeReaderViewModel.swift */,
 				9CA43DF628806707007196BC /* QRCodeReaderSession.swift */,
+				9CBAC0B42882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift */,
 			);
 			path = QRCodeReader;
 			sourceTree = "<group>";
@@ -2122,6 +2125,7 @@
 				9CBA06D028748AA7006F2259 /* KikurageLogger.swift in Sources */,
 				9CAC9363278A9AC70033DA33 /* ResourceManager.swift in Sources */,
 				9CA43DF728806707007196BC /* QRCodeReaderSession.swift in Sources */,
+				9CBAC0B52882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
