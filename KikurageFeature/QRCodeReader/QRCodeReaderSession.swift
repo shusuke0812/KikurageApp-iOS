@@ -22,7 +22,7 @@ class QRCodeReaderSession: NSObject {
     // MARK: AVCapture
 
     private let captureSession = AVCaptureSession()
-    @objc private dynamic var videoDevuceInput: AVCaptureDeviceInput!
+    @objc private dynamic var videoDeviceInput: AVCaptureDeviceInput!
     private var metadataOutput = AVCaptureMetadataOutput()
 
     var readQRCodeString: ((String) -> Void)?
@@ -53,7 +53,7 @@ class QRCodeReaderSession: NSObject {
             let videDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
             if captureSession.canAddInput(videDeviceInput) {
                 captureSession.addInput(videDeviceInput)
-                videoDevuceInput = videDeviceInput
+                videoDeviceInput = videDeviceInput
                 onSuccess()
             } else {
                 onError(nil)
