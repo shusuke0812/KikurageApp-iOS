@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 import PKHUD
 import KikurageFeature
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     private var viewModel: DeviceRegisterViewModel!
+    private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!
 
     private let queue = DispatchQueue.global(qos: .userInitiated)
 
@@ -21,6 +23,8 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        qrCodeReaderViewModel = KikurageQRCodeReaderViewModel()
+        qrCodeReaderViewModel.delegate = self
         setDelegateDataSource()
 
         navigationItem.title = R.string.localizable.screen_device_register_title()
@@ -28,21 +32,10 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
         adjustNavigationBarBackgroundColor()
 
         baseView.showKikurageQrcodeReaderView(isHidden: true)
-        baseView.kikurageQrcodeReaderView.readQRcodeString = { [weak self] qrcode in
-            self?.baseView.showKikurageQrcodeReaderView(isHidden: true)
-            self?.baseView.setProductKeyText(qrcode)
-            self?.viewModel.kikurageUser?.productKey = qrcode
-            self?.viewModel.setStateReference(productKey: qrcode)
-        }
-        baseView.kikurageQrcodeReaderView.catchError = { error in
-            if #available(iOS 14, *) {
-                KLogManager.error(error.localizedDescription)
-            }
-        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        baseView.kikurageQrcodeReaderView.configPreviewLayer()
+        baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -100,12 +93,11 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
         }
     }
     func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
-        guard baseView.kikurageQrcodeReaderView.isHidden else { return }
-        baseView.showKikurageQrcodeReaderView(isHidden: false)
-        queue.async { [weak self] in
-            // TODO: KikurageFeature内にてAVCaptureSessionとCaptureをUIViewに反映する処理を分ける（baseViewのメソッドをserial queueで実行すると`UIViewController.view must be used from main thread only`アラートが出てしまうため）
-            self?.baseView.kikurageQrcodeReaderView.startRunning()
+        DispatchQueue.main.async {
+            guard self.baseView.kikurageQrcodeReaderView.isHidden else { return }
+            self.baseView.showKikurageQrcodeReaderView(isHidden: false)
         }
+        qrCodeReaderViewModel.startRunning()
     }
 }
 
@@ -138,5 +130,27 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
         vc.kikurageState = viewModel.kikurageState
         vc.kikurageUser = viewModel.kikurageUser
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - KikurageQRCodeReaderViewModel Delegate
+
+extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
+        DispatchQueue.main.async {
+            self.baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
+        }
+    }
+
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError) {
+    }
+
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String) {
+        DispatchQueue.main.async {
+            self.baseView.showKikurageQrcodeReaderView(isHidden: true)
+            self.baseView.setProductKeyText(qrCodeString)
+        }
+        viewModel.kikurageUser?.productKey = qrCodeString
+        viewModel.setStateReference(productKey: qrCodeString)
     }
 }
