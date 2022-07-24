@@ -22,11 +22,9 @@ public class KikurageQRCodeReaderView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-}
 
-// MARK: - Initialize
+    // MARK: - Initialize
 
-extension KikurageQRCodeReaderView {
     // MEMO: 呼び出し元の`viewDidLayoutSubviews()`で実行しないとautolayoutが崩れるためpublicメソッドにした
     public func configPreviewLayer(captureSession: AVCaptureSession) {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
