@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum SessionSetupResult {
+public enum SessionSetupResult: Equatable {
     case success
     case error(SessionSetupError)
 }
@@ -16,6 +16,6 @@ public enum SessionSetupResult {
 public enum SessionSetupError {
     case failure
     case notAuthorized
-    
+
     // TODO: add description for displaying error message alert
 }
