@@ -1,5 +1,5 @@
 //
-//  QRCodeReaderSession.swift
+//  KikurageQRCodeReaderViewModel.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2022/7/15.
@@ -11,32 +11,60 @@
 import Foundation
 import AVFoundation
 
-class QRCodeReaderSession: NSObject {
-    private enum SessionSetupResult {
-        case success
-        case failure
-        case notAuthorized
-    }
-    private var setupResult: SessionSetupResult = .success
+public enum SessionSetupResult {
+    case success
+    case error(SessionSetupError)
+}
+
+public enum SessionSetupError {
+    case failure
+    case notAuthorized
+}
+
+protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModelDelegate, didConfigured captureSession: AVCaptureSession)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModelDelegate, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
+}
+
+public class KikurageQRCodeReaderViewModel: NSObject {
+    private var captureSessionQueue = DispatchQueue(label: (Bundle.main.bundleIdentifier ?? "missing_bundle_id") + "_capture.session")
+
+    // MARK: Event notification
+
+    weak var delegate: KikurageQRCodeReaderViewModelDelegate?
+    var readQRCodeString: ((String) -> Void)?
 
     // MARK: AVCapture
+
+    private var setupResult: SessionSetupResult = .success
 
     private let captureSession = AVCaptureSession()
     @objc private dynamic var videoDeviceInput: AVCaptureDeviceInput!
     private var metadataOutput = AVCaptureMetadataOutput()
 
-    var readQRCodeString: ((String) -> Void)?
+    override init() {
+        super.init()
+        setup()
+    }
+
+    private func setup() {
+        captureSessionQueue.async {
+            self.configureSession(onError: { error in
+                print("faile:\(error?.localizedDescription)")
+            })
+        }
+    }
 
     /**
-     setup capture session
+    setup capture session
 
-     It's not safe to mutate an AVCaptureSession or any of its inputs, outputs, or connections from multiple threads at the same time.
+    It's not safe to mutate an AVCaptureSession or any of its inputs, outputs, or connections from multiple threads at the same time.
      
-     Don't perform these tasks on the main queue because
-     AVCaptureSession.startRunning() is a blocking call, which can take a long time.
-     Dispatch session setup to the sessionQueue, so that the main queue isn't blocked, which keeps the UI responsive.
-     */
-    func configureSession(onSuccess: (() -> Void), onError: ((Error?) -> Void)) {
+    Don't perform these tasks on the main queue because
+    AVCaptureSession.startRunning() is a blocking call, which can take a long time.
+    Dispatch session setup to the sessionQueue, so that the main queue isn't blocked, which keeps the UI responsive.
+    */
+    func configureSession(onError: ((Error?) -> Void)) {
         if setupResult != .success { return }
 
         captureSession.beginConfiguration()
@@ -54,7 +82,6 @@ class QRCodeReaderSession: NSObject {
             if captureSession.canAddInput(videDeviceInput) {
                 captureSession.addInput(videDeviceInput)
                 videoDeviceInput = videDeviceInput
-                onSuccess()
             } else {
                 onError(nil)
             }
@@ -67,9 +94,8 @@ class QRCodeReaderSession: NSObject {
         // add video output
         if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
-            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.setMetadataObjectsDelegate(self, queue: captureSessionQueue)
             metadataOutput.metadataObjectTypes = [.qr]
-            onSuccess()
         } else {
             onError(nil)
         }
@@ -77,8 +103,8 @@ class QRCodeReaderSession: NSObject {
         captureSession.commitConfiguration()
     }
     /**
-     discover camera inputs which is possible to setup capture session
-     */
+    discover camera inputs which is possible to setup capture session
+    */
     func discoverDeviceCamera() -> AVCaptureDeviceInput? {
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back)
         let devices = discoverySession.devices
@@ -95,8 +121,8 @@ class QRCodeReaderSession: NSObject {
     }
 }
 
-extension QRCodeReaderSession: AVCaptureMetadataOutputObjectsDelegate {
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+extension KikurageQRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate {
+    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] { // swiftlint:disable:this force_cast
             guard let value = metadata.stringValue else {
                 return
