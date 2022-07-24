@@ -138,6 +138,9 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
 extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
         DispatchQueue.main.async {
+            if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.kikurageQrcodeReaderView.windowOrientation) {
+                self.baseView.kikurageQrcodeReaderView.configCaptureOrientation(videoOrientation)
+            }
             self.baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
         }
     }
