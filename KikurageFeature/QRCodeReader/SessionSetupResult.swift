@@ -16,6 +16,7 @@ public enum SessionSetupResult: Equatable {
 public enum SessionSetupError {
     case failure
     case notAuthorized
+    case notReadQRCode
 
     // TODO: add description for displaying error message alert
 }

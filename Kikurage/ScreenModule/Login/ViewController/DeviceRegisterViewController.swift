@@ -160,4 +160,9 @@ extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
         viewModel.kikurageUser?.productKey = qrCodeString
         viewModel.setStateReference(productKey: qrCodeString)
     }
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didNotRead error: SessionSetupError) {
+        DispatchQueue.main.async {
+            self.baseView.showKikurageQrcodeReaderView(isHidden: true)
+        }
+    }
 }

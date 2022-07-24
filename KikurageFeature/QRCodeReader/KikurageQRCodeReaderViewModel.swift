@@ -16,6 +16,7 @@ public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didNotRead error: SessionSetupError)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, authorize: SessionSetupResult)
 }
 
@@ -126,6 +127,18 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             delegate?.qrCodeReaderViewModel(self, authorize: setupResult)
         }
     }
+    /*
+    validate QRCode string
+     
+    If QRCode string is contained `http` or `https`, application crush when read QRCode
+    */
+    private func validate(for qrCodeString: String) -> Bool {
+        if qrCodeString.contains("http://") || qrCodeString.contains("https://") {
+            return false
+        } else {
+            return true
+        }
+    }
 
     // MARK: - Public
 
@@ -175,7 +188,11 @@ extension KikurageQRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate 
                 return
             }
             captureSession.stopRunning()
-            delegate?.qrCodeReaderViewModel(self, didRead: value)
+            if validate(for: value) {
+                delegate?.qrCodeReaderViewModel(self, didRead: value)
+            } else {
+                delegate?.qrCodeReaderViewModel(self, didNotRead: .notReadQRCode)
+            }
         }
     }
 }
