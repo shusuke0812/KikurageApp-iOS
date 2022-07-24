@@ -166,6 +166,8 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     }
 }
 
+// MARK: - AVCaptureMetadataOutputObjects Delegate
+
 extension KikurageQRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate {
     public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] { // swiftlint:disable:this force_cast
