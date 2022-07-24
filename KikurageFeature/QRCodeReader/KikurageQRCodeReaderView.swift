@@ -10,10 +10,15 @@ import UIKit
 import AVFoundation
 
 public class KikurageQRCodeReaderView: UIView {
+    public var windowOrientation: UIInterfaceOrientation {
+        self.window?.windowScene?.interfaceOrientation ?? .unknown
+    }
+    public var previewLayer: AVCaptureVideoPreviewLayer?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -28,5 +33,10 @@ extension KikurageQRCodeReaderView {
         previewLayer.frame = layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(previewLayer)
+
+        self.previewLayer = previewLayer
+    }
+    public func configCaptureOrientation(_ orientation: AVCaptureVideoOrientation) {
+        previewLayer?.connection?.videoOrientation = orientation
     }
 }
