@@ -121,6 +121,14 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             return nil
         }
     }
+    public func startRunning() {
+        guard !captureSession.isRunning else { return }
+        captureSession.startRunning()
+    }
+    public func stopRunning() {
+        guard !captureSession.isRunning else { return }
+        captureSession.stopRunning()
+    }
 }
 
 extension KikurageQRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate {
