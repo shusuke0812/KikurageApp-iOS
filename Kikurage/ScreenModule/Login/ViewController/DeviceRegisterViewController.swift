@@ -11,7 +11,7 @@ import AVFoundation
 import PKHUD
 import KikurageFeature
 
-class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable {
+class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     private var viewModel: DeviceRegisterViewModel!
     private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!
@@ -130,10 +130,8 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
         }
     }
     private func transitionHomePage() {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
-        vc.kikurageState = viewModel.kikurageState
-        vc.kikurageUser = viewModel.kikurageUser
-        navigationController?.pushViewController(vc, animated: true)
+        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else { return }
+        pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
     }
 }
 

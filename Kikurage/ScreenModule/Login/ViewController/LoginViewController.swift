@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class LoginViewController: UIViewController, UIViewControllerNavigatable {
+class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
     private var viewModel: LoginViewModel!
 
@@ -77,9 +77,7 @@ extension LoginViewController: LoginViewModelDelegate {
         }
     }
     private func transitionHomePage() {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
-        vc.kikurageUser = viewModel.kikurageUser
-        vc.kikurageState = viewModel.kikurageState
-        navigationController?.pushViewController(vc, animated: true)
+        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else { return }
+        pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
     }
 }
