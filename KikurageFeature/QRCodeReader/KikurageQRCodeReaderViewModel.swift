@@ -30,7 +30,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
 
     private var setupResult: SessionSetupResult = .success
 
-    public let captureSession: AVCaptureSession
+    public var captureSession: AVCaptureSession!
     @objc private dynamic var videoDeviceInput: AVCaptureDeviceInput!
     private var metadataOutput: AVCaptureMetadataOutput
 
@@ -158,6 +158,12 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             guard !self.captureSession.isRunning else { return }
             self.captureSession.stopRunning()
         }
+    }
+    public func removeCaptureSession() {
+        stopRunning()
+        captureSession.outputs.forEach { captureSession.removeOutput($0) }
+        captureSession.inputs.forEach { captureSession.removeInput($0) }
+        captureSession = nil
     }
 }
 
