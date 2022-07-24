@@ -11,49 +11,45 @@
 import Foundation
 import AVFoundation
 
-public enum SessionSetupResult {
-    case success
-    case error(SessionSetupError)
-}
-
-public enum SessionSetupError {
-    case failure
-    case notAuthorized
-}
-
 protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModelDelegate, didConfigured captureSession: AVCaptureSession)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModelDelegate, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String)
 }
 
 public class KikurageQRCodeReaderViewModel: NSObject {
     private var captureSessionQueue = DispatchQueue(label: (Bundle.main.bundleIdentifier ?? "missing_bundle_id") + "_capture.session")
 
-    // MARK: Event notification
+    // MARK: - Event notification
 
     weak var delegate: KikurageQRCodeReaderViewModelDelegate?
-    var readQRCodeString: ((String) -> Void)?
 
-    // MARK: AVCapture
+    // MARK: - AVCapture
 
     private var setupResult: SessionSetupResult = .success
 
-    private let captureSession = AVCaptureSession()
+    private let captureSession: AVCaptureSession
     @objc private dynamic var videoDeviceInput: AVCaptureDeviceInput!
-    private var metadataOutput = AVCaptureMetadataOutput()
+    private var metadataOutput: AVCaptureMetadataOutput
 
     override init() {
+        self.captureSession = AVCaptureSession()
+        self.metadataOutput = AVCaptureMetadataOutput()
         super.init()
+
         setup()
     }
 
     private func setup() {
         captureSessionQueue.async {
-            self.configureSession(onError: { error in
-                print("faile:\(error?.localizedDescription)")
+            self.configureSession(onError: { [weak self] error in
+                guard let self = self, let error = error else { return }
+                self.delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: error)
             })
         }
     }
+    
+    // MARK: - Private
 
     /**
     setup capture session
@@ -64,7 +60,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     AVCaptureSession.startRunning() is a blocking call, which can take a long time.
     Dispatch session setup to the sessionQueue, so that the main queue isn't blocked, which keeps the UI responsive.
     */
-    func configureSession(onError: ((Error?) -> Void)) {
+    private func configureSession(onError: ((SessionSetupError?) -> Void)) {
         if setupResult != .success { return }
 
         captureSession.beginConfiguration()
@@ -73,9 +69,9 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         // add video input
         do {
             guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
-                setupResult = .failure
+                setupResult = .error(.failure)
                 captureSession.commitConfiguration()
-                onError(nil)
+                onError(.failure)
                 return
             }
             let videDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
@@ -86,9 +82,9 @@ public class KikurageQRCodeReaderViewModel: NSObject {
                 onError(nil)
             }
         } catch {
-            setupResult = .failure
+            setupResult = .error(.failure)
             captureSession.commitConfiguration()
-            onError(error)
+            onError(.failure)
         }
 
         // add video output
@@ -97,15 +93,21 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             metadataOutput.setMetadataObjectsDelegate(self, queue: captureSessionQueue)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
-            onError(nil)
+            onError(.failure)
         }
 
         captureSession.commitConfiguration()
     }
+    private func authorize() {
+        // TODO: add camera authorize checking
+    }
+    
+    // MARK: - Public
+
     /**
     discover camera inputs which is possible to setup capture session
     */
-    func discoverDeviceCamera() -> AVCaptureDeviceInput? {
+    public func discoverDeviceCamera() -> AVCaptureDeviceInput? {
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back)
         let devices = discoverySession.devices
         if let backCamera = devices.first {
@@ -128,7 +130,7 @@ extension KikurageQRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate 
                 return
             }
             captureSession.stopRunning()
-            readQRCodeString?(value)
+            delegate?.qrCodeReaderViewModel(self, didRead: value)
         }
     }
 }
