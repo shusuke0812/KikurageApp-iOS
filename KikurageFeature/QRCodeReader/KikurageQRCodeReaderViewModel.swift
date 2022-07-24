@@ -16,6 +16,7 @@ public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, authorize: SessionSetupResult)
 }
 
 public class KikurageQRCodeReaderViewModel: NSObject {
@@ -100,8 +101,31 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
         }
     }
+
+    /**
+    check video authorization
+
+    this method must run before `configureSession()`
+    */
     private func authorize() {
-        // TODO: add camera authorize checking
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            delegate?.qrCodeReaderViewModel(self, authorize: setupResult)
+            break
+        case .notDetermined:
+            captureSessionQueue.suspend()
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
+                guard let self = self else { return }
+                if !granted {
+                    self.setupResult = .error(.notAuthorized)
+                }
+                self.delegate?.qrCodeReaderViewModel(self, authorize: self.setupResult)
+                self.captureSessionQueue.resume()
+            })
+        default:
+            setupResult = .error(.notAuthorized)
+            delegate?.qrCodeReaderViewModel(self, authorize: setupResult)
+        }
     }
 
     // MARK: - Public
