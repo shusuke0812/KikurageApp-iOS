@@ -26,6 +26,11 @@ extension TopAccessable {
         guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else { return }
         push(to: vc)
     }
+    
+    func pushToDeviceRegister() {
+        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
+        push(to: vc)
+    }
 
     // MARK: - SafariView
 
