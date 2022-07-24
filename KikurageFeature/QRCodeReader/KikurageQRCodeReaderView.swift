@@ -10,12 +10,6 @@ import UIKit
 import AVFoundation
 
 public class KikurageQRCodeReaderView: UIView {
-
-    public var readQRcodeString: ((String) -> Void)?
-    public var catchError: ((Error) -> Void)?
-    
-    private let captureSession = AVCaptureSession()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -29,7 +23,7 @@ public class KikurageQRCodeReaderView: UIView {
 
 extension KikurageQRCodeReaderView {
     // MEMO: 呼び出し元の`viewDidLayoutSubviews()`で実行しないとautolayoutが崩れるためpublicメソッドにした
-    public func configPreviewLayer() {
+    public func configPreviewLayer(captureSession: AVCaptureSession) {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
