@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+public enum SessionSetupResult {
+    case success
+    case error(SessionSetupError)
+}
+
+public enum SessionSetupError {
+    case failure
+    case notAuthorized
+    
+    // TODO: add description for displaying error message alert
+}
