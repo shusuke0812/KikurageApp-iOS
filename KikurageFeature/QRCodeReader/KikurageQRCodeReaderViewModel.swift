@@ -10,6 +10,7 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
@@ -76,12 +77,15 @@ public class KikurageQRCodeReaderViewModel: NSObject {
                 captureSession.addInput(videDeviceInput)
                 videoDeviceInput = videDeviceInput
             } else {
+                captureSession.commitConfiguration()
                 delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+                return
             }
         } catch {
             setupResult = .error(.failure)
             captureSession.commitConfiguration()
             delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+            return
         }
 
         // add video output
