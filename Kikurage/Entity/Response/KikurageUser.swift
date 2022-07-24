@@ -10,17 +10,11 @@ import Foundation
 import FirebaseFirestore
 
 struct KikurageUser: Codable {
-    /// 製品シリアルコード
     var productKey: String = ""
-    /// きくらげ 君（筐体）の名前
     var kikurageName: String = ""
-    /// 栽培開始日
     var cultivationStartDate = Date()
-    /// ステートリファレンス
     var stateRef: DocumentReference?
-    /// 投稿日
     var createdAt: Timestamp?
-    /// 更新日
     var updatedAt: Timestamp?
 
     enum CodingKeys: String, CodingKey {

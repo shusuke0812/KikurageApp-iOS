@@ -10,7 +10,7 @@ import UIKit
 import PKHUD
 import RxCocoa
 
-class SignUpViewController: UIViewController, UIViewControllerNavigatable {
+class SignUpViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: SignUpBaseView { self.view as! SignUpBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SignUpViewModel!
 
@@ -88,7 +88,6 @@ extension SignUpViewController: SignUpViewModelDelegate {
         }
     }
     private func transitionDeviceRegisterPage() {
-        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToDeviceRegister()
     }
 }

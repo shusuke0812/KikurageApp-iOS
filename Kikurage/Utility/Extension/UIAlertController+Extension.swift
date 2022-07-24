@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KikurageFeature
 
 extension UIAlertController {
     static func showAlert(

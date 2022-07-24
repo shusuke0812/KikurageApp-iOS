@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import KikurageFeature
 
 class CultivationCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!

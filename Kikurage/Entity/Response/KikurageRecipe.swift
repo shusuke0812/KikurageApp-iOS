@@ -12,17 +12,11 @@ import Firebase
 typealias KikurageRecipeTuple = (data: KikurageRecipe, documentId: String)
 
 struct KikurageRecipe: Codable {
-    /// 料理名
     var name: String = ""
-    /// 料理メモ
     var memo: String = ""
-    /// 料理写真
     var imageStoragePaths: [String] = []
-    /// 料理日
     var cookDate: String = ""
-    /// 投稿日
     var createdAt: Timestamp?
-    /// 更新日
     var updatedAt: Timestamp?
 
     enum CodingKeys: String, CodingKey {

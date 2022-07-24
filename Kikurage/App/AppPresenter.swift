@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import KikurageFeature
 
 protocol AppPresenterDelegate: AnyObject {
     /// きくらげ情報の取得に成功した

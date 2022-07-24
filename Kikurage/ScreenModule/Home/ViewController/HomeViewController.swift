@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import KikurageFeature
 
 class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
     private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
