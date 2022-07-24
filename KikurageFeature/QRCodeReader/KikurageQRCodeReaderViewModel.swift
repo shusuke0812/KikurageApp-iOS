@@ -11,7 +11,7 @@
 import Foundation
 import AVFoundation
 
-protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
+public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String)
@@ -22,17 +22,17 @@ public class KikurageQRCodeReaderViewModel: NSObject {
 
     // MARK: - Event notification
 
-    weak var delegate: KikurageQRCodeReaderViewModelDelegate?
+    public weak var delegate: KikurageQRCodeReaderViewModelDelegate?
 
     // MARK: - AVCapture
 
     private var setupResult: SessionSetupResult = .success
 
-    private let captureSession: AVCaptureSession
+    public let captureSession: AVCaptureSession
     @objc private dynamic var videoDeviceInput: AVCaptureDeviceInput!
     private var metadataOutput: AVCaptureMetadataOutput
 
-    override init() {
+    public override init() {
         self.captureSession = AVCaptureSession()
         self.metadataOutput = AVCaptureMetadataOutput()
         super.init()
