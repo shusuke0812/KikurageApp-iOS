@@ -122,12 +122,16 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         }
     }
     public func startRunning() {
-        guard !captureSession.isRunning else { return }
-        captureSession.startRunning()
+        captureSessionQueue.async {
+            guard !self.captureSession.isRunning else { return }
+            self.captureSession.startRunning()
+        }
     }
     public func stopRunning() {
-        guard !captureSession.isRunning else { return }
-        captureSession.stopRunning()
+        captureSessionQueue.async {
+            guard !self.captureSession.isRunning else { return }
+            self.captureSession.stopRunning()
+        }
     }
 }
 
