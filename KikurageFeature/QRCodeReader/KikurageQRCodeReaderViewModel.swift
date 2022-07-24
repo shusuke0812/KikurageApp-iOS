@@ -111,7 +111,6 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             delegate?.qrCodeReaderViewModel(self, authorize: setupResult)
-            break
         case .notDetermined:
             captureSessionQueue.suspend()
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
