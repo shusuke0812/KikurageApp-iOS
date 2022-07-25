@@ -42,13 +42,25 @@
                                                     <action selector="didTappedKonashiFindButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="c5P-Y0-SqW"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORT-pJ-Wsf">
+                                                <rect key="frame" x="15" y="171" width="384" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="YMe-PB-YP6"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="eUS-kA-Jgz" secondAttribute="trailing" constant="15" id="AF0-J6-zNS"/>
                                             <constraint firstItem="eUS-kA-Jgz" firstAttribute="top" secondItem="9sW-hw-XSv" secondAttribute="bottom" constant="40" id="AR4-ov-UX7"/>
+                                            <constraint firstItem="ORT-pJ-Wsf" firstAttribute="top" secondItem="eUS-kA-Jgz" secondAttribute="bottom" constant="30" id="DuI-Ms-tBN"/>
                                             <constraint firstItem="9sW-hw-XSv" firstAttribute="top" secondItem="qv4-mY-E3t" secondAttribute="top" constant="30" id="Em8-sU-jKe"/>
+                                            <constraint firstAttribute="trailing" secondItem="ORT-pJ-Wsf" secondAttribute="trailing" constant="15" id="cJN-BA-Sph"/>
                                             <constraint firstAttribute="trailing" secondItem="9sW-hw-XSv" secondAttribute="trailing" constant="15" id="hu1-Ow-Hpa"/>
+                                            <constraint firstItem="ORT-pJ-Wsf" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="n1M-Zk-Uy3"/>
                                             <constraint firstAttribute="height" constant="1000" id="tR4-QR-LcB"/>
                                             <constraint firstItem="9sW-hw-XSv" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="xcG-8U-50Z"/>
                                             <constraint firstItem="eUS-kA-Jgz" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="yuJ-Gu-AZJ"/>
@@ -77,6 +89,7 @@
                         <connections>
                             <outlet property="forceRestartButton" destination="9sW-hw-XSv" id="xMb-Oh-bWI"/>
                             <outlet property="konashiFindButton" destination="eUS-kA-Jgz" id="nCi-wS-fmH"/>
+                            <outlet property="konashiRSSILabel" destination="ORT-pJ-Wsf" id="8E8-bL-2zx"/>
                         </connections>
                     </view>
                 </viewController>
