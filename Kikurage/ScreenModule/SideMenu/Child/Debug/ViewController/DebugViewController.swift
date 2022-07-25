@@ -20,7 +20,7 @@ class DebugViewController: UIViewController {
         setNavigation()
         baseView.delegate = self
         viewModel = DebugViewModel()
-        
+
         konashi.delegate = self
     }
 
@@ -49,6 +49,7 @@ extension DebugViewController: DebugBaseViewDelegate {
     }
     func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView) {
         konashi.find()
+        konashi.readRSSI()
     }
 }
 
