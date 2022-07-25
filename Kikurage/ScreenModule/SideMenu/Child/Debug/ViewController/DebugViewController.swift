@@ -20,6 +20,8 @@ class DebugViewController: UIViewController {
         setNavigation()
         baseView.delegate = self
         viewModel = DebugViewModel()
+        
+        konashi.delegate = self
     }
 
     // MARK: - Action
@@ -47,5 +49,16 @@ extension DebugViewController: DebugBaseViewDelegate {
     }
     func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView) {
         konashi.find()
+    }
+}
+
+// MARK: - KonashiBluetooth Delegate
+
+extension DebugViewController: KonashiBluetoothDelegate {
+    func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32) {
+        let rssiString = String(rssi)
+        DispatchQueue.main.async {
+            self.baseView.setuRSSILabel(rssiString)
+        }
     }
 }
