@@ -26,6 +26,7 @@ public class KonashiBluetooth: NSObject {
 
     deinit {
         readRSSITimer = nil
+        Konashi.shared().signalStrengthDidUpdateHandler = nil
     }
 
     public func find() {
