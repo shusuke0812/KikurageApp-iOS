@@ -9,8 +9,13 @@
 import Foundation
 import konashi_ios_sdk
 
+public protocol KonashiBluetoothDelegate: AnyObject {
+    func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32)
+}
+
 public class KonashiBluetooth: NSObject {
     private var readRSSITimer: Timer?
+    public weak var delegate: KonashiBluetoothDelegate?
 
     override public init() {
         Konashi.shared().readyHandler = { () -> Void in
@@ -34,8 +39,9 @@ public class KonashiBluetooth: NSObject {
             Konashi.signalStrengthReadRequest()
         }
         // read completion observer
-        Konashi.shared().signalStrengthDidUpdateHandler = { rssi in
-            print(rssi)
+        Konashi.shared().signalStrengthDidUpdateHandler = { [weak self] rssi in
+            guard let self = self else { return }
+            self.delegate?.konashiBluetooth(self, didUpdated: rssi)
         }
     }
 }
