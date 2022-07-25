@@ -6,6 +6,11 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+// [ Konashi Document ]
+// repos: https://github.com/YUKAI/konashi-ios-sdk
+// get started: http://konashi.ux-xu.com/getting_started/
+// doc: http://konashi.ux-xu.com/documents/
+
 import Foundation
 import konashi_ios_sdk
 
@@ -13,6 +18,12 @@ public protocol KonashiBluetoothDelegate: AnyObject {
     func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32)
 }
 
+/**
+Bluetooth sample
+
+This is sample code about Bluetooth, which is shown how to find HW and to get its RSSI.
+It is used Konashi for HW.
+*/
 public class KonashiBluetooth: NSObject {
     private var readRSSITimer: Timer?
     public weak var delegate: KonashiBluetoothDelegate?
