@@ -753,7 +753,7 @@
 		9C9B27C72812F3FE00B391E3 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */,
+				9CC4D0D5289207BB0054FDB5 /* Debug */,
 			);
 			path = Bluetooth;
 			sourceTree = "<group>";
@@ -1441,6 +1441,14 @@
 				9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		9CC4D0D5289207BB0054FDB5 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		9CDAFBF624E4B95700E56550 /* Extension */ = {
