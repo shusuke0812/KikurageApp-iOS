@@ -16,6 +16,7 @@ import konashi_ios_sdk
 
 public protocol KonashiBluetoothDelegate: AnyObject {
     func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32)
+    func konashiBluetoothDisconnected(_ konashiBluetooth: KonashiBluetooth)
 }
 
 /**
@@ -32,6 +33,7 @@ public class KonashiBluetooth: NSObject {
         super.init()
 
         readyHandler()
+        disconnectedHandler()
     }
 
     deinit {
@@ -47,6 +49,13 @@ public class KonashiBluetooth: NSObject {
         Konashi.shared().readyHandler = { () -> Void in
             Konashi.pinMode(KonashiDigitalIOPin.LED2, mode: KonashiPinMode.output)
             Konashi.digitalWrite(KonashiDigitalIOPin.LED2, value: KonashiLevel.high)
+        }
+    }
+    
+    private func disconnectedHandler() {
+        Konashi.shared().disconnectedHandler = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.konashiBluetoothDisconnected(self)
         }
     }
 
