@@ -17,7 +17,7 @@ class DebugBaseView: UIView {
     @IBOutlet private weak var forceRestartButton: UIButton!
     @IBOutlet private weak var konashiFindButton: UIButton!
     @IBOutlet private weak var konashiRSSILabel: UILabel!
-    
+
     weak var delegate: DebugBaseViewDelegate?
 
     override func awakeFromNib() {
@@ -45,10 +45,10 @@ extension DebugBaseView {
         konashiFindButton.layer.cornerRadius = .buttonCornerRadius
         konashiFindButton.tintColor = .white
         konashiFindButton.backgroundColor = .systemBlue
-        
+
         konashiRSSILabel.text = "RSSI: -"
     }
-    func setuRSSILabel(_ text: String) {
+    func setRSSILabel(_ text: String) {
         konashiRSSILabel.text = "RSSI: " + "\(text)"
     }
 }

@@ -59,12 +59,12 @@ extension DebugViewController: KonashiBluetoothDelegate {
     func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32) {
         let rssiString = String(rssi)
         DispatchQueue.main.async {
-            self.baseView.setuRSSILabel(rssiString)
+            self.baseView.setRSSILabel(rssiString)
         }
     }
     func konashiBluetoothDisconnected(_ konashiBluetooth: KonashiBluetooth) {
         DispatchQueue.main.async {
-            self.baseView.setuRSSILabel("disconnected")
+            self.baseView.setRSSILabel("disconnected")
         }
     }
     func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth) {
