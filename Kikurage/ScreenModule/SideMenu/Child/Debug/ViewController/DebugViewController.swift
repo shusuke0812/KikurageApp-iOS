@@ -68,5 +68,8 @@ extension DebugViewController: KonashiBluetoothDelegate {
         }
     }
     func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth) {
+        DispatchQueue.main.async {
+            self.baseView.setPIOLabel("tapped S1")
+        }
     }
 }

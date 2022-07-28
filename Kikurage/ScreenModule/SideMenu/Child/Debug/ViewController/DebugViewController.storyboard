@@ -51,6 +51,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqj-1D-ee9">
+                                                <rect key="frame" x="15" y="231" width="384" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -58,7 +64,10 @@
                                             <constraint firstItem="eUS-kA-Jgz" firstAttribute="top" secondItem="9sW-hw-XSv" secondAttribute="bottom" constant="40" id="AR4-ov-UX7"/>
                                             <constraint firstItem="ORT-pJ-Wsf" firstAttribute="top" secondItem="eUS-kA-Jgz" secondAttribute="bottom" constant="30" id="DuI-Ms-tBN"/>
                                             <constraint firstItem="9sW-hw-XSv" firstAttribute="top" secondItem="qv4-mY-E3t" secondAttribute="top" constant="30" id="Em8-sU-jKe"/>
+                                            <constraint firstItem="Uqj-1D-ee9" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="IxM-Br-KX5"/>
                                             <constraint firstAttribute="trailing" secondItem="ORT-pJ-Wsf" secondAttribute="trailing" constant="15" id="cJN-BA-Sph"/>
+                                            <constraint firstAttribute="trailing" secondItem="Uqj-1D-ee9" secondAttribute="trailing" constant="15" id="cbY-nK-JdH"/>
+                                            <constraint firstItem="Uqj-1D-ee9" firstAttribute="top" secondItem="ORT-pJ-Wsf" secondAttribute="bottom" constant="20" id="edF-p0-CDf"/>
                                             <constraint firstAttribute="trailing" secondItem="9sW-hw-XSv" secondAttribute="trailing" constant="15" id="hu1-Ow-Hpa"/>
                                             <constraint firstItem="ORT-pJ-Wsf" firstAttribute="leading" secondItem="qv4-mY-E3t" secondAttribute="leading" constant="15" id="n1M-Zk-Uy3"/>
                                             <constraint firstAttribute="height" constant="1000" id="tR4-QR-LcB"/>
@@ -89,13 +98,14 @@
                         <connections>
                             <outlet property="forceRestartButton" destination="9sW-hw-XSv" id="xMb-Oh-bWI"/>
                             <outlet property="konashiFindButton" destination="eUS-kA-Jgz" id="nCi-wS-fmH"/>
+                            <outlet property="konashiPIOLabel" destination="Uqj-1D-ee9" id="qjC-yz-bqi"/>
                             <outlet property="konashiRSSILabel" destination="ORT-pJ-Wsf" id="8E8-bL-2zx"/>
                         </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57.971014492753625" y="95.758928571428569"/>
+            <point key="canvasLocation" x="-38" y="102"/>
         </scene>
     </scenes>
     <resources>

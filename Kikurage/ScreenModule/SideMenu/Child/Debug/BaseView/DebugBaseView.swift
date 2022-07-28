@@ -17,6 +17,7 @@ class DebugBaseView: UIView {
     @IBOutlet private weak var forceRestartButton: UIButton!
     @IBOutlet private weak var konashiFindButton: UIButton!
     @IBOutlet private weak var konashiRSSILabel: UILabel!
+    @IBOutlet private weak var konashiPIOLabel: UILabel!
 
     weak var delegate: DebugBaseViewDelegate?
 
@@ -47,8 +48,13 @@ extension DebugBaseView {
         konashiFindButton.backgroundColor = .systemBlue
 
         konashiRSSILabel.text = "RSSI: -"
+
+        konashiPIOLabel.text = "- no PIO signal -"
     }
     func setRSSILabel(_ text: String) {
         konashiRSSILabel.text = "RSSI: " + "\(text)"
+    }
+    func setPIOLabel(_ text: String) {
+        konashiPIOLabel.text = text
     }
 }
