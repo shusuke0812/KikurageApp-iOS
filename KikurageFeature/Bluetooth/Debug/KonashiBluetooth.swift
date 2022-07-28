@@ -29,10 +29,9 @@ public class KonashiBluetooth: NSObject {
     public weak var delegate: KonashiBluetoothDelegate?
 
     override public init() {
-        Konashi.shared().readyHandler = { () -> Void in
-            Konashi.pinMode(KonashiDigitalIOPin.LED2, mode: KonashiPinMode.output)
-            Konashi.digitalWrite(KonashiDigitalIOPin.LED2, value: KonashiLevel.high)
-        }
+        super.init()
+
+        readyHandler()
     }
 
     deinit {
@@ -42,6 +41,13 @@ public class KonashiBluetooth: NSObject {
 
     public func find() {
         Konashi.find()
+    }
+
+    private func readyHandler() {
+        Konashi.shared().readyHandler = { () -> Void in
+            Konashi.pinMode(KonashiDigitalIOPin.LED2, mode: KonashiPinMode.output)
+            Konashi.digitalWrite(KonashiDigitalIOPin.LED2, value: KonashiLevel.high)
+        }
     }
 
     // MARK: - RSSI
