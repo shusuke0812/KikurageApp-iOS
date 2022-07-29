@@ -28,6 +28,8 @@ It is used Konashi for HW.
 */
 public class KonashiBluetooth: NSObject {
     private var readRSSITimer: Timer?
+    private var currentLED: KonashiDigitalIOPin?
+
     public weak var delegate: KonashiBluetoothDelegate?
 
     override public init() {
@@ -68,6 +70,13 @@ public class KonashiBluetooth: NSObject {
                 self.delegate?.konashiBluetoothDidUpdatedPIOInput(self)
             }
         }
+    }
+    
+    // MARK: - LED
+    
+    public func flashLED(_ led: KonashiDigitalIOPin) {
+        Konashi.pinMode(led, mode: KonashiPinMode.output)
+        Konashi.digitalWrite(led, value: KonashiLevel.high)
     }
 
     // MARK: - RSSI
