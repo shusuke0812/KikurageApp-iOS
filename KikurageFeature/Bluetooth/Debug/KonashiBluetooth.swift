@@ -71,12 +71,17 @@ public class KonashiBluetooth: NSObject {
             }
         }
     }
-    
+
     // MARK: - LED
-    
+
     public func flashLED(_ led: KonashiDigitalIOPin) {
         Konashi.pinMode(led, mode: KonashiPinMode.output)
         Konashi.digitalWrite(led, value: KonashiLevel.high)
+    }
+
+    public func turnOffAll() {
+        Konashi.pinModeAll(KonashiPinMode.output.rawValue)
+        Konashi.digitalWriteAll(KonashiLevel.high.rawValue)
     }
 
     // MARK: - RSSI
