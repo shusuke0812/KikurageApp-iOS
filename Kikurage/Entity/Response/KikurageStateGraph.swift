@@ -31,11 +31,8 @@ struct KikurageStateGraph: Codable {
 }
 
 struct TimeData: Codable {
-    // 日付
     var date: Date?
-    // 温度
     var temperature: Int?
-    // 湿度
     var humidity: Int?
 
     enum CodingKeys: String, CodingKey {
