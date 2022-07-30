@@ -50,9 +50,8 @@ public class KonashiBluetooth: NSObject {
     }
 
     private func readyHandler() {
-        Konashi.shared().readyHandler = { () -> Void in
-            Konashi.pinMode(KonashiDigitalIOPin.LED2, mode: KonashiPinMode.output)
-            Konashi.digitalWrite(KonashiDigitalIOPin.LED2, value: KonashiLevel.high)
+        Konashi.shared().readyHandler = { [weak self] () -> Void in
+            self?.flashLED(KonashiDigitalIOPin.LED2)
         }
     }
 
