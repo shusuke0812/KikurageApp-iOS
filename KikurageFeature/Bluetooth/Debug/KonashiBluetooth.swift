@@ -16,7 +16,7 @@ import konashi_ios_sdk
 
 public protocol KonashiBluetoothDelegate: AnyObject {
     func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32)
-    func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth)
+    func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth, message: String)
     func konashiBluetoothDisconnected(_ konashiBluetooth: KonashiBluetooth)
 }
 
@@ -28,7 +28,7 @@ It is used Konashi for HW.
 */
 public class KonashiBluetooth: NSObject {
     private var readRSSITimer: Timer?
-    private var s1PushStartTime: TimeInterval = 0.0
+    private var pushStartTime: TimeInterval = 0.0
     private var currentLED: KonashiDigitalIOPin?
 
     public weak var delegate: KonashiBluetoothDelegate?
@@ -52,7 +52,9 @@ public class KonashiBluetooth: NSObject {
 
     private func readyHandler() {
         Konashi.shared().readyHandler = { [weak self] () -> Void in
-            self?.flashLED(KonashiDigitalIOPin.LED2)
+            let currentLED = KonashiDigitalIOPin.LED2
+            self?.currentLED = currentLED
+            self?.flashLED(currentLED)
         }
     }
 
@@ -67,8 +69,26 @@ public class KonashiBluetooth: NSObject {
         Konashi.shared().digitalInputDidChangeValueHandler = { [weak self] pin, value in
             guard let self = self, pin == .S1 else { return }
             if value == 1 {
-                self.s1PushStartTime = Date().timeIntervalSince1970
-                self.delegate?.konashiBluetoothDidUpdatedPIOInput(self)
+                self.pushStartTime = Date().timeIntervalSince1970
+            } else {
+                let pushCurrentTime = Date().timeIntervalSince1970
+                let pushTimeInterval = pushCurrentTime - self.pushStartTime
+
+                if pushTimeInterval > 1.0 {
+                    self.delegate?.konashiBluetoothDidUpdatedPIOInput(self, message: "pushing S1")
+                } else {
+                    self.turnOffAll()
+
+                    if self.currentLED == KonashiDigitalIOPin.LED2 {
+                        self.currentLED = KonashiDigitalIOPin.LED5
+                    } else {
+                        self.currentLED = KonashiDigitalIOPin.LED2
+                    }
+                    if let currentLED = self.currentLED {
+                        self.flashLED(currentLED)
+                    }
+                    self.delegate?.konashiBluetoothDidUpdatedPIOInput(self, message: "pushed S1 and switched LED")
+                }
             }
         }
     }

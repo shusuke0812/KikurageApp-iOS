@@ -67,9 +67,9 @@ extension DebugViewController: KonashiBluetoothDelegate {
             self.baseView.setRSSILabel("disconnected")
         }
     }
-    func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth) {
+    func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth, message: String) {
         DispatchQueue.main.async {
-            self.baseView.setPIOLabel("tapped S1")
+            self.baseView.setPIOLabel(message)
         }
     }
 }
