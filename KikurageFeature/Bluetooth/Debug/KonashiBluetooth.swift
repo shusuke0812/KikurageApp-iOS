@@ -28,6 +28,7 @@ It is used Konashi for HW.
 */
 public class KonashiBluetooth: NSObject {
     private var readRSSITimer: Timer?
+    private var s1PushStartTime: TimeInterval = 0.0
     private var currentLED: KonashiDigitalIOPin?
 
     public weak var delegate: KonashiBluetoothDelegate?
@@ -64,8 +65,9 @@ public class KonashiBluetooth: NSObject {
 
     private func pioInputUpdatedHandler() {
         Konashi.shared().digitalInputDidChangeValueHandler = { [weak self] pin, value in
-            guard let self = self else { return }
-            if (pin == .S1) && (value == 1) {
+            guard let self = self, pin == .S1 else { return }
+            if value == 1 {
+                self.s1PushStartTime = Date().timeIntervalSince1970
                 self.delegate?.konashiBluetoothDidUpdatedPIOInput(self)
             }
         }
