@@ -715,7 +715,7 @@
 			children = (
 				9CB409D0276F04EF00E413E4 /* Entity */,
 				9CBF6721276E008F00081340 /* Repository */,
-				9CBF671E276DF35700081340 /* ViewModel */,
+				9CBF671E276DF35700081340 /* ViewModelTest */,
 			);
 			path = KikurageTests;
 			sourceTree = "<group>";
@@ -1416,12 +1416,12 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
-		9CBF671E276DF35700081340 /* ViewModel */ = {
+		9CBF671E276DF35700081340 /* ViewModelTest */ = {
 			isa = PBXGroup;
 			children = (
 				9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */,
 			);
-			path = ViewModel;
+			path = ViewModelTest;
 			sourceTree = "<group>";
 		};
 		9CBF6721276E008F00081340 /* Repository */ = {
