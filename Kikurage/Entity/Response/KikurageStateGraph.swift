@@ -85,9 +85,3 @@ final class KikurageStateGraphObject: Object {
         return "graphId"
     }
 }
-
-final class TimeDataObject: Object {
-    dynamic var date: Date?
-    dynamic var temperature: Int?
-    dynamic var humidity: Int?
-}
