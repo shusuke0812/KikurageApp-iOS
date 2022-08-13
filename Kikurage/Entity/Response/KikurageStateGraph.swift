@@ -69,7 +69,10 @@ extension KikurageStateGraph: Persistable {
 // MARK: - Realm
 
 final class KikurageStateGraphObject: Object {
+    // For realm
     dynamic var graphId: String = UUID().uuidString
+    dynamic var expiredDate: Date = Date()
+    // Firebase response type
     dynamic var mondayData: TimeData?
     dynamic var tuesdayData: TimeData?
     dynamic var wednesdayData: TimeData?
