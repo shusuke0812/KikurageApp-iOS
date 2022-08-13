@@ -372,6 +372,11 @@ PODS:
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - Realm (10.28.3):
+    - Realm/Headers (= 10.28.3)
+  - Realm/Headers (10.28.3)
+  - RealmSwift (10.28.3):
+    - Realm (= 10.28.3)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -398,6 +403,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - PKHUD (~> 5.0)
   - R.swift
+  - RealmSwift (~> 10)
   - RxCocoa (= 6.2.0)
   - RxSwift (= 6.2.0)
   - SDWebImage
@@ -436,6 +442,8 @@ SPEC REPOS:
     - PromisesObjC
     - R.swift
     - R.swift.Library
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -474,11 +482,13 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  Realm: 64e66568d981de2496f81ecab2e1372b27dc7d58
+  RealmSwift: 29bcda3a1fa5613b358bd7ec638f5e12afc89c3a
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: 29f7ff63c2593b1c807b710daea2a5caf393169d
+PODFILE CHECKSUM: 2ebe05f153a821f4c0ad3df703bdda2044436a75
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.3
