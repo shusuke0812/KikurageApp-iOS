@@ -43,25 +43,28 @@ struct TimeData: Codable {
     }
 }
 
-extension KikurageStateGraph: Persistable {
-    init(managedObject: KikurageStateGraphObject) {
-        mondayData = managedObject.mondayData
-        tuesdayData = managedObject.tuesdayData
-        wednesdayData = managedObject.wednesdayData
-        thursdayData = managedObject.thursdayData
-        fridayData = managedObject.fridayData
-        saturdayData = managedObject.saturdayData
-        sundayData = managedObject.sundayData
+extension KikurageStateGraph: RealmCodable {
+    func decodeRealmObject(from realmObject: KikurageStateGraphObject) -> KikurageStateGraph {
+        var kikurageStateGraph = KikurageStateGraph()
+        kikurageStateGraph.mondayData = realmObject.mondayData
+        kikurageStateGraph.tuesdayData = realmObject.tuesdayData
+        kikurageStateGraph.wednesdayData = realmObject.wednesdayData
+        kikurageStateGraph.thursdayData = realmObject.thursdayData
+        kikurageStateGraph.fridayData = realmObject.fridayData
+        kikurageStateGraph.saturdayData = realmObject.saturdayData
+        kikurageStateGraph.sundayData = realmObject.sundayData
+        return kikurageStateGraph
     }
-    func managedObject() -> KikurageStateGraphObject {
+    func encodeRealmObject(from response: KikurageStateGraph, expiredDate: Date) -> KikurageStateGraphObject {
         let kikurageStateGraphObject = KikurageStateGraphObject()
-        kikurageStateGraphObject.mondayData = mondayData
-        kikurageStateGraphObject.tuesdayData = tuesdayData
-        kikurageStateGraphObject.wednesdayData = wednesdayData
-        kikurageStateGraphObject.thursdayData = thursdayData
-        kikurageStateGraphObject.fridayData = fridayData
-        kikurageStateGraphObject.saturdayData = saturdayData
-        kikurageStateGraphObject.sundayData = sundayData
+        kikurageStateGraphObject.mondayData = response.mondayData
+        kikurageStateGraphObject.tuesdayData = response.tuesdayData
+        kikurageStateGraphObject.wednesdayData = response.wednesdayData
+        kikurageStateGraphObject.thursdayData = response.thursdayData
+        kikurageStateGraphObject.fridayData = response.fridayData
+        kikurageStateGraphObject.saturdayData = response.saturdayData
+        kikurageStateGraphObject.sundayData = response.sundayData
+        kikurageStateGraphObject.expiredDate = expiredDate
         return kikurageStateGraphObject
     }
 }
