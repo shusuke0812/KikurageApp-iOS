@@ -92,6 +92,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             return
         }
         // add an audio input for video
+        /*
         do {
             let audioDevice = AVCaptureDevice.default(for: .audio)
             let audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice!)
@@ -104,6 +105,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         } catch {
             delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
         }
+        */
 
         // add video output
         if captureSession.canAddOutput(metadataOutput) {
