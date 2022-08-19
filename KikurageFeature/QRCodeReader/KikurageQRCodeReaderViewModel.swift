@@ -44,6 +44,8 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     }
 
     private func setup() {
+        // If it is required authorization, remove comment outs.
+        // authorize()
         captureSessionQueue.async {
             self.configureSession()
         }
