@@ -70,7 +70,13 @@ public class KikurageQRCodeReaderViewModel: NSObject {
 
         // add video input
         do {
-            guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+            var defaultVideoDevice: AVCaptureDevice?
+            if let dualVideoDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back) {
+                defaultVideoDevice = dualVideoDevice
+            } else if let dualWideCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+                defaultVideoDevice = dualWideCameraDevice
+            }
+            guard let videoDevice = defaultVideoDevice else {
                 setupResult = .error(.failure)
                 captureSession.commitConfiguration()
                 delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
