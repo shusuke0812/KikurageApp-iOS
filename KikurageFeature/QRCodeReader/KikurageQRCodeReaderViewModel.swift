@@ -197,7 +197,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         if error.code == .mediaServicesWereReset {
             captureSessionQueue.async {
                 if self.isCaptureSessionRunning {
-                    self.captureSession.isRunning
+                    self.captureSession.startRunning()
                     self.isCaptureSessionRunning = self.captureSession.isRunning
                 }
             }
@@ -205,7 +205,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     }
     
     @objc private func sessionWasInterrupted(notification: Notification) {
-        if let userInfoValue = notification.userInfo?[AVCaptureSessionInterruptionReasonKey] as AnyObject,
+        if let userInfoValue = notification.userInfo?[AVCaptureSessionInterruptionReasonKey] as AnyObject?,
            let reasonIntValue = userInfoValue.integerValue,
            let reason = AVCaptureSession.InterruptionReason(rawValue: reasonIntValue) {
             delegate?.qrCodeReaderViewModel(self, interrupted: reason)
