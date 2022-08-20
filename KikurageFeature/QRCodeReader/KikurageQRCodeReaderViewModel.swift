@@ -22,6 +22,8 @@ public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
 
 public class KikurageQRCodeReaderViewModel: NSObject {
     private let captureSessionQueue = DispatchQueue(label: (Bundle.main.bundleIdentifier ?? "missing_bundle_id") + "_capture.session")
+    private var isCaptureSessionRunning = false
+    private var kvos = [NSKeyValueObservation]()
 
     // MARK: - Event notification
 
@@ -162,6 +164,41 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             return true
         }
     }
+    /**
+     observers for AVCaptureSession running
+     */
+    private func addObservers() {
+        let kvo = captureSession.observe(\.isRunning, options: .new) { _, change in
+            guard let isCaptureSessionRunning = change.newValue else { return }
+            // If session running changes something, write here
+        }
+        kvos.append(kvo)
+        NotificationCenter.default.addObserver(self, selector: #selector(sessionRuntimeError), name: .AVCaptureSessionRuntimeError, object: videoDeviceInput.device)
+        NotificationCenter.default.addObserver(self, selector: #selector(sessionWasInterrupted), name: .AVCaptureSessionWasInterrupted, object: captureSession)
+        NotificationCenter.default.addObserver(self, selector: #selector(sessionInterruptionEnded), name: .AVCaptureSessionInterruptionEnded, object: captureSession)
+    }
+    
+    // MARK: - Error
+    
+    @objc private func sessionRuntimeError(notification: Notification) {
+        guard let error = notification.userInfo?[AVCaptureSessionErrorKey] as? AVError else { return }
+        if error.code == .mediaServicesWereReset {
+            captureSessionQueue.async {
+                if self.isCaptureSessionRunning {
+                    self.captureSession.isRunning
+                    self.isCaptureSessionRunning = self.captureSession.isRunning
+                }
+            }
+        }
+    }
+    
+    @objc private func sessionWasInterrupted(notification: Notification) {
+        
+    }
+    
+    @objc private func sessionInterruptionEnded(notification: Notification) {
+        
+    }
 
     // MARK: - Public
 
@@ -186,12 +223,14 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         captureSessionQueue.async {
             guard !self.captureSession.isRunning else { return }
             self.captureSession.startRunning()
+            self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
     public func stopRunning() {
         captureSessionQueue.async {
             guard !self.captureSession.isRunning else { return }
             self.captureSession.stopRunning()
+            self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
     public func removeCaptureSession() {
