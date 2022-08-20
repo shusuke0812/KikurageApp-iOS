@@ -18,6 +18,8 @@ public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didNotRead error: SessionSetupError)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, authorize: SessionSetupResult)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession)
 }
 
 public class KikurageQRCodeReaderViewModel: NSObject {
@@ -193,11 +195,15 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     }
     
     @objc private func sessionWasInterrupted(notification: Notification) {
-        
+        if let userInfoValue = notification.userInfo?[AVCaptureSessionInterruptionReasonKey] as AnyObject,
+           let reasonIntValue = userInfoValue.integerValue,
+           let reason = AVCaptureSession.InterruptionReason(rawValue: reasonIntValue) {
+            delegate?.qrCodeReaderViewModel(self, interrupted: reason)
+        }
     }
     
     @objc private func sessionInterruptionEnded(notification: Notification) {
-        
+        delegate?.qrCodeReaderViewModel(self, interruptionEnded: self.captureSession)
     }
 
     // MARK: - Public
@@ -219,6 +225,9 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             return nil
         }
     }
+    /**
+     start capturing on initialization. If restart, it has to use `resume()` method.
+     */
     public func startRunning() {
         captureSessionQueue.async {
             guard !self.captureSession.isRunning else { return }
@@ -230,6 +239,15 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         captureSessionQueue.async {
             guard !self.captureSession.isRunning else { return }
             self.captureSession.stopRunning()
+            self.isCaptureSessionRunning = self.captureSession.isRunning
+        }
+    }
+    /**
+     restart capturing on error. For example, it uses this method when session is interrupted.
+     */
+    public func resume() {
+        captureSessionQueue.async {
+            self.captureSession.startRunning()
             self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
