@@ -46,6 +46,10 @@ public class KikurageQRCodeReaderViewModel: NSObject {
 
         setup()
     }
+    
+    deinit {
+        removeObservers()
+    }
 
     private func setup() {
         // If it is required authorization, remove comment outs.
@@ -178,6 +182,12 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(sessionRuntimeError), name: .AVCaptureSessionRuntimeError, object: videoDeviceInput.device)
         NotificationCenter.default.addObserver(self, selector: #selector(sessionWasInterrupted), name: .AVCaptureSessionWasInterrupted, object: captureSession)
         NotificationCenter.default.addObserver(self, selector: #selector(sessionInterruptionEnded), name: .AVCaptureSessionInterruptionEnded, object: captureSession)
+    }
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(self)
+        
+        kvos.forEach { $0.invalidate() }
+        kvos.removeAll()
     }
     
     // MARK: - Error
