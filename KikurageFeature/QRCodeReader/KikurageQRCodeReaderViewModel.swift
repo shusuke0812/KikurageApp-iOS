@@ -150,7 +150,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             delegate?.qrCodeReaderViewModel(self, authorize: setupResult)
         }
     }
-    /*
+    /**
     validate QRCode string
      
     If QRCode string is contained `http` or `https`, application crush when read QRCode
