@@ -11,7 +11,7 @@ import RealmSwift
 
 protocol RealmClientProtocol {
     func writeRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
-    func readRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<T, Error>) -> Void)
+    func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void)
 }
 
 struct RealmClient: RealmClientProtocol {
@@ -26,7 +26,7 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
-    func readRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<T, Error>) -> Void) {
+    func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
         do {
             let realm = try Realm()
             if let cache = realm.object(ofType: T.self, forPrimaryKey: T.primaryKey()) {
