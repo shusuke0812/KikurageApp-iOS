@@ -71,10 +71,12 @@ extension KikurageStateGraph: RealmCodable {
 
 // MARK: - Realm
 
+typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, documentId: String)
+
 final class KikurageStateGraphObject: Object {
     // For realm
     dynamic var graphId: String = UUID().uuidString
-    dynamic var expiredDate: Date = Date()
+    dynamic var expiredDate = Date()
     // Firebase response type
     dynamic var mondayData: TimeData?
     dynamic var tuesdayData: TimeData?
@@ -83,8 +85,8 @@ final class KikurageStateGraphObject: Object {
     dynamic var fridayData: TimeData?
     dynamic var saturdayData: TimeData?
     dynamic var sundayData: TimeData?
-    
+
     override static func primaryKey() -> String? {
-        return "graphId"
+        "graphId"
     }
 }

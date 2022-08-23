@@ -9,6 +9,7 @@
 import Firebase
 import FirebaseFirestoreSwift
 import RxSwift
+import RealmSwift
 
 protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む
@@ -16,15 +17,19 @@ protocol KikurageStateRepositoryProtocol {
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState>
     /// グラフデータを読み込む
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
+    func putKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void)
+    func getKikurageStateGraph(id: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
     private let firestoreClient: FirestoreClientProtocol
     private let rxFirestoreClient: RxFirestoreClientProtocol
+    private let realmClient: RealmClientProtocol
 
-    init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
+    init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient(), realmClient: RealmClientProtocol = RealmClient()) {
         self.firestoreClient = firestoreClient
         self.rxFirestoreClient = rxFirestoreClient
+        self.realmClient = realmClient
     }
 }
 
@@ -49,6 +54,31 @@ extension KikurageStateRepository {
             switch result {
             case .success(let kikurageStateGraph):
                 completion(.success(kikurageStateGraph))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
+
+// MARK: - Realm
+
+extension KikurageStateRepository {
+    func putKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void) {
+        realmClient.writeRequest(object) { result in
+            switch result {
+            case .success(let void):
+                completion(.success(void))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    func getKikurageStateGraph(id: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void) {
+        realmClient.readRequest(id: id) { result in
+            switch result {
+            case .success(let object):
+                completion(.success(object))
             case .failure(let error):
                 completion(.failure(error))
             }
