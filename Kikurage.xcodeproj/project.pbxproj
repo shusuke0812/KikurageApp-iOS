@@ -157,6 +157,7 @@
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
 		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
+		9CB8EB8A28B51E7900C506F8 /* RealmRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB8EB8928B51E7900C506F8 /* RealmRequestProtocol.swift */; };
 		9CBA06D028748AA7006F2259 /* KikurageLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */; };
 		9CBAC0B52882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAC0B42882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift */; };
 		9CBB0BF0280B179700FFC7BF /* KikurageStateGraphRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */; };
@@ -398,6 +399,7 @@
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
+		9CB8EB8928B51E7900C506F8 /* RealmRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRequestProtocol.swift; sourceTree = "<group>"; };
 		9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageLogger.swift; sourceTree = "<group>"; };
 		9CBAC0B42882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateGraphRequest.swift; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 				9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */,
 				9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */,
 				9C9981CF27F9A9CF0068FD61 /* APIRequestProtocol.swift */,
+				9CB8EB8928B51E7900C506F8 /* RealmRequestProtocol.swift */,
 				9C9981D127F9ACF90068FD61 /* TwitterSearchRequest.swift */,
 				9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */,
 				9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */,
@@ -2058,6 +2061,7 @@
 				9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */,
+				9CB8EB8A28B51E7900C506F8 /* RealmRequestProtocol.swift in Sources */,
 				9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,

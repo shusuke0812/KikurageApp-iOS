@@ -18,7 +18,7 @@ protocol KikurageStateRepositoryProtocol {
     /// グラフデータを読み込む
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
     func putKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void)
-    func getKikurageStateGraph(id: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void)
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -74,8 +74,8 @@ extension KikurageStateRepository {
             }
         }
     }
-    func getKikurageStateGraph(id: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void) {
-        realmClient.readRequest(id: id) { result in
+    func getKikurageStateGraph(productId: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void) {
+        realmClient.readRequest(id: productId) { result in
             switch result {
             case .success(let object):
                 completion(.success(object))
