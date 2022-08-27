@@ -12,10 +12,19 @@ struct EmptyView: View {
     let type: EmptyType
 
     var body: some View {
-        Text(type.title)
-            .font(.headline)
-            .bold()
-            .foregroundColor(.gray)
+        VStack(alignment: .center, spacing: 16) {
+            Spacer()
+            Image(type.iconString)
+                .resizable()
+                .renderingMode(.template)
+                .foregroundColor(.gray)
+                .frame(width: 49, height: 32)
+            Text(type.title)
+                .font(.headline)
+                .bold()
+                .foregroundColor(.gray)
+            Spacer()
+        }
     }
 }
 
@@ -31,6 +40,15 @@ enum EmptyType {
             return R.string.localizable.screen_recipe_no_recipe()
         case .notFoundCultivation:
             return R.string.localizable.screen_cultivation_no_cultivation()
+        }
+    }
+
+    var iconString: String {
+        switch self {
+        case .notFoundRecipe:
+            return "hakase"
+        case .notFoundCultivation:
+            return "hakase"
         }
     }
 }
