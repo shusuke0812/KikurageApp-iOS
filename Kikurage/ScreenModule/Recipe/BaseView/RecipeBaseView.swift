@@ -10,7 +10,6 @@ import UIKit
 
 class RecipeBaseView: UIView {
     @IBOutlet private(set) weak var tableView: UITableView!
-    @IBOutlet private weak var noRecipeLabel: UILabel!
     @IBOutlet private(set) weak var postPageButton: UIButton!
 
     override func awakeFromNib() {
@@ -27,10 +26,6 @@ extension RecipeBaseView {
         backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
         tableView.separatorStyle = .none
-
-        noRecipeLabel.text = R.string.localizable.screen_recipe_no_recipe()
-        noRecipeLabel.textColor = .darkGray
-        noRecipeLabel.isHidden = true
     }
     private func setTableView() {
         // セル選択を不可にする（料理記録詳細ページは無いため）
@@ -49,8 +44,5 @@ extension RecipeBaseView {
     }
     func configTableView(delegate: UITableViewDelegate) {
         tableView.delegate = delegate
-    }
-    func noRecipeLabelIsHidden(_ isHidden: Bool) {
-        noRecipeLabel.isHidden = isHidden
     }
 }
