@@ -12,7 +12,6 @@ class CultivationBaseView: UIView {
     @IBOutlet private(set) weak var postPageButton: UIButton!
     @IBOutlet private(set) weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet private weak var noCultivationLabel: UILabel!
 
     // MARK: - Lifecycle
 
@@ -28,10 +27,6 @@ class CultivationBaseView: UIView {
 extension CultivationBaseView {
     private func initUI() {
         collectionView.backgroundColor = .systemGroupedBackground
-
-        noCultivationLabel.text = R.string.localizable.screen_cultivation_no_cultivation()
-        noCultivationLabel.textColor = .darkGray
-        noCultivationLabel.isHidden = true
     }
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
@@ -47,8 +42,5 @@ extension CultivationBaseView {
 extension CultivationBaseView {
     func setRefreshControlInCollectionView(_ refresh: UIRefreshControl) {
         collectionView.refreshControl = refresh
-    }
-    func noCultivationLabelIsHidden(_ isHidden: Bool) {
-        noCultivationLabel.isHidden = isHidden
     }
 }
