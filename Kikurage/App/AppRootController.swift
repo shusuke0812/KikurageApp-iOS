@@ -121,11 +121,13 @@ extension AppRootController: AppPresenterDelegate {
     func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         DispatchQueue.main.async {
             self.showHomePage(kikurageInfo: kikurageInfo)
+            self.kikurageHUD.removeFromSuperview()
         }
     }
     func didFailedGetKikurageInfo(errorMessage: String) {
         DispatchQueue.main.async {
             self.showTopPage()
+            self.kikurageHUD.removeFromSuperview()
         }
     }
 }

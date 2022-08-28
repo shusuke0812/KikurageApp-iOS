@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yn1-qf-8LL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yn1-qf-8LL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,12 +21,6 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" name="themeColor"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-2R-J3a">
-                                <rect key="frame" x="15" y="448" width="384" height="0.0"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3g-dt-07M">
                                 <rect key="frame" x="331" y="779" width="63" height="63"/>
                                 <state key="normal" image="addMemoButton"/>
@@ -35,19 +29,14 @@
                         <viewLayoutGuide key="safeArea" id="49h-m6-Xnv"/>
                         <color key="backgroundColor" name="themeColor"/>
                         <constraints>
-                            <constraint firstItem="49h-m6-Xnv" firstAttribute="trailing" secondItem="2F5-2R-J3a" secondAttribute="trailing" constant="15" id="ApE-Gm-Fvi"/>
                             <constraint firstItem="49h-m6-Xnv" firstAttribute="bottom" secondItem="x1J-99-6qg" secondAttribute="bottom" id="EyN-3q-L2A"/>
-                            <constraint firstItem="2F5-2R-J3a" firstAttribute="centerX" secondItem="uu3-0x-fob" secondAttribute="centerX" id="Kxw-10-zfh"/>
                             <constraint firstItem="49h-m6-Xnv" firstAttribute="trailing" secondItem="x1J-99-6qg" secondAttribute="trailing" id="bN5-bA-QNw"/>
                             <constraint firstItem="x1J-99-6qg" firstAttribute="leading" secondItem="49h-m6-Xnv" secondAttribute="leading" id="iYz-rL-sve"/>
                             <constraint firstItem="49h-m6-Xnv" firstAttribute="trailing" secondItem="q3g-dt-07M" secondAttribute="trailing" constant="20" id="ljm-FY-NJb"/>
                             <constraint firstItem="x1J-99-6qg" firstAttribute="top" secondItem="49h-m6-Xnv" secondAttribute="top" id="oh3-A4-JKu"/>
-                            <constraint firstItem="2F5-2R-J3a" firstAttribute="leading" secondItem="49h-m6-Xnv" secondAttribute="leading" constant="15" id="qGl-k9-nyy"/>
                             <constraint firstItem="49h-m6-Xnv" firstAttribute="bottom" secondItem="q3g-dt-07M" secondAttribute="bottom" constant="20" id="y3M-Cq-z2O"/>
-                            <constraint firstItem="2F5-2R-J3a" firstAttribute="centerY" secondItem="uu3-0x-fob" secondAttribute="centerY" id="ziG-2b-uko"/>
                         </constraints>
                         <connections>
-                            <outlet property="noRecipeLabel" destination="2F5-2R-J3a" id="mUU-2N-ldh"/>
                             <outlet property="postPageButton" destination="q3g-dt-07M" id="wYH-jc-r9o"/>
                             <outlet property="tableView" destination="x1J-99-6qg" id="7qg-4c-geG"/>
                         </connections>
