@@ -12,15 +12,6 @@ class DictionaryTwitterBaseView: UIView {
     @IBOutlet private(set) weak var tableView: UITableView!
     @IBOutlet private weak var loadingIndicatorView: UIActivityIndicatorView!
 
-    private let noTweetsLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 17, weight: .bold)
-        label.textColor = .darkGray
-        label.textAlignment = .center
-        label.text = R.string.localizable.side_menu_dictionary_twitter_no_tweets()
-        return label
-    }()
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -44,12 +35,5 @@ extension DictionaryTwitterBaseView {
     func stopLoadingIndicator() {
         loadingIndicatorView.isHidden = true
         loadingIndicatorView.stopAnimating()
-    }
-    func showTweetsEmptyView(isEmpty: Bool) {
-        if isEmpty {
-            tableView.backgroundView = noTweetsLabel
-        } else {
-            tableView.backgroundView = nil
-        }
     }
 }

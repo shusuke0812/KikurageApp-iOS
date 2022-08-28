@@ -33,6 +33,7 @@ struct EmptyView: View {
 enum EmptyType {
     case notFoundCultivation
     case notFoundRecipe
+    case notFoundTweets
 
     var title: String {
         switch self {
@@ -40,6 +41,8 @@ enum EmptyType {
             return R.string.localizable.screen_recipe_no_recipe()
         case .notFoundCultivation:
             return R.string.localizable.screen_cultivation_no_cultivation()
+        case .notFoundTweets:
+            return R.string.localizable.side_menu_dictionary_twitter_no_tweets()
         }
     }
 
@@ -48,6 +51,8 @@ enum EmptyType {
         case .notFoundRecipe:
             return "hakase"
         case .notFoundCultivation:
+            return "hakase"
+        case .notFoundTweets:
             return "hakase"
         }
     }

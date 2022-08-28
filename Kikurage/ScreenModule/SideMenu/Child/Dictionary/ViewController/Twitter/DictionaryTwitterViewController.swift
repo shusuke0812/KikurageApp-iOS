@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DictionaryTwitterViewController: UIViewController {
+class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DictionaryTwitterBaseView { self.view as! DictionaryTwitterBaseView } // swiftlint:disable:this force_cast
+    private var emptyView: UIView!
     private var viewModel: DictionaryTwitterViewModel!
 
     override func viewDidLoad() {
@@ -19,6 +20,18 @@ class DictionaryTwitterViewController: UIViewController {
         baseView.configTableView(delegate: self, dataSource: viewModel)
 
         loadTweets()
+    }
+}
+
+// MARK: - Initialize
+
+extension DictionaryTwitterViewController {
+    private func displayEmptyView(tweets: [Tweet.Status]) {
+        if tweets.isEmpty {
+            emptyView = addEmptyView(type: .notFoundTweets)
+        } else {
+            emptyView?.removeFromSuperview()
+        }
     }
 }
 
@@ -42,7 +55,7 @@ extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel) {
         DispatchQueue.main.async {
             self.baseView.stopLoadingIndicator()
-            self.baseView.showTweetsEmptyView(isEmpty: dictionaryTwitterViewModel.tweets.isEmpty)
+            self.displayEmptyView(tweets: dictionaryTwitterViewModel.tweets)
             self.baseView.tableView.reloadData()
         }
     }
@@ -50,7 +63,7 @@ extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
         DispatchQueue.main.async {
             self.baseView.stopLoadingIndicator()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
-                self?.baseView.showTweetsEmptyView(isEmpty: dictionaryTwitterViewModel.tweets.isEmpty)
+                self?.displayEmptyView(tweets: dictionaryTwitterViewModel.tweets)
             }
         }
     }
