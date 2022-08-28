@@ -54,7 +54,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
     }
     func addEmptyView(type: EmptyType) -> UIView {
-        let _view = EmptyView(type: .notFoundCultivation)
+        let _view = EmptyView(type: type)
         let hostingVC = UIHostingController(rootView: _view)
         addChild(hostingVC)
         hostingVC.didMove(toParent: self)
