@@ -14,11 +14,11 @@ struct EmptyView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
             Spacer()
-            Image(type.iconString)
+            Image(type.icon.title)
                 .resizable()
                 .renderingMode(.template)
                 .foregroundColor(.gray)
-                .frame(width: 49, height: 32)
+                .frame(width: type.icon.frameWidth, height: type.icon.frameHeight)
             Text(type.title)
                 .font(.headline)
                 .bold()
@@ -46,14 +46,14 @@ enum EmptyType {
         }
     }
 
-    var iconString: String {
+    var icon: (title: String, frameWidth: CGFloat, frameHeight: CGFloat) {
         switch self {
         case .notFoundRecipe:
-            return "hakase"
+            return (title: "hakase", frameWidth: 49, frameHeight: 32)
         case .notFoundCultivation:
-            return "hakase"
+            return (title: "hakase", frameWidth: 49, frameHeight: 32)
         case .notFoundTweets:
-            return "hakase"
+            return (title: "hakase", frameWidth: 49, frameHeight: 32)
         }
     }
 }
