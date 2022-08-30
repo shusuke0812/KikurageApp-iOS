@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DictionaryTwitterBaseView { self.view as! DictionaryTwitterBaseView } // swiftlint:disable:this force_cast
-    private var emptyView: UIView!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: DictionaryTwitterViewModel!
 
     override func viewDidLoad() {
@@ -28,9 +29,9 @@ class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigat
 extension DictionaryTwitterViewController {
     private func displayEmptyView(tweets: [Tweet.Status]) {
         if tweets.isEmpty {
-            emptyView = addEmptyView(type: .notFoundTweets)
+            emptyHostingVC = addEmptyView(type: .notFoundTweets)
         } else {
-            emptyView?.removeFromSuperview()
+            removeEmptyView(hostingVC: emptyHostingVC)
         }
     }
 }

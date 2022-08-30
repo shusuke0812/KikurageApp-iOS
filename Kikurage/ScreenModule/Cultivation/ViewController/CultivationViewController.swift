@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import SwiftUI
 import PKHUD
 import RxSwift
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
-    private var emptyView: UIView!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: CultivationViewModel!
 
     private let disposeBag = RxSwift.DisposeBag()
@@ -68,9 +69,9 @@ extension CultivationViewController {
     }
     private func displayEmptyView(cultivations: [KikurageCultivationTuple]) {
         if cultivations.isEmpty {
-            emptyView = addEmptyView(type: .notFoundCultivation)
+            emptyHostingVC = addEmptyView(type: .notFoundCultivation)
         } else {
-            emptyView?.removeFromSuperview()
+            removeEmptyView(hostingVC: emptyHostingVC)
         }
     }
 }

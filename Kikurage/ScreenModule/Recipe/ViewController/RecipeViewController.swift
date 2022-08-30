@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 import PKHUD
 import RxSwift
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
-    private var emptyView: UIView!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: RecipeViewModel!
 
     private let diposeBag = RxSwift.DisposeBag()
@@ -69,9 +70,9 @@ extension RecipeViewController {
     }
     private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
         if recipes.isEmpty {
-            emptyView = addEmptyView(type: .notFoundRecipe)
+            emptyHostingVC = addEmptyView(type: .notFoundRecipe)
         } else {
-            emptyView?.removeFromSuperview()
+            removeEmptyView(hostingVC: emptyHostingVC)
         }
     }
 }

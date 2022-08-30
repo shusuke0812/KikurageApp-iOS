@@ -26,8 +26,10 @@ protocol UIViewControllerNavigatable {
     ///  iOS15対策：NavigationBarの背景色を設定（iOS15、NavBar背景色が透明になる）
     func adjustNavigationBarBackgroundColor()
     /// Display empty view.
-    /// - Returns: Empty view for holding in VC. It is used when view is removed from VC with `removeFromSuperview()`.
-    func addEmptyView(type: EmptyType) -> UIView
+    /// - Returns: Empty view for holding in VC. It is used when view is removed from VC with `removeEmptyView()`.
+    func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView>
+    /// Do not display empty view
+    func removeEmptyView(hostingVC: UIHostingController<EmptyView>?)
 }
 
 extension UIViewControllerNavigatable where Self: UIViewController {
@@ -53,7 +55,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         nc.navigationBar.standardAppearance = appearance
         nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
     }
-    func addEmptyView(type: EmptyType) -> UIView {
+    func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView> {
         let _view = EmptyView(type: type)
         let hostingVC = UIHostingController(rootView: _view)
         addChild(hostingVC)
@@ -70,6 +72,11 @@ extension UIViewControllerNavigatable where Self: UIViewController {
             hostingVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        return hostingVC.view
+        return hostingVC
+    }
+    func removeEmptyView(hostingVC: UIHostingController<EmptyView>?) {
+        hostingVC?.willMove(toParent: nil)
+        hostingVC?.view.removeFromSuperview()
+        hostingVC?.removeFromParent()
     }
 }
