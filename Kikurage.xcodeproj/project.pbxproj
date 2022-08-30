@@ -169,6 +169,7 @@
 		9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD27FE275845EE007191CE /* AppConfig.swift */; };
 		9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */; };
 		9CBD6C4525410707005531F4 /* KikurageUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */; };
+		9CBE673A28BA5879002DA020 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE673928BA5879002DA020 /* EmptyView.swift */; };
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
@@ -412,6 +413,7 @@
 		9CBD27FE275845EE007191CE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateHelper.swift; sourceTree = "<group>"; };
 		9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRepository.swift; sourceTree = "<group>"; };
+		9CBE673928BA5879002DA020 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
@@ -1077,6 +1079,7 @@
 				9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */,
 				9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */,
 				9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */,
+				9CBE673928BA5879002DA020 /* EmptyView.swift */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
 				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 			);
@@ -2004,6 +2007,7 @@
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
 				9CAFDC0F2780482900C40094 /* SettingViewModel.swift in Sources */,
 				9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */,
+				9CBE673A28BA5879002DA020 /* EmptyView.swift in Sources */,
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */,

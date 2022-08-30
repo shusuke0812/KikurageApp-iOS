@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 import PKHUD
 import RxSwift
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
+    private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: RecipeViewModel!
 
     private let diposeBag = RxSwift.DisposeBag()
@@ -66,6 +68,13 @@ extension RecipeViewController {
         refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         baseView.setRefreshControlInTableView(refresh)
     }
+    private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
+        if recipes.isEmpty {
+            emptyHostingVC = addEmptyView(type: .notFoundRecipe)
+        } else {
+            removeEmptyView(hostingVC: emptyHostingVC)
+        }
+    }
 }
 
 // MARK: - Rx
@@ -86,12 +95,12 @@ extension RecipeViewController {
                     HUD.hide()
                     self?.baseView.tableView.refreshControl?.endRefreshing()
                     self?.baseView.tableView.reloadData()
-                    self?.baseView.noRecipeLabelIsHidden(!recipes.isEmpty)
+                    self?.displayEmptyView(recipes: recipes)
                 }
             }
         )
         .disposed(by: diposeBag)
-        
+
         viewModel.output.error.subscribe(
             onNext: { [weak self] error in
                 DispatchQueue.main.async {
