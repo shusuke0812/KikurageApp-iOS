@@ -9,9 +9,8 @@
 import UIKit
 
 public class KikurageHUD: UIView {
-    
     // MARK: Property
-    
+
     private var loadingImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ResorceManager.getImage(name: "hakase")?.withRenderingMode(.alwaysTemplate)
@@ -20,7 +19,7 @@ public class KikurageHUD: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     private var loadingLabel: UILabel = {
         let label = UILabel()
         label.text = ResorceManager.getLocalizedString("loading_text")
@@ -30,16 +29,16 @@ public class KikurageHUD: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private let loadingImageWidth: CGFloat = 60
-    
+
     // MARK: Initialized
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         initUI()
     }
-    
+
     required init?(coder: NSCoder) {
         nil
     }
@@ -48,12 +47,11 @@ public class KikurageHUD: UIView {
 // MARK: - Config
 
 extension KikurageHUD {
-    
     // Private
-    
+
     private func initUI() {
         backgroundColor = .clear
-        
+
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -61,32 +59,32 @@ extension KikurageHUD {
         stackView.contentMode = .scaleToFill
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         stackView.addArrangedSubview(loadingImageView)
         stackView.addArrangedSubview(loadingLabel)
-        
+
         addSubview(stackView)
-        
+
         NSLayoutConstraint.activate([
             loadingImageView.widthAnchor.constraint(equalToConstant: loadingImageWidth),
             loadingImageView.heightAnchor.constraint(equalToConstant: loadingImageWidth),
-            
+
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
+
     private func makeCircleBorderToImageView() {
         loadingImageView.clipsToBounds = true
         loadingImageView.layer.cornerRadius = loadingImageWidth / 2
         loadingImageView.layer.borderWidth = 0.5
         loadingImageView.layer.borderColor = UIColor.gray.cgColor
     }
-    
-    // Public（TODO: 色々なアニメーションを追加してみる）
-    
+
+    // Public（MEMO: 色々なアニメーションを追加してみる）
+
     public func startFlashAnimation(duration: TimeInterval = 0.8, delay: TimeInterval = 0.0) {
         UIView.animate(withDuration: duration, delay: delay, options: .repeat, animations: { [weak self] in
             self?.alpha = 0.0
@@ -96,7 +94,7 @@ extension KikurageHUD {
         layer.removeAllAnimations()
         alpha = 1.0
     }
-    
+
     public enum RotateAxis: String {
         case x = "transform.rotation.x"
         case y = "transform.rotation.y"
@@ -104,15 +102,16 @@ extension KikurageHUD {
     }
     public func startRotateAnimation(duration: TimeInterval, rotateAxis: RotateAxis) {
         makeCircleBorderToImageView()
-        
+
         let rotationAnimation = CABasicAnimation(keyPath: rotateAxis.rawValue)
         rotationAnimation.toValue = CGFloat(Double.pi / 180 * 360)
         rotationAnimation.duration = duration
         rotationAnimation.repeatCount = .infinity
-        
+
         loadingImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
     public func stopRotateAnimation() {
         layer.removeAllAnimations()
+        removeFromSuperview()
     }
 }
