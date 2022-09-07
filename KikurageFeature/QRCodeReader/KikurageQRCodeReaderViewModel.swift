@@ -10,7 +10,6 @@
 
 import Foundation
 import AVFoundation
-import UIKit
 
 public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
@@ -46,7 +45,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
 
         setup()
     }
-    
+
     deinit {
         removeObservers()
     }
@@ -185,13 +184,13 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     }
     private func removeObservers() {
         NotificationCenter.default.removeObserver(self)
-        
+
         kvos.forEach { $0.invalidate() }
         kvos.removeAll()
     }
-    
+
     // MARK: - Error
-    
+
     @objc private func sessionRuntimeError(notification: Notification) {
         guard let error = notification.userInfo?[AVCaptureSessionErrorKey] as? AVError else { return }
         if error.code == .mediaServicesWereReset {
@@ -203,7 +202,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             }
         }
     }
-    
+
     @objc private func sessionWasInterrupted(notification: Notification) {
         if let userInfoValue = notification.userInfo?[AVCaptureSessionInterruptionReasonKey] as AnyObject?,
            let reasonIntValue = userInfoValue.integerValue,
@@ -211,7 +210,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             delegate?.qrCodeReaderViewModel(self, interrupted: reason)
         }
     }
-    
+
     @objc private func sessionInterruptionEnded(notification: Notification) {
         delegate?.qrCodeReaderViewModel(self, interruptionEnded: self.captureSession)
     }
