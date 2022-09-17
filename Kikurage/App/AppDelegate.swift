@@ -7,9 +7,10 @@
 //
 
 import UIKit
-
+import MetricKit
 import Firebase
 import IQKeyboardManagerSwift
+import KikurageFeature
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,29 +22,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
+        
+        MXMetricManager.shared.add(self)
 
         openTopPage()
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // アプリを閉じる時に呼ばれる
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // アプリを閉じた時に呼ばれる
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // アプリを開く時に呼ばれる
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // アプリを開いた時に呼ばれる
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // フリックしてアプリを終了させた時に呼ばれる
+        MXMetricManager.shared.remove(self)
     }
 }
 
@@ -61,5 +60,25 @@ extension AppDelegate {
     private func configCrashlyticsUserId() {
         let userId = LoginHelper.shared.kikurageUserId ?? "no id"
         Crashlytics.crashlytics().setUserID(userId)
+    }
+}
+
+// MARK: - MXMetricManagerSubscriber
+
+extension AppDelegate: MXMetricManagerSubscriber {
+    func didReceive(_ payloads: [MXMetricPayload]) {
+        payloads.forEach { payload in
+            let data = payload.jsonRepresentation()
+            // ex. send user log to Log server
+            KLogger.debug("\(data)")
+        }
+    }
+    @available(iOS 14.0, *)
+    func didReceive(_ payloads: [MXDiagnosticPayload]) {
+        payloads.forEach { payload in
+            let data = payload.jsonRepresentation()
+            // ex. send user log to Log server
+            KLogger.debug("\(data)")
+        }
     }
 }
