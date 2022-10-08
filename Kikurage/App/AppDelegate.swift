@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
-        
+
         MXMetricManager.shared.add(self)
 
         openTopPage()
@@ -69,7 +69,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
     func didReceive(_ payloads: [MXMetricPayload]) {
         payloads.forEach { payload in
             let jsonData = payload.jsonRepresentation()
-            let jsonString = String(data: jsonData, encode: .utf8)
+            let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
             KLogger.debug("\(jsonString)")
         }
@@ -78,7 +78,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
     func didReceive(_ payloads: [MXDiagnosticPayload]) {
         payloads.forEach { payload in
             let jsonData = payload.jsonRepresentation()
-            let jsonString = String(data: jsonData, encode: .utf8)
+            let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
             KLogger.debug("\(jsonString)")
         }
