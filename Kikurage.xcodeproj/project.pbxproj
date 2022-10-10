@@ -1915,7 +1915,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ". ${PROJECT_DIR}/Script/SwiftLint.sh\n";
+			shellScript = ". ${PROJECT_DIR}/Scripts/SwiftLint.sh\n";
 		};
 		9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1933,7 +1933,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ". ${PROJECT_DIR}/Script/GenerateGoogleServiceInfo.sh\n";
+			shellScript = ". ${PROJECT_DIR}/Scripts/GenerateGoogleServiceInfo.sh\n";
 		};
 		C9D1B6860FA94EAEE2DB21F9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

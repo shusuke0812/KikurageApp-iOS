@@ -91,12 +91,12 @@ extension RecipeViewModel {
             .subscribe(
                 onSuccess: { [weak self] recipes in
                     guard let `self` = self else { return }
-                    let recipes = self.sortRecipes(recipes: recipes)
-                    self.subject.onNext(recipes)
+                    let _recipes = self.sortRecipes(recipes: recipes)
+                    self.subject.onNext(_recipes)
                 },
                 onFailure: { [weak self] error in
-                    let error = error as! ClientError // swiftlint:disable:this force_cast
-                    self?.errorSubject.onNext(error)
+                    let _error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(_error)
                 }
             )
             .disposed(by: disposeBag)
