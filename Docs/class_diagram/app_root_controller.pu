@@ -2,6 +2,11 @@
 title Class diagram of app launch flow
 
 !include repository/repository.pu
+
+class "AppDelegate" {
+  application(didFinishLaunchingWithOptions:)
+}
+
 class "AppRootController" {
   currentViewController
   presenter
@@ -26,6 +31,7 @@ class "AppPresenter" {
   loadPrivacyPolicyUrl()
   loadLatestAppVersion()
 }
+AppDelegate -> AppRootController
 
 AppRootController -> AppPresenter
 AppPresenter --> KikurageStateRepository
