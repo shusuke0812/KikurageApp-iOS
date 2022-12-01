@@ -46,6 +46,8 @@ class KikurageImageView: UIView {
 
 extension KikurageImageView {
     public func updateImageView(with image: UIImage) {
-        imageView.image = image
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
     }
 }
