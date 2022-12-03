@@ -18,11 +18,15 @@ public class KikurageImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
+
+        resizeImageViewToFitContent()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         initialize()
+
+        resizeImageViewToFitContent()
     }
 
     // MARK: Init
@@ -57,6 +61,15 @@ public class KikurageImageView: UIImageView {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    private func resizeImageViewToFitContent() {
+        guard let imageSize = imageView.image?.size else { return }
+        let ratio = imageSize.width / imageSize.height
+        let aspectCnstraint = imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: ratio)
+        aspectCnstraint.priority = UILayoutPriority(999)
+        aspectCnstraint.isActive = true
+        layoutIfNeeded()
     }
 
     private func setupTapGestureInScrollView() {
