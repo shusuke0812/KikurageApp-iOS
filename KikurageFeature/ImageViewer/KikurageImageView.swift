@@ -12,6 +12,9 @@ public class KikurageImageView: UIImageView {
     private var scrollView: UIScrollView!
     public var imageView: UIImageView!
 
+    private var scrollViewSize: CGSize { scrollView.frame.size }
+    private var imageViewSize: CGSize { imageView.frame.size }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -82,6 +85,10 @@ public class KikurageImageView: UIImageView {
     }
 
     private func zoomImage(to point: CGPoint) {
+        let scale = scrollView.maximumZoomScale
+        let origin = CGPoint(x: point.x - (point.x / scale), y: point.y - (point.y / scale))
+        let zoomedRectSize = CGSize(width: imageViewSize.width / scale, height: imageViewSize.height / scale)
+        scrollView.zoom(to: CGRect(origin: origin, size: zoomedRectSize), animated: true)
     }
 
     private func resetZoom() {
