@@ -27,6 +27,7 @@ public class KikurageImageView: UIImageView {
         initialize()
 
         resizeImageViewToFitContent()
+        preventScrollingToEmptyAreaOfImageView()
     }
 
     // MARK: Init
@@ -86,6 +87,40 @@ public class KikurageImageView: UIImageView {
         }
     }
 
+    private func preventScrollingToEmptyAreaOfImageView() {
+        let imageSize = calcCurrentImageViewSize()
+        let areaSize = scrollViewSize
+
+        // NOTE: https://studist.tech/ios-photo-app-ui-with-uikit-but-we-met-pitfall-9c458e5ef8a7
+        let horizontalInset = floor(0.5 * max(areaSize.width - imageSize.width, 0))
+        let verticalInset = floor(0.5 * max(areaSize.height - imageSize.height, 0))
+
+        scrollView.contentInset = UIEdgeInsets(
+            top: verticalInset,
+            left: horizontalInset,
+            bottom: verticalInset,
+            right: horizontalInset
+        )
+    }
+
+    private func calcCurrentImageViewSize() -> CGSize {
+        func calcNonZoomedImageViewSize() -> CGSize {
+            let widthRatio = scrollViewSize.width / imageViewSize.width
+            let heightRatio = scrollViewSize.height / imageViewSize.height
+            let isImageWiderThanScrollView = widthRatio < heightRatio
+
+            if isImageWiderThanScrollView {
+                return CGSize(width: scrollView.frame.width, height: scrollView.frame.width / imageViewSize.width * imageViewSize.height)
+            } else {
+                return CGSize(width: scrollView.frame.height / imageViewSize.height * imageViewSize.width, height: scrollView.frame.height)
+            }
+        }
+
+        let originSize = calcNonZoomedImageViewSize()
+        let currentScale = scrollView.zoomScale
+        return CGSize(width: originSize.width * currentScale, height: originSize.height * currentScale)
+    }
+
     // MARK: Action
 
     @objc private func viewDidDoubleTap(_ sender: UITapGestureRecognizer) {
@@ -117,5 +152,6 @@ extension KikurageImageView: UIScrollViewDelegate {
         imageView
     }
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        preventScrollingToEmptyAreaOfImageView()
     }
 }
