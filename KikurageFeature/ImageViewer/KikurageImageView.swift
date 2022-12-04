@@ -6,6 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+// ref: https://github.com/gaussbeam/ZoomingImagePager, https://studist.tech/ios-photo-app-ui-with-uikit-but-we-met-pitfall-9c458e5ef8a7
+
 import UIKit
 
 public class KikurageImageView: UIView {
@@ -93,7 +95,6 @@ public class KikurageImageView: UIView {
         let imageSize = calcCurrentImageViewSize()
         let areaSize = scrollViewSize
 
-        // NOTE: https://studist.tech/ios-photo-app-ui-with-uikit-but-we-met-pitfall-9c458e5ef8a7
         let horizontalInset = floor(0.5 * max(areaSize.width - imageSize.width, 0))
         let verticalInset = floor(0.5 * max(areaSize.height - imageSize.height, 0))
 
