@@ -20,6 +20,7 @@ public class KikurageImageView: UIView {
         initialize()
 
         resizeImageViewToFitContent()
+        preventScrollingToEmptyAreaOfImageView()
     }
 
     required init?(coder: NSCoder) {
