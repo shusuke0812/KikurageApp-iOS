@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import KikurageFeature
 
 class CultivationCarouselCollectionViewCell: UICollectionViewCell {
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet weak var kikurageImageView: KikurageImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,6 @@ extension CultivationCarouselCollectionViewCell {
 extension CultivationCarouselCollectionViewCell {
     func setUI(cultivationImageStoragePath: String) {
         let storageReference = Storage.storage().reference(withPath: cultivationImageStoragePath)
-        imageView.sd_setImage(with: storageReference, placeholderImage: nil)
+        kikurageImageView.imageView.sd_setImage(with: storageReference, placeholderImage: nil)
     }
 }
