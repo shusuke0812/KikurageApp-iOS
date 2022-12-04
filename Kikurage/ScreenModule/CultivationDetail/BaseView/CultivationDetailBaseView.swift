@@ -54,6 +54,7 @@ extension CultivationDetailBaseView {
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
         collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
+        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 
