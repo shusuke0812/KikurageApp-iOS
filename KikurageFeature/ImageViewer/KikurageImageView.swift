@@ -55,12 +55,13 @@ public class KikurageImageView: UIView {
             scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: bottomAnchor),
-            scrollView.contentLayoutGuide.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.frameLayoutGuide.heightAnchor),
+            scrollView.contentLayoutGuide.heightAnchor.constraint(equalToConstant: frame.height),
+            scrollView.contentLayoutGuide.widthAnchor.constraint(equalToConstant: frame.width),
 
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            imageView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
         ])
     }
 
