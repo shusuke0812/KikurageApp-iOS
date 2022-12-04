@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KikurageImageView: UIImageView {
+public class KikurageImageView: UIView {
     private var scrollView: UIScrollView!
     public var imageView: UIImageView!
 
