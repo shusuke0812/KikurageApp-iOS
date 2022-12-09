@@ -12,6 +12,9 @@ import KikurageFeature
 
 protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
+
+    func loadKikurageState()
+    func listenKikurageState()
 }
 
 protocol HomeViewModelOutput {

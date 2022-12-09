@@ -12,7 +12,7 @@ import KikurageFeature
 
 class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
     private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: HomeViewModel!
+    private var viewModel: HomeViewModelType!
 
     @IBOutlet private weak var sideMenuBarButtonItem: UIBarButtonItem!
 
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
         super.viewDidLoad()
         // Config
         viewModel = HomeViewModel(kikurageUser: kikurageUser, kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository())
-        viewModel.listenKikurageState()
+        viewModel.input.listenKikurageState()
 
         // UI
         baseView.setKikurageNameUI(kikurageUser: kikurageUser)
@@ -139,7 +139,7 @@ extension HomeViewController {
 
 extension HomeViewController {
     private func loadKikurageState() {
-        viewModel.loadKikurageState()
+        viewModel.input.loadKikurageState()
     }
 }
 
