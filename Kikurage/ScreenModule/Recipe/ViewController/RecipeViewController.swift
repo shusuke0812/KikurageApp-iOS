@@ -15,7 +15,7 @@ import RxSwift
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
     private var emptyHostingVC: UIHostingController<EmptyView>!
-    private var viewModel: RecipeViewModel!
+    private var viewModel: RecipeViewModelType!
 
     private let diposeBag = RxSwift.DisposeBag()
     private let cellHeight: CGFloat = 160.0
@@ -34,7 +34,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
 
         // Rx
@@ -145,7 +145,7 @@ extension RecipeViewController {
     @objc private func didPostRecipe(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }

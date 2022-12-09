@@ -12,6 +12,8 @@ import RxRelay
 
 protocol RecipeViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
+    
+    func loadRecipes(kikurageUserId: String)
 }
 
 protocol RecipeViewModelOutput {
