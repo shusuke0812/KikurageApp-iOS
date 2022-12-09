@@ -49,7 +49,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
     @objc private func refresh(_ sender: UIRefreshControl) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }
