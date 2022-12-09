@@ -14,6 +14,8 @@ import RxCocoa
 
 protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
+
+    func loadCultivations(kikurageUserId: String)
 }
 
 protocol CultivationViewModelOutput {
