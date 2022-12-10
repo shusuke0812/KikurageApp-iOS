@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 import PKHUD
 import RxSwift
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: RecipeViewModel!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var viewModel: RecipeViewModelType!
 
     private let diposeBag = RxSwift.DisposeBag()
     private let cellHeight: CGFloat = 160.0
@@ -32,7 +34,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
 
         // Rx
@@ -47,7 +49,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
     @objc private func refresh(_ sender: UIRefreshControl) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }
@@ -65,6 +67,13 @@ extension RecipeViewController {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         baseView.setRefreshControlInTableView(refresh)
+    }
+    private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
+        if recipes.isEmpty {
+            emptyHostingVC = addEmptyView(type: .notFoundRecipe)
+        } else {
+            removeEmptyView(hostingVC: emptyHostingVC)
+        }
     }
 }
 
@@ -86,12 +95,12 @@ extension RecipeViewController {
                     HUD.hide()
                     self?.baseView.tableView.refreshControl?.endRefreshing()
                     self?.baseView.tableView.reloadData()
-                    self?.baseView.noRecipeLabelIsHidden(!recipes.isEmpty)
+                    self?.displayEmptyView(recipes: recipes)
                 }
             }
         )
         .disposed(by: diposeBag)
-        
+
         viewModel.output.error.subscribe(
             onNext: { [weak self] error in
                 DispatchQueue.main.async {
@@ -136,7 +145,7 @@ extension RecipeViewController {
     @objc private func didPostRecipe(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }

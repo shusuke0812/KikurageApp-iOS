@@ -1,0 +1,40 @@
+@startuml App
+title Class diagram of app launch flow
+
+!include repository/repository.pu
+
+class "AppDelegate" {
+  application(didFinishLaunchingWithOptions:)
+}
+
+class "AppRootController" {
+  currentViewController
+  presenter
+  kikurageHUD
+
+  showHomePage()
+  showTopPage()
+  logout()
+  setScreenHeaderHeight()
+}
+
+class "AppPresenter" {
+  kikurageStateRepository
+  kikurageUserRepository
+  firebaseRemoteConfigRepository
+  
+  delegate
+
+  loadKikurageState()
+  loadFacebookGroupUrl()
+  loadTermsUrl()
+  loadPrivacyPolicyUrl()
+  loadLatestAppVersion()
+}
+AppDelegate -> AppRootController
+
+AppRootController -> AppPresenter
+AppPresenter --> KikurageStateRepository
+AppPresenter --> KikurageUserRepository
+AppPresenter --> FirebaseRemoteConfigRepository
+@enduml

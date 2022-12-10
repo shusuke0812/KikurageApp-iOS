@@ -14,6 +14,8 @@ import RxCocoa
 
 protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
+
+    func loadCultivations(kikurageUserId: String)
 }
 
 protocol CultivationViewModelOutput {
@@ -93,12 +95,12 @@ extension CultivationViewModel {
             .subscribe(
                 onSuccess: { [weak self] cultivations in
                     guard let `self` = self else { return }
-                    let cultivations = self.sortCultivations(cultivations: cultivations)
-                    self.subject.onNext(cultivations)
+                    let _cultivations = self.sortCultivations(cultivations: cultivations)
+                    self.subject.onNext(_cultivations)
                 },
                 onFailure: { [weak self] error in
-                    let error = error as! ClientError // swiftlint:disable:this force_cast
-                    self?.errorSubject.onNext(error)
+                    let _error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(_error)
                 }
             )
             .disposed(by: disposeBag)

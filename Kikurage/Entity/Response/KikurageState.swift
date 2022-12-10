@@ -23,7 +23,6 @@ struct KikurageState: Codable {
         case advice
     }
 
-    /// タイプ
     var type: KikurageStateType? {
         if typeString == KikurageStateType.normal.rawValue {
             return .normal

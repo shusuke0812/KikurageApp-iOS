@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SwiftUI
 import PKHUD
 import RxSwift
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: CultivationViewModel!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var viewModel: CultivationViewModelType!
 
     private let disposeBag = RxSwift.DisposeBag()
 
@@ -31,7 +33,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
 
         // RX
@@ -46,7 +48,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     @objc private func refresh(_ sender: UIRefreshControl) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
 }
@@ -64,6 +66,13 @@ extension CultivationViewController {
     }
     private func setDelegateDataSource() {
         baseView.collectionView.delegate = self
+    }
+    private func displayEmptyView(cultivations: [KikurageCultivationTuple]) {
+        if cultivations.isEmpty {
+            emptyHostingVC = addEmptyView(type: .notFoundCultivation)
+        } else {
+            removeEmptyView(hostingVC: emptyHostingVC)
+        }
     }
 }
 
@@ -85,7 +94,7 @@ extension CultivationViewController {
                     HUD.hide()
                     self?.baseView.collectionView.refreshControl?.endRefreshing()
                     self?.baseView.collectionView.reloadData()
-                    self?.baseView.noCultivationLabelIsHidden(!cultivations.isEmpty)
+                    self?.displayEmptyView(cultivations: cultivations)
                 }
             }
         )
@@ -145,7 +154,7 @@ extension CultivationViewController {
     @objc private func didPostCultivation(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
 }

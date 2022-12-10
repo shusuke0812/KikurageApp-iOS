@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,19 +25,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZsS-c4-JNh">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-fA-2XH" customClass="KikurageImageView" customModule="KikurageFeature">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
-                            </imageView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ZsS-c4-JNh" secondAttribute="bottom" id="0Sa-EV-16C"/>
                             <constraint firstItem="520-MZ-M1P" firstAttribute="top" secondItem="XUe-4T-MQH" secondAttribute="top" id="2bC-U7-j2I"/>
-                            <constraint firstAttribute="trailing" secondItem="ZsS-c4-JNh" secondAttribute="trailing" id="AbN-yw-5Bt"/>
-                            <constraint firstItem="ZsS-c4-JNh" firstAttribute="leading" secondItem="XUe-4T-MQH" secondAttribute="leading" id="C8u-Su-XPv"/>
+                            <constraint firstAttribute="trailing" secondItem="lXK-fA-2XH" secondAttribute="trailing" id="KX0-XD-Ur5"/>
+                            <constraint firstItem="lXK-fA-2XH" firstAttribute="leading" secondItem="XUe-4T-MQH" secondAttribute="leading" id="LrV-ye-F9u"/>
                             <constraint firstAttribute="bottom" secondItem="520-MZ-M1P" secondAttribute="bottom" id="NMK-HE-uIu"/>
-                            <constraint firstItem="ZsS-c4-JNh" firstAttribute="top" secondItem="XUe-4T-MQH" secondAttribute="top" id="VHW-UK-PhM"/>
                             <constraint firstAttribute="trailing" secondItem="520-MZ-M1P" secondAttribute="trailing" id="jZp-io-l2R"/>
+                            <constraint firstAttribute="bottom" secondItem="lXK-fA-2XH" secondAttribute="bottom" id="o04-HL-MvI"/>
+                            <constraint firstItem="lXK-fA-2XH" firstAttribute="top" secondItem="XUe-4T-MQH" secondAttribute="top" id="pZh-JD-ntX"/>
                             <constraint firstItem="520-MZ-M1P" firstAttribute="leading" secondItem="XUe-4T-MQH" secondAttribute="leading" id="tqP-la-BMZ"/>
                         </constraints>
                     </view>
@@ -52,7 +53,7 @@
             </constraints>
             <size key="customSize" width="254" height="86"/>
             <connections>
-                <outlet property="imageView" destination="ZsS-c4-JNh" id="bny-mG-Wlf"/>
+                <outlet property="kikurageImageView" destination="lXK-fA-2XH" id="sSt-TG-HGg"/>
             </connections>
             <point key="canvasLocation" x="285.50724637681162" y="119.86607142857142"/>
         </collectionViewCell>

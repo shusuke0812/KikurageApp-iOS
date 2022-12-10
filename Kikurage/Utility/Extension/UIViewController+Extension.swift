@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 
 // MEMO: UIViewControllerにExtensionすると将来的にメソッド名が衝突する可能性があるため、独自プロトコルに定義し、そのプロトコルのExtensionで拡張する方針
@@ -24,6 +25,11 @@ protocol UIViewControllerNavigatable {
     func openImagePicker()
     ///  iOS15対策：NavigationBarの背景色を設定（iOS15、NavBar背景色が透明になる）
     func adjustNavigationBarBackgroundColor()
+    /// Display empty view.
+    /// - Returns: Empty view for holding in VC. It is used when view is removed from VC with `removeEmptyView()`.
+    func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView>
+    /// Do not display empty view
+    func removeEmptyView(hostingVC: UIHostingController<EmptyView>?)
 }
 
 extension UIViewControllerNavigatable where Self: UIViewController {
@@ -48,5 +54,29 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         appearance.backgroundColor = .systemGroupedBackground
         nc.navigationBar.standardAppearance = appearance
         nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
+    }
+    func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView> {
+        let _view = EmptyView(type: type)
+        let hostingVC = UIHostingController(rootView: _view)
+        addChild(hostingVC)
+        hostingVC.didMove(toParent: self)
+
+        hostingVC.view.frame = view.bounds
+        hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(hostingVC.view)
+
+        NSLayoutConstraint.activate([
+            hostingVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+            hostingVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hostingVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
+        return hostingVC
+    }
+    func removeEmptyView(hostingVC: UIHostingController<EmptyView>?) {
+        hostingVC?.willMove(toParent: nil)
+        hostingVC?.view.removeFromSuperview()
+        hostingVC?.removeFromParent()
     }
 }
