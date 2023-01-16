@@ -28,6 +28,8 @@ public class KikurageBluetoothManager: NSObject {
     }
 }
 
+// MARK: - CBCentralManagerDelegate
+
 extension KikurageBluetoothManager: CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
