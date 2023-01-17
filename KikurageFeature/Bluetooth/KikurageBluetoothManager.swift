@@ -10,18 +10,19 @@ import Foundation
 import CoreBluetooth
 
 public class KikurageBluetoothManager: NSObject {
-    
     private var centralManager: CBCentralManager!
-    
+    private let connectToLocalName = "M5Stack" // TODO: change name
+    private var connectToPeripheral: CBPeripheral!
+
     override public init() {
         super.init()
         initialize()
     }
-    
+
     private func initialize() {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
-    
+
     private func scanForPeripherals() {
         // TODO: setting original service ID
         centralManager.scanForPeripherals(withServices: nil, options: nil)
@@ -47,6 +48,16 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
             print("DEBUG")
         @unknown default:
             fatalError()
+        }
+    }
+
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
+        let uuid = UUID(uuid: peripheral.identifier.uuid)
+        if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
+            if localName == connectToLocalName {
+                print("DEBUG: uuid=\(uuid)")
+                connectToPeripheral = peripheral
+            }
         }
     }
 }
