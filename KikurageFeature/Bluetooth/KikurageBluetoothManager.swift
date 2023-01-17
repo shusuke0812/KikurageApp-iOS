@@ -32,6 +32,11 @@ public class KikurageBluetoothManager: NSObject {
         centralManager.stopScan()
         centralManager.connect(connectToPeripheral, options: nil)
     }
+    
+    private func peripheralDiscoverServices() {
+        connectToPeripheral.delegate = self
+        connectToPeripheral.discoverServices(nil) // TODO: setting original service ID
+    }
 }
 
 // MARK: - CBCentralManagerDelegate
@@ -66,4 +71,14 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
             }
         }
     }
+    
+    public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheralDiscoverServices()
+    }
+}
+
+// MARK: - CBPeripheralDelegate
+
+extension KikurageBluetoothManager: CBPeripheralDelegate {
+    
 }
