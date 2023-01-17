@@ -9,7 +9,14 @@
 import Foundation
 import CoreBluetooth
 
+public protocol KikurageBluetoothMangerDelegate: AnyObject {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
+}
+
 public class KikurageBluetoothManager: NSObject {
+    
+    public weak var delegate: KikurageBluetoothMangerDelegate?
+    
     private var centralManager: CBCentralManager!
     private let connectToLocalName = "M5Stack" // TODO: change name
     private var connectToPeripheral: CBPeripheral!
@@ -36,6 +43,10 @@ public class KikurageBluetoothManager: NSObject {
     private func peripheralDiscoverServices() {
         connectToPeripheral.delegate = self
         connectToPeripheral.discoverServices(nil) // TODO: setting original service ID
+    }
+    
+    private func peripheralDiscoverCharacteristics(service: CBService) {
+        connectToPeripheral.discoverCharacteristics(nil, for: service) // TODO: setting original characteristic ID
     }
 }
 
@@ -80,5 +91,15 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
 // MARK: - CBPeripheralDelegate
 
 extension KikurageBluetoothManager: CBPeripheralDelegate {
-    
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if let error = error {
+            delegate?.bluetoothManager(self, error: error)
+            return
+        }
+        if let services = peripheral.services {
+            services.forEach { service in
+                peripheralDiscoverCharacteristics(service: service)
+            }
+        }
+    }
 }
