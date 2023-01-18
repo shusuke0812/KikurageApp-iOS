@@ -20,6 +20,9 @@ public class KikurageBluetoothManager: NSObject {
     private var centralManager: CBCentralManager!
     private let connectToLocalName = "M5Stack" // TODO: change name
     private var connectToPeripheral: CBPeripheral!
+    
+    private var writeCharacteristic: CBCharacteristic?
+    private var notifyCharacteristic: CBCharacteristic?
 
     override public init() {
         super.init()
@@ -99,6 +102,25 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
         if let services = peripheral.services {
             services.forEach { service in
                 peripheralDiscoverCharacteristics(service: service)
+            }
+        }
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        if let error = error {
+            delegate?.bluetoothManager(self, error: error)
+            return
+        }
+        if let characteristics = service.characteristics {
+            characteristics.forEach { characteristic in
+                switch characteristic.properties {
+                case .write:
+                    writeCharacteristic = characteristic
+                case .notify:
+                    notifyCharacteristic = characteristic
+                default:
+                    break
+                }
             }
         }
     }
