@@ -11,6 +11,7 @@ import CoreBluetooth
 
 public protocol KikurageBluetoothMangerDelegate: AnyObject {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String)
 }
 
 public class KikurageBluetoothManager: NSObject {
@@ -122,6 +123,16 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
                     break
                 }
             }
+        }
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if let error = error {
+            delegate?.bluetoothManager(self, error: error)
+            return
+        }
+        if let value = characteristic.value, let message = String(data: value, encoding: .utf8) {
+            delegate?.bluetoothManager(self, message: message)
         }
     }
 }
