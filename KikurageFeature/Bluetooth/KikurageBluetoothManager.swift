@@ -135,4 +135,10 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             delegate?.bluetoothManager(self, message: message)
         }
     }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+    }
 }
