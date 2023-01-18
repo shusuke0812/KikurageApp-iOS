@@ -56,17 +56,17 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            print("DEBUG")
+            scanForPeripherals()
         case .poweredOff:
-            print("DEBUG")
+            break
         case .unknown:
-            print("DEBUG")
+            break
         case .resetting:
-            print("DEBUG")
+            break
         case .unsupported:
-            print("DEBUG")
+            break
         case .unauthorized:
-            print("DEBUG")
+            break
         @unknown default:
             fatalError()
         }
