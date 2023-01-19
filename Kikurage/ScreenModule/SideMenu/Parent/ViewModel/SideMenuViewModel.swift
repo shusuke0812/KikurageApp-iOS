@@ -18,7 +18,7 @@ class SideMenuViewModel: NSObject {
         var rows: [SectionRowType] {
             switch self {
             case .history:  return [.calendar, .graph]
-            case .support:  return [.contact, .setting, .license]
+            case .support:  return [.contact, .accountSetting, .license]
             case .help:     return [.searchRecipe, .kikurageDictionary]
             case .debug:    return [.debugTry]
             }
@@ -28,7 +28,7 @@ class SideMenuViewModel: NSObject {
         case calendar
         case graph
         case contact
-        case setting
+        case accountSetting
         case license
         case searchRecipe
         case kikurageDictionary
@@ -42,8 +42,8 @@ class SideMenuViewModel: NSObject {
                 return R.string.localizable.side_menu_content_graph_subtitle()
             case .contact:
                 return R.string.localizable.side_menu_content_contact_subtitle()
-            case .setting:
-                return R.string.localizable.side_menu_content_setting_subtitle()
+            case .accountSetting:
+                return R.string.localizable.side_menu_content_account_setting_subtitle()
             case .license:
                 return R.string.localizable.side_menu_content_license_subtitle()
             case .searchRecipe:
@@ -52,7 +52,6 @@ class SideMenuViewModel: NSObject {
                 return R.string.localizable.side_menu_content_kikurage_dictionary_subtitle()
             case .debugTry:
                 return R.string.localizable.side_menu_content_debug_try_subtitle()
-                
             }
         }
 
@@ -64,7 +63,7 @@ class SideMenuViewModel: NSObject {
                 return "waveform.path.ecg"
             case .contact:
                 return "questionmark.circle"
-            case .setting:
+            case .accountSetting:
                 return "gear"
             case .license:
                 return "info.circle"

@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol SettingViewModelDelegate: AnyObject {
-    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: SettingViewModel)
-    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: SettingViewModel, with errorMessage: String)
+protocol AccountSettingViewModelDelegate: AnyObject {
+    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel)
+    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: AccountSettingViewModel, with errorMessage: String)
 }
 
-class SettingViewModel {
+class AccountSettingViewModel {
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
-    weak var delegate: SettingViewModelDelegate?
+    weak var delegate: AccountSettingViewModelDelegate?
 
     var kikurageUser: KikurageUser?
 
@@ -27,7 +27,7 @@ class SettingViewModel {
 
 // MARK: - Firebase Firestore
 
-extension SettingViewModel {
+extension AccountSettingViewModel {
     func loadKikurageUser(uid: String) {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in

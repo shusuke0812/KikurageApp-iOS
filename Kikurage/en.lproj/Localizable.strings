@@ -153,7 +153,7 @@
 "side_menu_content_clendar_subtitle" = "Calendar";
 "side_menu_content_graph_subtitle" = "Graph";
 "side_menu_content_contact_subtitle" = "Contact";
-"side_menu_content_setting_subtitle" = "Setting";
+"side_menu_content_account_setting_subtitle" = "Account Setting";
 "side_menu_content_license_subtitle" = "License";
 "side_menu_content_search_recipe_subtitle" = "Searching recipe";
 "side_menu_content_kikurage_dictionary_subtitle" = "Dictionary";

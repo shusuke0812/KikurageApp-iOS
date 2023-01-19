@@ -10,15 +10,15 @@ import UIKit
 import CropViewController
 import KikurageFeature
 
-class SettingViewController: UIViewController {
-    private var baseView: SettingBaseView { self.view as! SettingBaseView } // sswiftlint:disable:this force_cast
-    private var viewModel: SettingViewModel!
+class AccountSettingViewController: UIViewController {
+    private var baseView: AccountSettingBaseView { self.view as! AccountSettingBaseView } // sswiftlint:disable:this force_cast
+    private var viewModel: AccountSettingViewModel!
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = SettingViewModel(kikurageUserRepository: KikurageUserRepository())
+        viewModel = AccountSettingViewModel(kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
         setNavigation()
 
@@ -36,7 +36,7 @@ class SettingViewController: UIViewController {
 
 // MARK: - Initialized
 
-extension SettingViewController {
+extension AccountSettingViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
         viewModel.delegate = self
@@ -50,11 +50,11 @@ extension SettingViewController {
 
 // MARK: - SettingBaseView Delegate
 
-extension SettingViewController: SettingBaseViewDelegate {
-    func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView) {
+extension AccountSettingViewController: AccountSettingBaseViewDelegate {
+    func settingBaseViewDidTappedUserImageView(_ settingBaseView: AccountSettingBaseView) {
         // FIXME: 写真アプリから写真を選んで円形にトリミング（CropViewController）してViewModelにあるKikurageUserを更新する
     }
-    func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView) {
+    func settingBaseViewDidTappedEditButton(_ settingBaseView: AccountSettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
         print("DEBUG: ボタンがタップされました")
     }
@@ -62,13 +62,13 @@ extension SettingViewController: SettingBaseViewDelegate {
 
 // MARK: - SettingViewModel Delegate
 
-extension SettingViewController: SettingViewModelDelegate {
-    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: SettingViewModel) {
+extension AccountSettingViewController: AccountSettingViewModelDelegate {
+    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel) {
         DispatchQueue.main.async {
             self.baseView.setKikurageName(name: settingViewModel.kikurageUser?.kikurageName)
         }
     }
-    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: SettingViewModel, with errorMessage: String) {
+    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: AccountSettingViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             self.baseView.setKikurageName(name: nil)
         }

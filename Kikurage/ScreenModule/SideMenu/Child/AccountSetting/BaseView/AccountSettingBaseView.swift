@@ -1,5 +1,5 @@
 //
-//  SettingBaseView.swift
+//  AccountSettingBaseView.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/1/1.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol SettingBaseViewDelegate: AnyObject {
-    func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView)
-    func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView)
+protocol AccountSettingBaseViewDelegate: AnyObject {
+    func settingBaseViewDidTappedEditButton(_ settingBaseView: AccountSettingBaseView)
+    func settingBaseViewDidTappedUserImageView(_ settingBaseView: AccountSettingBaseView)
 }
 
-class SettingBaseView: UIView {
+class AccountSettingBaseView: UIView {
     @IBOutlet private weak var userImageView: UIImageView!
     @IBOutlet private weak var kikurageNameTextField: UITextField!
     @IBOutlet private weak var editButton: UIButton!
 
-    weak var delegate: SettingBaseViewDelegate?
+    weak var delegate: AccountSettingBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +37,7 @@ class SettingBaseView: UIView {
 
 // MARK: - Initialized
 
-extension SettingBaseView {
+extension AccountSettingBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
 
@@ -57,7 +57,7 @@ extension SettingBaseView {
 
 // MARK: - Setting UI
 
-extension SettingBaseView {
+extension AccountSettingBaseView {
     func setKikurageName(name: String?) {
         if let name = name {
             kikurageNameTextField.text = name
