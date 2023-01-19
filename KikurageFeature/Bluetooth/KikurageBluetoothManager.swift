@@ -80,7 +80,6 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
         let uuid = UUID(uuid: peripheral.identifier.uuid)
         if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             if localName == connectToLocalName {
-                print("DEBUG: uuid=\(uuid)")
                 connectToPeripheral = peripheral
                 connectPeripheral()
             }
