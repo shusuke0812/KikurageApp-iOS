@@ -47,7 +47,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
     // MARK: - Action
 
-    @objc private func refresh(_ sender: UIRefreshControl) {
+    private func refresh() {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
@@ -65,7 +65,9 @@ extension RecipeViewController {
     }
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refresh.addAction(.init() { [weak self] _ in
+            self?.refresh()
+        }, for: .valueChanged)
         baseView.setRefreshControlInTableView(refresh)
     }
     private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
