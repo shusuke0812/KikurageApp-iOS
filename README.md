@@ -28,7 +28,7 @@ Moblie App parts of this IoT product can be monitoring and observing to Kikurage
 - Swift 5.6 
 - CocoaPods 1.11.3  
 - MacOS Monterey 12.3.1 / MacBook Intel Processor Model
-- Target OS：iOS 13.0 
+- Target OS：iOS 14.0 
 
 ## Author
 - [@shusuke0812](https://github.com/shusuke0812)
