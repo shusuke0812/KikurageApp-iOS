@@ -46,7 +46,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     // MARK: - Action
 
-    @objc private func refresh(_ sender: UIRefreshControl) {
+    private func refresh() {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
@@ -61,7 +61,9 @@ extension CultivationViewController {
     }
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refresh.addAction(.init() { [weak self] _ in
+            self?.refresh()
+        }, for: .valueChanged)
         baseView.setRefreshControlInCollectionView(refresh)
     }
     private func setDelegateDataSource() {

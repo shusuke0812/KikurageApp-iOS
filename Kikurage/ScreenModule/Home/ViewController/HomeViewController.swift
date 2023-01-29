@@ -68,7 +68,11 @@ extension HomeViewController {
         setNavigationBackButton(buttonTitle: R.string.localizable.common_navigation_back_btn_title(), buttonColor: .black)
     }
     private func setDateTimer() {
-        dateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+        dateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.updateUI()
+            }
+        })
     }
     @objc private func updateUI() {
         baseView.updateTimeLabel()
