@@ -46,7 +46,8 @@ extension PostRecipeViewModel {
         }
     }
     private func putRecipeImages(kikurageUserId: String, firestoreDocumentId: String, imageStorageFullPaths: [String]) {
-        let request = KikurageRecipeRequest(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId, imageStorageFullPaths: imageStorageFullPaths)
+        var request = KikurageRecipeRequest(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId)
+        request.body = ["imageStoragePaths": imageStorageFullPaths]
         recipeRepository.putRecipeImage(request: request) { [weak self] response in
             switch response {
             case .success():
