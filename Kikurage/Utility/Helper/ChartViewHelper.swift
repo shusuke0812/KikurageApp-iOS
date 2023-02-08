@@ -10,7 +10,7 @@ import Foundation
 import Charts
 
 /// Chartsのx軸を設定するヘルパー
-class ChartViewHelper: NSObject, IAxisValueFormatter {
+class ChartViewHelper: NSObject, AxisValueFormatter {
     let xAxisValues = Constants.Week.allCases
 
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
