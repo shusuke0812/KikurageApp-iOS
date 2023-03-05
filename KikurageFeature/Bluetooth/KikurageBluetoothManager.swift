@@ -18,7 +18,6 @@ public class KikurageBluetoothManager: NSObject {
     public weak var delegate: KikurageBluetoothMangerDelegate?
 
     private var centralManager: CBCentralManager!
-    private let connectToLocalName = "kikurage-device-m5-stack"
     private var connectToPeripheral: CBPeripheral!
 
     private var writeCharacteristic: CBCharacteristic?
@@ -79,7 +78,7 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
         let uuid = UUID(uuid: peripheral.identifier.uuid)
         KLogManager.debug("\(uuid)")
         if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            if localName == connectToLocalName {
+            if localName == KikurageBluetoothUUID.LocalName.debugM5Stack {
                 connectToPeripheral = peripheral
                 connectPeripheral()
             }
