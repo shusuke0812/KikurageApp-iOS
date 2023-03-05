@@ -15,13 +15,12 @@ public protocol KikurageBluetoothMangerDelegate: AnyObject {
 }
 
 public class KikurageBluetoothManager: NSObject {
-    
     public weak var delegate: KikurageBluetoothMangerDelegate?
-    
+
     private var centralManager: CBCentralManager!
-    private let connectToLocalName = "M5Stack" // TODO: change name
+    private let connectToLocalName = "kikurage-device-m5-stack"
     private var connectToPeripheral: CBPeripheral!
-    
+
     private var writeCharacteristic: CBCharacteristic?
     private var notifyCharacteristic: CBCharacteristic?
 
@@ -38,17 +37,17 @@ public class KikurageBluetoothManager: NSObject {
         // TODO: setting original service ID
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
-    
+
     private func connectPeripheral() {
         centralManager.stopScan()
         centralManager.connect(connectToPeripheral, options: nil)
     }
-    
+
     private func peripheralDiscoverServices() {
         connectToPeripheral.delegate = self
         connectToPeripheral.discoverServices(nil) // TODO: setting original service ID
     }
-    
+
     private func peripheralDiscoverCharacteristics(service: CBService) {
         connectToPeripheral.discoverCharacteristics(nil, for: service) // TODO: setting original characteristic ID
     }
@@ -78,6 +77,7 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         let uuid = UUID(uuid: peripheral.identifier.uuid)
+        KLogManager.debug("\(uuid)")
         if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
             if localName == connectToLocalName {
                 connectToPeripheral = peripheral
@@ -85,7 +85,7 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
             }
         }
     }
-    
+
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         peripheralDiscoverServices()
     }
@@ -105,7 +105,7 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             }
         }
     }
-    
+
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
             delegate?.bluetoothManager(self, error: error)
@@ -124,7 +124,7 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             }
         }
     }
-    
+
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let error = error {
             delegate?.bluetoothManager(self, error: error)
@@ -134,10 +134,10 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             delegate?.bluetoothManager(self, message: message)
         }
     }
-    
+
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
     }
-    
+
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
     }
 }
