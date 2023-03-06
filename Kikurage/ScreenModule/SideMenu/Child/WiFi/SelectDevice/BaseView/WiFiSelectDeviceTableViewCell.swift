@@ -13,7 +13,7 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
     private let bleSignalImageView = UIImageView()
     private let bleSignalLabel = UILabel()
     private let deviceNameLabel = UILabel()
-    private let bleServiceNumberLabel = UILabel()
+    private let bleServiceCountLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -43,15 +43,15 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
         deviceNameLabel.font = .systemFont(ofSize: 24)
         deviceNameLabel.text = "Unnamed"
 
-        bleServiceNumberLabel.font = .systemFont(ofSize: 17)
-        bleServiceNumberLabel.textColor = .gray
-        bleServiceNumberLabel.text = "No services"
+        bleServiceCountLabel.font = .systemFont(ofSize: 17)
+        bleServiceCountLabel.textColor = .gray
+        bleServiceCountLabel.text = "No services"
 
         let rightStackView = UIStackView()
         rightStackView.axis = .vertical
         rightStackView.alignment = .leading
         rightStackView.addArrangedSubview(deviceNameLabel)
-        rightStackView.addArrangedSubview(bleServiceNumberLabel)
+        rightStackView.addArrangedSubview(bleServiceCountLabel)
         rightStackView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(leftStackView)
@@ -82,6 +82,6 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
 
         bleSignalLabel.text = peripheral.rssiString
         deviceNameLabel.text = peripheral.deviceName
-        bleServiceNumberLabel.text = peripheral.serviceCountString
+        bleServiceCountLabel.text = peripheral.serviceCountString
     }
 }
