@@ -188,6 +188,7 @@
 "side_menu_dictionary_twitter_no_tweets" = "No Tweets";
 
 // wifi
+"side_menu_wifi_select_device_title" = "Connect";
 "side_menu_wifi_select_device_section_title" = "Devices";
 
 // debug
