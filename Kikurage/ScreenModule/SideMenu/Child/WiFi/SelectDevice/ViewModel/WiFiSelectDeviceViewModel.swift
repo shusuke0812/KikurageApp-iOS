@@ -8,11 +8,17 @@
 
 import Foundation
 import UIKit.UITableView
+import KikurageFeature
 
 class  WiFiSelectDeviceViewModel: NSObject {
     private let sections: [WiFiSectionType] = [.device]
+    private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
 
     override init() {
+    }
+
+    func add(peripheral: KikurageBluetoothPeripheral) {
+        bluetoothPeripherals.add(peripheral: peripheral)
     }
 }
 
@@ -28,11 +34,12 @@ extension WiFiSelectDeviceViewModel: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        bluetoothPeripherals.listCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell  // swiftlint:disable:this force_cast
+        cell.updateComponent(peripheral: bluetoothPeripherals.getElement(indexPath: indexPath))
         return cell
     }
 }

@@ -75,4 +75,13 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
             rightStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin)
         ])
     }
+
+    func updateComponent(peripheral: KikurageBluetoothPeripheral) {
+        let signal = KikurageBluetoothSignal.getSignal(rssi: peripheral.rssiInt)
+        bleSignalImageView.image = signal.image
+
+        bleSignalLabel.text = peripheral.rssiString
+        deviceNameLabel.text = peripheral.deviceName
+        bleServiceNumberLabel.text = peripheral.serviceCountString
+    }
 }

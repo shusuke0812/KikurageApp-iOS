@@ -12,6 +12,7 @@ import CoreBluetooth
 public protocol KikurageBluetoothMangerDelegate: AnyObject {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover pheripheral: KikurageBluetoothPeripheral)
 }
 
 public class KikurageBluetoothManager: NSObject {
@@ -37,7 +38,8 @@ public class KikurageBluetoothManager: NSObject {
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
 
-    private func connectPeripheral() {
+    public func connectPeripheral(_ peripheral: CBPeripheral) {
+        connectToPeripheral = peripheral
         centralManager.stopScan()
         centralManager.connect(connectToPeripheral, options: nil)
     }
@@ -75,14 +77,7 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
     }
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
-        let uuid = UUID(uuid: peripheral.identifier.uuid)
-        KLogManager.debug("\(uuid)")
-        if let localName = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            if localName == KikurageBluetoothUUID.LocalName.debugM5Stack {
-                connectToPeripheral = peripheral
-                connectPeripheral()
-            }
-        }
+        delegate?.bluetoothManager(self, didDiscover: KikurageBluetoothPeripheral(advertisementData: advertisementData, rssi: RSSI, peripheral: peripheral))
     }
 
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {

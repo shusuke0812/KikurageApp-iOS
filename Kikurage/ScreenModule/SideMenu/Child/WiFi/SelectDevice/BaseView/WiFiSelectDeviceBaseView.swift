@@ -9,7 +9,7 @@
 import UIKit
 
 class WiFiSelectDeviceBaseView: UIView {
-    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
 
     override init(frame: CGRect) {
         super.init(frame: .zero)

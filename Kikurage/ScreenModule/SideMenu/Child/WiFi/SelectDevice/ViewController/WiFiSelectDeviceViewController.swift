@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class WiFiSelectDeviceViewController: UIViewController {
     private let baseView = WiFiSelectDeviceBaseView()
     private let viewModel = WiFiSelectDeviceViewModel()
 
+    private let bluetoothManager = KikurageBluetoothManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProtocols()
         setupNavigation()
+
+        bluetoothManager.delegate = self
     }
 
     override func loadView() {
@@ -42,4 +47,21 @@ class WiFiSelectDeviceViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension WiFiSelectDeviceViewController: UITableViewDelegate {
+}
+
+// MARK: - KikurageBluetoothMangerDelegate
+
+extension WiFiSelectDeviceViewController: KikurageBluetoothMangerDelegate {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {
+    }
+
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
+    }
+
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover pheripheral: KikurageBluetoothPeripheral) {
+        viewModel.add(peripheral: pheripheral)
+        DispatchQueue.main.async {
+            self.baseView.tableView.reloadData()
+        }
+    }
 }
