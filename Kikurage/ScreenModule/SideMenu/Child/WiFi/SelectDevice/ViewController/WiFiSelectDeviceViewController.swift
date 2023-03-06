@@ -59,9 +59,11 @@ extension WiFiSelectDeviceViewController: KikurageBluetoothMangerDelegate {
     }
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral) {
-        viewModel.add(peripheral: peripheral)
-        DispatchQueue.main.async {
-            self.baseView.tableView.reloadData()
+        if peripheral.validateConnection() {
+            viewModel.add(peripheral: peripheral)
+            DispatchQueue.main.async {
+                self.baseView.tableView.reloadData()
+            }
         }
     }
 }
