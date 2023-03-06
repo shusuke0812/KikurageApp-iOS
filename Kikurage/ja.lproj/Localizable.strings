@@ -186,5 +186,8 @@
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
 "side_menu_dictionary_twitter_no_tweets" = "ツイートがありません";
 
+// wifi
+"side_menu_wifi_select_device_section_title" = "周辺デバイス";
+
 // debug
 "side_menu_debug_title" = "デバッグ";

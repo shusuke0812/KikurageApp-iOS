@@ -9,22 +9,24 @@
 import UIKit
 
 class WiFiSelectDeviceViewController: UIViewController {
+    private let baseView = WiFiSelectDeviceBaseView()
+    private let viewModel = WiFiSelectDeviceViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupProtocols()
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func loadView() {
+        view = baseView
     }
-    */
 
+    private func setupProtocols() {
+        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension WiFiSelectDeviceViewController: UITableViewDelegate {
 }
