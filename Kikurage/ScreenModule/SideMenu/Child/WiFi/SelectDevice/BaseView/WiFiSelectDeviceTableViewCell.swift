@@ -40,7 +40,7 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
         leftStackView.addArrangedSubview(bleSignalLabel)
         leftStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        deviceNameLabel.font = .systemFont(ofSize: 24)
+        deviceNameLabel.font = .systemFont(ofSize: 20)
         deviceNameLabel.text = "Unnamed"
 
         bleServiceCountLabel.font = .systemFont(ofSize: 17)
@@ -71,7 +71,7 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
 
             rightStackView.topAnchor.constraint(equalTo: topAnchor, constant: margin),
             rightStackView.leadingAnchor.constraint(equalTo: leftStackView.trailingAnchor, constant: margin * 2),
-            rightStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin),
+            rightStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin * 2),
             rightStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -margin)
         ])
     }
