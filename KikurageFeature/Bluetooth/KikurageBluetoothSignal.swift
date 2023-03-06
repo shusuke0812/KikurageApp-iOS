@@ -13,7 +13,7 @@ public enum KikurageBluetoothSignal {
     case weak
     case fair
     case good
-    
+
     public init() {
         self = .lost
     }
@@ -30,14 +30,15 @@ public enum KikurageBluetoothSignal {
             return ResorceManager.getImage(name: "signal-good")
         }
     }
-    
+
     // NOTE: Based on experiment value using LightBlue App.
-    public func getSignal(rssi: Int) -> Self {
-        if rssi < 45 {
+    public static func getSignal(rssi: Int) -> Self {
+        let _rssi = abs(rssi)
+        if _rssi < 45 {
             return .good
-        } else if rssi < 60 {
+        } else if _rssi < 60 {
             return .fair
-        } else if rssi < 80 {
+        } else if _rssi < 80 {
             return .weak
         } else {
             return .lost
