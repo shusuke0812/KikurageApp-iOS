@@ -48,3 +48,15 @@ public struct KikurageBluetoothPeripheral {
         deviceName == KikurageBluetoothUUID.LocalName.debugM5Stack
     }
 }
+
+public struct KikurageBluetoothPeripheralList {
+    private var list: [KikurageBluetoothPeripheral]
+    
+    public init(list: [KikurageBluetoothPeripheral]) {
+        self.list = list
+    }
+    
+    public mutating func add(peripheral: KikurageBluetoothPeripheral) {
+        list.append(peripheral)
+    }
+}
