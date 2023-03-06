@@ -13,11 +13,13 @@ public struct KikurageBluetoothPeripheral {
     public let advertisementData: [String: Any]
     public let rssi: NSNumber
     public let peripheral: CBPeripheral
+    public let uuid: UUID
     
     init(advertisementData: [String: Any], rssi: NSNumber, peripheral: CBPeripheral) {
         self.advertisementData = advertisementData
         self.rssi = rssi
         self.peripheral = peripheral
+        self.uuid = UUID(uuid: peripheral.identifier.uuid)
     }
     
     public var deviceName: String {
