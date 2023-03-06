@@ -12,7 +12,7 @@ import CoreBluetooth
 public protocol KikurageBluetoothMangerDelegate: AnyObject {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String)
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover pheripheral: KikurageBluetoothPeripheral)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral)
 }
 
 public class KikurageBluetoothManager: NSObject {
