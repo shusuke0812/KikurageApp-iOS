@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum BLESignal {
+public enum KikurageBluetoothSignal {
     case lost
     case weak
     case fair
