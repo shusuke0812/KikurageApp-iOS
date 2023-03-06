@@ -8,6 +8,39 @@
 
 import UIKit
 
+private enum BLESignal {
+    case lost
+    case weak
+    case fair
+    case good
+
+    var image: UIImage? {
+        switch self {
+        case .lost:
+            return R.image.signalLost()
+        case .weak:
+            return R.image.signalWeak()
+        case .fair:
+            return R.image.signalFair()
+        case .good:
+            return R.image.signalGood()
+        }
+    }
+    
+    // NOTE: Based on experiment value using LightBlue App.
+    func getSignal(rssi: Int) -> Self {
+        if rssi < 45 {
+            return .good
+        } else if rssi < 60 {
+            return .fair
+        } else if rssi < 80 {
+            return .weak
+        } else {
+            return .lost
+        }
+    }
+}
+
 class WiFiSelectDeviceTableViewCell: UITableViewCell {
     private let deviceNameLabel = UILabel()
     private let bleServiceNumberLabel = UILabel()
