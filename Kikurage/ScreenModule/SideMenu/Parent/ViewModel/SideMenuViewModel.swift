@@ -13,6 +13,7 @@ class SideMenuViewModel: NSObject {
         case history
         case support
         case help
+        case setting
         case debug
 
         var rows: [SectionRowType] {
@@ -20,6 +21,7 @@ class SideMenuViewModel: NSObject {
             case .history:  return [.calendar, .graph]
             case .support:  return [.contact, .accountSetting, .license]
             case .help:     return [.searchRecipe, .kikurageDictionary]
+            case .setting:  return [.wifi]
             case .debug:    return [.debugTry]
             }
         }
@@ -32,6 +34,7 @@ class SideMenuViewModel: NSObject {
         case license
         case searchRecipe
         case kikurageDictionary
+        case wifi
         case debugTry
 
         var title: String {
@@ -50,6 +53,8 @@ class SideMenuViewModel: NSObject {
                 return R.string.localizable.side_menu_content_search_recipe_subtitle()
             case .kikurageDictionary:
                 return R.string.localizable.side_menu_content_kikurage_dictionary_subtitle()
+            case .wifi:
+                return R.string.localizable.side_menu_content_wifi_subtitle()
             case .debugTry:
                 return R.string.localizable.side_menu_content_debug_try_subtitle()
             }
@@ -71,6 +76,8 @@ class SideMenuViewModel: NSObject {
                 return "magnifyingglass"
             case .kikurageDictionary:
                 return "doc.text"
+            case .wifi:
+                return "wifi"
             case .debugTry:
                 return "checkmark.seal.fill"
             }
@@ -90,9 +97,9 @@ class SideMenuViewModel: NSObject {
 extension SideMenuViewModel {
     private func setSection() {
         #if PRODUCTION
-        sections = [.history, .support, .help]
+        sections = [.history, .support, .help, .setting]
         #else
-        sections = [.history, .support, .help, .debug]
+        sections = [.history, .support, .help, .setting, .debug]
         #endif
     }
     private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> SideMenuTableViewCell {

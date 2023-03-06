@@ -141,6 +141,10 @@ extension SideMenuViewController: UITableViewDelegate {
             modalToDictionary { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
+        case .wifi:
+            modalToWiFi { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         case .debugTry:
             modalToDebug { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
