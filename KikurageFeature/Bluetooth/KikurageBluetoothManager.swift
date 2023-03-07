@@ -39,9 +39,8 @@ public class KikurageBluetoothManager: NSObject {
     }
 
     public func connectPeripheral(_ peripheral: CBPeripheral) {
+        centralManager.connect(peripheral, options: nil)
         connectToPeripheral = peripheral
-        centralManager.stopScan()
-        centralManager.connect(connectToPeripheral, options: nil)
     }
 
     private func peripheralDiscoverServices() {
@@ -81,7 +80,14 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
     }
 
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        centralManager.stopScan()
         peripheralDiscoverServices()
+    }
+
+    public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    }
+
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
     }
 }
 
