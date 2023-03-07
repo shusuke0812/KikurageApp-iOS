@@ -13,14 +13,12 @@ class WiFiSelectDeviceViewController: UIViewController {
     private let baseView = WiFiSelectDeviceBaseView()
     private let viewModel = WiFiSelectDeviceViewModel()
 
-    private let bluetoothManager = KikurageBluetoothManager()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProtocols()
         setupNavigation()
 
-        bluetoothManager.delegate = self
+        viewModel.delegate = self
     }
 
     override func loadView() {
@@ -47,23 +45,17 @@ class WiFiSelectDeviceViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension WiFiSelectDeviceViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.connectToPeripheral(indexPath: indexPath)
+    }
 }
 
-// MARK: - KikurageBluetoothMangerDelegate
+// MARK: - WiFiSelectDeviceViewModelDelegate
 
-extension WiFiSelectDeviceViewController: KikurageBluetoothMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {
-    }
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
-    }
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral) {
-        if peripheral.validateConnection() {
-            viewModel.add(peripheral: peripheral)
-            DispatchQueue.main.async {
-                self.baseView.tableView.reloadData()
-            }
+extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
+    func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
+        DispatchQueue.main.async {
+            self.baseView.tableView.reloadData()
         }
     }
 }
