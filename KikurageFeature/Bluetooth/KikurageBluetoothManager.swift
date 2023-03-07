@@ -16,15 +16,16 @@ public protocol KikurageBluetoothMangerDelegate: AnyObject {
 }
 
 public class KikurageBluetoothManager: NSObject {
-    public weak var delegate: KikurageBluetoothMangerDelegate?
-
     private var centralManager: CBCentralManager!
     private var connectToPeripheral: CBPeripheral!
 
     private var writeCharacteristic: CBCharacteristic?
     private var notifyCharacteristic: CBCharacteristic?
 
-    override public init() {
+    public static let shared = KikurageBluetoothManager()
+    public weak var delegate: KikurageBluetoothMangerDelegate?
+
+    override private init() {
         super.init()
         initialize()
     }

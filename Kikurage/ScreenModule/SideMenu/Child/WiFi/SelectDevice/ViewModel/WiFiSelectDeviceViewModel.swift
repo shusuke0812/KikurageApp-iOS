@@ -17,7 +17,7 @@ protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
 class  WiFiSelectDeviceViewModel: NSObject {
     private let sections: [WiFiSectionType] = [.device]
 
-    private let bluetoothManager = KikurageBluetoothManager()
+    private let bluetoothManager = KikurageBluetoothManager.shared
     private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
 
     weak var delegate: WiFiSelectDeviceViewModelDelegate?
