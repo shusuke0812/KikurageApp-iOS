@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 import PKHUD
+import RxSwift
 
-class RecipeViewController: UIViewController, UIViewControllerNavigatable {
+class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: RecipeViewModel!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var viewModel: RecipeViewModelType!
 
+    private let diposeBag = RxSwift.DisposeBag()
     private let cellHeight: CGFloat = 160.0
 
     // MARK: - Lifecycle
@@ -30,8 +34,12 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
 
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
+
+        // Rx
+        rxBaseView()
+        rxTransition()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,9 +47,9 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable {
 
     // MARK: - Action
 
-    @objc private func refresh(_ sender: UIRefreshControl) {
+    private func refresh() {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }
@@ -53,24 +61,72 @@ extension RecipeViewController {
         setNavigationBar(title: R.string.localizable.screen_recipe_title())
     }
     private func setDelegateDataSource() {
-        baseView.delegate = self
-        baseView.tableView.delegate = self
-        baseView.tableView.dataSource = viewModel
-        viewModel.delegate = self
+        baseView.configTableView(delegate: self)
     }
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refresh.addAction(.init() { [weak self] _ in
+            self?.refresh()
+        }, for: .valueChanged)
         baseView.setRefreshControlInTableView(refresh)
+    }
+    private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
+        if recipes.isEmpty {
+            emptyHostingVC = addEmptyView(type: .notFoundRecipe)
+        } else {
+            removeEmptyView(hostingVC: emptyHostingVC)
+        }
     }
 }
 
-// MARK: - RecipeBaseView Delegate
+// MARK: - Rx
 
-extension RecipeViewController: RecipeBaseViewDelegate {
-    func didTapPostRecipePageButton() {
-        guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
+extension RecipeViewController {
+    private func rxBaseView() {
+        viewModel.output.recipes.bind(to: baseView.tableView.rx.items) { tableview, row, element in
+            let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
+            let cell = tableview.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
+            cell.setUI(recipe: element.data)
+            return cell
+        }
+        .disposed(by: diposeBag)
+
+        viewModel.output.recipes.subscribe(
+            onNext: { [weak self] recipes in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self?.baseView.tableView.refreshControl?.endRefreshing()
+                    self?.baseView.tableView.reloadData()
+                    self?.displayEmptyView(recipes: recipes)
+                }
+            }
+        )
+        .disposed(by: diposeBag)
+
+        viewModel.output.error.subscribe(
+            onNext: { [weak self] error in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    guard let `self` = self else { return }
+                    self.baseView.tableView.refreshControl?.endRefreshing()
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                }
+            }
+        )
+        .disposed(by: diposeBag)
+
+        // MEMO: item on table view selected（nothing）
+    }
+    private func rxTransition() {
+        baseView.postPageButton.rx.tap.asDriver()
+            .drive(
+                onNext: { [weak self] in
+                    self?.modalToPostRecipe()
+                }
+            )
+            .disposed(by: diposeBag)
+
+        // MEMO: subscrive to selected item on table view（nothing）
     }
 }
 
@@ -82,28 +138,6 @@ extension RecipeViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - RecipeViewModel Delegate
-
-extension RecipeViewController: RecipeViewModelDelegate {
-    func didSuccessGetRecipes() {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.tableView.refreshControl?.endRefreshing()
-
-            self.baseView.tableView.reloadData()
-            self.baseView.noRecipeLabel.isHidden = !(self.viewModel.recipes.isEmpty)
-        }
-    }
-    func didFailedGetRecipes(errorMessage: String) {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.tableView.refreshControl?.endRefreshing()
-
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
-    }
-}
-
 // MARK: - NotificationCenter
 
 extension RecipeViewController {
@@ -112,7 +146,8 @@ extension RecipeViewController {
     }
     @objc private func didPostRecipe(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            HUD.show(.progress)
+            viewModel.input.loadRecipes(kikurageUserId: kikurageUserId)
         }
     }
 }

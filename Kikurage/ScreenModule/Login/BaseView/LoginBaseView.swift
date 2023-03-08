@@ -9,12 +9,12 @@
 import UIKit
 
 protocol LoginBaseViewDelegate: AnyObject {
-    func didTappedLoginButton()
+    func loginBaseViewDidTappedLoginButton(_ loginBaseView: LoginBaseView)
 }
 
 class LoginBaseView: UIView {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private(set) weak var emailTextField: UITextField!
+    @IBOutlet private(set) weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
 
     weak var delegate: LoginBaseViewDelegate?
@@ -26,8 +26,8 @@ class LoginBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedLoginButton(_ sender: Any) {
-        delegate?.didTappedLoginButton()
+    @IBAction private func login(_ sender: Any) {
+        delegate?.loginBaseViewDidTappedLoginButton(self)
     }
 }
 
@@ -40,12 +40,24 @@ extension LoginBaseView {
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_login_login_btn_name(), for: .normal)
+        loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.loginLoginButton()
 
         emailTextField.autocorrectionType = .no
         emailTextField.placeholder = R.string.localizable.screen_login_email_textfield_placeholer()
+        emailTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginEmailTextField()
 
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = R.string.localizable.screen_login_password_textfield_placeholer()
+        passwordTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginPasswordTextField()
+    }
+}
+
+// MARK: - Config
+
+extension LoginBaseView {
+    func confgTextField(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     func initTextFields() {
         emailTextField.text = ""

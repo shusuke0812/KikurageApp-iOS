@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PzW-Wf-n4G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PzW-Wf-n4G">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,21 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWT-C8-qOu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="DZZ-Qz-zX1">
-                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="Rrb-DO-HFe">
-                                            <color key="tintColor" systemColor="labelColor"/>
-                                            <connections>
-                                                <action selector="didTapCloseButton:" destination="50A-5Z-sZQ" id="o5g-Lj-MJu"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EoP-hp-Jmg">
-                                <rect key="frame" x="8" y="118" width="398" height="180"/>
+                                <rect key="frame" x="8" y="74" width="398" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="PLk-rT-pfg"/>
@@ -45,20 +32,20 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="料理名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3IK-Vu-4GC">
-                                <rect key="frame" x="8" y="313" width="398" height="18.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="料理名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3IK-Vu-4GC">
+                                <rect key="frame" x="8" y="269" width="398" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-uj-vOg">
-                                <rect key="frame" x="8" y="334.5" width="398" height="0.5"/>
+                                <rect key="frame" x="8" y="290.5" width="398" height="0.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="X77-bf-Cm2"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gvi-fO-fsB">
-                                <rect key="frame" x="367.5" y="338" width="38.5" height="20.5"/>
+                                <rect key="frame" x="367.5" y="294" width="38.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwk-2Q-RJ1">
                                         <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
@@ -81,7 +68,7 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-bv-0Ou" customClass="UITextViewWithPlaceholder" customModule="Kikurage" customModuleProvider="target">
-                                <rect key="frame" x="8" y="388.5" width="398" height="50"/>
+                                <rect key="frame" x="8" y="344.5" width="398" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AHf-C3-Ura"/>
@@ -91,14 +78,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQ8-Wk-c7K">
-                                <rect key="frame" x="8" y="441.5" width="398" height="0.5"/>
+                                <rect key="frame" x="8" y="397.5" width="398" height="0.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="0.5" id="nrz-k8-a3E"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="oQk-R3-0c4">
-                                <rect key="frame" x="358" y="445" width="48" height="20.5"/>
+                                <rect key="frame" x="358" y="401" width="48" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alB-Cy-8JB">
                                         <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
@@ -121,7 +108,7 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Phq-a3-1Vo">
-                                <rect key="frame" x="8" y="485.5" width="398" height="34"/>
+                                <rect key="frame" x="8" y="441.5" width="398" height="78"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -136,14 +123,13 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapPostButton:" destination="50A-5Z-sZQ" eventType="touchUpInside" id="HaU-ny-grY"/>
+                                    <action selector="post:" destination="50A-5Z-sZQ" eventType="touchUpInside" id="l0f-mY-cZ8"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aAq-K2-QFJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SWT-C8-qOu" firstAttribute="leading" secondItem="aAq-K2-QFJ" secondAttribute="leading" id="24r-1K-ANe"/>
                             <constraint firstItem="aAq-K2-QFJ" firstAttribute="trailing" secondItem="2ju-zv-Izm" secondAttribute="trailing" constant="16" id="4Mx-Zr-y2Y"/>
                             <constraint firstItem="oQk-R3-0c4" firstAttribute="top" secondItem="RQ8-Wk-c7K" secondAttribute="bottom" constant="3" id="CLE-Rc-Zjt"/>
                             <constraint firstItem="bxT-bv-0Ou" firstAttribute="top" secondItem="Gvi-fO-fsB" secondAttribute="bottom" constant="30" id="Cvy-Jw-pRw"/>
@@ -153,15 +139,13 @@
                             <constraint firstItem="3IK-Vu-4GC" firstAttribute="top" secondItem="EoP-hp-Jmg" secondAttribute="bottom" constant="15" id="MVU-oP-ZE2"/>
                             <constraint firstItem="3IK-Vu-4GC" firstAttribute="leading" secondItem="aAq-K2-QFJ" secondAttribute="leading" constant="8" id="Qdb-yP-3xj"/>
                             <constraint firstItem="2ju-zv-Izm" firstAttribute="leading" secondItem="aAq-K2-QFJ" secondAttribute="leading" constant="16" id="V2Q-NB-QO3"/>
+                            <constraint firstItem="EoP-hp-Jmg" firstAttribute="top" secondItem="aAq-K2-QFJ" secondAttribute="top" constant="30" id="V80-fl-TYl"/>
                             <constraint firstItem="Phq-a3-1Vo" firstAttribute="top" secondItem="oQk-R3-0c4" secondAttribute="bottom" constant="20" id="V8O-Se-7ag"/>
                             <constraint firstItem="aAq-K2-QFJ" firstAttribute="trailing" secondItem="cUN-uj-vOg" secondAttribute="trailing" constant="8" id="VWq-kA-QzE"/>
                             <constraint firstItem="aAq-K2-QFJ" firstAttribute="trailing" secondItem="oQk-R3-0c4" secondAttribute="trailing" constant="8" id="Y89-4d-Fni"/>
-                            <constraint firstItem="EoP-hp-Jmg" firstAttribute="top" secondItem="SWT-C8-qOu" secondAttribute="bottom" constant="30" id="aW8-wH-aRJ"/>
                             <constraint firstItem="aAq-K2-QFJ" firstAttribute="trailing" secondItem="Phq-a3-1Vo" secondAttribute="trailing" constant="8" id="dlC-my-vQ0"/>
                             <constraint firstItem="Gvi-fO-fsB" firstAttribute="top" secondItem="cUN-uj-vOg" secondAttribute="bottom" constant="3" id="eBe-n9-IS5"/>
-                            <constraint firstItem="SWT-C8-qOu" firstAttribute="top" secondItem="aAq-K2-QFJ" secondAttribute="top" id="gZY-S5-O8B"/>
                             <constraint firstItem="aAq-K2-QFJ" firstAttribute="trailing" secondItem="RQ8-Wk-c7K" secondAttribute="trailing" constant="8" id="go8-yg-cbU"/>
-                            <constraint firstItem="SWT-C8-qOu" firstAttribute="trailing" secondItem="aAq-K2-QFJ" secondAttribute="trailing" id="j3j-Ex-cfQ"/>
                             <constraint firstItem="RQ8-Wk-c7K" firstAttribute="leading" secondItem="aAq-K2-QFJ" secondAttribute="leading" constant="8" id="jZu-iL-EOq"/>
                             <constraint firstItem="2ju-zv-Izm" firstAttribute="top" relation="lessThanOrEqual" secondItem="Phq-a3-1Vo" secondAttribute="bottom" constant="287.5" id="k9A-Wk-06a"/>
                             <constraint firstItem="RQ8-Wk-c7K" firstAttribute="top" secondItem="bxT-bv-0Ou" secondAttribute="bottom" constant="3" id="kcb-cs-Tfl"/>
@@ -180,7 +164,6 @@
                             <outlet property="dateTextField" destination="Phq-a3-1Vo" id="j23-BY-aCA"/>
                             <outlet property="maxRecipeMemoNumberLabel" destination="gEz-mn-L6i" id="1l3-2L-jhx"/>
                             <outlet property="maxRecipeNameNumberLabel" destination="aab-7L-BXX" id="jkR-27-U7o"/>
-                            <outlet property="navigationItem" destination="DZZ-Qz-zX1" id="elG-lR-bx6"/>
                             <outlet property="postButton" destination="2ju-zv-Izm" id="5Dj-qX-RXU"/>
                             <outlet property="recipeMemoTextView" destination="bxT-bv-0Ou" id="Igl-yZ-dgw"/>
                             <outlet property="recipeNameTextField" destination="3IK-Vu-4GC" id="jdU-iH-8dQ"/>
@@ -193,7 +176,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="subColor">
             <color red="0.86299997568130493" green="0.29800000786781311" blue="0.36899998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

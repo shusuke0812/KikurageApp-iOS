@@ -8,11 +8,13 @@
 
 import Foundation
 import Firebase
+import KikurageFeature
 
 enum FirebaseRemoteConfigPrimaryKey: String {
     case facebookGroupUrl   = "facebook_group_url"
     case termsUrl           = "terms_url"
     case privacyPolicyUrl   = "privacy_policy_url"
+    case latestAppVersion   = "ios_latest_app_version"
 }
 
 protocol FirebaseRemoteConfigRepositoryProtocol {
@@ -49,7 +51,7 @@ extension FirebaseRemoteConfigRepository {
             case .error:
                 completion(.failure(ClientError.apiError(.readError)))
             @unknown default:
-                fatalError()
+                KLogger.devFatalError("remote config")
             }
         }
     }

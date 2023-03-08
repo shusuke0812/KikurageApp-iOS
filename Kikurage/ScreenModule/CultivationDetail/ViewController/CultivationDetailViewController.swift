@@ -11,7 +11,7 @@ import UIKit
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
     private var viewModel: CultivationDetailViewModel!
-    /// 前画面から渡された栽培記録データ
+
     var cultivation: KikurageCultivation!
 
     override func viewDidLoad() {
@@ -31,11 +31,11 @@ extension CultivationDetailViewController {
         setNavigationBar(title: R.string.localizable.screen_cultivation_detail_title())
     }
     private func setDelegateDataSource() {
-        baseView.collectionView.delegate = self
-        baseView.collectionView.dataSource = viewModel
+        baseView.configCollectionView(delegate: self, dataSource: viewModel)
     }
     private func setUI() {
         baseView.setUI(cultivation: self.cultivation)
+        baseView.configPageControl(imageCount: self.cultivation.imageStoragePaths.count)
     }
 }
 
@@ -44,6 +44,12 @@ extension CultivationDetailViewController {
 extension CultivationDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 画像拡大処理を書く
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page = viewModel.currentPage(on: scrollView)
+        DispatchQueue.main.async {
+            self.baseView.configPageControl(didChangedCurrentPage: page)
+        }
     }
 }
 

@@ -44,6 +44,9 @@
 // navigation
 "common_navigation_back_btn_title" = "もどる";
 
+// view
+"loading_thumbnail_view" = "読み込み中...";
+
 /****
  * error
  */
@@ -94,6 +97,7 @@
 "screen_device_register_kikurage_name_textfield_placeholer" = "きくらげ君の名前を入力してください";
 "screen_device_register_cultivation_start_date_textfield_placeholer" = "栽培開始日を入力してください";
 "screen_device_register_register_btn_name" = "はじめる";
+"screen_device_register_qrcode_btn_name" = "- プロダクトキー読み込み -";
 
 // home
 "screen_home_title" = "ホーム";
@@ -119,6 +123,8 @@
 "screen_post_cultivation_date_textfield_placeholder" = "日付を選択";
 "screen_post_cultivation_alert_post_cultivation_title" = "こちらの投稿内容で\n良いですか？";
 "screen_post_cultivation_alert_post_cultivation_success_title" = "栽培記録を保存しました";
+"screen_post_cultivation_valid_memo" = "メモが登録されていません";
+"screen_post_cultivation_valid_view_date" = "観察日を選択してください";
 
 // recipe
 "screen_recipe_title" = "りょうりきろく";
@@ -151,6 +157,7 @@
 "side_menu_content_license_subtitle" = "著作権";
 "side_menu_content_search_recipe_subtitle" = "料理レシピ検索";
 "side_menu_content_kikurage_dictionary_subtitle" = "きくらげ豆知識";
+"side_menu_content_debug_try_subtitle" = "デバッグ";
 
 // calendar
 "side_menu_clendar_title" = "カレンダー";
@@ -173,3 +180,8 @@
 "side_menu_setting_title" = "設定";
 "side_menu_setting_edit_btn_title" = "変更する";
 "side_menu_setting_kikurage_name_error" = "名前を読み込めませんでした";
+
+// Dictonary
+"side_menu_dictionary_segment_title_trivia" = "豆知識";
+"side_menu_dictionary_segment_title_twitter" = "Twitter";
+"side_menu_dictionary_twitter_no_tweets" = "ツイートがありません";

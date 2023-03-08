@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class LoginViewController: UIViewController, UIViewControllerNavigatable {
+class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
     private var viewModel: LoginViewModel!
 
@@ -28,16 +28,15 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable {
 extension LoginViewController {
     private func setDelegate() {
         baseView.delegate = self
-        baseView.emailTextField.delegate = self
-        baseView.passwordTextField.delegate = self
         viewModel.delegate = self
+        baseView.confgTextField(delegate: self)
     }
 }
 
 // MARK: - LoginBaseView Delegate
 
 extension LoginViewController: LoginBaseViewDelegate {
-    func didTappedLoginButton() {
+    func loginBaseViewDidTappedLoginButton(_ loginBaseView: LoginBaseView) {
         HUD.show(.progress)
         viewModel.login()
     }
@@ -62,25 +61,23 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension LoginViewController: LoginViewModelDelegate {
-    func didSuccessLogin() {
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             self.transitionHomePage()
         }
     }
-    func didFailedLogin(errorMessage: String) {
+    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
                 self?.baseView.initTextFields()
-                self?.viewModel.initLoginInfo()
+                loginViewModel.initLoginInfo()
             }
         }
     }
     private func transitionHomePage() {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
-        vc.kikurageUser = viewModel.kikurageUser
-        vc.kikurageState = viewModel.kikurageState
-        navigationController?.pushViewController(vc, animated: true)
+        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else { return }
+        pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
     }
 }

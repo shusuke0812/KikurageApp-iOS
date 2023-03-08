@@ -8,17 +8,6 @@
 
 import UIKit
 
-protocol HomeBaseViewDelegate: AnyObject {
-    /// 栽培記録ボタンを押した時の処理
-    func didTapCultivationButton()
-    /// 料理記録ボタンを押した時の処理
-    func didTapRecipeButton()
-    /// 相談ボタンを押した時の処理
-    func didTapCommunicationButton()
-    /// サイドメニュー用のハンバーガーアイコンを押した時の処理
-    func didTapSideMenuButton()
-}
-
 class HomeBaseView: UIView {
     @IBOutlet private weak var kikurageNameLabel: UILabel!
     @IBOutlet private weak var kikurageStatusLabel: UILabel!
@@ -38,32 +27,14 @@ class HomeBaseView: UIView {
     @IBOutlet private weak var expectedHumidityLabel: UILabel!
 
     @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
-    @IBOutlet private weak var footerButtonView: FooterButtonView!
+    @IBOutlet private(set) weak var footerButtonView: FooterButtonView!
 
     private var kikurageStateEmptyView: UIView!
-
-    weak var delegate: HomeBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
         initFailedUI()
-        footerButtonView.delegate = self
-    }
-
-    // MARK: - Action
-
-    @IBAction private func didTapCultivationButton(_ sender: Any) {
-        delegate?.didTapCultivationButton()
-    }
-    @IBAction private func didTapRecipeButton(_ sender: Any) {
-        delegate?.didTapRecipeButton()
-    }
-    @IBAction private func didTapCommunicationButton(_ sender: Any) {
-        delegate?.didTapCommunicationButton()
-    }
-    @IBAction private func didTapSideMenuButton(_ sender: Any) {
-        delegate?.didTapSideMenuButton()
     }
 }
 
@@ -100,7 +71,7 @@ extension HomeBaseView {
         let label = UILabel()
         label.text = R.string.localizable.common_read_error()
         label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
 
@@ -117,36 +88,30 @@ extension HomeBaseView {
 
 extension HomeBaseView {
     func setKikurageStateUI(kikurageState: KikurageState?) {
-        // きくらげの状態メッセージを設定
         if let message: String = kikurageState?.message {
             kikurageStatusLabel.text = message
         }
-        // きくらげの表情を設定
         if let type: KikurageStateType = kikurageState?.type {
             displayKikurageStateImage(type: type)
         } else {
             displayFailedKikurageStateImage()
         }
-        // 温度湿度を設定
         if let temparature: Int = kikurageState?.temperature, let humidity: Int = kikurageState?.humidity {
             temparatureTextLabel.text = "\(temparature)"
             humidityTextLabel.text = "\(humidity)"
         }
-        // アドバイスを設定
         if let advice: String = kikurageState?.advice {
-            kikurageAdviceView.adviceContentLabel.text = advice
+            kikurageAdviceView.setAdviceContentLabel(advice)
         }
         #if PRODUCTION
         nowTimeLabel.isHidden = true
         #endif
     }
-    /// きくらげ名を設定
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
         if let name: String = kikurageUser?.kikurageName {
             kikurageNameLabel.text = R.string.localizable.screen_home_kikurage_name(name)
         }
     }
-    /// 時刻表示更新用メソッド
     func updateTimeLabel() {
         nowTimeLabel.text = DateHelper.now()
     }
@@ -176,19 +141,5 @@ extension HomeBaseView {
 extension HomeBaseView {
     func kikurageStatusViewAnimation(_ animation: Bool) {
         (animation == true) ? kikurageStatusImageView.startAnimating() : kikurageStatusImageView.stopAnimating()
-    }
-}
-
-// MARK: - FooterButtonView Delegate
-
-extension HomeBaseView: FooterButtonViewDelegate {
-    func footerButtonViewDidTapCultivationButton() {
-        delegate?.didTapCultivationButton()
-    }
-    func footerButtonViewDidTapRecipeButton() {
-        delegate?.didTapRecipeButton()
-    }
-    func footerButtonViewDidTapCommunicationButton() {
-        delegate?.didTapCommunicationButton()
     }
 }

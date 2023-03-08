@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopViewController: UIViewController, UIViewControllerNavigatable {
+class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: TopBaseView { self.view as! TopBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
@@ -33,23 +33,21 @@ extension TopViewController {
 // MARK: - TopBaseView Delegate
 
 extension TopViewController: TopBaseViewDelegate {
-    func didTappedTermsButton() {
+    func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
         let urlString = AppConfig.shared.termsUrl
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        presentSafariView(from: self, urlString: urlString, onError: nil)
     }
 
-    func didTappedPrivacyPolicyButton() {
+    func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
         let urlString = AppConfig.shared.privacyPolicyUrl
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        presentSafariView(from: self, urlString: urlString, onError: nil)
     }
 
-    func didTappedLoginButton() {
-        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+    func topBaseViewDidTappedLoginButton(_ topBaseView: TopBaseView) {
+        pushToLogin()
     }
 
-    func didTappedSignUpButton() {
-        guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+    func topBaseViewDidTappedSignUpButton(_ topBaseView: TopBaseView) {
+        pushToSignUp()
     }
 }

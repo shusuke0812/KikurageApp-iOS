@@ -11,7 +11,8 @@ import Firebase
 import FirebaseFirestore
 
 class RecipeTableViewCell: UITableViewCell {
-    @IBOutlet weak var parentView: UIView!
+    @IBOutlet private weak var parentView: UIView!
+    @IBOutlet private weak var thumbnailParentView: UIView!
 
     @IBOutlet private weak var recipeImageView: UIImageView!
     @IBOutlet private weak var recipeDateLabel: UILabel!
@@ -28,13 +29,11 @@ class RecipeTableViewCell: UITableViewCell {
 
 extension RecipeTableViewCell {
     private func initUI() {
-        backgroundColor = .systemGroupedBackground
-
         parentView.clipsToBounds = true
         parentView.layer.cornerRadius = .cellCornerRadius
 
-        recipeImageView.clipsToBounds = true
-        recipeImageView.layer.cornerRadius = .cellCornerRadius
+        thumbnailParentView.clipsToBounds = true
+        thumbnailParentView.layer.cornerRadius = .cellCornerRadius
     }
 }
 
@@ -42,15 +41,14 @@ extension RecipeTableViewCell {
 
 extension RecipeTableViewCell {
     func setUI(recipe: KikurageRecipe) {
-        // 文字の設定
         recipeDateLabel.text = recipe.cookDate
         recipeNameLabel.text = recipe.name
         recipeMemoLabel.text = recipe.memo
-        // 画像の設定
+
         guard let imageStoragePath = recipe.imageStoragePaths.first else { return }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            recipeImageView.sd_setImage(with: storageReference, placeholderImage: Constants.Image.loading)
+            recipeImageView.sd_setImage(with: storageReference, placeholderImage: nil)
         }
     }
 }

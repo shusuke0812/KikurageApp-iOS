@@ -9,19 +9,15 @@
 import UIKit
 
 protocol PostCultivationBaseViewDelegate: AnyObject {
-    /// 栽培記録保存するボタンを押した時の処理
-    func didTapPostButton()
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
+    func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView)
 }
 
 class PostCultivationBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
-    @IBOutlet weak var cameraCollectionView: UICollectionView!
-    @IBOutlet weak var textView: UITextViewWithPlaceholder!
+    @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
+    @IBOutlet private(set) weak var textView: UITextViewWithPlaceholder!
     @IBOutlet private weak var currentTextViewNumberLabel: UILabel!
     @IBOutlet private weak var maxTextViewNumberLabel: UILabel!
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet private(set) weak var dateTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
 
     weak var delegate: PostCultivationBaseViewDelegate?
@@ -41,11 +37,8 @@ class PostCultivationBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapPostButton(_ sender: Any) {
-        delegate?.didTapPostButton()
-    }
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
+    @IBAction private func post(_ sender: Any) {
+        delegate?.postCultivationBaseViewDidTappedPostButton(self)
     }
 }
 
@@ -56,8 +49,6 @@ extension PostCultivationBaseView {
         cameraCollectionView.register(R.nib.cameraCell)
     }
     private func initUI() {
-        // タイトル
-        navigationItem.title = R.string.localizable.screen_post_cultivation_title()
         // 背景色
         backgroundColor = .systemGroupedBackground
         cameraCollectionView.backgroundColor = .systemGroupedBackground
@@ -73,7 +64,9 @@ extension PostCultivationBaseView {
     }
     private func initDatePicker() {
         // DatePickerの基本設定
-        datePicker.preferredDatePickerStyle = .wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         datePicker.datePickerMode = .date
         datePicker.timeZone = NSTimeZone.local
         datePicker.locale = Locale.current
@@ -87,10 +80,20 @@ extension PostCultivationBaseView {
     }
 }
 
-// MARK: - Setting UI
+// MARK: - Config
 
 extension PostCultivationBaseView {
     func setCurrentTextViewNumber(text: String) {
         currentTextViewNumberLabel.text = "\(text.count)"
+    }
+    func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        cameraCollectionView.delegate = delegate
+        cameraCollectionView.dataSource = dataSource
+    }
+    func configTextView(delegate: UITextViewDelegate) {
+        textView.delegate = delegate
+    }
+    func configTextField(delegate: UITextFieldDelegate) {
+        dateTextField.delegate = delegate
     }
 }

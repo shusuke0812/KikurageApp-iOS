@@ -9,13 +9,15 @@
 import UIKit
 
 class CultivationDetailBaseView: UIView {
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private(set) weak var collectionView: UICollectionView!
     @IBOutlet private weak var flowLayout: CarouselCollectionFlowLayout!
 
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var memoTitleLabel: UILabel!
     @IBOutlet private weak var viewDateLabel: UILabel!
-    @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet private weak var memoTextView: UITextView!
+
+    @IBOutlet private weak var pageControl: UIPageControl!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,20 +46,37 @@ extension CultivationDetailBaseView {
         iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
         iconImageView.layer.borderWidth = 0.5
         iconImageView.layer.borderColor = UIColor.gray.cgColor
+
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .gray
+        pageControl.pageIndicatorTintColor = .white
     }
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
         collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
+        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 
-// MARK: - Setting UI
+// MARK: - Config
 
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
-        // 観察日の設定
         viewDateLabel.text = cultivation.viewDate
-        //  観察メモの設定
         memoTextView.text = cultivation.memo
+    }
+    func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
+    }
+    func configPageControl(imageCount: Int) {
+        if imageCount <= 1 {
+            pageControl.numberOfPages = 0
+        } else {
+            pageControl.numberOfPages = imageCount
+        }
+    }
+    func configPageControl(didChangedCurrentPage index: Int) {
+        pageControl.currentPage = index
     }
 }

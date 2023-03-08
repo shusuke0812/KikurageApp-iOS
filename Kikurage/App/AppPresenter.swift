@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import KikurageFeature
 
 protocol AppPresenterDelegate: AnyObject {
     /// きくらげ情報の取得に成功した
@@ -40,7 +41,8 @@ extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
     func loadKikurageUser(userId: String) {
-        kikurageUserRepository.getKikurageUser(uid: userId) { [weak self] response in
+        let request = KikurageUserRequest(uid: userId)
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
@@ -53,7 +55,8 @@ extension AppPresenter {
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
         let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let request = KikurageStateRequest(productId: productId)
+        kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
@@ -74,7 +77,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupUrl = urlString
             case .failure(let error):
-                Logger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
+                KLogger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -84,7 +87,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.termsUrl = urlString
             case .failure(let error):
-                Logger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
+                KLogger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -94,7 +97,18 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.privacyPolicyUrl = urlString
             case .failure(let error):
-                Logger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+                KLogger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+            }
+        }
+    }
+    func loadLatestAppVersion() {
+        firebaseRemoteCofigRepository.fetch(key: .latestAppVersion) { response in
+            switch response {
+            case .success(let appVersionString):
+                let appVersion = AppVersion(versionString: appVersionString)
+                AppConfig.shared.latestAppVersion = appVersion
+            case .failure(let error):
+                KLogger.verbose("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
             }
         }
     }

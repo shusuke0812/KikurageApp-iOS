@@ -44,6 +44,9 @@
 // navigation
 "common_navigation_back_btn_title" = "Back";
 
+// view
+"loading_thumbnail_view" = "Loading...";
+
 /****
  * error
  */
@@ -94,6 +97,7 @@
 "screen_device_register_kikurage_name_textfield_placeholer" = "Please enter kikurage name";
 "screen_device_register_cultivation_start_date_textfield_placeholer" = "Please enter cultivation start date";
 "screen_device_register_register_btn_name" = "Start";
+"screen_device_register_qrcode_btn_name" = "- Read product key -";
 
 // home
 "screen_home_title" = "Home";
@@ -119,6 +123,8 @@
 "screen_post_cultivation_date_textfield_placeholder" = "Selecting date";
 "screen_post_cultivation_alert_post_cultivation_title" = "Is it OK this post content?";
 "screen_post_cultivation_alert_post_cultivation_success_title" = "Saved cultivation record.";
+"screen_post_cultivation_valid_memo" = "No memo";
+"screen_post_cultivation_valid_view_date" = "Must select view date";
 
 // recipe
 "screen_recipe_title" = "Recipe";
@@ -151,6 +157,7 @@
 "side_menu_content_license_subtitle" = "License";
 "side_menu_content_search_recipe_subtitle" = "Searching recipe";
 "side_menu_content_kikurage_dictionary_subtitle" = "Dictionary";
+"side_menu_content_debug_try_subtitle" = "Debug";
 
 // calendar
 "side_menu_clendar_title" = "Calendar";
@@ -173,3 +180,8 @@
 "side_menu_setting_title" = "Setting";
 "side_menu_setting_edit_btn_title" = "Edit";
 "side_menu_setting_kikurage_name_error" = "Missing to read your name";
+
+// Dictonary
+"side_menu_dictionary_segment_title_trivia" = "Trivia";
+"side_menu_dictionary_segment_title_twitter" = "Twitter";
+"side_menu_dictionary_twitter_no_tweets" = "No Tweets";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KikurageFeature
 
 extension UIAlertController {
     static func showAlert(
@@ -16,12 +17,12 @@ extension UIAlertController {
         // キャンセル｜OK というボタン配置にするためにCancelActionを先にAddする
         if let cancelButtonTitle = cancelButtonTitle {
             let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { _ -> Void in
-                Logger.info(file: file, function: function, line: line, logMessage)
+                KLogger.info(file: file, function: function, line: line, logMessage)
             }
             alert.addAction(cancelAction)
         }
         let okAction = UIAlertAction(title: okButtonTitle, style: .default) { _ -> Void in
-            Logger.info(file: file, function: function, line: line, logMessage)
+            KLogger.info(file: file, function: function, line: line, logMessage)
             if let completionOk = completionOk {
                 completionOk()
             }

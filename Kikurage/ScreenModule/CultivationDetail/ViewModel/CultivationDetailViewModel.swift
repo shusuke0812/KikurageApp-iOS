@@ -9,13 +9,21 @@
 import UIKit.UICollectionView
 
 class CultivationDetailViewModel: NSObject {
-    /// きくらげ 栽培記録データ
-    var cultivation: KikurageCultivation
-
+    private(set) var cultivation: KikurageCultivation
     private let sectionNumber = 1
 
     init(cultivation: KikurageCultivation) {
         self.cultivation = cultivation
+    }
+}
+
+// MARK: - Config
+
+extension CultivationDetailViewModel {
+    func currentPage(on scrollView: UIScrollView) -> Int {
+        let left = scrollView.contentOffset.x
+        let width = scrollView.bounds.size.width
+        return Int(left / width)
     }
 }
 

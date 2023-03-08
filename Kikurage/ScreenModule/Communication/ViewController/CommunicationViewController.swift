@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 
-class CommunicationViewController: UIViewController, UIViewControllerNavigatable {
+class CommunicationViewController: UIViewController, UIViewControllerNavigatable, CommunicationAccessable {
     private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
@@ -36,8 +36,8 @@ extension CommunicationViewController {
 // MARK: - CommunicationBaseView Delegate
 
 extension CommunicationViewController: CommunicationBaseViewDelegate {
-    func didTapFacebookButton() {
+    func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView) {
         let urlString = AppConfig.shared.facebookGroupUrl
-        transitionSafariViewController(urlString: urlString, onError: nil)
+        presentToSafariView(from: self, urlString: urlString, onError: nil)
     }
 }

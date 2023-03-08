@@ -10,16 +10,10 @@ import UIKit
 import Firebase
 
 protocol DeviceRegisterViewModelDelegate: AnyObject {
-    /// きくらげの状態データ取得に成功した
-    func didSuccessGetKikurageState()
-    /// きくらげの状態データ取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageState(errorMessage: String)
-    /// きくらげユーザーの登録に成功した
-    func didSuccessPostKikurageUser()
-    /// きくらげユーザーの登録に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedPostKikurageUser(errorMessage: String)
+    func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel)
+    func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String)
+    func deviceRegisterViewModelDidSuccessPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel)
+    func deviceRegisterViewModelDidFailedPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel, with errorMessage: String)
 }
 
 class DeviceRegisterViewModel {
@@ -46,6 +40,15 @@ extension DeviceRegisterViewModel {
     func setStateReference(productKey: String) {
         kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
+    func validateRegistration(productKey: String?, kikurageName: String?, cultivationStartDateString: String?) -> Bool {
+        guard let productKey = productKey, let kikurageName = kikurageName, let cultivationStartDateString = cultivationStartDateString else {
+            return false
+        }
+        if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDateString.isEmpty {
+            return false
+        }
+        return true
+    }
 }
 
 // MARK: - Firebase Firestore
@@ -54,30 +57,36 @@ extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
         let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        kikurageStateRepository.getKikurageState(productId: productId) { [weak self] response in
+        let request = KikurageStateRequest(productId: productId)
+        kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageState):
                 self?.kikurageState = kikurageState
-                self?.delegate?.didSuccessGetKikurageState()
+                self?.delegate?.deviceRegisterViewModelDidSuccessGetKikurageState(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageState(errorMessage: error.description())
+                self?.delegate?.deviceRegisterViewModelDidFailedGetKikurageState(self!, with: error.description())
             }
         }
     }
     /// きくらげユーザーを登録する
     func registerKikurageUser() {
         guard let kikurageUser = kikurageUser else {
-            delegate?.didFailedPostKikurageUser(errorMessage: R.string.localizable.common_load_user_error())
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
             return
         }
-        guard let uid = LoginHelper.shared.kikurageUserId else { return }
-        kikurageUserRepository.postKikurageUser(uid: uid, kikurageUser: kikurageUser) { [weak self] responsse in
+        guard let uid = LoginHelper.shared.kikurageUserId else {
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
+            return
+        }
+        var request = KikurageUserRequest(uid: uid)
+        request.body = request.buildBody(from: kikurageUser)
+        kikurageUserRepository.postKikurageUser(request: request) { [weak self] responsse in
             switch responsse {
             case .success():
-                self?.delegate?.didSuccessPostKikurageUser()
+                self?.delegate?.deviceRegisterViewModelDidSuccessPostKikurageUser(self!)
                 self?.kikurageUser = kikurageUser
             case .failure(let error):
-                self?.delegate?.didFailedPostKikurageUser(errorMessage: error.description())
+                self?.delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self!, with: error.description())
             }
         }
     }

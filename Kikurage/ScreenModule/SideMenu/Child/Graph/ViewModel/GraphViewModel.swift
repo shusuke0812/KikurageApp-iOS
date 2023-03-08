@@ -9,16 +9,10 @@
 import Foundation
 
 protocol GraphViewModelDelegate: AnyObject {
-    /// きくらげの状態グラフデータの取得に成功した
-    func didSuccessGetKikurageStateGraph()
-    /// きくらげの状態グラフデータの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageStateGraph(errorMessage: String)
-    /// きくらげユーザーの取得に成功した
-    func didSuccessGetKikurageUser()
-    /// きくらげユーザーの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageUser(errorMessage: String)
+    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel)
+    func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String)
+    func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel)
+    func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String)
 }
 
 class GraphViewModel {
@@ -27,12 +21,11 @@ class GraphViewModel {
 
     weak var delegate: GraphViewModelDelegate?
     /// きくらげの１週間データ
-    var kikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []
+    var kikurageStateGraph: [KikurageStateGraphTuple] = []
     /// きくらげの１週間の温度データ
     var temperatureGraphDatas: [Int] = []
     /// きくらげの１週間の湿度データ
     var humidityGraphDatas: [Int] = []
-    /// きくらげユーザー
     var kikurageUser: KikurageUser?
 
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
@@ -45,7 +38,7 @@ class GraphViewModel {
 
 extension GraphViewModel {
     private func setTemperatureGraphData() {
-        guard let graphData = kikurageStateGraph.first?.graph else { return }
+        guard let graphData = kikurageStateGraph.first?.data else { return }
         temperatureGraphDatas.append(graphData.mondayData?.temperature ?? 0)
         temperatureGraphDatas.append(graphData.tuesdayData?.temperature ?? 0)
         temperatureGraphDatas.append(graphData.wednesdayData?.temperature ?? 0)
@@ -55,7 +48,7 @@ extension GraphViewModel {
         temperatureGraphDatas.append(graphData.sundayData?.temperature ?? 0)
     }
     private func setHumidityGraphData() {
-        guard let graphData = kikurageStateGraph.first?.graph else { return }
+        guard let graphData = kikurageStateGraph.first?.data else { return }
         humidityGraphDatas.append(graphData.mondayData?.humidity ?? 0)
         humidityGraphDatas.append(graphData.tuesdayData?.humidity ?? 0)
         humidityGraphDatas.append(graphData.wednesdayData?.humidity ?? 0)
@@ -72,28 +65,30 @@ extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
     func loadKikurageStateGraph(productId: String) {
-        kikurageStateRepository.getKikurageStateGraph(productId: productId) { [weak self] response in
+        let request = KiikurageStateGraphRequest(productId: productId)
+        kikurageStateRepository.getKikurageStateGraph(request: request) { [weak self] response in
             switch response {
             case .success(let graphs):
                 self?.kikurageStateGraph = graphs
                 self?.setTemperatureGraphData()
                 self?.setHumidityGraphData()
-                self?.delegate?.didSuccessGetKikurageStateGraph()
+                self?.delegate?.graphViewModelDidSuccessGetKikurageStateGraph(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageStateGraph(errorMessage: error.description())
+                self?.delegate?.graphViewModelDidFailedGetKikurageStateGraph(self!, with: error.description())
             }
         }
     }
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
-        kikurageUserRepository.getKikurageUser(uid: uid) { [weak self] response in
+        let request = KikurageUserRequest(uid: uid)
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
-                self?.delegate?.didSuccessGetKikurageUser()
+                self?.delegate?.graphViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageUser(errorMessage: error.description())
+                self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
     }

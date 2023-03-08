@@ -19,13 +19,13 @@ class HomeViewModelTests: XCTestCase {
         // Stub
         
         let testKikurageState = Stub.kikurageState
-        let testKikurageStateGraph: [(graph: KikurageStateGraph, documentId: String)] = []
-        let testKikurageUser = Stub.kikurageStateGraph
+        let testKikurageUser = Stub.kikurageUser
+        let testKikurageStateGraph: [KikurageStateGraphTuple] = []
         
         // Repository / ViewModel
         
         kikurageStateRepository = StubKikurageStateRepository(kikurageState: testKikurageState, kikurageStateGraph: testKikurageStateGraph)
-        homeViewModel = HomeViewModel(kikurageStateRepository: kikurageStateRepository, kikurageStateListenerRepository: KikurageStateListenerRepository())
+        homeViewModel = HomeViewModel(kikurageUser: testKikurageUser, kikurageStateRepository: kikurageStateRepository, kikurageStateListenerRepository: KikurageStateListenerRepository())
     }
 
     override func tearDownWithError() throws {
@@ -52,6 +52,13 @@ extension HomeViewModelTests {
     /*
     func testXXX() {
         homeViewModel.XXX()
+     
+        // MARK: Test flow
+        // given
+     
+        // when
+     
+        // then
     }
     */
 }

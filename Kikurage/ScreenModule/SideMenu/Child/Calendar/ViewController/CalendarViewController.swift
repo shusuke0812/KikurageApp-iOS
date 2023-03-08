@@ -18,10 +18,17 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
+        setNavigation()
 
         if let userId = LoginHelper.shared.kikurageUserId {
             viewModel.loadKikurageUser(uid: userId)
         }
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -29,26 +36,22 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController {
     private func setDelegateDataSource() {
-        baseView.delegate = self
         viewModel.delegate = self
     }
-}
-
-// MARK: - CalendarBaseView Delegate
-
-extension CalendarViewController: CalendarBaseViewDelegate {
-    func didTapCloseButton() {
-        presentingViewController?.dismiss(animated: true, completion: nil)
+    private func setNavigation() {
+        let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeButtonItem]
+        navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
 }
 
 // MARK: - CalendarViewModel Delegate
 
 extension CalendarViewController: CalendarViewModelDelegate {
-    func didSuccessGetKikurageUser() {
-        baseView.initCalendarView(cultivationStartDateComponents: viewModel.cultivationDateComponents, cultivationTerm: (viewModel.cultivationTerm ?? 0))
+    func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {
+        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, cultivationTerm: (calendarViewModel.cultivationTerm ?? 0))
     }
-    func didFailedGetKikurageUser(errorMessage: String) {
+    func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }

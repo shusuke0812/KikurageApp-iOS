@@ -9,26 +9,12 @@
 import UIKit
 import HorizonCalendar
 
-protocol CalendarBaseViewDelegate: AnyObject {
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
-}
-
 class CalendarBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private weak var contentView: UIView!
-
-    weak var delegate: CalendarBaseViewDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
-    }
-
-    // MARK: - Action
-
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
     }
 }
 
@@ -37,7 +23,6 @@ class CalendarBaseView: UIView {
 extension CalendarBaseView {
     private func initUI() {
         contentView.backgroundColor = .systemGroupedBackground
-        navigationItem.title = R.string.localizable.side_menu_clendar_title()
     }
     private func initCalendarView(_ cultivationStartDateComponents: DateComponents, _ cultivationTerm: Int) {
         // Calendar

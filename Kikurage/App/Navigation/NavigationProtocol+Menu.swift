@@ -1,0 +1,47 @@
+//
+//  NavigationProtocol+Menu.swift
+//  Kikurage
+//
+//  Created by Shusuke Ota on 2022/3/12.
+//  Copyright © 2022 shusuke. All rights reserved.
+//
+
+import UIKit
+
+protocol MenuAccessable: ModalNavigationProtocol, SafariViewNavigationProtocol {
+    func modalToCalendar(completion: (() -> Void)?)
+    func modalToGraph(completion: (() -> Void)?)
+    func modalToSetting(completion: (() -> Void)?)
+    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
+}
+
+extension MenuAccessable {
+    // MARK: - Modal
+
+    func modalToCalendar(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else { return }
+        present(to: vc, style: .automatic, completion: completion)
+    }
+    func modalToGraph(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else { return }
+        present(to: vc, style: .automatic, completion: completion)
+    }
+    func modalToSetting(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else { return }
+        present(to: vc, style: .automatic, completion: completion)
+    }
+    func modalToDictionary(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.dictionaryViewController.instantiateInitialViewController() else { return }
+        present(to: vc, style: .automatic, completion: completion)
+    }
+    func modalToDebug(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.debugViewController.instantiateInitialViewController() else { return }
+        present(to: vc, style: .automatic, completion: completion)
+    }
+
+    // MARK: - SafariView
+
+    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)? = nil) {
+        presentSafariView(from: vc, urlString: urlString, onError: onError)
+    }
+}

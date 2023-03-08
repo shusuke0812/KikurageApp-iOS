@@ -38,7 +38,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTappedLoginButton:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="3GA-AT-cMh"/>
+                                    <action selector="login:" destination="5EZ-qb-Rvc" eventType="touchUpInside" id="ehD-LN-MwD"/>
                                 </connections>
                             </button>
                         </subviews>

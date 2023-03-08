@@ -7,42 +7,57 @@
 //
 
 import Foundation
+import RxSwift
+import KikurageFeature
 
-protocol HomeViewModelDelgate: AnyObject {
-    /// きくらげの状態データ取得に成功した
-    func didSuccessGetKikurageState()
-    /// きくらげの状態データ取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageState(errorMessage: String)
-    /// きくらげの状態データが更新された
-    func didChangedKikurageState()
+protocol HomeViewModelInput {
+    var kikurageUser: KikurageUser { get }
+
+    func loadKikurageState()
+    func listenKikurageState()
 }
 
-class HomeViewModel {
+protocol HomeViewModelOutput {
+    var kikurageState: Observable<KikurageState> { get }
+    var error: Observable<ClientError> { get }
+}
+
+protocol HomeViewModelType {
+    var input: HomeViewModelInput { get }
+    var output: HomeViewModelOutput { get }
+}
+
+class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
-    private(set) var kikurageState: KikurageState!
-    private(set) var kikurageUser: KikurageUser!
+    private let subject = PublishSubject<KikurageState>()
+    private let errorSubject = PublishSubject<ClientError>()
+    private let disposeBag = DisposeBag()
 
-    weak var delegate: HomeViewModelDelgate?
+    var input: HomeViewModelInput { self }
+    var output: HomeViewModelOutput { self }
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
+    var kikurageUser: KikurageUser
+    var kikurageState: Observable<KikurageState> { subject.asObservable() }
+    var error: Observable<ClientError> { errorSubject.asObservable() }
+
+    init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
+        self.kikurageUser = kikurageUser
+
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
+    }
+
+    deinit {
+        KLogger.debug("call deinit")
     }
 }
 
 // MARK: - Config
 
 extension HomeViewModel {
-    /// きくらげ状態変数とリスナーを設定する
-    func config(kikurageUser: KikurageUser?, kikurageState: KikurageState?) {
-        self.kikurageUser = kikurageUser
-        self.kikurageState = kikurageState
-
-        self.listenKikurageState()
-    }
+    // noting
 }
 
 // MARK: - Firebase Firestore
@@ -50,30 +65,31 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        kikurageStateRepository.getKikurageState(productId: kikurageUser.productKey) { response in
-            switch response {
-            case .success(let kikurageState):
-                self.kikurageState = kikurageState
-                self.kikurageState.convertToStateType()
-                self.delegate?.didSuccessGetKikurageState()
-            case .failure(let error):
-                self.kikurageState = nil
-                self.delegate?.didFailedGetKikurageState(errorMessage: error.description())
-            }
-        }
+        let request = KikurageStateRequest(productId: kikurageUser.productKey)
+        kikurageStateRepository.getKikurageState(request: request)
+            .subscribe(
+                onSuccess: { [weak self] kikurageState in
+                    self?.subject.onNext(kikurageState)
+                },
+                onFailure: { [weak self] error in
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
     /// きくらげの状態をリッスンする
-    private func listenKikurageState() {
-        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey) { [weak self] response in
-            switch response {
-            case .success(let kikurageState):
-                self?.kikurageState = kikurageState
-                self?.kikurageState.convertToStateType()
-                self?.delegate?.didChangedKikurageState()
-            case .failure(let error):
-                self?.kikurageState = nil
-                fatalError(error.description())
-            }
-        }
+    func listenKikurageState() {
+        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
+            .subscribe(
+                onNext: { [weak self] kikurageState in
+                    self?.subject.onNext(kikurageState)
+                },
+                onError: { [weak self] error in
+                    let error = error as! ClientError // swiftlint:disable:this force_cast
+                    self?.errorSubject.onNext(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }

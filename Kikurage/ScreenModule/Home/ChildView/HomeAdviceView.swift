@@ -12,13 +12,21 @@ class HomeAdviceView: XibView {
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var adviceIconImageView: UIImageView!
     @IBOutlet private weak var adviceTitleLabel: UILabel!
-    @IBOutlet weak var adviceContentLabel: UILabel!
+    @IBOutlet private weak var adviceContentLabel: UILabel!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initBaseView()
         initAdviceTitleLabel()
         initAdviceIconImageView()
+    }
+}
+
+// MARK: - Setting UI
+
+extension HomeAdviceView {
+    func setAdviceContentLabel(_ text: String) {
+        adviceContentLabel.text = text
     }
 }
 

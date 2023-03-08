@@ -14,13 +14,7 @@ enum GraphDataType {
     case humidity
 }
 
-protocol GraphBaseViewDelegate: AnyObject {
-    /// 閉じるボタンを押した時の処理
-    func didTapCloseButton()
-}
-
 class GraphBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private weak var temperatureLabel: UILabel!
     @IBOutlet private weak var humidityLabel: UILabel!
     @IBOutlet private weak var temperatureLineChartView: LineChartView!
@@ -29,19 +23,11 @@ class GraphBaseView: UIView {
     @IBOutlet private weak var temperatureActivityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var humidityActivityIndicator: UIActivityIndicatorView!
 
-    weak var delegate: GraphBaseViewDelegate?
-
     private let chartViewHelper = ChartViewHelper()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
-    }
-
-    // MARK: - Action
-
-    @IBAction private func didTapCloseButton(_ sender: Any) {
-        delegate?.didTapCloseButton()
     }
 }
 
@@ -49,13 +35,11 @@ class GraphBaseView: UIView {
 
 extension GraphBaseView {
     private func initUI() {
-        // タイトル
-        navigationItem.title = R.string.localizable.side_menu_graph_title()
         temperatureLabel.text = R.string.localizable.side_menu_graph_temperature_subtitle()
         humidityLabel.text = R.string.localizable.side_menu_graph_humidity_subtitle()
-        // 背景色
+
         backgroundColor = .systemGroupedBackground
-        // グラフ
+
         temperatureLineChartView.noDataText = ""
         humidityLineChartView.noDataText = ""
     }

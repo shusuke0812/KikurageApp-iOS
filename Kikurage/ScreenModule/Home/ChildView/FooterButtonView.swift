@@ -9,12 +9,6 @@
 import UIKit
 import FontAwesome_swift
 
-protocol FooterButtonViewDelegate: AnyObject {
-    func footerButtonViewDidTapCultivationButton()
-    func footerButtonViewDidTapRecipeButton()
-    func footerButtonViewDidTapCommunicationButton()
-}
-
 class FooterButtonView: UIView {
     static let iconSize = CGSize(width: 40, height: 40)
     static let backgroundColor = UIColor.white
@@ -36,29 +30,24 @@ class FooterButtonView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private var cultivationButton: UIButton = {
+    private(set) var cultivationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .leaf, style: .solid, textColor: Constants.Color.cultivation.rawValue, size: iconSize), for: .normal)
-        btn.addTarget(self, action: #selector(onCultivation(_:)), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    private var recipeButton: UIButton = {
+    private(set) var recipeButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .utensils, style: .solid, textColor: Constants.Color.recipe.rawValue, size: iconSize), for: .normal)
-        btn.addTarget(self, action: #selector(onRecipe(_:)), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-    private var communicationButton: UIButton = {
+    private(set) var communicationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .handsHelping, style: .solid, textColor: Constants.Color.communication.rawValue, size: iconSize), for: .normal)
-        btn.addTarget(self, action: #selector(onCommunication(_:)), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
-
-    weak var delegate: FooterButtonViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,18 +56,6 @@ class FooterButtonView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         initUI()
-    }
-
-    // MARK: - Action
-
-    @objc private func onCultivation(_ sender: UIButton) {
-        delegate?.footerButtonViewDidTapCultivationButton()
-    }
-    @objc private func onRecipe(_ sender: UIButton) {
-        delegate?.footerButtonViewDidTapRecipeButton()
-    }
-    @objc private func onCommunication(_ sender: UIButton) {
-        delegate?.footerButtonViewDidTapCommunicationButton()
     }
 }
 

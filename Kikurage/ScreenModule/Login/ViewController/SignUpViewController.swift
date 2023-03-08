@@ -8,8 +8,9 @@
 
 import UIKit
 import PKHUD
+import RxCocoa
 
-class SignUpViewController: UIViewController, UIViewControllerNavigatable {
+class SignUpViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: SignUpBaseView { self.view as! SignUpBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SignUpViewModel!
 
@@ -33,8 +34,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable {
 extension SignUpViewController {
     private func setDelegate() {
         baseView.delegate = self
-        baseView.emailTextField.delegate = self
-        baseView.passwordTextField.delegate = self
+        baseView.configTextField(delegate: self)
         viewModel.delegate = self
     }
 }
@@ -42,7 +42,7 @@ extension SignUpViewController {
 // MARK: - SignUpBaseView Delegate
 
 extension SignUpViewController: SignUpBaseViewDelegate {
-    func didTappedUserRegisterButton() {
+    func signUpBaseViewDidTappedRegisterUserButton(_ signUpBaseView: SignUpBaseView) {
         HUD.show(.progress)
         viewModel.registerUser()
     }
@@ -67,7 +67,7 @@ extension SignUpViewController: UITextFieldDelegate {
 // MARK: - SignUpViewModel Delegate
 
 extension SignUpViewController: SignUpViewModelDelegate {
-    func didSuccessRegisterUser() {
+    func signUpViewModelDidSuccessRegisterUser(_ signUpViewModel: SignUpViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: "仮登録完了", message: "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください", okButtonTitle: "次へ", cancelButtonTitle: nil) {
@@ -78,17 +78,16 @@ extension SignUpViewController: SignUpViewModelDelegate {
             }
         }
     }
-    func didFailedRegisterUser(errorMessage: String) {
+    func signUpViewModelDidFailedRegisterUser(_ signUpViewModel: SignUpViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
-                self.viewModel.initUserInfo()
+                signUpViewModel.initUserInfo()
                 self.baseView.initTextFields()
             }
         }
     }
     private func transitionDeviceRegisterPage() {
-        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
+        pushToDeviceRegister()
     }
 }

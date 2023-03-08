@@ -7,19 +7,25 @@
 //
 
 import UIKit
+import SwiftUI
 import PKHUD
+import RxSwift
 
-class CultivationViewController: UIViewController, UIViewControllerNavigatable {
+class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: CultivationViewModel!
+    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var viewModel: CultivationViewModelType!
+
+    private let disposeBag = RxSwift.DisposeBag()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
-        setNavigationItem()
+
         setDelegateDataSource()
+        setNavigationItem()
         setNotificationCenter()
         setRefreshControl()
 
@@ -27,8 +33,12 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
 
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
             HUD.show(.progress)
-            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
+
+        // RX
+        rxBaseView()
+        rxTransition()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,9 +46,9 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable {
 
     // MARK: - Action
 
-    @objc private func refresh(_ sender: UIRefreshControl) {
+    private func refresh() {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
 }
@@ -49,58 +59,80 @@ extension CultivationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_cultivation_title())
     }
-    private func setDelegateDataSource() {
-        baseView.delegate = self
-        baseView.collectionView.delegate = self
-        baseView.collectionView.dataSource = viewModel
-        viewModel.delegate = self
-    }
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refresh.addAction(.init() { [weak self] _ in
+            self?.refresh()
+        }, for: .valueChanged)
         baseView.setRefreshControlInCollectionView(refresh)
     }
+    private func setDelegateDataSource() {
+        baseView.collectionView.delegate = self
+    }
+    private func displayEmptyView(cultivations: [KikurageCultivationTuple]) {
+        if cultivations.isEmpty {
+            emptyHostingVC = addEmptyView(type: .notFoundCultivation)
+        } else {
+            removeEmptyView(hostingVC: emptyHostingVC)
+        }
+    }
 }
 
-// MARK: - Transition
+// MARK: - Rx
 
 extension CultivationViewController {
-    private func transitionCultivationDetailPage(indexPath: IndexPath) {
-        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
-        vc.cultivation = viewModel.cultivations[indexPath.row].cultivation
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-// MARK: - CultivationBaseView Delegate
-
-extension CultivationViewController: CultivationBaseViewDelegate {
-    func didTapPostCultivationPageButton() {
-        guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
-    }
-}
-
-// MARK: - CultivationViewModel Delegate
-
-extension CultivationViewController: CultivationViewModelDelegate {
-    func didSuccessGetCultivations() {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.collectionView.refreshControl?.endRefreshing()
-
-            self.baseView.collectionView.reloadData()
-            self.baseView.noCultivationLabel.isHidden = !(self.viewModel.cultivations.isEmpty)
+    private func rxBaseView() {
+        viewModel.output.cultivations.bind(to: baseView.collectionView.rx.items) { collectionView, row, element in
+            let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
+            cell.setUI(cultivation: element.data)
+            return cell
         }
-    }
-    func didFailedGetCultivations(errorMessage: String) {
-        print(errorMessage)
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.baseView.collectionView.refreshControl?.endRefreshing()
+        .disposed(by: disposeBag)
 
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
-        }
+        viewModel.output.cultivations.subscribe(
+            onNext: { [weak self] cultivations in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self?.baseView.collectionView.refreshControl?.endRefreshing()
+                    self?.baseView.collectionView.reloadData()
+                    self?.displayEmptyView(cultivations: cultivations)
+                }
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.error.subscribe(
+            onNext: { [weak self] error in
+                guard let `self` = self else { return }
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    self.baseView.collectionView.refreshControl?.endRefreshing()
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                }
+            }
+        )
+        .disposed(by: disposeBag)
+
+        baseView.collectionView.rx.itemSelected
+            .bind(to: viewModel.input.itemSelected)
+            .disposed(by: disposeBag)
+    }
+    private func rxTransition() {
+        baseView.postPageButton.rx.tap.asDriver()
+            .drive(
+            onNext: { [weak self] in
+                self?.modalToPostCultivation()
+            }
+        )
+        .disposed(by: disposeBag)
+
+        viewModel.output.cultivation.subscribe(
+            onNext: { [weak self] cultivationTuple in
+                self?.pushToCultivationDetail(cultivation: cultivationTuple.data)
+            }
+        )
+        .disposed(by: disposeBag)
     }
 }
 
@@ -115,14 +147,6 @@ extension CultivationViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UICollectionView Delegate
-
-extension CultivationViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        transitionCultivationDetailPage(indexPath: indexPath)
-    }
-}
-
 // MARK: - NotificationCenter
 
 extension CultivationViewController {
@@ -131,7 +155,8 @@ extension CultivationViewController {
     }
     @objc private func didPostCultivation(notification: Notification) {
         if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadCultivations(kikurageUserId: kikurageUserId)
+            HUD.show(.progress)
+            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
         }
     }
 }

@@ -7,25 +7,42 @@
 //
 
 import UIKit
+import AVFoundation
 import PKHUD
+import KikurageFeature
 
-class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable {
+class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
     private var baseView: DeviceRegisterBaseView { self.view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
     private var viewModel: DeviceRegisterViewModel!
+    private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!
+
+    private let queue = DispatchQueue.global(qos: .userInitiated)
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        qrCodeReaderViewModel = KikurageQRCodeReaderViewModel()
+        qrCodeReaderViewModel.delegate = self
         setDelegateDataSource()
 
         navigationItem.title = R.string.localizable.screen_device_register_title()
         navigationItem.hidesBackButton = true
         adjustNavigationBarBackgroundColor()
+
+        baseView.showKikurageQrcodeReaderView(isHidden: true)
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        qrCodeReaderViewModel.removeCaptureSession()
     }
 }
 
@@ -34,9 +51,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 extension DeviceRegisterViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.productKeyTextField.delegate = self
-        baseView.kikurageNameTextField.delegate = self
-        baseView.cultivationStartDateTextField.delegate = self
+        baseView.configTextField(delegate: self)
         viewModel.delegate = self
     }
 }
@@ -69,8 +84,11 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
 // MARK: - DeviceRegisterBaseView Delegate
 
 extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
-    func didTappedDeviceRegisterButton() {
-        let validate = textFieldValidation()
+    func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
+        let validate = viewModel.validateRegistration(
+            productKey: baseView.productKeyTextField.text,
+            kikurageName: baseView.kikurageNameTextField.text,
+            cultivationStartDateString: baseView.cultivationStartDateTextField.text)
         if validate {
             HUD.show(.progress)
             viewModel.loadKikurageState()
@@ -78,48 +96,73 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    // TODO: TextFieldバリデーションはViewModelに書く
-    private func textFieldValidation() -> Bool {
-        guard let productKey = baseView.productKeyTextField.text, let kikurageName = baseView.kikurageNameTextField.text, let cultivationStartDate = baseView.cultivationStartDateTextField.text else {
-            print("DEBUG: 入力されていない項目があります")
-            return false
+    func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
+        DispatchQueue.main.async {
+            guard self.baseView.kikurageQrcodeReaderView.isHidden else { return }
+            self.baseView.showKikurageQrcodeReaderView(isHidden: false)
         }
-        if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDate.isEmpty {
-            print("DEBUG: 入力されていない項目があります")
-            return false
-        }
-        return true
+        qrCodeReaderViewModel.startRunning()
     }
 }
 
 // MARK: - LoginViewModel Delegate
 
 extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
-    func didSuccessGetKikurageState() {
-        viewModel.registerKikurageUser()
+    func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel) {
+        deviceRegisterViewModel.registerKikurageUser()
     }
-    func didFailedGetKikurageState(errorMessage: String) {
+    func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    func didSuccessPostKikurageUser() {
+    func deviceRegisterViewModelDidSuccessPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
             self.transitionHomePage()
         }
     }
-    func didFailedPostKikurageUser(errorMessage: String) {
+    func deviceRegisterViewModelDidFailedPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
         }
     }
     private func transitionHomePage() {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
-        vc.kikurageState = viewModel.kikurageState
-        vc.kikurageUser = viewModel.kikurageUser
-        navigationController?.pushViewController(vc, animated: true)
+        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else { return }
+        pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
+    }
+}
+
+// MARK: - KikurageQRCodeReaderViewModel Delegate
+
+extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
+        DispatchQueue.main.async {
+            if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.kikurageQrcodeReaderView.windowOrientation) {
+                self.baseView.kikurageQrcodeReaderView.configCaptureOrientation(videoOrientation)
+            }
+            self.baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
+        }
+    }
+
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, authorize: SessionSetupResult) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason) {}
+
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String) {
+        DispatchQueue.main.async {
+            self.baseView.showKikurageQrcodeReaderView(isHidden: true)
+            self.baseView.setProductKeyText(qrCodeString)
+        }
+        viewModel.kikurageUser?.productKey = qrCodeString
+        viewModel.setStateReference(productKey: qrCodeString)
+    }
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didNotRead error: SessionSetupError) {
+        DispatchQueue.main.async {
+            self.baseView.showKikurageQrcodeReaderView(isHidden: true)
+        }
     }
 }

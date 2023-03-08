@@ -9,13 +9,12 @@
 import UIKit
 
 protocol CommunicationBaseViewDelegate: AnyObject {
-    /// Facebookボタンを押した時の処理
-    func didTapFacebookButton()
+    func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView)
 }
 
 class CommunicationBaseView: UIView {
-    @IBOutlet weak var informationLabel: UILabel!
-    @IBOutlet weak var informationParentView: UIView!
+    @IBOutlet private weak var informationLabel: UILabel!
+    @IBOutlet private weak var informationParentView: UIView!
 
     weak var delegate: CommunicationBaseViewDelegate?
 
@@ -26,8 +25,8 @@ class CommunicationBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTapFacebookButton(_ sender: Any) {
-        delegate?.didTapFacebookButton()
+    @IBAction private func openFacebook(_ sender: Any) {
+        delegate?.communicationBaseViewDidTapFacebookButton(self)
     }
 }
 

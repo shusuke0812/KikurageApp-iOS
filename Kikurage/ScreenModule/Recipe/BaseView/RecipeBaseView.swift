@@ -8,27 +8,14 @@
 
 import UIKit
 
-protocol RecipeBaseViewDelegate: AnyObject {
-    /// 料理記録保存画面のボタンをタップした時の処理
-    func didTapPostRecipePageButton()
-}
-
 class RecipeBaseView: UIView {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noRecipeLabel: UILabel!
-
-    weak var delegate: RecipeBaseViewDelegate?
+    @IBOutlet private(set) weak var tableView: UITableView!
+    @IBOutlet private(set) weak var postPageButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         initUI()
         setTableView()
-    }
-
-    // MARK: - Action
-
-    @IBAction private func didTapPostRecipePageButton(_ sender: Any) {
-        delegate?.didTapPostRecipePageButton()
     }
 }
 
@@ -39,10 +26,6 @@ extension RecipeBaseView {
         backgroundColor = .systemGroupedBackground
         tableView.backgroundColor = .systemGroupedBackground
         tableView.separatorStyle = .none
-
-        noRecipeLabel.text = R.string.localizable.screen_recipe_no_recipe()
-        noRecipeLabel.textColor = .darkGray
-        noRecipeLabel.isHidden = true
     }
     private func setTableView() {
         // セル選択を不可にする（料理記録詳細ページは無いため）
@@ -58,5 +41,8 @@ extension RecipeBaseView {
 extension RecipeBaseView {
     func setRefreshControlInTableView(_ refresh: UIRefreshControl) {
         tableView.refreshControl = refresh
+    }
+    func configTableView(delegate: UITableViewDelegate) {
+        tableView.delegate = delegate
     }
 }

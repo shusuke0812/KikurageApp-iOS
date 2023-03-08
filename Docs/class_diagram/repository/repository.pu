@@ -1,0 +1,35 @@
+@startuml Repository
+'KikurageRepository'
+folder KikurageRepository {
+  interface KikurageStateRepositoryProtocol {}
+  class "KikurageStateRepository" {
+    firestoreClient
+
+    getKikurageState()
+    getKikurageStateGraph()
+  }
+  
+  interface KikurageUserRepositoryProtocol {}
+  class "KikurageUserRepository" {
+    firestoreClient
+
+    getKikurageUser()
+    postKikurageUser()
+  }
+}
+
+'FirebaseRemoteConfigRepository'
+folder RemoteConfigRepository {
+  interface FirebaseRemoteConfigRepositoryProtocol {}
+  class "FirebaseRemoteConfigRepository" {
+    remoteConfig
+
+    fetch()
+  }
+}
+
+KikurageStateRepository -> KikurageStateRepositoryProtocol
+KikurageUserRepository -> KikurageUserRepositoryProtocol
+
+FirebaseRemoteConfigRepository -> FirebaseRemoteConfigRepositoryProtocol
+@enduml

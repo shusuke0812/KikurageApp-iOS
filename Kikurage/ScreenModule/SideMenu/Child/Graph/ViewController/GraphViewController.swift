@@ -18,7 +18,14 @@ class GraphViewController: UIViewController {
         super.viewDidLoad()
         viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         setDelegateDataSource()
+        setNavigation()
         loadKikurageUser()
+    }
+
+    // MARK: - Action
+
+    @objc private func close(_ sender: UIBarButtonItem) {
+        presentingViewController?.dismiss(animated: true)
     }
 }
 
@@ -26,8 +33,12 @@ class GraphViewController: UIViewController {
 
 extension GraphViewController {
     private func setDelegateDataSource() {
-        baseView.delegate = self
         viewModel.delegate = self
+    }
+    private func setNavigation() {
+        let closeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
+        navigationItem.rightBarButtonItems = [closeBarButtonItem]
+        navigationItem.title = R.string.localizable.side_menu_graph_title()
     }
     private func loadKikurageUser() {
         guard let userId = LoginHelper.shared.kikurageUserId else { return }
@@ -40,36 +51,28 @@ extension GraphViewController {
     }
 }
 
-// MARK: - GraphBaseView Delegate
-
-extension GraphViewController: GraphBaseViewDelegate {
-    func didTapCloseButton() {
-        presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-}
-
 // MARK: - GraphViewModel Delegate
 
 extension GraphViewController: GraphViewModelDelegate {
-    func didSuccessGetKikurageStateGraph() {
+    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel) {
         DispatchQueue.main.async {
             self.baseView.stopGraphActivityIndicators()
 
-            self.baseView.setLineChartView(datas: self.viewModel.humidityGraphDatas, graphDataType: .humidity)
-            self.baseView.setLineChartView(datas: self.viewModel.temperatureGraphDatas, graphDataType: .temperature)
+            self.baseView.setLineChartView(datas: graphViewModel.humidityGraphDatas, graphDataType: .humidity)
+            self.baseView.setLineChartView(datas: graphViewModel.temperatureGraphDatas, graphDataType: .temperature)
         }
     }
-    func didFailedGetKikurageStateGraph(errorMessage: String) {
+    func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             self.baseView.stopGraphActivityIndicators()
 
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
-    func didSuccessGetKikurageUser() {
+    func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel) {
         loadKikurageStateGraph()
     }
-    func didFailedGetKikurageUser(errorMessage: String) {
+    func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }

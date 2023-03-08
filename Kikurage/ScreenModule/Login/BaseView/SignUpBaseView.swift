@@ -9,12 +9,12 @@
 import UIKit
 
 protocol SignUpBaseViewDelegate: AnyObject {
-    func didTappedUserRegisterButton()
+    func signUpBaseViewDidTappedRegisterUserButton(_ signUpBaseView: SignUpBaseView)
 }
 
 class SignUpBaseView: UIView {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private(set) weak var emailTextField: UITextField!
+    @IBOutlet private(set) weak var passwordTextField: UITextField!
     @IBOutlet private weak var userRegisterButton: UIButton!
 
     weak var delegate: SignUpBaseViewDelegate?
@@ -26,8 +26,8 @@ class SignUpBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedUserRegisterButton(_ sender: Any) {
-        delegate?.didTappedUserRegisterButton()
+    @IBAction private func registerUser(_ sender: Any) {
+        delegate?.signUpBaseViewDidTappedRegisterUserButton(self)
     }
 }
 
@@ -46,6 +46,15 @@ extension SignUpBaseView {
 
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = R.string.localizable.screen_signup_password_textfield_placeholer()
+    }
+}
+
+// MARK: - Config
+
+extension SignUpBaseView {
+    func configTextField(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     func initTextFields() {
         emailTextField.text = ""

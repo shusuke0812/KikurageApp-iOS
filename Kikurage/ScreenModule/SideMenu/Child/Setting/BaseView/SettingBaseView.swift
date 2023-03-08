@@ -9,13 +9,11 @@
 import UIKit
 
 protocol SettingBaseViewDelegate: AnyObject {
-    func didTappedEditButton()
-    func didTappedUserImageView()
-    func didTappedCloseButton()
+    func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView)
+    func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView)
 }
 
 class SettingBaseView: UIView {
-    @IBOutlet private weak var navigationItem: UINavigationItem!
     @IBOutlet private weak var userImageView: UIImageView!
     @IBOutlet private weak var kikurageNameTextField: UITextField!
     @IBOutlet private weak var editButton: UIButton!
@@ -29,14 +27,11 @@ class SettingBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func didTappedEditButton(_ sender: Any) {
-        delegate?.didTappedEditButton()
+    @IBAction private func edit(_ sender: Any) {
+        delegate?.settingBaseViewDidTappedEditButton(self)
     }
-    @IBAction private func didTappedUserImageView(_ sender: Any) {
-        delegate?.didTappedUserImageView()
-    }
-    @IBAction private func didTappedCloseButton(_ sender: Any) {
-        delegate?.didTappedCloseButton()
+    @IBAction private func editUserImage(_ sender: Any) {
+        delegate?.settingBaseViewDidTappedUserImageView(self)
     }
 }
 
@@ -44,7 +39,6 @@ class SettingBaseView: UIView {
 
 extension SettingBaseView {
     private func initUI() {
-        navigationItem.title = R.string.localizable.side_menu_setting_title()
         backgroundColor = .systemGroupedBackground
 
         userImageView.image = R.image.hakase()

@@ -105,4 +105,10 @@ iOSInjectionProject/
 # R.swift
 *.generated.swift
 
+# Log file
+*.logarchive
+
+# Secrets
+Kikurage/Utility/AccessToken/*.json
+
 #EOF

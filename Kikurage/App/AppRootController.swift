@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
     private var presenter: AppPresenter!
 
+    private let kikurageHUD: KikurageHUD = {
+        let hud = KikurageHUD()
+        hud.startRotateAnimation(duration: 1.0, rotateAxis: .y)
+        hud.translatesAutoresizingMaskIntoConstraints = false
+        return hud
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initHUD()
+
         presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
 
@@ -43,30 +53,39 @@ extension AppRootController {
         presenter.loadFacebookGroupUrl()
         presenter.loadTermsUrl()
         presenter.loadPrivacyPolicyUrl()
+        presenter.loadLatestAppVersion()
+    }
+    private func initHUD() {
+        view.addSubview(kikurageHUD)
+
+        NSLayoutConstraint.activate([
+            kikurageHUD.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            kikurageHUD.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 
 // MARK: - Transition
 
 extension AppRootController {
-    /// ホーム画面を開く
     private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
-    /// ログイン画面を開く
     private func showTopPage() {
         guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
-        let nc = UINavigationController(rootViewController: vc)
+        let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
     private func changeViewController(_ vc: UIViewController) {
         removeCurrentViewController()
         setCurrentViewController(vc)
         setScreenHeaderHeight(vc)
+
+        kikurageHUD.stopRotateAnimation()
     }
     private func setCurrentViewController(_ vc: UIViewController) {
         currentViewController = vc
@@ -80,6 +99,20 @@ extension AppRootController {
         vc.view.removeFromSuperview()
         vc.removeFromParent()
     }
+    func logout(rootVC: AppRootController) {
+        closeAllViewControllers(rootVC: rootVC) { [weak self] in
+            DispatchQueue.main.async {
+                self?.showTopPage()
+            }
+        }
+    }
+    private func closeAllViewControllers(rootVC: AppRootController, completion: (() -> Void)?) {
+        let nc = currentViewController as? CustomNavigationController
+        nc?.popToRootViewController(animated: false)
+        rootVC.dismiss(animated: false) {
+            completion?()
+        }
+    }
 }
 
 // MARK: - AppPresenter Delegate
@@ -91,7 +124,6 @@ extension AppRootController: AppPresenterDelegate {
         }
     }
     func didFailedGetKikurageInfo(errorMessage: String) {
-        print("DEBUG: \(errorMessage)")
         DispatchQueue.main.async {
             self.showTopPage()
         }
