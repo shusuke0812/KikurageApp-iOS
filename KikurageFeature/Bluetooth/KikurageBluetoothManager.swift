@@ -13,6 +13,7 @@ public protocol KikurageBluetoothMangerDelegate: AnyObject {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String)
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor connectionState: KikurageBluetoothConnectionState)
 }
 
 public class KikurageBluetoothManager: NSObject {
@@ -81,14 +82,17 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
     }
 
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        delegate?.bluetoothManager(self, didUpdateFor: .connect)
         centralManager.stopScan()
         peripheralDiscoverServices()
     }
 
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        delegate?.bluetoothManager(self, didUpdateFor: .fail(error))
     }
 
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        delegate?.bluetoothManager(self, didUpdateFor: .disconnect(error))
     }
 }
 

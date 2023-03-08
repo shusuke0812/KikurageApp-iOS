@@ -9,7 +9,7 @@
 import UIKit
 import KikurageFeature
 
-class WiFiSelectDeviceViewController: UIViewController {
+class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
     private let baseView = WiFiSelectDeviceBaseView()
     private let viewModel = WiFiSelectDeviceViewModel()
 
@@ -29,6 +29,7 @@ class WiFiSelectDeviceViewController: UIViewController {
 
     @objc private func close(_ sender: UIBarButtonItem) {
         presentingViewController?.dismiss(animated: true)
+        // TODO: WiFi disconnected
     }
 
     private func setupProtocols() {
@@ -56,6 +57,12 @@ extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
         DispatchQueue.main.async {
             self.baseView.tableView.reloadData()
+        }
+    }
+
+    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
+        DispatchQueue.main.async {
+            self.pushToWiFiList()
         }
     }
 }

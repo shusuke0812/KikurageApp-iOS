@@ -12,6 +12,7 @@ import KikurageFeature
 
 protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
+    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
 }
 
 class  WiFiSelectDeviceViewModel: NSObject {
@@ -72,6 +73,17 @@ extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
         if peripheral.validateConnection() {
             add(peripheral: peripheral)
             delegate?.viewModelDidAddPeripheral(self)
+        }
+    }
+
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor connectionState: KikurageBluetoothConnectionState) {
+        switch connectionState {
+        case .connect:
+            delegate?.viewModelDisSuccessConnectionToPeripheral(self)
+        case .disconnect(_):
+            break
+        case .fail(_):
+            break
         }
     }
 }
