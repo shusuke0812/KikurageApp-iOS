@@ -9,22 +9,31 @@
 import UIKit
 
 class WiFiListViewController: UIViewController {
+    private let baseView = WiFiListBaseView()
+    private let viewModel = WiFiListViewModel()
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupProtocols()
+        setupNavigation()
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupNavigation() {
+        navigationItem.title = R.string.localizable.side_menu_wifi_list_title()
     }
-    */
 
+    private func setupProtocols() {
+        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension WiFiListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
 }

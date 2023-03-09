@@ -211,6 +211,8 @@
 		9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */; };
 		9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
+		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
 /* End PBXBuildFile section */
 
@@ -473,6 +475,8 @@
 		9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceTableViewCell.swift; sourceTree = "<group>"; };
 		9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSectionType.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
+		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B15B86CDC574E80B6D91CC /* Pods-KikurageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1619,6 +1623,8 @@
 			isa = PBXGroup;
 			children = (
 				9CE0184829B46CE600365E95 /* WiFiListBaseView.swift */,
+				9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */,
+				9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2215,6 +2221,7 @@
 				9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
 				9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */,
+				9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */,
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
 				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
@@ -2292,6 +2299,7 @@
 				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
+				9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */,
 				9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */,
 				9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */,
 				9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */,
