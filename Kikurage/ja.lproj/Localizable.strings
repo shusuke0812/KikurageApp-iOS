@@ -189,7 +189,15 @@
 
 // wifi
 "side_menu_wifi_select_device_title" = "接続";
+"side_menu_wifi_list_title" = "WiFi";
 "side_menu_wifi_select_device_section_title" = "周辺デバイス";
+"side_menu_wifi_spec_section_title" = "諸元";
+"side_menu_wifi_enter_wifi_section_title" = "WiFi";
+"side_menu_wifi_select_wifi_section_title" = "周辺のWiFi";
+"side_menu_wifi_spec_section_device_name_row_title" = "デバイス名";
+"side_menu_wifi_spec_section_device_id_row_title" = "デバイスID";
+"side_menu_wifi_spec_section_rssi_row_title" = "RSSI";
+"side_menu_wifi_spec_section_wifi_enter_row_title" = "手動で入力する";
 
 // debug
 "side_menu_debug_title" = "デバッグ";
