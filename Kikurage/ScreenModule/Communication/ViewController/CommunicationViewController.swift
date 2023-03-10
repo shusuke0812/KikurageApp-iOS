@@ -10,7 +10,7 @@ import PKHUD
 import UIKit
 
 class CommunicationViewController: UIViewController, UIViewControllerNavigatable, CommunicationAccessable {
-    private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
 
@@ -30,7 +30,7 @@ extension CommunicationViewController {
     }
 
     private func setDelegateDataSource() {
-        baaseView.delegate = self
+        baseView.delegate = self
     }
 }
 
