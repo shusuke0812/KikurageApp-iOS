@@ -25,6 +25,7 @@ class DictionaryBaseView: UIView {
     }
 
     // MARK: - Action
+
     @IBAction private func changeViews(_ sender: Any) {
         delegate?.dictionaryBaseView(self, didChangeSegmentedAt: segmentedControl.selectedSegmentIndex)
     }

@@ -8,5 +8,4 @@
 
 import Foundation
 
-class DictionaryViewModel {
-}
+class DictionaryViewModel {}

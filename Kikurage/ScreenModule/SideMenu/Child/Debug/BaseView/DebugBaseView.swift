@@ -23,6 +23,7 @@ class DebugBaseView: UIView {
     }
 
     // MARK: Action
+
     @IBAction private func didTappedForceRestartButton(_ sender: UIButton) {
         delegate?.debugBaseViewDidTappedForceRestrart(self)
     }

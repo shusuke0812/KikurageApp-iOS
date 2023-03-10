@@ -6,10 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import Firebase
 import FirebaseFirestore
 import KikurageFeature
+import UIKit
 
 class CultivationCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
@@ -37,7 +37,9 @@ extension CultivationCollectionViewCell {
 
 extension CultivationCollectionViewCell {
     func setUI(cultivation: KikurageCultivation) {
-        guard let imageStoragePath = cultivation.imageStoragePaths.first else { return }
+        guard let imageStoragePath = cultivation.imageStoragePaths.first else {
+            return
+        }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
             imageView.sd_setImage(with: storageReference, placeholderImage: nil) { [weak self] _, error, _, _ in

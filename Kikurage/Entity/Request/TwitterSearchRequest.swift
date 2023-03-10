@@ -13,8 +13,8 @@ import Foundation
 struct TwitterSearchRequest: APIRequestProtocol {
     let searchWord: String
     let searchCount: Int
-    let maxId: Int64?
-    let sinceId: Int64?
+    let maxID: Int64?
+    let sinceID: Int64?
 
     typealias Response = Tweet
 
@@ -33,29 +33,34 @@ struct TwitterSearchRequest: APIRequestProtocol {
 
     // MARK: APIRequestProtocol properties
 
-    var baseUrl: String {
+    var baseURL: String {
         "https://api.twitter.com/1.1"
     }
+
     var method: HTTPMethod {
         .get
     }
+
     var path: String {
         "/search/tweets.json"
     }
+
     var parameters: [URLQueryItem]? {
         [
             URLQueryItem(name: "q", value: searchWord),
             URLQueryItem(name: "count", value: "\(searchCount)"),
-            URLQueryItem(name: "max_id", value: "\(maxId ?? 0)"),
-            URLQueryItem(name: "since_id", value: "\(sinceId ?? 0)")
+            URLQueryItem(name: "max_id", value: "\(maxID ?? 0)"),
+            URLQueryItem(name: "since_id", value: "\(sinceID ?? 0)")
         ]
     }
+
     var header: [String: String]? {
         [
             "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
             "Authorization": "Bearer \(bearerToken)"
         ]
     }
+
     var body: Data? {
         nil
     }

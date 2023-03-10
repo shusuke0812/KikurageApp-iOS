@@ -14,17 +14,18 @@ protocol PostCultivationViewModelDelegate: AnyObject {
     func postCultivationViewModelDidSuccessPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel)
     func postCultivationViewModelDidFailedPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String)
 }
+
 class PostCultivationViewModel {
     private let cultivationRepository: CultivationRepositoryProtocol
 
     weak var delegate: PostCultivationViewModelDelegate?
 
     var cultivation: KikurageCultivation
-    var postedCultivationDocumentId: String?
+    var postedCultivationDocumentID: String?
 
     init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
-        self.cultivation = KikurageCultivation()
+        cultivation = KikurageCultivation()
     }
 }
 
@@ -45,28 +46,29 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Firestore
 
 extension PostCultivationViewModel {
-    func postCultivation(kikurageUserId: String) {
-        var request = KikurageCultivationRequest(kikurageUserId: kikurageUserId)
+    func postCultivation(kikurageUserID: String) {
+        var request = KikurageCultivationRequest(kikurageUserID: kikurageUserID)
         request.body = request.buildBody(from: cultivation)
         cultivationRepository.postCultivation(request: request) { [weak self] response in
             switch response {
-            case .success(let documentReference):
-                self?.postedCultivationDocumentId = documentReference.documentID
+            case let .success(documentReference):
+                self?.postedCultivationDocumentID = documentReference.documentID
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivation(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
             }
         }
     }
-    private func putCultivationImages(kikurageUserId: String, firestoreDocumentId: String, imageStorageFullPaths: [String]) {
-        var request = KikurageCultivationRequest(kikurageUserId: kikurageUserId, documentId: firestoreDocumentId)
+
+    private func putCultivationImages(kikurageUserID: String, firestoreDocumentID: String, imageStorageFullPaths: [String]) {
+        var request = KikurageCultivationRequest(kikurageUserID: kikurageUserID, documentID: firestoreDocumentID)
         request.body = ["imageStoragePaths": imageStorageFullPaths]
         cultivationRepository.putCultivationImage(request: request) { [weak self] response in
             switch response {
             case .success():
                 self?.cultivation.imageStoragePaths = imageStorageFullPaths
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivationImages(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
             }
         }
@@ -76,17 +78,17 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Storage
 
 extension PostCultivationViewModel {
-    func postCultivationImages(kikurageUserId: String, imageData: [Data?]) {
-        guard let postedCultivationDocumentId = postedCultivationDocumentId else {
-            delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: FirebaseAPIError.documentIdError.description())
+    func postCultivationImages(kikurageUserID: String, imageData: [Data?]) {
+        guard let postedCultivationDocumentID = postedCultivationDocumentID else {
+            delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: FirebaseAPIError.documentIDError.description())
             return
         }
-        let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserId)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentId)/images/"
+        let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserID)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
-            case .success(let imageStorageFullPaths):
-                self?.putCultivationImages(kikurageUserId: kikurageUserId, firestoreDocumentId: postedCultivationDocumentId, imageStorageFullPaths: imageStorageFullPaths)
-            case .failure(let error):
+            case let .success(imageStorageFullPaths):
+                self?.putCultivationImages(kikurageUserID: kikurageUserID, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
+            case let .failure(error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivationImages(self!, with: error.description())
             }
         }

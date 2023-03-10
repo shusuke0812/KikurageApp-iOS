@@ -63,6 +63,7 @@ extension HomeBaseView {
         humidityTextLabel.text = "-"
         expectedHumidityLabel.text = "80% " + R.string.localizable.screen_home_humidity_expected_suffix()
     }
+
     private func initFailedUI() {
         kikurageStateEmptyView = UIView()
         kikurageStateEmptyView.backgroundColor = .white
@@ -104,17 +105,20 @@ extension HomeBaseView {
             kikurageAdviceView.setAdviceContentLabel(advice)
         }
         #if PRODUCTION
-        nowTimeLabel.isHidden = true
+            nowTimeLabel.isHidden = true
         #endif
     }
+
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
         if let name: String = kikurageUser?.kikurageName {
             kikurageNameLabel.text = R.string.localizable.screen_home_kikurage_name(name)
         }
     }
+
     func updateTimeLabel() {
         nowTimeLabel.text = DateHelper.now()
     }
+
     private func displayKikurageStateImage(type: KikurageStateType) {
         kikurageStateEmptyView.removeFromSuperview()
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
@@ -123,6 +127,7 @@ extension HomeBaseView {
         kikurageStatusImageView.animationRepeatCount = 0
         kikurageStatusImageView.startAnimating()
     }
+
     private func displayFailedKikurageStateImage() {
         kikurageStatusImageView.addSubview(kikurageStateEmptyView)
         kikurageStatusImageView.image = nil

@@ -69,7 +69,9 @@ public class KikurageImageView: UIView {
     }
 
     private func resizeImageViewToFitContent() {
-        guard let imageSize = imageView.image?.size else { return }
+        guard let imageSize = imageView.image?.size else {
+            return
+        }
         let ratio = imageSize.width / imageSize.height
         let aspectCnstraint = imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: ratio)
         aspectCnstraint.priority = UILayoutPriority(999)
@@ -154,6 +156,7 @@ extension KikurageImageView: UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
     }
+
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         preventScrollingToEmptyAreaOfImageView()
     }

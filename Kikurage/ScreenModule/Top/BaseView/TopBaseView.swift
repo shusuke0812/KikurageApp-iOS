@@ -35,12 +35,15 @@ class TopBaseView: UIView {
     @IBAction private func openTerms(_ sender: Any) {
         delegate?.topBaseViewDidTappedTermsButton(self)
     }
+
     @IBAction private func openPrivacyPolicy(_ sender: Any) {
         delegate?.topBaseViewDidTappedPrivacyPolicyButton(self)
     }
+
     @IBAction private func login(_ sender: Any) {
         delegate?.topBaseViewDidTappedLoginButton(self)
     }
+
     @IBAction private func signUp(_ sender: Any) {
         delegate?.topBaseViewDidTappedSignUpButton(self)
     }

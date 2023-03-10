@@ -12,20 +12,20 @@ import KikurageFeature
 protocol APIRequestProtocol {
     associatedtype Response: Codable
 
-    var baseUrl: String { get }
+    var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
     var parameters: [URLQueryItem]? { get }
     var header: [String: String]? { get }
     var body: Data? { get }
 
-    func buildUrlRequest() -> URLRequest
+    func buildURLRequest() -> URLRequest
     func decodeData<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable
 }
 
 extension APIRequestProtocol {
-    func buildUrlRequest() -> URLRequest {
-        let url = URL(string: baseUrl.appending(path))! // swiftlint:disable:this force_unwrapping
+    func buildURLRequest() -> URLRequest {
+        let url = URL(string: baseURL.appending(path))! // swiftlint:disable:this force_unwrapping
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         switch method {
         case .get:

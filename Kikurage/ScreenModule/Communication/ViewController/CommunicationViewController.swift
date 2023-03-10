@@ -6,8 +6,8 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import UIKit
 import PKHUD
+import UIKit
 
 class CommunicationViewController: UIViewController, UIViewControllerNavigatable, CommunicationAccessable {
     private var baaseView: CommunicationBaseView { self.view as! CommunicationBaseView } // swiftlint:disable:this force_cast
@@ -28,6 +28,7 @@ extension CommunicationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_communication_title())
     }
+
     private func setDelegateDataSource() {
         baaseView.delegate = self
     }
@@ -37,7 +38,7 @@ extension CommunicationViewController {
 
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView) {
-        let urlString = AppConfig.shared.facebookGroupUrl
+        let urlString = AppConfig.shared.facebookGroupURL
         presentToSafariView(from: self, urlString: urlString, onError: nil)
     }
 }

@@ -6,11 +6,11 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import UIKit
-import MetricKit
 import Firebase
 import IQKeyboardManagerSwift
 import KikurageFeature
+import MetricKit
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        configCrashlyticsUserId()
+        configCrashlyticsUserID()
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
@@ -29,17 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
+    func applicationWillResignActive(_ application: UIApplication) {}
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
+    func applicationDidEnterBackground(_ application: UIApplication) {}
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
-    }
+    func applicationWillEnterForeground(_ application: UIApplication) {}
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-    }
+    func applicationDidBecomeActive(_ application: UIApplication) {}
 
     func applicationWillTerminate(_ application: UIApplication) {
         MXMetricManager.shared.remove(self)
@@ -57,9 +53,10 @@ extension AppDelegate {
         self.window?.backgroundColor = .white
         self.window?.makeKeyAndVisible()
     }
-    private func configCrashlyticsUserId() {
-        let userId = LoginHelper.shared.kikurageUserId ?? "no id"
-        Crashlytics.crashlytics().setUserID(userId)
+
+    private func configCrashlyticsUserID() {
+        let userID = LoginHelper.shared.kikurageUserID ?? "no id"
+        Crashlytics.crashlytics().setUserID(userID)
     }
 }
 
@@ -74,6 +71,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
             KLogger.debug("\(jsonString)")
         }
     }
+
     @available(iOS 14.0, *)
     func didReceive(_ payloads: [MXDiagnosticPayload]) {
         payloads.forEach { payload in

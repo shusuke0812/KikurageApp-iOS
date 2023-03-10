@@ -14,16 +14,18 @@ class XibView: UIView {
         super.init(frame: frame)
         loadView()
     }
+
     // StoryboardやXibから作成されたときに呼ばれる
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadView()
     }
+
     private func loadView() {
         let className = String(describing: type(of: self))
         let view = Bundle.main.loadNibNamed(className, owner: self, options: nil)?.first as! UIView // swiftlint:disable:this force_cast
         view.backgroundColor = .clear
-        view.frame = self.bounds
+        view.frame = bounds
         addSubview(view)
     }
 }

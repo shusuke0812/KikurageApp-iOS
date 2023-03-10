@@ -42,6 +42,7 @@ extension LoginViewModel {
     private func setLoginInfo() -> (email: String, password: String) {
         (email, password)
     }
+
     func initLoginInfo() {
         email = ""
         password = ""
@@ -56,10 +57,10 @@ extension LoginViewModel {
         let loginInfo = setLoginInfo()
         loginRepository.login(loginInfo: loginInfo) { [weak self] response in
             switch response {
-            case .success(let loginUser):
+            case let .success(loginUser):
                 self?.loginUser = loginUser
                 self?.loadKikurageUser()
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
@@ -72,26 +73,27 @@ extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {
         let request = KikurageUserRequest(uid: (loginUser?.uid)!)
-        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in   // swiftlint:disable:this force_unwrapping
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in // swiftlint:disable:this force_unwrapping
             switch response {
-            case .success(let kikurageUser):
+            case let .success(kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
     }
+
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        let request = KikurageStateRequest(productId: productId)
+        let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
+        let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
-            case .success(let kikurageState):
+            case let .success(kikurageState):
                 self?.kikurageState = kikurageState
                 self?.delegate?.loginViewModelDidSuccessLogin(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }

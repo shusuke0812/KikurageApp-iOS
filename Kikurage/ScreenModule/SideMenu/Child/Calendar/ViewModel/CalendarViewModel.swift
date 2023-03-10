@@ -24,8 +24,8 @@ class CalendarViewModel {
 
     init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
-        self.cultivationDateComponents = DateHelper.getDateComponents()
-        self.cultivationTerm = 0
+        cultivationDateComponents = DateHelper.getDateComponents()
+        cultivationTerm = 0
     }
 }
 
@@ -37,6 +37,7 @@ extension CalendarViewModel {
             cultivationDateComponents = DateHelper.getDateComponents(date: cultivationStartDate)
         }
     }
+
     private func calcCultivationTerm() {
         let calendar = Calendar.current
 
@@ -57,12 +58,12 @@ extension CalendarViewModel {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
-            case .success(let kikurageUser):
+            case let .success(kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.saveDateComponents()
                 self?.calcCultivationTerm()
                 self?.delegate?.calendarViewModelDidSuccessGetKikurageUser(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.calendarViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }

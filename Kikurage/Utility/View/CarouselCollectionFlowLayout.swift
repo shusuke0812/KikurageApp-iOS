@@ -9,14 +9,16 @@
 import UIKit
 
 /**
-このクラスで実装されている主な機能
-- CollectionViewのスクロール停止ポイントを制御する
-- https://github.com/nkmrh/PagingCollectionView/blob/master/LICENSE を元に作成
-*/
+ このクラスで実装されている主な機能
+ - CollectionViewのスクロール停止ポイントを制御する
+ - https://github.com/nkmrh/PagingCollectionView/blob/master/LICENSE を元に作成
+ */
 class CarouselCollectionFlowLayout: UICollectionViewFlowLayout {
     // ユーザーがセルをスクロールして離した時に呼ばれる
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        guard let collectionView = collectionView else { return proposedContentOffset }
+        guard let collectionView = collectionView else {
+            return proposedContentOffset
+        }
         // セクションの余白
         let expansionMargin = sectionInset.left + sectionInset.right
         // セルの位置とサイズを記録
@@ -27,7 +29,9 @@ class CarouselCollectionFlowLayout: UICollectionViewFlowLayout {
             height: collectionView.bounds.height
         )
         // CollectionViewの表示領域 attributes（セルの大きさ・位置・重なり順 etc）を取得
-        guard let targetAttributes = layoutAttributesForElements(in: expandedVisibleRect)?.sorted(by: { $0.frame.minX < $1.frame.minX }) else { return proposedContentOffset }
+        guard let targetAttributes = layoutAttributesForElements(in: expandedVisibleRect)?.sorted(by: { $0.frame.minX < $1.frame.minX }) else {
+            return proposedContentOffset
+        }
         let nextAttributes: UICollectionViewLayoutAttributes?
         // Attributes設定
         // velocity.x == 0: スワイプ無しで指を離したとき、velocity.x > 0: 左スワイプしたとき、velocity.x < 0: 右スワイプしたとき
@@ -38,7 +42,9 @@ class CarouselCollectionFlowLayout: UICollectionViewFlowLayout {
         } else {
             nextAttributes = targetAttributes.first
         }
-        guard let attributes = nextAttributes else { return proposedContentOffset }
+        guard let attributes = nextAttributes else {
+            return proposedContentOffset
+        }
         // 画面左端からのセル余白
         let cellLeftMargin = (collectionView.bounds.width - attributes.bounds.width) * 0.5
 

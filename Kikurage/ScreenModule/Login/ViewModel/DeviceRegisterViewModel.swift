@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import Firebase
+import UIKit
 
 protocol DeviceRegisterViewModelDelegate: AnyObject {
     func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel)
@@ -29,7 +29,7 @@ class DeviceRegisterViewModel {
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
-        self.kikurageUser = KikurageUser()
+        kikurageUser = KikurageUser()
     }
 }
 
@@ -40,6 +40,7 @@ extension DeviceRegisterViewModel {
     func setStateReference(productKey: String) {
         kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
     }
+
     func validateRegistration(productKey: String?, kikurageName: String?, cultivationStartDateString: String?) -> Bool {
         guard let productKey = productKey, let kikurageName = kikurageName, let cultivationStartDateString = cultivationStartDateString else {
             return false
@@ -56,25 +57,26 @@ extension DeviceRegisterViewModel {
 extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        let request = KikurageStateRequest(productId: productId)
+        let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
+        let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
-            case .success(let kikurageState):
+            case let .success(kikurageState):
                 self?.kikurageState = kikurageState
                 self?.delegate?.deviceRegisterViewModelDidSuccessGetKikurageState(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.deviceRegisterViewModelDidFailedGetKikurageState(self!, with: error.description())
             }
         }
     }
+
     /// きくらげユーザーを登録する
     func registerKikurageUser() {
         guard let kikurageUser = kikurageUser else {
             delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
             return
         }
-        guard let uid = LoginHelper.shared.kikurageUserId else {
+        guard let uid = LoginHelper.shared.kikurageUserID else {
             delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
             return
         }
@@ -85,7 +87,7 @@ extension DeviceRegisterViewModel {
             case .success():
                 self?.delegate?.deviceRegisterViewModelDidSuccessPostKikurageUser(self!)
                 self?.kikurageUser = kikurageUser
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self!, with: error.description())
             }
         }

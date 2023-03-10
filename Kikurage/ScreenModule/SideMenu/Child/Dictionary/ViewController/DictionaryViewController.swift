@@ -11,16 +11,18 @@
 import UIKit
 
 class DictionaryViewController: UIViewController {
-    private var baseView: DictionaryBaseView { self.view as! DictionaryBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DictionaryBaseView { view as! DictionaryBaseView } // swiftlint:disable:this force_cast
 
     private lazy var dictionaryTriviaVC: DictionaryTriviaViewController = {
         let vc = R.storyboard.dictionaryTriviaViewController().instantiateInitialViewController() as! DictionaryTriviaViewController // swiftlint:disable:this force_cast
         return vc
     }()
+
     private lazy var dictonaryTwitterVC: DictionaryTwitterViewController = {
         let vc = R.storyboard.dictionaryTwitterViewController().instantiateInitialViewController() as! DictionaryTwitterViewController // swiftlint:disable:this force_cast
         return vc
     }()
+
     private var currentViewController: UIViewController?
 
     override func viewDidLoad() {
@@ -47,17 +49,22 @@ extension DictionaryViewController {
         baseView.addContainerView(vc.view)
         vc.didMove(toParent: self)
     }
+
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
         navigationItem.title = ""
     }
+
     private func removeContainerViewController() {
-        guard let vc = currentViewController else { return }
+        guard let vc = currentViewController else {
+            return
+        }
         vc.willMove(toParent: nil)
         vc.view.removeFromSuperview()
         vc.removeFromParent()
     }
+
     private func showContainerView(index: Int) {
         removeContainerViewController()
         if index == 0 {

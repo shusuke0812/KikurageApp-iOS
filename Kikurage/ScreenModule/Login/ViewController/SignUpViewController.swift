@@ -6,12 +6,12 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import PKHUD
 import RxCocoa
+import UIKit
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: SignUpBaseView { self.view as! SignUpBaseView } // swiftlint:disable:this force_cast
+    private var baseView: SignUpBaseView { view as! SignUpBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SignUpViewModel!
 
     // MARK: - Lifecycle
@@ -24,6 +24,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, TopAc
         setDelegate()
         adjustNavigationBarBackgroundColor()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -52,7 +53,9 @@ extension SignUpViewController: SignUpBaseViewDelegate {
 
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text else { return }
+        guard let text = textField.text else {
+            return
+        }
         switch textField {
         case baseView.emailTextField:
             viewModel.email = text
@@ -78,6 +81,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
             }
         }
     }
+
     func signUpViewModelDidFailedRegisterUser(_ signUpViewModel: SignUpViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
@@ -87,6 +91,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
             }
         }
     }
+
     private func transitionDeviceRegisterPage() {
         pushToDeviceRegister()
     }

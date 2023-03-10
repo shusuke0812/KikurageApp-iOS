@@ -28,10 +28,12 @@ extension DictionaryTwitterBaseView {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
+
     func startLoadingIndicator() {
         loadingIndicatorView.isHidden = false
         loadingIndicatorView.startAnimating()
     }
+
     func stopLoadingIndicator() {
         loadingIndicatorView.isHidden = true
         loadingIndicatorView.stopAnimating()

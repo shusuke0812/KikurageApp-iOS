@@ -24,9 +24,9 @@ class TwitterSearchRepository: TwitterSearchRepositoryProtocol {
     func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, ClientError>) -> Void) {
         apiClient.sendRequest(request) { result in
             switch result {
-            case .success(let response):
+            case let .success(response):
                 completion(.success(response))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }

@@ -34,22 +34,24 @@ extension KikurageStateRepository {
     func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
         firestoreClient.getDocumentRequest(request) { result in
             switch result {
-            case .success(let kikurageState):
+            case let .success(kikurageState):
                 completion(.success(kikurageState))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
     }
+
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
         rxFirestoreClient.getDocumentRequest(request)
     }
+
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
-            case .success(let kikurageStateGraph):
+            case let .success(kikurageStateGraph):
                 completion(.success(kikurageStateGraph))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }

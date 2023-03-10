@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 import KikurageFeature
 
 protocol AppPresenterDelegate: AnyObject {
@@ -40,28 +40,29 @@ class AppPresenter {
 extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
-    func loadKikurageUser(userId: String) {
-        let request = KikurageUserRequest(uid: userId)
+    func loadKikurageUser(userID: String) {
+        let request = KikurageUserRequest(uid: userID)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
-            case .success(let kikurageUser):
+            case let .success(kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
             }
         }
     }
+
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        let request = KikurageStateRequest(productId: productId)
+        let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
+        let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
-            case .success(let kikurageState):
+            case let .success(kikurageState):
                 self?.kikurageState = kikurageState
                 self?.delegate?.didSuccessGetKikurageInfo(kikurageInfo: (user: self?.kikurageUser, state: self?.kikurageState))
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
             }
         }
@@ -71,43 +72,46 @@ extension AppPresenter {
 // MARK: - Firebase RemoteConfig
 
 extension AppPresenter {
-    func loadFacebookGroupUrl() {
-        firebaseRemoteCofigRepository.fetch(key: .facebookGroupUrl) { response in
+    func loadFacebookGroupURL() {
+        firebaseRemoteCofigRepository.fetch(key: .facebookGroupURL) { response in
             switch response {
-            case .success(let urlString):
-                AppConfig.shared.facebookGroupUrl = urlString
-            case .failure(let error):
+            case let .success(urlString):
+                AppConfig.shared.facebookGroupURL = urlString
+            case let .failure(error):
                 KLogger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
-    func loadTermsUrl() {
-        firebaseRemoteCofigRepository.fetch(key: .termsUrl) { response in
+
+    func loadTermsURL() {
+        firebaseRemoteCofigRepository.fetch(key: .termsURL) { response in
             switch response {
-            case .success(let urlString):
-                AppConfig.shared.termsUrl = urlString
-            case .failure(let error):
+            case let .success(urlString):
+                AppConfig.shared.termsURL = urlString
+            case let .failure(error):
                 KLogger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
-    func loadPrivacyPolicyUrl() {
-        firebaseRemoteCofigRepository.fetch(key: .privacyPolicyUrl) { response in
+
+    func loadPrivacyPolicyURL() {
+        firebaseRemoteCofigRepository.fetch(key: .privacyPolicyURL) { response in
             switch response {
-            case .success(let urlString):
-                AppConfig.shared.privacyPolicyUrl = urlString
-            case .failure(let error):
+            case let .success(urlString):
+                AppConfig.shared.privacyPolicyURL = urlString
+            case let .failure(error):
                 KLogger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
+
     func loadLatestAppVersion() {
         firebaseRemoteCofigRepository.fetch(key: .latestAppVersion) { response in
             switch response {
-            case .success(let appVersionString):
+            case let .success(appVersionString):
                 let appVersion = AppVersion(versionString: appVersionString)
                 AppConfig.shared.latestAppVersion = appVersion
-            case .failure(let error):
+            case let .failure(error):
                 KLogger.verbose("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
             }
         }

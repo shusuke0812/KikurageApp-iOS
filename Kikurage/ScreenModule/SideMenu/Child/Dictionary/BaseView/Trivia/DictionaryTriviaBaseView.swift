@@ -48,10 +48,12 @@ extension DictionaryTriviaBaseView {
     func loadWebSite(url: URL) {
         webView.load(URLRequest(url: url))
     }
+
     func startLoadingIindicator() {
         loadingIndicatorView.startAnimating()
         loadingIndicatorView.isHidden = false
     }
+
     func stopLoadingIndicator() {
         loadingIndicatorView.stopAnimating()
         loadingIndicatorView.isHidden = true

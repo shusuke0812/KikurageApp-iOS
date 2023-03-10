@@ -6,11 +6,11 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: DictionaryTwitterBaseView { self.view as! DictionaryTwitterBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DictionaryTwitterBaseView { view as! DictionaryTwitterBaseView } // swiftlint:disable:this force_cast
     private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: DictionaryTwitterViewModel!
 
@@ -47,8 +47,7 @@ extension DictionaryTwitterViewController {
 
 // MARK: - UITableViewDelegate
 
-extension DictionaryTwitterViewController: UITableViewDelegate {
-}
+extension DictionaryTwitterViewController: UITableViewDelegate {}
 
 // MARK: - DictionaryTwitterViewModelDelegate
 
@@ -60,6 +59,7 @@ extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
             self.baseView.tableView.reloadData()
         }
     }
+
     func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             self.baseView.stopLoadingIndicator()

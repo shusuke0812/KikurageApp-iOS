@@ -33,6 +33,7 @@ extension SignUpViewModel {
     private func setRegisterInfo() -> (email: String, password: String) {
         (email, password)
     }
+
     func initUserInfo() {
         email = ""
         password = ""
@@ -48,10 +49,10 @@ extension SignUpViewModel {
         let registerInfo = setRegisterInfo()
         signUpRepository.registerUser(registerInfo: registerInfo) { [weak self] response in
             switch response {
-            case .success(let loginUser):
+            case let .success(loginUser):
                 self?.loginUser = loginUser
                 self?.delegate?.signUpViewModelDidSuccessRegisterUser(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.signUpViewModelDidFailedRegisterUser(self!, with: error.description())
             }
         }

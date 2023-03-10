@@ -30,19 +30,20 @@ extension KikurageUserRepository {
     func getKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<KikurageUser, ClientError>) -> Void) {
         firestoreClient.getDocumentRequest(request) { result in
             switch result {
-            case .success(let kikurageUser):
+            case let .success(kikurageUser):
                 completion(.success(kikurageUser))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
     }
+
     func postKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<Void, ClientError>) -> Void) {
         firestoreClient.postDocumentRequest(request) { result in
             switch result {
             case .success():
                 completion(.success(()))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }

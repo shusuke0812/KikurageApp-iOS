@@ -50,6 +50,7 @@ extension PostRecipeBaseView {
     private func registerCameraCell() {
         cameraCollectionView.register(R.nib.cameraCell)
     }
+
     private func initUI() {
         backgroundColor = .systemGroupedBackground
         cameraCollectionView.backgroundColor = .systemGroupedBackground
@@ -64,6 +65,7 @@ extension PostRecipeBaseView {
         maxRecipeNameNumberLabel.text = "\(maxRecipeNameNumer)"
         maxRecipeMemoNumberLabel.text = "\(maxRecipeMemoNumber)"
     }
+
     private func initDatePicker() {
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
@@ -86,17 +88,21 @@ extension PostRecipeBaseView {
     func setCurrentRecipeNameNumber(text: String) {
         currentRecipeNameNumberLabel.text = "\(text.count)"
     }
+
     func setCurrentRecipeMemoNumber(text: String) {
         currentRecipeMemoNumberLabel.text = "\(text.count)"
     }
+
     func cofigCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         cameraCollectionView.delegate = delegate
         cameraCollectionView.dataSource = dataSource
     }
+
     func configTextField(delegate: UITextFieldDelegate) {
         recipeNameTextField.delegate = delegate
         dateTextField.delegate = delegate
     }
+
     func configTextView(delegate: UITextViewDelegate) {
         recipeMemoTextView.delegate = delegate
     }

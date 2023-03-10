@@ -9,7 +9,7 @@
 import UIKit
 
 class GraphViewController: UIViewController {
-    private var baseView: GraphBaseView { self.view as! GraphBaseView } // swiftlint:disable:this force_cast
+    private var baseView: GraphBaseView { view as! GraphBaseView } // swiftlint:disable:this force_cast
     private var viewModel: GraphViewModel!
 
     // MARK: - Lifecycle
@@ -35,19 +35,26 @@ extension GraphViewController {
     private func setDelegateDataSource() {
         viewModel.delegate = self
     }
+
     private func setNavigation() {
         let closeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeBarButtonItem]
         navigationItem.title = R.string.localizable.side_menu_graph_title()
     }
+
     private func loadKikurageUser() {
-        guard let userId = LoginHelper.shared.kikurageUserId else { return }
+        guard let userID = LoginHelper.shared.kikurageUserID else {
+            return
+        }
         baseView.startGraphActivityIndicators()
-        viewModel.loadKikurageUser(uid: userId)
+        viewModel.loadKikurageUser(uid: userID)
     }
+
     private func loadKikurageStateGraph() {
-        guard let kikurageUser = viewModel.kikurageUser else { return }
-        viewModel.loadKikurageStateGraph(productId: kikurageUser.productKey)
+        guard let kikurageUser = viewModel.kikurageUser else {
+            return
+        }
+        viewModel.loadKikurageStateGraph(productID: kikurageUser.productKey)
     }
 }
 
@@ -62,6 +69,7 @@ extension GraphViewController: GraphViewModelDelegate {
             self.baseView.setLineChartView(datas: graphViewModel.temperatureGraphDatas, graphDataType: .temperature)
         }
     }
+
     func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             self.baseView.stopGraphActivityIndicators()
@@ -69,9 +77,11 @@ extension GraphViewController: GraphViewModelDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
+
     func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel) {
         loadKikurageStateGraph()
     }
+
     func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)

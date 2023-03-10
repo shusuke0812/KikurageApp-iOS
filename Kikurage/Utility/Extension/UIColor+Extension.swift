@@ -13,14 +13,17 @@ extension UIColor {
     static var themeColor: UIColor {
         UIColor(named: "themeColor")! // swiftlint:disable:this force_unwrapping
     }
+
     /// サブカラー
     static var subColor: UIColor {
         UIColor(named: "subColor")! // swiftlint:disable:this force_unwrapping
     }
+
     /// お知らせカラー
     static var information: UIColor {
         UIColor(named: "informationColor")! // swiftlint:disable:this force_unwrapping
     }
+
     /// HEX（16進数）で色を設定する
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         let value = Int("000000" + hex, radix: 16) ?? 0

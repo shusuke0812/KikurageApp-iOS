@@ -38,7 +38,9 @@ class GraphViewModel {
 
 extension GraphViewModel {
     private func setTemperatureGraphData() {
-        guard let graphData = kikurageStateGraph.first?.data else { return }
+        guard let graphData = kikurageStateGraph.first?.data else {
+            return
+        }
         temperatureGraphDatas.append(graphData.mondayData?.temperature ?? 0)
         temperatureGraphDatas.append(graphData.tuesdayData?.temperature ?? 0)
         temperatureGraphDatas.append(graphData.wednesdayData?.temperature ?? 0)
@@ -47,8 +49,11 @@ extension GraphViewModel {
         temperatureGraphDatas.append(graphData.saturdayData?.temperature ?? 0)
         temperatureGraphDatas.append(graphData.sundayData?.temperature ?? 0)
     }
+
     private func setHumidityGraphData() {
-        guard let graphData = kikurageStateGraph.first?.data else { return }
+        guard let graphData = kikurageStateGraph.first?.data else {
+            return
+        }
         humidityGraphDatas.append(graphData.mondayData?.humidity ?? 0)
         humidityGraphDatas.append(graphData.tuesdayData?.humidity ?? 0)
         humidityGraphDatas.append(graphData.wednesdayData?.humidity ?? 0)
@@ -64,30 +69,31 @@ extension GraphViewModel {
 extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
-    func loadKikurageStateGraph(productId: String) {
-        let request = KiikurageStateGraphRequest(productId: productId)
+    func loadKikurageStateGraph(productID: String) {
+        let request = KiikurageStateGraphRequest(productID: productID)
         kikurageStateRepository.getKikurageStateGraph(request: request) { [weak self] response in
             switch response {
-            case .success(let graphs):
+            case let .success(graphs):
                 self?.kikurageStateGraph = graphs
                 self?.setTemperatureGraphData()
                 self?.setHumidityGraphData()
                 self?.delegate?.graphViewModelDidSuccessGetKikurageStateGraph(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.graphViewModelDidFailedGetKikurageStateGraph(self!, with: error.description())
             }
         }
     }
+
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     func loadKikurageUser(uid: String) {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
-            case .success(let kikurageUser):
+            case let .success(kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.graphViewModelDidSuccessGetKikurageUser(self!)
-            case .failure(let error):
+            case let .failure(error):
                 self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }

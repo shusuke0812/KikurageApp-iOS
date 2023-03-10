@@ -56,6 +56,7 @@ extension SignUpBaseView {
         emailTextField.delegate = delegate
         passwordTextField.delegate = delegate
     }
+
     func initTextFields() {
         emailTextField.text = ""
         passwordTextField.text = ""
