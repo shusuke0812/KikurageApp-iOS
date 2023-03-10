@@ -19,23 +19,24 @@ extension UIView {
 
         switch position {
         case .top:
-            boarder.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: width)
+            boarder.frame = CGRect(x: 0, y: 0, width: frame.width, height: width)
             boarder.backgroundColor = color.cgColor
-            self.layer.addSublayer(boarder)
+            layer.addSublayer(boarder)
         case .bottom:
-            boarder.frame = CGRect(x: 0, y: self.frame.height - width, width: self.frame.width, height: width)
+            boarder.frame = CGRect(x: 0, y: frame.height - width, width: frame.width, height: width)
             boarder.backgroundColor = color.cgColor
-            self.layer.addSublayer(boarder)
+            layer.addSublayer(boarder)
         case .trailing:
-            boarder.frame = CGRect(x: self.frame.width - width, y: 0, width: width, height: self.frame.height)
+            boarder.frame = CGRect(x: frame.width - width, y: 0, width: width, height: frame.height)
             boarder.backgroundColor = color.cgColor
-            self.layer.addSublayer(boarder)
+            layer.addSublayer(boarder)
         case .leading:
-            boarder.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.width)
+            boarder.frame = CGRect(x: 0, y: 0, width: width, height: frame.width)
             boarder.backgroundColor = color.cgColor
-            self.layer.addSublayer(boarder)
+            layer.addSublayer(boarder)
         }
     }
+
     enum BoarderPosition {
         case top
         case bottom

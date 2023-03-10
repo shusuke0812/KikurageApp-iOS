@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 class LoginHelper {
     static let shared = LoginHelper()
@@ -18,7 +18,7 @@ class LoginHelper {
     private init() {}
 
     /// 認証ユーザーID
-    var kikurageUserId: String? {
+    var kikurageUserID: String? {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
                 if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
@@ -30,6 +30,7 @@ class LoginHelper {
         }
         return nil
     }
+
     /// ログイン判定
     var isLogin: Bool {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
@@ -43,6 +44,7 @@ class LoginHelper {
         }
         return false
     }
+
     /// Firebaseユーザー情報を更新
     func userReload(completion: (() -> Void)? = nil) {
         Auth.auth().currentUser?.reload { [weak self] _ in
@@ -51,6 +53,7 @@ class LoginHelper {
             }
         }
     }
+
     /// Firebaeユーザーを取得
     func userListener(completion: (() -> Void)? = nil) {
         userListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
@@ -58,10 +61,12 @@ class LoginHelper {
             completion?()
         }
     }
+
     /// Firebaseユーザーリスナをデタッチ
     func userListenerDetach() {
-        Auth.auth().removeStateDidChangeListener(userListenerHandle!)  // swiftlint:disable:this force_unwrapping
+        Auth.auth().removeStateDidChangeListener(userListenerHandle!) // swiftlint:disable:this force_unwrapping
     }
+
     /// ユーザー情報を`UserDefaults`へ保存する
     /// - Parameter user: Firebase Auth ユーザー
     func setUserInUserDefaults(user: User) {
@@ -72,6 +77,7 @@ class LoginHelper {
             print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
+
     func logout(onError: (() -> Void)? = nil) {
         // FIXME: Auth.auth().signOutを追加
         let rootVC = UIApplication.shared.windows.first?.rootViewController

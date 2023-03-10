@@ -33,9 +33,11 @@ extension CultivationDetailViewModel: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sectionNumber
     }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         cultivation.imageStoragePaths.count
     }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCarouselCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         cell.setUI(cultivationImageStoragePath: cultivation.imageStoragePaths[indexPath.row])

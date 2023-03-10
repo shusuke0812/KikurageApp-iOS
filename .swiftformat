@@ -1,0 +1,96 @@
+# ref: https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md
+
+# ###### file options ######
+
+--exclude Pods,KikurageTests,KikurageUITests
+
+# ###### default rules ######
+
+--disable andOperator
+# --disable anyObjectProtocol
+# --disable assertionFailures
+# --disable blankLinesAroundMark
+# --disable blankLinesAtEndOfScope
+# --disable blankLinesAtStartOfScope
+# --disable blankLinesBetweenScopes
+# --disable braces
+--disable conditionalAssignment
+# --disable consecutiveBlankLines
+# --disable consecutiveSpaces
+# --disable duplicateImports
+# --disable elseOnSameLine
+# --disable emptyBraces
+--disable enumNamespaces
+--disable extensionAccessControl        # because of conflict to SwiftLint
+# --disable fileHeader
+--disable genericExtensions
+# --disable hoistAwait
+
+# --disable hoistPatternLet
+--patternlet "inline"
+
+# --disable hoistTry
+# --disable indent
+--disable initCoderUnavailable
+# --disable leadingDelimiters
+# --disable linebreakAtEndOfFile
+# --disable linebreaks
+# --disable modifierOrder
+# --disable numberFormatting  再検討
+--disable opaqueGenericParameters
+--disable preferKeyPath
+# --disable redundantBackticks
+# --disable redundantBreak
+# --disable redundantClosure
+--disable redundantExtensionACL         # because of conflict to SwiftLint
+# --disable redundantFileprivate
+# --disable redundantGet
+# --disable redundantInit
+# --disable redundantLet
+# --disable redundantLetError
+# --disable redundantNilInit
+# --disable redundantObjc
+# --disable redundantOptionalBinding
+# --disable redundantParens
+# --disable redundantPattern
+# --disable redundantRawValues
+# --disable redundantReturn
+# --disable redundantSelf
+# --disable redundantType
+# --disable redundantVoidReturnType
+# --disable semicolons
+--disable sortDeclarations              # becase of aligning with API response
+# --disable sortedImports
+# --disable spaceAroundBraces
+# --disable spaceAroundBrackets
+# --disable spaceAroundComments
+# --disable spaceAroundGenerics
+# --disable spaceAroundOperators
+# --disable spaceAroundParens
+# --disable spaceInsideBraces
+# --disable spaceInsideBrackets
+# --disable spaceInsideComments
+# --disable spaceInsideGenerics
+# --disable spaceInsideParens
+--disable strongOutlets                 # based on Xcode default
+# --disable strongifiedSelf
+# --disable todos
+--disable trailingClosures              # use SwiftLint auto correct
+--disable trailingCommas                # use SwiftLint auto correct
+# --disable trailingSpace
+# --disable typeSugar
+--disable unusedArguments               # based on Xcode default
+# --disable void
+--disable wrap
+# --diable wrapArguments
+--disable wrapAttributes                # based on Xcode default
+--disable wrapMultilineStatementBraces
+--disable wrapSingleLineComments
+# --disable yodaConditions
+
+
+# ###### opt-in rules ######
+
+--enable acronyms
+--enable blankLineAfterImports
+--enable wrapConditionalBodies

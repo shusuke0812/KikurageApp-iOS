@@ -6,8 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 protocol FirestoreRequestProtocol {
     associatedtype Response: Codable

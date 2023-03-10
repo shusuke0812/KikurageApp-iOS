@@ -6,11 +6,11 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
 import CropViewController
+import UIKit
 
 class SettingViewController: UIViewController {
-    private var baseView: SettingBaseView { self.view as! SettingBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: SettingBaseView { view as! SettingBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: SettingViewModel!
 
     // MARK: - Lifecycle
@@ -21,8 +21,8 @@ class SettingViewController: UIViewController {
         setDelegateDataSource()
         setNavigation()
 
-        if let userId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadKikurageUser(uid: userId)
+        if let userID = LoginHelper.shared.kikurageUserID {
+            viewModel.loadKikurageUser(uid: userID)
         }
     }
 
@@ -40,6 +40,7 @@ extension SettingViewController {
         baseView.delegate = self
         viewModel.delegate = self
     }
+
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -53,6 +54,7 @@ extension SettingViewController: SettingBaseViewDelegate {
     func settingBaseViewDidTappedUserImageView(_ settingBaseView: SettingBaseView) {
         // FIXME: 写真アプリから写真を選んで円形にトリミング（CropViewController）してViewModelにあるKikurageUserを更新する
     }
+
     func settingBaseViewDidTappedEditButton(_ settingBaseView: SettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
     }
@@ -66,6 +68,7 @@ extension SettingViewController: SettingViewModelDelegate {
             self.baseView.setKikurageName(name: settingViewModel.kikurageUser?.kikurageName)
         }
     }
+
     func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: SettingViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             self.baseView.setKikurageName(name: nil)

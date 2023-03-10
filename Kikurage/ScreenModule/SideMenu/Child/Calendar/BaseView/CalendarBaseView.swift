@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import HorizonCalendar
+import UIKit
 
 class CalendarBaseView: UIView {
     @IBOutlet private weak var contentView: UIView!
@@ -24,6 +24,7 @@ extension CalendarBaseView {
     private func initUI() {
         contentView.backgroundColor = .systemGroupedBackground
     }
+
     private func initCalendarView(_ cultivationStartDateComponents: DateComponents, _ cultivationTerm: Int) {
         // Calendar
         let calendarParentView = UIView()
@@ -78,6 +79,7 @@ extension CalendarBaseView {
             dateParentView.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
+
     private func makeContent(_ cultivationStartDateComponents: DateComponents) -> CalendarViewContent {
         let calendar = Calendar.current
         let nowDateComponents = DateHelper.getDateComponents()
@@ -86,7 +88,7 @@ extension CalendarBaseView {
 
         return CalendarViewContent(
             calendar: calendar,
-            visibleDateRange: startDate...endDate,
+            visibleDateRange: startDate ... endDate,
             monthsLayout: .horizontal(options: HorizontalMonthsLayoutOptions())
         )
     }

@@ -16,7 +16,7 @@ struct KikurageStateHelper {
     static func setStateImage(type: KikurageStateType) -> [UIImage] {
         var kikurageStateImages: [UIImage] = []
         let beforeImage = UIImage(named: "\(type.rawValue)_01")! // swiftlint:disable:this force_unwrapping
-        let afterImage = UIImage(named: "\(type.rawValue)_02")!  // swiftlint:disable:this force_unwrapping
+        let afterImage = UIImage(named: "\(type.rawValue)_02")! // swiftlint:disable:this force_unwrapping
 
         kikurageStateImages.append(beforeImage)
         kikurageStateImages.append(afterImage)

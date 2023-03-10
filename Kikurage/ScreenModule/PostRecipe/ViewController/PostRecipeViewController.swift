@@ -6,11 +6,11 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import PKHUD
+import UIKit
 
 class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: PostRecipeBaseView { self.view as! PostRecipeBaseView } // swiftlint:disable:this force_cast
+    private var baseView: PostRecipeBaseView { view as! PostRecipeBaseView } // swiftlint:disable:this force_cast
     private var viewModel: PostRecipeViewModel!
     private var cameraCollectionViewModel: CameraCollectionViewModel!
 
@@ -41,6 +41,7 @@ extension PostRecipeViewController {
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }
+
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -54,11 +55,12 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView) {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             HUD.show(.progress)
-            if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-                self.viewModel.postRecipe(kikurageUserId: kikurageUserId)
+            if let kikurageUserID = LoginHelper.shared.kikurageUserID {
+                self.viewModel.postRecipe(kikurageUserID: kikurageUserID)
             }
         }
     }
+
     func postRecipeBaseViewDidTappedCloseButton(_ postRecipeBaseView: PostRecipeBaseView) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -76,10 +78,14 @@ extension PostRecipeViewController: UITextFieldDelegate {
         }
         return true
     }
+
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
+        guard let text = textField.text else {
+            return
+        }
         baseView.setCurrentRecipeNameNumber(text: text)
     }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case baseView.dateTextField:
@@ -90,13 +96,17 @@ extension PostRecipeViewController: UITextFieldDelegate {
             break
         }
     }
+
     private func setRecipeDateTextFieldData() {
         let dateString = DateHelper.formatToString(date: baseView.datePicker.date)
         baseView.dateTextField.text = dateString
         viewModel.recipe.cookDate = dateString
     }
+
     private func setRecipeNameTextFieldData() {
-        guard let recipeName = baseView.recipeNameTextField.text else { return }
+        guard let recipeName = baseView.recipeNameTextField.text else {
+            return
+        }
         viewModel.recipe.name = recipeName
     }
 }
@@ -111,8 +121,11 @@ extension PostRecipeViewController: UITextViewDelegate {
         }
         return resultText.count <= baseView.maxRecipeMemoNumber
     }
+
     func textViewDidChange(_ textView: UITextView) {
-        guard let text = textView.text else { return }
+        guard let text = textView.text else {
+            return
+        }
         baseView.recipeMemoTextView.switchPlaceholderDisplay(text: text)
         viewModel.recipe.memo = text
         baseView.setCurrentRecipeMemoNumber(text: text)
@@ -141,13 +154,18 @@ extension PostRecipeViewController: UICollectionViewDelegate {
 
 extension PostRecipeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
         picker.dismiss(animated: true) { [weak self] in
             self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
             self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
         }
     }
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
@@ -160,16 +178,18 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         // 選択した画像のみData型に変換する
         let postIamgeData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.3).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            postRecipeViewModel.postRecipeImages(kikurageUserId: kikurageUserId, imageData: postIamgeData)
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
+            postRecipeViewModel.postRecipeImages(kikurageUserID: kikurageUserID, imageData: postIamgeData)
         }
     }
+
     func postRecipeViewModelDidFailedPostRecipe(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
+
     func postRecipeViewModelDidSuccessPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
@@ -179,6 +199,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
             }
         }
     }
+
     func postRecipeViewModelDidFailedPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()

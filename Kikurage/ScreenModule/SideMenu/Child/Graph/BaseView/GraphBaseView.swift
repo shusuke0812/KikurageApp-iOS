@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import Charts
+import UIKit
 
 enum GraphDataType {
     case temperature
@@ -84,6 +84,7 @@ extension GraphBaseView {
             humidityLineChartView.xAxis.valueFormatter = chartViewHelper
         }
     }
+
     func startGraphActivityIndicators() {
         temperatureActivityIndicator.isHidden = false
         humidityActivityIndicator.isHidden = false
@@ -91,6 +92,7 @@ extension GraphBaseView {
         temperatureActivityIndicator.startAnimating()
         humidityActivityIndicator.startAnimating()
     }
+
     func stopGraphActivityIndicators() {
         temperatureActivityIndicator.isHidden = true
         humidityActivityIndicator.isHidden = true

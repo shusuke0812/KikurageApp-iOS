@@ -33,6 +33,7 @@ extension SignUpViewModel {
     private func setRegisterInfo() -> (email: String, password: String) {
         (email, password)
     }
+
     func initUserInfo() {
         email = ""
         password = ""

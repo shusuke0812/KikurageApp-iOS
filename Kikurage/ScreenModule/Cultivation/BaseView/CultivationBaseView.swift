@@ -28,6 +28,7 @@ extension CultivationBaseView {
     private func initUI() {
         collectionView.backgroundColor = .systemGroupedBackground
     }
+
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
         flowLayout.minimumLineSpacing = .cellSpacing * 2

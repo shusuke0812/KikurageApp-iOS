@@ -9,7 +9,7 @@
 import UIKit
 
 class DebugViewController: UIViewController {
-    private var baseView: DebugBaseView { self.view as! DebugBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: DebugBaseView { view as! DebugBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: DebugViewModel!
 
     override func viewDidLoad() {

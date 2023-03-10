@@ -42,6 +42,7 @@ extension LoginViewModel {
     private func setLoginInfo() -> (email: String, password: String) {
         (email, password)
     }
+
     func initLoginInfo() {
         email = ""
         password = ""
@@ -72,7 +73,7 @@ extension LoginViewModel {
     /// きくらげユーザーを読み込む
     private func loadKikurageUser() {
         let request = KikurageUserRequest(uid: (loginUser?.uid)!)
-        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in   // swiftlint:disable:this force_unwrapping
+        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in // swiftlint:disable:this force_unwrapping
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
@@ -82,10 +83,11 @@ extension LoginViewModel {
             }
         }
     }
+
     /// きくらげの状態を読み込む
     private func loadKikurageState() {
-        let productId = (kikurageUser?.productKey)!    // swiftlint:disable:this force_unwrapping
-        let request = KikurageStateRequest(productId: productId)
+        let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
+        let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageState):
