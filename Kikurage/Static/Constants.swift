@@ -42,13 +42,20 @@ enum Constants {
 
         var localizedString: String {
             switch self {
-            case .monday: return R.string.localizable.common_week_monday()
-            case .tuesday: return R.string.localizable.common_week_tuesday()
-            case .wednesday: return R.string.localizable.common_week_wednesday()
-            case .thursday: return R.string.localizable.common_week_thursday()
-            case .friday: return R.string.localizable.common_week_friday()
-            case .saturday: return R.string.localizable.common_week_saturday()
-            case .sunday: return R.string.localizable.common_week_sunday()
+            case .monday:
+                return R.string.localizable.common_week_monday()
+            case .tuesday:
+                return R.string.localizable.common_week_tuesday()
+            case .wednesday:
+                return R.string.localizable.common_week_wednesday()
+            case .thursday:
+                return R.string.localizable.common_week_thursday()
+            case .friday:
+                return R.string.localizable.common_week_friday()
+            case .saturday:
+                return R.string.localizable.common_week_saturday()
+            case .sunday:
+                return R.string.localizable.common_week_sunday()
             }
         }
     }
@@ -75,9 +82,12 @@ enum Constants {
 
         var rawValue: RawValue {
             switch self {
-            case .cultivation: return UIColor(hex: "4A90E2")
-            case .recipe: return UIColor(hex: "F5A623")
-            case .communication: return UIColor(hex: "7ED321")
+            case .cultivation:
+                return UIColor(hex: "4A90E2")
+            case .recipe:
+                return UIColor(hex: "F5A623")
+            case .communication:
+                return UIColor(hex: "7ED321")
             }
         }
     }

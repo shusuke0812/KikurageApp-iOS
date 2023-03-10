@@ -17,10 +17,14 @@ class SideMenuViewModel: NSObject {
 
         var rows: [SectionRowType] {
             switch self {
-            case .history: return [.calendar, .graph]
-            case .support: return [.contact, .setting, .license]
-            case .help: return [.searchRecipe, .kikurageDictionary]
-            case .debug: return [.debugTry]
+            case .history:
+                return [.calendar, .graph]
+            case .support:
+                return [.contact, .setting, .license]
+            case .help:
+                return [.searchRecipe, .kikurageDictionary]
+            case .debug:
+                return [.debugTry]
             }
         }
     }

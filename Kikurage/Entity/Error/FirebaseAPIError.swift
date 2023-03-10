@@ -21,12 +21,18 @@ enum FirebaseAPIError: Error {
 
     func description() -> String {
         switch self {
-        case .createError: return R.string.localizable.error_firebase_create()
-        case .readError: return R.string.localizable.error_firebase_read()
-        case .deleteError: return R.string.localizable.error_firebase_delete()
-        case .updateError: return R.string.localizable.error_firebase_update()
-        case .documentIDError: return R.string.localizable.error_firebase_document_id()
-        case .loadUserError: return R.string.localizable.error_firebase_load_user()
+        case .createError:
+            return R.string.localizable.error_firebase_create()
+        case .readError:
+            return R.string.localizable.error_firebase_read()
+        case .deleteError:
+            return R.string.localizable.error_firebase_delete()
+        case .updateError:
+            return R.string.localizable.error_firebase_update()
+        case .documentIDError:
+            return R.string.localizable.error_firebase_document_id()
+        case .loadUserError:
+            return R.string.localizable.error_firebase_load_user()
         }
     }
 }
