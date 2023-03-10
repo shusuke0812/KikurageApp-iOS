@@ -29,10 +29,10 @@ extension CommunicationViewModel {
     func loadFacebookGroupURL() {
         firebaseRemoteCofigRepository.fetch(key: .facebookGroupURL) { [weak self] response in
             switch response {
-            case let .success(urlString):
+            case .success(let urlString):
                 self?.faceboolGroupURL = urlString
                 self?.delegate?.didSuccessGetFacebookGroupURL()
-            case let .failure(error):
+            case .failure(let error):
                 Logger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
                 self?.delegate?.didFailedGetFacebookGroupURL()
             }

@@ -32,10 +32,10 @@ extension SettingViewModel {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
-            case let .success(kikurageUser):
+            case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.settingViewModelDidSuccessGetKikurageUser(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }

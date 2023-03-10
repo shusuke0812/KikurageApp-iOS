@@ -51,10 +51,10 @@ extension PostCultivationViewModel {
         request.body = request.buildBody(from: cultivation)
         cultivationRepository.postCultivation(request: request) { [weak self] response in
             switch response {
-            case let .success(documentReference):
+            case .success(let documentReference):
                 self?.postedCultivationDocumentID = documentReference.documentID
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivation(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
             }
         }
@@ -68,7 +68,7 @@ extension PostCultivationViewModel {
             case .success():
                 self?.cultivation.imageStoragePaths = imageStorageFullPaths
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivationImages(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
             }
         }
@@ -86,9 +86,9 @@ extension PostCultivationViewModel {
         let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserID)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
-            case let .success(imageStorageFullPaths):
+            case .success(let imageStorageFullPaths):
                 self?.putCultivationImages(kikurageUserID: kikurageUserID, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivationImages(self!, with: error.description())
             }
         }

@@ -31,10 +31,10 @@ extension DictionaryTwitterViewModel {
         let twitterSearchRequest = TwitterSearchRequest(searchWord: "きくらげ", searchCount: 10, maxID: nil, sinceID: nil)
         twitterSearchRepository.getTweets(request: twitterSearchRequest) { [weak self] response in
             switch response {
-            case let .success(tweet):
+            case .success(let tweet):
                 self?.tweets.append(contentsOf: tweet.statuses)
                 self?.delegate?.dictionaryTwitterViewModelDidSuccessGetTweets(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.dictionaryTwitterViewModelDidFailedGetTweets(self!, with: error.description())
             }
         }

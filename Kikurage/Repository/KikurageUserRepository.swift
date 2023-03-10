@@ -30,9 +30,9 @@ extension KikurageUserRepository {
     func getKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<KikurageUser, ClientError>) -> Void) {
         firestoreClient.getDocumentRequest(request) { result in
             switch result {
-            case let .success(kikurageUser):
+            case .success(let kikurageUser):
                 completion(.success(kikurageUser))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -43,7 +43,7 @@ extension KikurageUserRepository {
             switch result {
             case .success():
                 completion(.success(()))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }

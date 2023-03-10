@@ -49,10 +49,10 @@ extension SignUpViewModel {
         let registerInfo = setRegisterInfo()
         signUpRepository.registerUser(registerInfo: registerInfo) { [weak self] response in
             switch response {
-            case let .success(loginUser):
+            case .success(let loginUser):
                 self?.loginUser = loginUser
                 self?.delegate?.signUpViewModelDidSuccessRegisterUser(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.signUpViewModelDidFailedRegisterUser(self!, with: error.description())
             }
         }

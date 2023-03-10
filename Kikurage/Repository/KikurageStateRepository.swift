@@ -34,9 +34,9 @@ extension KikurageStateRepository {
     func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
         firestoreClient.getDocumentRequest(request) { result in
             switch result {
-            case let .success(kikurageState):
+            case .success(let kikurageState):
                 completion(.success(kikurageState))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -49,9 +49,9 @@ extension KikurageStateRepository {
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
-            case let .success(kikurageStateGraph):
+            case .success(let kikurageStateGraph):
                 completion(.success(kikurageStateGraph))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }

@@ -25,7 +25,10 @@
 # --disable fileHeader
 --disable genericExtensions
 # --disable hoistAwait
+
 # --disable hoistPatternLet
+--patternlet "inline"
+
 # --disable hoistTry
 # --disable indent
 --disable initCoderUnavailable

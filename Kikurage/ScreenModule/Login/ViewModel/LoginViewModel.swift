@@ -57,10 +57,10 @@ extension LoginViewModel {
         let loginInfo = setLoginInfo()
         loginRepository.login(loginInfo: loginInfo) { [weak self] response in
             switch response {
-            case let .success(loginUser):
+            case .success(let loginUser):
                 self?.loginUser = loginUser
                 self?.loadKikurageUser()
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
@@ -75,10 +75,10 @@ extension LoginViewModel {
         let request = KikurageUserRequest(uid: (loginUser?.uid)!)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in // swiftlint:disable:this force_unwrapping
             switch response {
-            case let .success(kikurageUser):
+            case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.loadKikurageState()
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }
@@ -90,10 +90,10 @@ extension LoginViewModel {
         let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
-            case let .success(kikurageState):
+            case .success(let kikurageState):
                 self?.kikurageState = kikurageState
                 self?.delegate?.loginViewModelDidSuccessLogin(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
             }
         }

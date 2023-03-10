@@ -61,10 +61,10 @@ extension DeviceRegisterViewModel {
         let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
             switch response {
-            case let .success(kikurageState):
+            case .success(let kikurageState):
                 self?.kikurageState = kikurageState
                 self?.delegate?.deviceRegisterViewModelDidSuccessGetKikurageState(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.deviceRegisterViewModelDidFailedGetKikurageState(self!, with: error.description())
             }
         }
@@ -87,7 +87,7 @@ extension DeviceRegisterViewModel {
             case .success():
                 self?.delegate?.deviceRegisterViewModelDidSuccessPostKikurageUser(self!)
                 self?.kikurageUser = kikurageUser
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self!, with: error.description())
             }
         }

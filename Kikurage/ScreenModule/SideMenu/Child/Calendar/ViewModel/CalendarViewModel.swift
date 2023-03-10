@@ -58,12 +58,12 @@ extension CalendarViewModel {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
-            case let .success(kikurageUser):
+            case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.saveDateComponents()
                 self?.calcCultivationTerm()
                 self?.delegate?.calendarViewModelDidSuccessGetKikurageUser(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.calendarViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }

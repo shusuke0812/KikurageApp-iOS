@@ -50,9 +50,9 @@ extension RecipeRepository {
     func postRecipe(request: KikurageRecipeRequest, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
         firestoreClient.postDocumentWithGetReferenceReques(request) { result in
             switch result {
-            case let .success(documentReference):
+            case .success(let documentReference):
                 completion(.success(documentReference))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -88,7 +88,7 @@ extension RecipeRepository {
             switch result {
             case .success():
                 completion(.success(()))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -115,9 +115,9 @@ extension RecipeRepository {
     func getRecipes(request: KikurageRecipeRequest, completion: @escaping (Result<[KikurageRecipeTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
-            case let .success(recipes):
+            case .success(let recipes):
                 completion(.success(recipes))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }

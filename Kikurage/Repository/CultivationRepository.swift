@@ -50,9 +50,9 @@ extension CultivationRepository {
     func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
         firestoreClient.postDocumentWithGetReferenceReques(request) { result in
             switch result {
-            case let .success(documentReference):
+            case .success(let documentReference):
                 completion(.success(documentReference))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -88,7 +88,7 @@ extension CultivationRepository {
             switch result {
             case .success():
                 completion(.success(()))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
@@ -115,9 +115,9 @@ extension CultivationRepository {
     func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
-            case let .success(cultivations):
+            case .success(let cultivations):
                 completion(.success(cultivations))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }

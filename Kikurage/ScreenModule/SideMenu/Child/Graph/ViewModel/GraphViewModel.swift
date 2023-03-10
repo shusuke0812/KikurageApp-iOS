@@ -73,12 +73,12 @@ extension GraphViewModel {
         let request = KiikurageStateGraphRequest(productID: productID)
         kikurageStateRepository.getKikurageStateGraph(request: request) { [weak self] response in
             switch response {
-            case let .success(graphs):
+            case .success(let graphs):
                 self?.kikurageStateGraph = graphs
                 self?.setTemperatureGraphData()
                 self?.setHumidityGraphData()
                 self?.delegate?.graphViewModelDidSuccessGetKikurageStateGraph(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.graphViewModelDidFailedGetKikurageStateGraph(self!, with: error.description())
             }
         }
@@ -90,10 +90,10 @@ extension GraphViewModel {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
-            case let .success(kikurageUser):
+            case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.graphViewModelDidSuccessGetKikurageUser(self!)
-            case let .failure(error):
+            case .failure(let error):
                 self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
