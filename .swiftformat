@@ -73,6 +73,7 @@
 # --disable strongifiedSelf
 # --disable todos
 --disable trailingClosures              # use SwiftLint auto correct
+--disable trailingCommas                # use SwiftLint auto correct
 # --disable trailingSpace
 # --disable typeSugar
 --disable unusedArguments               # based on Xcode default
