@@ -23,6 +23,9 @@ public class KikurageBluetoothManager: NSObject {
     private var writeCharacteristic: CBCharacteristic?
     private var notifyCharacteristic: CBCharacteristic?
 
+    private let serviceUUID = CBUUID(string: KikurageBluetoothUUID.Service.debugM5Stack)
+    private let characteristicUUID = CBUUID(string: KikurageBluetoothUUID.Characteristic.debugM5Stack9AxisX)
+
     public static let shared = KikurageBluetoothManager()
     public weak var delegate: KikurageBluetoothMangerDelegate?
 
@@ -47,11 +50,11 @@ public class KikurageBluetoothManager: NSObject {
 
     private func peripheralDiscoverServices() {
         connectToPeripheral.delegate = self
-        connectToPeripheral.discoverServices(nil) // TODO: setting original service ID
+        connectToPeripheral.discoverServices([serviceUUID])
     }
 
     private func peripheralDiscoverCharacteristics(service: CBService) {
-        connectToPeripheral.discoverCharacteristics(nil, for: service) // TODO: setting original characteristic ID
+        connectToPeripheral.discoverCharacteristics([characteristicUUID], for: service)
     }
 }
 
@@ -118,14 +121,10 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
         }
         if let characteristics = service.characteristics {
             characteristics.forEach { characteristic in
-                switch characteristic.properties {
-                case .write:
-                    writeCharacteristic = characteristic
-                case .notify:
-                    notifyCharacteristic = characteristic
-                default:
-                    break
+                guard characteristic.uuid == characteristicUUID else {
+                    return
                 }
+                connectToPeripheral.setNotifyValue(true, for: characteristic)
             }
         }
     }
