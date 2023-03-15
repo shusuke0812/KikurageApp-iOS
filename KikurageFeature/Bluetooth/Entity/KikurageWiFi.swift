@@ -37,11 +37,6 @@ public struct KikurageWiFi: Decodable {
     public func isLastCount() -> Bool {
         totalCount == count
     }
-
-    // for cleaned list of tableView
-    public func isFastCount() -> Bool {
-        count == 1
-    }
 }
 
 public struct KikurageWiFiList {
@@ -49,6 +44,13 @@ public struct KikurageWiFiList {
 
     public init() {
         self.list = []
+    }
+
+    public mutating func addElement(wifi: KikurageWiFi) {
+        if let _ = list.first(where: { $0.ssid == wifi.ssid }) {
+            return
+        }
+        list.append(wifi)
     }
 
     public func getWiFiTitle(indexPath: IndexPath) -> String {
