@@ -20,6 +20,8 @@ class WiFiListViewController: UIViewController {
         super.viewDidLoad()
         setupProtocols()
         setupNavigation()
+
+        viewModel.delegate = self
     }
 
     private func setupNavigation() {
@@ -35,5 +37,15 @@ class WiFiListViewController: UIViewController {
 
 extension WiFiListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+// MARK: - WiFiListViewModelDelegate
+
+extension WiFiListViewController: WiFiListViewModelDelegate {
+    func viewModelUpdateWiFiList(_ wifiListViewModel: WiFiListViewModel) {
+        DispatchQueue.main.async {
+            self.baseView.tableView.reloadData()
+        }
     }
 }
