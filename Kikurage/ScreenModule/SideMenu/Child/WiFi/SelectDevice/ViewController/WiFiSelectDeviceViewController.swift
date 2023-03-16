@@ -60,9 +60,9 @@ extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
         }
     }
 
-    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
+    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral) {
         DispatchQueue.main.async {
-            self.pushToWiFiList()
+            self.pushToWiFiList(bluetoothPeriperal: peripheral)
         }
     }
 }

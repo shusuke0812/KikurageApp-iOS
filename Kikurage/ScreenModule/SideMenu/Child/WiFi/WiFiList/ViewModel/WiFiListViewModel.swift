@@ -18,11 +18,13 @@ class WiFiListViewModel: NSObject {
     private let sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
+    private let bluetoothPeripheral: KikurageBluetoothPeripheral
     private var wifiList = KikurageWiFiList()
 
     weak var delegate: WiFiListViewModelDelegate?
 
-    override init() {
+    init(bluetoothPeripheral: KikurageBluetoothPeripheral) {
+        self.bluetoothPeripheral = bluetoothPeripheral
         super.init()
         bluetoothManager.delegate = self
     }
@@ -54,6 +56,7 @@ extension WiFiListViewModel: UITableViewDataSource {
         case .spec:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListSpecTableViewCell", for: indexPath) as! WiFiListSpecTableViewCell  // swiftlint:disable:this force_cast
             cell.updateComponent(title: section.rows[indexPath.row].title)
+            cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: bluetoothPeripheral))
             return cell
         case .enterWifi:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell  // swiftlint:disable:this force_cast

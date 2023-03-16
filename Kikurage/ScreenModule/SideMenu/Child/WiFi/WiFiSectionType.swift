@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KikurageFeature
 
 enum WiFiSelectDeviceSectionType {
     case device
@@ -62,6 +63,20 @@ enum WiFiListSectionType {
                 return R.string.localizable.side_menu_wifi_spec_section_rssi_row_title()
             case .enterWifi:
                 return R.string.localizable.side_menu_wifi_spec_section_wifi_enter_row_title()
+            }
+        }
+
+        func getSpecTitle(bluetoothPeripheral: KikurageBluetoothPeripheral) -> String {
+            switch self {
+            case .deviceName:
+                return bluetoothPeripheral.deviceName
+            case .deviceId:
+                let idString = String(bluetoothPeripheral.uuid.uuidString.prefix(14)) + "****"
+                return idString
+            case .rssi:
+                return "\(bluetoothPeripheral.rssi)"
+            case .enterWifi:
+                return ""
             }
         }
     }

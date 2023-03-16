@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class WiFiListViewController: UIViewController {
     private let baseView = WiFiListBaseView()
-    private let viewModel = WiFiListViewModel()
+    private let viewModel: WiFiListViewModel
+
+    init(bluetoothPeriperal: KikurageBluetoothPeripheral) {
+        self.viewModel = WiFiListViewModel(bluetoothPeripheral: bluetoothPeriperal)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        nil
+    }
 
     override func loadView() {
         view = baseView

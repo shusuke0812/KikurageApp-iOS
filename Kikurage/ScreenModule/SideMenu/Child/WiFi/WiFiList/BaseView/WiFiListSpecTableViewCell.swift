@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KikurageFeature
 
 class WiFiListSpecTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
@@ -51,5 +52,9 @@ class WiFiListSpecTableViewCell: UITableViewCell {
 
     func updateComponent(title: String) {
         titleLabel.text = title
+    }
+
+    func updateComponent(stateTitle: String) {
+        stateLabel.text = stateTitle
     }
 }

@@ -12,7 +12,7 @@ import KikurageFeature
 
 protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
-    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
+    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral)
 }
 
 class  WiFiSelectDeviceViewModel: NSObject {
@@ -20,6 +20,7 @@ class  WiFiSelectDeviceViewModel: NSObject {
 
     private let bluetoothManager = KikurageBluetoothManager.shared
     private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
+    private var selectedIndexPath: IndexPath?
 
     weak var delegate: WiFiSelectDeviceViewModelDelegate?
 
@@ -35,6 +36,7 @@ class  WiFiSelectDeviceViewModel: NSObject {
     func connectToPeripheral(indexPath: IndexPath) {
         let peripheral = bluetoothPeripherals.getElement(indexPath: indexPath).peripheral
         bluetoothManager.connectPeripheral(peripheral)
+        selectedIndexPath = indexPath
     }
 }
 
@@ -79,7 +81,9 @@ extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor connectionState: KikurageBluetoothConnectionState) {
         switch connectionState {
         case .connect:
-            delegate?.viewModelDisSuccessConnectionToPeripheral(self)
+            if let selectedIndexPath = selectedIndexPath {
+                delegate?.viewModelDisSuccessConnectionToPeripheral(self, peripheral: bluetoothPeripherals.getElement(indexPath: selectedIndexPath))
+            }
         case .disconnect(_):
             break
         case .fail(_):
