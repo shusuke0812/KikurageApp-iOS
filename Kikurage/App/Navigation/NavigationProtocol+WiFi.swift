@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 protocol WiFiAccessable: PushNavigationProtocol {
     func pushToWiFiList(bluetoothPeriperal: KikurageBluetoothPeripheral)
@@ -20,8 +20,8 @@ extension WiFiAccessable {
         let vc = WiFiListViewController(bluetoothPeriperal: bluetoothPeriperal)
         push(to: vc)
     }
-    func pushToWiFiSetting() {
-    }
-    func pushToWiFiSettingSuccess() {
-    }
+
+    func pushToWiFiSetting() {}
+
+    func pushToWiFiSettingSuccess() {}
 }

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit.UITableView
 import KikurageFeature
+import UIKit.UITableView
 
 protocol WiFiListViewModelDelegate: AnyObject {
     func viewModelUpdateWiFiList(_ wifiListViewModel: WiFiListViewModel)
@@ -54,16 +54,16 @@ extension WiFiListViewModel: UITableViewDataSource {
         let section = sections[indexPath.section]
         switch section {
         case .spec:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListSpecTableViewCell", for: indexPath) as! WiFiListSpecTableViewCell  // swiftlint:disable:this force_cast
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListSpecTableViewCell", for: indexPath) as! WiFiListSpecTableViewCell // swiftlint:disable:this force_cast
             cell.updateComponent(title: section.rows[indexPath.row].title)
             cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: bluetoothPeripheral))
             return cell
         case .enterWifi:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell  // swiftlint:disable:this force_cast
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
             cell.updateComponent(title: section.rows[indexPath.row].title)
             return cell
         case .selectWifi:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell  // swiftlint:disable:this force_cast
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
             cell.updateComponent(title: wifiList.getWiFiTitle(indexPath: indexPath))
             return cell
         }
@@ -73,8 +73,7 @@ extension WiFiListViewModel: UITableViewDataSource {
 // MARK: - KikurageBluetoothMangerDelegate
 
 extension WiFiListViewModel: KikurageBluetoothMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {
-    }
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
         guard let wifi = KikurageBluetoothDecoder.decodeWiFi(message) else {
@@ -87,9 +86,7 @@ extension WiFiListViewModel: KikurageBluetoothMangerDelegate {
         }
     }
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didDiscover peripheral: KikurageFeature.KikurageBluetoothPeripheral) {
-    }
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didDiscover peripheral: KikurageFeature.KikurageBluetoothPeripheral) {}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor connectionState: KikurageFeature.KikurageBluetoothConnectionState) {
-    }
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor connectionState: KikurageFeature.KikurageBluetoothConnectionState) {}
 }

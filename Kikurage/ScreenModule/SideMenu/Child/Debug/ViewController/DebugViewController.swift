@@ -6,11 +6,11 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 class DebugViewController: UIViewController {
-    private var baseView: DebugBaseView { self.view as! DebugBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: DebugBaseView { view as! DebugBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: DebugViewModel!
 
     private let konashi = KonashiBluetooth()
@@ -47,6 +47,7 @@ extension DebugViewController: DebugBaseViewDelegate {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView) {
         LoginHelper.shared.logout()
     }
+
     func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView) {
         konashi.find()
         konashi.readRSSI()
@@ -62,11 +63,13 @@ extension DebugViewController: KonashiBluetoothDelegate {
             self.baseView.setRSSILabel(rssiString)
         }
     }
+
     func konashiBluetoothDisconnected(_ konashiBluetooth: KonashiBluetooth) {
         DispatchQueue.main.async {
             self.baseView.setRSSILabel("disconnected")
         }
     }
+
     func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth, message: String) {
         DispatchQueue.main.async {
             self.baseView.setPIOLabel(message)

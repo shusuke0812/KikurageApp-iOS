@@ -14,14 +14,14 @@ class AppConfig {
     private init() {}
 
     // Open URL
-    var facebookGroupUrl: String?
-    var termsUrl: String?
-    var privacyPolicyUrl: String?
+    var facebookGroupURL: String?
+    var termsURL: String?
+    var privacyPolicyURL: String?
 
     // Screen header
     var navigationBarHeight: CGFloat?
     var safeAreaHeight: CGFloat?
-    
+
     // iOS latest version
     var latestAppVersion: AppVersion?
 }

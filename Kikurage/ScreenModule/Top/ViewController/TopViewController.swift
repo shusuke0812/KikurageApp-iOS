@@ -34,12 +34,12 @@ extension TopViewController {
 
 extension TopViewController: TopBaseViewDelegate {
     func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
-        let urlString = AppConfig.shared.termsUrl
+        let urlString = AppConfig.shared.termsURL
         presentSafariView(from: self, urlString: urlString, onError: nil)
     }
 
     func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
-        let urlString = AppConfig.shared.privacyPolicyUrl
+        let urlString = AppConfig.shared.privacyPolicyURL
         presentSafariView(from: self, urlString: urlString, onError: nil)
     }
 

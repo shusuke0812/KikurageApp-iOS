@@ -6,9 +6,9 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import Firebase
 import FirebaseFirestore
+import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
     @IBOutlet private weak var parentView: UIView!
@@ -45,7 +45,9 @@ extension RecipeTableViewCell {
         recipeNameLabel.text = recipe.name
         recipeMemoLabel.text = recipe.memo
 
-        guard let imageStoragePath = recipe.imageStoragePaths.first else { return }
+        guard let imageStoragePath = recipe.imageStoragePaths.first else {
+            return
+        }
         if !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
             recipeImageView.sd_setImage(with: storageReference, placeholderImage: nil)

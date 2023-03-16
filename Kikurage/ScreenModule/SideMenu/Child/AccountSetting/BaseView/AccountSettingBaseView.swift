@@ -30,6 +30,7 @@ class AccountSettingBaseView: UIView {
     @IBAction private func edit(_ sender: Any) {
         delegate?.settingBaseViewDidTappedEditButton(self)
     }
+
     @IBAction private func editUserImage(_ sender: Any) {
         delegate?.settingBaseViewDidTappedUserImageView(self)
     }

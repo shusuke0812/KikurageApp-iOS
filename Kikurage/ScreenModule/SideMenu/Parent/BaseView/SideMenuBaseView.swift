@@ -31,19 +31,23 @@ extension SideMenuBaseView {
 
         titleLabel.text = R.string.localizable.side_menu_title()
     }
+
     private func registerTableViewCell() {
         let nib = UINib(nibName: "SideMenuTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SideMenuTableViewCell")
     }
+
     func initHeaderHeightConstraint() {
         let navBarHeight = AppConfig.shared.navigationBarHeight ?? 0
         let safeAreaHeight = AppConfig.shared.safeAreaHeight ?? 0
         headerHeightConstraint.constant = navBarHeight + safeAreaHeight
     }
+
     func configTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
+
     func animations() {
         layer.position.x = -frame.width
     }

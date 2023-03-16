@@ -6,15 +6,15 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 class WiFiListViewController: UIViewController {
     private let baseView = WiFiListBaseView()
     private let viewModel: WiFiListViewModel
 
     init(bluetoothPeriperal: KikurageBluetoothPeripheral) {
-        self.viewModel = WiFiListViewModel(bluetoothPeripheral: bluetoothPeriperal)
+        viewModel = WiFiListViewModel(bluetoothPeripheral: bluetoothPeriperal)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -46,8 +46,7 @@ class WiFiListViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension WiFiListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
 }
 
 // MARK: - WiFiListViewModelDelegate

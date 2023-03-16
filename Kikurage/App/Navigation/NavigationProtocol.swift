@@ -6,8 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
 import SafariServices
+import UIKit
 
 // MARK: - Push
 
@@ -22,6 +22,7 @@ extension PushNavigationProtocol {
     func push(to vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
     }
+
     func setViewControllers(to vcs: [UIViewController]) {
         navigationController?.setViewControllers(vcs, animated: true)
     }
@@ -36,7 +37,7 @@ protocol ModalNavigationProtocol {
 }
 
 extension ModalNavigationProtocol {
-    func present(to vc: UIViewController, style: UIModalPresentationStyle  = .fullScreen, completion: (() -> Void)? = nil) {
+    func present(to vc: UIViewController, style: UIModalPresentationStyle = .fullScreen, completion: (() -> Void)? = nil) {
         let nc = CustomNavigationController(rootViewController: vc)
         nc.modalPresentationStyle = style
         viewController.present(nc, animated: true, completion: completion)
@@ -52,13 +53,15 @@ extension ModalNavigationProtocol where Self: UIViewController {
 // MARK: - SafariView
 
 protocol SafariViewNavigationProtocol {
-    func presentSafariView(from vc: UIViewController, urlString: String?, onError:(() -> Void)?)
+    func presentSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
 }
 
 extension SafariViewNavigationProtocol {
-    func presentSafariView(from vc: UIViewController, urlString: String?, onError:(() -> Void)?) {
+    func presentSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?) {
         let url: URL?
-        guard let urlString = urlString else { onError?(); return }
+        guard let urlString = urlString else {
+            onError?(); return
+        }
         // 不正なURLであるかを判定する（不正なものはhttpsプレフィックスをつけてブラウザでエラーハンドリングする）
         if urlString.hasPrefix("http://") || urlString.hasPrefix("https") {
             url = URL(string: urlString)

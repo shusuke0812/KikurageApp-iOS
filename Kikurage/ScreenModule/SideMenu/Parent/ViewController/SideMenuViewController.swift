@@ -6,11 +6,11 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import UIKit
 import MessageUI
+import UIKit
 
 class SideMenuViewController: UIViewController, UIViewControllerNavigatable, MenuAccessable {
-    private var baseView: SideMenuBaseView { self.view as! SideMenuBaseView } // swiftlint:disable:this force_cast
+    private var baseView: SideMenuBaseView { view as! SideMenuBaseView } // swiftlint:disable:this force_cast
     private var viewModel: SideMenuViewModel!
 
     private let mail = MFMailComposeViewController()
@@ -22,6 +22,7 @@ class SideMenuViewController: UIViewController, UIViewControllerNavigatable, Men
         viewModel = SideMenuViewModel()
         setDelegateDataSource()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setAnimation()
@@ -62,6 +63,7 @@ extension SideMenuViewController {
             completion: nil
         )
     }
+
     private func setDelegateDataSource() {
         mail.mailComposeDelegate = self
         baseView.configTableView(delegate: self, dataSource: viewModel)
@@ -84,6 +86,7 @@ extension SideMenuViewController: MFMailComposeViewControllerDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_mail_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
+
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case .cancelled:

@@ -43,7 +43,7 @@ public struct KikurageWiFiList {
     public var list: [KikurageWiFi]
 
     public init() {
-        self.list = []
+        list = []
     }
 
     public mutating func addElement(wifi: KikurageWiFi) {

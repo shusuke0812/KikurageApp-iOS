@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 class WiFiSelectDeviceTableViewCell: UITableViewCell {
     private let bleSignalImageView = UIImageView()

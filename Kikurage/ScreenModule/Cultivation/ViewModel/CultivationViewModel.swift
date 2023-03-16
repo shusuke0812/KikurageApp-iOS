@@ -6,16 +6,16 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
-import UIKit.UICollectionView
 import Firebase
-import RxSwift
+import Foundation
 import RxCocoa
+import RxSwift
+import UIKit.UICollectionView
 
 protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
-    func loadCultivations(kikurageUserId: String)
+    func loadCultivations(kikurageUserID: String)
 }
 
 protocol CultivationViewModelOutput {
@@ -78,8 +78,12 @@ class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput,
 extension CultivationViewModel {
     private func sortCultivations(cultivations: [KikurageCultivationTuple]) -> [KikurageCultivationTuple] {
         cultivations.sorted { cultivation1, cultivation2 -> Bool in
-            guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.data.viewDate) else { return false }
-            guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.data.viewDate) else { return false }
+            guard let cultivationDate1 = DateHelper.formatToDate(dateString: cultivation1.data.viewDate) else {
+                return false
+            }
+            guard let cultivationDate2 = DateHelper.formatToDate(dateString: cultivation2.data.viewDate) else {
+                return false
+            }
             return cultivationDate1 > cultivationDate2
         }
     }
@@ -89,12 +93,14 @@ extension CultivationViewModel {
 
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
-    func loadCultivations(kikurageUserId: String) {
-        let request = KikurageCultivationRequest(kikurageUserId: kikurageUserId)
+    func loadCultivations(kikurageUserID: String) {
+        let request = KikurageCultivationRequest(kikurageUserID: kikurageUserID)
         cultivationRepository.getCultivations(request: request)
             .subscribe(
                 onSuccess: { [weak self] cultivations in
-                    guard let `self` = self else { return }
+                    guard let `self` = self else {
+                        return
+                    }
                     let _cultivations = self.sortCultivations(cultivations: cultivations)
                     self.subject.onNext(_cultivations)
                 },

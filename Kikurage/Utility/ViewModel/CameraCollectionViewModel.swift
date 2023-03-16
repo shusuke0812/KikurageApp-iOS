@@ -18,7 +18,7 @@ class CameraCollectionViewModel: NSObject {
 
     init(selectedImageMaxNumber: Int) {
         self.selectedImageMaxNumber = selectedImageMaxNumber
-        self.selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
+        selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
     }
 }
 
@@ -35,6 +35,7 @@ extension CameraCollectionViewModel {
         }
         selectedImages[index] = selectedImage
     }
+
     /// 選択した画像をキャンセル
     /// - Parameter index: CollectionViewのセル番号
     func cancelImage(index: Int) {
@@ -43,6 +44,7 @@ extension CameraCollectionViewModel {
         }
         selectedImages[index] = nil
     }
+
     /// 画像をData型に変換
     /// - Parameter compresssionQuality: 画像圧縮率 0.0 ~ 1.0
     func changeToImageData(compressionQuality: CGFloat) -> [Data?] {
@@ -59,6 +61,7 @@ extension CameraCollectionViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         selectedImageMaxNumber
     }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cameraCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         // 各セルのdelegateと管理番号tag（削除用）を設定

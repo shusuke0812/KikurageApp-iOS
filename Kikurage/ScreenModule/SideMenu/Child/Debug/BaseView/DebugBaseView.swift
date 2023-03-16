@@ -27,9 +27,11 @@ class DebugBaseView: UIView {
     }
 
     // MARK: Action
+
     @IBAction private func didTappedForceRestartButton(_ sender: UIButton) {
         delegate?.debugBaseViewDidTappedForceRestrart(self)
     }
+
     @IBAction private func didTappedKonashiFindButton(_ sender: UIButton) {
         delegate?.debugBaseViewDidTappedKonashiFind(self)
     }
@@ -51,9 +53,11 @@ extension DebugBaseView {
 
         konashiPIOLabel.text = "- no PIO signal -"
     }
+
     func setRSSILabel(_ text: String) {
         konashiRSSILabel.text = "RSSI: " + "\(text)"
     }
+
     func setPIOLabel(_ text: String) {
         konashiPIOLabel.text = text
     }

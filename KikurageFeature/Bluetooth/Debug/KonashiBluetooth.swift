@@ -21,11 +21,11 @@ public protocol KonashiBluetoothDelegate: AnyObject {
 }
 
 /**
-Bluetooth sample
+ Bluetooth sample
 
-This is sample code about Bluetooth, which is shown how to find HW and to get its RSSI.
-It is used Konashi for HW.
-*/
+ This is sample code about Bluetooth, which is shown how to find HW and to get its RSSI.
+ It is used Konashi for HW.
+ */
 public class KonashiBluetooth: NSObject {
     private var readRSSITimer: Timer?
     private var pushStartTime: TimeInterval = 0.0
@@ -51,7 +51,7 @@ public class KonashiBluetooth: NSObject {
     }
 
     private func readyHandler() {
-        Konashi.shared().readyHandler = { [weak self] () -> Void in
+        Konashi.shared().readyHandler = { [weak self] () in
             let currentLED = KonashiDigitalIOPin.LED2
             self?.currentLED = currentLED
             self?.flashLED(currentLED)
@@ -60,14 +60,18 @@ public class KonashiBluetooth: NSObject {
 
     private func disconnectedHandler() {
         Konashi.shared().disconnectedHandler = { [weak self] in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             self.delegate?.konashiBluetoothDisconnected(self)
         }
     }
 
     private func pioInputUpdatedHandler() {
         Konashi.shared().digitalInputDidChangeValueHandler = { [weak self] pin, value in
-            guard let self = self, pin == .S1 else { return }
+            guard let self = self, pin == .S1 else {
+                return
+            }
             if value == 1 {
                 self.pushStartTime = Date().timeIntervalSince1970
             } else {
@@ -106,6 +110,7 @@ public class KonashiBluetooth: NSObject {
     }
 
     // MARK: - RSSI
+
     public func readRSSI() {
         // read request
         readRSSITimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -113,7 +118,9 @@ public class KonashiBluetooth: NSObject {
         }
         // read completion observer
         Konashi.shared().signalStrengthDidUpdateHandler = { [weak self] rssi in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             self.delegate?.konashiBluetooth(self, didUpdated: rssi)
         }
     }

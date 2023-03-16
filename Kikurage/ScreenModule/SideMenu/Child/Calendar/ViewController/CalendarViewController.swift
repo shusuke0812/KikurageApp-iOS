@@ -9,7 +9,7 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    private var baseView: CalendarBaseView { self.view as! CalendarBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: CalendarBaseView { view as! CalendarBaseView } // sswiftlint:disable:this force_cast
     private var viewModel: CalendarViewModel!
 
     // MARK: - Lifecycle
@@ -20,8 +20,8 @@ class CalendarViewController: UIViewController {
         setDelegateDataSource()
         setNavigation()
 
-        if let userId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadKikurageUser(uid: userId)
+        if let userID = LoginHelper.shared.kikurageUserID {
+            viewModel.loadKikurageUser(uid: userID)
         }
     }
 
@@ -38,6 +38,7 @@ extension CalendarViewController {
     private func setDelegateDataSource() {
         viewModel.delegate = self
     }
+
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -49,8 +50,9 @@ extension CalendarViewController {
 
 extension CalendarViewController: CalendarViewModelDelegate {
     func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {
-        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, cultivationTerm: (calendarViewModel.cultivationTerm ?? 0))
+        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, cultivationTerm: calendarViewModel.cultivationTerm ?? 0)
     }
+
     func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)

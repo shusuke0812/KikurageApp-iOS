@@ -6,8 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 import UIKit
 
 public extension AVCaptureVideoOrientation {
@@ -20,6 +20,7 @@ public extension AVCaptureVideoOrientation {
         default: return nil
         }
     }
+
     init?(interfaceOrientation: UIInterfaceOrientation) {
         switch interfaceOrientation {
         case .portrait: self = .portrait

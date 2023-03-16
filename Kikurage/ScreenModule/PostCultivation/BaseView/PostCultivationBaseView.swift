@@ -48,6 +48,7 @@ extension PostCultivationBaseView {
     private func registerCameraCell() {
         cameraCollectionView.register(R.nib.cameraCell)
     }
+
     private func initUI() {
         // 背景色
         backgroundColor = .systemGroupedBackground
@@ -62,6 +63,7 @@ extension PostCultivationBaseView {
         // 最大入力文字数
         maxTextViewNumberLabel.text = "\(maxTextViewNumber)"
     }
+
     private func initDatePicker() {
         // DatePickerの基本設定
         if #available(iOS 13.4, *) {
@@ -86,13 +88,16 @@ extension PostCultivationBaseView {
     func setCurrentTextViewNumber(text: String) {
         currentTextViewNumberLabel.text = "\(text.count)"
     }
+
     func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         cameraCollectionView.delegate = delegate
         cameraCollectionView.dataSource = dataSource
     }
+
     func configTextView(delegate: UITextViewDelegate) {
         textView.delegate = delegate
     }
+
     func configTextField(delegate: UITextFieldDelegate) {
         dateTextField.delegate = delegate
     }

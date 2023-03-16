@@ -45,6 +45,7 @@ extension KikurageStateListenerRepository {
             }
         }
     }
+
     func listenKikurageState(productKey: String) -> Observable<KikurageState> {
         Observable<KikurageState>.create { [weak self] observer in
             let db = Firestore.firestore()

@@ -41,9 +41,11 @@ extension KikurageStateRepository {
             }
         }
     }
+
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
         rxFirestoreClient.getDocumentRequest(request)
     }
+
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {

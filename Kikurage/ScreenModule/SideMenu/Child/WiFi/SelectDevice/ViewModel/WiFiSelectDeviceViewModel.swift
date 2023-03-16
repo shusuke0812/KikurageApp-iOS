@@ -7,15 +7,15 @@
 //
 
 import Foundation
-import UIKit.UITableView
 import KikurageFeature
+import UIKit.UITableView
 
 protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
     func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral)
 }
 
-class  WiFiSelectDeviceViewModel: NSObject {
+class WiFiSelectDeviceViewModel: NSObject {
     private let sections: [WiFiSelectDeviceSectionType] = [.device]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
@@ -56,7 +56,7 @@ extension WiFiSelectDeviceViewModel: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell  // swiftlint:disable:this force_cast
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
         cell.updateComponent(peripheral: bluetoothPeripherals.getElement(indexPath: indexPath))
         return cell
     }
@@ -65,11 +65,9 @@ extension WiFiSelectDeviceViewModel: UITableViewDataSource {
 // MARK: - KikurageBluetoothMangerDelegate
 
 extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {
-    }
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
-    }
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral) {
         if peripheral.validateConnection() {
@@ -84,9 +82,9 @@ extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
             if let selectedIndexPath = selectedIndexPath {
                 delegate?.viewModelDisSuccessConnectionToPeripheral(self, peripheral: bluetoothPeripherals.getElement(indexPath: selectedIndexPath))
             }
-        case .disconnect(_):
+        case .disconnect:
             break
-        case .fail(_):
+        case .fail:
             break
         }
     }

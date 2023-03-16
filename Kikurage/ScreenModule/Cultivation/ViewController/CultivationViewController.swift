@@ -6,13 +6,13 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import UIKit
-import SwiftUI
 import PKHUD
 import RxSwift
+import SwiftUI
+import UIKit
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
-    private var baseView: CultivationBaseView { self.view as! CultivationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CultivationBaseView { view as! CultivationBaseView } // swiftlint:disable:this force_cast
     private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: CultivationViewModelType!
 
@@ -31,15 +31,16 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
         adjustNavigationBarBackgroundColor()
 
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
             HUD.show(.progress)
-            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserID: kikurageUserID)
         }
 
         // RX
         rxBaseView()
         rxTransition()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -47,8 +48,8 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
     // MARK: - Action
 
     private func refresh() {
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
+            viewModel.input.loadCultivations(kikurageUserID: kikurageUserID)
         }
     }
 }
@@ -59,16 +60,19 @@ extension CultivationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_cultivation_title())
     }
+
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
-        refresh.addAction(.init() { [weak self] _ in
+        refresh.addAction(.init { [weak self] _ in
             self?.refresh()
         }, for: .valueChanged)
         baseView.setRefreshControlInCollectionView(refresh)
     }
+
     private func setDelegateDataSource() {
         baseView.collectionView.delegate = self
     }
+
     private func displayEmptyView(cultivations: [KikurageCultivationTuple]) {
         if cultivations.isEmpty {
             emptyHostingVC = addEmptyView(type: .notFoundCultivation)
@@ -104,7 +108,9 @@ extension CultivationViewController {
 
         viewModel.output.error.subscribe(
             onNext: { [weak self] error in
-                guard let `self` = self else { return }
+                guard let `self` = self else {
+                    return
+                }
                 DispatchQueue.main.async {
                     HUD.hide()
                     self.baseView.collectionView.refreshControl?.endRefreshing()
@@ -118,14 +124,15 @@ extension CultivationViewController {
             .bind(to: viewModel.input.itemSelected)
             .disposed(by: disposeBag)
     }
+
     private func rxTransition() {
         baseView.postPageButton.rx.tap.asDriver()
             .drive(
-            onNext: { [weak self] in
-                self?.modalToPostCultivation()
-            }
-        )
-        .disposed(by: disposeBag)
+                onNext: { [weak self] in
+                    self?.modalToPostCultivation()
+                }
+            )
+            .disposed(by: disposeBag)
 
         viewModel.output.cultivation.subscribe(
             onNext: { [weak self] cultivationTuple in
@@ -153,10 +160,11 @@ extension CultivationViewController {
     private func setNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(didPostCultivation), name: .updatedCultivations, object: nil)
     }
+
     @objc private func didPostCultivation(notification: Notification) {
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
             HUD.show(.progress)
-            viewModel.input.loadCultivations(kikurageUserId: kikurageUserId)
+            viewModel.input.loadCultivations(kikurageUserID: kikurageUserID)
         }
     }
 }

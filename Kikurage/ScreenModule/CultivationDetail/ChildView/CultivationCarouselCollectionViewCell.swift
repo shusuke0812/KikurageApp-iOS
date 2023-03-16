@@ -6,10 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import Firebase
 import FirebaseFirestore
 import KikurageFeature
+import UIKit
 
 class CultivationCarouselCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var kikurageImageView: KikurageImageView!
@@ -23,8 +23,7 @@ class CultivationCarouselCollectionViewCell: UICollectionViewCell {
 // MARK: - Initialized
 
 extension CultivationCarouselCollectionViewCell {
-    private func initUI() {
-    }
+    private func initUI() {}
 }
 
 // MARK: - Setting UI

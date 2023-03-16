@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import FontAwesome_swift
+import UIKit
 
 class FooterButtonView: UIView {
     static let iconSize = CGSize(width: 40, height: 40)
@@ -22,6 +22,7 @@ class FooterButtonView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -30,18 +31,21 @@ class FooterButtonView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+
     private(set) var cultivationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .leaf, style: .solid, textColor: Constants.Color.cultivation.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
+
     private(set) var recipeButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .utensils, style: .solid, textColor: Constants.Color.recipe.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
+
     private(set) var communicationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .handsHelping, style: .solid, textColor: Constants.Color.communication.rawValue, size: iconSize), for: .normal)
@@ -53,6 +57,7 @@ class FooterButtonView: UIView {
         super.init(frame: frame)
         initUI()
     }
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         initUI()

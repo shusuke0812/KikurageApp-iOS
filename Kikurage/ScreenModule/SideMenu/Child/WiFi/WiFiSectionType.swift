@@ -39,7 +39,7 @@ enum WiFiListSectionType {
     var rows: [SectionRowType] {
         switch self {
         case .spec:
-            return [.deviceName, .deviceId, .rssi]
+            return [.deviceName, .deviceID, .rssi]
         case .enterWifi:
             return [.enterWifi]
         case .selectWifi:
@@ -49,7 +49,7 @@ enum WiFiListSectionType {
 
     enum SectionRowType {
         case deviceName
-        case deviceId
+        case deviceID
         case rssi
         case enterWifi
 
@@ -57,7 +57,7 @@ enum WiFiListSectionType {
             switch self {
             case .deviceName:
                 return R.string.localizable.side_menu_wifi_spec_section_device_name_row_title()
-            case .deviceId:
+            case .deviceID:
                 return R.string.localizable.side_menu_wifi_spec_section_device_id_row_title()
             case .rssi:
                 return R.string.localizable.side_menu_wifi_spec_section_rssi_row_title()
@@ -70,7 +70,7 @@ enum WiFiListSectionType {
             switch self {
             case .deviceName:
                 return bluetoothPeripheral.deviceName
-            case .deviceId:
+            case .deviceID:
                 let idString = String(bluetoothPeripheral.uuid.uuidString.prefix(14)) + "****"
                 return idString
             case .rssi:

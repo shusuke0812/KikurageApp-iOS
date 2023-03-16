@@ -8,8 +8,8 @@
 
 // Ref: https://developer.apple.com/documentation/avfoundation/capture_setup/avcam_building_a_camera_app
 
-import Foundation
 import AVFoundation
+import Foundation
 
 public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
@@ -39,8 +39,8 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     private var metadataOutput: AVCaptureMetadataOutput
 
     override public init() {
-        self.captureSession = AVCaptureSession()
-        self.metadataOutput = AVCaptureMetadataOutput()
+        captureSession = AVCaptureSession()
+        metadataOutput = AVCaptureMetadataOutput()
         super.init()
 
         setup()
@@ -61,16 +61,18 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     // MARK: - Private
 
     /**
-    setup capture session
+     setup capture session
 
-    It's not safe to mutate an AVCaptureSession or any of its inputs, outputs, or connections from multiple threads at the same time.
-     
-    Don't perform these tasks on the main queue because
-    AVCaptureSession.startRunning() is a blocking call, which can take a long time.
-    Dispatch session setup to the sessionQueue, so that the main queue isn't blocked, which keeps the UI responsive.
-    */
+     It's not safe to mutate an AVCaptureSession or any of its inputs, outputs, or connections from multiple threads at the same time.
+
+     Don't perform these tasks on the main queue because
+     AVCaptureSession.startRunning() is a blocking call, which can take a long time.
+     Dispatch session setup to the sessionQueue, so that the main queue isn't blocked, which keeps the UI responsive.
+     */
     private func configureSession() {
-        if setupResult != .success { return }
+        if setupResult != .success {
+            return
+        }
 
         captureSession.beginConfiguration()
         captureSession.sessionPreset = .photo // do not create an AVCaptureMovieFileOutput when setting up the session because of not supported.
@@ -86,7 +88,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             guard let videoDevice = defaultVideoDevice else {
                 setupResult = .error(.failure)
                 captureSession.commitConfiguration()
-                delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+                delegate?.qrCodeReaderViewModel(self, didFailedConfigured: captureSession, error: .failure)
                 return
             }
             let videDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
@@ -95,30 +97,30 @@ public class KikurageQRCodeReaderViewModel: NSObject {
                 videoDeviceInput = videDeviceInput
             } else {
                 captureSession.commitConfiguration()
-                delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+                delegate?.qrCodeReaderViewModel(self, didFailedConfigured: captureSession, error: .failure)
                 return
             }
         } catch {
             setupResult = .error(.failure)
             captureSession.commitConfiguration()
-            delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+            delegate?.qrCodeReaderViewModel(self, didFailedConfigured: captureSession, error: .failure)
             return
         }
         // add an audio input for video
         /*
-        do {
-            let audioDevice = AVCaptureDevice.default(for: .audio)
-            let audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice!)
-            
-            if captureSession.canAddInput(audioDeviceInput) {
-                captureSession.addInput(audioDeviceInput)
-            } else {
-                delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
-            }
-        } catch {
-            delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
-        }
-        */
+         do {
+             let audioDevice = AVCaptureDevice.default(for: .audio)
+             let audioDeviceInput = try AVCaptureDeviceInput(device: audioDevice!)
+
+             if captureSession.canAddInput(audioDeviceInput) {
+                 captureSession.addInput(audioDeviceInput)
+             } else {
+                 delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+             }
+         } catch {
+             delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+         }
+         */
 
         // add video output
         if captureSession.canAddOutput(metadataOutput) {
@@ -129,15 +131,15 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             delegate?.qrCodeReaderViewModel(self, didConfigured: captureSession)
         } else {
             captureSession.commitConfiguration()
-            delegate?.qrCodeReaderViewModel(self, didFailedConfigured: self.captureSession, error: .failure)
+            delegate?.qrCodeReaderViewModel(self, didFailedConfigured: captureSession, error: .failure)
         }
     }
 
     /**
-    check video authorization
+     check video authorization
 
-    this method must run before `configureSession()`
-    */
+     this method must run before `configureSession()`
+     */
     private func authorize() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
@@ -145,7 +147,9 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         case .notDetermined:
             captureSessionQueue.suspend()
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
-                guard let self = self else { return }
+                guard let self = self else {
+                    return
+                }
                 if !granted {
                     self.setupResult = .error(.notAuthorized)
                 }
@@ -157,11 +161,12 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             delegate?.qrCodeReaderViewModel(self, authorize: setupResult)
         }
     }
+
     /**
-    validate QRCode string
-     
-    If QRCode string is contained `http` or `https`, application crush when read QRCode
-    */
+     validate QRCode string
+
+     If QRCode string is contained `http` or `https`, application crush when read QRCode
+     */
     private func validate(for qrCodeString: String) -> Bool {
         if qrCodeString.contains("http://") || qrCodeString.contains("https://") {
             return false
@@ -169,12 +174,15 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             return true
         }
     }
+
     /**
      observers for AVCaptureSession running
      */
     private func addObservers() {
         let kvo = captureSession.observe(\.isRunning, options: .new) { _, change in
-            guard let isCaptureSessionRunning = change.newValue else { return }
+            guard let isCaptureSessionRunning = change.newValue else {
+                return
+            }
             // If session running changes something, write here
         }
         kvos.append(kvo)
@@ -182,6 +190,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(sessionWasInterrupted), name: .AVCaptureSessionWasInterrupted, object: captureSession)
         NotificationCenter.default.addObserver(self, selector: #selector(sessionInterruptionEnded), name: .AVCaptureSessionInterruptionEnded, object: captureSession)
     }
+
     private func removeObservers() {
         NotificationCenter.default.removeObserver(self)
 
@@ -192,7 +201,9 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     // MARK: - Error
 
     @objc private func sessionRuntimeError(notification: Notification) {
-        guard let error = notification.userInfo?[AVCaptureSessionErrorKey] as? AVError else { return }
+        guard let error = notification.userInfo?[AVCaptureSessionErrorKey] as? AVError else {
+            return
+        }
         if error.code == .mediaServicesWereReset {
             captureSessionQueue.async {
                 if self.isCaptureSessionRunning {
@@ -212,14 +223,14 @@ public class KikurageQRCodeReaderViewModel: NSObject {
     }
 
     @objc private func sessionInterruptionEnded(notification: Notification) {
-        delegate?.qrCodeReaderViewModel(self, interruptionEnded: self.captureSession)
+        delegate?.qrCodeReaderViewModel(self, interruptionEnded: captureSession)
     }
 
     // MARK: - Public
 
     /**
-    discover camera inputs which is possible to setup capture session
-    */
+     discover camera inputs which is possible to setup capture session
+     */
     public func discoverDeviceCamera() -> AVCaptureDeviceInput? {
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back)
         let devices = discoverySession.devices
@@ -234,23 +245,30 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             return nil
         }
     }
+
     /**
      start capturing on initialization. If restart, it has to use `resume()` method.
      */
     public func startRunning() {
         captureSessionQueue.async {
-            guard !self.captureSession.isRunning else { return }
+            guard !self.captureSession.isRunning else {
+                return
+            }
             self.captureSession.startRunning()
             self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
+
     public func stopRunning() {
         captureSessionQueue.async {
-            guard !self.captureSession.isRunning else { return }
+            guard !self.captureSession.isRunning else {
+                return
+            }
             self.captureSession.stopRunning()
             self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
+
     /**
      restart capturing on error. For example, it uses this method when session is interrupted.
      */
@@ -260,6 +278,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
             self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
+
     public func removeCaptureSession() {
         stopRunning()
         captureSession.outputs.forEach { captureSession.removeOutput($0) }

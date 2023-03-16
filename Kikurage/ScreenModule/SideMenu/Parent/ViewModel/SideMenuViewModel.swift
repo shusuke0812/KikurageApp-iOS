@@ -18,14 +18,15 @@ class SideMenuViewModel: NSObject {
 
         var rows: [SectionRowType] {
             switch self {
-            case .history:  return [.calendar, .graph]
-            case .support:  return [.contact, .accountSetting, .license]
-            case .help:     return [.searchRecipe, .kikurageDictionary]
-            case .setting:  return [.wifi]
-            case .debug:    return [.debugTry]
+            case .history: return [.calendar, .graph]
+            case .support: return [.contact, .accountSetting, .license]
+            case .help: return [.searchRecipe, .kikurageDictionary]
+            case .setting: return [.wifi]
+            case .debug: return [.debugTry]
             }
         }
     }
+
     enum SectionRowType {
         case calendar
         case graph
@@ -97,11 +98,12 @@ class SideMenuViewModel: NSObject {
 extension SideMenuViewModel {
     private func setSection() {
         #if PRODUCTION
-        sections = [.history, .support, .help, .setting]
+            sections = [.history, .support, .help, .setting]
         #else
-        sections = [.history, .support, .help, .setting, .debug]
+            sections = [.history, .support, .help, .setting, .debug]
         #endif
     }
+
     private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> SideMenuTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.sideMenuTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         let rowType = section.rows[indexPath.row]
@@ -118,12 +120,15 @@ extension SideMenuViewModel: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
     }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         nil
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         sections[section].rows.count
     }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         return makeSectionCell(tableView: tableView, section: section, indexPath: indexPath)

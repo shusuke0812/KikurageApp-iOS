@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
 import Charts
+import Foundation
 
 /// Chartsのx軸を設定するヘルパー
 class ChartViewHelper: NSObject, AxisValueFormatter {

@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 
 public struct KikurageBluetoothPeripheral {
     public let advertisementData: [String: Any]
@@ -19,7 +19,7 @@ public struct KikurageBluetoothPeripheral {
         self.advertisementData = advertisementData
         self.rssi = rssi
         self.peripheral = peripheral
-        self.uuid = UUID(uuid: peripheral.identifier.uuid)
+        uuid = UUID(uuid: peripheral.identifier.uuid)
     }
 
     public var deviceName: String {

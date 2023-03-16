@@ -6,10 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
-typealias KikurageCultivationTuple = (data: KikurageCultivation, documentId: String)
+typealias KikurageCultivationTuple = (data: KikurageCultivation, documentID: String)
 
 struct KikurageCultivation: Codable {
     var memo: String = ""

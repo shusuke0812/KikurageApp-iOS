@@ -8,7 +8,7 @@ echo "start: ***** SwiftLint *****"
 if which swiftlint > /dev/null; then
   # gitの差分を見て変更があったファイルのみ静的解析を行う
   git diff --name-only | grep .swift | while read filename; do
-    swiftlint --fix --path "$filename"
+    #swiftlint --fix --path "$filename"
     swiftlint --path "$filename"
   done
   echo "success"

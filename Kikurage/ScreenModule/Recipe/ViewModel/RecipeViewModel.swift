@@ -6,14 +6,14 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit.UITableView
-import RxSwift
 import RxRelay
+import RxSwift
+import UIKit.UITableView
 
 protocol RecipeViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
-    
-    func loadRecipes(kikurageUserId: String)
+
+    func loadRecipes(kikurageUserID: String)
 }
 
 protocol RecipeViewModelOutput {
@@ -76,8 +76,12 @@ class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewMode
 extension RecipeViewModel {
     private func sortRecipes(recipes: [KikurageRecipeTuple]) -> [KikurageRecipeTuple] {
         recipes.sorted { recipe1, recipe2 -> Bool in
-            guard let recipeDate1 = DateHelper.formatToDate(dateString: recipe1.data.cookDate) else { return false }
-            guard let recipeDate2 = DateHelper.formatToDate(dateString: recipe2.data.cookDate) else { return false }
+            guard let recipeDate1 = DateHelper.formatToDate(dateString: recipe1.data.cookDate) else {
+                return false
+            }
+            guard let recipeDate2 = DateHelper.formatToDate(dateString: recipe2.data.cookDate) else {
+                return false
+            }
             return recipeDate1 > recipeDate2
         }
     }
@@ -87,12 +91,14 @@ extension RecipeViewModel {
 
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
-    func loadRecipes(kikurageUserId: String) {
-        let request = KikurageRecipeRequest(kikurageUserId: kikurageUserId)
+    func loadRecipes(kikurageUserID: String) {
+        let request = KikurageRecipeRequest(kikurageUserID: kikurageUserID)
         recipeRepository.getRecipes(request: request)
             .subscribe(
                 onSuccess: { [weak self] recipes in
-                    guard let `self` = self else { return }
+                    guard let `self` = self else {
+                        return
+                    }
                     let _recipes = self.sortRecipes(recipes: recipes)
                     self.subject.onNext(_recipes)
                 },

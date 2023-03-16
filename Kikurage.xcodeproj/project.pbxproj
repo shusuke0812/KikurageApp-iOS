@@ -1792,6 +1792,7 @@
 				9C1ACF442225768A00A3D4D1 /* Frameworks */,
 				9C1ACF452225768A00A3D4D1 /* Resources */,
 				0E3A132012F2A0D84614820D /* [CP] Embed Pods Frameworks */,
+				9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */,
 				9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */,
 				9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */,
 				9C5D9D7A2665377D00474CFD /* Firebase Crashlytics Run Script */,
@@ -2134,6 +2135,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ". ${PROJECT_DIR}/Scripts/SwiftLint.sh\n";
+		};
+		9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftFormat Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ". ${PROJECT_DIR}/Scripts/SwiftFormat.sh\n";
 		};
 		9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */ = {
 			isa = PBXShellScriptBuildPhase;

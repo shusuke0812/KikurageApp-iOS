@@ -8,4 +8,4 @@
 
 import Foundation
 
-class  WiFiSettingViewModel {}
+class WiFiSettingViewModel {}

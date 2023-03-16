@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {
     func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView)
@@ -40,6 +40,7 @@ class DeviceRegisterBaseView: UIView {
     @IBAction private func registerDevice(_ sender: Any) {
         delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
     }
+
     @IBAction private func openQrcodeReader(_ sender: Any) {
         delegate?.deviceRegisterBaseViewDidTappedQrcodeReaderButton(self)
     }
@@ -67,6 +68,7 @@ extension DeviceRegisterBaseView {
 
         kikurageQrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
     }
+
     private func initDatePicker() {
         // DatePcikerの基本設定
         if #available(iOS 13.4, *) {
@@ -88,10 +90,12 @@ extension DeviceRegisterBaseView {
         kikurageNameTextField.delegate = delegate
         cultivationStartDateTextField.delegate = delegate
     }
+
     func showKikurageQrcodeReaderView(isHidden: Bool) {
         kikurageQrcodeReaderView.isHidden = isHidden
         kikurageQrcodeReaderViewHeightConstraint.constant = isHidden ? 0 : kikurageQrcodeReaderViewHeight
     }
+
     func setProductKeyText(_ text: String) {
         productKeyTextField.text = text
     }
