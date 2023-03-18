@@ -24,10 +24,10 @@ public enum KikurageBluetoothCommand {
     }
 }
 
-public struct BluetoothCommand: Encodable {
+struct BluetoothCommand: Encodable {
     private let command: String
 
-    public init(command: String) {
+    init(command: String) {
         self.command = command
     }
 }

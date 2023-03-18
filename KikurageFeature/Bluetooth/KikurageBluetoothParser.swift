@@ -22,7 +22,7 @@ public struct KikurageBluetoothParser {
         return nil
     }
 
-    public static func encodeBluetootCommand(_ command: BluetoothCommand) -> Data? {
+    static func encodeBluetootCommand(_ command: BluetoothCommand) -> Data? {
         do {
             let response = try JSONEncoder().encode(command)
             return response
