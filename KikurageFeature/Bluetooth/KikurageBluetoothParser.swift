@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct KikurageBluetoothDecoder {
+public struct KikurageBluetoothParser {
     public static func decodeWiFi(_ jsonString: String) -> KikurageWiFi? {
         do {
             guard let jsonData = jsonString.data(using: .utf8) else {
@@ -20,5 +20,15 @@ public struct KikurageBluetoothDecoder {
             assertionFailure("\(error.localizedDescription)")
         }
         return nil
+    }
+
+    public static func encodeBluetootCommand(_ command: BluetoothCommand) -> Data? {
+        do {
+            let response = try JSONEncoder().encode(command)
+            return response
+        } catch {
+            assertionFailure("\(error.localizedDescription)")
+            return nil
+        }
     }
 }

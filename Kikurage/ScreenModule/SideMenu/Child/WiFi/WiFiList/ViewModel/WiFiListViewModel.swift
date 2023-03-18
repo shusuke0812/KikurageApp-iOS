@@ -76,7 +76,7 @@ extension WiFiListViewModel: KikurageBluetoothMangerDelegate {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
-        guard let wifi = KikurageBluetoothDecoder.decodeWiFi(message) else {
+        guard let wifi = KikurageBluetoothParser.decodeWiFi(message) else {
             return
         }
         wifiList.addElement(wifi: wifi)
