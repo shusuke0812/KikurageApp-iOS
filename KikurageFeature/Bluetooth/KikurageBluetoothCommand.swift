@@ -11,16 +11,27 @@ import Foundation
 public enum KikurageBluetoothCommand {
     case writeStopWiFiScan
 
-    var valueString: String {
+    var typeString: String {
         switch self {
         case .writeStopWiFiScan:
             return "stop_wifi_scan"
         }
     }
 
-    public var valueData: Data? {
-        let command = BluetoothCommand(command: valueString)
-        return KikurageBluetoothParser.encodeBluetootCommand(command)
+    public var typeJsonData: Data? {
+        switch self {
+        case .writeStopWiFiScan:
+            let command = BluetoothCommand(command: typeString)
+            return KikurageBluetoothParser.encodeBluetootCommand(command)
+        }
+    }
+
+    public var valueJsonData: Data? {
+        switch self {
+        case .writeStopWiFiScan:
+            let command = BluetoothStopWiFiScanCommand()
+            return KikurageBluetoothParser.encodeBluetootCommand(command)
+        }
     }
 }
 
@@ -29,5 +40,13 @@ struct BluetoothCommand: Encodable {
 
     init(command: String) {
         self.command = command
+    }
+}
+
+struct BluetoothStopWiFiScanCommand: Encodable {
+    private let command: Bool
+    
+    init() {
+        self.command = true
     }
 }

@@ -23,9 +23,6 @@ public class KikurageBluetoothManager: NSObject {
     private var writeCharacteristic: CBCharacteristic?
     private var notifyCharacteristic: CBCharacteristic?
 
-    private let serviceUUID = CBUUID(string: KikurageBluetoothUUID.Service.debugM5Stack)
-    private let characteristicUUID = CBUUID(string: KikurageBluetoothUUID.Characteristic.debugM5Stack9AxisX)
-
     public static let shared = KikurageBluetoothManager()
     public weak var delegate: KikurageBluetoothMangerDelegate?
 
@@ -48,13 +45,20 @@ public class KikurageBluetoothManager: NSObject {
         connectToPeripheral = peripheral
     }
 
+    public func sendCommand(_ command: KikurageBluetoothCommand) {
+        guard let sendData = command.typeJsonData, let writeCharacteristic = writeCharacteristic else {
+            return
+        }
+        connectToPeripheral.writeValue(sendData, for: writeCharacteristic, type: .withResponse)
+    }
+
     private func peripheralDiscoverServices() {
         connectToPeripheral.delegate = self
-        connectToPeripheral.discoverServices([serviceUUID])
+        connectToPeripheral.discoverServices([KikurageBluetoothUUID.Service.m5stack.cbUUID])
     }
 
     private func peripheralDiscoverCharacteristics(service: CBService) {
-        connectToPeripheral.discoverCharacteristics([characteristicUUID], for: service)
+        connectToPeripheral.discoverCharacteristics(KikurageBluetoothUUID.configCharactericticCBUUID(), for: service)
     }
 }
 
@@ -121,10 +125,14 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
         }
         if let characteristics = service.characteristics {
             characteristics.forEach { characteristic in
-                guard characteristic.uuid == characteristicUUID else {
-                    return
+                let uuidString = characteristic.uuid.uuidString.lowercased()
+                if uuidString == KikurageBluetoothUUID.Characteristic.readWiFiFromM5Stack.uuidString {
+                    notifyCharacteristic = characteristic
+                    connectToPeripheral.setNotifyValue(true, for: characteristic)
                 }
-                connectToPeripheral.setNotifyValue(true, for: characteristic)
+                if uuidString == KikurageBluetoothUUID.Characteristic.writeToM5Stack.uuidString {
+                    writeCharacteristic = characteristic
+                }
             }
         }
     }
