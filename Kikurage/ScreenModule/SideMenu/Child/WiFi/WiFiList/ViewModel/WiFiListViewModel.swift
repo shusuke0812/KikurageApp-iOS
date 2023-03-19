@@ -15,7 +15,7 @@ protocol WiFiListViewModelDelegate: AnyObject {
 }
 
 class WiFiListViewModel: NSObject {
-    private let sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
+    private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
     private let bluetoothPeripheral: KikurageBluetoothPeripheral
@@ -27,6 +27,20 @@ class WiFiListViewModel: NSObject {
         self.bluetoothPeripheral = bluetoothPeripheral
         super.init()
         bluetoothManager.delegate = self
+    }
+
+    func getSelectedSSID(indexPath: IndexPath) -> String {
+        let section = sections[indexPath.section]
+        switch section {
+        case .spec, .enterWifi:
+            return ""
+        case .selectWifi:
+            return wifiList.list[indexPath.row].ssid
+        }
+    }
+
+    func stopWiFiScan() {
+        bluetoothManager.sendCommand(.writeStopWiFiScan)
     }
 }
 

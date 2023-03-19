@@ -8,4 +8,11 @@
 
 import Foundation
 
-class WiFiSettingViewModel {}
+class WiFiSettingViewModel: NSObject {
+    private var selectedSSID: String
+
+    init(selectedSSID: String) {
+        self.selectedSSID = selectedSSID
+        super.init()
+    }
+}

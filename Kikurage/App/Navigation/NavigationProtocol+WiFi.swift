@@ -11,7 +11,7 @@ import UIKit
 
 protocol WiFiAccessable: PushNavigationProtocol {
     func pushToWiFiList(bluetoothPeriperal: KikurageBluetoothPeripheral)
-    func pushToWiFiSetting()
+    func pushToWiFiSetting(selectedSSID: String)
     func pushToWiFiSettingSuccess()
 }
 
@@ -21,7 +21,10 @@ extension WiFiAccessable {
         push(to: vc)
     }
 
-    func pushToWiFiSetting() {}
+    func pushToWiFiSetting(selectedSSID: String) {
+        let vc = WiFiSettingViewController(selectedSSID: selectedSSID)
+        push(to: vc)
+    }
 
     func pushToWiFiSettingSuccess() {}
 }

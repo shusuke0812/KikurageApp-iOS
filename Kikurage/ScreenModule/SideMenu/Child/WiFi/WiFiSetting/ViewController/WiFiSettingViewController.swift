@@ -9,19 +9,18 @@
 import UIKit
 
 class WiFiSettingViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let viewModel: WiFiSettingViewModel
 
-        // Do any additional setup after loading the view.
+    init(selectedSSID: String) {
+        viewModel = WiFiSettingViewModel(selectedSSID: selectedSSID)
+        super.init(nibName: nil, bundle: nil)
     }
 
-    /*
-     // MARK: - Navigation
+    required init?(coder: NSCoder) {
+        nil
+    }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

@@ -9,7 +9,7 @@
 import KikurageFeature
 import UIKit
 
-class WiFiListViewController: UIViewController {
+class WiFiListViewController: UIViewController, WiFiAccessable {
     private let baseView = WiFiListBaseView()
     private let viewModel: WiFiListViewModel
 
@@ -41,12 +41,21 @@ class WiFiListViewController: UIViewController {
     private func setupProtocols() {
         baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
     }
+
+    private func transitionToWiFiSetting(selectedSSID: String) {
+        pushToWiFiSetting(selectedSSID: selectedSSID)
+    }
 }
 
 // MARK: - UITableViewDelegate
 
 extension WiFiListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ssid = viewModel.getSelectedSSID(indexPath: indexPath)
+        transitionToWiFiSetting(selectedSSID: ssid)
+
+        viewModel.stopWiFiScan()
+    }
 }
 
 // MARK: - WiFiListViewModelDelegate
