@@ -22,8 +22,8 @@ public enum KikurageBluetoothCommand {
 
 struct BluetoothStopWiFiScanCommand: Encodable {
     private let command: Bool
-    
+
     init() {
-        self.command = true
+        command = true
     }
 }
