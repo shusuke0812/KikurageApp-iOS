@@ -46,7 +46,7 @@ public class KikurageBluetoothManager: NSObject {
     }
 
     public func sendCommand(_ command: KikurageBluetoothCommand) {
-        guard let sendData = command.typeJsonData, let writeCharacteristic = writeCharacteristic else {
+        guard let sendData = command.valueJsonData, let writeCharacteristic = writeCharacteristic else {
             return
         }
         connectToPeripheral.writeValue(sendData, for: writeCharacteristic, type: .withResponse)
