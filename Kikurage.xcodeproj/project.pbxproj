@@ -1297,7 +1297,7 @@
 		9CA7F36D25381EF8005BED9C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				9CCB246428A7521E00FE46E7 /* APIClient */,
+				9CCB246428A7521E00FE46E7 /* Client */,
 				9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */,
 				9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */,
 				9CBD6C4425410707005531F4 /* KikurageUserRepository.swift */,
@@ -1453,14 +1453,14 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		9CCB246428A7521E00FE46E7 /* APIClient */ = {
+		9CCB246428A7521E00FE46E7 /* Client */ = {
 			isa = PBXGroup;
 			children = (
 				9C9981D527F9C3330068FD61 /* APIClient.swift */,
 				9C8ED2D62801C2A2005527F8 /* FirestoreClient.swift */,
 				9CCB246528A7548A00FE46E7 /* RealmClient.swift */,
 			);
-			path = APIClient;
+			path = Client;
 			sourceTree = "<group>";
 		};
 		9CDAFBF624E4B95700E56550 /* Extension */ = {
