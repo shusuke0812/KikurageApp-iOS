@@ -21,6 +21,7 @@ import Foundation
 import RealmSwift
 
 protocol RealmClientProtocol {
+    // TODO: add update method
     func createRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
     func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void)
     func deleteRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
