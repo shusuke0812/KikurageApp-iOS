@@ -10,6 +10,9 @@
  * Ref:
  * - [ important ] transaction: https://www.mongodb.com/docs/realm/sdk/swift/crud/create/#run-a-transaction
  * - CRUD: https://www.mongodb.com/docs/realm/sdk/swift/crud/create/
+ * - sort when read Object: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#sort-query-results
+ * - chain queries when read Object: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#chain-queries
+ * - limit of query: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#limiting-query-results
  */
 
 import Foundation
@@ -35,6 +38,7 @@ struct RealmClient: RealmClientProtocol {
         }
     }
 
+    // If it runs to sort or use query for object, its method is declared in ViewMiodel using this result.
     func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
         do {
             let realm = try Realm()
