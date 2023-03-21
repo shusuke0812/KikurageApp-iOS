@@ -22,7 +22,7 @@ typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, docume
 
 final class KikurageStateGraphObject: Object {
     // For realm
-    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted(primaryKey: true) var _id: ObjectID
     @Persisted var expiredDate: Date
     // Firebase response type
     @Persisted var mondayData: TimeDataObject?
@@ -32,10 +32,10 @@ final class KikurageStateGraphObject: Object {
     @Persisted var fridayData: TimeDataObject?
     @Persisted var saturdayData: TimeDataObject?
     @Persisted var sundayData: TimeDataObject?
-    
+
     override convenience init() {
         self.init()
-        self.expiredDate = Date()
+        expiredDate = Date()
     }
 }
 
@@ -43,11 +43,11 @@ class TimeDataObject: Object {
     @Persisted var date: Date
     @Persisted var temperature: Int
     @Persisted var humidity: Int
-    
+
     override convenience init() {
         self.init()
-        self.date = Date()
-        self.temperature = 0
-        self.humidity = 0
+        date = Date()
+        temperature = 0
+        humidity = 0
     }
 }

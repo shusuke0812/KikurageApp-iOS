@@ -51,7 +51,7 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
-    
+
     func deleteRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
@@ -63,7 +63,7 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
-    
+
     func deleteAllRequest(completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
