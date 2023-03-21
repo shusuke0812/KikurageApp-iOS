@@ -6,6 +6,12 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+/**
+ * Ref:
+ * - relationship: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/relationships/
+ * - ignore property: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#ignore-a-property
+ */
+
 import Foundation
 import RealmSwift
 
@@ -13,45 +19,32 @@ typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, docume
 
 final class KikurageStateGraphObject: Object {
     // For realm
-    dynamic var graphID: String = UUID().uuidString
-    dynamic var expiredDate = Date()
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var expiredDate: Date
     // Firebase response type
-    dynamic var mondayData: TimeData?
-    dynamic var tuesdayData: TimeData?
-    dynamic var wednesdayData: TimeData?
-    dynamic var thursdayData: TimeData?
-    dynamic var fridayData: TimeData?
-    dynamic var saturdayData: TimeData?
-    dynamic var sundayData: TimeData?
-
-    override static func primaryKey() -> String? {
-        "graphID"
+    @Persisted var mondayData: TimeDataObject?
+    @Persisted var tuesdayData: TimeDataObject?
+    @Persisted var wednesdayData: TimeDataObject?
+    @Persisted var thursdayData: TimeDataObject?
+    @Persisted var fridayData: TimeDataObject?
+    @Persisted var saturdayData: TimeDataObject?
+    @Persisted var sundayData: TimeDataObject?
+    
+    override convenience init() {
+        self.init()
+        self.expiredDate = Date()
     }
 }
 
-extension KikurageStateGraph: RealmCodable {
-    func decodeRealmObject(from realmObject: KikurageStateGraphObject) -> KikurageStateGraph {
-        var kikurageStateGraph = KikurageStateGraph()
-        kikurageStateGraph.mondayData = realmObject.mondayData
-        kikurageStateGraph.tuesdayData = realmObject.tuesdayData
-        kikurageStateGraph.wednesdayData = realmObject.wednesdayData
-        kikurageStateGraph.thursdayData = realmObject.thursdayData
-        kikurageStateGraph.fridayData = realmObject.fridayData
-        kikurageStateGraph.saturdayData = realmObject.saturdayData
-        kikurageStateGraph.sundayData = realmObject.sundayData
-        return kikurageStateGraph
-    }
-
-    func encodeRealmObject(from response: KikurageStateGraph, expiredDate: Date) -> KikurageStateGraphObject {
-        let kikurageStateGraphObject = KikurageStateGraphObject()
-        kikurageStateGraphObject.mondayData = response.mondayData
-        kikurageStateGraphObject.tuesdayData = response.tuesdayData
-        kikurageStateGraphObject.wednesdayData = response.wednesdayData
-        kikurageStateGraphObject.thursdayData = response.thursdayData
-        kikurageStateGraphObject.fridayData = response.fridayData
-        kikurageStateGraphObject.saturdayData = response.saturdayData
-        kikurageStateGraphObject.sundayData = response.sundayData
-        kikurageStateGraphObject.expiredDate = expiredDate
-        return kikurageStateGraphObject
+class TimeDataObject: Object {
+    @Persisted var date: Date
+    @Persisted var temperature: Int
+    @Persisted var humidity: Int
+    
+    override convenience init() {
+        self.init()
+        self.date = Date()
+        self.temperature = 0
+        self.humidity = 0
     }
 }
