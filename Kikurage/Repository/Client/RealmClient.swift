@@ -6,16 +6,16 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-/**
- * Ref:
- * - [ important ] transaction: https://www.mongodb.com/docs/realm/sdk/swift/crud/create/#run-a-transaction
- * - CRUD: https://www.mongodb.com/docs/realm/sdk/swift/crud/create/
- * - sort when read Object: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#sort-query-results
- * - chain queries when read Object: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#chain-queries
- * - limit of query: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#limiting-query-results
- * - [ important ] across threads: https://www.mongodb.com/docs/realm/sdk/swift/crud/threading/#communication-across-threads
- * - change listener: https://www.mongodb.com/docs/realm/sdk/swift/react-to-changes/#react-to-changes---swift-sdk
- */
+//
+// Ref:
+//  - [ important ] transaction: https://www.mongodb.com/docs/realm/sdk/swift/crud/create/#run-a-transaction
+//  - CRUD: https://www.mongodb.com/docs/realm/sdk/swift/crud/create/
+//  - sort when read Object: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#sort-query-results
+//  - chain queries when read Object: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#chain-queries
+//  - limit of query: https://www.mongodb.com/docs/realm/sdk/swift/crud/read/#limiting-query-results
+//  - [ important ] across threads: https://www.mongodb.com/docs/realm/sdk/swift/crud/threading/#communication-across-threads
+//  - change listener: https://www.mongodb.com/docs/realm/sdk/swift/react-to-changes/#react-to-changes---swift-sdk
+//
 
 import Foundation
 import RealmSwift

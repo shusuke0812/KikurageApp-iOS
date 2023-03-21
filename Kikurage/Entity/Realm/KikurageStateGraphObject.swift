@@ -6,14 +6,14 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-/**
- * Ref:
- * - relationship: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/relationships/
- * - ignore property: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#ignore-a-property
- * - supported types: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/supported-types/
- * - does not support `struct`: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#swift-structs
- * - [ important ] migration: https://www.mongodb.com/docs/realm/sdk/swift/model-data/change-an-object-model/
- */
+//
+//  Ref:
+//  - relationship: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/relationships/
+//  - ignore property: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#ignore-a-property
+//  - supported types: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/supported-types/
+//  - does not support `struct`: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#swift-structs
+//  - [ important ] migration: https://www.mongodb.com/docs/realm/sdk/swift/model-data/change-an-object-model/
+//
 
 import Foundation
 import RealmSwift
@@ -22,7 +22,7 @@ typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, docume
 
 final class KikurageStateGraphObject: Object {
     // For realm
-    @Persisted(primaryKey: true) var _id: ObjectID
+    @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var expiredDate: Date
     // Firebase response type
     @Persisted var mondayData: TimeDataObject?
