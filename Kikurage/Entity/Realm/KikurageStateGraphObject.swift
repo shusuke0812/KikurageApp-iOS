@@ -12,6 +12,7 @@
  * - ignore property: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#ignore-a-property
  * - supported types: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/supported-types/
  * - does not support `struct`: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#swift-structs
+ * - [ important ] migration: https://www.mongodb.com/docs/realm/sdk/swift/model-data/change-an-object-model/
  */
 
 import Foundation
