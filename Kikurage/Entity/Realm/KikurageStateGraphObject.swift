@@ -10,6 +10,8 @@
  * Ref:
  * - relationship: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/relationships/
  * - ignore property: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#ignore-a-property
+ * - supported types: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/supported-types/
+ * - does not support `struct`: https://www.mongodb.com/docs/realm/sdk/swift/model-data/define-model/object-models/#swift-structs
  */
 
 import Foundation
