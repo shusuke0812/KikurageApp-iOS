@@ -26,6 +26,7 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
+
     func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
         do {
             let realm = try Realm()

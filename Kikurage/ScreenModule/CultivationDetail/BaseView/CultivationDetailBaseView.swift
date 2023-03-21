@@ -51,9 +51,11 @@ extension CultivationDetailBaseView {
         pageControl.currentPageIndicatorTintColor = .gray
         pageControl.pageIndicatorTintColor = .white
     }
+
     private func setCollectionView() {
         flowLayout.estimatedItemSize = .zero
         collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
+        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 
@@ -64,10 +66,12 @@ extension CultivationDetailBaseView {
         viewDateLabel.text = cultivation.viewDate
         memoTextView.text = cultivation.memo
     }
+
     func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
     }
+
     func configPageControl(imageCount: Int) {
         if imageCount <= 1 {
             pageControl.numberOfPages = 0
@@ -75,6 +79,7 @@ extension CultivationDetailBaseView {
             pageControl.numberOfPages = imageCount
         }
     }
+
     func configPageControl(didChangedCurrentPage index: Int) {
         pageControl.currentPage = index
     }

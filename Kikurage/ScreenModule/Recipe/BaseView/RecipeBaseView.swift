@@ -27,6 +27,7 @@ extension RecipeBaseView {
         tableView.backgroundColor = .systemGroupedBackground
         tableView.separatorStyle = .none
     }
+
     private func setTableView() {
         // セル選択を不可にする（料理記録詳細ページは無いため）
         tableView.allowsSelection = false
@@ -42,6 +43,7 @@ extension RecipeBaseView {
     func setRefreshControlInTableView(_ refresh: UIRefreshControl) {
         tableView.refreshControl = refresh
     }
+
     func configTableView(delegate: UITableViewDelegate) {
         tableView.delegate = delegate
     }

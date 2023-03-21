@@ -37,6 +37,7 @@ extension KikurageUserRepository {
             }
         }
     }
+
     func postKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<Void, ClientError>) -> Void) {
         firestoreClient.postDocumentRequest(request) { result in
             switch result {

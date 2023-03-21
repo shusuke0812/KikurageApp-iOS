@@ -6,16 +6,16 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import UIKit
-import SwiftUI
-import SafariServices
 import PKHUD
 import RxSwift
+import SafariServices
+import SwiftUI
+import UIKit
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
-    private var baseView: RecipeBaseView { self.view as! RecipeBaseView } // swiftlint:disable:this force_cast
+    private var baseView: RecipeBaseView { view as! RecipeBaseView } // swiftlint:disable:this force_cast
     private var emptyHostingVC: UIHostingController<EmptyView>!
-    private var viewModel: RecipeViewModel!
+    private var viewModel: RecipeViewModelType!
 
     private let diposeBag = RxSwift.DisposeBag()
     private let cellHeight: CGFloat = 160.0
@@ -32,24 +32,25 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
         adjustNavigationBarBackgroundColor()
 
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
         }
 
         // Rx
         rxBaseView()
         rxTransition()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
     // MARK: - Action
 
-    @objc private func refresh(_ sender: UIRefreshControl) {
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+    private func refresh() {
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
+            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
         }
     }
 }
@@ -60,14 +61,19 @@ extension RecipeViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_recipe_title())
     }
+
     private func setDelegateDataSource() {
         baseView.configTableView(delegate: self)
     }
+
     private func setRefreshControl() {
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refresh.addAction(.init { [weak self] _ in
+            self?.refresh()
+        }, for: .valueChanged)
         baseView.setRefreshControlInTableView(refresh)
     }
+
     private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
         if recipes.isEmpty {
             emptyHostingVC = addEmptyView(type: .notFoundRecipe)
@@ -105,7 +111,9 @@ extension RecipeViewController {
             onNext: { [weak self] error in
                 DispatchQueue.main.async {
                     HUD.hide()
-                    guard let `self` = self else { return }
+                    guard let `self` = self else {
+                        return
+                    }
                     self.baseView.tableView.refreshControl?.endRefreshing()
                     UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
                 }
@@ -115,6 +123,7 @@ extension RecipeViewController {
 
         // MEMO: item on table view selected（nothing）
     }
+
     private func rxTransition() {
         baseView.postPageButton.rx.tap.asDriver()
             .drive(
@@ -142,10 +151,11 @@ extension RecipeViewController {
     private func setNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(didPostRecipe), name: .updatedRecipes, object: nil)
     }
+
     @objc private func didPostRecipe(notification: Notification) {
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
             HUD.show(.progress)
-            viewModel.loadRecipes(kikurageUserId: kikurageUserId)
+            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
         }
     }
 }

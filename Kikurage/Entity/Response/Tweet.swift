@@ -30,12 +30,12 @@ struct Tweet: Codable {
     struct User: Codable {
         let name: String
         let screenName: String
-        let profileImageUrl: String
+        let profileImageURL: String
 
         enum CodingKeys: String, CodingKey {
             case name
             case screenName = "screen_name"
-            case profileImageUrl = "profile_image_url_https"
+            case profileImageURL = "profile_image_url_https"
         }
     }
 }

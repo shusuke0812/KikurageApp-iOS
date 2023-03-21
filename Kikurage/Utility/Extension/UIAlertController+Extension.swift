@@ -6,22 +6,23 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 extension UIAlertController {
     static func showAlert(
         style: UIAlertController.Style, viewController: UIViewController, title: String?, message: String?, okButtonTitle: String, cancelButtonTitle: String?, completionOk: (() -> Void)?,
-        file: String = #file, function: String = #function, line: Int = #line, logMessage: String = "") {
+        file: String = #file, function: String = #function, line: Int = #line, logMessage: String = ""
+    ) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         // キャンセル｜OK というボタン配置にするためにCancelActionを先にAddする
         if let cancelButtonTitle = cancelButtonTitle {
-            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { _ -> Void in
+            let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { _ in
                 KLogger.info(file: file, function: function, line: line, logMessage)
             }
             alert.addAction(cancelAction)
         }
-        let okAction = UIAlertAction(title: okButtonTitle, style: .default) { _ -> Void in
+        let okAction = UIAlertAction(title: okButtonTitle, style: .default) { _ in
             KLogger.info(file: file, function: function, line: line, logMessage)
             if let completionOk = completionOk {
                 completionOk()

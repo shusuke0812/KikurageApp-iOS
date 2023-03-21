@@ -90,6 +90,7 @@ extension KikurageHUD {
             self?.alpha = 0.0
         }, completion: nil)
     }
+
     public func stopFlashAnimation() {
         layer.removeAllAnimations()
         alpha = 1.0
@@ -100,6 +101,7 @@ extension KikurageHUD {
         case y = "transform.rotation.y"
         case z = "transform.rotation.z"
     }
+
     public func startRotateAnimation(duration: TimeInterval, rotateAxis: RotateAxis) {
         makeCircleBorderToImageView()
 
@@ -110,6 +112,7 @@ extension KikurageHUD {
 
         loadingImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
+
     public func stopRotateAnimation() {
         layer.removeAllAnimations()
         removeFromSuperview()

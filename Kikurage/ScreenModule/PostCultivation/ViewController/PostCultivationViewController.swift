@@ -6,11 +6,11 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import PKHUD
+import UIKit
 
 class PostCultivationViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: PostCultivationBaseView { self.view as! PostCultivationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: PostCultivationBaseView { view as! PostCultivationBaseView } // swiftlint:disable:this force_cast
     private var viewModel: PostCultivationViewModel!
     private var cameraCollectionViewModel: CameraCollectionViewModel!
 
@@ -44,6 +44,7 @@ extension PostCultivationViewController {
         cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }
+
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -59,8 +60,8 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
                 // HUD表示（始）
                 HUD.show(.progress)
-                if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-                    self.viewModel.postCultivation(kikurageUserId: kikurageUserId)
+                if let kikurageUserID = LoginHelper.shared.kikurageUserID {
+                    self.viewModel.postCultivation(kikurageUserID: kikurageUserID)
                 }
             }
         } else {
@@ -89,8 +90,11 @@ extension PostCultivationViewController: UITextViewDelegate {
         }
         return resultText.count <= baseView.maxTextViewNumber
     }
+
     func textViewDidChange(_ textView: UITextView) {
-        guard let text = textView.text else { return }
+        guard let text = textView.text else {
+            return
+        }
         baseView.textView.switchPlaceholderDisplay(text: text)
         viewModel.cultivation.memo = text
         baseView.setCurrentTextViewNumber(text: text)
@@ -114,16 +118,18 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         // nil要素を取り除いた選択した画像のみのData型に変換する
         let postImageData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.3).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserId = LoginHelper.shared.kikurageUserId {
-            viewModel.postCultivationImages(kikurageUserId: kikurageUserId, imageData: postImageData)
+        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
+            viewModel.postCultivationImages(kikurageUserID: kikurageUserID, imageData: postImageData)
         }
     }
+
     func postCultivationViewModelDidFailedPostCultivation(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         }
     }
+
     func postCultivationViewModelDidSuccessPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
@@ -133,6 +139,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
             }
         }
     }
+
     func postCultivationViewModelDidFailedPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
@@ -153,13 +160,18 @@ extension PostCultivationViewController: UICollectionViewDelegate {
 
 extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else { return }
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
         picker.dismiss(animated: true) { [weak self] in
             self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
             self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
         }
     }
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

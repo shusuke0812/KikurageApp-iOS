@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-typealias KikurageStateGraphTuple = (data: KikurageStateGraph, documentId: String)
+typealias KikurageStateGraphTuple = (data: KikurageStateGraph, documentID: String)
 
 struct KikurageStateGraph: Codable {
     var mondayData: TimeData?
@@ -55,6 +55,7 @@ extension KikurageStateGraph: RealmCodable {
         kikurageStateGraph.sundayData = realmObject.sundayData
         return kikurageStateGraph
     }
+
     func encodeRealmObject(from response: KikurageStateGraph, expiredDate: Date) -> KikurageStateGraphObject {
         let kikurageStateGraphObject = KikurageStateGraphObject()
         kikurageStateGraphObject.mondayData = response.mondayData
@@ -71,11 +72,11 @@ extension KikurageStateGraph: RealmCodable {
 
 // MARK: - Realm
 
-typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, documentId: String)
+typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, documentID: String)
 
 final class KikurageStateGraphObject: Object {
     // For realm
-    dynamic var graphId: String = UUID().uuidString
+    dynamic var graphID: String = UUID().uuidString
     dynamic var expiredDate = Date()
     // Firebase response type
     dynamic var mondayData: TimeData?

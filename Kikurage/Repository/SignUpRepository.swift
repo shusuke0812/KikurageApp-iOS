@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 protocol SignUpRepositoryProtocol {
     /// 新規ユーザー登録を行う
@@ -17,8 +17,7 @@ protocol SignUpRepositoryProtocol {
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void)
 }
 
-class SignUpRepository: SignUpRepositoryProtocol {
-}
+class SignUpRepository: SignUpRepositoryProtocol {}
 
 // MARK: - Firebase Authentication
 

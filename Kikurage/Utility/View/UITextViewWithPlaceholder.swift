@@ -35,10 +35,11 @@ extension UITextViewWithPlaceholder {
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.lineBreakMode = .byWordWrapping
         placeholderLabel.numberOfLines = 0
-        placeholderLabel.font = self.font
+        placeholderLabel.font = font
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(self.placeholderLabel)
+        addSubview(placeholderLabel)
     }
+
     func switchPlaceholderDisplay(text: String) {
         placeholderLabel.isHidden = text.isEmpty ? false : true
     }

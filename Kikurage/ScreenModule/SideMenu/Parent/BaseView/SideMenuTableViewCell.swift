@@ -25,6 +25,7 @@ extension SideMenuTableViewCell {
         contentView.backgroundColor = .systemGroupedBackground
         iconImageView.tintColor = .black
     }
+
     func setSideMenuContent(title: String, iconImageName: String) {
         titleLabel.text = title
         iconImageView.image = UIImage(systemName: iconImageName)

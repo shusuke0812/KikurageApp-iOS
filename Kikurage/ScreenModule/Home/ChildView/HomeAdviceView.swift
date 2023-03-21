@@ -38,9 +38,11 @@ extension HomeAdviceView {
         baseView.layer.cornerRadius = .viewCornerRadius
         baseView.backgroundColor = .white
     }
+
     private func initAdviceTitleLabel() {
         adviceTitleLabel.text = R.string.localizable.screen_home_advice_title()
     }
+
     private func initAdviceIconImageView() {
         adviceIconImageView.image = R.image.hakase()
     }

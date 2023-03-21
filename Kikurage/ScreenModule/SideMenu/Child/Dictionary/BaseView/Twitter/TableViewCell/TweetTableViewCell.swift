@@ -6,8 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
 import SDWebImage
+import UIKit
 
 class TweetTableViewCell: UITableViewCell {
     @IBOutlet private weak var userIconImageView: UIImageView!
@@ -47,8 +47,8 @@ extension TweetTableViewCell {
         userNameLabel.text = tweet.user.name
         createdAtLabel.text = DateHelper.formatToString(date: tweet.createdAt)
         tweetLabel.text = tweet.text
-        if let iconImageUrlString = URL(string: tweet.user.profileImageUrl) {
-            userIconImageView.sd_setImage(with: iconImageUrlString)
+        if let iconImageURLString = URL(string: tweet.user.profileImageURL) {
+            userIconImageView.sd_setImage(with: iconImageURLString)
         }
     }
 }

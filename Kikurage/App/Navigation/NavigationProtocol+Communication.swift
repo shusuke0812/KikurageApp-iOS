@@ -17,7 +17,9 @@ extension CommunicationAccessable {
     // MARK: - Push
 
     func pushToCommunication() {
-        guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else { return }
+        guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else {
+            return
+        }
         push(to: vc)
     }
 

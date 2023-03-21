@@ -18,11 +18,16 @@ extension CultivationAccessable {
     // MARK: - Push
 
     func pushToCultivation() {
-        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else { return }
+        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else {
+            return
+        }
         push(to: vc)
     }
+
     func pushToCultivationDetail(cultivation: KikurageCultivation) {
-        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else { return }
+        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else {
+            return
+        }
         vc.cultivation = cultivation
         push(to: vc)
     }
@@ -30,7 +35,9 @@ extension CultivationAccessable {
     // MARK: - Modal
 
     func modalToPostCultivation() {
-        guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else { return }
+        guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else {
+            return
+        }
         present(to: vc, style: .automatic)
     }
 }

@@ -6,26 +6,28 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 struct KikurageCultivationRequest: FirestoreRequestProtocol {
     typealias Response = KikurageCultivation
 
-    var kikurageUserId: String = ""
-    var documentId: String = ""
+    var kikurageUserID: String = ""
+    var documentID: String = ""
     var imageStorageFullPaths: [String] = []
 
     /// For using PUT method
     var documentReference: DocumentReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations).document(documentId)
+        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.cultivations).document(documentID)
     }
+
     /// For using POST and GET method
     var collectionReference: CollectionReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.cultivations)
+        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.cultivations)
     }
+
     /// Using `self.buildBody()` to set this parameter
     var body: [String: Any]? = [:]
 }

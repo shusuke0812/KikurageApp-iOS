@@ -6,10 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
-typealias KikurageRecipeTuple = (data: KikurageRecipe, documentId: String)
+typealias KikurageRecipeTuple = (data: KikurageRecipe, documentID: String)
 
 struct KikurageRecipe: Codable {
     var name: String = ""

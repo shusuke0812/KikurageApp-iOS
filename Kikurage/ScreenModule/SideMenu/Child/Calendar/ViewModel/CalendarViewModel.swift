@@ -24,8 +24,8 @@ class CalendarViewModel {
 
     init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
-        self.cultivationDateComponents = DateHelper.getDateComponents()
-        self.cultivationTerm = 0
+        cultivationDateComponents = DateHelper.getDateComponents()
+        cultivationTerm = 0
     }
 }
 
@@ -37,6 +37,7 @@ extension CalendarViewModel {
             cultivationDateComponents = DateHelper.getDateComponents(date: cultivationStartDate)
         }
     }
+
     private func calcCultivationTerm() {
         let calendar = Calendar.current
 

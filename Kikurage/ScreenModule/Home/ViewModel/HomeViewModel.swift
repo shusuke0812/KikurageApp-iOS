@@ -7,11 +7,14 @@
 //
 
 import Foundation
-import RxSwift
 import KikurageFeature
+import RxSwift
 
 protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
+
+    func loadKikurageState()
+    func listenKikurageState()
 }
 
 protocol HomeViewModelOutput {
@@ -62,7 +65,7 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        let request = KikurageStateRequest(productId: kikurageUser.productKey)
+        let request = KikurageStateRequest(productID: kikurageUser.productKey)
         kikurageStateRepository.getKikurageState(request: request)
             .subscribe(
                 onSuccess: { [weak self] kikurageState in
@@ -75,6 +78,7 @@ extension HomeViewModel {
             )
             .disposed(by: disposeBag)
     }
+
     /// きくらげの状態をリッスンする
     func listenKikurageState() {
         kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)

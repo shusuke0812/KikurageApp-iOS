@@ -43,6 +43,7 @@ extension NavigationBarHiddenApplicatable {
         navigationController?.navigationBar.setBackgroundImage(navigationBackgroundImage, for: .default)
         navigationController?.navigationBar.shadowImage = navigationShadowImage
     }
+
     func undoDesignedNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
@@ -51,6 +52,7 @@ extension NavigationBarHiddenApplicatable {
     var navigationBackgroundImage: UIImage? {
         UIImage()
     }
+
     var navigationShadowImage: UIImage {
         UIImage()
     }

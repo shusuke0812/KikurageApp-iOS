@@ -9,14 +9,14 @@
 import UIKit
 
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: CultivationDetailBaseView { self.view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CultivationDetailBaseView { view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
     private var viewModel: CultivationDetailViewModel!
 
     var cultivation: KikurageCultivation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = CultivationDetailViewModel(cultivation: self.cultivation)
+        viewModel = CultivationDetailViewModel(cultivation: cultivation)
         setDelegateDataSource()
         setNavigationItem()
         setUI()
@@ -30,12 +30,14 @@ extension CultivationDetailViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_cultivation_detail_title())
     }
+
     private func setDelegateDataSource() {
         baseView.configCollectionView(delegate: self, dataSource: viewModel)
     }
+
     private func setUI() {
-        baseView.setUI(cultivation: self.cultivation)
-        baseView.configPageControl(imageCount: self.cultivation.imageStoragePaths.count)
+        baseView.setUI(cultivation: cultivation)
+        baseView.configPageControl(imageCount: cultivation.imageStoragePaths.count)
     }
 }
 
@@ -45,6 +47,7 @@ extension CultivationDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: 画像拡大処理を書く
     }
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page = viewModel.currentPage(on: scrollView)
         DispatchQueue.main.async {

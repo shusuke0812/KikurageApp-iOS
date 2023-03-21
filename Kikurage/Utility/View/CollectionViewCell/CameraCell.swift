@@ -6,9 +6,9 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import FirebaseStorage
 import FirebaseUI
+import UIKit
 
 protocol CameraCellDelegate: AnyObject {
     /// 画像キャンセルボタンがタップされた時の処理
@@ -42,12 +42,14 @@ extension CameraCell {
     func setDefaultImage() {
         cameraIamge.image = R.image.camera()
     }
+
     /// 選択した画像を表示する（新規選択時）
     /// - Parameter image: 選択した画像
     func setIamge(image: UIImage) {
         cameraIamge.image = image
         cameraIamge.contentMode = .scaleAspectFill
     }
+
     /// 投稿した画像を表示する（Firebase読み込み時）
     /// - Parameter imageStoragePath: 画像のStorageパス
     func setImage(imageStoragePath: String) {

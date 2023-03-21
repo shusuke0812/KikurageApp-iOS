@@ -24,11 +24,11 @@ Moblie App parts of this IoT product can be monitoring and observing to Kikurage
 ![ui](https://user-images.githubusercontent.com/33107697/160155691-1730da8b-0ea7-4f0b-b703-7790fc54d552.png)
 
 ## Development
-- Xcode 13.3.1 (13E500a)
+- Xcode 14.2 (14C18)
 - Swift 5.6 
 - CocoaPods 1.11.3  
-- MacOS Monterey 12.3.1 / MacBook Intel Processor Model
-- Target OS：iOS 13.0 
+- MacOS Ventura 13.0 / MacBook Arm Processor Model
+- Target OS：iOS 14.0 
 
 ## Author
 - [@shusuke0812](https://github.com/shusuke0812)
@@ -83,11 +83,11 @@ The author do not take any responsibility for your using this sorce. For more in
 ![system](https://user-images.githubusercontent.com/33107697/147388919-75406b53-610b-4760-a622-d219d019acbe.png)
 
 ## 開発環境
-- Xcode 13.2.1 (13C100)
-- Swift 5.0 
+- Xcode 14.2 (14C18)
+- Swift 5.6 
 - CocoaPods 1.11.3  
-- MacOS BigSur 11.4 / MacBook Intel Processor Model
-- 開発ターゲット：iOS 13.0  
+- MacOS Ventura 13.0 / MacBook Arm Processor Model
+- Target OS：iOS 14.0  
 
 ## 参考文献
 - Swift

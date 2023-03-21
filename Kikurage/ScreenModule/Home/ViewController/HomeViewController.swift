@@ -6,13 +6,13 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import KikurageFeature
+import RxSwift
+import UIKit
 
 class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
-    private var baseView: HomeBaseView { self.view as! HomeBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: HomeViewModel!
+    private var baseView: HomeBaseView { view as! HomeBaseView } // swiftlint:disable:this force_cast
+    private var viewModel: HomeViewModelType!
 
     @IBOutlet private weak var sideMenuBarButtonItem: UIBarButtonItem!
 
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
         super.viewDidLoad()
         // Config
         viewModel = HomeViewModel(kikurageUser: kikurageUser, kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository())
-        viewModel.listenKikurageState()
+        viewModel.input.listenKikurageState()
 
         // UI
         baseView.setKikurageNameUI(kikurageUser: kikurageUser)
@@ -46,12 +46,14 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
         rxTransition()
         rxBaseView()
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setDateTimer()
         loadKikurageState()
         startKikurageStateViewAnimation()
     }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // For prevented memory over usage, timer is stopped and disposed before screen transition
@@ -67,16 +69,24 @@ extension HomeViewController {
     private func setNavigationItem() {
         setNavigationBackButton(buttonTitle: R.string.localizable.common_navigation_back_btn_title(), buttonColor: .black)
     }
+
     private func setDateTimer() {
-        dateTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateUI), userInfo: nil, repeats: true)
+        dateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.updateUI()
+            }
+        })
     }
+
     @objc private func updateUI() {
         baseView.updateTimeLabel()
     }
+
     private func makeForeBackgroundObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
+
     private func startKikurageStateViewAnimation() {
         baseView.kikurageStatusViewAnimation(true)
     }
@@ -100,38 +110,39 @@ extension HomeViewController {
         )
         .disposed(by: disposeBag)
     }
+
     private func rxTransition() {
         baseView.footerButtonView.cultivationButton.rx.tap.asDriver()
             .drive(
-            onNext: { [weak self] in
-                self?.pushToCultivation()
-            }
-        )
-        .disposed(by: disposeBag)
+                onNext: { [weak self] in
+                    self?.pushToCultivation()
+                }
+            )
+            .disposed(by: disposeBag)
 
         baseView.footerButtonView.recipeButton.rx.tap.asDriver()
             .drive(
-            onNext: { [weak self] in
-                self?.pushToRecipe()
-            }
-        )
-        .disposed(by: disposeBag)
+                onNext: { [weak self] in
+                    self?.pushToRecipe()
+                }
+            )
+            .disposed(by: disposeBag)
 
         baseView.footerButtonView.communicationButton.rx.tap.asDriver()
             .drive(
-            onNext: { [weak self] in
-                self?.pushToCommunication()
-            }
-        )
-        .disposed(by: disposeBag)
+                onNext: { [weak self] in
+                    self?.pushToCommunication()
+                }
+            )
+            .disposed(by: disposeBag)
 
         sideMenuBarButtonItem.rx.tap.asDriver()
             .drive(
-            onNext: { [weak self] in
-                self?.performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
-            }
-        )
-        .disposed(by: disposeBag)
+                onNext: { [weak self] in
+                    self?.performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
 
@@ -139,7 +150,7 @@ extension HomeViewController {
 
 extension HomeViewController {
     private func loadKikurageState() {
-        viewModel.loadKikurageState()
+        viewModel.input.loadKikurageState()
     }
 }
 
@@ -150,6 +161,7 @@ extension HomeViewController {
         setDateTimer()
         startKikurageStateViewAnimation()
     }
+
     @objc private func didEnterBackground() {
         dateTimer?.invalidate()
         dateTimer = nil

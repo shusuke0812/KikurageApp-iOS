@@ -17,7 +17,7 @@ protocol APIClientProtocol {
 struct APIClient: APIClientProtocol {
     func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) {
         let session = URLSession.shared
-        let task = session.dataTask(with: request.buildUrlRequest()) { data, response, error in
+        let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
             if let error = error {
                 completion(.failure(.networkConnectionError(error)))
                 return
@@ -41,10 +41,11 @@ struct APIClient: APIClientProtocol {
         }
         task.resume()
     }
+
     func sendRequest<T: APIRequestProtocol>(_ request: T) -> Single<T.Response> {
         Single<T.Response>.create { single in
             let session = URLSession.shared
-            let task = session.dataTask(with: request.buildUrlRequest()) { data, response, error in
+            let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
                 if let error = error {
                     single(.failure(error))
                     return

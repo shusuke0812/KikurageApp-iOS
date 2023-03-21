@@ -6,15 +6,14 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void)
 }
 
-class LoginRepository: LoginRepositoryProtocol {
-}
+class LoginRepository: LoginRepositoryProtocol {}
 
 // MARK: - Firebase Authentication
 

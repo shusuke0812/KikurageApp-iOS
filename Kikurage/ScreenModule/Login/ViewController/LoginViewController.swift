@@ -6,11 +6,11 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import PKHUD
+import UIKit
 
 class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: LoginBaseView { self.view as! LoginBaseView } // swiftlint:disable:this force_cast
+    private var baseView: LoginBaseView { view as! LoginBaseView } // swiftlint:disable:this force_cast
     private var viewModel: LoginViewModel!
 
     override func viewDidLoad() {
@@ -46,7 +46,9 @@ extension LoginViewController: LoginBaseViewDelegate {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text else { return }
+        guard let text = textField.text else {
+            return
+        }
         switch textField {
         case baseView.emailTextField:
             viewModel.email = text
@@ -67,6 +69,7 @@ extension LoginViewController: LoginViewModelDelegate {
             self.transitionHomePage()
         }
     }
+
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
@@ -76,8 +79,11 @@ extension LoginViewController: LoginViewModelDelegate {
             }
         }
     }
+
     private func transitionHomePage() {
-        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else { return }
+        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else {
+            return
+        }
         pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
     }
 }
