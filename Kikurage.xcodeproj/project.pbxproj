@@ -181,6 +181,7 @@
 		9CC5AFC428A5623C00B7AA82 /* RealmCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5AFC328A5623C00B7AA82 /* RealmCodable.swift */; };
 		9CC6752D288D36E30003B18A /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC6752C288D36E30003B18A /* SessionSetupResult.swift */; };
 		9CCB246628A7548A00FE46E7 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB246528A7548A00FE46E7 /* RealmClient.swift */; };
+		9CCDAEA129C9A7F3000EB2FC /* KikurageStateGraphObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCDAEA029C9A7F3000EB2FC /* KikurageStateGraphObject.swift */; };
 		9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
@@ -426,6 +427,7 @@
 		9CC5AFC328A5623C00B7AA82 /* RealmCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCodable.swift; sourceTree = "<group>"; };
 		9CC6752C288D36E30003B18A /* SessionSetupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
 		9CCB246528A7548A00FE46E7 /* RealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
+		9CCDAEA029C9A7F3000EB2FC /* KikurageStateGraphObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateGraphObject.swift; sourceTree = "<group>"; };
 		9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRequestProtocol.swift; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
@@ -1287,6 +1289,7 @@
 				9C7DCE9A26EE156B00F62DF8 /* Error */,
 				9C73CCCF26D53ECB00B4DE55 /* Response */,
 				9C9981CE27F9A9A40068FD61 /* Request */,
+				9CCDAE9F29C9A7CC000EB2FC /* Realm */,
 				9C9B273527F00F11000743D0 /* AppVersion.swift */,
 				9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */,
 				9CC5AFC328A5623C00B7AA82 /* RealmCodable.swift */,
@@ -1461,6 +1464,14 @@
 				9CCB246528A7548A00FE46E7 /* RealmClient.swift */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		9CCDAE9F29C9A7CC000EB2FC /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				9CCDAEA029C9A7F3000EB2FC /* KikurageStateGraphObject.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		9CDAFBF624E4B95700E56550 /* Extension */ = {
@@ -2059,6 +2070,7 @@
 				9CC5AFC428A5623C00B7AA82 /* RealmCodable.swift in Sources */,
 				9CAFDC0927802F1F00C40094 /* SettingViewController.swift in Sources */,
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
+				9CCDAEA129C9A7F3000EB2FC /* KikurageStateGraphObject.swift in Sources */,
 				9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
 				9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */,
