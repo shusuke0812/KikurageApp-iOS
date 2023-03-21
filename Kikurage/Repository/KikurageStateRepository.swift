@@ -66,8 +66,8 @@ extension KikurageStateRepository {
 // MARK: - Realm
 
 extension KikurageStateRepository {
-    func putKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void) {
-        realmClient.writeRequest(object) { result in
+    func createKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void) {
+        realmClient.createRequest(object) { result in
             switch result {
             case .success(let void):
                 completion(.success(void))
@@ -77,7 +77,7 @@ extension KikurageStateRepository {
         }
     }
 
-    func getKikurageStateGraph(productID: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void) {
+    func readKikurageStateGraph(productID: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void) {
         realmClient.readRequest(id: productID) { result in
             switch result {
             case .success(let object):
