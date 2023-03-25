@@ -198,6 +198,12 @@
 "side_menu_wifi_spec_section_device_id_row_title" = "デバイスID";
 "side_menu_wifi_spec_section_rssi_row_title" = "RSSI";
 "side_menu_wifi_spec_section_wifi_enter_row_title" = "手動で入力する";
+"side_menu_wifi_setting_title" = "WiFi設定";
+"side_menu_wifi_setting_section_required_title" = "必須";
+"side_menu_wifi_setting_section_optional_title" = "任意";
+"side_menu_wifi_setting_section_password_row_title" = "パスワード";
+"side_menu_wifi_setting_section_active_scan_row_title" = "アクティブスキャン";
+"side_menu_wifi_setting_section_security_row_title" = "セキュリティ";
 
 // debug
 "side_menu_debug_title" = "デバッグ";

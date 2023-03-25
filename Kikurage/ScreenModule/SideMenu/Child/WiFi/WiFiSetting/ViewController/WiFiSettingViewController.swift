@@ -9,6 +9,7 @@
 import UIKit
 
 class WiFiSettingViewController: UIViewController {
+    private let baseView: WiFiSettingBaseView = .init()
     private let viewModel: WiFiSettingViewModel
 
     init(selectedSSID: String) {
@@ -20,7 +21,42 @@ class WiFiSettingViewController: UIViewController {
         nil
     }
 
+    override func loadView() {
+        view = baseView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupProtocols()
+        setupNavigation()
+    }
+
+    private func setupProtocols() {
+        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+    }
+
+    private func setupNavigation() {
+        navigationItem.title = R.string.localizable.side_menu_wifi_setting_title()
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension WiFiSettingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = viewModel.sections[indexPath.section]
+        let row = section.rows[indexPath.row]
+
+        switch row {
+        case .ssid, .password:
+            // This action is declared in `WiFiSettingTableViewCell`.
+            break
+        case .activeScan:
+            // TODO: opne action sheet
+            print()
+        case .security:
+            // TODO: opne action sheet
+            print()
+        }
     }
 }
