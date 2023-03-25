@@ -29,6 +29,10 @@ class WiFiSelectDeviceViewModel: NSObject {
         bluetoothManager.delegate = self
     }
 
+    deinit {
+        bluetoothManager.release()
+    }
+
     private func add(peripheral: KikurageBluetoothPeripheral) {
         bluetoothPeripherals.add(peripheral: peripheral)
     }

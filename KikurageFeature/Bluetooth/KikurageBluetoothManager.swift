@@ -23,7 +23,15 @@ public class KikurageBluetoothManager: NSObject {
     private var writeCharacteristic: CBCharacteristic?
     private var notifyCharacteristic: CBCharacteristic?
 
-    public static let shared = KikurageBluetoothManager()
+    private static var _shared: KikurageBluetoothManager?
+
+    public static var shared: KikurageBluetoothManager {
+        if _shared == nil {
+            _shared = KikurageBluetoothManager()
+        }
+        return _shared! // swiftlint:disable:this force_unwrapping
+    }
+
     public weak var delegate: KikurageBluetoothMangerDelegate?
 
     override private init() {
@@ -31,8 +39,18 @@ public class KikurageBluetoothManager: NSObject {
         initialize()
     }
 
+    deinit {
+        delegate = nil
+        writeCharacteristic = nil
+        notifyCharacteristic = nil
+    }
+
     private func initialize() {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+    }
+
+    public func release() {
+        KikurageBluetoothManager._shared = nil
     }
 
     private func scanForPeripherals() {
