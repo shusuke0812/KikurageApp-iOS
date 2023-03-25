@@ -39,6 +39,7 @@ class WiFiSettingBaseView: UIView {
         tableView.register(WiFiSettingTableViewCell.self, forCellReuseIdentifier: "WiFiSettingTableViewCell")
         tableView.register(WiFiListTableViewCell.self, forCellReuseIdentifier: "WiFiListTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isScrollEnabled = false
 
         settingButton.layer.masksToBounds = true
         settingButton.layer.cornerRadius = .buttonCornerRadius
