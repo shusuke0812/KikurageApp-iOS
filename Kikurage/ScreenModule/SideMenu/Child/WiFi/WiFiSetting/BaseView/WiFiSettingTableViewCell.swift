@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol WiFiSettingTableViewCellDelegate: AnyObject {
+    func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String)
+}
+
 class WiFiSettingTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let textField = UITextField()
+
+    var type: WiFiSettingSectionType.SectionRowType = .ssid
+
+    weak var delegate: WiFiSettingTableViewCellDelegate?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,8 +63,8 @@ class WiFiSettingTableViewCell: UITableViewCell {
         titleLabel.text = title
     }
 
-    func onTextField() {
-        textField.becomeFirstResponder()
+    func updateComponent(textFieldText: String) {
+        textField.text = textFieldText
     }
 }
 
@@ -74,5 +82,12 @@ extension WiFiSettingTableViewCell: UITextFieldDelegate {
 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+        delegate?.wifiSettingTableViewCell(self, didEnter: text)
     }
 }

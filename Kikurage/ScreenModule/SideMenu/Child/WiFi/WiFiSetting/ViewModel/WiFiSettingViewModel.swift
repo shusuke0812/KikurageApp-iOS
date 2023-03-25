@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import KikurageFeature
 import UIKit.UITableView
 
 class WiFiSettingViewModel: NSObject {
     private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
-    private var selectedSSID: String
+
+    private var wifiSetting: KikurageWiFiSetting
 
     init(selectedSSID: String) {
-        self.selectedSSID = selectedSSID
+        wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
         super.init()
     }
 }
@@ -47,11 +49,31 @@ extension WiFiSettingViewModel: UITableViewDataSource {
         case .required:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSettingTableViewCell", for: indexPath) as! WiFiSettingTableViewCell // swiftlint:disable:this force_cast
             cell.updateComponent(title: row.title)
+            cell.type = row
+            cell.delegate = self
+            if row == .ssid {
+                cell.updateComponent(textFieldText: wifiSetting.ssid)
+            }
             return cell
         case .optional:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
             cell.updateComponent(title: row.title)
             return cell
+        }
+    }
+}
+
+// MARK: - WiFiSettingTableViewCellDelegate
+
+extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
+    func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String) {
+        switch wifiSettingTableViewCell.type {
+        case .ssid:
+            wifiSetting.ssid = text
+        case .password:
+            wifiSetting.password = text
+        case .activeScan, .security:
+            break
         }
     }
 }
