@@ -204,6 +204,7 @@
 "side_menu_wifi_setting_section_password_row_title" = "Password";
 "side_menu_wifi_setting_section_active_scan_row_title" = "Active Scan";
 "side_menu_wifi_setting_section_security_row_title" = "Security";
+"side_menu_wifi_setting_button_title" = "Set";
 
 // debug
 "side_menu_debug_title" = "Debug";

@@ -33,6 +33,7 @@ class WiFiSettingViewController: UIViewController {
 
     private func setupProtocols() {
         baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+        baseView.delegate = self
     }
 
     private func setupNavigation() {
@@ -59,4 +60,10 @@ extension WiFiSettingViewController: UITableViewDelegate {
             print()
         }
     }
+}
+
+// MARK: - WiFiSettingBaseViewDelegate
+
+extension WiFiSettingViewController: WiFiSettingBaseViewDelegate {
+    func wifiSettingBaseViewDidTappedSetting(_ wifiSettingBaseView: WiFiSettingBaseView) {}
 }
