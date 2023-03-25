@@ -10,20 +10,16 @@ import Foundation
 
 public enum KikurageBluetoothCommand {
     case writeStopWiFiScan
+    case writeStartWiFiScan
 
     public var valueJsonData: Data? {
         switch self {
+        case .writeStartWiFiScan:
+            let command = KikurageWiFiScan(isStop: false)
+            return KikurageBluetoothParser.encodeBluetootCommand(command)
         case .writeStopWiFiScan:
-            let command = BluetoothStopWiFiScanCommand()
+            let command = KikurageWiFiScan(isStop: true)
             return KikurageBluetoothParser.encodeBluetootCommand(command)
         }
-    }
-}
-
-struct BluetoothStopWiFiScanCommand: Encodable {
-    private let command: Bool
-
-    init() {
-        command = true
     }
 }
