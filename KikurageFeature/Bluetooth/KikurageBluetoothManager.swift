@@ -20,8 +20,8 @@ public class KikurageBluetoothManager: NSObject {
     private var centralManager: CBCentralManager!
     private var connectToPeripheral: CBPeripheral!
 
-    private var writeCharacteristic: CBCharacteristic?
-    private var notifyCharacteristic: CBCharacteristic?
+    private var writeWiFiScanCharacteristic: CBCharacteristic?
+    private var notifyWiFiScanCharacteristic: CBCharacteristic?
 
     private static var _shared: KikurageBluetoothManager?
 
@@ -41,8 +41,8 @@ public class KikurageBluetoothManager: NSObject {
 
     deinit {
         delegate = nil
-        writeCharacteristic = nil
-        notifyCharacteristic = nil
+        writeWiFiScanCharacteristic = nil
+        notifyWiFiScanCharacteristic = nil
     }
 
     private func initialize() {
@@ -63,8 +63,8 @@ public class KikurageBluetoothManager: NSObject {
         connectToPeripheral = peripheral
     }
 
-    public func sendCommand(_ command: KikurageBluetoothCommand) {
-        guard let sendData = command.valueJsonData, let writeCharacteristic = writeCharacteristic else {
+    public func sendCommand(_ command: KikurageBluetoothCommand, to characteristic: CBCharacteristic) {
+        guard let sendData = command.valueJsonData, let writeCharacteristic = writeWiFiScanCharacteristic else {
             return
         }
         connectToPeripheral.writeValue(sendData, for: writeCharacteristic, type: .withResponse)
@@ -145,11 +145,11 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             characteristics.forEach { characteristic in
                 let uuidString = characteristic.uuid.uuidString.lowercased()
                 if uuidString == KikurageBluetoothUUID.Characteristic.readWiFiFromM5Stack.uuidString {
-                    notifyCharacteristic = characteristic
+                    notifyWiFiScanCharacteristic = characteristic
                     connectToPeripheral.setNotifyValue(true, for: characteristic)
                 }
                 if uuidString == KikurageBluetoothUUID.Characteristic.writeToM5Stack.uuidString {
-                    writeCharacteristic = characteristic
+                    writeWiFiScanCharacteristic = characteristic
                 }
             }
             delegate?.bluetoothManager(self, didUpdateFor: .didDiscoverCharacteristic)
