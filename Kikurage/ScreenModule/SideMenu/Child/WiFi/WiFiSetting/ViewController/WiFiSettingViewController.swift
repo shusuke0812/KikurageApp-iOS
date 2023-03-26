@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import UIKit
 import PKHUD
+import UIKit
 
 class WiFiSettingViewController: UIViewController {
     private let baseView: WiFiSettingBaseView = .init()
@@ -82,17 +82,16 @@ extension WiFiSettingViewController: WiFiSettingViewModelDelegate {
             HUD.hide()
         }
     }
-    
+
     func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
         }
     }
-    
+
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool) {
         DispatchQueue.main.async {
             self.baseView.enableSettingButton(isEnabled: canSetWiFi)
         }
     }
-    
 }
