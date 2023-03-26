@@ -12,7 +12,8 @@ import UIKit.UITableView
 
 protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
-    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral)
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral)
+    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, error: Error?)
 }
 
 class WiFiSelectDeviceViewModel: NSObject {
@@ -83,13 +84,15 @@ extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor connectionState: KikurageBluetoothConnectionState) {
         switch connectionState {
         case .connect:
+            break
+        case .disconnect(let error):
+            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
+        case .didDiscoverCharacteristic:
             if let selectedIndexPath = selectedIndexPath {
-                delegate?.viewModelDisSuccessConnectionToPeripheral(self, peripheral: bluetoothPeripherals.getElement(indexPath: selectedIndexPath))
+                delegate?.viewModelDidSuccessConnectionToPeripheral(self, peripheral: bluetoothPeripherals.getElement(indexPath: selectedIndexPath))
             }
-        case .disconnect:
-            break
-        case .fail:
-            break
+        case .fail(let error):
+            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
         }
     }
 }

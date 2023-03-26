@@ -152,6 +152,7 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
                     writeCharacteristic = characteristic
                 }
             }
+            delegate?.bluetoothManager(self, didUpdateFor: .didDiscoverCharacteristic)
         }
     }
 

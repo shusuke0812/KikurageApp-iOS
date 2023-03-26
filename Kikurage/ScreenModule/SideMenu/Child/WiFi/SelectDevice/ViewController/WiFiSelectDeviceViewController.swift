@@ -7,6 +7,7 @@
 //
 
 import KikurageFeature
+import PKHUD
 import UIKit
 
 class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
@@ -47,6 +48,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
 
 extension WiFiSelectDeviceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        HUD.show(.progress)
         viewModel.connectToPeripheral(indexPath: indexPath)
     }
 }
@@ -60,9 +62,16 @@ extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
         }
     }
 
-    func viewModelDisSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral) {
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral) {
         DispatchQueue.main.async {
+            HUD.hide()
             self.pushToWiFiList(bluetoothPeriperal: peripheral)
+        }
+    }
+
+    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, error: Error?) {
+        DispatchQueue.main.async {
+            HUD.hide()
         }
     }
 }

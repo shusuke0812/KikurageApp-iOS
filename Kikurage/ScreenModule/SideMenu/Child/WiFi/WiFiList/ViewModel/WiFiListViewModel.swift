@@ -91,6 +91,8 @@ extension WiFiListViewModel: UITableViewDataSource {
 // MARK: - KikurageBluetoothMangerDelegate
 
 extension WiFiListViewModel: KikurageBluetoothMangerDelegate {
+    func bluetoothManagerDidDiscoverCharacteristic(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager) {}
+
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {

@@ -10,6 +10,7 @@ import Foundation
 
 public enum KikurageBluetoothConnectionState {
     case connect
+    case didDiscoverCharacteristic
     case fail(Error?)
     case disconnect(Error?)
 }
