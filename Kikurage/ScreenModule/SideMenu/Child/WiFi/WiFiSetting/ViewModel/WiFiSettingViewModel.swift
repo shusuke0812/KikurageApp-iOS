@@ -10,14 +10,29 @@ import Foundation
 import KikurageFeature
 import UIKit.UITableView
 
+protocol WiFiSettingViewModelDelegate: AnyObject {
+    func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
+}
+
 class WiFiSettingViewModel: NSObject {
     private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
 
+    private let bluetoothManager = KikurageBluetoothManager.shared
     private var wifiSetting: KikurageWiFiSetting
+
+    weak var delegate: WiFiSettingViewModelDelegate?
 
     init(selectedSSID: String) {
         wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
         super.init()
+    }
+
+    func setupWiFi() {
+        bluetoothManager.sendCommand(.writeWiFiSetting(wifiSetting))
+    }
+
+    private func validateWiFiSetting() -> Bool {
+        !wifiSetting.ssid.isEmpty && !wifiSetting.password.isEmpty
     }
 }
 
@@ -73,7 +88,8 @@ extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
         case .password:
             wifiSetting.password = text
         case .activeScan, .security:
-            break
+            break // never called
         }
+        delegate?.wifiSettingViewModel(self, canSetWiFi: validateWiFiSetting())
     }
 }

@@ -29,6 +29,8 @@ class WiFiSettingViewController: UIViewController {
         super.viewDidLoad()
         setupProtocols()
         setupNavigation()
+
+        viewModel.delegate = self
     }
 
     private func setupProtocols() {
@@ -66,4 +68,14 @@ extension WiFiSettingViewController: UITableViewDelegate {
 
 extension WiFiSettingViewController: WiFiSettingBaseViewDelegate {
     func wifiSettingBaseViewDidTappedSetting(_ wifiSettingBaseView: WiFiSettingBaseView) {}
+}
+
+// MARK: - WiFiSettingViewModelDelegate
+
+extension WiFiSettingViewController: WiFiSettingViewModelDelegate {
+    func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool) {
+        DispatchQueue.main.async {
+            self.baseView.enableSettingButton(isEnabled: canSetWiFi)
+        }
+    }
 }

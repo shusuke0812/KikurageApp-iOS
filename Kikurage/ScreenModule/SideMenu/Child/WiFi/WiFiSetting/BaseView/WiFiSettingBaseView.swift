@@ -16,6 +16,8 @@ class WiFiSettingBaseView: UIView {
     private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let settingButton = UIButton()
 
+    private let disabledAlpha: CGFloat = 0.4
+
     weak var delegate: WiFiSettingBaseViewDelegate?
 
     override init(frame: CGRect) {
@@ -33,6 +35,15 @@ class WiFiSettingBaseView: UIView {
         tableView.dataSource = dataSource
     }
 
+    func enableSettingButton(isEnabled: Bool) {
+        settingButton.isEnabled = isEnabled
+        if isEnabled {
+            settingButton.alpha = 1
+        } else {
+            settingButton.alpha = disabledAlpha
+        }
+    }
+
     private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
@@ -45,6 +56,7 @@ class WiFiSettingBaseView: UIView {
         settingButton.layer.cornerRadius = .buttonCornerRadius
         settingButton.backgroundColor = R.color.subColor()
         settingButton.setTitle(R.string.localizable.side_menu_wifi_setting_button_title(), for: .normal)
+        settingButton.alpha = disabledAlpha
         settingButton.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(tableView)
