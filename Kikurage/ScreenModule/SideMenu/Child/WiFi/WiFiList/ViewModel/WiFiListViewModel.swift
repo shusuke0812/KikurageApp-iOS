@@ -40,11 +40,11 @@ class WiFiListViewModel: NSObject {
     }
 
     func startWiFiScan() {
-        bluetoothManager.sendCommand(.writeStartWiFiScan)
+        bluetoothManager.writeCommand(.writeStartWiFiScan)
     }
 
     func stopWiFiScan() {
-        bluetoothManager.sendCommand(.writeStopWiFiScan)
+        bluetoothManager.writeCommand(.writeStopWiFiScan)
     }
 }
 

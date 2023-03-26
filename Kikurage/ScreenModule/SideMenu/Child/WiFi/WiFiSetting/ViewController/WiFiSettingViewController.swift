@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class WiFiSettingViewController: UIViewController {
     private let baseView: WiFiSettingBaseView = .init()
@@ -67,15 +68,31 @@ extension WiFiSettingViewController: UITableViewDelegate {
 // MARK: - WiFiSettingBaseViewDelegate
 
 extension WiFiSettingViewController: WiFiSettingBaseViewDelegate {
-    func wifiSettingBaseViewDidTappedSetting(_ wifiSettingBaseView: WiFiSettingBaseView) {}
+    func wifiSettingBaseViewDidTappedSetting(_ wifiSettingBaseView: WiFiSettingBaseView) {
+        HUD.show(.progress)
+        viewModel.setupWiFi()
+    }
 }
 
 // MARK: - WiFiSettingViewModelDelegate
 
 extension WiFiSettingViewController: WiFiSettingViewModelDelegate {
+    func wifiSettingViewModelDidSuccessSetting(_ wifiSettingViewModel: WiFiSettingViewModel) {
+        DispatchQueue.main.async {
+            HUD.hide()
+        }
+    }
+    
+    func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel) {
+        DispatchQueue.main.async {
+            HUD.hide()
+        }
+    }
+    
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool) {
         DispatchQueue.main.async {
             self.baseView.enableSettingButton(isEnabled: canSetWiFi)
         }
     }
+    
 }

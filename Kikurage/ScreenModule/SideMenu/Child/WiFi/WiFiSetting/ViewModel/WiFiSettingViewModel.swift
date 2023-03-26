@@ -12,6 +12,8 @@ import UIKit.UITableView
 
 protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
+    func wifiSettingViewModelDidSuccessSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
+    func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
 }
 
 class WiFiSettingViewModel: NSObject {
@@ -25,10 +27,11 @@ class WiFiSettingViewModel: NSObject {
     init(selectedSSID: String) {
         wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
         super.init()
+        bluetoothManager.delegate = self
     }
 
     func setupWiFi() {
-        bluetoothManager.sendCommand(.writeWiFiSetting(wifiSetting))
+        bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
     }
 
     private func validateWiFiSetting() -> Bool {
@@ -91,5 +94,23 @@ extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
             break // never called
         }
         delegate?.wifiSettingViewModel(self, canSetWiFi: validateWiFiSetting())
+    }
+}
+
+// MARK: - KikurageBluetoothMangerDelegate
+
+extension WiFiSettingViewModel: KikurageBluetoothMangerDelegate {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {
+        delegate?.wifiSettingViewModelDidFailSetting(self)
+    }
+    
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
+        delegate?.wifiSettingViewModelDidSuccessSetting(self)
+    }
+    
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didDiscover peripheral: KikurageFeature.KikurageBluetoothPeripheral) {
+    }
+    
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor connectionState: KikurageFeature.KikurageBluetoothConnectionState) {
     }
 }

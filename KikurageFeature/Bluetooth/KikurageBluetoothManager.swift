@@ -22,6 +22,7 @@ public class KikurageBluetoothManager: NSObject {
 
     private var writeWiFiScanCharacteristic: CBCharacteristic?
     private var notifyWiFiScanCharacteristic: CBCharacteristic?
+    private var writeWiFiSettingChracteristic: CBCharacteristic?
 
     private static var _shared: KikurageBluetoothManager?
 
@@ -63,11 +64,20 @@ public class KikurageBluetoothManager: NSObject {
         connectToPeripheral = peripheral
     }
 
-    public func sendCommand(_ command: KikurageBluetoothCommand, to characteristic: CBCharacteristic) {
-        guard let sendData = command.valueJsonData, let writeCharacteristic = writeWiFiScanCharacteristic else {
+    public func writeCommand(_ command: KikurageBluetoothCommand) {
+        guard let sendData = command.valueJsonData, let characteristic = getCharacteristic(command) else {
             return
         }
-        connectToPeripheral.writeValue(sendData, for: writeCharacteristic, type: .withResponse)
+        connectToPeripheral.writeValue(sendData, for: characteristic, type: .withResponse)
+    }
+
+    private func getCharacteristic(_ command: KikurageBluetoothCommand) -> CBCharacteristic? {
+        switch command {
+        case .writeWiFiSetting:
+            return writeWiFiSettingChracteristic
+        case .writeStartWiFiScan, .writeStopWiFiScan:
+            return writeWiFiScanCharacteristic
+        }
     }
 
     private func peripheralDiscoverServices() {
@@ -144,12 +154,15 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
         if let characteristics = service.characteristics {
             characteristics.forEach { characteristic in
                 let uuidString = characteristic.uuid.uuidString.lowercased()
-                if uuidString == KikurageBluetoothUUID.Characteristic.readWiFiFromM5Stack.uuidString {
+                if uuidString == KikurageBluetoothUUID.Characteristic.readWiFi.uuidString {
                     notifyWiFiScanCharacteristic = characteristic
                     connectToPeripheral.setNotifyValue(true, for: characteristic)
                 }
-                if uuidString == KikurageBluetoothUUID.Characteristic.writeToM5Stack.uuidString {
+                if uuidString == KikurageBluetoothUUID.Characteristic.writeWiFiScan.uuidString {
                     writeWiFiScanCharacteristic = characteristic
+                }
+                if uuidString == KikurageBluetoothUUID.Characteristic.writeWiFiSetting.uuidString {
+                    writeWiFiSettingChracteristic = characteristic
                 }
             }
             delegate?.bluetoothManager(self, didUpdateFor: .didDiscoverCharacteristic)
@@ -166,7 +179,8 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
         }
     }
 
-    public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {}
+    public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
+    }
 
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {}
 }
