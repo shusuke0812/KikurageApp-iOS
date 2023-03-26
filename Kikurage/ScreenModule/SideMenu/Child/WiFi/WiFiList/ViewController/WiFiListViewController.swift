@@ -32,6 +32,12 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
         setupNavigation()
 
         viewModel.delegate = self
+        viewModel.startWiFiScan()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.stopWiFiScan()
     }
 
     private func setupNavigation() {
@@ -53,8 +59,6 @@ extension WiFiListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let ssid = viewModel.getSelectedSSID(indexPath: indexPath)
         transitionToWiFiSetting(selectedSSID: ssid)
-
-        viewModel.stopWiFiScan()
     }
 }
 
