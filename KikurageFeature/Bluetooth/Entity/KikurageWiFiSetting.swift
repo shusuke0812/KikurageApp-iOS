@@ -8,13 +8,18 @@
 
 import Foundation
 
-public struct KikurageWiFiSetting {
+public struct KikurageWiFiSetting: Encodable {
     public var ssid: String
     public var password: String
 
     public init(ssid: String, password: String) {
         self.ssid = ssid
         self.password = password
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ssid
+        case password
     }
     // TODO: Convert password to AES256
 }

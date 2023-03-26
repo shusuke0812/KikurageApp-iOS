@@ -11,6 +11,7 @@ import Foundation
 public enum KikurageBluetoothCommand {
     case writeStopWiFiScan
     case writeStartWiFiScan
+    case writeWiFiSetting(KikurageWiFiSetting)
 
     public var valueJsonData: Data? {
         switch self {
@@ -20,6 +21,8 @@ public enum KikurageBluetoothCommand {
         case .writeStopWiFiScan:
             let command = KikurageWiFiScan(isStop: true)
             return KikurageBluetoothParser.encodeBluetootCommand(command)
+        case .writeWiFiSetting(let wifiSetting):
+            return KikurageBluetoothParser.encodeBluetootCommand(wifiSetting)
         }
     }
 }
