@@ -30,20 +30,20 @@ public enum KikurageBluetoothUUID {
     }
 
     public enum Characteristic {
-        case writeWiFiScan
+        case writeStopWiFiScan
         case writeWiFiSetting
         case readWiFi
-        case debug2
+        case readCompletion
 
         var uuidString: String {
             switch self {
-            case .writeWiFiScan:
+            case .writeStopWiFiScan:
                 return "65609902-b6ed-45cc-b8af-b4055a9b7666"
             case .writeWiFiSetting:
                 return "65609904-b6ed-45cc-b8af-b4055a9b7666"
             case .readWiFi:
                 return "65609903-b6ed-45cc-b8af-b4055a9b7666"
-            case .debug2:
+            case .readCompletion:
                 return "65609905-b6ed-45cc-b8af-b4055a9b7666"
             }
         }
@@ -55,9 +55,10 @@ public enum KikurageBluetoothUUID {
 
     static func configCharactericticCBUUID() -> [CBUUID] {
         [
-            Self.Characteristic.writeWiFiScan.cbUUID,
+            Self.Characteristic.writeStopWiFiScan.cbUUID,
             Self.Characteristic.readWiFi.cbUUID,
-            Self.Characteristic.writeWiFiSetting.cbUUID
+            Self.Characteristic.writeWiFiSetting.cbUUID,
+            Self.Characteristic.readCompletion.cbUUID
         ]
     }
 }

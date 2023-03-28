@@ -23,6 +23,7 @@ public class KikurageBluetoothManager: NSObject {
     private var writeWiFiScanCharacteristic: CBCharacteristic?
     private var notifyWiFiScanCharacteristic: CBCharacteristic?
     private var writeWiFiSettingChracteristic: CBCharacteristic?
+    private var notifyWiFiCompletionChracteristic: CBCharacteristic?
 
     private static var _shared: KikurageBluetoothManager?
 
@@ -44,6 +45,7 @@ public class KikurageBluetoothManager: NSObject {
         delegate = nil
         writeWiFiScanCharacteristic = nil
         notifyWiFiScanCharacteristic = nil
+        notifyWiFiCompletionChracteristic = nil
     }
 
     private func initialize() {
@@ -158,11 +160,15 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
                     notifyWiFiScanCharacteristic = characteristic
                     connectToPeripheral.setNotifyValue(true, for: characteristic)
                 }
-                if uuidString == KikurageBluetoothUUID.Characteristic.writeWiFiScan.uuidString {
+                if uuidString == KikurageBluetoothUUID.Characteristic.writeStopWiFiScan.uuidString {
                     writeWiFiScanCharacteristic = characteristic
                 }
                 if uuidString == KikurageBluetoothUUID.Characteristic.writeWiFiSetting.uuidString {
                     writeWiFiSettingChracteristic = characteristic
+                }
+                if uuidString == KikurageBluetoothUUID.Characteristic.readCompletion.uuidString {
+                    notifyWiFiCompletionChracteristic = characteristic
+                    connectToPeripheral.setNotifyValue(true, for: characteristic)
                 }
             }
             delegate?.bluetoothManager(self, didUpdateFor: .didDiscoverCharacteristic)
