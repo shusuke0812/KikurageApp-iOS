@@ -205,6 +205,8 @@
 "side_menu_wifi_setting_section_active_scan_row_title" = "アクティブスキャン";
 "side_menu_wifi_setting_section_security_row_title" = "セキュリティ";
 "side_menu_wifi_setting_button_title" = "設定";
+"side_menu_wifi_setting_success_alert_message" = "WiFiの設定が完了しました";
+"side_menu_wifi_setting_fail_alert_message" = "WiFiの設定に失敗しました";
 
 // debug
 "side_menu_debug_title" = "デバッグ";

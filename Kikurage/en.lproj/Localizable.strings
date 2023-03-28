@@ -205,6 +205,8 @@
 "side_menu_wifi_setting_section_active_scan_row_title" = "Active Scan";
 "side_menu_wifi_setting_section_security_row_title" = "Security";
 "side_menu_wifi_setting_button_title" = "Set";
+"side_menu_wifi_setting_success_alert_message" = "Success WiFi setting";
+"side_menu_wifi_setting_fail_alert_message" = "Fail WiFi setting";
 
 // debug
 "side_menu_debug_title" = "Debug";

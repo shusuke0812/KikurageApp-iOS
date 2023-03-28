@@ -42,6 +42,17 @@ class WiFiSettingViewController: UIViewController {
     private func setupNavigation() {
         navigationItem.title = R.string.localizable.side_menu_wifi_setting_title()
     }
+
+    private func showAlertWhenSettingCompletion(message: String) {
+        UIAlertController.showAlert(
+            viewController: self,
+            message: message,
+            okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(),
+            cancelButtonTitle: nil
+        ) { [weak self] in
+            self?.dismiss(animated: true)
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -56,10 +67,10 @@ extension WiFiSettingViewController: UITableViewDelegate {
             // This action is declared in `WiFiSettingTableViewCell`.
             break
         case .activeScan:
-            // TODO: opne action sheet
+            // TODO: open action sheet
             print()
         case .security:
-            // TODO: opne action sheet
+            // TODO: open action sheet
             print()
         }
     }
@@ -80,12 +91,14 @@ extension WiFiSettingViewController: WiFiSettingViewModelDelegate {
     func wifiSettingViewModelDidSuccessSetting(_ wifiSettingViewModel: WiFiSettingViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
+            self.showAlertWhenSettingCompletion(message: R.string.localizable.side_menu_wifi_setting_success_alert_message())
         }
     }
 
     func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
+            self.showAlertWhenSettingCompletion(message: R.string.localizable.side_menu_wifi_setting_fail_alert_message())
         }
     }
 
