@@ -153,10 +153,11 @@
 "side_menu_content_clendar_subtitle" = "Calendar";
 "side_menu_content_graph_subtitle" = "Graph";
 "side_menu_content_contact_subtitle" = "Contact";
-"side_menu_content_setting_subtitle" = "Setting";
+"side_menu_content_account_setting_subtitle" = "Account Setting";
 "side_menu_content_license_subtitle" = "License";
 "side_menu_content_search_recipe_subtitle" = "Searching recipe";
 "side_menu_content_kikurage_dictionary_subtitle" = "Dictionary";
+"side_menu_content_wifi_subtitle" = "WiFi Setting";
 "side_menu_content_debug_try_subtitle" = "Debug";
 
 // calendar
@@ -181,7 +182,31 @@
 "side_menu_setting_edit_btn_title" = "Edit";
 "side_menu_setting_kikurage_name_error" = "Missing to read your name";
 
-// Dictonary
+// dictonary
 "side_menu_dictionary_segment_title_trivia" = "Trivia";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
 "side_menu_dictionary_twitter_no_tweets" = "No Tweets";
+
+// wifi
+"side_menu_wifi_select_device_title" = "Connect";
+"side_menu_wifi_select_device_section_title" = "Devices";
+"side_menu_wifi_list_title" = "WiFi";
+"side_menu_wifi_spec_section_title" = "Spec";
+"side_menu_wifi_enter_wifi_section_title" = "WiFi";
+"side_menu_wifi_select_wifi_section_title" = "Searching WiFi";
+"side_menu_wifi_spec_section_device_name_row_title" = "Device name";
+"side_menu_wifi_spec_section_device_id_row_title" = "Device ID";
+"side_menu_wifi_spec_section_rssi_row_title" = "RSSI";
+"side_menu_wifi_spec_section_wifi_enter_row_title" = "Manual Enter";
+"side_menu_wifi_setting_title" = "WiFi Setting";
+"side_menu_wifi_setting_section_required_title" = "Required";
+"side_menu_wifi_setting_section_optional_title" = "Optional";
+"side_menu_wifi_setting_section_password_row_title" = "Password";
+"side_menu_wifi_setting_section_active_scan_row_title" = "Active Scan";
+"side_menu_wifi_setting_section_security_row_title" = "Security";
+"side_menu_wifi_setting_button_title" = "Set";
+"side_menu_wifi_setting_success_alert_message" = "Success WiFi setting";
+"side_menu_wifi_setting_fail_alert_message" = "Fail WiFi setting";
+
+// debug
+"side_menu_debug_title" = "Debug";

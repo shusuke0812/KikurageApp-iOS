@@ -153,10 +153,11 @@
 "side_menu_content_clendar_subtitle" = "カレンダー";
 "side_menu_content_graph_subtitle" = "グラフ";
 "side_menu_content_contact_subtitle" = "問い合わせ";
-"side_menu_content_setting_subtitle" = "設定";
+"side_menu_content_account_setting_subtitle" = "アカウント設定";
 "side_menu_content_license_subtitle" = "著作権";
 "side_menu_content_search_recipe_subtitle" = "料理レシピ検索";
 "side_menu_content_kikurage_dictionary_subtitle" = "きくらげ豆知識";
+"side_menu_content_wifi_subtitle" = "WiFi設定";
 "side_menu_content_debug_try_subtitle" = "デバッグ";
 
 // calendar
@@ -181,7 +182,31 @@
 "side_menu_setting_edit_btn_title" = "変更する";
 "side_menu_setting_kikurage_name_error" = "名前を読み込めませんでした";
 
-// Dictonary
+// dictonary
 "side_menu_dictionary_segment_title_trivia" = "豆知識";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
 "side_menu_dictionary_twitter_no_tweets" = "ツイートがありません";
+
+// wifi
+"side_menu_wifi_select_device_title" = "接続";
+"side_menu_wifi_list_title" = "WiFi";
+"side_menu_wifi_select_device_section_title" = "周辺デバイス";
+"side_menu_wifi_spec_section_title" = "諸元";
+"side_menu_wifi_enter_wifi_section_title" = "WiFi";
+"side_menu_wifi_select_wifi_section_title" = "周辺のWiFi";
+"side_menu_wifi_spec_section_device_name_row_title" = "デバイス名";
+"side_menu_wifi_spec_section_device_id_row_title" = "デバイスID";
+"side_menu_wifi_spec_section_rssi_row_title" = "RSSI";
+"side_menu_wifi_spec_section_wifi_enter_row_title" = "手動で入力する";
+"side_menu_wifi_setting_title" = "WiFi設定";
+"side_menu_wifi_setting_section_required_title" = "必須";
+"side_menu_wifi_setting_section_optional_title" = "任意";
+"side_menu_wifi_setting_section_password_row_title" = "パスワード";
+"side_menu_wifi_setting_section_active_scan_row_title" = "アクティブスキャン";
+"side_menu_wifi_setting_section_security_row_title" = "セキュリティ";
+"side_menu_wifi_setting_button_title" = "設定";
+"side_menu_wifi_setting_success_alert_message" = "WiFiの設定が完了しました";
+"side_menu_wifi_setting_fail_alert_message" = "WiFiの設定に失敗しました";
+
+// debug
+"side_menu_debug_title" = "デバッグ";
