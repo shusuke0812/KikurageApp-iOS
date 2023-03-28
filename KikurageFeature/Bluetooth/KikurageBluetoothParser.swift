@@ -17,9 +17,20 @@ public struct KikurageBluetoothParser {
             let response = try JSONDecoder().decode(KikurageWiFi.self, from: jsonData)
             return response
         } catch {
-            assertionFailure("\(error.localizedDescription)")
+            return nil
         }
-        return nil
+    }
+
+    public static func decodeBluetoothCompletion(_ jsonString: String) -> KikurageBluetoothCompletionMessage? {
+        do {
+            guard let jsonData = jsonString.data(using: .utf8) else {
+                return nil
+            }
+            let response = try JSONDecoder().decode(KikurageBluetoothCompletionMessage.self, from: jsonData)
+            return response
+        } catch {
+            return nil
+        }
     }
 
     static func encodeBluetootCommand<T: Encodable>(_ command: T) -> Data? {

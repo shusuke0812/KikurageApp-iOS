@@ -100,13 +100,21 @@ extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
 // MARK: - KikurageBluetoothMangerDelegate
 
 extension WiFiSettingViewModel: KikurageBluetoothMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {
-        // TODO: 成功・失敗のBLEコマンドをreadしてVCへ通知するようにする（タイミングによって、WiFiリストの取得処理が停止する前にdidUpdateValueForが呼ばれてしまうため）
-        delegate?.wifiSettingViewModelDidFailSetting(self)
-    }
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
-        delegate?.wifiSettingViewModelDidSuccessSetting(self)
+        guard let completionMessage = KikurageBluetoothParser.decodeBluetoothCompletion(message)?.getKikurageBluetoothCompletion() else {
+            return
+        }
+
+        switch completionMessage {
+        case .wifiSettingSuccess:
+            delegate?.wifiSettingViewModelDidSuccessSetting(self)
+        case .wifiSettingFail:
+            delegate?.wifiSettingViewModelDidFailSetting(self)
+        default:
+            break
+        }
     }
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didDiscover peripheral: KikurageFeature.KikurageBluetoothPeripheral) {}
