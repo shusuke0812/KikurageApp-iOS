@@ -202,8 +202,6 @@
 		9CE0184F29B46D6400365E95 /* WiFiSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184E29B46D6400365E95 /* WiFiSettingBaseView.swift */; };
 		9CE0185129B46D7700365E95 /* WiFiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185029B46D7700365E95 /* WiFiSettingViewController.swift */; };
 		9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */; };
-		9CE0185529B46D9D00365E95 /* WiFiSettingSuccessBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185429B46D9D00365E95 /* WiFiSettingSuccessBaseView.swift */; };
-		9CE0185729B46DAD00365E95 /* WiFiSettingSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185629B46DAD00365E95 /* WiFiSettingSuccessViewController.swift */; };
 		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
 		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
 		9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */; };
@@ -472,8 +470,6 @@
 		9CE0184E29B46D6400365E95 /* WiFiSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingBaseView.swift; sourceTree = "<group>"; };
 		9CE0185029B46D7700365E95 /* WiFiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewController.swift; sourceTree = "<group>"; };
 		9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
-		9CE0185429B46D9D00365E95 /* WiFiSettingSuccessBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingSuccessBaseView.swift; sourceTree = "<group>"; };
-		9CE0185629B46DAD00365E95 /* WiFiSettingSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingSuccessViewController.swift; sourceTree = "<group>"; };
 		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
 		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryViewController.storyboard; sourceTree = "<group>"; };
@@ -1548,7 +1544,6 @@
 				9CE0183229B46B5D00365E95 /* SelectDevice */,
 				9CE0183329B46B7A00365E95 /* WiFiList */,
 				9CE0183429B46B8B00365E95 /* WiFiSetting */,
-				9CE0183529B46BCC00365E95 /* WiFiSettingSuccess */,
 				9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */,
 			);
 			path = WiFi;
@@ -1582,15 +1577,6 @@
 				9CE0183C29B46C3600365E95 /* ViewModel */,
 			);
 			path = WiFiSetting;
-			sourceTree = "<group>";
-		};
-		9CE0183529B46BCC00365E95 /* WiFiSettingSuccess */ = {
-			isa = PBXGroup;
-			children = (
-				9CE0184129B46C5900365E95 /* BaseView */,
-				9CE0184029B46C5200365E95 /* ViewController */,
-			);
-			path = WiFiSettingSuccess;
 			sourceTree = "<group>";
 		};
 		9CE0183629B46BFB00365E95 /* BaseView */ = {
@@ -1665,22 +1651,6 @@
 			children = (
 				9CE0184E29B46D6400365E95 /* WiFiSettingBaseView.swift */,
 				9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */,
-			);
-			path = BaseView;
-			sourceTree = "<group>";
-		};
-		9CE0184029B46C5200365E95 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9CE0185629B46DAD00365E95 /* WiFiSettingSuccessViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CE0184129B46C5900365E95 /* BaseView */ = {
-			isa = PBXGroup;
-			children = (
-				9CE0185429B46D9D00365E95 /* WiFiSettingSuccessBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2241,7 +2211,6 @@
 				9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */,
 				9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */,
 				9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */,
-				9CE0185729B46DAD00365E95 /* WiFiSettingSuccessViewController.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
@@ -2326,7 +2295,6 @@
 				9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
 				9C70C44525AFDC8900069F8F /* KikurageStateGraph.swift in Sources */,
-				9CE0185529B46D9D00365E95 /* WiFiSettingSuccessBaseView.swift in Sources */,
 				9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */,
 				9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
