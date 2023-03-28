@@ -10,23 +10,23 @@ import Foundation
 
 public struct KikurageBluetoothCompletionMessage: Decodable {
     let type: String
-    let message: String
+    let description: String
 
     enum CodingKeys: String, CodingKey {
         case type
-        case message
+        case description
     }
 
     public func getKikurageBluetoothCompletion() -> KikurageBluetoothCompletion {
         if type == "success" {
-            switch message.lowercased() {
+            switch description.lowercased() {
             case "wifi setting success":
                 return .wifiSettingSuccess
             default:
                 return .notFound
             }
         } else {
-            switch message.lowercased() {
+            switch description.lowercased() {
             case "wifi setting fail":
                 return .wifiSettingFail
             default:
