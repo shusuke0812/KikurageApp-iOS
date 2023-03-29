@@ -130,8 +130,8 @@ extension SideMenuViewController: UITableViewDelegate {
             }
         case .contact:
             openContactMailer()
-        case .setting:
-            modalToSetting { [weak self] in
+        case .accountSetting:
+            modalToAccountSetting { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         case .license:
@@ -142,6 +142,10 @@ extension SideMenuViewController: UITableViewDelegate {
             openSearchRecipePage()
         case .kikurageDictionary:
             modalToDictionary { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+        case .wifi:
+            modalToWiFi { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
             }
         case .debugTry:

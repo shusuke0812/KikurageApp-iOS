@@ -362,6 +362,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.2)
   - HorizonCalendar (1.14.1)
   - IQKeyboardManagerSwift (6.5.10)
+  - konashi-ios-sdk (5.0.1)
   - leveldb-library (1.22.1)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -403,6 +404,7 @@ DEPENDENCIES:
   - FontAwesome.swift
   - HorizonCalendar
   - IQKeyboardManagerSwift
+  - konashi-ios-sdk
   - PKHUD (~> 5.0)
   - R.swift
   - RealmSwift (~> 10)
@@ -438,6 +440,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - HorizonCalendar
     - IQKeyboardManagerSwift
+    - konashi-ios-sdk
     - leveldb-library
     - nanopb
     - PKHUD
@@ -479,6 +482,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
   HorizonCalendar: 3526851ccfe95804b80325d536838b7b307c5253
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  konashi-ios-sdk: 959ad0dd7f481b19bebbf996c5afe8ad52c3c3c4
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
@@ -493,6 +497,6 @@ SPEC CHECKSUMS:
   SDWebImage: af5bbffef2cde09f148d826f9733dcde1a9414cd
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 2ebe05f153a821f4c0ad3df703bdda2044436a75
+PODFILE CHECKSUM: 6eae1ba86201188ebd45a77fc1e482395e8e2b1e
 
 COCOAPODS: 1.11.3

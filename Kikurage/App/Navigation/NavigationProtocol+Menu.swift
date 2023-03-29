@@ -11,7 +11,7 @@ import UIKit
 protocol MenuAccessable: ModalNavigationProtocol, SafariViewNavigationProtocol {
     func modalToCalendar(completion: (() -> Void)?)
     func modalToGraph(completion: (() -> Void)?)
-    func modalToSetting(completion: (() -> Void)?)
+    func modalToAccountSetting(completion: (() -> Void)?)
     func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
 }
 
@@ -32,8 +32,8 @@ extension MenuAccessable {
         present(to: vc, style: .automatic, completion: completion)
     }
 
-    func modalToSetting(completion: (() -> Void)? = nil) {
-        guard let vc = R.storyboard.settingViewController.instantiateInitialViewController() else {
+    func modalToAccountSetting(completion: (() -> Void)? = nil) {
+        guard let vc = R.storyboard.accountSettingViewController.instantiateInitialViewController() else {
             return
         }
         present(to: vc, style: .automatic, completion: completion)
@@ -46,11 +46,16 @@ extension MenuAccessable {
         present(to: vc, style: .automatic, completion: completion)
     }
 
+    func modalToWiFi(completion: (() -> Void)? = nil) {
+        let vc = WiFiSelectDeviceViewController()
+        present(to: vc, style: .fullScreen, completion: completion)
+    }
+
     func modalToDebug(completion: (() -> Void)? = nil) {
         guard let vc = R.storyboard.debugViewController.instantiateInitialViewController() else {
             return
         }
-        present(to: vc, style: .automatic, completion: completion)
+        present(to: vc, style: .fullScreen, completion: completion)
     }
 
     // MARK: - SafariView

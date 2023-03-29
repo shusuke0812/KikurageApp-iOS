@@ -13,18 +13,16 @@ class SideMenuViewModel: NSObject {
         case history
         case support
         case help
+        case setting
         case debug
 
         var rows: [SectionRowType] {
             switch self {
-            case .history:
-                return [.calendar, .graph]
-            case .support:
-                return [.contact, .setting, .license]
-            case .help:
-                return [.searchRecipe, .kikurageDictionary]
-            case .debug:
-                return [.debugTry]
+            case .history: return [.calendar, .graph]
+            case .support: return [.contact, .accountSetting, .license]
+            case .help: return [.searchRecipe, .kikurageDictionary]
+            case .setting: return [.wifi]
+            case .debug: return [.debugTry]
             }
         }
     }
@@ -33,10 +31,11 @@ class SideMenuViewModel: NSObject {
         case calendar
         case graph
         case contact
-        case setting
+        case accountSetting
         case license
         case searchRecipe
         case kikurageDictionary
+        case wifi
         case debugTry
 
         var title: String {
@@ -47,14 +46,16 @@ class SideMenuViewModel: NSObject {
                 return R.string.localizable.side_menu_content_graph_subtitle()
             case .contact:
                 return R.string.localizable.side_menu_content_contact_subtitle()
-            case .setting:
-                return R.string.localizable.side_menu_content_setting_subtitle()
+            case .accountSetting:
+                return R.string.localizable.side_menu_content_account_setting_subtitle()
             case .license:
                 return R.string.localizable.side_menu_content_license_subtitle()
             case .searchRecipe:
                 return R.string.localizable.side_menu_content_search_recipe_subtitle()
             case .kikurageDictionary:
                 return R.string.localizable.side_menu_content_kikurage_dictionary_subtitle()
+            case .wifi:
+                return R.string.localizable.side_menu_content_wifi_subtitle()
             case .debugTry:
                 return R.string.localizable.side_menu_content_debug_try_subtitle()
             }
@@ -68,7 +69,7 @@ class SideMenuViewModel: NSObject {
                 return "waveform.path.ecg"
             case .contact:
                 return "questionmark.circle"
-            case .setting:
+            case .accountSetting:
                 return "gear"
             case .license:
                 return "info.circle"
@@ -76,6 +77,8 @@ class SideMenuViewModel: NSObject {
                 return "magnifyingglass"
             case .kikurageDictionary:
                 return "doc.text"
+            case .wifi:
+                return "wifi"
             case .debugTry:
                 return "checkmark.seal.fill"
             }
@@ -95,9 +98,9 @@ class SideMenuViewModel: NSObject {
 extension SideMenuViewModel {
     private func setSection() {
         #if PRODUCTION
-            sections = [.history, .support, .help]
+            sections = [.history, .support, .help, .setting]
         #else
-            sections = [.history, .support, .help, .debug]
+            sections = [.history, .support, .help, .setting, .debug]
         #endif
     }
 
