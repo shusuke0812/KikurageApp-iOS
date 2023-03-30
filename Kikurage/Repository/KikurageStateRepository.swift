@@ -8,7 +8,6 @@
 
 import Firebase
 import FirebaseFirestoreSwift
-import RealmSwift
 import RxSwift
 
 protocol KikurageStateRepositoryProtocol {
@@ -17,8 +16,8 @@ protocol KikurageStateRepositoryProtocol {
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState>
     /// グラフデータを読み込む
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
-    func createKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void)
-    func readKikurageStateGraph(productID: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void)
+    func createKikurageStateGraph(object: KikurageRealmObject, completion: @escaping (Result<Void, Error>) -> Void)
+    func readKikurageStateGraph(productID: String, completion: @escaping (Result<KikurageRealmObject, Error>) -> Void)
 }
 
 class KikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -66,7 +65,7 @@ extension KikurageStateRepository {
 // MARK: - Realm
 
 extension KikurageStateRepository {
-    func createKikurageStateGraph(object: RealmSwift.Object, completion: @escaping (Result<Void, Error>) -> Void) {
+    func createKikurageStateGraph(object: KikurageRealmObject, completion: @escaping (Result<Void, Error>) -> Void) {
         realmClient.createRequest(object) { result in
             switch result {
             case .success(let void):
@@ -77,7 +76,7 @@ extension KikurageStateRepository {
         }
     }
 
-    func readKikurageStateGraph(productID: String, completion: @escaping (Result<RealmSwift.Object, Error>) -> Void) {
+    func readKikurageStateGraph(productID: String, completion: @escaping (Result<KikurageRealmObject, Error>) -> Void) {
         realmClient.readRequest(id: productID) { result in
             switch result {
             case .success(let object):

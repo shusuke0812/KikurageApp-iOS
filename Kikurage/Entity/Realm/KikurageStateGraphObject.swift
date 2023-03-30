@@ -20,7 +20,7 @@ import RealmSwift
 
 typealias KikurageStateGraphRealmTuple = (data: KikurageStateGraphObject, documentID: String)
 
-final class KikurageStateGraphObject: Object {
+final class KikurageStateGraphObject: KikurageRealmObject {
     // For realm
     @Persisted(primaryKey: true) var _id: ObjectId
     @Persisted var expiredDate: Date
@@ -37,9 +37,11 @@ final class KikurageStateGraphObject: Object {
         self.init()
         expiredDate = Date()
     }
+
+    override func update() {}
 }
 
-class TimeDataObject: Object {
+class TimeDataObject: KikurageRealmObject {
     @Persisted var date: Date
     @Persisted var temperature: Int
     @Persisted var humidity: Int
@@ -50,4 +52,6 @@ class TimeDataObject: Object {
         temperature = 0
         humidity = 0
     }
+
+    override func update() {}
 }

@@ -21,15 +21,14 @@ import Foundation
 import RealmSwift
 
 protocol RealmClientProtocol {
-    // TODO: add update method
-    func createRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
-    func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void)
-    func deleteRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
+    func createRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
+    func readRequest<T: KikurageRealmObject>(id: String, completion: @escaping (Result<T, Error>) -> Void)
+    func deleteRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteAllRequest(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 struct RealmClient: RealmClientProtocol {
-    func createRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) {
+    func createRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
             try realm.write {
@@ -42,7 +41,7 @@ struct RealmClient: RealmClientProtocol {
     }
 
     // If it runs to sort or use query for object, its method is declared in ViewMiodel using this result.
-    func readRequest<T: RealmSwift.Object>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
+    func readRequest<T: KikurageRealmObject>(id: String, completion: @escaping (Result<T, Error>) -> Void) {
         do {
             let realm = try Realm()
             if let cache = realm.object(ofType: T.self, forPrimaryKey: T.primaryKey()) {
@@ -53,7 +52,7 @@ struct RealmClient: RealmClientProtocol {
         }
     }
 
-    func deleteRequest<T: RealmSwift.Object>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) {
+    func deleteRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
             try realm.write {
