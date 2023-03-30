@@ -25,6 +25,7 @@ protocol RealmClientProtocol {
     func readRequest<T: KikurageRealmObject>(id: String, completion: @escaping (Result<T, Error>) -> Void)
     func deleteRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteAllRequest(completion: @escaping (Result<Void, Error>) -> Void)
+    func updateRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 struct RealmClient: RealmClientProtocol {
@@ -69,6 +70,18 @@ struct RealmClient: RealmClientProtocol {
             let realm = try Realm()
             realm.deleteAll()
             completion(.success(()))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    func updateRequest<T>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) where T : KikurageRealmObject {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                object.update()
+                completion(.success(()))
+            }
         } catch {
             completion(.failure(error))
         }
