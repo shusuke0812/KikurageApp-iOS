@@ -23,7 +23,6 @@ import RealmSwift
 protocol RealmClientProtocol {
     static func configuration(completion: @escaping (Result<Void, Error>) -> Void)
     static func deleteFiles(completion: @escaping (Result<Void, Error>) -> Void)
-    static func deleteFiles()
     func createRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
     func readRequest<T: KikurageRealmObject>(id: String, completion: @escaping (Result<T, Error>) -> Void)
     func deleteRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
