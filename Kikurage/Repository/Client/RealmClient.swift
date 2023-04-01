@@ -21,7 +21,9 @@ import Foundation
 import RealmSwift
 
 protocol RealmClientProtocol {
-    static func configuration()
+    static func configuration(completion: @escaping (Result<Void, Error>) -> Void)
+    static func deleteFiles(completion: @escaping (Result<Void, Error>) -> Void)
+    static func deleteFiles()
     func createRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
     func readRequest<T: KikurageRealmObject>(id: String, completion: @escaping (Result<T, Error>) -> Void)
     func deleteRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void)
@@ -33,7 +35,7 @@ struct RealmClient: RealmClientProtocol {
     
     // MARK: - Initialize
     
-    static func configuration() {
+    static func configuration(completion: @escaping (Result<Void, Error>) -> Void) {
         var config = Realm.Configuration()
         config.migrationBlock = { migration, oldSchemaVersion in
             // Must not called Realm() because it is occured dead lock.
@@ -61,8 +63,10 @@ struct RealmClient: RealmClientProtocol {
         
         do {
             let realm = try Realm(configuration: config)
+            completion(.success(()))
         } catch {
             assertionFailure("\(error)")
+            completion(.failure(error))
         }
     }
     
@@ -122,6 +126,25 @@ struct RealmClient: RealmClientProtocol {
                 completion(.success(()))
             }
         } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    // MARK: - Clean
+    
+    static func deleteFiles(completion: @escaping (Result<Void, Error>) -> Void) {
+        do {
+            let fileManager = FileManager.default
+            guard let fileURL = Realm.Configuration.defaultConfiguration.fileURL else {
+                return
+            }
+            
+            try fileManager.removeItem(at: fileURL)
+            try fileManager.removeItem(at: fileURL.appendingPathExtension("lock"))
+            try fileManager.removeItem(at: fileURL.appendingPathExtension("management"))
+            completion(.success(()))
+        } catch {
+            assertionFailure("\(error)")
             completion(.failure(error))
         }
     }
