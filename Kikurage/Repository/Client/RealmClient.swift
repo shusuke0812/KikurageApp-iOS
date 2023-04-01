@@ -75,7 +75,7 @@ struct RealmClient: RealmClientProtocol {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(object)
+                realm.add(object, update: .modified)
                 completion(.success(()))
             }
         } catch {
