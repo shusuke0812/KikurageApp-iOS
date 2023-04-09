@@ -22,13 +22,13 @@ class WiFiSelectDeviceViewModel: NSObject {
     private let bluetoothManager = KikurageBluetoothManager.shared
     private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
     private var selectedIndexPath: IndexPath?
-    private(set) var bluetoothState: KikurageBluetoothState?
+    private(set) var bluetoothCentralState: KikurageBluetoothCentralState?
 
     weak var delegate: WiFiSelectDeviceViewModelDelegate?
 
     override init() {
         super.init()
-        bluetoothManager.delegate = self
+        bluetoothManager.peripheralDelegate = self
         bluetoothManager.centralDelegate = self
     }
 
@@ -72,17 +72,22 @@ extension WiFiSelectDeviceViewModel: UITableViewDataSource {
 // MARK: - KikurageBluetoothCentralManagerDelegate
 
 extension WiFiSelectDeviceViewModel: KikurageBluetoothCentralManagerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothState) {
-        bluetoothState = state
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdate state: KikurageFeature.KikurageBluetoothConnectionState) {
+        switch state {
+        case .connect:
+            break
+        case .disconnect(let error):
+            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
+        case .fail(let error):
+            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
+        case .standby:
+            break
+        }
     }
-}
 
-// MARK: - KikurageBluetoothMangerDelegate
-
-extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {}
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothCentralState) {
+        bluetoothCentralState = state
+    }
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral) {
         if peripheral.validateConnection() {
@@ -90,19 +95,23 @@ extension WiFiSelectDeviceViewModel: KikurageBluetoothMangerDelegate {
             delegate?.viewModelDidAddPeripheral(self)
         }
     }
+}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor connectionState: KikurageBluetoothConnectionState) {
-        switch connectionState {
-        case .connect:
-            break
-        case .disconnect(let error):
-            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
+// MARK: - KikurageBluetoothPeripheralMangerDelegate
+
+extension WiFiSelectDeviceViewModel: KikurageBluetoothPeripheralMangerDelegate {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor state: KikurageFeature.KikurageBluetoothPeripheralState) {
+        switch state {
         case .didDiscoverCharacteristic:
             if let selectedIndexPath = selectedIndexPath {
                 delegate?.viewModelDidSuccessConnectionToPeripheral(self, peripheral: bluetoothPeripherals.getElement(indexPath: selectedIndexPath))
             }
-        case .fail(let error):
-            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
+        case .standby:
+            break
         }
     }
+
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
+
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {}
 }

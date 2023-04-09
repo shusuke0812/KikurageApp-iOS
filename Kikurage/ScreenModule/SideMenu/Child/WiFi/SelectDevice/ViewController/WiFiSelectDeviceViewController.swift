@@ -28,7 +28,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if viewModel.bluetoothState?.centralManagerState == .poweredOn {
+        if viewModel.bluetoothCentralState?.value == .poweredOn {
             baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()
         }
