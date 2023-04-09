@@ -23,6 +23,12 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
 
     public static let indetifier: String = "KikurageTableViewHeaderView"
 
+    public static func create(tableView: UITableView, title: String) -> KikurageTableViewHeaderView {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: KikurageTableViewHeaderView.indetifier) as! KikurageTableViewHeaderView // swiftlint:disable:this force_cast
+        view.titleLabel.text = title
+        return view
+    }
+
     private func setupComponents() {
         titleLabel.font = .systemFont(ofSize: 14)
         titleLabel.textColor = .systemGray
@@ -59,9 +65,5 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
     public func stopIndicatorAnimating() {
         loadingIndicatorView.isHidden = true
         loadingIndicatorView.stopAnimating()
-    }
-
-    public func setupTitleLabel(_ title: String) {
-        titleLabel.text = title
     }
 }
