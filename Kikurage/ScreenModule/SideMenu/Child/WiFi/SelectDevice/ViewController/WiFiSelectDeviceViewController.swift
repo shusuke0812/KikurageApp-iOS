@@ -51,6 +51,10 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
         HUD.show(.progress)
         viewModel.connectToPeripheral(indexPath: indexPath)
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        KikurageTableViewHeaderView.create(tableView: tableView, title: viewModel.sections[section].title)
+    }
 }
 
 // MARK: - WiFiSelectDeviceViewModelDelegate

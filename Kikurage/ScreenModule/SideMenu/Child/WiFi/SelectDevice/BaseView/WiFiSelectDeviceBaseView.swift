@@ -6,6 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KikurageFeature
 import UIKit
 
 class WiFiSelectDeviceBaseView: UIView {
@@ -27,6 +28,7 @@ class WiFiSelectDeviceBaseView: UIView {
 
     private func setupComponent() {
         tableView.register(WiFiSelectDeviceTableViewCell.self, forCellReuseIdentifier: "WiFiSelectDeviceTableViewCell")
+        tableView.register(KikurageTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: KikurageTableViewHeaderView.indetifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(tableView)

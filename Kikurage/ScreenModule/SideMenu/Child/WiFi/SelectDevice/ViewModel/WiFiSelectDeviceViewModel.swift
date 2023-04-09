@@ -17,7 +17,7 @@ protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
 }
 
 class WiFiSelectDeviceViewModel: NSObject {
-    private let sections: [WiFiSelectDeviceSectionType] = [.device]
+    private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
     private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
@@ -50,10 +50,6 @@ class WiFiSelectDeviceViewModel: NSObject {
 extension WiFiSelectDeviceViewModel: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sections[section].title
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
