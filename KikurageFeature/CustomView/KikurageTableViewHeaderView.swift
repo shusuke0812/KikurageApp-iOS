@@ -24,7 +24,7 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
     public static let indetifier: String = "KikurageTableViewHeaderView"
 
     public static func create(tableView: UITableView, title: String) -> KikurageTableViewHeaderView {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: KikurageTableViewHeaderView.indetifier) as! KikurageTableViewHeaderView // swiftlint:disable:this force_cast
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: Self.indetifier) as! KikurageTableViewHeaderView // swiftlint:disable:this force_cast
         view.titleLabel.text = title
         return view
     }
