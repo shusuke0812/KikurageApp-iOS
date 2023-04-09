@@ -12,6 +12,8 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
     private let titleLabel = UILabel()
     private let loadingIndicatorView = UIActivityIndicatorView()
 
+    public var sectionNumber: Int = 0
+
     override public init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupComponents()
