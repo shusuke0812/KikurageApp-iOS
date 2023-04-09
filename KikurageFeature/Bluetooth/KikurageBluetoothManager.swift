@@ -9,11 +9,16 @@
 import CoreBluetooth
 import Foundation
 
-public protocol KikurageBluetoothMangerDelegate: AnyObject {
+public protocol KikurageBluetoothCentralManagerDelegate: AnyObject {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothCentralState)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothConnectionState)
+}
+
+public protocol KikurageBluetoothPeripheralMangerDelegate: AnyObject {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String)
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral)
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor connectionState: KikurageBluetoothConnectionState)
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState)
 }
 
 public class KikurageBluetoothManager: NSObject {
@@ -34,7 +39,8 @@ public class KikurageBluetoothManager: NSObject {
         return _shared! // swiftlint:disable:this force_unwrapping
     }
 
-    public weak var delegate: KikurageBluetoothMangerDelegate?
+    public weak var peripheralDelegate: KikurageBluetoothPeripheralMangerDelegate?
+    public weak var centralDelegate: KikurageBluetoothCentralManagerDelegate?
 
     override private init() {
         super.init()
@@ -42,7 +48,7 @@ public class KikurageBluetoothManager: NSObject {
     }
 
     deinit {
-        delegate = nil
+        peripheralDelegate = nil
         writeWiFiScanCharacteristic = nil
         notifyWiFiScanCharacteristic = nil
         notifyWiFiCompletionChracteristic = nil
@@ -56,7 +62,7 @@ public class KikurageBluetoothManager: NSObject {
         KikurageBluetoothManager._shared = nil
     }
 
-    private func scanForPeripherals() {
+    public func scanForPeripherals() {
         // TODO: setting original service ID
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
@@ -96,40 +102,26 @@ public class KikurageBluetoothManager: NSObject {
 
 extension KikurageBluetoothManager: CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        switch central.state {
-        case .poweredOn:
-            scanForPeripherals()
-        case .poweredOff:
-            break
-        case .unknown:
-            break
-        case .resetting:
-            break
-        case .unsupported:
-            break
-        case .unauthorized:
-            break
-        @unknown default:
-            fatalError()
-        }
+        let state = KikurageBluetoothCentralState(value: central.state)
+        centralDelegate?.bluetoothManager(self, didUpdate: state)
     }
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
-        delegate?.bluetoothManager(self, didDiscover: KikurageBluetoothPeripheral(advertisementData: advertisementData, rssi: RSSI, peripheral: peripheral))
+        centralDelegate?.bluetoothManager(self, didDiscover: KikurageBluetoothPeripheral(advertisementData: advertisementData, rssi: RSSI, peripheral: peripheral))
     }
 
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        delegate?.bluetoothManager(self, didUpdateFor: .connect)
+        centralDelegate?.bluetoothManager(self, didUpdate: .connect)
         centralManager.stopScan()
         peripheralDiscoverServices()
     }
 
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        delegate?.bluetoothManager(self, didUpdateFor: .fail(error))
+        centralDelegate?.bluetoothManager(self, didUpdate: .fail(error))
     }
 
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        delegate?.bluetoothManager(self, didUpdateFor: .disconnect(error))
+        centralDelegate?.bluetoothManager(self, didUpdate: .disconnect(error))
     }
 }
 
@@ -138,7 +130,7 @@ extension KikurageBluetoothManager: CBCentralManagerDelegate {
 extension KikurageBluetoothManager: CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
-            delegate?.bluetoothManager(self, error: error)
+            peripheralDelegate?.bluetoothManager(self, error: error)
             return
         }
         if let services = peripheral.services {
@@ -150,7 +142,7 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
 
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let error = error {
-            delegate?.bluetoothManager(self, error: error)
+            peripheralDelegate?.bluetoothManager(self, error: error)
             return
         }
         if let characteristics = service.characteristics {
@@ -171,17 +163,17 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
                     connectToPeripheral.setNotifyValue(true, for: characteristic)
                 }
             }
-            delegate?.bluetoothManager(self, didUpdateFor: .didDiscoverCharacteristic)
+            peripheralDelegate?.bluetoothManager(self, didUpdateFor: .didDiscoverCharacteristic)
         }
     }
 
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let error = error {
-            delegate?.bluetoothManager(self, error: error)
+            peripheralDelegate?.bluetoothManager(self, error: error)
             return
         }
         if let value = characteristic.value, let message = String(data: value, encoding: .utf8) {
-            delegate?.bluetoothManager(self, message: message)
+            peripheralDelegate?.bluetoothManager(self, message: message)
         }
     }
 

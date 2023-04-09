@@ -6,10 +6,12 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KikurageFeature
 import UIKit
 
 class WiFiSelectDeviceBaseView: UIView {
     private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private(set) var tableViewHeaderView: KikurageTableViewHeaderView!
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -25,8 +27,13 @@ class WiFiSelectDeviceBaseView: UIView {
         tableView.dataSource = dataSource
     }
 
+    func setupTableViewHeaderView(_ headerView: KikurageTableViewHeaderView) {
+        tableViewHeaderView = headerView
+    }
+
     private func setupComponent() {
         tableView.register(WiFiSelectDeviceTableViewCell.self, forCellReuseIdentifier: "WiFiSelectDeviceTableViewCell")
+        tableView.register(KikurageTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: KikurageTableViewHeaderView.indetifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(tableView)
