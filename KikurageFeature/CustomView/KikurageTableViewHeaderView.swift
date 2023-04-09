@@ -23,9 +23,8 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
 
     public static let indetifier: String = "KikurageTableViewHeaderView"
 
-    public static func create(tableView: UITableView, title: String) -> KikurageTableViewHeaderView {
+    public static func create(tableView: UITableView) -> KikurageTableViewHeaderView {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: Self.indetifier) as! KikurageTableViewHeaderView // swiftlint:disable:this force_cast
-        view.titleLabel.text = title
         return view
     }
 
@@ -50,9 +49,9 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             loadingIndicatorView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: margin),
-            loadingIndicatorView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             loadingIndicatorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
             loadingIndicatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin),
+            loadingIndicatorView.widthAnchor.constraint(equalToConstant: 14),
             loadingIndicatorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
@@ -65,5 +64,9 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
     public func stopIndicatorAnimating() {
         loadingIndicatorView.isHidden = true
         loadingIndicatorView.stopAnimating()
+    }
+
+    public func setupTitleLabel(_ title: String) {
+        titleLabel.text = title
     }
 }
