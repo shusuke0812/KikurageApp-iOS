@@ -14,6 +14,10 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
     private let baseView = WiFiSelectDeviceBaseView()
     private let viewModel = WiFiSelectDeviceViewModel()
 
+    override func loadView() {
+        view = baseView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupProtocols()
@@ -22,8 +26,12 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
         viewModel.delegate = self
     }
 
-    override func loadView() {
-        view = baseView
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if viewModel.bluetoothCentralState?.value == .poweredOn {
+            baseView.tableViewHeaderView.startIndicatorAnimating()
+            viewModel.scanForPeripherals()
+        }
     }
 
     // MARK: - Action
@@ -51,6 +59,12 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
         HUD.show(.progress)
         viewModel.connectToPeripheral(indexPath: indexPath)
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        baseView.setupTableViewHeaderView(KikurageTableViewHeaderView.create(tableView: tableView))
+        baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
+        return baseView.tableViewHeaderView
+    }
 }
 
 // MARK: - WiFiSelectDeviceViewModelDelegate
@@ -58,6 +72,7 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
 extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
         DispatchQueue.main.async {
+            self.baseView.tableViewHeaderView.stopIndicatorAnimating()
             self.baseView.tableView.reloadData()
         }
     }

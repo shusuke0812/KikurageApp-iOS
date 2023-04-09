@@ -26,7 +26,7 @@ class WiFiListViewModel: NSObject {
     init(bluetoothPeripheral: KikurageBluetoothPeripheral) {
         self.bluetoothPeripheral = bluetoothPeripheral
         super.init()
-        bluetoothManager.delegate = self
+        bluetoothManager.peripheralDelegate = self
     }
 
     func getSelectedSSID(indexPath: IndexPath) -> String {
@@ -53,10 +53,6 @@ class WiFiListViewModel: NSObject {
 extension WiFiListViewModel: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sections[section].title
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,12 +84,12 @@ extension WiFiListViewModel: UITableViewDataSource {
     }
 }
 
-// MARK: - KikurageBluetoothMangerDelegate
+// MARK: - KikurageBluetoothPeripheralMangerDelegate
 
-extension WiFiListViewModel: KikurageBluetoothMangerDelegate {
-    func bluetoothManagerDidDiscoverCharacteristic(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager) {}
-
+extension WiFiListViewModel: KikurageBluetoothPeripheralMangerDelegate {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
+
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor state: KikurageFeature.KikurageBluetoothPeripheralState) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
         guard let wifi = KikurageBluetoothParser.decodeWiFi(message) else {
@@ -105,8 +101,4 @@ extension WiFiListViewModel: KikurageBluetoothMangerDelegate {
             delegate?.viewModelUpdateWiFiList(self)
         }
     }
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didDiscover peripheral: KikurageFeature.KikurageBluetoothPeripheral) {}
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor connectionState: KikurageFeature.KikurageBluetoothConnectionState) {}
 }

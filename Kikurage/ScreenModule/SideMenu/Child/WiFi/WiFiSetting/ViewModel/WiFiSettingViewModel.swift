@@ -27,7 +27,7 @@ class WiFiSettingViewModel: NSObject {
     init(selectedSSID: String) {
         wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
         super.init()
-        bluetoothManager.delegate = self
+        bluetoothManager.peripheralDelegate = self
     }
 
     func setupWiFi() {
@@ -97,9 +97,11 @@ extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
     }
 }
 
-// MARK: - KikurageBluetoothMangerDelegate
+// MARK: - KikurageBluetoothPeripheralMangerDelegate
 
-extension WiFiSettingViewModel: KikurageBluetoothMangerDelegate {
+extension WiFiSettingViewModel: KikurageBluetoothPeripheralMangerDelegate {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor state: KikurageFeature.KikurageBluetoothPeripheralState) {}
+
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
 
     func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
@@ -116,8 +118,4 @@ extension WiFiSettingViewModel: KikurageBluetoothMangerDelegate {
             break
         }
     }
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didDiscover peripheral: KikurageFeature.KikurageBluetoothPeripheral) {}
-
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor connectionState: KikurageFeature.KikurageBluetoothConnectionState) {}
 }
