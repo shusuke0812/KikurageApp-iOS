@@ -32,6 +32,13 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
         setupNavigation()
 
         viewModel.delegate = self
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let wifiSelectSection = viewModel.sections.firstIndex(of: .selectWifi), wifiSelectSection == baseView.tableViewHeaderView.sectionNumber {
+            baseView.tableViewHeaderView.startIndicatorAnimating()
+        }
         viewModel.startWiFiScan()
     }
 
@@ -56,6 +63,12 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
 // MARK: - UITableViewDelegate
 
 extension WiFiListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        baseView.setupTableViewHeaderView(KikurageTableViewHeaderView.create(tableView: tableView), sectionNumber: section)
+        baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
+        return baseView.tableViewHeaderView
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let ssid = viewModel.getSelectedSSID(indexPath: indexPath)
         transitionToWiFiSetting(selectedSSID: ssid)
@@ -67,6 +80,7 @@ extension WiFiListViewController: UITableViewDelegate {
 extension WiFiListViewController: WiFiListViewModelDelegate {
     func viewModelUpdateWiFiList(_ wifiListViewModel: WiFiListViewModel) {
         DispatchQueue.main.async {
+            self.baseView.tableViewHeaderView.stopIndicatorAnimating()
             self.baseView.tableView.reloadData()
         }
     }
