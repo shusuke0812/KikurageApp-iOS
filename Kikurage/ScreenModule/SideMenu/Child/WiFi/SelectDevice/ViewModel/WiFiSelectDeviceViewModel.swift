@@ -22,12 +22,14 @@ class WiFiSelectDeviceViewModel: NSObject {
     private let bluetoothManager = KikurageBluetoothManager.shared
     private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
     private var selectedIndexPath: IndexPath?
+    private(set) var bluetoothState: KikurageBluetoothState?
 
     weak var delegate: WiFiSelectDeviceViewModelDelegate?
 
     override init() {
         super.init()
         bluetoothManager.delegate = self
+        bluetoothManager.centralDelegate = self
     }
 
     deinit {
@@ -42,6 +44,10 @@ class WiFiSelectDeviceViewModel: NSObject {
         let peripheral = bluetoothPeripherals.getElement(indexPath: indexPath).peripheral
         bluetoothManager.connectPeripheral(peripheral)
         selectedIndexPath = indexPath
+    }
+
+    func scanForPeripherals() {
+        bluetoothManager.scanForPeripherals()
     }
 }
 
@@ -60,6 +66,14 @@ extension WiFiSelectDeviceViewModel: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
         cell.updateComponent(peripheral: bluetoothPeripherals.getElement(indexPath: indexPath))
         return cell
+    }
+}
+
+// MARK: - KikurageBluetoothCentralManagerDelegate
+
+extension WiFiSelectDeviceViewModel: KikurageBluetoothCentralManagerDelegate {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothState) {
+        bluetoothState = state
     }
 }
 

@@ -9,6 +9,10 @@
 import CoreBluetooth
 import Foundation
 
+public protocol KikurageBluetoothCentralManagerDelegate: AnyObject {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothState)
+}
+
 public protocol KikurageBluetoothMangerDelegate: AnyObject {
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error)
     func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String)
@@ -35,6 +39,7 @@ public class KikurageBluetoothManager: NSObject {
     }
 
     public weak var delegate: KikurageBluetoothMangerDelegate?
+    public weak var centralDelegate: KikurageBluetoothCentralManagerDelegate?
 
     override private init() {
         super.init()
@@ -56,7 +61,7 @@ public class KikurageBluetoothManager: NSObject {
         KikurageBluetoothManager._shared = nil
     }
 
-    private func scanForPeripherals() {
+    public func scanForPeripherals() {
         // TODO: setting original service ID
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
@@ -96,22 +101,8 @@ public class KikurageBluetoothManager: NSObject {
 
 extension KikurageBluetoothManager: CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        switch central.state {
-        case .poweredOn:
-            scanForPeripherals()
-        case .poweredOff:
-            break
-        case .unknown:
-            break
-        case .resetting:
-            break
-        case .unsupported:
-            break
-        case .unauthorized:
-            break
-        @unknown default:
-            fatalError()
-        }
+        let state = KikurageBluetoothState(centralManagerState: central.state)
+        centralDelegate?.bluetoothManager(self, didUpdate: state)
     }
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
