@@ -11,6 +11,7 @@ import UIKit
 
 class WiFiSelectDeviceBaseView: UIView {
     private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private(set) var tableViewHeaderView: KikurageTableViewHeaderView!
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -24,6 +25,10 @@ class WiFiSelectDeviceBaseView: UIView {
     func setupTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
+    }
+
+    func setupTableViewHeaderView(_ headerView: KikurageTableViewHeaderView) {
+        tableViewHeaderView = headerView
     }
 
     private func setupComponent() {

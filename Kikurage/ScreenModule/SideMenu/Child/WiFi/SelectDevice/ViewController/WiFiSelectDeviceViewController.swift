@@ -53,7 +53,9 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        KikurageTableViewHeaderView.create(tableView: tableView, title: viewModel.sections[section].title)
+        baseView.setupTableViewHeaderView(KikurageTableViewHeaderView.create(tableView: tableView))
+        baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
+        return baseView.tableViewHeaderView
     }
 }
 
