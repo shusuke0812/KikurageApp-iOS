@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GraphViewModelDelegate: AnyObject {
-    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel, temperatureDatas: [Int], humidityDatas: [Int])
+    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel, temperatureWeeklyDatas: [Int], humidityWeeklyDatas: [Int])
     func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String)
     func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel, kikurageUser: KikurageUser)
     func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String)
@@ -30,7 +30,7 @@ class GraphViewModel {
 // MARK: - Data Setting
 
 extension GraphViewModel {
-    private func getTemperatureGraphDatas(kikurageStateGraphs: [KikurageStateGraphTuple]) -> [Int] {
+    private func getTemperatureWeeklyGraphDatas(kikurageStateGraphs: [KikurageStateGraphTuple]) -> [Int] {
         guard let graphData = kikurageStateGraphs.first?.data else {
             return []
         }
@@ -46,7 +46,7 @@ extension GraphViewModel {
         return graphDatas
     }
 
-    private func getHumidityGraphDatas(kikurageStateGraphs: [KikurageStateGraphTuple]) -> [Int] {
+    private func getHumidityWeeklyGraphDatas(kikurageStateGraphs: [KikurageStateGraphTuple]) -> [Int] {
         guard let graphData = kikurageStateGraphs.first?.data else {
             return []
         }
@@ -75,9 +75,9 @@ extension GraphViewModel {
             }
             switch response {
             case .success(let graphs):
-                let temperatureDatas = self.getTemperatureGraphDatas(kikurageStateGraphs: graphs)
-                let humidityDatas = self.getHumidityGraphDatas(kikurageStateGraphs: graphs)
-                self.delegate?.graphViewModelDidSuccessGetKikurageStateGraph(self, temperatureDatas: temperatureDatas, humidityDatas: humidityDatas)
+                let temperatureDatas = self.getTemperatureWeeklyGraphDatas(kikurageStateGraphs: graphs)
+                let humidityDatas = self.getHumidityWeeklyGraphDatas(kikurageStateGraphs: graphs)
+                self.delegate?.graphViewModelDidSuccessGetKikurageStateGraph(self, temperatureWeeklyDatas: temperatureDatas, humidityWeeklyDatas: humidityDatas)
             case .failure(let error):
                 self.delegate?.graphViewModelDidFailedGetKikurageStateGraph(self, with: error.description())
             }

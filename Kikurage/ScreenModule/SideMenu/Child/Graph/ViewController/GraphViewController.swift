@@ -58,12 +58,12 @@ extension GraphViewController {
 // MARK: - GraphViewModel Delegate
 
 extension GraphViewController: GraphViewModelDelegate {
-    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel, temperatureDatas: [Int], humidityDatas: [Int]) {
+    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel, temperatureWeeklyDatas: [Int], humidityWeeklyDatas: [Int]) {
         DispatchQueue.main.async {
             self.baseView.stopGraphActivityIndicators()
 
-            self.baseView.setLineChartView(datas: humidityDatas, graphDataType: .humidity)
-            self.baseView.setLineChartView(datas: temperatureDatas, graphDataType: .temperature)
+            self.baseView.setLineChartView(datas: humidityWeeklyDatas, graphDataType: .humidity)
+            self.baseView.setLineChartView(datas: temperatureWeeklyDatas, graphDataType: .temperature)
         }
     }
 
