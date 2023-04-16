@@ -31,35 +31,34 @@ protocol RealmClientProtocol {
 }
 
 struct RealmClient: RealmClientProtocol {
-    
     // MARK: - Initialize
-    
+
     static func configuration(completion: @escaping (Result<Void, Error>) -> Void) {
         var config = Realm.Configuration()
         config.migrationBlock = { migration, oldSchemaVersion in
             // Must not called Realm() because it is occured dead lock.
-            
+
             if oldSchemaVersion < 1 {
                 migration.enumerateObjects(ofType: KikurageStateGraphObject.className()) { oldObject, newOnject in
                     // Migration. If value can not be set in migration, nothing here. It uses default value. However, it has to increment schemaVersion.
-                    
+
                     // If object is deleted, use delete() or deleteData().
                     // migration.delete(newOnject)
                     // migration.deleteData(forType: KikurageStateGraphObject.className())
-                    
+
                     // If object property name is changed, use renameProperty().
                     // migration.renameProperty(onType: KikurageStateGraphObject.className(), from: <#T##String#>, to: <#T##String#>)
                 }
             }
             // In case of changing schema version from 1 to 3, othere condition are written here.
             // if oldSchemaVersion < 3 {}
-            
+
             // If it is added new object, use create().
             // migration.create(KikurageStateGraphObject.className(), value: /* new value */)
         }
         config.schemaVersion = 1 // default value is `0`
         config.deleteRealmIfMigrationNeeded = false
-        
+
         do {
             let realm = try Realm(configuration: config)
             completion(.success(()))
@@ -68,9 +67,9 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
-    
+
     // MARK: - For Repositoy class
-    
+
     func createRequest<T: KikurageRealmObject>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let realm = try Realm()
@@ -116,8 +115,8 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
-    
-    func updateRequest<T>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) where T : KikurageRealmObject {
+
+    func updateRequest<T>(_ object: T, completion: @escaping (Result<Void, Error>) -> Void) where T: KikurageRealmObject {
         do {
             let realm = try Realm()
             try realm.write {
@@ -128,16 +127,16 @@ struct RealmClient: RealmClientProtocol {
             completion(.failure(error))
         }
     }
-    
+
     // MARK: - Clean
-    
+
     static func deleteFiles(completion: @escaping (Result<Void, Error>) -> Void) {
         do {
             let fileManager = FileManager.default
             guard let fileURL = Realm.Configuration.defaultConfiguration.fileURL else {
                 return
             }
-            
+
             try fileManager.removeItem(at: fileURL)
             try fileManager.removeItem(at: fileURL.appendingPathExtension("lock"))
             try fileManager.removeItem(at: fileURL.appendingPathExtension("management"))
