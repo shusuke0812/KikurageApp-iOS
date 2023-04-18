@@ -50,10 +50,7 @@ extension GraphViewController {
         viewModel.loadKikurageUser(uid: userID)
     }
 
-    private func loadKikurageStateGraph() {
-        guard let kikurageUser = viewModel.kikurageUser else {
-            return
-        }
+    private func loadKikurageStateGraph(kikurageUser: KikurageUser) {
         viewModel.loadKikurageStateGraph(productID: kikurageUser.productKey)
     }
 }
@@ -61,12 +58,12 @@ extension GraphViewController {
 // MARK: - GraphViewModel Delegate
 
 extension GraphViewController: GraphViewModelDelegate {
-    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel) {
+    func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel, temperatureWeeklyDatas: [Int], humidityWeeklyDatas: [Int]) {
         DispatchQueue.main.async {
             self.baseView.stopGraphActivityIndicators()
 
-            self.baseView.setLineChartView(datas: graphViewModel.humidityGraphDatas, graphDataType: .humidity)
-            self.baseView.setLineChartView(datas: graphViewModel.temperatureGraphDatas, graphDataType: .temperature)
+            self.baseView.setLineChartView(datas: humidityWeeklyDatas, graphDataType: .humidity)
+            self.baseView.setLineChartView(datas: temperatureWeeklyDatas, graphDataType: .temperature)
         }
     }
 
@@ -78,8 +75,8 @@ extension GraphViewController: GraphViewModelDelegate {
         }
     }
 
-    func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel) {
-        loadKikurageStateGraph()
+    func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel, kikurageUser: KikurageUser) {
+        loadKikurageStateGraph(kikurageUser: kikurageUser)
     }
 
     func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String) {

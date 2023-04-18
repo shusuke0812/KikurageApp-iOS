@@ -53,6 +53,7 @@
 
 // client error
 "error_client_network_connection" = "ネットワーク通信に失敗しました";
+"error_client_unwrap" = "アンラップに失敗しました";
 "error_client_parse" = "パースエラー";
 "error_client_response_parse" = "レスポンスの変換に失敗しました";
 "error_client_api" = "サーバーエラー";

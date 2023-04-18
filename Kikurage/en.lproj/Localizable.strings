@@ -53,6 +53,7 @@
 
 // client error
 "error_client_network_connection" = "Network error";
+"error_client_unwrap" = "Failed to unwrap";
 "error_client_parse" = "Parse error";
 "error_client_response_parse" = "Failed to response parse";
 "error_client_api" = "Server error";

@@ -9,6 +9,8 @@
 import Foundation
 
 enum ClientError: Error {
+    /// オプショナルのアンラップに失敗
+    case unwrapError
     /// 通信に失敗（ex. 端末オフライン、URLホストが見つからない etc）
     case networkConnectionError(Error)
     /// エンコード、デコードに失敗
@@ -24,6 +26,8 @@ enum ClientError: Error {
 
     func description() -> String {
         switch self {
+        case .unwrapError:
+            return R.string.localizable.error_client_unwrap()
         case .networkConnectionError:
             return R.string.localizable.error_client_network_connection()
         case .parseError:

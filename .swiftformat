@@ -91,6 +91,6 @@
 
 # ###### opt-in rules ######
 
---enable acronyms
+# --enable acronyms                     # because `ObjectId` of Realm object must not be changed its words.
 --enable blankLineAfterImports
 --enable wrapConditionalBodies
