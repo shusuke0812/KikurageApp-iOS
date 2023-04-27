@@ -185,6 +185,7 @@
 		9CC7F4D929CF12FB0045C866 /* KikurageWiFiSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4D829CF12FB0045C866 /* KikurageWiFiSetting.swift */; };
 		9CC7F4DD29CF2F2F0045C866 /* KikurageWiFiScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4DC29CF2F2F0045C866 /* KikurageWiFiScan.swift */; };
 		9CC8EADE29B43DED00DA2712 /* KikurageBluetoothUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC8EADD29B43DED00DA2712 /* KikurageBluetoothUUID.swift */; };
+		9CCAB36D29FAB92200068A1E /* KikurageNFCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCAB36C29FAB92200068A1E /* KikurageNFCManager.swift */; };
 		9CCB856929C5E23C00D14338 /* KikurageBluetoothCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCB856829C5E23C00D14338 /* KikurageBluetoothCommand.swift */; };
 		9CCBA01029B5C3F50006F4F6 /* KikurageBluetoothSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA00F29B5C3F50006F4F6 /* KikurageBluetoothSignal.swift */; };
 		9CCBA01229B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA01129B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift */; };
@@ -455,6 +456,8 @@
 		9CC7F4D829CF12FB0045C866 /* KikurageWiFiSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFiSetting.swift; sourceTree = "<group>"; };
 		9CC7F4DC29CF2F2F0045C866 /* KikurageWiFiScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFiScan.swift; sourceTree = "<group>"; };
 		9CC8EADD29B43DED00DA2712 /* KikurageBluetoothUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothUUID.swift; sourceTree = "<group>"; };
+		9CCAB36C29FAB92200068A1E /* KikurageNFCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageNFCManager.swift; sourceTree = "<group>"; };
+		9CCAB36E29FABAC400068A1E /* Kikurage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kikurage.entitlements; sourceTree = "<group>"; };
 		9CCB856829C5E23C00D14338 /* KikurageBluetoothCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothCommand.swift; sourceTree = "<group>"; };
 		9CCBA00F29B5C3F50006F4F6 /* KikurageBluetoothSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothSignal.swift; sourceTree = "<group>"; };
 		9CCBA01129B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothPeripheral.swift; sourceTree = "<group>"; };
@@ -597,6 +600,7 @@
 		9C1ACF492225768A00A3D4D1 /* Kikurage */ = {
 			isa = PBXGroup;
 			children = (
+				9CCAB36E29FABAC400068A1E /* Kikurage.entitlements */,
 				9C9A8D9F26DFB990006C31E7 /* App */,
 				9C82B415253037AB00E650B5 /* Static */,
 				9C73CCD026D53F3C00B4DE55 /* Utility */,
@@ -1414,13 +1418,14 @@
 		9CAC930E2789E4E50033DA33 /* KikurageFeature */ = {
 			isa = PBXGroup;
 			children = (
-				9CACBE7329E27322006707CB /* CustomView */,
 				9CAC9362278A9AC70033DA33 /* ResourceManager.swift */,
+				9CACBE7329E27322006707CB /* CustomView */,
 				9C48A0882919C3D400714DAE /* ImageViewer */,
 				9CBA06CE28748A8D006F2259 /* Logger */,
 				9CAC931E278A53750033DA33 /* HUD */,
 				9C91306C27AC2B2C0024AAF3 /* QRCodeReader */,
 				9C9B27C72812F3FE00B391E3 /* Bluetooth */,
+				9CCAB36B29FAB8C100068A1E /* NFC */,
 				9CAC930F2789E4E50033DA33 /* KikurageFeature.h */,
 				9CAC9321278A5A950033DA33 /* Assets.xcassets */,
 				9CAC9368278AB4660033DA33 /* Localizable.strings */,
@@ -1534,6 +1539,14 @@
 				9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */,
 			);
 			path = Debug;
+			sourceTree = "<group>";
+		};
+		9CCAB36B29FAB8C100068A1E /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				9CCAB36C29FAB92200068A1E /* KikurageNFCManager.swift */,
+			);
+			path = NFC;
 			sourceTree = "<group>";
 		};
 		9CDAFBF624E4B95700E56550 /* Extension */ = {
@@ -2388,6 +2401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CCAB36D29FAB92200068A1E /* KikurageNFCManager.swift in Sources */,
 				9CC8EADE29B43DED00DA2712 /* KikurageBluetoothUUID.swift in Sources */,
 				9C91306E27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift in Sources */,
 				9CACBE7529E273A4006707CB /* KikurageTableViewHeaderView.swift in Sources */,
@@ -2615,6 +2629,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_ENTITLEMENTS = Kikurage/Kikurage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
@@ -2643,6 +2658,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_ENTITLEMENTS = Kikurage/Kikurage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
@@ -3265,6 +3281,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_ENTITLEMENTS = Kikurage/Kikurage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
