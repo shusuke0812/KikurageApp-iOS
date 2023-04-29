@@ -45,5 +45,7 @@
 	<string>Light</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>to connect kikurage device</string>
+	<key>NFCReaderUsageDescription</key>
+	<string>to read NFC device</string>
 </dict>
 </plist>
