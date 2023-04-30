@@ -19,12 +19,22 @@ public protocol KikurageNFCManagerDelegate: AnyObject {
 }
 
 public class KikurageNFCManager: NSObject {
-    public var session: NFCNDEFReaderSession?
+    private var ndefSession: NFCNDEFReaderSession?
+    private var tagSession: NFCTagReaderSession?
+
     public weak var delegate: KikurageNFCManagerDelegate?
 
-    public override init() {
+    override public init() {
         super.init()
-        session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+        initialize()
+    }
+
+    private func initialize() {
+        ndefSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
+        ndefSession?.alertMessage = ResorceManager.getLocalizedString("nfc_begin_scan_alert_message")
+
+        tagSession = NFCTagReaderSession(pollingOption: .iso14443, delegate: self, queue: nil)
+        tagSession?.alertMessage = ResorceManager.getLocalizedString("nfc_begin_scan_alert_message")
     }
 
     public func startNFCScan() {
@@ -32,13 +42,24 @@ public class KikurageNFCManager: NSObject {
             delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.notAvailable.description)
             return
         }
-        session?.alertMessage = ResorceManager.getLocalizedString("nfc_begin_alert_message")
-        session?.begin()
+        ndefSession?.begin()
+    }
+
+    public func startNFCTagScan() {
+        guard NFCTagReaderSession.readingAvailable else {
+            delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.notAvailable.description)
+            return
+        }
+        tagSession?.begin()
     }
 }
 
+// MARK: - NFCNDEFReaderSessionDelegate
+
 extension KikurageNFCManager: NFCNDEFReaderSessionDelegate {
-    public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
+    public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
+        KLogManager.debug("\(error.localizedDescription)")
+    }
 
     public func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
         guard let message = messages.first else {
@@ -65,11 +86,43 @@ extension KikurageNFCManager: NFCNDEFReaderSessionDelegate {
             // try await tag.writeNDEF(ndefMessage)
 
             // success
-            session.alertMessage = ResorceManager.getLocalizedString("nfc_end_alert_message")
+            session.alertMessage = ResorceManager.getLocalizedString("nfc_end_write_alert_message")
             session.invalidate()
 
             // fail
             // session.invalidate(errorMessage: ResorceManager.getLocalizedString("nfc_end_alert_error_message"))
+        }
+    }
+}
+
+// MARK: - NFCTagReaderSessionDelegate
+
+extension KikurageNFCManager: NFCTagReaderSessionDelegate {
+    public func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
+        KLogManager.debug()
+    }
+
+    public func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
+        delegate?.kikurageNFCManager(self, errorMessage: error.localizedDescription)
+    }
+
+    public func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+        Task {
+            guard let tag = tags.first else {
+                delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.messageGetFail.description)
+                return
+            }
+            try await tagSession?.connect(to: tag)
+            KLogManager.debug("tag=\(dump(tag))")
+
+            switch tag {
+            case .miFare(let miFareTag):
+                delegate?.kikurageNFCManager(self, didDetectNDEFs: "")
+            default:
+                break
+            }
+            session.alertMessage = ResorceManager.getLocalizedString("nfc_end_read_alert_message")
+            session.invalidate()
         }
     }
 }
