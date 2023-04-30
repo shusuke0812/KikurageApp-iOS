@@ -16,5 +16,5 @@
 "nfc_begin_alert_message" = "NFCデバイスにスマホを近づけてください";
 "nfc_end_alert_message" = "NFCの書き込みが完了しました";
 "nfc_end_alert_error_message" = "エラー";
-"nfc_available_fail_description" = "NFCがサポートされていません"
-"nfc_message_get_fail_description" = "NFCデータの取得に失敗しました"
+"nfc_available_fail_description" = "NFCがサポートされていません";
+"nfc_message_get_fail_description" = "NFCデータの取得に失敗しました";

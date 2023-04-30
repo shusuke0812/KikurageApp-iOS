@@ -11,7 +11,7 @@ import Foundation
 enum KikurageNFCError: Error {
     case notAvailable
     case messageGetFail
-    
+
     var description: String {
         switch self {
         case .notAvailable:

@@ -21,12 +21,12 @@ public protocol KikurageNFCManagerDelegate: AnyObject {
 public class KikurageNFCManager: NSObject {
     public var session: NFCNDEFReaderSession?
     public weak var delegate: KikurageNFCManagerDelegate?
-    
+
     override init() {
         super.init()
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
     }
-    
+
     public func startNFCScan() {
         guard NFCNDEFReaderSession.readingAvailable else {
             delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.notAvailable.description)
@@ -38,8 +38,8 @@ public class KikurageNFCManager: NSObject {
 }
 
 extension KikurageNFCManager: NFCNDEFReaderSessionDelegate {
-    public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
-    }
+    public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
+
     public func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
         guard let message = messages.first else {
             delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.messageGetFail.description)
@@ -47,6 +47,7 @@ extension KikurageNFCManager: NFCNDEFReaderSessionDelegate {
         }
         delegate?.kikurageNFCManager(self, didDetectNDEFs: message.description)
     }
+
     public func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         Task {
             guard let tag = tags.first else {
@@ -54,19 +55,19 @@ extension KikurageNFCManager: NFCNDEFReaderSessionDelegate {
                 return
             }
             try await session.connect(to: tag)
-            
+
             // read
             let message = try await tag.readNDEF()
             KLogManager.debug("\(message)")
-            
+
             // write
             // let ndefMessage: NFCNDEFMessage =
             // try await tag.writeNDEF(ndefMessage)
-            
+
             // success
             session.alertMessage = ResorceManager.getLocalizedString("nfc_end_alert_message")
             session.invalidate()
-            
+
             // fail
             // session.invalidate(errorMessage: ResorceManager.getLocalizedString("nfc_end_alert_error_message"))
         }
