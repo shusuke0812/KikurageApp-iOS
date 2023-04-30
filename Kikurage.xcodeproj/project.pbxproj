@@ -191,6 +191,7 @@
 		9CCBA01229B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCBA01129B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift */; };
 		9CD1886E29758032008EF1ED /* KikurageBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1886D29758032008EF1ED /* KikurageBluetoothManager.swift */; };
 		9CD2497929D3110B00391C44 /* KikurageBluetoothCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2497829D3110B00391C44 /* KikurageBluetoothCompletion.swift */; };
+		9CD7A1EC29FD6535009D1607 /* KikurageNFCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD7A1EB29FD6535009D1607 /* KikurageNFCError.swift */; };
 		9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */; };
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
@@ -463,6 +464,7 @@
 		9CCBA01129B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothPeripheral.swift; sourceTree = "<group>"; };
 		9CD1886D29758032008EF1ED /* KikurageBluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothManager.swift; sourceTree = "<group>"; };
 		9CD2497829D3110B00391C44 /* KikurageBluetoothCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothCompletion.swift; sourceTree = "<group>"; };
+		9CD7A1EB29FD6535009D1607 /* KikurageNFCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageNFCError.swift; sourceTree = "<group>"; };
 		9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRequestProtocol.swift; sourceTree = "<group>"; };
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -1545,6 +1547,7 @@
 			isa = PBXGroup;
 			children = (
 				9CCAB36C29FAB92200068A1E /* KikurageNFCManager.swift */,
+				9CD7A1EB29FD6535009D1607 /* KikurageNFCError.swift */,
 			);
 			path = NFC;
 			sourceTree = "<group>";
@@ -2401,6 +2404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD7A1EC29FD6535009D1607 /* KikurageNFCError.swift in Sources */,
 				9CCAB36D29FAB92200068A1E /* KikurageNFCManager.swift in Sources */,
 				9CC8EADE29B43DED00DA2712 /* KikurageBluetoothUUID.swift in Sources */,
 				9C91306E27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift in Sources */,
