@@ -22,7 +22,7 @@ public class KikurageNFCManager: NSObject {
     public var session: NFCNDEFReaderSession?
     public weak var delegate: KikurageNFCManagerDelegate?
 
-    override init() {
+    public override init() {
         super.init()
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
     }
