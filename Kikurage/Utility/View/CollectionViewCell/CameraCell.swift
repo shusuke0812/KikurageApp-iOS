@@ -7,7 +7,7 @@
 //
 
 import FirebaseStorage
-import FirebaseUI
+import FirebaseStorageUI
 import UIKit
 
 protocol CameraCellDelegate: AnyObject {

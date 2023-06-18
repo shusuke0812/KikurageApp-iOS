@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '14.0'
 use_frameworks!
 
 def common_pods
@@ -7,20 +7,20 @@ def common_pods
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'FirebaseFirestoreSwift', '~> 0.2'
-  pod 'FirebaseUI/Storage', '~> 8.0'
+  pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseUI/Storage'
   pod 'Firebase/RemoteConfig'
   # UI
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
-  pod 'PKHUD', '~> 5.0'
+  pod 'PKHUD'
   pod 'HorizonCalendar'
   pod 'FontAwesome.swift'
   pod 'CropViewController'
   # Other
   pod 'R.swift'
-  pod 'RxSwift', '6.2.0'
-  pod 'RxCocoa', '6.2.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'SDWebImage'
 end
 
@@ -49,13 +49,14 @@ target 'KikurageUITests' do
 end
 
 post_install do | installer |
-  # 暫定：M1 Macのシミュレータ向けビルドを通す処理
-  installer.pods_project.targets.each do | target |
-    target.build_configurations.each do | config |
-      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+      end
     end
   end
-  # 設定アプリへの著作権情報書き出し（https://github.com/CocoaPods/CocoaPods/wiki/Acknowledgements）
+  # Acknowledgment into Setting app（https://github.com/CocoaPods/CocoaPods/wiki/Acknowledgements）
   require 'fileutils'
   FileUtils.cp_r(
     'Pods/Target Support Files/Pods-Kikurage/Pods-Kikurage-Acknowledgements.plist', 

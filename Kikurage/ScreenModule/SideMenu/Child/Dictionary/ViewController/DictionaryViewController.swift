@@ -14,12 +14,12 @@ class DictionaryViewController: UIViewController {
     private var baseView: DictionaryBaseView { view as! DictionaryBaseView } // swiftlint:disable:this force_cast
 
     private lazy var dictionaryTriviaVC: DictionaryTriviaViewController = {
-        let vc = R.storyboard.dictionaryTriviaViewController().instantiateInitialViewController() as! DictionaryTriviaViewController // swiftlint:disable:this force_cast
+        let vc = R.storyboard.dictionaryTriviaViewController.instantiateInitialViewController()! // swiftlint:disable:this force_cast
         return vc
     }()
 
     private lazy var dictonaryTwitterVC: DictionaryTwitterViewController = {
-        let vc = R.storyboard.dictionaryTwitterViewController().instantiateInitialViewController() as! DictionaryTwitterViewController // swiftlint:disable:this force_cast
+        let vc = R.storyboard.dictionaryTwitterViewController.instantiateInitialViewController()! // swiftlint:disable:this force_cast
         return vc
     }()
 
