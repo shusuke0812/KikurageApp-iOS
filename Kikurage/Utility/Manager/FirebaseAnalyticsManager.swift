@@ -29,6 +29,7 @@ enum FirebaseAnalyticsScreenViewEvent {
     case cultivation
     case cultivationDetail
     case postCultivation
+    case communication
     case recipe
     case postRecipe
     case calendar
@@ -60,6 +61,8 @@ enum FirebaseAnalyticsScreenViewEvent {
             return "Recipe"
         case .postRecipe:
             return "PostRecipe"
+        case .communication:
+            return "Communication"
         case .calendar:
             return "Calendar"
         case .graph:
@@ -97,6 +100,8 @@ enum FirebaseAnalyticsScreenViewEvent {
             return "app/home/recipe"
         case .postRecipe:
             return "app/home/recipe/post_recipe"
+        case .communication:
+            return "app/home/communication"
         case .calendar:
             return "app/home/side_menu/calendar"
         case .graph:
