@@ -36,7 +36,8 @@ enum FirebaseAnalyticsScreenViewEvent {
     case graph
     case accountSetting
     case acknowledgement
-    case dictionary
+    case dictionaryTrivia
+    case dictionaryTwitter
     case wifi
     
     var screenName: String {
@@ -71,8 +72,10 @@ enum FirebaseAnalyticsScreenViewEvent {
             return "AccountSetting"
         case .acknowledgement:
             return "Acknowledgment"
-        case .dictionary:
-            return "Dictionary"
+        case .dictionaryTrivia:
+            return "Trivia"
+        case .dictionaryTwitter:
+            return "Twitter"
         case .wifi:
             return "WiFi"
         }
@@ -110,8 +113,10 @@ enum FirebaseAnalyticsScreenViewEvent {
             return "app/home/side_menu/account_setting"
         case .acknowledgement:
             return "app/home/side_menu/acknowledgment"
-        case .dictionary:
-            return "app/home/side_menu/dictionary"
+        case .dictionaryTrivia:
+            return "app/home/side_menu/dictionary/trivia"
+        case .dictionaryTwitter:
+            return "app/home/side_menu/dictionary/twitter"
         case .wifi:
             return "app/home/side_menu/wifi"
         }
