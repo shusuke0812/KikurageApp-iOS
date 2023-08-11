@@ -61,6 +61,11 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
         dateTimer = nil
         baseView.kikurageStatusViewAnimation(false)
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.home)
+    }
 }
 
 // MARK: - Initialized

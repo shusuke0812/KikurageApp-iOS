@@ -25,6 +25,11 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
         adjustNavigationBarBackgroundColor()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.postCultivation)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {

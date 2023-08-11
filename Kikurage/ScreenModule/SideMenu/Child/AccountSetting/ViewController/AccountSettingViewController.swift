@@ -26,6 +26,11 @@ class AccountSettingViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.accountSetting)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {

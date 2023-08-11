@@ -28,6 +28,11 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, TopAc
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.signUp)
+    }
 }
 
 // MARK: - Initialized

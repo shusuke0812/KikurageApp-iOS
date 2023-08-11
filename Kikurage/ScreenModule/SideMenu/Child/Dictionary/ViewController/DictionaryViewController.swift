@@ -69,8 +69,10 @@ extension DictionaryViewController {
         removeContainerViewController()
         if index == 0 {
             setContainerViewController(dictionaryTriviaVC)
+            FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTrivia)
         } else if index == 1 {
             setContainerViewController(dictonaryTwitterVC)
+            FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTwitter)
         }
     }
 }

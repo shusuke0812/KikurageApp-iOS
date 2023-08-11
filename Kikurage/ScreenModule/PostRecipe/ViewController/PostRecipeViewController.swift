@@ -23,6 +23,11 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
         adjustNavigationBarBackgroundColor()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.postRecipe)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {
