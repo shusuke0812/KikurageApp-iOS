@@ -9,6 +9,8 @@
 import FirebaseAnalytics
 import Foundation
 
+// GA4 Recommended events: https://support.google.com/firebase/answer/9267735?sjid=12444164303384159030-AP
+
 enum FirebaseAnalyticsTapEvent {
     case debug
 
