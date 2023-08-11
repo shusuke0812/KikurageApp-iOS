@@ -125,7 +125,7 @@ enum FirebaseAnalyticsScreenViewEvent {
     }
 }
 
-struct FirebaseAnalyticsManager {
+struct FirebaseAnalyticsHelper {
     static func sendTapEvent(_ event: FirebaseAnalyticsTapEvent) {
         Analytics.logEvent(event.name, parameters: [
             AnalyticsParameterItemID: "id-debug-1234",

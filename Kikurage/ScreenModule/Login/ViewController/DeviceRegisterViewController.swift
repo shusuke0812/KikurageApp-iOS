@@ -41,7 +41,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.deviceRegister)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.deviceRegister)
     }
 
     override func viewDidDisappear(_ animated: Bool) {

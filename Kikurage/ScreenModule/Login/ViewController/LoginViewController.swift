@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAcc
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.login)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.login)
     }
 }
 

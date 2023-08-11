@@ -64,7 +64,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.home)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.home)
     }
 }
 

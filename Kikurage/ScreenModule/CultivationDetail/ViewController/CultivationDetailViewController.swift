@@ -25,7 +25,7 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.cultivationDetail)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.cultivationDetail)
     }
 }
 

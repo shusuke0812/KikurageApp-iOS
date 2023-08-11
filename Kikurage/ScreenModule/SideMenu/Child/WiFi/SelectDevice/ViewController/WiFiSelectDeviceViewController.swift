@@ -32,7 +32,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
             baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()
         }
-        FirebaseAnalyticsManager.sendScreenViewEvent(.wifi)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.wifi)
     }
 
     // MARK: - Action

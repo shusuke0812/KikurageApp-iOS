@@ -23,7 +23,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable, TopAcces
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.top)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.top)
     }
 }
 

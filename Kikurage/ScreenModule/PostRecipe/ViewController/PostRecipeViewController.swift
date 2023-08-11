@@ -25,7 +25,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.postRecipe)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.postRecipe)
     }
 
     // MARK: - Action

@@ -24,7 +24,7 @@ class GraphViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.graph)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.graph)
     }
 
     // MARK: - Action

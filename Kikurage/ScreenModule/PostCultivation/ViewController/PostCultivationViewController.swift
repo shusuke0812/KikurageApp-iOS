@@ -27,7 +27,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsManager.sendScreenViewEvent(.postCultivation)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.postCultivation)
     }
 
     // MARK: - Action
