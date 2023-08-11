@@ -776,7 +776,6 @@
 			isa = PBXGroup;
 			children = (
 				9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */,
-				9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1759,6 +1758,7 @@
 		9CF0020624E39B290084036B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */,
 				9C96997C2566118B00D655DA /* DateHelper.swift */,
 				9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */,
 				9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */,
