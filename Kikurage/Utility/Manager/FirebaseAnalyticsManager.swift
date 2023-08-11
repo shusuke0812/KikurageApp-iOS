@@ -39,7 +39,7 @@ enum FirebaseAnalyticsScreenViewEvent {
     case dictionaryTrivia
     case dictionaryTwitter
     case wifi
-    
+
     var screenName: String {
         switch self {
         case .top:
@@ -80,7 +80,7 @@ enum FirebaseAnalyticsScreenViewEvent {
             return "WiFi"
         }
     }
-    
+
     var screenClass: String {
         switch self {
         case .top:
@@ -131,6 +131,7 @@ struct FirebaseAnalyticsManager {
             AnalyticsParameterContentType: "content"
         ])
     }
+
     static func sendScreenViewEvent(_ event: FirebaseAnalyticsScreenViewEvent) {
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
             AnalyticsParameterScreenName: event.screenName,
