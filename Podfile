@@ -49,10 +49,18 @@ target 'KikurageUITests' do
 end
 
 post_install do | installer |
-  # 暫定：M1 Macのシミュレータ向けビルドを通す処理
   installer.pods_project.targets.each do | target |
     target.build_configurations.each do | config |
+      # 暫定：M1 Macのシミュレータ向けビルドを通す処理
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      # Xcode14.3.1にした時に出るToolchainsのエラーを消すための処理
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+    end
+    # Make it work with GoogleDataTransport
+    if target.name.start_with? "GoogleDataTransport"
+      target.build_configurations.each do |config|
+        config.build_settings['CLANG_WARN_STRICT_PROTOTYPES'] = 'NO'
+      end
     end
   end
   # 設定アプリへの著作権情報書き出し（https://github.com/CocoaPods/CocoaPods/wiki/Acknowledgements）

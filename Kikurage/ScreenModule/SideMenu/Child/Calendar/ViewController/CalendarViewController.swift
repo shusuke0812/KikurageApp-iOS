@@ -25,6 +25,11 @@ class CalendarViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.calendar)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {

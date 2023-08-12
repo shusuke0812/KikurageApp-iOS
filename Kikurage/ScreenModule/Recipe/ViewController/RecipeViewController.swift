@@ -46,6 +46,11 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
         super.viewWillAppear(animated)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.recipe)
+    }
+
     // MARK: - Action
 
     private func refresh() {

@@ -26,6 +26,11 @@ class AccountSettingViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.accountSetting)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {
@@ -57,6 +62,7 @@ extension AccountSettingViewController: AccountSettingBaseViewDelegate {
 
     func settingBaseViewDidTappedEditButton(_ settingBaseView: AccountSettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
+        FirebaseAnalyticsHelper.sendTapEvent(.accountSettingButton)
         print("DEBUG: ボタンがタップされました")
     }
 }

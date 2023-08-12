@@ -22,6 +22,11 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
         setUI()
         adjustNavigationBarBackgroundColor()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.cultivationDetail)
+    }
 }
 
 // MARK: - Private

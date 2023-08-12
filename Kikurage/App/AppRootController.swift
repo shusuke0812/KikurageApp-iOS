@@ -132,6 +132,10 @@ extension AppRootController {
 
 extension AppRootController: AppPresenterDelegate {
     func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+        if let user = kikurageInfo.user {
+            FirebaseAnalyticsHelper.setUserProperty()
+            FirebaseAnalyticsHelper.setUserID(user.productKey)
+        }
         DispatchQueue.main.async {
             self.showHomePage(kikurageInfo: kikurageInfo)
         }

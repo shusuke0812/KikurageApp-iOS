@@ -25,6 +25,11 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
         adjustNavigationBarBackgroundColor()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.postCultivation)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {
@@ -152,6 +157,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
 
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        FirebaseAnalyticsHelper.sendTapEvent(.cultivationImageButton)
         openImagePicker()
     }
 }

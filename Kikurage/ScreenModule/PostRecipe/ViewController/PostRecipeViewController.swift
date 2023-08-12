@@ -23,6 +23,11 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
         adjustNavigationBarBackgroundColor()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.postRecipe)
+    }
+
     // MARK: - Action
 
     @objc private func close(_ sender: UIBarButtonItem) {
@@ -146,6 +151,7 @@ extension PostRecipeViewController: CameraCellDelegate {
 
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        FirebaseAnalyticsHelper.sendTapEvent(.recipeImageButton)
         openImagePicker()
     }
 }

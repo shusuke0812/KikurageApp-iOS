@@ -20,6 +20,11 @@ class TopViewController: UIViewController, UIViewControllerNavigatable, TopAcces
         navigationItem.title = R.string.localizable.screen_top_title()
         adjustNavigationBarBackgroundColor()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.top)
+    }
 }
 
 // MARK: - Initialized

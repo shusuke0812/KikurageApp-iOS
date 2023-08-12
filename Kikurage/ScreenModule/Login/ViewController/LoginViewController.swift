@@ -21,6 +21,11 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAcc
         setDelegate()
         adjustNavigationBarBackgroundColor()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        FirebaseAnalyticsHelper.sendScreenViewEvent(.login)
+    }
 }
 
 // MARK: - Initialized
