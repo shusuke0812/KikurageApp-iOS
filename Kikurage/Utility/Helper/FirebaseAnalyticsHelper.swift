@@ -13,11 +13,23 @@ import Foundation
 
 enum FirebaseAnalyticsTapEvent {
     case debug
+    case communicationFacebookButton
+    case accountSettingButton
+    case cultivationImageButton
+    case recipeImageButton
 
     var name: String {
         switch self {
         case .debug:
-            return "debug_event"
+            return "debug"
+        case .communicationFacebookButton:
+            return "facebook_button"
+        case .accountSettingButton:
+            return "account_setting"
+        case .cultivationImageButton:
+            return "cultivation_image"
+        case .recipeImageButton:
+            return "recipe_image"
         }
     }
 }
@@ -127,10 +139,9 @@ enum FirebaseAnalyticsScreenViewEvent {
 
 struct FirebaseAnalyticsHelper {
     static func sendTapEvent(_ event: FirebaseAnalyticsTapEvent) {
-        Analytics.logEvent(event.name, parameters: [
-            AnalyticsParameterItemID: "id-debug-1234",
-            AnalyticsParameterItemName: event.name,
-            AnalyticsParameterContentType: "content"
+        Analytics.logEvent(AnalyticsEventSelectItem, parameters: [
+            AnalyticsParameterItemID: "id_\(event.name)",
+            AnalyticsParameterItemName: event.name
         ])
     }
 

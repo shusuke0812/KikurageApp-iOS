@@ -151,6 +151,7 @@ extension PostRecipeViewController: CameraCellDelegate {
 
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        FirebaseAnalyticsHelper.sendTapEvent(.recipeImageButton)
         openImagePicker()
     }
 }

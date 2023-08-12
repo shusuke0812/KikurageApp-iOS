@@ -157,6 +157,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
 
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        FirebaseAnalyticsHelper.sendTapEvent(.cultivationImageButton)
         openImagePicker()
     }
 }

@@ -62,6 +62,7 @@ extension AccountSettingViewController: AccountSettingBaseViewDelegate {
 
     func settingBaseViewDidTappedEditButton(_ settingBaseView: AccountSettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
+        FirebaseAnalyticsHelper.sendTapEvent(.accountSettingButton)
         print("DEBUG: ボタンがタップされました")
     }
 }
