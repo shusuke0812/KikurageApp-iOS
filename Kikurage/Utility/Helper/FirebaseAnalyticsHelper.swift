@@ -155,4 +155,8 @@ struct FirebaseAnalyticsHelper {
     static func setUserProperty(_ deviceModel: String = "M5Stack_GRAY") {
         Analytics.setUserProperty(deviceModel, forName: "device_model")
     }
+
+    static func setUserID(_ idString: String) {
+        Analytics.setUserID(idString)
+    }
 }
