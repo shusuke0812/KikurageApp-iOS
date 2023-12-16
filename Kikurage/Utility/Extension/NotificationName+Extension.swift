@@ -1,5 +1,5 @@
 //
-//  NotificationCenter+Extension.swift
+//  NotificationName+Extension.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2021/9/13.

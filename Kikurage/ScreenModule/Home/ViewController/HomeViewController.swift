@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2019/02/26.

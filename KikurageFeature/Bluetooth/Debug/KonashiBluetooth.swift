@@ -1,5 +1,5 @@
 //
-//  KikurageBluetooth.swift
+//  KonashiBluetooth.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2022/4/22.

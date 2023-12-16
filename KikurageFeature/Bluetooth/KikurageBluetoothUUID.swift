@@ -55,10 +55,10 @@ public enum KikurageBluetoothUUID {
 
     static func configCharactericticCBUUID() -> [CBUUID] {
         [
-            Self.Characteristic.writeStopWiFiScan.cbUUID,
-            Self.Characteristic.readWiFi.cbUUID,
-            Self.Characteristic.writeWiFiSetting.cbUUID,
-            Self.Characteristic.readCompletion.cbUUID
+            Characteristic.writeStopWiFiScan.cbUUID,
+            Characteristic.readWiFi.cbUUID,
+            Characteristic.writeWiFiSetting.cbUUID,
+            Characteristic.readCompletion.cbUUID
         ]
     }
 }

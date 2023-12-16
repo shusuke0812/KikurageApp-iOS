@@ -1,5 +1,5 @@
 //
-//  SettingViewModel.swift
+//  AccountSettingViewModel.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/1/1.

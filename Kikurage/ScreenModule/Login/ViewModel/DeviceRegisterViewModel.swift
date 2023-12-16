@@ -1,5 +1,5 @@
 //
-//  LoginViewModel.swift
+//  DeviceRegisterViewModel.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2021/1/7.

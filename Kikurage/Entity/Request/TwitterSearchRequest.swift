@@ -1,5 +1,5 @@
 //
-//  TwitterAPIRequest.swift
+//  TwitterSearchRequest.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/4/3.

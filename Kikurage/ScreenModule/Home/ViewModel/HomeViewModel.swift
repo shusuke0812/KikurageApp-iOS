@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  HomeViewModel.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2020/10/21.

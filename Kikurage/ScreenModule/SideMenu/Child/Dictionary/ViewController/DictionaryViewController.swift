@@ -13,13 +13,13 @@ import UIKit
 class DictionaryViewController: UIViewController {
     private var baseView: DictionaryBaseView { view as! DictionaryBaseView } // swiftlint:disable:this force_cast
 
-    private lazy var dictionaryTriviaVC: DictionaryTriviaViewController = {
-        let vc = R.storyboard.dictionaryTriviaViewController().instantiateInitialViewController() as! DictionaryTriviaViewController // swiftlint:disable:this force_cast
+    private lazy var dictionaryTriviaVC: DictionaryTriviaViewController? = {
+        let vc = R.storyboard.dictionaryTriviaViewController.instantiateInitialViewController()
         return vc
     }()
 
-    private lazy var dictonaryTwitterVC: DictionaryTwitterViewController = {
-        let vc = R.storyboard.dictionaryTwitterViewController().instantiateInitialViewController() as! DictionaryTwitterViewController // swiftlint:disable:this force_cast
+    private lazy var dictonaryTwitterVC: DictionaryTwitterViewController? = {
+        let vc = R.storyboard.dictionaryTwitterViewController.instantiateInitialViewController()
         return vc
     }()
 
@@ -43,11 +43,13 @@ class DictionaryViewController: UIViewController {
 // MARK: - Initialized
 
 extension DictionaryViewController {
-    private func setContainerViewController(_ vc: UIViewController) {
-        currentViewController = vc
-        addChild(vc)
-        baseView.addContainerView(vc.view)
-        vc.didMove(toParent: self)
+    private func setContainerViewController(_ vc: UIViewController?) {
+        if let vc = vc {
+            currentViewController = vc
+            addChild(vc)
+            baseView.addContainerView(vc.view)
+            vc.didMove(toParent: self)
+        }
     }
 
     private func setNavigation() {

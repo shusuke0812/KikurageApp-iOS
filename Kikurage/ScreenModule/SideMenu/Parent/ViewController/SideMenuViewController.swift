@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  SideMenuViewController.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2019/03/29.

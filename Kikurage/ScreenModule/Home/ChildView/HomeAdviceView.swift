@@ -1,5 +1,5 @@
 //
-//  MainAdviceView.swift
+//  HomeAdviceView.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2020/10/26.

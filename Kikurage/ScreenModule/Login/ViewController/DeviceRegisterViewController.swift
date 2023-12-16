@@ -1,5 +1,5 @@
 //
-//  loginViewController.swift
+//  DeviceRegisterViewController.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2019/03/22.
