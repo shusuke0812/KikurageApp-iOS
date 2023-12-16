@@ -1,5 +1,5 @@
 //
-//  KikurageBLESignal.swift
+//  KikurageBluetoothSignal.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2023/03/06.

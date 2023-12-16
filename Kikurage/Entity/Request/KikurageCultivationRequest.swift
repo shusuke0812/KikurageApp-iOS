@@ -1,5 +1,5 @@
 //
-//  CultivationRequest.swift
+//  KikurageCultivationRequest.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/4/12.

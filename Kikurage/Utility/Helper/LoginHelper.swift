@@ -8,6 +8,7 @@
 
 import Firebase
 import Foundation
+import KikurageFeature
 
 class LoginHelper {
     static let shared = LoginHelper()
@@ -21,11 +22,11 @@ class LoginHelper {
     var kikurageUserID: String? {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
-                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                if let user = try NSKeyedUnarchiver.unarchivedObject(ofClass: LoginUser.self, from: userData) {
                     return user.isEmailVerified ? user.uid : nil
                 }
             } catch {
-                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
+                KLogManager.debug(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return nil
@@ -35,11 +36,11 @@ class LoginHelper {
     var isLogin: Bool {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
-                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                if let user = try NSKeyedUnarchiver.unarchivedObject(ofClass: LoginUser.self, from: userData) {
                     return user.isEmailVerified
                 }
             } catch {
-                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
+                KLogManager.debug(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return false
@@ -69,21 +70,25 @@ class LoginHelper {
 
     /// ユーザー情報を`UserDefaults`へ保存する
     /// - Parameter user: Firebase Auth ユーザー
-    func setUserInUserDefaults(user: User) {
+    func setUserInUserDefaults(user: LoginUser) {
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: true)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
         } catch {
-            print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
+            KLogManager.debug(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
 
     func logout(onError: (() -> Void)? = nil) {
-        // FIXME: Auth.auth().signOutを追加
-        let rootVC = UIApplication.shared.windows.first?.rootViewController
-        if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
-            rootVC.logout(rootVC: rootVC)
-        } else {
+        do {
+            try Auth.auth().signOut()
+            let rootVC = UIApplication.shared.windows.first?.rootViewController
+            if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
+                rootVC.logout(rootVC: rootVC)
+            } else {
+                onError?()
+            }
+        } catch {
             onError?()
         }
     }

@@ -29,9 +29,8 @@ extension LoginRepository {
                 completion(.failure(ClientError.apiError(.readError)))
                 return
             }
-            LoginHelper.shared.setUserInUserDefaults(user: user)
-
-            let loginUser = LoginUser(uid: user.uid)
+            let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
+            LoginHelper.shared.setUserInUserDefaults(user: loginUser)
             completion(.success(loginUser))
         }
     }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -604,7 +604,7 @@
 				9C73CCD026D53F3C00B4DE55 /* Utility */,
 				9CA7F3342537FD75005BED9C /* Entity */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
-				9CA2043D271C76A000D65DD7 /* ScreenModule */,
+				9CA2043D271C76A000D65DD7 /* Screen */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 				9C03D033277DC1B20074C914 /* Settings.bundle */,
@@ -884,7 +884,7 @@
 			path = Child;
 			sourceTree = "<group>";
 		};
-		9CA2043D271C76A000D65DD7 /* ScreenModule */ = {
+		9CA2043D271C76A000D65DD7 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
@@ -899,7 +899,7 @@
 				9CA20450271C784000D65DD7 /* Communication */,
 				9CA20442271C76FC00D65DD7 /* SideMenu */,
 			);
-			path = ScreenModule;
+			path = Screen;
 			sourceTree = "<group>";
 		};
 		9CA2043E271C76CB00D65DD7 /* Login */ = {
@@ -1794,8 +1794,8 @@
 				9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */,
 				9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */,
 				9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */,
-				9C5D9D7A2665377D00474CFD /* Firebase Crashlytics Run Script */,
 				9CAC93172789E4E60033DA33 /* Embed Frameworks */,
+				9C5D9D7A2665377D00474CFD /* Firebase Crashlytics Run Script */,
 			);
 			buildRules = (
 			);

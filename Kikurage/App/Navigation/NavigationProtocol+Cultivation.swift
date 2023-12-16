@@ -1,5 +1,5 @@
 //
-//  NavigationProtocol+Home.swift
+//  NavigationProtocol+Cultivation.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/3/6.

@@ -69,7 +69,7 @@ public struct KikurageBluetoothPeripheralList {
     public func getElement(indexPath: IndexPath) -> KikurageBluetoothPeripheral {
         list[indexPath.row]
     }
-    
+
     public func getElement(index: Int) -> KikurageBluetoothPeripheral {
         list[index]
     }

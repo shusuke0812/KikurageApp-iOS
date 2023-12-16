@@ -40,7 +40,8 @@ class AppPresenter {
 extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
-    func loadKikurageUser(userID: String) {
+    func loadKikurageUser() {
+        let userID = LoginHelper.shared.kikurageUserID ?? ""
         let request = KikurageUserRequest(uid: userID)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
@@ -78,7 +79,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupURL = urlString
             case .failure(let error):
-                KLogger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -89,7 +90,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.termsURL = urlString
             case .failure(let error):
-                KLogger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -100,7 +101,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.privacyPolicyURL = urlString
             case .failure(let error):
-                KLogger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -112,7 +113,7 @@ extension AppPresenter {
                 let appVersion = AppVersion(versionString: appVersionString)
                 AppConfig.shared.latestAppVersion = appVersion
             case .failure(let error):
-                KLogger.verbose("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
             }
         }
     }

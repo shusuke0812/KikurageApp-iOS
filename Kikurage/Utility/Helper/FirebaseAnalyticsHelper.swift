@@ -1,5 +1,5 @@
 //
-//  FirebaseAnalyticsManager.swift
+//  FirebaseAnalyticsHelper.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2023/8/8.
