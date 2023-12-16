@@ -7,7 +7,7 @@ def common_pods
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'FirebaseFirestoreSwift', '~> 0.2'
+  pod 'FirebaseFirestoreSwift'
   pod 'FirebaseUI/Storage', '~> 8.0'
   pod 'Firebase/RemoteConfig'
   # UI
