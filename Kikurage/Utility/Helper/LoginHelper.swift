@@ -8,6 +8,7 @@
 
 import Firebase
 import Foundation
+import KikurageFeature
 
 class LoginHelper {
     static let shared = LoginHelper()
@@ -25,7 +26,7 @@ class LoginHelper {
                     return user.isEmailVerified ? user.uid : nil
                 }
             } catch {
-                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
+                KLogManager.debug(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return nil
@@ -39,7 +40,7 @@ class LoginHelper {
                     return user.isEmailVerified
                 }
             } catch {
-                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
+                KLogManager.debug(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return false
@@ -74,7 +75,7 @@ class LoginHelper {
             let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: true)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
         } catch {
-            print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
+            KLogManager.debug(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
 

@@ -79,7 +79,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupURL = urlString
             case .failure(let error):
-                KLogger.verbose("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -90,7 +90,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.termsURL = urlString
             case .failure(let error):
-                KLogger.verbose("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -101,7 +101,7 @@ extension AppPresenter {
             case .success(let urlString):
                 AppConfig.shared.privacyPolicyURL = urlString
             case .failure(let error):
-                KLogger.verbose("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -113,7 +113,7 @@ extension AppPresenter {
                 let appVersion = AppVersion(versionString: appVersionString)
                 AppConfig.shared.latestAppVersion = appVersion
             case .failure(let error):
-                KLogger.verbose("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
+                KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
             }
         }
     }
