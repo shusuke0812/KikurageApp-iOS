@@ -79,9 +79,14 @@ class LoginHelper {
         }
     }
 
+    func removeUserFromUserDefaults() {
+        UserDefaults.standard.removeObject(forKey: Constants.UserDefaultsKey.firebaseUser)
+    }
+
     func logout(onError: (() -> Void)? = nil) {
         do {
             try Auth.auth().signOut()
+            removeUserFromUserDefaults()
             let rootVC = UIApplication.shared.windows.first?.rootViewController
             if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
                 rootVC.logout(rootVC: rootVC)
