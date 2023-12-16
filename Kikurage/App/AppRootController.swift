@@ -31,8 +31,8 @@ class AppRootController: UIViewController {
 
         fetchRemoteConfig()
 
-        if let userID = LoginHelper.shared.kikurageUserID {
-            presenter.loadKikurageUser(userID: userID)
+        if LoginHelper.shared.isLogin {
+            presenter.loadKikurageUser()
         } else {
             showTopPage()
         }

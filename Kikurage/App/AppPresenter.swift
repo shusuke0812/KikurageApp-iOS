@@ -40,7 +40,8 @@ class AppPresenter {
 extension AppPresenter {
     /// きくらげユーザーを取得する
     /// - Parameter userId: Firebase ユーザーID
-    func loadKikurageUser(userID: String) {
+    func loadKikurageUser() {
+        let userID = LoginHelper.shared.kikurageUserID ?? ""
         let request = KikurageUserRequest(uid: userID)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {

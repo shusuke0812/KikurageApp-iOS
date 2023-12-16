@@ -21,7 +21,7 @@ class LoginHelper {
     var kikurageUserID: String? {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
-                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                if let user = try NSKeyedUnarchiver.unarchivedObject(ofClass: LoginUser.self, from: userData) {
                     return user.isEmailVerified ? user.uid : nil
                 }
             } catch {
@@ -35,7 +35,7 @@ class LoginHelper {
     var isLogin: Bool {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
-                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                if let user = try NSKeyedUnarchiver.unarchivedObject(ofClass: LoginUser.self, from: userData) {
                     return user.isEmailVerified
                 }
             } catch {
@@ -69,9 +69,9 @@ class LoginHelper {
 
     /// ユーザー情報を`UserDefaults`へ保存する
     /// - Parameter user: Firebase Auth ユーザー
-    func setUserInUserDefaults(user: User) {
+    func setUserInUserDefaults(user: LoginUser) {
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: true)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
         } catch {
             print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
