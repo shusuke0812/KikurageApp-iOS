@@ -1,5 +1,5 @@
 //
-//  FirebaseRequestProtocol.swift
+//  FirestoreRequestProtocol.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/4/9.

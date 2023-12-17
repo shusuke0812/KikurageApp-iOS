@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
 		9C48A08C2919C53000714DAE /* KikurageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C48A08B2919C53000714DAE /* KikurageImageView.swift */; };
 		9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */; };
+		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
 		9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C665EF02739704F000EE152 /* InfoPlist.strings */; };
 		9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */; };
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
@@ -295,6 +296,7 @@
 		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		9C48A08B2919C53000714DAE /* KikurageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageImageView.swift; sourceTree = "<group>"; };
 		9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCultivationViewController.storyboard; sourceTree = "<group>"; };
+		9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
 		9C665EEF2739704F000EE152 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C665EF127397053000EE152 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewController.swift; sourceTree = "<group>"; };
@@ -608,7 +610,7 @@
 				9C73CCD026D53F3C00B4DE55 /* Utility */,
 				9CA7F3342537FD75005BED9C /* Entity */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
-				9CA2043D271C76A000D65DD7 /* ScreenModule */,
+				9CA2043D271C76A000D65DD7 /* Screen */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 				9C03D033277DC1B20074C914 /* Settings.bundle */,
@@ -888,7 +890,7 @@
 			path = Child;
 			sourceTree = "<group>";
 		};
-		9CA2043D271C76A000D65DD7 /* ScreenModule */ = {
+		9CA2043D271C76A000D65DD7 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
@@ -903,7 +905,7 @@
 				9CA20450271C784000D65DD7 /* Communication */,
 				9CA20442271C76FC00D65DD7 /* SideMenu */,
 			);
-			path = ScreenModule;
+			path = Screen;
 			sourceTree = "<group>";
 		};
 		9CA2043E271C76CB00D65DD7 /* Login */ = {
@@ -1772,6 +1774,7 @@
 		9CF0020624E39B290084036B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */,
 				9C96997C2566118B00D655DA /* DateHelper.swift */,
 				9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */,
 				9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */,
@@ -1807,8 +1810,8 @@
 				9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */,
 				9CAF57BF25C8DA100049E2C2 /* SwiftLint Run Script */,
 				9CE3FE74275B668500FFDF19 /* Generate Google Service Info Run Script */,
-				9C5D9D7A2665377D00474CFD /* Firebase Crashlytics Run Script */,
 				9CAC93172789E4E60033DA33 /* Embed Frameworks */,
+				9C5D9D7A2665377D00474CFD /* Firebase Crashlytics Run Script */,
 			);
 			buildRules = (
 			);
@@ -2266,6 +2269,7 @@
 				9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
 				9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */,
+				9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */,
 				9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */,
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
 				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,

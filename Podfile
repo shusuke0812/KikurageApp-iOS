@@ -8,7 +8,7 @@ def common_pods
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
-  pod 'FirebaseUI/Storage'
+  pod 'FirebaseUI/Storage', '~> 8.0'
   pod 'Firebase/RemoteConfig'
   # UI
   pod 'Charts'
@@ -49,10 +49,17 @@ target 'KikurageUITests' do
 end
 
 post_install do | installer |
-  installer.generated_projects.each do |project|
-    project.targets.each do |target|
+  installer.pods_project.targets.each do | target |
+    target.build_configurations.each do | config |
+      # 暫定：M1 Macのシミュレータ向けビルドを通す処理
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      # Xcode14.3.1にした時に出るToolchainsのエラーを消すための処理
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+    end
+    # Make it work with GoogleDataTransport
+    if target.name.start_with? "GoogleDataTransport"
       target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+        config.build_settings['CLANG_WARN_STRICT_PROTOTYPES'] = 'NO'
       end
     end
   end
