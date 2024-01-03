@@ -21,8 +21,8 @@ class LoginViewModel {
     weak var delegate: LoginViewModelDelegate?
 
     private var loginUser: LoginUser?
-    var email: String = ""
-    var password: String = ""
+    private var email: String = ""
+    private var password: String = ""
 
     init(signUpRepository: SignUpRepositoryProtocol, loginRepository: LoginRepositoryProtocol) {
         self.signUpRepository = signUpRepository
@@ -41,6 +41,14 @@ extension LoginViewModel {
     func resetLoginInfo() {
         email = ""
         password = ""
+    }
+
+    func setEmail(_ value: String) {
+        email = value
+    }
+
+    func setPassword(_ value: String) {
+        password = value
     }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
