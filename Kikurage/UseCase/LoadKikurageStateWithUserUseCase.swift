@@ -8,8 +8,10 @@
 
 import Foundation
 
+typealias KikurageStateUserTuple = (user: KikurageUser, state: KikurageState)
+
 protocol LoadKikurageStateWithUserUseCaseProtocol {
-    func invoke(uid: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
+    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, ClientError>) -> Void)
 }
 
 class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol {
@@ -21,7 +23,7 @@ class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
         self.kikurageUserRepository = kikurageUserRepository
     }
     
-    func invoke(uid: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
+    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, ClientError>) -> Void) {
         let userRequest = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: userRequest) { [weak self] response in
             switch response {
@@ -30,7 +32,7 @@ class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
                 self?.kikurageStateRepository.getKikurageState(request: stateRequest) { response in
                     switch response {
                     case .success(let kikurageState):
-                        completion(.success(kikurageState))
+                        completion(.success((kikurageUser, kikurageState)))
                     case .failure(let error):
                         completion(.failure(error))
                     }
