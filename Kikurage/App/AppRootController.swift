@@ -26,13 +26,13 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         initHUD()
 
-        presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
+        presenter = AppPresenter(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
 
         fetchRemoteConfig()
 
         if LoginHelper.shared.isLogin {
-            presenter.loadKikurageUser()
+            presenter.login()
         } else {
             showTopPage()
         }
