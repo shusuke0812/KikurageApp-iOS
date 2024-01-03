@@ -38,7 +38,7 @@ extension LoginViewModel {
         (email, password)
     }
 
-    func initLoginInfo() {
+    func resetLoginInfo() {
         email = ""
         password = ""
     }
