@@ -12,10 +12,10 @@ import KikurageFeature
 
 protocol AppPresenterDelegate: AnyObject {
     /// きくらげ情報の取得に成功した
-    func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?))
+    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
     /// きくらげ情報の取得に失敗した
     /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageInfo(errorMessage: String)
+    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String)
 }
 
 class AppPresenter {
@@ -38,9 +38,9 @@ extension AppPresenter {
         loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] responses in
             switch responses {
             case .success(let res):
-                self?.delegate?.didSuccessGetKikurageInfo(kikurageInfo: (user: res.user, state: res.state))
+                self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
+                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: error.description())
             }
         }
     }
