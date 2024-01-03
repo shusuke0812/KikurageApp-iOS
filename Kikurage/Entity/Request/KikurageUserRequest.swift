@@ -6,7 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import Firebase
+import FirebaseFirestore
 import Foundation
 
 struct KikurageUserRequest: FirestoreRequestProtocol {

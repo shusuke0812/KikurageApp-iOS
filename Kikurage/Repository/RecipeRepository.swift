@@ -6,7 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Firebase
+import FirebaseFirestore
+import FirebaseStorage
 import RxSwift
 import UIKit
 
