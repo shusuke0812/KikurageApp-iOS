@@ -80,7 +80,7 @@ extension LoginViewController: LoginViewModelDelegate {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
                 self?.baseView.initTextFields()
-                loginViewModel?.resetLoginInfo()
+                loginViewModel?.resetLoginInputs()
             }
         }
     }
