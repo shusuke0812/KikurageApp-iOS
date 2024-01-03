@@ -600,7 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				9C9A8D9F26DFB990006C31E7 /* App */,
-				9C82B415253037AB00E650B5 /* Static */,
+				9C82B415253037AB00E650B5 /* Constant */,
 				9C73CCD026D53F3C00B4DE55 /* Utility */,
 				9CA7F3342537FD75005BED9C /* Entity */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
@@ -683,12 +683,12 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		9C82B415253037AB00E650B5 /* Static */ = {
+		9C82B415253037AB00E650B5 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				9C82B416253037BD00E650B5 /* Constants.swift */,
 			);
-			path = Static;
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		9C84701A27F879D900E5F05A /* Trivia */ = {
