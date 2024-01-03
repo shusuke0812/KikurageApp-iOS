@@ -68,10 +68,10 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension LoginViewController: LoginViewModelDelegate {
-    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel) {
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel, user: KikurageUser, state: KikurageState)  {
         DispatchQueue.main.async {
             HUD.hide()
-            self.transitionHomePage()
+            self.pushToHome(kikurageState: state, kikurageUser: user)
         }
     }
 
@@ -83,12 +83,5 @@ extension LoginViewController: LoginViewModelDelegate {
                 loginViewModel.initLoginInfo()
             }
         }
-    }
-
-    private func transitionHomePage() {
-        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else {
-            return
-        }
-        pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
     }
 }
