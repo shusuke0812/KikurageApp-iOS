@@ -68,19 +68,19 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension LoginViewController: LoginViewModelDelegate {
-    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel, user: KikurageUser, state: KikurageState) {
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState) {
         DispatchQueue.main.async {
             HUD.hide()
             self.pushToHome(kikurageState: state, kikurageUser: user)
         }
     }
 
-    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String) {
+    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
                 self?.baseView.initTextFields()
-                loginViewModel.resetLoginInfo()
+                loginViewModel?.resetLoginInfo()
             }
         }
     }

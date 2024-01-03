@@ -9,8 +9,8 @@
 import Foundation
 
 protocol LoginViewModelDelegate: AnyObject {
-    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel, user: KikurageUser, state: KikurageState)
-    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String)
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState)
+    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String)
 }
 
 class LoginViewModel {
@@ -65,13 +65,13 @@ extension LoginViewModel {
                 self?.loadKikurageStateWithUserUseCase.invoke(uid: loginUser.uid) { [weak self] responses in
                     switch responses {
                     case .success(let res):
-                        self?.delegate?.loginViewModelDidSuccessLogin(self!, user: res.user, state: res.state)
+                        self?.delegate?.loginViewModelDidSuccessLogin(self, user: res.user, state: res.state)
                     case .failure(let error):
-                        self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
+                        self?.delegate?.loginViewModelDidFailedLogin(self, with: error.description())
                     }
                 }
             case .failure(let error):
-                self?.delegate?.loginViewModelDidFailedLogin(self!, with: error.description())
+                self?.delegate?.loginViewModelDidFailedLogin(self, with: error.description())
             }
         }
     }
