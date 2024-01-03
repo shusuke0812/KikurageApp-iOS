@@ -6,8 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Firebase
 import Foundation
+import FirebaseFirestore
 
 typealias KikurageCultivationTuple = (data: KikurageCultivation, documentID: String)
 

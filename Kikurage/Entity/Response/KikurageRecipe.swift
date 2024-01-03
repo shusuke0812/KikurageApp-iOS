@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Firebase
+import FirebaseFirestore
 import Foundation
 
 typealias KikurageRecipeTuple = (data: KikurageRecipe, documentID: String)
