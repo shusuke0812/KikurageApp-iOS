@@ -16,7 +16,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAcc
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
-        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository())
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
