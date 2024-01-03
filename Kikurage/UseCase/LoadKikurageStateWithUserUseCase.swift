@@ -17,12 +17,12 @@ protocol LoadKikurageStateWithUserUseCaseProtocol {
 class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
-    
+
     init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
     }
-    
+
     func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, ClientError>) -> Void) {
         let userRequest = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: userRequest) { [weak self] response in
