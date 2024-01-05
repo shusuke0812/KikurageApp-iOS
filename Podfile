@@ -4,12 +4,12 @@ use_frameworks!
 
 def common_pods
   # Firebase
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Storage'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseStorage'
   pod 'FirebaseFirestoreSwift'
-  pod 'FirebaseUI/Storage', '~> 8.0'
-  pod 'Firebase/RemoteConfig'
+  pod 'FirebaseUI/Storage'
+  pod 'FirebaseRemoteConfig'
   # UI
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
@@ -28,8 +28,8 @@ target 'Kikurage' do
   # Pods for kikurageApp
   common_pods
   
-  pod 'Firebase/Crashlytics'
-  pod 'Firebase/Analytics'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseAnalytics'
 end
 
 target 'KikurageFeature' do
