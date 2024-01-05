@@ -27,7 +27,7 @@ class LoginViewModel {
     init(signUpRepository: SignUpRepositoryProtocol, loginRepository: LoginRepositoryProtocol) {
         self.signUpRepository = signUpRepository
         self.loginRepository = loginRepository
-        self.loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
 }
 
