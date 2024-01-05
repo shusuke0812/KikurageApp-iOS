@@ -6,8 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Firebase
-import FirebaseFirestore
+import FirebaseStorageUI
 import KikurageFeature
 import UIKit
 

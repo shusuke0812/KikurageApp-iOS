@@ -6,7 +6,8 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import Firebase
+import FirebaseCore
+import FirebaseCrashlytics
 import IQKeyboardManagerSwift
 import KikurageFeature
 import MetricKit

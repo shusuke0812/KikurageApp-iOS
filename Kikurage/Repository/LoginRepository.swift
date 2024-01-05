@@ -6,7 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Firebase
+import FirebaseAuth
 import Foundation
 
 protocol LoginRepositoryProtocol {

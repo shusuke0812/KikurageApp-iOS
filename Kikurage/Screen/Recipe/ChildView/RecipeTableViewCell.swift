@@ -6,8 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Firebase
-import FirebaseFirestore
+import FirebaseStorageUI
 import UIKit
 
 class RecipeTableViewCell: UITableViewCell {

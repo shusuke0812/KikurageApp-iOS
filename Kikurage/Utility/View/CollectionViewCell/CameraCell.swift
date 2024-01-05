@@ -6,8 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseStorage
-import FirebaseUI
+import FirebaseStorageUI
 import UIKit
 
 protocol CameraCellDelegate: AnyObject {
