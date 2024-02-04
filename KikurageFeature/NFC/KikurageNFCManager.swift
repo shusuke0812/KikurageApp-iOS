@@ -33,7 +33,12 @@ public class KikurageNFCManager: NSObject {
         ndefSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
         ndefSession?.alertMessage = ResorceManager.getLocalizedString("nfc_begin_scan_alert_message")
 
-        tagSession = NFCTagReaderSession(pollingOption: .iso14443, delegate: self, queue: nil)
+        let pollingOptions: NFCTagReaderSession.PollingOption = [
+            .iso14443, // Type 2 Tag, Type 4 Tag (ISO/IEC 14443) (MIFARE) ...etc
+            .iso18092, // Type 3 Tag (ISO/IEC 18092, JIS X 6319-4) (FeliCa)
+            .iso15693  // Type 5 Tag (ISO/IEC 15693)
+        ]
+        tagSession = NFCTagReaderSession(pollingOption: pollingOptions, delegate: self, queue: nil)
         tagSession?.alertMessage = ResorceManager.getLocalizedString("nfc_begin_scan_alert_message")
     }
 
