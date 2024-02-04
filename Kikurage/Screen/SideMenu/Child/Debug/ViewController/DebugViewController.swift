@@ -56,8 +56,7 @@ extension DebugViewController: DebugBaseViewDelegate {
     }
 
     func debugBaseViewDidTappedNFCStartScan(_ debugBaseView: DebugBaseView) {
-        // nfcManager.startNFCScan()
-        nfcManager.startNFCTagScan()
+        nfcManager.startScan(dataType: .iso)
     }
 }
 

@@ -36,13 +36,22 @@ public class KikurageNFCManager: NSObject {
         let pollingOptions: NFCTagReaderSession.PollingOption = [
             .iso14443, // Type 2 Tag, Type 4 Tag (ISO/IEC 14443) (MIFARE) ...etc
             .iso18092, // Type 3 Tag (ISO/IEC 18092, JIS X 6319-4) (FeliCa)
-            .iso15693  // Type 5 Tag (ISO/IEC 15693)
+            .iso15693 // Type 5 Tag (ISO/IEC 15693)
         ]
         tagSession = NFCTagReaderSession(pollingOption: pollingOptions, delegate: self, queue: nil)
         tagSession?.alertMessage = ResorceManager.getLocalizedString("nfc_begin_scan_alert_message")
     }
 
-    public func startNFCScan() {
+    public func startScan(dataType: NFCTagDataType) {
+        switch dataType {
+        case .ndef:
+            startNFCScan()
+        case .iso:
+            startNFCTagScan()
+        }
+    }
+
+    private func startNFCScan() {
         guard NFCNDEFReaderSession.readingAvailable else {
             delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.notAvailable.description)
             return
@@ -50,7 +59,7 @@ public class KikurageNFCManager: NSObject {
         ndefSession?.begin()
     }
 
-    public func startNFCTagScan() {
+    private func startNFCTagScan() {
         guard NFCTagReaderSession.readingAvailable else {
             delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.notAvailable.description)
             return
@@ -123,6 +132,12 @@ extension KikurageNFCManager: NFCTagReaderSessionDelegate {
             switch tag {
             case .miFare(let miFareTag):
                 delegate?.kikurageNFCManager(self, didDetectNDEFs: "")
+            case .iso15693:
+                break
+            case .iso7816:
+                break
+            case .feliCa:
+                break
             default:
                 break
             }
