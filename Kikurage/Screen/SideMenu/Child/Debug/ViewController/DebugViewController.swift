@@ -14,6 +14,7 @@ class DebugViewController: UIViewController {
     private var viewModel: DebugViewModel!
 
     private let konashi = KonashiBluetooth()
+    private let nfcManager = KikurageNFCManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class DebugViewController: UIViewController {
         viewModel = DebugViewModel()
 
         konashi.delegate = self
+        nfcManager.delegate = self
     }
 
     // MARK: - Action
@@ -52,6 +54,10 @@ extension DebugViewController: DebugBaseViewDelegate {
         konashi.find()
         konashi.readRSSI()
     }
+
+    func debugBaseViewDidTappedNFCStartScan(_ debugBaseView: DebugBaseView) {
+        nfcManager.startScan(dataType: .iso)
+    }
 }
 
 // MARK: - KonashiBluetooth Delegate
@@ -75,4 +81,12 @@ extension DebugViewController: KonashiBluetoothDelegate {
             self.baseView.setPIOLabel(message)
         }
     }
+}
+
+// MARK: - KikurageNFCManagerDelegate
+
+extension DebugViewController: KikurageNFCManagerDelegate {
+    func kikurageNFCManager(_ kikurageNFCManager: KikurageFeature.KikurageNFCManager, didDetectNDEFs message: String) {}
+
+    func kikurageNFCManager(_ kikurageNFCManager: KikurageFeature.KikurageNFCManager, errorMessage: String) {}
 }

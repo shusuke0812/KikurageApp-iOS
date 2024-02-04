@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '14.0'
 use_frameworks!
 
 def common_pods
@@ -13,14 +13,14 @@ def common_pods
   # UI
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
-  pod 'PKHUD', '~> 5.0'
+  pod 'PKHUD'
   pod 'HorizonCalendar'
   pod 'FontAwesome.swift'
   pod 'CropViewController'
   # Other
   pod 'R.swift'
-  pod 'RxSwift', '6.2.0'
-  pod 'RxCocoa', '6.2.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'SDWebImage'
 end
 
@@ -63,7 +63,7 @@ post_install do | installer |
       end
     end
   end
-  # 設定アプリへの著作権情報書き出し（https://github.com/CocoaPods/CocoaPods/wiki/Acknowledgements）
+  # Acknowledgment into Setting app（https://github.com/CocoaPods/CocoaPods/wiki/Acknowledgements）
   require 'fileutils'
   FileUtils.cp_r(
     'Pods/Target Support Files/Pods-Kikurage/Pods-Kikurage-Acknowledgements.plist', 

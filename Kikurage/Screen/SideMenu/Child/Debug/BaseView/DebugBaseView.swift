@@ -11,6 +11,7 @@ import UIKit
 protocol DebugBaseViewDelegate: AnyObject {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView)
     func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView)
+    func debugBaseViewDidTappedNFCStartScan(_ debugBaseView: DebugBaseView)
 }
 
 class DebugBaseView: UIView {
@@ -18,6 +19,7 @@ class DebugBaseView: UIView {
     @IBOutlet private weak var konashiFindButton: UIButton!
     @IBOutlet private weak var konashiRSSILabel: UILabel!
     @IBOutlet private weak var konashiPIOLabel: UILabel!
+    @IBOutlet weak var nfcStartScanButton: UIButton!
 
     weak var delegate: DebugBaseViewDelegate?
 
@@ -34,6 +36,10 @@ class DebugBaseView: UIView {
 
     @IBAction private func didTappedKonashiFindButton(_ sender: UIButton) {
         delegate?.debugBaseViewDidTappedKonashiFind(self)
+    }
+
+    @IBAction func didTappedNFCStartScanButton(_ sender: UIButton) {
+        delegate?.debugBaseViewDidTappedNFCStartScan(self)
     }
 }
 
@@ -52,6 +58,12 @@ extension DebugBaseView {
         konashiRSSILabel.text = "RSSI: -"
 
         konashiPIOLabel.text = "- no PIO signal -"
+
+        nfcStartScanButton.setTitle("NFC start scan", for: .normal)
+        nfcStartScanButton.layer.masksToBounds = true
+        nfcStartScanButton.layer.cornerRadius = .buttonCornerRadius
+        nfcStartScanButton.tintColor = .white
+        nfcStartScanButton.backgroundColor = .systemRed
     }
 
     func setRSSILabel(_ text: String) {

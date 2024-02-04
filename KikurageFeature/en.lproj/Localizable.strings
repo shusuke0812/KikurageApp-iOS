@@ -11,3 +11,11 @@
  */
 
 "loading_text" = "Loading...";
+
+// NFC
+"nfc_begin_scan_alert_message" = "Please tap an NFC capabble device";
+"nfc_end_write_alert_message" = "Done reading";
+"nfc_end_read_alert_message" = "Done writing";
+"nfc_end_alert_error_message" = "Error";
+"nfc_available_fail_description" = "Not available";
+"nfc_message_get_fail_description" = "Fail to get NFC data";

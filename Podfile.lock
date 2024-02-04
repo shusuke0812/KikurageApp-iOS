@@ -884,10 +884,10 @@ DEPENDENCIES:
   - HorizonCalendar
   - IQKeyboardManagerSwift
   - konashi-ios-sdk
-  - PKHUD (~> 5.0)
+  - PKHUD
   - R.swift
-  - RxCocoa (= 6.2.0)
-  - RxSwift (= 6.2.0)
+  - RxCocoa
+  - RxSwift
   - SDWebImage
 
 SPEC REPOS:
@@ -985,6 +985,6 @@ SPEC CHECKSUMS:
   SDWebImage: f9258c58221ed854cfa0e2b80ee4033710b1c6d3
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 56d90222187a2aadd8dccc403408be54b8c48d7c
+PODFILE CHECKSUM: a0b3ed98f281168a8e1fb98d1ea59bcf7d731b8e
 
 COCOAPODS: 1.13.0
