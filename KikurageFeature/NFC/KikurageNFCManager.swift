@@ -45,13 +45,13 @@ public class KikurageNFCManager: NSObject {
     public func startScan(dataType: NFCTagDataType) {
         switch dataType {
         case .ndef:
-            startNFCScan()
+            startNFCNDEFScan()
         case .iso:
             startNFCTagScan()
         }
     }
 
-    private func startNFCScan() {
+    private func startNFCNDEFScan() {
         guard NFCNDEFReaderSession.readingAvailable else {
             delegate?.kikurageNFCManager(self, errorMessage: KikurageNFCError.notAvailable.description)
             return
