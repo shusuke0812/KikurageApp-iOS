@@ -198,6 +198,7 @@
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
+		9CDE8BE12B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */; };
 		9CE0184329B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */; };
 		9CE0184529B46CBE00365E95 /* WiFiSelectDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184429B46CBE00365E95 /* WiFiSelectDeviceViewController.swift */; };
 		9CE0184729B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184629B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift */; };
@@ -472,6 +473,7 @@
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
+		9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
 		9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceBaseView.swift; sourceTree = "<group>"; };
 		9CE0184429B46CBE00365E95 /* WiFiSelectDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewController.swift; sourceTree = "<group>"; };
 		9CE0184629B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
@@ -606,9 +608,10 @@
 			children = (
 				9CCAB36E29FABAC400068A1E /* Kikurage.entitlements */,
 				9C9A8D9F26DFB990006C31E7 /* App */,
-				9C82B415253037AB00E650B5 /* Static */,
+				9C82B415253037AB00E650B5 /* Constant */,
 				9C73CCD026D53F3C00B4DE55 /* Utility */,
 				9CA7F3342537FD75005BED9C /* Entity */,
+				9CDE8BDF2B4574580078B318 /* UseCase */,
 				9CA7F36D25381EF8005BED9C /* Repository */,
 				9CA2043D271C76A000D65DD7 /* Screen */,
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
@@ -689,12 +692,12 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		9C82B415253037AB00E650B5 /* Static */ = {
+		9C82B415253037AB00E650B5 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				9C82B416253037BD00E650B5 /* Constants.swift */,
 			);
-			path = Static;
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		9C84701A27F879D900E5F05A /* Trivia */ = {
@@ -1568,6 +1571,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		9CDE8BDF2B4574580078B318 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		9CE0183129B46A8300365E95 /* WiFi */ = {
 			isa = PBXGroup;
 			children = (
@@ -2309,6 +2320,7 @@
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
 				9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */,
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
+				9CDE8BE12B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift in Sources */,
 				9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */,
 				9CE0184D29B46D0500365E95 /* WiFiListViewModel.swift in Sources */,
 				9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */,

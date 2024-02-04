@@ -26,13 +26,13 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         initHUD()
 
-        presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
+        presenter = AppPresenter(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
 
         fetchRemoteConfig()
 
         if LoginHelper.shared.isLogin {
-            presenter.loadKikurageUser()
+            presenter.login()
         } else {
             showTopPage()
         }
@@ -131,7 +131,7 @@ extension AppRootController {
 // MARK: - AppPresenter Delegate
 
 extension AppRootController: AppPresenterDelegate {
-    func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         if let user = kikurageInfo.user {
             FirebaseAnalyticsHelper.setUserProperty()
             FirebaseAnalyticsHelper.setUserID(user.productKey)
@@ -141,7 +141,7 @@ extension AppRootController: AppPresenterDelegate {
         }
     }
 
-    func didFailedGetKikurageInfo(errorMessage: String) {
+    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String) {
         DispatchQueue.main.async {
             self.showTopPage()
         }

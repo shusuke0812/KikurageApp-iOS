@@ -6,65 +6,40 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Firebase
 import Foundation
 import KikurageFeature
 
 protocol AppPresenterDelegate: AnyObject {
     /// きくらげ情報の取得に成功した
-    func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?))
+    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
     /// きくらげ情報の取得に失敗した
     /// - Parameter errorMessage: エラーメッセージ
-    func didFailedGetKikurageInfo(errorMessage: String)
+    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String)
 }
 
 class AppPresenter {
-    private var kikurageStateRepository: KikurageStateRepositoryProtocol
-    private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol
+    private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
 
     weak var delegate: AppPresenterDelegate?
 
-    private var kikurageUser: KikurageUser?
-    private var kikurageState: KikurageState?
-
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol, firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol) {
-        self.kikurageStateRepository = kikurageStateRepository
-        self.kikurageUserRepository = kikurageUserRepository
+    init(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepositoryProtocol) {
         self.firebaseRemoteCofigRepository = firebaseRemoteCofigRepository
+        loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
 }
 
 // MARK: - Firebase Firestore
 
 extension AppPresenter {
-    /// きくらげユーザーを取得する
-    /// - Parameter userId: Firebase ユーザーID
-    func loadKikurageUser() {
+    func login() {
         let userID = LoginHelper.shared.kikurageUserID ?? ""
-        let request = KikurageUserRequest(uid: userID)
-        kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
-            switch response {
-            case .success(let kikurageUser):
-                self?.kikurageUser = kikurageUser
-                self?.loadKikurageState()
+        loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] responses in
+            switch responses {
+            case .success(let res):
+                self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
             case .failure(let error):
-                self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
-            }
-        }
-    }
-
-    /// きくらげの状態を読み込む
-    private func loadKikurageState() {
-        let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
-        let request = KikurageStateRequest(productID: productID)
-        kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
-            switch response {
-            case .success(let kikurageState):
-                self?.kikurageState = kikurageState
-                self?.delegate?.didSuccessGetKikurageInfo(kikurageInfo: (user: self?.kikurageUser, state: self?.kikurageState))
-            case .failure(let error):
-                self?.delegate?.didFailedGetKikurageInfo(errorMessage: error.description())
+                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: error.description())
             }
         }
     }

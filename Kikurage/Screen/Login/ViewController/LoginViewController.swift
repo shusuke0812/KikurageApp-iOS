@@ -16,7 +16,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAcc
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
-        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository(), kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository())
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -56,9 +56,9 @@ extension LoginViewController: UITextFieldDelegate {
         }
         switch textField {
         case baseView.emailTextField:
-            viewModel.email = text
+            viewModel.setEmail(text)
         case baseView.passwordTextField:
-            viewModel.password = text
+            viewModel.setPassword(text)
         default:
             break
         }
@@ -68,27 +68,20 @@ extension LoginViewController: UITextFieldDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension LoginViewController: LoginViewModelDelegate {
-    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel) {
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState) {
         DispatchQueue.main.async {
             HUD.hide()
-            self.transitionHomePage()
+            self.pushToHome(kikurageState: state, kikurageUser: user)
         }
     }
 
-    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel, with errorMessage: String) {
+    func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
                 self?.baseView.initTextFields()
-                loginViewModel.initLoginInfo()
+                loginViewModel?.resetLoginInputs()
             }
         }
-    }
-
-    private func transitionHomePage() {
-        guard let kikurageState = viewModel.kikurageState, let kikurageUser = viewModel.kikurageUser else {
-            return
-        }
-        pushToHome(kikurageState: kikurageState, kikurageUser: kikurageUser)
     }
 }
