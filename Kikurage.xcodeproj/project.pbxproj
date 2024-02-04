@@ -25,6 +25,7 @@
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
+		9C30D1C42B6F81D2001ED25D /* NFCTagDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C30D1C32B6F81D2001ED25D /* NFCTagDataType.swift */; };
 		9C48A08C2919C53000714DAE /* KikurageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C48A08B2919C53000714DAE /* KikurageImageView.swift */; };
 		9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
@@ -295,6 +296,7 @@
 		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
 		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		9C30D1C32B6F81D2001ED25D /* NFCTagDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTagDataType.swift; sourceTree = "<group>"; };
 		9C48A08B2919C53000714DAE /* KikurageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageImageView.swift; sourceTree = "<group>"; };
 		9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCultivationViewController.storyboard; sourceTree = "<group>"; };
 		9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
@@ -1553,6 +1555,7 @@
 			children = (
 				9CCAB36C29FAB92200068A1E /* KikurageNFCManager.swift */,
 				9CD7A1EB29FD6535009D1607 /* KikurageNFCError.swift */,
+				9C30D1C32B6F81D2001ED25D /* NFCTagDataType.swift */,
 			);
 			path = NFC;
 			sourceTree = "<group>";
@@ -2428,6 +2431,7 @@
 				9CC6752D288D36E30003B18A /* SessionSetupResult.swift in Sources */,
 				9CC7F4D929CF12FB0045C866 /* KikurageWiFiSetting.swift in Sources */,
 				9CD2497929D3110B00391C44 /* KikurageBluetoothCompletion.swift in Sources */,
+				9C30D1C42B6F81D2001ED25D /* NFCTagDataType.swift in Sources */,
 				9CAC931D2789E5E90033DA33 /* KikurageHUD.swift in Sources */,
 				9CBBEBD22881A3DC00424DC8 /* KikurageQRCodeReaderViewModel.swift in Sources */,
 				9CBA06D028748AA7006F2259 /* KikurageLogger.swift in Sources */,
