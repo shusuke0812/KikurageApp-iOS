@@ -69,7 +69,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
             let jsonData = payload.jsonRepresentation()
             let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
-            KLogger.debug("\(jsonString)")
+            KLogManager.debug(jsonString ?? "not found")
         }
     }
 
@@ -79,7 +79,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
             let jsonData = payload.jsonRepresentation()
             let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
-            KLogger.debug("\(jsonString)")
+            KLogManager.debug(jsonString ?? "not found")
         }
     }
 }
