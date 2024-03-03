@@ -32,11 +32,13 @@ public struct KLogManager: KLoggerProtocol {
         static let category = "default"
     }
 
+    private static let filter = "🔥"
+
     private init() {}
 
     private static func klog(level: OSLogType, file: String, function: String, line: Int, message: String) {
         let logger = os.Logger(subsystem: Config.subsystem, category: Config.category)
-        logger.log(level: level, "\(className(from: file)).\(function) #\(line): \(message)")
+        logger.log(level: level, "\(filter): \(className(from: file)).\(function) #\(line): \(message)")
     }
 
     public static func debug(file: String = #file, function: String = #function, line: Int = #line, _ message: String = "") {
