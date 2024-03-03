@@ -15,9 +15,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        KLogManager.debug()
         FirebaseApp.configure()
         configCrashlyticsUserID()
 
@@ -26,19 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         MXMetricManager.shared.add(self)
 
-        openTopPage()
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {}
+    func applicationWillTerminate(_ application: UIApplication) {}
 
-    func applicationDidEnterBackground(_ application: UIApplication) {}
+    // MARK: - UISceneSession Lifecycle
 
-    func applicationWillEnterForeground(_ application: UIApplication) {}
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        KLogManager.debug()
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {}
-
-    func applicationWillTerminate(_ application: UIApplication) {
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        KLogManager.debug()
         MXMetricManager.shared.remove(self)
     }
 }
@@ -46,15 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - Private
 
 extension AppDelegate {
-    private func openTopPage() {
-        let window = UIWindow()
-        self.window = window
-        let vc = AppRootController()
-        self.window?.rootViewController = vc
-        self.window?.backgroundColor = .white
-        self.window?.makeKeyAndVisible()
-    }
-
     private func configCrashlyticsUserID() {
         let userID = LoginHelper.shared.kikurageUserID ?? "no id"
         Crashlytics.crashlytics().setUserID(userID)
