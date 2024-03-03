@@ -54,7 +54,7 @@ public struct KLogManager: KLoggerProtocol {
             let className = self.className(from: #file)
             let function = #function
             let line = #line
-            fatalError("DEBUG: [Fatal] \(className).\(function) #\(line): \(message)")
+            fatalError("\(filter): [Fatal] \(className).\(function) #\(line): \(message)")
         #endif
     }
 }
