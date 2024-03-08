@@ -11,7 +11,7 @@ import UIKit
 protocol TopAccessable: PushNavigationProtocol, SafariViewNavigationProtocol {
     func pushToLogin()
     func pushToSignUp()
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
+    func presentToSafariView(urlString: String?, onError: (() -> Void)?)
 }
 
 extension TopAccessable {
@@ -49,7 +49,7 @@ extension TopAccessable {
 
     // MARK: - SafariView
 
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?) {
-        presentSafariView(from: vc, urlString: urlString, onError: onError)
+    func presentToSafariView(urlString: String?, onError: (() -> Void)?) {
+        presentSafariView(urlString: urlString, onError: onError)
     }
 }
