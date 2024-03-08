@@ -40,6 +40,6 @@ extension CommunicationViewController: CommunicationBaseViewDelegate {
     func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView) {
         FirebaseAnalyticsHelper.sendTapEvent(.communicationFacebookButton)
         let urlString = AppConfig.shared.facebookGroupURL
-        presentToSafariView(from: self, urlString: urlString, onError: nil)
+        presentToSafariView(urlString: urlString, onError: nil)
     }
 }
