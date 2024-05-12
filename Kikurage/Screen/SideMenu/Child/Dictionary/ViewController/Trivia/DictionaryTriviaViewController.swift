@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class DictionaryTriviaViewController: UIViewController {
-    private var baseView: DictionaryTriviaBaseView { self.view as! DictionaryTriviaBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DictionaryTriviaBaseView { view as! DictionaryTriviaBaseView } // swiftlint:disable:this force_cast
 
     override func viewDidLoad() {
         super.viewDidLoad()

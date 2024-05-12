@@ -9,7 +9,7 @@
 import UIKit
 
 class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: TopBaseView { self.view as! TopBaseView } // swiftlint:disable:this force_cast
+    private var baseView: TopBaseView { view as! TopBaseView } // swiftlint:disable:this force_cast
 
     // MARK: - Lifecycle
 
