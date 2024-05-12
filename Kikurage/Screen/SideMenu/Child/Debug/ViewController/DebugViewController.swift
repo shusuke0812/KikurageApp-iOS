@@ -22,6 +22,7 @@ class DebugViewController: UIViewController {
         viewModel = DebugViewModel()
 
         konashi.delegate = self
+        baseView.activityIndicatorView.startAnimating()
     }
 
     // MARK: - Action

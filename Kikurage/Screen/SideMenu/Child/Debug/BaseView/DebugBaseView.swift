@@ -18,6 +18,7 @@ class DebugBaseView: UIView {
     @IBOutlet private weak var konashiFindButton: UIButton!
     @IBOutlet private weak var konashiRSSILabel: UILabel!
     @IBOutlet private weak var konashiPIOLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
     weak var delegate: DebugBaseViewDelegate?
 
