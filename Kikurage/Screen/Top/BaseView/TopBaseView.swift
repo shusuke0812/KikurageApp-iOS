@@ -16,57 +16,60 @@ protocol TopBaseViewDelegate: AnyObject {
 }
 
 class TopBaseView: UIView {
-    @IBOutlet private weak var topImageView: UIImageView!
-    @IBOutlet private weak var loginButton: UIButton!
-    @IBOutlet private weak var signUpButton: UIButton!
-    @IBOutlet private weak var copyrightLabel: UILabel!
-    @IBOutlet private weak var termsButton: UIButton!
-    @IBOutlet private weak var privacyButton: UIButton!
+    private let topImageView = UIImageView()
+    private let loginButton = UIButton()
+    private let signUpButton = UIButton()
+    private let termsButton = UIButton()
+    private let privacyButton = UIButton()
+    private let copyrightLabel = UILabel()
 
     weak var delegate: TopBaseViewDelegate?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupComponent()
+        setupButtonAction()
     }
 
-    // MARK: - Action
-
-    @IBAction private func openTerms(_ sender: Any) {
-        delegate?.topBaseViewDidTappedTermsButton(self)
+    required init?(coder: NSCoder) {
+        nil
     }
 
-    @IBAction private func openPrivacyPolicy(_ sender: Any) {
-        delegate?.topBaseViewDidTappedPrivacyPolicyButton(self)
-    }
-
-    @IBAction private func login(_ sender: Any) {
-        delegate?.topBaseViewDidTappedLoginButton(self)
-    }
-
-    @IBAction private func signUp(_ sender: Any) {
-        delegate?.topBaseViewDidTappedSignUpButton(self)
-    }
-}
-
-// MARK: - Initialized
-
-extension TopBaseView {
-    private func initUI() {
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
+        // Top image
         topImageView.image = R.image.kikurageDevice()
         topImageView.clipsToBounds = true
         topImageView.layer.cornerRadius = .viewCornerRadius
+        topImageView.contentMode = .scaleAspectFill
+        topImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        signUpButton.layer.masksToBounds = true
-        signUpButton.layer.cornerRadius = .buttonCornerRadius
-        signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
-
+        // Login button
         loginButton.layer.masksToBounds = true
         loginButton.layer.cornerRadius = .buttonCornerRadius
         loginButton.setTitle(R.string.localizable.screen_top_login_btn_name(), for: .normal)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
+        loginButton.backgroundColor = R.color.subColor()
         loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.topLoginButton()
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+
+        // SignUp button
+        signUpButton.layer.masksToBounds = true
+        signUpButton.layer.cornerRadius = .buttonCornerRadius
+        signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
+        signUpButton.setTitleColor(.black, for: .normal)
+        signUpButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
+        signUpButton.backgroundColor = .white
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+
+        // Terms and privacy buttons
+        let termsPrivacystackView = UIStackView()
+        termsPrivacystackView.axis = .horizontal
+        termsPrivacystackView.distribution = .fill
+        termsPrivacystackView.spacing = 20
+        termsPrivacystackView.translatesAutoresizingMaskIntoConstraints = false
 
         let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
         let termsButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_term(), attributes: attributes)
@@ -74,6 +77,75 @@ extension TopBaseView {
         termsButton.setAttributedTitle(termsButtonAttributedString, for: .normal)
         privacyButton.setAttributedTitle(privacyButtonAttributedString, for: .normal)
 
+        termsPrivacystackView.addArrangedSubview(termsButton)
+        termsPrivacystackView.addArrangedSubview(privacyButton)
+
+        // Copryright label
+        copyrightLabel.textAlignment = .center
         copyrightLabel.text = R.string.localizable.screen_top_copy_right()
+        copyrightLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(topImageView)
+        addSubview(loginButton)
+        addSubview(signUpButton)
+        addSubview(termsPrivacystackView)
+        addSubview(copyrightLabel)
+
+        NSLayoutConstraint.activate([
+            topImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            topImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            topImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            topImageView.heightAnchor.constraint(equalTo: topImageView.widthAnchor, multiplier: .imageViewRatio),
+
+            loginButton.topAnchor.constraint(equalTo: topImageView.bottomAnchor, constant: 40),
+            loginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            loginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            loginButton.heightAnchor.constraint(equalToConstant: 45),
+
+            signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 40),
+            signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            signUpButton.heightAnchor.constraint(equalToConstant: 45),
+
+            termsPrivacystackView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 30),
+            termsPrivacystackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
+            termsPrivacystackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+
+            copyrightLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            copyrightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            copyrightLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15)
+        ])
+    }
+
+    // MARK: - Action
+
+    private func setupButtonAction() {
+        loginButton.addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.delegate?.topBaseViewDidTappedLoginButton(self)
+        }, for: .touchUpInside)
+
+        signUpButton.addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.delegate?.topBaseViewDidTappedSignUpButton(self)
+        }, for: .touchUpInside)
+
+        termsButton.addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.delegate?.topBaseViewDidTappedTermsButton(self)
+        }, for: .touchUpInside)
+
+        privacyButton.addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.delegate?.topBaseViewDidTappedPrivacyPolicyButton(self)
+        }, for: .touchUpInside)
     }
 }
