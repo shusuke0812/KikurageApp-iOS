@@ -59,7 +59,7 @@ class TopBaseView: UIView {
         signUpButton.layer.masksToBounds = true
         signUpButton.layer.cornerRadius = .buttonCornerRadius
         signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
-        signUpButton.setTitleColor(.black, for: .normal)
+        signUpButton.setTitleColor(.label, for: .normal)
         signUpButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         signUpButton.backgroundColor = .white
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +75,9 @@ class TopBaseView: UIView {
         termsButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         privacyButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         privacyButton.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
+        termsButton.titleLabel?.font = .systemFont(ofSize: 17)
+        privacyButton.titleLabel?.font = .systemFont(ofSize: 17)
 
         let termsPrivacystackView = UIStackView(arrangedSubviews: [termsButton, privacyButton])
         termsPrivacystackView.axis = .horizontal
@@ -105,7 +108,7 @@ class TopBaseView: UIView {
             loginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             loginButton.heightAnchor.constraint(equalToConstant: 45),
 
-            signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 40),
+            signUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 35),
             signUpButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             signUpButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             signUpButton.heightAnchor.constraint(equalToConstant: 45),
