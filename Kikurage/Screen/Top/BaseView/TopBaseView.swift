@@ -19,8 +19,8 @@ class TopBaseView: UIView {
     private let topImageView = UIImageView()
     private let loginButton = UIButton()
     private let signUpButton = UIButton()
-    private let termsButton = UIButton()
-    private let privacyButton = UIButton()
+    private let termsButton = UIButton(type: .system)
+    private let privacyButton = UIButton(type: .system)
     private let copyrightLabel = UILabel()
 
     weak var delegate: TopBaseViewDelegate?
@@ -65,20 +65,23 @@ class TopBaseView: UIView {
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
 
         // Terms and privacy buttons
-        let termsPrivacystackView = UIStackView()
-        termsPrivacystackView.axis = .horizontal
-        termsPrivacystackView.distribution = .fill
-        termsPrivacystackView.spacing = 20
-        termsPrivacystackView.translatesAutoresizingMaskIntoConstraints = false
-
         let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
         let termsButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_term(), attributes: attributes)
         let privacyButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_privacy(), attributes: attributes)
         termsButton.setAttributedTitle(termsButtonAttributedString, for: .normal)
         privacyButton.setAttributedTitle(privacyButtonAttributedString, for: .normal)
 
-        termsPrivacystackView.addArrangedSubview(termsButton)
-        termsPrivacystackView.addArrangedSubview(privacyButton)
+        termsButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        termsButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        privacyButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        privacyButton.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
+        let termsPrivacystackView = UIStackView(arrangedSubviews: [termsButton, privacyButton])
+        termsPrivacystackView.axis = .horizontal
+        termsPrivacystackView.distribution = .fill
+        termsPrivacystackView.alignment = .fill
+        termsPrivacystackView.spacing = 20
+        termsPrivacystackView.translatesAutoresizingMaskIntoConstraints = false
 
         // Copryright label
         copyrightLabel.textAlignment = .center
