@@ -80,9 +80,7 @@ extension AppRootController {
     }
 
     private func showTopPage() {
-        guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = TopViewController()
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }

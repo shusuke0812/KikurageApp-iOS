@@ -38,7 +38,6 @@
 		9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */; };
 		9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9B26EE158D00F62DF8 /* FirebaseAPIError.swift */; };
 		9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9D26EE165400F62DF8 /* ClientError.swift */; };
-		9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C7DE9F126E130A60006B36F /* TopViewController.storyboard */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
 		9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
@@ -308,7 +307,6 @@
 		9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		9C7DCE9B26EE158D00F62DF8 /* FirebaseAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIError.swift; sourceTree = "<group>"; };
 		9C7DCE9D26EE165400F62DF8 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
-		9C7DE9F126E130A60006B36F /* TopViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopViewController.storyboard; sourceTree = "<group>"; };
 		9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationBaseView.swift; sourceTree = "<group>"; };
 		9C7E105D25649637005A92C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
@@ -1173,7 +1171,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA7627E26E26B70000F7EE2 /* TopViewController.swift */,
-				9C7DE9F126E130A60006B36F /* TopViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1950,7 +1947,6 @@
 				9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
-				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
