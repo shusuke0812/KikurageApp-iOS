@@ -8,27 +8,44 @@
 
 import UIKit
 
-public protocol KUIButtonProps {
-    var title: String { get set }
-    var titleColor: UIColor { get set }
-    var backgroundColor: UIColor { get set }
-    var fontSize: CGFloat { get set }
-    var fontWeight: UIFont.Weight { get set }
-    var onTap: () -> Void { get set }
-    var accessibilityIdentifier: String? { get set }
+public struct KUIButtonProps {
+    let title: String
+    let titleColor: UIColor
+    let backgroundColor: UIColor?
+    let fontSize: CGFloat
+    let fontWeight: UIFont.Weight
+    let accessibilityIdentifier: String?
+
+    public init(
+        title: String,
+        titleColor: UIColor,
+        backgroundColor: UIColor?,
+        fontSize: CGFloat = 17.0,
+        fontWeight: UIFont.Weight = .regular,
+        accessibilityIdentifier: String? = nil
+    ) {
+        self.title = title
+        self.titleColor = titleColor
+        self.backgroundColor = backgroundColor
+        self.fontSize = fontSize
+        self.fontWeight = fontWeight
+        self.accessibilityIdentifier = accessibilityIdentifier
+    }
 }
 
 public class KUIButton: UIButton {
-    init(props: KUIButtonProps) {
+    public var onTap: (() -> Void)?
+
+    public init(props: KUIButtonProps) {
         super.init(frame: .zero)
         setup(props: props)
         setupButtonAction(props: props)
     }
-    
-    required init?(coder: NSCoder) {
+
+    public required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func setup(props: KUIButtonProps) {
         layer.masksToBounds = true
         layer.cornerRadius = 5
@@ -39,10 +56,13 @@ public class KUIButton: UIButton {
         accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     private func setupButtonAction(props: KUIButtonProps) {
-        addAction(.init { _ in
-            props.onTap()
+        addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.onTap?()
         }, for: .touchUpInside)
     }
 }
