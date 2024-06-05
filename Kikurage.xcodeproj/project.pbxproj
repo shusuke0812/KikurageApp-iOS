@@ -220,6 +220,7 @@
 		9CE580E129C1F58A006D83E7 /* KikurageBluetoothParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */; };
 		9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 		9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF788E32C0F574200E0438B /* KikurageUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -507,6 +508,7 @@
 		9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothParser.swift; sourceTree = "<group>"; };
 		9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFi.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
 		9CF788E12C0F574100E0438B /* KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1811,9 +1813,18 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		9CF03CF82C10A83800EC2F48 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
 		9CF788E22C0F574200E0438B /* KikurageUI */ = {
 			isa = PBXGroup;
 			children = (
+				9CF03CF82C10A83800EC2F48 /* Atoms */,
 				9CF788E32C0F574200E0438B /* KikurageUI.h */,
 			);
 			path = KikurageUI;
@@ -1972,6 +1983,7 @@
 					};
 					9CF788E02C0F574100E0438B = {
 						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1510;
 					};
 				};
 			};
@@ -2534,6 +2546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3422,6 +3435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3451,6 +3465,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3534,6 +3549,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
