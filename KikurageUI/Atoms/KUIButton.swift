@@ -22,7 +22,7 @@ public struct KUIButtonProps {
         backgroundColor: UIColor?,
         fontSize: CGFloat = 17.0,
         fontWeight: UIFont.Weight = .regular,
-        accessibilityIdentifier: String? = nil
+        accessibilityIdentifier: String?
     ) {
         self.title = title
         self.titleColor = titleColor
