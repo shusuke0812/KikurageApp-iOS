@@ -38,6 +38,10 @@ target 'KikurageFeature' do
   pod 'konashi-ios-sdk'
 end
 
+target 'KikurageUI' do
+  #inherit! :search_paths
+end
+
 target 'KikurageTests' do
   #inherit! :search_paths
   common_pods
