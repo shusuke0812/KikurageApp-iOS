@@ -12,17 +12,17 @@ public struct KUIButtonProps {
     let title: String
     let titleColor: UIColor
     let backgroundColor: UIColor?
+    let accessibilityIdentifier: String?
     let fontSize: CGFloat
     let fontWeight: UIFont.Weight
-    let accessibilityIdentifier: String?
 
     public init(
         title: String,
         titleColor: UIColor,
         backgroundColor: UIColor?,
+        accessibilityIdentifier: String?,
         fontSize: CGFloat = 17.0,
-        fontWeight: UIFont.Weight = .regular,
-        accessibilityIdentifier: String?
+        fontWeight: UIFont.Weight = .regular
     ) {
         self.title = title
         self.titleColor = titleColor
@@ -39,7 +39,7 @@ public class KUIButton: UIButton {
     public init(props: KUIButtonProps) {
         super.init(frame: .zero)
         setup(props: props)
-        setupButtonAction(props: props)
+        setupButtonAction()
     }
 
     public required init?(coder: NSCoder) {
@@ -57,7 +57,7 @@ public class KUIButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
-    private func setupButtonAction(props: KUIButtonProps) {
+    private func setupButtonAction() {
         addAction(.init { [weak self] _ in
             guard let self else {
                 return
