@@ -8,25 +8,45 @@
 
 import UIKit
 
+public enum KUIButtonType {
+    case primary
+    case secondary
+
+    var backgroundColor: UIColor? {
+        switch self {
+        case .primary:
+            return R.color.subColor()
+        case .secondary:
+            return .white
+        }
+    }
+
+    var titleColor: UIColor? {
+        switch self {
+        case .primary:
+            return .white
+        case .secondary:
+            return .label
+        }
+    }
+}
+
 public struct KUIButtonProps {
+    let type: KUIButtonType
     let title: String
-    let backgroundColor: UIColor?
     let accessibilityIdentifier: String?
-    let titleColor: UIColor
     let fontSize: CGFloat
     let fontWeight: UIFont.Weight
 
     public init(
+        type: KUIButtonType,
         title: String,
-        backgroundColor: UIColor? = .white,
         accessibilityIdentifier: String? = nil,
-        titleColor: UIColor = .label,
         fontSize: CGFloat = 17.0,
-        fontWeight: UIFont.Weight = .regular
+        fontWeight: UIFont.Weight = .bold
     ) {
+        self.type = type
         self.title = title
-        self.titleColor = titleColor
-        self.backgroundColor = backgroundColor
         self.fontSize = fontSize
         self.fontWeight = fontWeight
         self.accessibilityIdentifier = accessibilityIdentifier
@@ -50,9 +70,9 @@ public class KUIButton: UIButton {
         layer.masksToBounds = true
         layer.cornerRadius = 5
         setTitle(props.title, for: .normal)
-        setTitleColor(props.titleColor, for: .normal)
+        setTitleColor(props.type.titleColor, for: .normal)
         titleLabel?.font = .systemFont(ofSize: props.fontSize, weight: props.fontWeight)
-        backgroundColor = props.backgroundColor
+        backgroundColor = props.type.backgroundColor
         accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
     }

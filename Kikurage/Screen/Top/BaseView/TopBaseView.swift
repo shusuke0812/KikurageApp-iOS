@@ -48,17 +48,15 @@ class TopBaseView: UIView {
 
         // Login button
         loginButton = KUIButton(props: KUIButtonProps(
+            type: .primary,
             title: R.string.localizable.screen_top_login_btn_name(),
-            backgroundColor: R.color.subColor(),
-            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton(),
-            titleColor: .white,
-            fontWeight: .bold
+            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
         ))
 
         // SignUp button
         signUpButton = KUIButton(props: KUIButtonProps(
-            title: R.string.localizable.screen_top_signup_btn_name(),
-            fontWeight: .bold
+            type: .secondary,
+            title: R.string.localizable.screen_top_signup_btn_name()
         ))
 
         // Terms and privacy buttons
