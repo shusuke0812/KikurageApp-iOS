@@ -19,7 +19,7 @@ protocol TopBaseViewDelegate: AnyObject {
 class TopBaseView: UIView {
     private let topImageView = UIImageView()
     private var loginButton: KUIButton!
-    private let signUpButton = UIButton()
+    private var signUpButton: KUIButton!
     private let termsButton = UIButton(type: .system)
     private let privacyButton = UIButton(type: .system)
     private let copyrightLabel = UILabel()
@@ -49,20 +49,17 @@ class TopBaseView: UIView {
         // Login button
         loginButton = KUIButton(props: KUIButtonProps(
             title: R.string.localizable.screen_top_login_btn_name(),
-            titleColor: .white,
             backgroundColor: R.color.subColor(),
             accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton(),
+            titleColor: .white,
             fontWeight: .bold
         ))
 
         // SignUp button
-        signUpButton.layer.masksToBounds = true
-        signUpButton.layer.cornerRadius = .buttonCornerRadius
-        signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
-        signUpButton.setTitleColor(.label, for: .normal)
-        signUpButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        signUpButton.backgroundColor = .white
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton = KUIButton(props: KUIButtonProps(
+            title: R.string.localizable.screen_top_signup_btn_name(),
+            fontWeight: .bold
+        ))
 
         // Terms and privacy buttons
         let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
@@ -133,12 +130,12 @@ class TopBaseView: UIView {
             self.delegate?.topBaseViewDidTappedLoginButton(self)
         }
 
-        signUpButton.addAction(.init { [weak self] _ in
+        signUpButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedSignUpButton(self)
-        }, for: .touchUpInside)
+        }
 
         termsButton.addAction(.init { [weak self] _ in
             guard let self else {
