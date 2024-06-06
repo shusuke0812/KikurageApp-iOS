@@ -178,6 +178,8 @@
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
 		9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */; };
+		9CC29EC12C12035C00353262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC29EC02C12035C00353262 /* Assets.xcassets */; };
+		9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */; };
 		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
@@ -467,6 +469,8 @@
 		9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIUnderlinedTextButton.swift; sourceTree = "<group>"; };
+		9CC29EC02C12035C00353262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "R-KikurageUI.generated.swift"; sourceTree = "<group>"; };
 		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
@@ -612,6 +616,7 @@
 			isa = PBXGroup;
 			children = (
 				9C91E74E25C9207C00B3E2E0 /* R.generated.swift */,
+				9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */,
 				9C1ACF492225768A00A3D4D1 /* Kikurage */,
 				9CAC930E2789E4E50033DA33 /* KikurageFeature */,
 				9CF788E22C0F574200E0438B /* KikurageUI */,
@@ -1829,6 +1834,7 @@
 			children = (
 				9CF03CF82C10A83800EC2F48 /* Atoms */,
 				9CF788E32C0F574200E0438B /* KikurageUI.h */,
+				9CC29EC02C12035C00353262 /* Assets.xcassets */,
 			);
 			path = KikurageUI;
 			sourceTree = "<group>";
@@ -1946,6 +1952,7 @@
 			buildConfigurationList = 9CF788EC2C0F574300E0438B /* Build configuration list for PBXNativeTarget "KikurageUI" */;
 			buildPhases = (
 				3F5CF707B4C8649FDCD8DAEB /* [CP] Check Pods Manifest.lock */,
+				9CC29EC32C1206E200353262 /* R.swift Run Script */,
 				9CF788DC2C0F574100E0438B /* Headers */,
 				9CF788DD2C0F574100E0438B /* Sources */,
 				9CF788DE2C0F574100E0438B /* Frameworks */,
@@ -2081,6 +2088,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC29EC12C12035C00353262 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2261,6 +2269,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ". ${PROJECT_DIR}/Scripts/SwiftLint.sh\n";
+		};
+		9CC29EC32C1206E200353262 /* R.swift Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "R.swift Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/R-KikurageUI.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R-KikurageUI.generated.swift\"\n";
 		};
 		9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2550,6 +2578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
+				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3449,7 +3478,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
@@ -3523,7 +3552,7 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3608,7 +3637,7 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
