@@ -10,17 +10,17 @@ import UIKit
 
 public struct KUIButtonProps {
     let title: String
-    let titleColor: UIColor
     let backgroundColor: UIColor?
     let accessibilityIdentifier: String?
+    let titleColor: UIColor
     let fontSize: CGFloat
     let fontWeight: UIFont.Weight
 
     public init(
         title: String,
-        titleColor: UIColor,
-        backgroundColor: UIColor?,
-        accessibilityIdentifier: String?,
+        backgroundColor: UIColor? = .white,
+        accessibilityIdentifier: String? = nil,
+        titleColor: UIColor = .label,
         fontSize: CGFloat = 17.0,
         fontWeight: UIFont.Weight = .regular
     ) {
