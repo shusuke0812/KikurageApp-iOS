@@ -20,8 +20,8 @@ class TopBaseView: UIView {
     private let topImageView = UIImageView()
     private var loginButton: KUIButton!
     private var signUpButton: KUIButton!
-    private let termsButton = UIButton(type: .system)
-    private let privacyButton = UIButton(type: .system)
+    private var termsButton: KUIUnderlinedTextButton!
+    private var privacyButton: KUIUnderlinedTextButton!
     private let copyrightLabel = UILabel()
 
     weak var delegate: TopBaseViewDelegate?
@@ -62,19 +62,17 @@ class TopBaseView: UIView {
         ))
 
         // Terms and privacy buttons
-        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
-        let termsButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_term(), attributes: attributes)
-        let privacyButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_privacy(), attributes: attributes)
-        termsButton.setAttributedTitle(termsButtonAttributedString, for: .normal)
-        privacyButton.setAttributedTitle(privacyButtonAttributedString, for: .normal)
+        termsButton = KUIUnderlinedTextButton(props: KUIUnderlinedTextButtonProps(
+            title: R.string.localizable.screen_top_app_term()
+        ))
+        privacyButton = KUIUnderlinedTextButton(props: KUIUnderlinedTextButtonProps(
+            title: R.string.localizable.screen_top_app_privacy()
+        ))
 
         termsButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         termsButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         privacyButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         privacyButton.setContentHuggingPriority(.defaultLow, for: .horizontal)
-
-        termsButton.titleLabel?.font = .systemFont(ofSize: 17)
-        privacyButton.titleLabel?.font = .systemFont(ofSize: 17)
 
         let termsPrivacystackView = UIStackView(arrangedSubviews: [termsButton, privacyButton])
         termsPrivacystackView.axis = .horizontal
@@ -137,18 +135,18 @@ class TopBaseView: UIView {
             self.delegate?.topBaseViewDidTappedSignUpButton(self)
         }
 
-        termsButton.addAction(.init { [weak self] _ in
+        termsButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedTermsButton(self)
-        }, for: .touchUpInside)
+        }
 
-        privacyButton.addAction(.init { [weak self] _ in
+        privacyButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedPrivacyPolicyButton(self)
-        }, for: .touchUpInside)
+        }
     }
 }
