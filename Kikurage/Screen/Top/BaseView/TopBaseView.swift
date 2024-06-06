@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 protocol TopBaseViewDelegate: AnyObject {
@@ -17,7 +18,7 @@ protocol TopBaseViewDelegate: AnyObject {
 
 class TopBaseView: UIView {
     private let topImageView = UIImageView()
-    private let loginButton = UIButton()
+    private var loginButton: KUIButton!
     private let signUpButton = UIButton()
     private let termsButton = UIButton(type: .system)
     private let privacyButton = UIButton(type: .system)
@@ -46,14 +47,13 @@ class TopBaseView: UIView {
         topImageView.translatesAutoresizingMaskIntoConstraints = false
 
         // Login button
-        loginButton.layer.masksToBounds = true
-        loginButton.layer.cornerRadius = .buttonCornerRadius
-        loginButton.setTitle(R.string.localizable.screen_top_login_btn_name(), for: .normal)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        loginButton.backgroundColor = R.color.subColor()
-        loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.topLoginButton()
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton = KUIButton(props: KUIButtonProps(
+            title: R.string.localizable.screen_top_login_btn_name(),
+            titleColor: .white,
+            backgroundColor: R.color.subColor(),
+            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton(),
+            fontWeight: .bold
+        ))
 
         // SignUp button
         signUpButton.layer.masksToBounds = true
@@ -126,12 +126,12 @@ class TopBaseView: UIView {
     // MARK: - Action
 
     private func setupButtonAction() {
-        loginButton.addAction(.init { [weak self] _ in
+        loginButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedLoginButton(self)
-        }, for: .touchUpInside)
+        }
 
         signUpButton.addAction(.init { [weak self] _ in
             guard let self else {
