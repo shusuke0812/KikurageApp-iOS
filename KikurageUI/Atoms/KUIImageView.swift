@@ -20,6 +20,7 @@ public class KUIImageView: UIImageView {
     
     public init(props: KUIImageViewProps) {
         super.init(frame: .zero)
+        setup(props: props)
     }
     
     public required init?(coder: NSCoder) {
