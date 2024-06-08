@@ -231,6 +231,7 @@
 		9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86912C1418CE0029527D /* KUIImageView.swift */; };
 		9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */; };
 		9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD869D2C147C3F0029527D /* KUITextField.swift */; };
+		9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
 /* End PBXBuildFile section */
 
@@ -523,6 +524,7 @@
 		9CFD86912C1418CE0029527D /* KUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIImageView.swift; sourceTree = "<group>"; };
 		9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		9CFD869D2C147C3F0029527D /* KUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITextField.swift; sourceTree = "<group>"; };
+		9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIPasswordField.swift; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B15B86CDC574E80B6D91CC /* Pods-KikurageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1824,6 +1826,7 @@
 				9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */,
 				9CFD86912C1418CE0029527D /* KUIImageView.swift */,
 				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
+				9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -2649,6 +2652,7 @@
 				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
 				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
+				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
 				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
