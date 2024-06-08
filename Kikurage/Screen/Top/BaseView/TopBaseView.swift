@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 protocol TopBaseViewDelegate: AnyObject {
@@ -16,11 +17,11 @@ protocol TopBaseViewDelegate: AnyObject {
 }
 
 class TopBaseView: UIView {
-    private let topImageView = UIImageView()
-    private let loginButton = UIButton()
-    private let signUpButton = UIButton()
-    private let termsButton = UIButton(type: .system)
-    private let privacyButton = UIButton(type: .system)
+    private var topImageView: KUIImageView!
+    private var loginButton: KUIButton!
+    private var signUpButton: KUIButton!
+    private var termsButton: KUIUnderlinedTextButton!
+    private var privacyButton: KUIUnderlinedTextButton!
     private let copyrightLabel = UILabel()
 
     weak var delegate: TopBaseViewDelegate?
@@ -39,45 +40,35 @@ class TopBaseView: UIView {
         backgroundColor = .systemGroupedBackground
 
         // Top image
-        topImageView.image = R.image.kikurageDevice()
-        topImageView.clipsToBounds = true
-        topImageView.layer.cornerRadius = .viewCornerRadius
-        topImageView.contentMode = .scaleAspectFill
-        topImageView.translatesAutoresizingMaskIntoConstraints = false
+        topImageView = KUIImageView(props: KUIImageViewProps(
+            image: R.image.kikurageDevice()
+        ))
 
         // Login button
-        loginButton.layer.masksToBounds = true
-        loginButton.layer.cornerRadius = .buttonCornerRadius
-        loginButton.setTitle(R.string.localizable.screen_top_login_btn_name(), for: .normal)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        loginButton.backgroundColor = R.color.subColor()
-        loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.topLoginButton()
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton = KUIButton(props: KUIButtonProps(
+            type: .primary,
+            title: R.string.localizable.screen_top_login_btn_name(),
+            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
+        ))
 
         // SignUp button
-        signUpButton.layer.masksToBounds = true
-        signUpButton.layer.cornerRadius = .buttonCornerRadius
-        signUpButton.setTitle(R.string.localizable.screen_top_signup_btn_name(), for: .normal)
-        signUpButton.setTitleColor(.label, for: .normal)
-        signUpButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-        signUpButton.backgroundColor = .white
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton = KUIButton(props: KUIButtonProps(
+            type: .secondary,
+            title: R.string.localizable.screen_top_signup_btn_name()
+        ))
 
         // Terms and privacy buttons
-        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
-        let termsButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_term(), attributes: attributes)
-        let privacyButtonAttributedString = NSAttributedString(string: R.string.localizable.screen_top_app_privacy(), attributes: attributes)
-        termsButton.setAttributedTitle(termsButtonAttributedString, for: .normal)
-        privacyButton.setAttributedTitle(privacyButtonAttributedString, for: .normal)
+        termsButton = KUIUnderlinedTextButton(props: KUIUnderlinedTextButtonProps(
+            title: R.string.localizable.screen_top_app_term()
+        ))
+        privacyButton = KUIUnderlinedTextButton(props: KUIUnderlinedTextButtonProps(
+            title: R.string.localizable.screen_top_app_privacy()
+        ))
 
         termsButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         termsButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         privacyButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         privacyButton.setContentHuggingPriority(.defaultLow, for: .horizontal)
-
-        termsButton.titleLabel?.font = .systemFont(ofSize: 17)
-        privacyButton.titleLabel?.font = .systemFont(ofSize: 17)
 
         let termsPrivacystackView = UIStackView(arrangedSubviews: [termsButton, privacyButton])
         termsPrivacystackView.axis = .horizontal
@@ -126,32 +117,32 @@ class TopBaseView: UIView {
     // MARK: - Action
 
     private func setupButtonAction() {
-        loginButton.addAction(.init { [weak self] _ in
+        loginButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedLoginButton(self)
-        }, for: .touchUpInside)
+        }
 
-        signUpButton.addAction(.init { [weak self] _ in
+        signUpButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedSignUpButton(self)
-        }, for: .touchUpInside)
+        }
 
-        termsButton.addAction(.init { [weak self] _ in
+        termsButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedTermsButton(self)
-        }, for: .touchUpInside)
+        }
 
-        privacyButton.addAction(.init { [weak self] _ in
+        privacyButton.onTap = { [weak self] in
             guard let self else {
                 return
             }
             self.delegate?.topBaseViewDidTappedPrivacyPolicyButton(self)
-        }, for: .touchUpInside)
+        }
     }
 }

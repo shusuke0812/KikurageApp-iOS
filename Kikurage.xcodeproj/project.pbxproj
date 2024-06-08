@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */; };
 		1EC0D13DCD5BB81B9696898D /* Pods_KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */; };
 		3D1BBFFA2EA0467A40E1EA88 /* Pods_KikurageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */; };
 		46D472BB8A619D6135A18436 /* Pods_KikurageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */; };
@@ -88,7 +89,6 @@
 		9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */; };
 		9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */; };
 		9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */; };
-		9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */; };
 		9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */; };
 		9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */; };
 		9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */; };
@@ -176,6 +176,9 @@
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
+		9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */; };
+		9CC29EC12C12035C00353262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC29EC02C12035C00353262 /* Assets.xcassets */; };
+		9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */; };
 		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
@@ -219,8 +222,16 @@
 		9CE580E129C1F58A006D83E7 /* KikurageBluetoothParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */; };
 		9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
+		9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF788E32C0F574200E0438B /* KikurageUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9CF788E72C0F574200E0438B /* KikurageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF788E12C0F574100E0438B /* KikurageUI.framework */; };
+		9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF788E12C0F574100E0438B /* KikurageUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86912C1418CE0029527D /* KUIImageView.swift */; };
+		9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */; };
+		9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD869D2C147C3F0029527D /* KUITextField.swift */; };
+		9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
 /* End PBXBuildFile section */
 
@@ -246,6 +257,13 @@
 			remoteGlobalIDString = 9CAC930C2789E4E50033DA33;
 			remoteInfo = KikurageFeature;
 		};
+		9CF788E52C0F574200E0438B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C1ACF3F2225768A00A3D4D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF788E02C0F574100E0438B;
+			remoteInfo = KikurageUI;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -256,6 +274,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */,
+				9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +287,7 @@
 		20A222AA8447C19CE80FDC6B /* Pods-KikurageUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.production.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.production.xcconfig"; sourceTree = "<group>"; };
 		24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3475EE07E03DA48A65166170 /* Pods-KikurageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.debug.xcconfig"; sourceTree = "<group>"; };
 		5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.debug.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.debug.xcconfig"; sourceTree = "<group>"; };
 		57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kikurage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.staging.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.staging.xcconfig"; sourceTree = "<group>"; };
@@ -275,7 +295,10 @@
 		5B6B92F43BF672B6A13776C1 /* Pods-KikurageTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.staging.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.production.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.production.xcconfig"; sourceTree = "<group>"; };
 		8070A4260AA307A0911D71A2 /* Pods-KikurageFeature.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.production.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.production.xcconfig"; sourceTree = "<group>"; };
+		85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.production.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.production.xcconfig"; sourceTree = "<group>"; };
+		86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.staging.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.staging.xcconfig"; sourceTree = "<group>"; };
 		8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -358,7 +381,6 @@
 		9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifierManager.swift; sourceTree = "<group>"; };
 		9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
 		9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
@@ -448,6 +470,9 @@
 		9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
+		9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIUnderlinedTextButton.swift; sourceTree = "<group>"; };
+		9CC29EC02C12035C00353262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "R-KikurageUI.generated.swift"; sourceTree = "<group>"; };
 		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
@@ -491,8 +516,15 @@
 		9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothParser.swift; sourceTree = "<group>"; };
 		9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFi.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
+		9CF788E12C0F574100E0438B /* KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF788E32C0F574200E0438B /* KikurageUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageUI.h; sourceTree = "<group>"; };
+		9CFD86912C1418CE0029527D /* KUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIImageView.swift; sourceTree = "<group>"; };
+		9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		9CFD869D2C147C3F0029527D /* KUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITextField.swift; sourceTree = "<group>"; };
+		9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIPasswordField.swift; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B15B86CDC574E80B6D91CC /* Pods-KikurageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -507,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
+				9CF788E72C0F574200E0438B /* KikurageUI.framework in Frameworks */,
 				A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */,
 				9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */,
 			);
@@ -536,6 +569,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF788DE2C0F574100E0438B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -557,6 +598,9 @@
 				3475EE07E03DA48A65166170 /* Pods-KikurageUITests.debug.xcconfig */,
 				5A477614F97D17A458C66253 /* Pods-KikurageUITests.staging.xcconfig */,
 				20A222AA8447C19CE80FDC6B /* Pods-KikurageUITests.production.xcconfig */,
+				3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */,
+				86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */,
+				85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -569,6 +613,7 @@
 				24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */,
 				B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */,
 				8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */,
+				914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -577,8 +622,10 @@
 			isa = PBXGroup;
 			children = (
 				9C91E74E25C9207C00B3E2E0 /* R.generated.swift */,
+				9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */,
 				9C1ACF492225768A00A3D4D1 /* Kikurage */,
 				9CAC930E2789E4E50033DA33 /* KikurageFeature */,
+				9CF788E22C0F574200E0438B /* KikurageUI */,
 				9C96F7022768E97300C2E778 /* KikurageTests */,
 				9C9145C527B1E77C0051BE1F /* KikurageUITests */,
 				9C1ACF482225768A00A3D4D1 /* Products */,
@@ -594,6 +641,7 @@
 				9C96F7012768E97300C2E778 /* KikurageTests.xctest */,
 				9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */,
 				9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */,
+				9CF788E12C0F574100E0438B /* KikurageUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -894,6 +942,8 @@
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 				9CA20444271C777300D65DD7 /* Top */,
 				9CA2043E271C76CB00D65DD7 /* Login */,
+				9CFD86952C1432C40029527D /* SignUp */,
+				9CFD86992C14330B0029527D /* DeviceRegister */,
 				9CA2043F271C76D500D65DD7 /* Home */,
 				9CA20440271C76DD00D65DD7 /* Cultivation */,
 				9CA20448271C77BB00D65DD7 /* CultivationDetail */,
@@ -962,8 +1012,6 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */,
-				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
-				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1179,11 +1227,6 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */,
-				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
-				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
-				9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */,
-				9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */,
-				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1273,8 +1316,6 @@
 			isa = PBXGroup;
 			children = (
 				9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */,
-				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
-				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1778,6 +1819,99 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		9CF03CF82C10A83800EC2F48 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */,
+				9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */,
+				9CFD86912C1418CE0029527D /* KUIImageView.swift */,
+				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
+				9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		9CF788E22C0F574200E0438B /* KikurageUI */ = {
+			isa = PBXGroup;
+			children = (
+				9CF03CF82C10A83800EC2F48 /* Atoms */,
+				9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */,
+				9CF788E32C0F574200E0438B /* KikurageUI.h */,
+				9CC29EC02C12035C00353262 /* Assets.xcassets */,
+			);
+			path = KikurageUI;
+			sourceTree = "<group>";
+		};
+		9CFD86952C1432C40029527D /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				9CFD86962C1432CF0029527D /* BaseView */,
+				9CFD86972C1432D60029527D /* ViewController */,
+				9CFD86982C1432E00029527D /* ViewModel */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		9CFD86962C1432CF0029527D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		9CFD86972C1432D60029527D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
+				9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CFD86982C1432E00029527D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CFD86992C14330B0029527D /* DeviceRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9CFD869C2C1433230029527D /* BaseView */,
+				9CFD869B2C14331C0029527D /* ViewController */,
+				9CFD869A2C1433140029527D /* ViewModel */,
+			);
+			path = DeviceRegister;
+			sourceTree = "<group>";
+		};
+		9CFD869A2C1433140029527D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CFD869B2C14331C0029527D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
+				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CFD869C2C1433230029527D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1786,6 +1920,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CAC93122789E4E60033DA33 /* KikurageFeature.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF788DC2C0F574100E0438B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1812,6 +1954,7 @@
 			);
 			dependencies = (
 				9CAC93142789E4E60033DA33 /* PBXTargetDependency */,
+				9CF788E62C0F574200E0438B /* PBXTargetDependency */,
 			);
 			name = Kikurage;
 			productName = kikurageApp;
@@ -1877,6 +2020,26 @@
 			productReference = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		9CF788E02C0F574100E0438B /* KikurageUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF788EC2C0F574300E0438B /* Build configuration list for PBXNativeTarget "KikurageUI" */;
+			buildPhases = (
+				3F5CF707B4C8649FDCD8DAEB /* [CP] Check Pods Manifest.lock */,
+				9CC29EC32C1206E200353262 /* R.swift Run Script */,
+				9CF788DC2C0F574100E0438B /* Headers */,
+				9CF788DD2C0F574100E0438B /* Sources */,
+				9CF788DE2C0F574100E0438B /* Frameworks */,
+				9CF788DF2C0F574100E0438B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KikurageUI;
+			productName = KikurageUI;
+			productReference = 9CF788E12C0F574100E0438B /* KikurageUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1901,6 +2064,10 @@
 					9CAC930C2789E4E50033DA33 = {
 						CreatedOnToolsVersion = 13.0;
 					};
+					9CF788E02C0F574100E0438B = {
+						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1510;
+					};
 				};
 			};
 			buildConfigurationList = 9C1ACF422225768A00A3D4D1 /* Build configuration list for PBXProject "Kikurage" */;
@@ -1918,8 +2085,9 @@
 			projectRoot = "";
 			targets = (
 				9C1ACF462225768A00A3D4D1 /* Kikurage */,
-				9C96F7002768E97300C2E778 /* KikurageTests */,
 				9CAC930C2789E4E50033DA33 /* KikurageFeature */,
+				9CF788E02C0F574100E0438B /* KikurageUI */,
+				9C96F7002768E97300C2E778 /* KikurageTests */,
 				9C9145C327B1E77B0051BE1F /* KikurageUITests */,
 			);
 		};
@@ -1939,7 +2107,6 @@
 				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
 				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
-				9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
@@ -1989,6 +2156,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF788DF2C0F574100E0438B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CC29EC12C12035C00353262 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -2024,6 +2199,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F5CF707B4C8649FDCD8DAEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KikurageUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4B03F7A3ABD0202AB42AE7B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -2144,6 +2341,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ". ${PROJECT_DIR}/Scripts/SwiftLint.sh\n";
+		};
+		9CC29EC32C1206E200353262 /* R.swift Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "R.swift Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/R-KikurageUI.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R-KikurageUI.generated.swift\"\n";
 		};
 		9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2428,6 +2645,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF788DD2C0F574100E0438B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
+				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
+				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
+				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
+				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
+				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
+				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2445,6 +2676,11 @@
 			isa = PBXTargetDependency;
 			target = 9CAC930C2789E4E50033DA33 /* KikurageFeature */;
 			targetProxy = 9CAC93132789E4E60033DA33 /* PBXContainerItemProxy */;
+		};
+		9CF788E62C0F574200E0438B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF788E02C0F574100E0438B /* KikurageUI */;
+			targetProxy = 9CF788E52C0F574200E0438B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3302,6 +3538,219 @@
 			};
 			name = Staging;
 		};
+		9CF788E92C0F574300E0438B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9CF788EA2C0F574300E0438B /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Staging;
+		};
+		9CF788EB2C0F574300E0438B /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3351,6 +3800,16 @@
 				9CAC93182789E4E60033DA33 /* Debug */,
 				9CAC93192789E4E60033DA33 /* Staging */,
 				9CAC931A2789E4E60033DA33 /* Production */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Production;
+		};
+		9CF788EC2C0F574300E0438B /* Build configuration list for PBXNativeTarget "KikurageUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF788E92C0F574300E0438B /* Debug */,
+				9CF788EA2C0F574300E0438B /* Staging */,
+				9CF788EB2C0F574300E0438B /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;

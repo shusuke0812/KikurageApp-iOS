@@ -1,14 +1,13 @@
 //
 //  CGFloat+Extension.swift
-//  Kikurage
+//  KikurageUI
 //
-//  Created by Shusuke Ota on 2021/12/24.
-//  Copyright © 2021 shusuke. All rights reserved.
+//  Created by Shusuke Ota on 2024/6/8.
+//  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-// TODO: `KikurageUI`に移動した. StoryboardをUIKitコードに置き換えたら削除する
 extension CGFloat {
     // Corner radius
     static let viewCornerRadius: CGFloat = 18

@@ -18,15 +18,19 @@ def common_pods
   pod 'FontAwesome.swift'
   pod 'CropViewController'
   # Other
-  pod 'R.swift'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'SDWebImage'
 end
 
+def resource_pods
+  pod 'R.swift'
+end
+
 target 'Kikurage' do
   # Pods for kikurageApp
   common_pods
+  resource_pods
   
   pod 'FirebaseCrashlytics'
   pod 'FirebaseAnalytics'
@@ -36,6 +40,11 @@ target 'KikurageFeature' do
   #inherit! :search_paths
   #common_podsは含めいないようにする（特にFirebaseを含めると`LoginHelper`で行うData型からUser型へのキャストができなくなる）
   pod 'konashi-ios-sdk'
+end
+
+target 'KikurageUI' do
+  #inherit! :search_paths
+  resource_pods
 end
 
 target 'KikurageTests' do
