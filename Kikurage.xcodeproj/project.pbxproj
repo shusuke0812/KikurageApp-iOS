@@ -230,7 +230,7 @@
 		9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF788E12C0F574100E0438B /* KikurageUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86912C1418CE0029527D /* KUIImageView.swift */; };
 		9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */; };
-		9CFD869E2C147C3F0029527D /* KUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD869D2C147C3F0029527D /* KUITextField.swift */; };
+		9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD869D2C147C3F0029527D /* KUITextField.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
 /* End PBXBuildFile section */
 
@@ -2646,8 +2646,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
 				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
-				9CFD869E2C147C3F0029527D /* KUITextField.swift in Sources */,
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
