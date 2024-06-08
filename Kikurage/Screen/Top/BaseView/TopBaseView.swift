@@ -17,7 +17,7 @@ protocol TopBaseViewDelegate: AnyObject {
 }
 
 class TopBaseView: UIView {
-    private let topImageView = UIImageView()
+    private var topImageView: KUIImageView!
     private var loginButton: KUIButton!
     private var signUpButton: KUIButton!
     private var termsButton: KUIUnderlinedTextButton!
@@ -40,11 +40,9 @@ class TopBaseView: UIView {
         backgroundColor = .systemGroupedBackground
 
         // Top image
-        topImageView.image = R.image.kikurageDevice()
-        topImageView.clipsToBounds = true
-        topImageView.layer.cornerRadius = .viewCornerRadius
-        topImageView.contentMode = .scaleAspectFill
-        topImageView.translatesAutoresizingMaskIntoConstraints = false
+        topImageView = KUIImageView(props: KUIImageViewProps(
+            image: R.image.kikurageDevice()
+        ))
 
         // Login button
         loginButton = KUIButton(props: KUIButtonProps(
