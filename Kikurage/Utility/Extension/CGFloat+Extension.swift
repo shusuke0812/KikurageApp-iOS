@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// TODO: `KikurageUI`に移動した. StoryboardをUIKitコードに置き換えたら削除する
 extension CGFloat {
     // Corner radius
     static let viewCornerRadius: CGFloat = 18
