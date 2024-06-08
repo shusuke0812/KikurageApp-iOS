@@ -11,7 +11,7 @@ import UIKit
 public struct KUITextFieldProps {
     let placeHolder: String
     let accessibilityIdentifier: String?
-    
+
     public init(
         placeHolder: String,
         accessibilityIdentifier: String? = nil
@@ -26,11 +26,11 @@ public class KUITextField: UITextField {
         super.init(frame: .zero)
         setupComponent(props: props)
     }
-    
+
     public required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func setupComponent(props: KUITextFieldProps) {
         autocorrectionType = .no
         borderStyle = .roundedRect
