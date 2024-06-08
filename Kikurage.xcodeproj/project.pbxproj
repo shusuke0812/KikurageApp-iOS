@@ -940,6 +940,8 @@
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 				9CA20444271C777300D65DD7 /* Top */,
 				9CA2043E271C76CB00D65DD7 /* Login */,
+				9CFD86952C1432C40029527D /* SignUp */,
+				9CFD86992C14330B0029527D /* DeviceRegister */,
 				9CA2043F271C76D500D65DD7 /* Home */,
 				9CA20440271C76DD00D65DD7 /* Cultivation */,
 				9CA20448271C77BB00D65DD7 /* CultivationDetail */,
@@ -1008,8 +1010,6 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */,
-				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
-				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1225,11 +1225,7 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */,
-				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
-				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
 				9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */,
-				9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */,
-				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1319,8 +1315,6 @@
 			isa = PBXGroup;
 			children = (
 				9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */,
-				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
-				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1843,6 +1837,76 @@
 				9CC29EC02C12035C00353262 /* Assets.xcassets */,
 			);
 			path = KikurageUI;
+			sourceTree = "<group>";
+		};
+		9CFD86952C1432C40029527D /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				9CFD86962C1432CF0029527D /* BaseView */,
+				9CFD86972C1432D60029527D /* ViewController */,
+				9CFD86982C1432E00029527D /* ViewModel */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		9CFD86962C1432CF0029527D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		9CFD86972C1432D60029527D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
+				9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CFD86982C1432E00029527D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CFD86992C14330B0029527D /* DeviceRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9CFD869C2C1433230029527D /* BaseView */,
+				9CFD869B2C14331C0029527D /* ViewController */,
+				9CFD869A2C1433140029527D /* ViewModel */,
+			);
+			path = DeviceRegister;
+			sourceTree = "<group>";
+		};
+		9CFD869A2C1433140029527D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CFD869B2C14331C0029527D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
+				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CFD869C2C1433230029527D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
