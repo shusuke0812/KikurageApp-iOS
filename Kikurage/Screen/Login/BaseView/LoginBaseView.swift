@@ -14,7 +14,7 @@ protocol LoginBaseViewDelegate: AnyObject {
 }
 
 class LoginBaseView: UIView {
-    private(set) var emailTextField = UITextField()
+    private(set) var emailTextField: KUITextField!
     private(set) var passwordTextField = UITextField()
     private var loginButton: KUIButton!
 
@@ -29,25 +29,13 @@ class LoginBaseView: UIView {
         nil
     }
 
-    // MARK: - Action
-
-    @IBAction private func login(_ sender: Any) {
-        delegate?.loginBaseViewDidTappedLoginButton(self)
-    }
-}
-
-// MARK: - Initialized
-
-extension LoginBaseView {
     private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
-        emailTextField.autocorrectionType = .no
-        emailTextField.borderStyle = .roundedRect
-        emailTextField.font = .systemFont(ofSize: 14)
-        emailTextField.placeholder = R.string.localizable.screen_login_email_textfield_placeholer()
-        emailTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginEmailTextField()
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField = KUITextField(props: KUITextFieldProps(
+            placeHolder: R.string.localizable.screen_login_email_textfield_placeholer(),
+            accessibilityIdentifier: AccessibilityIdentifierManager.loginEmailTextField()
+        ))
 
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
@@ -80,6 +68,12 @@ extension LoginBaseView {
             loginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             loginButton.heightAnchor.constraint(equalToConstant: 45)
         ])
+    }
+
+    // MARK: - Action
+
+    @IBAction private func login(_ sender: Any) {
+        delegate?.loginBaseViewDidTappedLoginButton(self)
     }
 }
 
