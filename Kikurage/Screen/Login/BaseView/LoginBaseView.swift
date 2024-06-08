@@ -15,7 +15,7 @@ protocol LoginBaseViewDelegate: AnyObject {
 
 class LoginBaseView: UIView {
     private(set) var emailTextField: KUITextField!
-    private(set) var passwordTextField = UITextField()
+    private(set) var passwordTextField: KUIPasswordField!
     private var loginButton: KUIButton!
 
     weak var delegate: LoginBaseViewDelegate?
@@ -38,12 +38,10 @@ class LoginBaseView: UIView {
             accessibilityIdentifier: AccessibilityIdentifierManager.loginEmailTextField()
         ))
 
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.font = .systemFont(ofSize: 14)
-        passwordTextField.placeholder = R.string.localizable.screen_login_password_textfield_placeholer()
-        passwordTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginPasswordTextField()
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField = KUIPasswordField(props: KUITextFieldProps(
+            placeHolder: R.string.localizable.screen_login_password_textfield_placeholer(),
+            accessibilityIdentifier: AccessibilityIdentifierManager.loginPasswordTextField()
+        ))
 
         loginButton = KUIButton(props: KUIButtonProps(
             type: .primary,
