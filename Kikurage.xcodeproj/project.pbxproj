@@ -1838,9 +1838,9 @@
 			isa = PBXGroup;
 			children = (
 				9CF03CF82C10A83800EC2F48 /* Atoms */,
+				9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */,
 				9CF788E32C0F574200E0438B /* KikurageUI.h */,
 				9CC29EC02C12035C00353262 /* Assets.xcassets */,
-				9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */,
 			);
 			path = KikurageUI;
 			sourceTree = "<group>";
