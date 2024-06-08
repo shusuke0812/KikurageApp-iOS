@@ -8,14 +8,29 @@
 
 import UIKit
 
-class KUIImageView: UIImageView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+public struct KUIImageViewProps {
+    let image: UIImage?
+    
+    public init(image: UIImage?) {
+        self.image = image
     }
-    */
+}
 
+public class KUIImageView: UIImageView {
+    
+    public init(props: KUIImageViewProps) {
+        super.init(frame: .zero)
+    }
+    
+    public required init?(coder: NSCoder) {
+        nil
+    }
+    
+    private func setup(props: KUIImageViewProps) {
+        image = props.image
+        clipsToBounds = true
+        layer.cornerRadius = .viewCornerRadius
+        contentMode = .scaleAspectFill
+        translatesAutoresizingMaskIntoConstraints = false
+    }
 }
