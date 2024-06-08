@@ -23,6 +23,7 @@ class LoginBaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupComponent()
+        setupButtonAction()
     }
 
     required init?(coder: NSCoder) {
@@ -72,8 +73,13 @@ class LoginBaseView: UIView {
 
     // MARK: - Action
 
-    @IBAction private func login(_ sender: Any) {
-        delegate?.loginBaseViewDidTappedLoginButton(self)
+    private func setupButtonAction() {
+        loginButton.onTap = { [weak self] in
+            guard let self else {
+                return
+            }
+            self.delegate?.loginBaseViewDidTappedLoginButton(self)
+        }
     }
 }
 
