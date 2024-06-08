@@ -18,9 +18,7 @@ extension TopAccessable {
     // MARK: - Push
 
     func pushToLogin() {
-        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = LoginViewController()
         push(to: vc)
     }
 

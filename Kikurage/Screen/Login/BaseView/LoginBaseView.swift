@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 protocol LoginBaseViewDelegate: AnyObject {
@@ -13,15 +14,19 @@ protocol LoginBaseViewDelegate: AnyObject {
 }
 
 class LoginBaseView: UIView {
-    @IBOutlet private(set) weak var emailTextField: UITextField!
-    @IBOutlet private(set) weak var passwordTextField: UITextField!
-    @IBOutlet private weak var loginButton: UIButton!
+    private(set) var emailTextField = UITextField()
+    private(set) var passwordTextField = UITextField()
+    private var loginButton: KUIButton!
 
     weak var delegate: LoginBaseViewDelegate?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupComponent()
+    }
+
+    required init?(coder: NSCoder) {
+        nil
     }
 
     // MARK: - Action
@@ -34,21 +39,47 @@ class LoginBaseView: UIView {
 // MARK: - Initialized
 
 extension LoginBaseView {
-    private func initUI() {
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
-        loginButton.layer.masksToBounds = true
-        loginButton.layer.cornerRadius = .buttonCornerRadius
-        loginButton.setTitle(R.string.localizable.screen_login_login_btn_name(), for: .normal)
-        loginButton.accessibilityIdentifier = AccessibilityIdentifierManager.loginLoginButton()
-
         emailTextField.autocorrectionType = .no
+        emailTextField.borderStyle = .roundedRect
+        emailTextField.font = .systemFont(ofSize: 14)
         emailTextField.placeholder = R.string.localizable.screen_login_email_textfield_placeholer()
         emailTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginEmailTextField()
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
 
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.borderStyle = .roundedRect
+        passwordTextField.font = .systemFont(ofSize: 14)
         passwordTextField.placeholder = R.string.localizable.screen_login_password_textfield_placeholer()
         passwordTextField.accessibilityIdentifier = AccessibilityIdentifierManager.loginPasswordTextField()
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        loginButton = KUIButton(props: KUIButtonProps(
+            type: .primary,
+            title: R.string.localizable.screen_login_login_btn_name(),
+            accessibilityIdentifier: AccessibilityIdentifierManager.loginLoginButton()
+        ))
+
+        addSubview(emailTextField)
+        addSubview(passwordTextField)
+        addSubview(loginButton)
+
+        NSLayoutConstraint.activate([
+            emailTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            emailTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 25),
+            passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+
+            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 30),
+            loginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            loginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            loginButton.heightAnchor.constraint(equalToConstant: 45)
+        ])
     }
 }
 
