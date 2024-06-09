@@ -23,9 +23,7 @@ extension TopAccessable {
     }
 
     func pushToSignUp() {
-        guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = SignUpViewController()
         push(to: vc)
     }
 
