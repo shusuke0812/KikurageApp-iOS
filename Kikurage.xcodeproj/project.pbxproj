@@ -91,7 +91,6 @@
 		9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */; };
 		9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */; };
 		9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */; };
-		9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */; };
 		9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */; };
 		9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91E74E25C9207C00B3E2E0 /* R.generated.swift */; };
 		9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923334255F9760000293BB /* PostCultivationViewController.swift */; };
@@ -383,7 +382,6 @@
 		9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
 		9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
 		9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBaseView.swift; sourceTree = "<group>"; };
 		9C91E74E25C9207C00B3E2E0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9C923334255F9760000293BB /* PostCultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewController.swift; sourceTree = "<group>"; };
@@ -1864,7 +1862,6 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
-				9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2106,7 +2103,6 @@
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
-				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,

@@ -39,6 +39,6 @@ public class KUITextField: UITextField {
         accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     // TODO: エラーの場合は枠線を赤色に更新できるようなメソッドを追加する
 }

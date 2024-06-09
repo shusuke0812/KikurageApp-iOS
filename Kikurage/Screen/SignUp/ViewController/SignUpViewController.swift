@@ -11,10 +11,14 @@ import RxCocoa
 import UIKit
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: SignUpBaseView { view as! SignUpBaseView } // swiftlint:disable:this force_cast
+    private let baseView = SignUpBaseView()
     private var viewModel: SignUpViewModel!
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
