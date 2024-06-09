@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum KUIButtonType {
+public enum KUIButtonVariant {
     case primary
     case secondary
 
@@ -32,20 +32,20 @@ public enum KUIButtonType {
 }
 
 public struct KUIButtonProps {
-    let type: KUIButtonType
+    let variant: KUIButtonVariant
     let title: String
     let accessibilityIdentifier: String?
     let fontSize: CGFloat
     let fontWeight: UIFont.Weight
 
     public init(
-        type: KUIButtonType,
+        variant: KUIButtonVariant,
         title: String,
         accessibilityIdentifier: String? = nil,
         fontSize: CGFloat = 17.0,
         fontWeight: UIFont.Weight = .bold
     ) {
-        self.type = type
+        self.variant = variant
         self.title = title
         self.fontSize = fontSize
         self.fontWeight = fontWeight
@@ -70,9 +70,9 @@ public class KUIButton: UIButton {
         layer.masksToBounds = true
         layer.cornerRadius = 5
         setTitle(props.title, for: .normal)
-        setTitleColor(props.type.titleColor, for: .normal)
+        setTitleColor(props.variant.titleColor, for: .normal)
         titleLabel?.font = .systemFont(ofSize: props.fontSize, weight: props.fontWeight)
-        backgroundColor = props.type.backgroundColor
+        backgroundColor = props.variant.backgroundColor
         accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
     }

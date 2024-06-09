@@ -42,7 +42,7 @@ class SignUpBaseView: UIView {
         ))
 
         userRegisterButton = KUIButton(props: KUIButtonProps(
-            type: .primary,
+            variant: .primary,
             title: R.string.localizable.screen_signup_signup_btn_name()
         ))
 
