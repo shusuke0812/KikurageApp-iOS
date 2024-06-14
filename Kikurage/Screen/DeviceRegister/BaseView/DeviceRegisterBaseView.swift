@@ -19,10 +19,10 @@ class DeviceRegisterBaseView: UIView {
     private(set) var productKeyTextField: KUITextField!
     private(set) var kikurageNameTextField: KUITextField!
     private(set) var cultivationStartDateTextField: KUITextField!
-    private(set) var kikurageQrcodeReaderView: KikurageQRCodeReaderView!
-    private var kikurageQrcodeReaderViewHeightConstraint: NSLayoutConstraint!
+    private(set) var qrcodeReaderView: KikurageQRCodeReaderView!
+    private var qrcodeReaderViewHeightConstraint: NSLayoutConstraint!
     private var deviceRegisterButton: KUIButton!
-    private var kikurageQrcodeReaderButton: UIButton!
+    private var qrcodeReaderButton: UIButton!
 
     private let kikurageQrcodeReaderViewHeight: CGFloat = 240
 
@@ -56,13 +56,13 @@ class DeviceRegisterBaseView: UIView {
             placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
         ))
 
-        kikurageQrcodeReaderButton = UIButton(type: .system)
-        kikurageQrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
-        kikurageQrcodeReaderButton.translatesAutoresizingMaskIntoConstraints = false
+        qrcodeReaderButton = UIButton(type: .system)
+        qrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
+        qrcodeReaderButton.translatesAutoresizingMaskIntoConstraints = false
 
-        kikurageQrcodeReaderView = KikurageQRCodeReaderView()
-        kikurageQrcodeReaderView.backgroundColor = .white
-        kikurageQrcodeReaderView.translatesAutoresizingMaskIntoConstraints = false
+        qrcodeReaderView = KikurageQRCodeReaderView()
+        qrcodeReaderView.backgroundColor = .white
+        qrcodeReaderView.translatesAutoresizingMaskIntoConstraints = false
 
         deviceRegisterButton = KUIButton(props: KUIButtonProps(
             variant: .primary,
@@ -72,8 +72,8 @@ class DeviceRegisterBaseView: UIView {
         addSubview(productKeyTextField)
         addSubview(kikurageNameTextField)
         addSubview(cultivationStartDateTextField)
-        addSubview(kikurageQrcodeReaderButton)
-        addSubview(kikurageQrcodeReaderView)
+        addSubview(qrcodeReaderButton)
+        addSubview(qrcodeReaderView)
         addSubview(deviceRegisterButton)
 
         NSLayoutConstraint.activate([
@@ -89,16 +89,16 @@ class DeviceRegisterBaseView: UIView {
             cultivationStartDateTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             cultivationStartDateTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
 
-            kikurageQrcodeReaderButton.topAnchor.constraint(equalTo: cultivationStartDateTextField.bottomAnchor, constant: 15),
-            kikurageQrcodeReaderButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            kikurageQrcodeReaderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            qrcodeReaderButton.topAnchor.constraint(equalTo: cultivationStartDateTextField.bottomAnchor, constant: 15),
+            qrcodeReaderButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            qrcodeReaderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
 
-            kikurageQrcodeReaderView.topAnchor.constraint(equalTo: kikurageQrcodeReaderButton.bottomAnchor, constant: 15),
-            kikurageQrcodeReaderView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            kikurageQrcodeReaderView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            kikurageQrcodeReaderView.heightAnchor.constraint(equalToConstant: 240),
+            qrcodeReaderView.topAnchor.constraint(equalTo: qrcodeReaderButton.bottomAnchor, constant: 15),
+            qrcodeReaderView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            qrcodeReaderView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            qrcodeReaderView.heightAnchor.constraint(equalToConstant: 240),
 
-            deviceRegisterButton.topAnchor.constraint(equalTo: kikurageQrcodeReaderView.bottomAnchor, constant: 15),
+            deviceRegisterButton.topAnchor.constraint(equalTo: qrcodeReaderView.bottomAnchor, constant: 15),
             deviceRegisterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             deviceRegisterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             deviceRegisterButton.heightAnchor.constraint(equalToConstant: 45)
@@ -123,7 +123,7 @@ class DeviceRegisterBaseView: UIView {
             }
             self.delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
         }
-        kikurageQrcodeReaderButton.addAction(.init { [weak self] _ in
+        qrcodeReaderButton.addAction(.init { [weak self] _ in
             guard let self else {
                 return
             }
@@ -142,7 +142,7 @@ extension DeviceRegisterBaseView {
     }
 
     func showKikurageQrcodeReaderView(isHidden: Bool) {
-        kikurageQrcodeReaderView.isHidden = isHidden
+        qrcodeReaderView.isHidden = isHidden
     }
 
     func setProductKeyText(_ text: String) {
