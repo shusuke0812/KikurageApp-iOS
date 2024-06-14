@@ -12,13 +12,17 @@ import PKHUD
 import UIKit
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: DeviceRegisterBaseView { view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
+    private var baseView = DeviceRegisterBaseView()
     private var viewModel: DeviceRegisterViewModel!
     private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!
 
     private let queue = DispatchQueue.global(qos: .userInitiated)
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
