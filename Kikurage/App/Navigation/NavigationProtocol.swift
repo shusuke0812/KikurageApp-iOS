@@ -11,9 +11,7 @@ import UIKit
 
 // MARK: - Push
 
-protocol PushNavigationProtocol {
-    var navigationController: UINavigationController? { get }
-
+protocol PushNavigationProtocol where Self: UIViewController {
     func push(to vc: UIViewController)
     func setViewControllers(to vcs: [UIViewController])
 }
@@ -28,11 +26,17 @@ extension PushNavigationProtocol {
     }
 }
 
+// MARK: - Pop
+
+protocol PopNavigationProtocol where Self: UIViewController {
+    func pop()
+    func pop(to vc: UIViewController)
+    func popToRootViewController()
+}
+
 // MARK: - Modal
 
-protocol ModalNavigationProtocol {
-    var viewController: UIViewController { get }
-
+protocol ModalNavigationProtocol where Self: UIViewController {
     func present(to vc: UIViewController, style: UIModalPresentationStyle, completion: (() -> Void)?)
 }
 
@@ -40,24 +44,18 @@ extension ModalNavigationProtocol {
     func present(to vc: UIViewController, style: UIModalPresentationStyle = .fullScreen, completion: (() -> Void)? = nil) {
         let nc = CustomNavigationController(rootViewController: vc)
         nc.modalPresentationStyle = style
-        viewController.present(nc, animated: true, completion: completion)
-    }
-}
-
-extension ModalNavigationProtocol where Self: UIViewController {
-    var viewController: UIViewController {
-        self
+        present(nc, animated: true, completion: completion)
     }
 }
 
 // MARK: - SafariView
 
-protocol SafariViewNavigationProtocol {
-    func presentSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
+protocol SafariViewNavigationProtocol where Self: UIViewController {
+    func presentSafariView(urlString: String?, onError: (() -> Void)?)
 }
 
 extension SafariViewNavigationProtocol {
-    func presentSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?) {
+    func presentSafariView(urlString: String?, onError: (() -> Void)?) {
         let url: URL?
         guard let urlString = urlString else {
             onError?(); return
@@ -71,9 +69,21 @@ extension SafariViewNavigationProtocol {
 
         if let url = url {
             let safariVC = SFSafariViewController(url: url)
-            vc.present(safariVC, animated: true, completion: nil)
+            present(safariVC, animated: true, completion: nil)
         } else {
             onError?()
         }
+    }
+}
+
+// MARK: - Dismiss
+
+protocol DismissNavigationProtocol where Self: UIViewController {
+    func dismiss(animated: Bool)
+}
+
+extension DismissNavigationProtocol {
+    func dismiss(animated: Bool) {
+        dismiss(animated: animated)
     }
 }
