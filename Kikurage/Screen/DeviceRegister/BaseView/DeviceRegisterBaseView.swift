@@ -20,11 +20,11 @@ class DeviceRegisterBaseView: UIView {
     private(set) var kikurageNameTextField: KUITextField!
     private(set) var cultivationStartDateTextField: KUITextField!
     private(set) var qrcodeReaderView: KikurageQRCodeReaderView!
-    private var qrcodeReaderViewHeightConstraint: NSLayoutConstraint!
     private var deviceRegisterButton: KUIButton!
     private var qrcodeReaderButton: UIButton!
 
-    private let kikurageQrcodeReaderViewHeight: CGFloat = 240
+    private var showQrcodeReaderViewConstraint: NSLayoutConstraint!
+    private var hideQrcodeReaderViewConstraint: NSLayoutConstraint!
 
     weak var delegate: DeviceRegisterBaseViewDelegate?
 
@@ -96,13 +96,15 @@ class DeviceRegisterBaseView: UIView {
             qrcodeReaderView.topAnchor.constraint(equalTo: qrcodeReaderButton.bottomAnchor, constant: 15),
             qrcodeReaderView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             qrcodeReaderView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            qrcodeReaderView.heightAnchor.constraint(equalToConstant: 240),
 
             deviceRegisterButton.topAnchor.constraint(equalTo: qrcodeReaderView.bottomAnchor, constant: 15),
             deviceRegisterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             deviceRegisterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             deviceRegisterButton.heightAnchor.constraint(equalToConstant: 45)
         ])
+
+        showQrcodeReaderViewConstraint = qrcodeReaderView.heightAnchor.constraint(equalToConstant: 240)
+        hideQrcodeReaderViewConstraint = qrcodeReaderView.heightAnchor.constraint(equalToConstant: 0)
     }
 
     private func setupDatePicker() {
@@ -143,6 +145,8 @@ extension DeviceRegisterBaseView {
 
     func showKikurageQrcodeReaderView(isHidden: Bool) {
         qrcodeReaderView.isHidden = isHidden
+        showQrcodeReaderViewConstraint.isActive = !isHidden
+        hideQrcodeReaderViewConstraint.isActive = isHidden
     }
 
     func setProductKeyText(_ text: String) {
