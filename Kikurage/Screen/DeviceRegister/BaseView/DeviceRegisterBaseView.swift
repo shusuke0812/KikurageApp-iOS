@@ -7,6 +7,7 @@
 //
 
 import KikurageFeature
+import KikurageUI
 import UIKit
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {
@@ -15,70 +16,116 @@ protocol DeviceRegisterBaseViewDelegate: AnyObject {
 }
 
 class DeviceRegisterBaseView: UIView {
-    @IBOutlet private(set) weak var productKeyTextField: UITextField!
-    @IBOutlet private(set) weak var kikurageNameTextField: UITextField!
-    @IBOutlet private(set) weak var cultivationStartDateTextField: UITextField!
-    @IBOutlet private(set) weak var kikurageQrcodeReaderView: KikurageQRCodeReaderView!
-    @IBOutlet private weak var kikurageQrcodeReaderViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var deviceRegisterButton: UIButton!
-    @IBOutlet private weak var kikurageQrcodeReaderButton: UIButton!
+    private(set) var productKeyTextField: KUITextField!
+    private(set) var kikurageNameTextField: KUITextField!
+    private(set) var cultivationStartDateTextField: KUITextField!
+    private(set) var kikurageQrcodeReaderView: KikurageQRCodeReaderView!
+    private var kikurageQrcodeReaderViewHeightConstraint: NSLayoutConstraint!
+    private var deviceRegisterButton: KUIButton!
+    private var kikurageQrcodeReaderButton: UIButton!
 
     private let kikurageQrcodeReaderViewHeight: CGFloat = 240
 
     weak var delegate: DeviceRegisterBaseViewDelegate?
 
     var datePicker = UIDatePicker()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
-        initDatePicker()
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupComponent()
+        setupDatePicker()
     }
-
-    // MARK: - Action
-
-    @IBAction private func registerDevice(_ sender: Any) {
-        delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
+    
+    required init?(coder: NSCoder) {
+        nil
     }
-
-    @IBAction private func openQrcodeReader(_ sender: Any) {
-        delegate?.deviceRegisterBaseViewDidTappedQrcodeReaderButton(self)
-    }
-}
-
-// MARK: - Initialized
-
-extension DeviceRegisterBaseView {
-    private func initUI() {
+    
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
-        deviceRegisterButton.layer.masksToBounds = true
-        deviceRegisterButton.layer.cornerRadius = .buttonCornerRadius
-        deviceRegisterButton.setTitle(R.string.localizable.screen_device_register_register_btn_name(), for: .normal)
-
-        productKeyTextField.autocorrectionType = .no
-        productKeyTextField.placeholder = R.string.localizable.screen_device_register_productkey_textfield_placeholer()
-
-        kikurageNameTextField.placeholder = R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer()
-
-        cultivationStartDateTextField.placeholder = R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
+        productKeyTextField = KUITextField(props: KUITextFieldProps(
+            placeHolder: R.string.localizable.screen_device_register_productkey_textfield_placeholer()
+        ))
+        
+        kikurageNameTextField = KUITextField(props: KUITextFieldProps(
+            placeHolder: R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer()
+        ))
+        
+        cultivationStartDateTextField = KUITextField(props: KUITextFieldProps(
+            placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
+        ))
+        
+        kikurageQrcodeReaderButton = UIButton(type: .system)
+        kikurageQrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
+        kikurageQrcodeReaderButton.translatesAutoresizingMaskIntoConstraints = false
 
         kikurageQrcodeReaderViewHeightConstraint.constant = kikurageQrcodeReaderViewHeight
         kikurageQrcodeReaderView.backgroundColor = .white
+        kikurageQrcodeReaderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        deviceRegisterButton = KUIButton(props: KUIButtonProps(
+            variant: .primary,
+            title: R.string.localizable.screen_device_register_register_btn_name()
+        ))
 
-        kikurageQrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
+        addSubview(productKeyTextField)
+        addSubview(kikurageNameTextField)
+        addSubview(cultivationStartDateTextField)
+        addSubview(kikurageQrcodeReaderButton)
+        addSubview(kikurageQrcodeReaderView)
+        addSubview(deviceRegisterButton)
+        
+        NSLayoutConstraint.activate([
+            productKeyTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            productKeyTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            productKeyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            kikurageNameTextField.topAnchor.constraint(equalTo: productKeyTextField.bottomAnchor, constant: 25),
+            kikurageNameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            kikurageNameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            cultivationStartDateTextField.topAnchor.constraint(equalTo: kikurageNameTextField.bottomAnchor, constant: 25),
+            cultivationStartDateTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            cultivationStartDateTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            kikurageQrcodeReaderButton.topAnchor.constraint(equalTo: cultivationStartDateTextField.bottomAnchor, constant: 15),
+            kikurageQrcodeReaderButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            kikurageQrcodeReaderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            
+            kikurageQrcodeReaderView.topAnchor.constraint(equalTo: kikurageQrcodeReaderButton.bottomAnchor, constant: 15),
+            kikurageQrcodeReaderView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            kikurageQrcodeReaderView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            kikurageQrcodeReaderView.heightAnchor.constraint(equalToConstant: 240),
+            
+            deviceRegisterButton.topAnchor.constraint(equalTo: kikurageQrcodeReaderView.bottomAnchor, constant: 15),
+            deviceRegisterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            deviceRegisterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+        ])
     }
 
-    private func initDatePicker() {
-        // DatePcikerの基本設定
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        }
+    private func setupDatePicker() {
+        datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
         datePicker.timeZone = NSTimeZone.local
         datePicker.locale = Locale.current
-        // TextFieldの入力にDatePickerを接続
+
         cultivationStartDateTextField.inputView = datePicker
+    }
+
+    // MARK: - Action
+    private func setupButtonAction() {
+        deviceRegisterButton.onTap = { [weak self] in
+            guard let self else {
+                return
+            }
+            self.delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
+        }
+        kikurageQrcodeReaderButton.addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.delegate?.deviceRegisterBaseViewDidTappedQrcodeReaderButton(self)
+        }, for: .touchUpInside)
     }
 }
 
