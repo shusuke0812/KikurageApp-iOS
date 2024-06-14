@@ -34,6 +34,7 @@ class DeviceRegisterBaseView: UIView {
         super.init(frame: .zero)
         setupComponent()
         setupDatePicker()
+        setupButtonAction()
     }
     
     required init?(coder: NSCoder) {
