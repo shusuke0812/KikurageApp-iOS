@@ -181,6 +181,7 @@
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
 		9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */; };
+		9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */; };
 		9CC47ACB27FC80E900F2DC17 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */; };
 		9CC6752D288D36E30003B18A /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC6752C288D36E30003B18A /* SessionSetupResult.swift */; };
 		9CC7F4D729CEDC460045C866 /* WiFiSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */; };
@@ -474,6 +475,7 @@
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
 		9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDropdownTextField.swift; sourceTree = "<group>"; };
+		9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRoundedView.swift; sourceTree = "<group>"; };
 		9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		9CC6752C288D36E30003B18A /* SessionSetupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
 		9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -1833,6 +1835,7 @@
 				9CFD86912C1418CE0029527D /* KUIImageView.swift */,
 				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
 				9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */,
+				9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -2659,6 +2662,7 @@
 				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
+				9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */,
 				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
