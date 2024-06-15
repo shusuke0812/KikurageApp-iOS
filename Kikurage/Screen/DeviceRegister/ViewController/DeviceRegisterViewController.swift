@@ -12,13 +12,17 @@ import PKHUD
 import UIKit
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: DeviceRegisterBaseView { view as! DeviceRegisterBaseView } // swiftlint:disable:this force_cast
+    private var baseView = DeviceRegisterBaseView()
     private var viewModel: DeviceRegisterViewModel!
     private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!
 
     private let queue = DispatchQueue.global(qos: .userInitiated)
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
+        baseView.qrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -107,7 +111,7 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
 
     func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
         DispatchQueue.main.async {
-            guard self.baseView.kikurageQrcodeReaderView.isHidden else {
+            guard self.baseView.qrcodeReaderView.isHidden else {
                 return
             }
             self.baseView.showKikurageQrcodeReaderView(isHidden: false)
@@ -157,10 +161,10 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
 extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
         DispatchQueue.main.async {
-            if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.kikurageQrcodeReaderView.windowOrientation) {
-                self.baseView.kikurageQrcodeReaderView.configCaptureOrientation(videoOrientation)
+            if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.qrcodeReaderView.windowOrientation) {
+                self.baseView.qrcodeReaderView.configCaptureOrientation(videoOrientation)
             }
-            self.baseView.kikurageQrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
+            self.baseView.qrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
         }
     }
 

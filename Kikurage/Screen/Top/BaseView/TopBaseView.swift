@@ -46,14 +46,14 @@ class TopBaseView: UIView {
 
         // Login button
         loginButton = KUIButton(props: KUIButtonProps(
-            type: .primary,
+            variant: .primary,
             title: R.string.localizable.screen_top_login_btn_name(),
             accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
         ))
 
         // SignUp button
         signUpButton = KUIButton(props: KUIButtonProps(
-            type: .secondary,
+            variant: .secondary,
             title: R.string.localizable.screen_top_signup_btn_name()
         ))
 

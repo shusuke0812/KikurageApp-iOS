@@ -44,7 +44,7 @@ class LoginBaseView: UIView {
         ))
 
         loginButton = KUIButton(props: KUIButtonProps(
-            type: .primary,
+            variant: .primary,
             title: R.string.localizable.screen_login_login_btn_name(),
             accessibilityIdentifier: AccessibilityIdentifierManager.loginLoginButton()
         ))

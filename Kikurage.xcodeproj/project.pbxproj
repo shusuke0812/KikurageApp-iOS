@@ -65,7 +65,6 @@
 		9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */; };
 		9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */; };
 		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
-		9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */; };
 		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
 		9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */; };
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
@@ -355,7 +354,6 @@
 		9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeviceRegisterViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
 		9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBaseView.swift; sourceTree = "<group>"; };
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
@@ -1895,7 +1893,6 @@
 		9CFD869B2C14331C0029527D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
 				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
 			);
 			path = ViewController;
@@ -2114,7 +2111,6 @@
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
 				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
 				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
-				9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
