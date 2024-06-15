@@ -85,7 +85,7 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
     }
 
     private func setCultivationStartDateTextFieldData() {
-        let date: Date = baseView.datePicker.date
+        let date: Date = baseView.cultivationStartDateTextField.date
         let dataString: String = DateHelper.formatToString(date: date)
         baseView.cultivationStartDateTextField.text = dataString
         viewModel.kikurageUser?.cultivationStartDate = date

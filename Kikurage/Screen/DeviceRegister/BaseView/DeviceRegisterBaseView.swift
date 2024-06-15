@@ -18,7 +18,7 @@ protocol DeviceRegisterBaseViewDelegate: AnyObject {
 class DeviceRegisterBaseView: UIView {
     private(set) var productKeyTextField: KUITextField!
     private(set) var kikurageNameTextField: KUITextField!
-    private(set) var cultivationStartDateTextField: KUITextField!
+    private(set) var cultivationStartDateTextField: KUIDropdownTextField!
     private(set) var qrcodeReaderView: KikurageQRCodeReaderView!
     private var deviceRegisterButton: KUIButton!
     private var qrcodeReaderButton: UIButton!
@@ -28,12 +28,9 @@ class DeviceRegisterBaseView: UIView {
 
     weak var delegate: DeviceRegisterBaseViewDelegate?
 
-    var datePicker = UIDatePicker()
-
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupComponent()
-        setupDatePicker()
         setupButtonAction()
     }
 
@@ -52,8 +49,9 @@ class DeviceRegisterBaseView: UIView {
             placeHolder: R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer()
         ))
 
-        cultivationStartDateTextField = KUITextField(props: KUITextFieldProps(
-            placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer()
+        cultivationStartDateTextField = KUIDropdownTextField(props: KUIDropDownTextFieldProps(
+            variant: .date,
+            textFieldProps: KUITextFieldProps(placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer())
         ))
 
         qrcodeReaderButton = UIButton(type: .system)
@@ -105,15 +103,6 @@ class DeviceRegisterBaseView: UIView {
 
         showQrcodeReaderViewConstraint = qrcodeReaderView.heightAnchor.constraint(equalToConstant: 240)
         hideQrcodeReaderViewConstraint = qrcodeReaderView.heightAnchor.constraint(equalToConstant: 0)
-    }
-
-    private func setupDatePicker() {
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .date
-        datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
-
-        cultivationStartDateTextField.inputView = datePicker
     }
 
     // MARK: - Action
