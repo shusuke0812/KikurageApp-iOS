@@ -28,9 +28,7 @@ extension TopAccessable {
     }
 
     func pushToDeviceRegister() {
-        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = DeviceRegisterViewController()
         push(to: vc)
     }
 
