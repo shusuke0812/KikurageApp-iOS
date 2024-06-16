@@ -65,6 +65,8 @@ public class KUILabelWithImage: UIView {
         stackView.spacing = 5
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        addSubview(stackView)
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
