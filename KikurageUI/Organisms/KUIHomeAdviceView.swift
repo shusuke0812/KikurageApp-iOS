@@ -1,5 +1,5 @@
 //
-//  HomeAdviceView.swift
+//  KUIHomeAdviceView.swift
 //  KikurageUI
 //
 //  Created by Shusuke Ota on 2024/6/16.
@@ -12,7 +12,7 @@ public struct KUIHomeAdviceViewProps {
     let title: String
     let description: String
     let image: UIImage?
-    
+
     public init(
         title: String,
         description: String,
@@ -32,11 +32,15 @@ public class KUIHomeAdviceView: UIView {
         super.init(frame: .zero)
         setupComponent(props: props)
     }
-    
+
     public required init?(coder: NSCoder) {
         nil
     }
-    
+
+    public func updateDescription(_ text: String) {
+        descriptionLabel.text = text
+    }
+
     private func setupComponent(props: KUIHomeAdviceViewProps) {
         headerView = KUILabelWithImage(props: KUILabelWithImageProps(
             variant: .imagePositionRight,
@@ -44,19 +48,19 @@ public class KUIHomeAdviceView: UIView {
             iamge: props.image
         ))
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         descriptionLabel.text = props.description
         descriptionLabel.font = .systemFont(ofSize: 15)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         addSubview(headerView)
         addSubview(descriptionLabel)
-        
+
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             headerView.leftAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-            
+
             descriptionLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
