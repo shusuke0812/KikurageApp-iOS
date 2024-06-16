@@ -198,6 +198,7 @@
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDB33B82C1EC05B00A8B2BE /* KUILabelWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */; };
+		9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
 		9CDE8BE12B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */; };
@@ -493,6 +494,7 @@
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUILabelWithImage.swift; sourceTree = "<group>"; };
+		9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIHomeAdviceView.swift; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
 		9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
@@ -1607,6 +1609,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		9CDB33B92C1ED0D000A8B2BE /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
+				9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */,
+			);
+			path = Organisms;
+			sourceTree = "<group>";
+		};
 		9CDE8BDF2B4574580078B318 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1848,6 +1858,7 @@
 			children = (
 				9CF03CF82C10A83800EC2F48 /* Atoms */,
 				9CC376192C1D94C80098DCD9 /* Molecules */,
+				9CDB33B92C1ED0D000A8B2BE /* Organisms */,
 				9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */,
 				9CF788E32C0F574200E0438B /* KikurageUI.h */,
 				9CC29EC02C12035C00353262 /* Assets.xcassets */,
@@ -2659,6 +2670,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
+				9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */,
 				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
