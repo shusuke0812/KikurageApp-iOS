@@ -10,7 +10,7 @@ import UIKit
 
 public struct KUIRoundedViewProps {
     let backgroundColor: UIColor?
-    
+
     public init(
         backgroundColor: UIColor? = .white
     ) {
@@ -23,11 +23,11 @@ public class KUIRoundedView: UIView {
         super.init(frame: .zero)
         setupComponent(props: props)
     }
-    
+
     public required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func setupComponent(props: KUIRoundedViewProps) {
         backgroundColor = props.backgroundColor
         clipsToBounds = true
