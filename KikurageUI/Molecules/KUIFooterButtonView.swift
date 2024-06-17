@@ -9,7 +9,7 @@
 import FontAwesome_swift
 import UIKit
 
-class KUIFooterButtonView: UIView {
+public class KUIFooterButtonView: UIView {
     static let iconSize = CGSize(width: 40, height: 40)
     static let backgroundColor = UIColor.white
     static let cornerRadius: CGFloat = .viewCornerRadius
@@ -53,21 +53,16 @@ class KUIFooterButtonView: UIView {
         return btn
     }()
 
-    override init(frame: CGRect) {
+    public init() {
         super.init(frame: frame)
-        initUI()
+        setupComponent()
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initUI()
+    public required init?(coder: NSCoder) {
+        nil
     }
-}
-
-// MARK: - Initialized
-
-extension KUIFooterButtonView {
-    private func initUI() {
+    
+    private func setupComponent() {
         stackView.addArrangedSubview(cultivationButton)
         stackView.addArrangedSubview(recipeButton)
         stackView.addArrangedSubview(communicationButton)

@@ -23,6 +23,7 @@
 		9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
+		9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
@@ -43,7 +44,6 @@
 		9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C7E58832776109B00A151C0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */; };
-		9C7E588527761AD400A151C0 /* KUIFooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */; };
 		9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */; };
 		9C81EA6F27B7E9D10028D027 /* PageObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */; };
 		9C81EA7227B7EE640028D027 /* TopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA7127B7EE640028D027 /* TopPage.swift */; };
@@ -1174,7 +1174,6 @@
 			children = (
 				9C0DCF932546F55800C27051 /* HomeAdviceView.swift */,
 				9C0DCF962546F58600C27051 /* HomeAdviceView.xib */,
-				9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -1583,6 +1582,7 @@
 			children = (
 				9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */,
 				9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */,
+				9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -2606,7 +2606,6 @@
 				9C8ED2D72801C2A2005527F8 /* FirestoreClient.swift in Sources */,
 				9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */,
 				9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */,
-				9C7E588527761AD400A151C0 /* KUIFooterButtonView.swift in Sources */,
 				9CE0184929B46CE600365E95 /* WiFiListBaseView.swift in Sources */,
 				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 				9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */,
@@ -2680,6 +2679,7 @@
 				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
 				9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */,
 				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
+				9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
