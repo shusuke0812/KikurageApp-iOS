@@ -1,5 +1,5 @@
 //
-//  Constant.swift
+//  Constants.swift
 //  KikurageUI
 //
 //  Created by Shusuke Ota on 2024/6/17.
