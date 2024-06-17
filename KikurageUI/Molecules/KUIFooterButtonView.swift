@@ -1,5 +1,5 @@
 //
-//  FooterButtonView.swift
+//  KUIFooterButtonView.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2021/12/25.
@@ -32,21 +32,21 @@ public class KUIFooterButtonView: UIView {
         return stackView
     }()
 
-    private(set) var cultivationButton: UIButton = {
+    public var cultivationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .leaf, style: .solid, textColor: Constants.Color.cultivation.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
 
-    private(set) var recipeButton: UIButton = {
+    public var recipeButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .utensils, style: .solid, textColor: Constants.Color.recipe.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
 
-    private(set) var communicationButton: UIButton = {
+    public var communicationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .handsHelping, style: .solid, textColor: Constants.Color.communication.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -54,14 +54,14 @@ public class KUIFooterButtonView: UIView {
     }()
 
     public init() {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         setupComponent()
     }
 
     public required init?(coder: NSCoder) {
         nil
     }
-    
+
     private func setupComponent() {
         stackView.addArrangedSubview(cultivationButton)
         stackView.addArrangedSubview(recipeButton)
