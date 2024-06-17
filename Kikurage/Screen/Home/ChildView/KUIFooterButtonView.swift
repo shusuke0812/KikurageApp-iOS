@@ -9,7 +9,7 @@
 import FontAwesome_swift
 import UIKit
 
-class FooterButtonView: UIView {
+class KUIFooterButtonView: UIView {
     static let iconSize = CGSize(width: 40, height: 40)
     static let backgroundColor = UIColor.white
     static let cornerRadius: CGFloat = .viewCornerRadius
@@ -66,7 +66,7 @@ class FooterButtonView: UIView {
 
 // MARK: - Initialized
 
-extension FooterButtonView {
+extension KUIFooterButtonView {
     private func initUI() {
         stackView.addArrangedSubview(cultivationButton)
         stackView.addArrangedSubview(recipeButton)
