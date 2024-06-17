@@ -15,7 +15,6 @@ def common_pods
   pod 'IQKeyboardManagerSwift'
   pod 'PKHUD', '~> 5.0'
   pod 'HorizonCalendar'
-  pod 'FontAwesome.swift'
   pod 'CropViewController'
   # Other
   pod 'RxSwift', '6.2.0'
@@ -44,6 +43,7 @@ end
 
 target 'KikurageUI' do
   #inherit! :search_paths
+  pod 'FontAwesome.swift'
   resource_pods
 end
 
