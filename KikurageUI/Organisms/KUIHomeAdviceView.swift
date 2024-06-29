@@ -25,6 +25,7 @@ public struct KUIHomeAdviceViewProps {
 }
 
 public class KUIHomeAdviceView: UIView {
+    private var contentView: KUIRoundedView!
     private var headerView: KUILabelWithImage!
     private var descriptionLabel: UILabel!
 
@@ -42,6 +43,9 @@ public class KUIHomeAdviceView: UIView {
     }
 
     private func setupComponent(props: KUIHomeAdviceViewProps) {
+        contentView = KUIRoundedView(props: KUIRoundedViewProps())
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
         headerView = KUILabelWithImage(props: KUILabelWithImageProps(
             variant: .imagePositionRight,
             title: props.title,
@@ -53,18 +57,24 @@ public class KUIHomeAdviceView: UIView {
         descriptionLabel.font = .systemFont(ofSize: 15)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        addSubview(headerView)
-        addSubview(descriptionLabel)
+        contentView.addSubview(headerView)
+        contentView.addSubview(descriptionLabel)
+        addSubview(contentView)
 
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            headerView.leftAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            headerView.leftAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
 
             descriptionLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
     }
 }
