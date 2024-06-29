@@ -225,6 +225,7 @@
 		9CE580E129C1F58A006D83E7 /* KikurageBluetoothParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */; };
 		9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */; };
 		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
@@ -522,6 +523,7 @@
 		9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothParser.swift; sourceTree = "<group>"; };
 		9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFi.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDividerView.swift; sourceTree = "<group>"; };
 		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
@@ -1850,6 +1852,7 @@
 				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
 				9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */,
 				9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */,
+				9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -2676,6 +2679,7 @@
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
 				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
+				9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */,
 				9CDB33B82C1EC05B00A8B2BE /* KUILabelWithImage.swift in Sources */,
