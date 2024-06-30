@@ -19,7 +19,7 @@ public struct KUIRoundedViewProps {
 }
 
 public class KUIRoundedView: UIView {
-    public init(props: KUIRoundedViewProps) {
+    public init(props: KUIRoundedViewProps = KUIRoundedViewProps()) {
         super.init(frame: .zero)
         setupComponent(props: props)
     }
