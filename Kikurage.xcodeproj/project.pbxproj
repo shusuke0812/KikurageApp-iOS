@@ -232,6 +232,8 @@
 		9CF4F0BC2C42BFCC004DEBDE /* KikurageData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; };
 		9CF4F0BD2C42BFCC004DEBDE /* KikurageData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF4F0C52C42C017004DEBDE /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4F0C42C42C017004DEBDE /* KikurageState.swift */; };
+		9CF4F0C62C42CCB5004DEBDE /* KikurageData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; };
+		9CF4F0C72C42CCB5004DEBDE /* KikurageData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 		9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF788E32C0F574200E0438B /* KikurageUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -275,6 +277,13 @@
 			remoteGlobalIDString = 9CF4F0B52C42BFCC004DEBDE;
 			remoteInfo = KikurageData;
 		};
+		9CF4F0C82C42CCB5004DEBDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C1ACF3F2225768A00A3D4D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF4F0B52C42BFCC004DEBDE;
+			remoteInfo = KikurageData;
+		};
 		9CF788E52C0F574200E0438B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9C1ACF3F2225768A00A3D4D1 /* Project object */;
@@ -294,6 +303,17 @@
 				9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */,
 				9CF4F0BD2C42BFCC004DEBDE /* KikurageData.framework in Embed Frameworks */,
 				9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF4F0CA2C42CCB5004DEBDE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9CF4F0C72C42CCB5004DEBDE /* KikurageData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */,
+				9CF4F0C62C42CCB5004DEBDE /* KikurageData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2152,10 +2173,12 @@
 				9CF788DD2C0F574100E0438B /* Sources */,
 				9CF788DE2C0F574100E0438B /* Frameworks */,
 				9CF788DF2C0F574100E0438B /* Resources */,
+				9CF4F0CA2C42CCB5004DEBDE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9CF4F0C92C42CCB5004DEBDE /* PBXTargetDependency */,
 			);
 			name = KikurageUI;
 			productName = KikurageUI;
@@ -2851,6 +2874,11 @@
 			isa = PBXTargetDependency;
 			target = 9CF4F0B52C42BFCC004DEBDE /* KikurageData */;
 			targetProxy = 9CF4F0BA2C42BFCC004DEBDE /* PBXContainerItemProxy */;
+		};
+		9CF4F0C92C42CCB5004DEBDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF4F0B52C42BFCC004DEBDE /* KikurageData */;
+			targetProxy = 9CF4F0C82C42CCB5004DEBDE /* PBXContainerItemProxy */;
 		};
 		9CF788E62C0F574200E0438B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
