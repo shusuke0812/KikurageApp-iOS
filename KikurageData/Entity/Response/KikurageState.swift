@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct KikurageState: Codable {
+public struct KikurageState: Codable {
     var temperature: Int?
     var humidity: Int?
     var message: String?
     var typeString: String? // dry, normal, hot
     var advice: String?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case temperature
         case humidity
         case message
@@ -23,7 +23,7 @@ struct KikurageState: Codable {
         case advice
     }
 
-    var type: KikurageStateType? {
+    public var type: KikurageStateType? {
         if typeString == KikurageStateType.normal.rawValue {
             return .normal
         } else if typeString == KikurageStateType.wet.rawValue {
@@ -36,7 +36,7 @@ struct KikurageState: Codable {
     }
 }
 
-enum KikurageStateType: String, Codable {
+public enum KikurageStateType: String, Codable {
     case normal
     case wet
     case dry
