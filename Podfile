@@ -47,6 +47,10 @@ target 'KikurageUI' do
   resource_pods
 end
 
+target 'KikurageData' do
+  #inherit! :search_paths
+end
+
 target 'KikurageTests' do
   #inherit! :search_paths
   common_pods
