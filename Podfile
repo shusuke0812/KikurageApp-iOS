@@ -47,7 +47,7 @@ target 'KikurageUI' do
   resource_pods
 end
 
-target 'KikurageData' do
+target 'KikurageDomain' do
   #inherit! :search_paths
 end
 

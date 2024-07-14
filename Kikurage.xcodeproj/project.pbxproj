@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */; };
 		1EC0D13DCD5BB81B9696898D /* Pods_KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */; };
+		391D46B4E85C3365ACFFC532 /* Pods_KikurageDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */; };
 		3D1BBFFA2EA0467A40E1EA88 /* Pods_KikurageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */; };
 		46D472BB8A619D6135A18436 /* Pods_KikurageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
@@ -228,12 +229,12 @@
 		9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */; };
 		9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */; };
 		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
-		9CF4F0B92C42BFCC004DEBDE /* KikurageData.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF4F0B82C42BFCC004DEBDE /* KikurageData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CF4F0BC2C42BFCC004DEBDE /* KikurageData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; };
-		9CF4F0BD2C42BFCC004DEBDE /* KikurageData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9CF4F0B92C42BFCC004DEBDE /* KikurageDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF4F0B82C42BFCC004DEBDE /* KikurageDomain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9CF4F0BC2C42BFCC004DEBDE /* KikurageDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */; };
+		9CF4F0BD2C42BFCC004DEBDE /* KikurageDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF4F0C52C42C017004DEBDE /* KikurageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4F0C42C42C017004DEBDE /* KikurageState.swift */; };
-		9CF4F0C62C42CCB5004DEBDE /* KikurageData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; };
-		9CF4F0C72C42CCB5004DEBDE /* KikurageData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9CF4F0C62C42CCB5004DEBDE /* KikurageDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */; };
+		9CF4F0C72C42CCB5004DEBDE /* KikurageDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 		9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF788E32C0F574200E0438B /* KikurageUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -245,7 +246,6 @@
 		9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */; };
 		9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
-		BD4D623E65AC2176817E20DB /* Pods_KikurageData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080D77307B475EAF7C1DA769 /* Pods_KikurageData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,7 +301,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */,
-				9CF4F0BD2C42BFCC004DEBDE /* KikurageData.framework in Embed Frameworks */,
+				9CF4F0BD2C42BFCC004DEBDE /* KikurageDomain.framework in Embed Frameworks */,
 				9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -313,7 +313,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9CF4F0C72C42CCB5004DEBDE /* KikurageData.framework in Embed Frameworks */,
+				9CF4F0C72C42CCB5004DEBDE /* KikurageDomain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +326,7 @@
 		1E140392E0F98C3B27D3E33E /* Pods-KikurageFeature.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.debug.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.debug.xcconfig"; sourceTree = "<group>"; };
 		20A222AA8447C19CE80FDC6B /* Pods-KikurageUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.production.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.production.xcconfig"; sourceTree = "<group>"; };
 		24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3475EE07E03DA48A65166170 /* Pods-KikurageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.debug.xcconfig"; sourceTree = "<group>"; };
 		3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.debug.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.debug.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 		85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.production.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.production.xcconfig"; sourceTree = "<group>"; };
 		86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.staging.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.staging.xcconfig"; sourceTree = "<group>"; };
 		886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.production.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.production.xcconfig"; sourceTree = "<group>"; };
+		8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.debug.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.debug.xcconfig"; sourceTree = "<group>"; };
 		8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -564,8 +566,8 @@
 		9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDividerView.swift; sourceTree = "<group>"; };
 		9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusListView.swift; sourceTree = "<group>"; };
 		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
-		9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CF4F0B82C42BFCC004DEBDE /* KikurageData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageData.h; sourceTree = "<group>"; };
+		9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF4F0B82C42BFCC004DEBDE /* KikurageDomain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageDomain.h; sourceTree = "<group>"; };
 		9CF4F0C42C42C017004DEBDE /* KikurageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageState.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
@@ -579,9 +581,11 @@
 		9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.staging.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.staging.xcconfig"; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.production.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.production.xcconfig"; sourceTree = "<group>"; };
 		C2B15B86CDC574E80B6D91CC /* Pods-KikurageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C861E00ACE4D9774215A3728 /* Pods-KikurageFeature.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.staging.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.staging.xcconfig"; sourceTree = "<group>"; };
 		D514314A151EB43465955FA2 /* Pods-KikurageTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.production.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.production.xcconfig"; sourceTree = "<group>"; };
+		E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.staging.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.staging.xcconfig"; sourceTree = "<group>"; };
 		F64405252FCD1BFF9274507A /* Pods-kikurageApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.debug.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -591,7 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
-				9CF4F0BC2C42BFCC004DEBDE /* KikurageData.framework in Frameworks */,
+				9CF4F0BC2C42BFCC004DEBDE /* KikurageDomain.framework in Frameworks */,
 				9CF788E72C0F574200E0438B /* KikurageUI.framework in Frameworks */,
 				A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */,
 				9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */,
@@ -626,7 +630,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD4D623E65AC2176817E20DB /* Pods_KikurageData.framework in Frameworks */,
+				391D46B4E85C3365ACFFC532 /* Pods_KikurageDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,7 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */,
-				9CF4F0C62C42CCB5004DEBDE /* KikurageData.framework in Frameworks */,
+				9CF4F0C62C42CCB5004DEBDE /* KikurageDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +670,9 @@
 				3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */,
 				9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */,
 				886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */,
+				8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */,
+				E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */,
+				BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -680,6 +687,7 @@
 				8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */,
 				914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */,
 				080D77307B475EAF7C1DA769 /* Pods_KikurageData.framework */,
+				2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -692,7 +700,7 @@
 				9C1ACF492225768A00A3D4D1 /* Kikurage */,
 				9CAC930E2789E4E50033DA33 /* KikurageFeature */,
 				9CF788E22C0F574200E0438B /* KikurageUI */,
-				9CF4F0B72C42BFCC004DEBDE /* KikurageData */,
+				9CF4F0B72C42BFCC004DEBDE /* KikurageDomain */,
 				9C96F7022768E97300C2E778 /* KikurageTests */,
 				9C9145C527B1E77C0051BE1F /* KikurageUITests */,
 				9C1ACF482225768A00A3D4D1 /* Products */,
@@ -709,7 +717,7 @@
 				9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */,
 				9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */,
 				9CF788E12C0F574100E0438B /* KikurageUI.framework */,
-				9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */,
+				9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1919,13 +1927,13 @@
 			path = Atoms;
 			sourceTree = "<group>";
 		};
-		9CF4F0B72C42BFCC004DEBDE /* KikurageData */ = {
+		9CF4F0B72C42BFCC004DEBDE /* KikurageDomain */ = {
 			isa = PBXGroup;
 			children = (
 				9CF4F0C22C42BFEB004DEBDE /* Entity */,
-				9CF4F0B82C42BFCC004DEBDE /* KikurageData.h */,
+				9CF4F0B82C42BFCC004DEBDE /* KikurageDomain.h */,
 			);
-			path = KikurageData;
+			path = KikurageDomain;
 			sourceTree = "<group>";
 		};
 		9CF4F0C22C42BFEB004DEBDE /* Entity */ = {
@@ -2042,7 +2050,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF4F0B92C42BFCC004DEBDE /* KikurageData.h in Headers */,
+				9CF4F0B92C42BFCC004DEBDE /* KikurageDomain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2144,9 +2152,9 @@
 			productReference = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9CF4F0B52C42BFCC004DEBDE /* KikurageData */ = {
+		9CF4F0B52C42BFCC004DEBDE /* KikurageDomain */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CF4F0C12C42BFCC004DEBDE /* Build configuration list for PBXNativeTarget "KikurageData" */;
+			buildConfigurationList = 9CF4F0C12C42BFCC004DEBDE /* Build configuration list for PBXNativeTarget "KikurageDomain" */;
 			buildPhases = (
 				B94E880EA406D1F662C10A85 /* [CP] Check Pods Manifest.lock */,
 				9CF4F0B12C42BFCC004DEBDE /* Headers */,
@@ -2158,9 +2166,9 @@
 			);
 			dependencies = (
 			);
-			name = KikurageData;
+			name = KikurageDomain;
 			productName = KikurageData;
-			productReference = 9CF4F0B62C42BFCC004DEBDE /* KikurageData.framework */;
+			productReference = 9CF4F0B62C42BFCC004DEBDE /* KikurageDomain.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9CF788E02C0F574100E0438B /* KikurageUI */ = {
@@ -2236,7 +2244,7 @@
 				9C1ACF462225768A00A3D4D1 /* Kikurage */,
 				9CAC930C2789E4E50033DA33 /* KikurageFeature */,
 				9CF788E02C0F574100E0438B /* KikurageUI */,
-				9CF4F0B52C42BFCC004DEBDE /* KikurageData */,
+				9CF4F0B52C42BFCC004DEBDE /* KikurageDomain */,
 				9C96F7002768E97300C2E778 /* KikurageTests */,
 				9C9145C327B1E77B0051BE1F /* KikurageUITests */,
 			);
@@ -2473,7 +2481,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2568,7 +2576,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KikurageData-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-KikurageDomain-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2872,12 +2880,12 @@
 		};
 		9CF4F0BB2C42BFCC004DEBDE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CF4F0B52C42BFCC004DEBDE /* KikurageData */;
+			target = 9CF4F0B52C42BFCC004DEBDE /* KikurageDomain */;
 			targetProxy = 9CF4F0BA2C42BFCC004DEBDE /* PBXContainerItemProxy */;
 		};
 		9CF4F0C92C42CCB5004DEBDE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CF4F0B52C42BFCC004DEBDE /* KikurageData */;
+			target = 9CF4F0B52C42BFCC004DEBDE /* KikurageDomain */;
 			targetProxy = 9CF4F0C82C42CCB5004DEBDE /* PBXContainerItemProxy */;
 		};
 		9CF788E62C0F574200E0438B /* PBXTargetDependency */ = {
@@ -3743,7 +3751,7 @@
 		};
 		9CF4F0BE2C42BFCC004DEBDE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */;
+			baseConfigurationReference = 8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -3787,7 +3795,7 @@
 		};
 		9CF4F0BF2C42BFCC004DEBDE /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */;
+			baseConfigurationReference = E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -3872,7 +3880,7 @@
 		};
 		9CF4F0C02C42BFCC004DEBDE /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */;
+			baseConfigurationReference = BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -4220,7 +4228,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;
 		};
-		9CF4F0C12C42BFCC004DEBDE /* Build configuration list for PBXNativeTarget "KikurageData" */ = {
+		9CF4F0C12C42BFCC004DEBDE /* Build configuration list for PBXNativeTarget "KikurageDomain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CF4F0BE2C42BFCC004DEBDE /* Debug */,
