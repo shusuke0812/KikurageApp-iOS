@@ -32,7 +32,7 @@ public class KUIDeviceStatusListView: UIView {
         temperature = props.temperature
         humidity = props.humidity
         super.init(frame: .zero)
-        
+
         setupComponent(props: props)
     }
 
@@ -60,39 +60,39 @@ public class KUIDeviceStatusListView: UIView {
 
         let bottomDivider = KUIDividerView()
         bottomDivider.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let contentView = KUIRoundedView(props: KUIRoundedViewProps())
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         contentView.addSubview(columnStackView)
         contentView.addSubview(columnTemperatureStackView)
         contentView.addSubview(columnHumidityStackView)
         contentView.addSubview(topDivider)
         contentView.addSubview(bottomDivider)
         addSubview(contentView)
-        
+
         NSLayoutConstraint.activate([
             // Content
             contentView.topAnchor.constraint(equalTo: topAnchor),
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
+
             // Parts
             topDivider.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             topDivider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             topDivider.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            
+
             columnStackView.topAnchor.constraint(equalTo: topDivider.bottomAnchor, constant: 8),
             columnStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             columnStackView.trailingAnchor.constraint(equalTo: columnTemperatureStackView.leadingAnchor, constant: -50),
             columnStackView.bottomAnchor.constraint(equalTo: bottomDivider.topAnchor, constant: -8),
-            
+
             columnTemperatureStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             columnTemperatureStackView.trailingAnchor.constraint(equalTo: columnHumidityStackView.leadingAnchor, constant: -50),
-            
+
             columnHumidityStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            
+
             bottomDivider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             bottomDivider.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             bottomDivider.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),

@@ -6,35 +6,31 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 class HomeBaseView: UIView {
-    @IBOutlet private weak var kikurageNameLabel: UILabel!
-    @IBOutlet private weak var kikurageStatusLabel: UILabel!
+    private var nameLabel: UILabel!
+    private var statusLabel: UILabel!
 
-    @IBOutlet private weak var kikurageStatusParentView: UIView!
-    @IBOutlet private weak var kikurageStatusImageView: UIImageView!
-    @IBOutlet private weak var nowTimeLabel: UILabel!
+    private var statusParentView: UIView!
+    private var statusImageView: KUIDeviceStatusImageView!
+    private var nowTimeLabel: UILabel!
 
-    @IBOutlet private weak var valueParentView: UIView!
-    @IBOutlet private weak var temperatureTitleLabel: UILabel!
-    @IBOutlet private weak var temparatureTextLabel: UILabel!
-    @IBOutlet private weak var humidityTitleLabel: UILabel!
-    @IBOutlet private weak var humidityTextLabel: UILabel!
-    @IBOutlet private weak var nowValueTitleLabel: UILabel!
-    @IBOutlet private weak var expectedValueTitleLabel: UILabel!
-    @IBOutlet private weak var expectedTemperatureLabel: UILabel!
-    @IBOutlet private weak var expectedHumidityLabel: UILabel!
+    private var statusListView: KUIDeviceStatusListView!
+    private var homeAdviceView: KUIHomeAdviceView!
+    private(set) var footerButtonView: KUIFooterButtonView!
 
-    @IBOutlet private weak var kikurageAdviceView: HomeAdviceView!
-    @IBOutlet private(set) weak var footerButtonView: FooterButtonView!
+    private var stateEmptyView: UIView!
 
-    private var kikurageStateEmptyView: UIView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         initUI()
         initFailedUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -44,30 +40,27 @@ extension HomeBaseView {
     private func initUI() {
         backgroundColor = .systemGroupedBackground
 
+        nowTimeLabel = UILabel()
         nowTimeLabel.text = DateHelper.now()
-        kikurageNameLabel.text = ""
-        kikurageStatusLabel.text = ""
 
-        kikurageStatusParentView.clipsToBounds = true
-        kikurageStatusParentView.layer.cornerRadius = .viewCornerRadius
+        nameLabel = UILabel()
+        nameLabel.text = ""
 
-        valueParentView.backgroundColor = .systemGroupedBackground
-        nowValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_now_title()
-        expectedValueTitleLabel.text = R.string.localizable.screen_home_temperature_humidity_expected_title()
+        statusLabel = UILabel()
+        statusLabel.text = ""
 
-        temperatureTitleLabel.text = R.string.localizable.screen_home_temperature_title()
-        temparatureTextLabel.text = "-"
-        expectedTemperatureLabel.text = "20-25°C"
+        statusParentView = UIView()
+        statusParentView.clipsToBounds = true
+        statusParentView.layer.cornerRadius = .viewCornerRadius
 
-        humidityTitleLabel.text = R.string.localizable.screen_home_humidity_title()
-        humidityTextLabel.text = "-"
-        expectedHumidityLabel.text = "80% " + R.string.localizable.screen_home_humidity_expected_suffix()
+        statusListView = KUIDeviceStatusListView(props: KUIDeviceStatusListViewProps(temperature: 0, humidity: 0))
+        statusListView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private func initFailedUI() {
-        kikurageStateEmptyView = UIView()
-        kikurageStateEmptyView.backgroundColor = .white
-        kikurageStateEmptyView.translatesAutoresizingMaskIntoConstraints = false
+        stateEmptyView = UIView()
+        stateEmptyView.backgroundColor = .white
+        stateEmptyView.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
         label.text = R.string.localizable.common_read_error()
@@ -76,11 +69,11 @@ extension HomeBaseView {
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
 
-        kikurageStateEmptyView.addSubview(label)
+        stateEmptyView.addSubview(label)
 
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: kikurageStateEmptyView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: kikurageStateEmptyView.centerYAnchor)
+            label.centerXAnchor.constraint(equalTo: stateEmptyView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: stateEmptyView.centerYAnchor)
         ])
     }
 }
@@ -89,20 +82,19 @@ extension HomeBaseView {
 
 extension HomeBaseView {
     func setKikurageStateUI(kikurageState: KikurageState?) {
-        if let message: String = kikurageState?.message {
-            kikurageStatusLabel.text = message
+        if let message = kikurageState?.message {
+            statusLabel.text = message
         }
         if let type: KikurageStateType = kikurageState?.type {
             displayKikurageStateImage(type: type)
         } else {
             displayFailedKikurageStateImage()
         }
-        if let temparature: Int = kikurageState?.temperature, let humidity: Int = kikurageState?.humidity {
-            temparatureTextLabel.text = "\(temparature)"
-            humidityTextLabel.text = "\(humidity)"
+        if let temparature = kikurageState?.temperature, let humidity = kikurageState?.humidity {
+            statusListView.updateStatus(temperature: temparature, humidity: humidity)
         }
-        if let advice: String = kikurageState?.advice {
-            kikurageAdviceView.setAdviceContentLabel(advice)
+        if let advice = kikurageState?.advice {
+            homeAdviceView.updateDescription(advice)
         }
         #if PRODUCTION
             nowTimeLabel.isHidden = true
@@ -110,8 +102,8 @@ extension HomeBaseView {
     }
 
     func setKikurageNameUI(kikurageUser: KikurageUser?) {
-        if let name: String = kikurageUser?.kikurageName {
-            kikurageNameLabel.text = R.string.localizable.screen_home_kikurage_name(name)
+        if let name = kikurageUser?.kikurageName {
+            nameLabel.text = R.string.localizable.screen_home_kikurage_name(name)
         }
     }
 
@@ -120,23 +112,19 @@ extension HomeBaseView {
     }
 
     private func displayKikurageStateImage(type: KikurageStateType) {
-        kikurageStateEmptyView.removeFromSuperview()
+        stateEmptyView.removeFromSuperview()
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        kikurageStatusImageView.animationImages = KikurageStateHelper.setStateImage(type: type)
-        kikurageStatusImageView.animationDuration = 1
-        kikurageStatusImageView.animationRepeatCount = 0
-        kikurageStatusImageView.startAnimating()
+        statusImageView.runAnimation(images: KikurageStateHelper.setStateImage(type: type))
     }
 
     private func displayFailedKikurageStateImage() {
-        kikurageStatusImageView.addSubview(kikurageStateEmptyView)
-        kikurageStatusImageView.image = nil
+        statusImageView.addSubview(stateEmptyView)
 
         NSLayoutConstraint.activate([
-            kikurageStateEmptyView.topAnchor.constraint(equalTo: kikurageStatusImageView.topAnchor),
-            kikurageStateEmptyView.leadingAnchor.constraint(equalTo: kikurageStatusImageView.leadingAnchor),
-            kikurageStateEmptyView.trailingAnchor.constraint(equalTo: kikurageStatusImageView.trailingAnchor),
-            kikurageStateEmptyView.bottomAnchor.constraint(equalTo: kikurageStatusImageView.bottomAnchor)
+            stateEmptyView.topAnchor.constraint(equalTo: statusImageView.topAnchor),
+            stateEmptyView.leadingAnchor.constraint(equalTo: statusImageView.leadingAnchor),
+            stateEmptyView.trailingAnchor.constraint(equalTo: statusImageView.trailingAnchor),
+            stateEmptyView.bottomAnchor.constraint(equalTo: statusImageView.bottomAnchor)
         ])
     }
 }
@@ -145,6 +133,6 @@ extension HomeBaseView {
 
 extension HomeBaseView {
     func kikurageStatusViewAnimation(_ animation: Bool) {
-        (animation == true) ? kikurageStatusImageView.startAnimating() : kikurageStatusImageView.stopAnimating()
+        (animation == true) ? statusImageView.startAnimating() : statusImageView.stopAnimating()
     }
 }
