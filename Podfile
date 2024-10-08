@@ -20,7 +20,7 @@ def common_pods
   # Other
   pod 'R.swift'
   pod 'RxSwift', '6.2.0'
-  pod 'RxCocoa', '6.2.0'
+  pod 'RxCocoa', '6.8.0'
   pod 'SDWebImage'
 end
 
