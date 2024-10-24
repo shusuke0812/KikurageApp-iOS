@@ -15,13 +15,13 @@ class HomeBaseView: UIView {
 
     private var statusParentView: UIView!
     private var statusImageView: KUIDeviceStatusImageView!
+    private var statusEmptyView: UIView!
     private var nowTimeLabel: UILabel!
 
     private var statusListView: KUIDeviceStatusListView!
     private var homeAdviceView: KUIHomeAdviceView!
+    
     private(set) var footerButtonView: KUIFooterButtonView!
-
-    private var stateEmptyView: UIView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,9 +58,9 @@ extension HomeBaseView {
     }
 
     private func initFailedUI() {
-        stateEmptyView = UIView()
-        stateEmptyView.backgroundColor = .white
-        stateEmptyView.translatesAutoresizingMaskIntoConstraints = false
+        statusEmptyView = UIView()
+        statusEmptyView.backgroundColor = .white
+        statusEmptyView.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
         label.text = R.string.localizable.common_read_error()
@@ -69,11 +69,11 @@ extension HomeBaseView {
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
 
-        stateEmptyView.addSubview(label)
+        statusEmptyView.addSubview(label)
 
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: stateEmptyView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: stateEmptyView.centerYAnchor)
+            label.centerXAnchor.constraint(equalTo: statusEmptyView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: statusEmptyView.centerYAnchor)
         ])
     }
 }
@@ -112,19 +112,19 @@ extension HomeBaseView {
     }
 
     private func displayKikurageStateImage(type: KikurageStateType) {
-        stateEmptyView.removeFromSuperview()
+        statusEmptyView.removeFromSuperview()
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
         statusImageView.runAnimation(images: KikurageStateHelper.setStateImage(type: type))
     }
 
     private func displayFailedKikurageStateImage() {
-        statusImageView.addSubview(stateEmptyView)
+        statusImageView.addSubview(statusEmptyView)
 
         NSLayoutConstraint.activate([
-            stateEmptyView.topAnchor.constraint(equalTo: statusImageView.topAnchor),
-            stateEmptyView.leadingAnchor.constraint(equalTo: statusImageView.leadingAnchor),
-            stateEmptyView.trailingAnchor.constraint(equalTo: statusImageView.trailingAnchor),
-            stateEmptyView.bottomAnchor.constraint(equalTo: statusImageView.bottomAnchor)
+            statusEmptyView.topAnchor.constraint(equalTo: statusImageView.topAnchor),
+            statusEmptyView.leadingAnchor.constraint(equalTo: statusImageView.leadingAnchor),
+            statusEmptyView.trailingAnchor.constraint(equalTo: statusImageView.trailingAnchor),
+            statusEmptyView.bottomAnchor.constraint(equalTo: statusImageView.bottomAnchor)
         ])
     }
 }
