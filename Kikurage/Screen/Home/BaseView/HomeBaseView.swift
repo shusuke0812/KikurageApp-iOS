@@ -13,20 +13,20 @@ class HomeBaseView: UIView {
     private var nameLabel: UILabel!
     private var statusLabel: UILabel!
 
-    private var statusParentView: UIView!
+    private var statusImageParentView: UIView!
     private var statusImageView: KUIDeviceStatusImageView!
     private var statusEmptyView: UIView!
     private var nowTimeLabel: UILabel!
 
     private var statusListView: KUIDeviceStatusListView!
     private var homeAdviceView: KUIHomeAdviceView!
-    
+
     private(set) var footerButtonView: KUIFooterButtonView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initUI()
-        initFailedUI()
+        setupComponent()
+        setupErrorComponent()
     }
 
     required init?(coder: NSCoder) {
@@ -37,27 +37,97 @@ class HomeBaseView: UIView {
 // MARK: - Initialized
 
 extension HomeBaseView {
-    private func initUI() {
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
+
+        // Header
+        nameLabel = UILabel()
+        nameLabel.text = "-"
+        nameLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        statusLabel = UILabel()
+        statusLabel.text = "-"
+        statusLabel.font = .systemFont(ofSize: 20)
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        // Status image
+        statusImageParentView = UIView()
+        statusImageParentView.clipsToBounds = true
+        statusImageParentView.layer.cornerRadius = .viewCornerRadius
+        statusImageParentView.translatesAutoresizingMaskIntoConstraints = false
+
+        statusImageView = KUIDeviceStatusImageView()
+        statusImageView.translatesAutoresizingMaskIntoConstraints = false
 
         nowTimeLabel = UILabel()
         nowTimeLabel.text = DateHelper.now()
+        nowTimeLabel.font = .systemFont(ofSize: 11)
+        nowTimeLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        nameLabel = UILabel()
-        nameLabel.text = ""
-
-        statusLabel = UILabel()
-        statusLabel.text = ""
-
-        statusParentView = UIView()
-        statusParentView.clipsToBounds = true
-        statusParentView.layer.cornerRadius = .viewCornerRadius
-
-        statusListView = KUIDeviceStatusListView(props: KUIDeviceStatusListViewProps(temperature: 0, humidity: 0))
+        // Status list
+        statusListView = KUIDeviceStatusListView(props: KUIDeviceStatusListViewProps(
+            temperature: 0, humidity: 0
+        ))
         statusListView.translatesAutoresizingMaskIntoConstraints = false
+
+        // Advice
+        homeAdviceView = KUIHomeAdviceView(props: KUIHomeAdviceViewProps(title: "-", description: "-"))
+        homeAdviceView.translatesAutoresizingMaskIntoConstraints = false
+
+        // Footer
+        footerButtonView = KUIFooterButtonView()
+        footerButtonView.translatesAutoresizingMaskIntoConstraints = false
+
+        statusImageParentView.addSubview(statusImageView)
+        statusImageParentView.addSubview(nowTimeLabel)
+
+        addSubview(nameLabel)
+        addSubview(statusLabel)
+        addSubview(statusImageParentView)
+        addSubview(statusListView)
+        addSubview(homeAdviceView)
+        addSubview(footerButtonView)
+
+        NSLayoutConstraint.activate([
+            statusImageView.topAnchor.constraint(equalTo: statusImageParentView.topAnchor),
+            statusImageView.leadingAnchor.constraint(equalTo: statusImageParentView.leadingAnchor),
+            statusImageView.trailingAnchor.constraint(equalTo: statusImageParentView.trailingAnchor),
+            statusImageView.bottomAnchor.constraint(equalTo: statusImageParentView.bottomAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            statusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+
+            statusImageParentView.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 15),
+            statusImageParentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            statusImageParentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            statusImageParentView.heightAnchor.constraint(equalTo: statusImageParentView.widthAnchor, multiplier: 9.0 / 16.0),
+
+            statusListView.heightAnchor.constraint(equalToConstant: 100),
+            statusListView.topAnchor.constraint(equalTo: statusImageParentView.bottomAnchor, constant: 15),
+            statusListView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            statusListView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            homeAdviceView.topAnchor.constraint(equalTo: statusListView.bottomAnchor, constant: 15),
+            homeAdviceView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            homeAdviceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            footerButtonView.heightAnchor.constraint(equalToConstant: 50),
+            footerButtonView.topAnchor.constraint(equalTo: homeAdviceView.bottomAnchor, constant: 15),
+            footerButtonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            footerButtonView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            footerButtonView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
     }
 
-    private func initFailedUI() {
+    private func setupErrorComponent() {
         statusEmptyView = UIView()
         statusEmptyView.backgroundColor = .white
         statusEmptyView.translatesAutoresizingMaskIntoConstraints = false
