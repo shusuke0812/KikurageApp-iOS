@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '14.0'
 use_frameworks!
 
 def common_pods
@@ -45,10 +45,6 @@ target 'KikurageUI' do
   #inherit! :search_paths
   pod 'FontAwesome.swift'
   resource_pods
-end
-
-target 'KikurageDomain' do
-  #inherit! :search_paths
 end
 
 target 'KikurageTests' do
