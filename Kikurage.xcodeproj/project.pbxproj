@@ -14,8 +14,6 @@
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
-		9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* HomeAdviceView.swift */; };
-		9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* HomeAdviceView.xib */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
@@ -322,8 +320,6 @@
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		9C0DCF932546F55800C27051 /* HomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdviceView.swift; sourceTree = "<group>"; };
-		9C0DCF962546F58600C27051 /* HomeAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAdviceView.xib; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1006,7 +1002,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA20446271C778700D65DD7 /* BaseView */,
-				9CA20456271C78CA00D65DD7 /* ChildView */,
 				9CA2045D271C7A4900D65DD7 /* ViewController */,
 				9CA20467271C7B9E00D65DD7 /* ViewModel */,
 			);
@@ -1199,15 +1194,6 @@
 				9C91125025B68F2E007BCECB /* CalendarBaseView.swift */,
 			);
 			path = BaseView;
-			sourceTree = "<group>";
-		};
-		9CA20456271C78CA00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9C0DCF932546F55800C27051 /* HomeAdviceView.swift */,
-				9C0DCF962546F58600C27051 /* HomeAdviceView.xib */,
-			);
-			path = ChildView;
 			sourceTree = "<group>";
 		};
 		9CA20457271C790B00D65DD7 /* ChildView */ = {
@@ -2173,7 +2159,6 @@
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
-				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
 				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
@@ -2541,7 +2526,6 @@
 				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
-				9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */,
 				9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
