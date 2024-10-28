@@ -10,7 +10,7 @@ import KikurageFeature
 import RxSwift
 import UIKit
 
-class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
+class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAccessable {
     private var baseView: HomeBaseView = .init()
     private var viewModel: HomeViewModelType!
 
@@ -153,12 +153,7 @@ extension HomeViewController {
         sideMenuBarButtonItem.rx.tap.asDriver()
             .drive(
                 onNext: { [weak self] in
-                    guard let vc = R.storyboard.sideMenuViewController.instantiateInitialViewController() else {
-                        return
-                    }
-                    vc.modalPresentationStyle = .overCurrentContext
-                    vc.modalTransitionStyle = .crossDissolve
-                    self?.present(vc, animated: true)
+                    self?.modalToSideMenu()
                 }
             )
             .disposed(by: disposeBag)

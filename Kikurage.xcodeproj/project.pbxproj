@@ -14,6 +14,7 @@
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
+		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
@@ -320,6 +321,7 @@
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Home.swift"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1806,6 +1808,7 @@
 				9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */,
 				9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */,
 				9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */,
+				9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */,
 				9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */,
 				9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */,
 				9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */,
@@ -2505,6 +2508,7 @@
 				9C96997D2566118C00D655DA /* DateHelper.swift in Sources */,
 				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */,
+				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
 				9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */,
 				9CE0185129B46D7700365E95 /* WiFiSettingViewController.swift in Sources */,
