@@ -11,10 +11,12 @@ import UIKit
 public struct KUIDeviceStatusListViewProps {
     let temperature: Int
     let humidity: Int
+    let backgroundColor: UIColor?
 
-    public init(temperature: Int, humidity: Int) {
+    public init(temperature: Int, humidity: Int, backgroundColor: UIColor?) {
         self.temperature = temperature
         self.humidity = humidity
+        self.backgroundColor = backgroundColor
     }
 }
 
@@ -46,6 +48,8 @@ public class KUIDeviceStatusListView: UIView {
     }
 
     private func setupComponent(props: KUIDeviceStatusListViewProps) {
+        backgroundColor = props.backgroundColor
+
         let columnStackView = createColumnView()
         columnStackView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -62,6 +66,7 @@ public class KUIDeviceStatusListView: UIView {
         bottomDivider.translatesAutoresizingMaskIntoConstraints = false
 
         let contentView = KUIRoundedView(props: KUIRoundedViewProps())
+        contentView.backgroundColor = props.backgroundColor
         contentView.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(columnStackView)
@@ -118,9 +123,10 @@ public class KUIDeviceStatusListView: UIView {
     private func createTemperatureView() -> UIStackView {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 15)
+        titleLabel.text = "温度" // TODO: R.Swiftに置き換える
 
         temperatureLabel = UILabel()
-        temperatureLabel.font = .systemFont(ofSize: 15)
+        temperatureLabel.font = .systemFont(ofSize: 15, weight: .bold)
         temperatureLabel.text = "\(temperature)"
 
         let expectedLabel = UILabel()
@@ -137,9 +143,10 @@ public class KUIDeviceStatusListView: UIView {
     private func createHumidityView() -> UIStackView {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 15)
+        titleLabel.text = "湿度" // TODO: R.Swiftに置き換える
 
         humidityLabel = UILabel()
-        humidityLabel.font = .systemFont(ofSize: 15)
+        humidityLabel.font = .systemFont(ofSize: 15, weight: .bold)
         humidityLabel.text = "\(temperature)"
 
         let expectedLabel = UILabel()
