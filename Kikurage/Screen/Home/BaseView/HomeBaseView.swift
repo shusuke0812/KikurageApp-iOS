@@ -63,16 +63,23 @@ extension HomeBaseView {
         nowTimeLabel = UILabel()
         nowTimeLabel.text = DateHelper.now()
         nowTimeLabel.font = .systemFont(ofSize: 11)
+        nowTimeLabel.textAlignment = .right
         nowTimeLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // Status list
         statusListView = KUIDeviceStatusListView(props: KUIDeviceStatusListViewProps(
-            temperature: 0, humidity: 0
+            temperature: 0,
+            humidity: 0,
+            backgroundColor: .systemGroupedBackground
         ))
         statusListView.translatesAutoresizingMaskIntoConstraints = false
 
         // Advice
-        homeAdviceView = KUIHomeAdviceView(props: KUIHomeAdviceViewProps(title: "-", description: "-"))
+        homeAdviceView = KUIHomeAdviceView(props: KUIHomeAdviceViewProps(
+            title: R.string.localizable.screen_home_advice_title(),
+            description: "-",
+            image: R.image.hakase()
+        ))
         homeAdviceView.translatesAutoresizingMaskIntoConstraints = false
 
         // Footer
@@ -93,7 +100,10 @@ extension HomeBaseView {
             statusImageView.topAnchor.constraint(equalTo: statusImageParentView.topAnchor),
             statusImageView.leadingAnchor.constraint(equalTo: statusImageParentView.leadingAnchor),
             statusImageView.trailingAnchor.constraint(equalTo: statusImageParentView.trailingAnchor),
-            statusImageView.bottomAnchor.constraint(equalTo: statusImageParentView.bottomAnchor)
+            statusImageView.bottomAnchor.constraint(equalTo: statusImageParentView.bottomAnchor),
+
+            nowTimeLabel.trailingAnchor.constraint(equalTo: statusImageView.trailingAnchor, constant: -8),
+            nowTimeLabel.bottomAnchor.constraint(equalTo: statusImageView.bottomAnchor, constant: -8)
         ])
 
         NSLayoutConstraint.activate([
