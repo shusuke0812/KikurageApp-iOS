@@ -135,7 +135,7 @@ public class KUIDeviceStatusListView: UIView {
 
         let stackView = UIStackView(arrangedSubviews: [titleLabel, temperatureLabel, expectedLabel])
         stackView.axis = .vertical
-        stackView.spacing = 12
+        stackView.spacing = 15
 
         return stackView
     }
@@ -155,7 +155,7 @@ public class KUIDeviceStatusListView: UIView {
 
         let stackView = UIStackView(arrangedSubviews: [titleLabel, humidityLabel, expectedLabel])
         stackView.axis = .vertical
-        stackView.spacing = 12
+        stackView.spacing = 15
 
         return stackView
     }
