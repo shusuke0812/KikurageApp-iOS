@@ -53,6 +53,7 @@ public class KUIHomeAdviceView: UIView {
         ))
         headerView.translatesAutoresizingMaskIntoConstraints = false
 
+        descriptionLabel = UILabel()
         descriptionLabel.text = props.description
         descriptionLabel.font = .systemFont(ofSize: 15)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +69,7 @@ public class KUIHomeAdviceView: UIView {
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            headerView.leftAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
 
             descriptionLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
