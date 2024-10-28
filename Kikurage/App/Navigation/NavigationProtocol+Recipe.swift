@@ -29,6 +29,6 @@ extension RecipeAccessable {
         guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else {
             return
         }
-        present(to: vc, style: .automatic)
+        present(to: vc, presentationStyle: .automatic)
     }
 }

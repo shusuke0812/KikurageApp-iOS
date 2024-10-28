@@ -38,6 +38,6 @@ extension CultivationAccessable {
         guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else {
             return
         }
-        present(to: vc, style: .automatic)
+        present(to: vc, presentationStyle: .automatic)
     }
 }
