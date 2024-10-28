@@ -20,7 +20,6 @@
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
 		9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */; };
-		9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */; };
@@ -330,7 +329,6 @@
 		9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9C1ACF4F2225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeViewController.storyboard; sourceTree = "<group>"; };
 		9C1ACF512225768A00A3D4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1272,7 +1270,6 @@
 			isa = PBXGroup;
 			children = (
 				9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */,
-				9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2182,7 +2179,6 @@
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
 				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
-				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
 				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */,
 				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
@@ -2752,14 +2748,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C1ACF4F2225768A00A3D4D1 /* Base */,
-			);
-			name = HomeViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

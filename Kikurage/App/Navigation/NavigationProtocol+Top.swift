@@ -33,9 +33,7 @@ extension TopAccessable {
     }
 
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser) {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = HomeViewController()
         vc.kikurageUser = kikurageUser
         vc.kikurageState = kikurageState
         push(to: vc)
