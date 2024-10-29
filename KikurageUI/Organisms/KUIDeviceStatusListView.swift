@@ -24,17 +24,11 @@ public class KUIDeviceStatusListView: UIView {
     private var temperatureLabel: UILabel!
     private var humidityLabel: UILabel!
 
-    private var temperature: Int
-    private var humidity: Int
-
     private let temperatureUnit = "°C"
     private let humidityUnit = "%"
 
     public init(props: KUIDeviceStatusListViewProps) {
-        temperature = props.temperature
-        humidity = props.humidity
         super.init(frame: .zero)
-
         setupComponent(props: props)
     }
 
@@ -43,8 +37,8 @@ public class KUIDeviceStatusListView: UIView {
     }
 
     public func updateStatus(temperature: Int, humidity: Int) {
-        self.temperature = temperature
-        self.humidity = humidity
+        temperatureLabel.text = "\(temperature)"
+        humidityLabel.text = "\(humidity)"
     }
 
     private func setupComponent(props: KUIDeviceStatusListViewProps) {
@@ -53,10 +47,10 @@ public class KUIDeviceStatusListView: UIView {
         let columnStackView = createColumnView()
         columnStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        let columnTemperatureStackView = createTemperatureView()
+        let columnTemperatureStackView = createTemperatureView(temperature: props.temperature)
         columnTemperatureStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        let columnHumidityStackView = createHumidityView()
+        let columnHumidityStackView = createHumidityView(humidity: props.humidity)
         columnHumidityStackView.translatesAutoresizingMaskIntoConstraints = false
 
         let topDivider = KUIDividerView()
@@ -120,7 +114,7 @@ public class KUIDeviceStatusListView: UIView {
         return stackView
     }
 
-    private func createTemperatureView() -> UIStackView {
+    private func createTemperatureView(temperature: Int) -> UIStackView {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 15)
         titleLabel.text = "温度" // TODO: R.Swiftに置き換える
@@ -140,14 +134,14 @@ public class KUIDeviceStatusListView: UIView {
         return stackView
     }
 
-    private func createHumidityView() -> UIStackView {
+    private func createHumidityView(humidity: Int) -> UIStackView {
         let titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 15)
         titleLabel.text = "湿度" // TODO: R.Swiftに置き換える
 
         humidityLabel = UILabel()
         humidityLabel.font = .systemFont(ofSize: 15, weight: .bold)
-        humidityLabel.text = "\(temperature)"
+        humidityLabel.text = "\(humidity)"
 
         let expectedLabel = UILabel()
         expectedLabel.font = .systemFont(ofSize: 15)
