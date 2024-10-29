@@ -9,26 +9,16 @@
 import UIKit
 
 protocol RecipeAccessable: PushNavigationProtocol, ModalNavigationProtocol {
-    func pushToRecipe()
     func modalToPostRecipe()
 }
 
 extension RecipeAccessable {
-    // MARK: - Push
-
-    func pushToRecipe() {
-        guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else {
-            return
-        }
-        push(to: vc)
-    }
-
     // MARK: - Modal
 
     func modalToPostRecipe() {
         guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else {
             return
         }
-        present(to: vc, style: .automatic)
+        present(to: vc, presentationStyle: .automatic)
     }
 }

@@ -9,20 +9,12 @@
 import UIKit
 
 protocol CultivationAccessable: PushNavigationProtocol, ModalNavigationProtocol {
-    func pushToCultivation()
     func pushToCultivationDetail(cultivation: KikurageCultivation)
     func modalToPostCultivation()
 }
 
 extension CultivationAccessable {
     // MARK: - Push
-
-    func pushToCultivation() {
-        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else {
-            return
-        }
-        push(to: vc)
-    }
 
     func pushToCultivationDetail(cultivation: KikurageCultivation) {
         guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else {
@@ -38,6 +30,6 @@ extension CultivationAccessable {
         guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else {
             return
         }
-        present(to: vc, style: .automatic)
+        present(to: vc, presentationStyle: .automatic)
     }
 }

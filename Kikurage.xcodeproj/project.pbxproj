@@ -14,15 +14,16 @@
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
-		9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* HomeAdviceView.swift */; };
-		9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* HomeAdviceView.xib */; };
+		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
 		9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */; };
-		9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
+		9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */; };
+		9C1F6A302C208659007352F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1F6A2F2C208659007352F6 /* Constants.swift */; };
+		9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
@@ -40,10 +41,8 @@
 		9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9B26EE158D00F62DF8 /* FirebaseAPIError.swift */; };
 		9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9D26EE165400F62DF8 /* ClientError.swift */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
-		9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C7E58832776109B00A151C0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */; };
-		9C7E588527761AD400A151C0 /* FooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* FooterButtonView.swift */; };
 		9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */; };
 		9C81EA6F27B7E9D10028D027 /* PageObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */; };
 		9C81EA7227B7EE640028D027 /* TopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA7127B7EE640028D027 /* TopPage.swift */; };
@@ -180,6 +179,8 @@
 		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
+		9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */; };
+		9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */; };
 		9CC47ACB27FC80E900F2DC17 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */; };
 		9CC6752D288D36E30003B18A /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC6752C288D36E30003B18A /* SessionSetupResult.swift */; };
 		9CC7F4D729CEDC460045C866 /* WiFiSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */; };
@@ -195,6 +196,8 @@
 		9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */; };
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
+		9CDB33B82C1EC05B00A8B2BE /* KUILabelWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */; };
+		9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
 		9CDE8BE12B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */; };
@@ -220,6 +223,8 @@
 		9CE580E129C1F58A006D83E7 /* KikurageBluetoothParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */; };
 		9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */; };
+		9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */; };
 		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
@@ -230,6 +235,7 @@
 		9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */; };
 		9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD869D2C147C3F0029527D /* KUITextField.swift */; };
 		9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */; };
+		9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
 /* End PBXBuildFile section */
 
@@ -277,15 +283,28 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF4F0CA2C42CCB5004DEBDE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		045BAAA6BB2C1B5F96CDC0F5 /* Pods-Kikurage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.release.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.release.xcconfig"; sourceTree = "<group>"; };
+		080D77307B475EAF7C1DA769 /* Pods_KikurageData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E140392E0F98C3B27D3E33E /* Pods-KikurageFeature.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.debug.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.debug.xcconfig"; sourceTree = "<group>"; };
 		20A222AA8447C19CE80FDC6B /* Pods-KikurageUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.production.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.production.xcconfig"; sourceTree = "<group>"; };
 		24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3475EE07E03DA48A65166170 /* Pods-KikurageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.debug.xcconfig"; sourceTree = "<group>"; };
+		3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.debug.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.debug.xcconfig"; sourceTree = "<group>"; };
 		5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.debug.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.debug.xcconfig"; sourceTree = "<group>"; };
 		57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kikurage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.staging.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.staging.xcconfig"; sourceTree = "<group>"; };
@@ -295,22 +314,23 @@
 		8070A4260AA307A0911D71A2 /* Pods-KikurageFeature.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.production.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.production.xcconfig"; sourceTree = "<group>"; };
 		85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.production.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.production.xcconfig"; sourceTree = "<group>"; };
 		86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.staging.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.staging.xcconfig"; sourceTree = "<group>"; };
+		886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.production.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.production.xcconfig"; sourceTree = "<group>"; };
+		8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.debug.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.debug.xcconfig"; sourceTree = "<group>"; };
 		8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		9C0DCF932546F55800C27051 /* HomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdviceView.swift; sourceTree = "<group>"; };
-		9C0DCF962546F58600C27051 /* HomeAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAdviceView.xib; sourceTree = "<group>"; };
+		9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Home.swift"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9C1ACF4F2225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeViewController.storyboard; sourceTree = "<group>"; };
 		9C1ACF512225768A00A3D4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C1F6A2F2C208659007352F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
 		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
@@ -332,7 +352,7 @@
 		9C7E105D25649637005A92C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
-		9C7E588427761AD400A151C0 /* FooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterButtonView.swift; sourceTree = "<group>"; };
+		9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIFooterButtonView.swift; sourceTree = "<group>"; };
 		9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
 		9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageObjectable.swift; sourceTree = "<group>"; };
 		9C81EA7127B7EE640028D027 /* TopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPage.swift; sourceTree = "<group>"; };
@@ -472,6 +492,8 @@
 		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
+		9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDropdownTextField.swift; sourceTree = "<group>"; };
+		9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRoundedView.swift; sourceTree = "<group>"; };
 		9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		9CC6752C288D36E30003B18A /* SessionSetupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
 		9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -487,6 +509,8 @@
 		9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRequestProtocol.swift; sourceTree = "<group>"; };
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUILabelWithImage.swift; sourceTree = "<group>"; };
+		9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIHomeAdviceView.swift; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
 		9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
@@ -512,6 +536,8 @@
 		9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothParser.swift; sourceTree = "<group>"; };
 		9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFi.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDividerView.swift; sourceTree = "<group>"; };
+		9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusListView.swift; sourceTree = "<group>"; };
 		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
@@ -521,11 +547,15 @@
 		9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		9CFD869D2C147C3F0029527D /* KUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITextField.swift; sourceTree = "<group>"; };
 		9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIPasswordField.swift; sourceTree = "<group>"; };
+		9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusImageView.swift; sourceTree = "<group>"; };
+		9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.staging.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.staging.xcconfig"; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.production.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.production.xcconfig"; sourceTree = "<group>"; };
 		C2B15B86CDC574E80B6D91CC /* Pods-KikurageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C861E00ACE4D9774215A3728 /* Pods-KikurageFeature.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.staging.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.staging.xcconfig"; sourceTree = "<group>"; };
 		D514314A151EB43465955FA2 /* Pods-KikurageTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.production.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.production.xcconfig"; sourceTree = "<group>"; };
+		E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.staging.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.staging.xcconfig"; sourceTree = "<group>"; };
 		F64405252FCD1BFF9274507A /* Pods-kikurageApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.debug.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -597,6 +627,12 @@
 				3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */,
 				86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */,
 				85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */,
+				3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */,
+				9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */,
+				886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */,
+				8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */,
+				E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */,
+				BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -610,6 +646,8 @@
 				B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */,
 				8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */,
 				914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */,
+				080D77307B475EAF7C1DA769 /* Pods_KikurageData.framework */,
+				2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -966,7 +1004,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA20446271C778700D65DD7 /* BaseView */,
-				9CA20456271C78CA00D65DD7 /* ChildView */,
 				9CA2045D271C7A4900D65DD7 /* ViewController */,
 				9CA20467271C7B9E00D65DD7 /* ViewModel */,
 			);
@@ -1161,16 +1198,6 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		9CA20456271C78CA00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9C0DCF932546F55800C27051 /* HomeAdviceView.swift */,
-				9C0DCF962546F58600C27051 /* HomeAdviceView.xib */,
-				9C7E588427761AD400A151C0 /* FooterButtonView.swift */,
-			);
-			path = ChildView;
-			sourceTree = "<group>";
-		};
 		9CA20457271C790B00D65DD7 /* ChildView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1231,7 +1258,6 @@
 			isa = PBXGroup;
 			children = (
 				9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */,
-				9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1570,6 +1596,16 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		9CC376192C1D94C80098DCD9 /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */,
+				9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */,
+				9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
 		9CC4D0D5289207BB0054FDB5 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -1584,12 +1620,21 @@
 				9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */,
 				9C07E7E12530194900720768 /* UIViewController+Extension.swift */,
 				9C82B42325305E6C00E650B5 /* UIView+Extension.swift */,
-				9C7E105D25649637005A92C7 /* UIColor+Extension.swift */,
 				9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */,
 				9C97679526EF798100126F80 /* NotificationName+Extension.swift */,
 				9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		9CDB33B92C1ED0D000A8B2BE /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
+				9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */,
+				9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */,
+				9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */,
+			);
+			path = Organisms;
 			sourceTree = "<group>";
 		};
 		9CDE8BDF2B4574580078B318 /* UseCase */ = {
@@ -1763,6 +1808,7 @@
 				9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */,
 				9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */,
 				9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */,
+				9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */,
 				9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */,
 				9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */,
 				9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */,
@@ -1823,6 +1869,8 @@
 				9CFD86912C1418CE0029527D /* KUIImageView.swift */,
 				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
 				9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */,
+				9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */,
+				9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -1831,6 +1879,10 @@
 			isa = PBXGroup;
 			children = (
 				9CF03CF82C10A83800EC2F48 /* Atoms */,
+				9CC376192C1D94C80098DCD9 /* Molecules */,
+				9CDB33B92C1ED0D000A8B2BE /* Organisms */,
+				9C1F6A2F2C208659007352F6 /* Constants.swift */,
+				9C7E105D25649637005A92C7 /* UIColor+Extension.swift */,
 				9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */,
 				9CF788E32C0F574200E0438B /* KikurageUI.h */,
 				9CC29EC02C12035C00353262 /* Assets.xcassets */,
@@ -2024,6 +2076,7 @@
 				9CF788DD2C0F574100E0438B /* Sources */,
 				9CF788DE2C0F574100E0438B /* Frameworks */,
 				9CF788DF2C0F574100E0438B /* Resources */,
+				9CF4F0CA2C42CCB5004DEBDE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2109,13 +2162,11 @@
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
 				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
-				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
 				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
 				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
-				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
 				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */,
 				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
@@ -2457,6 +2508,7 @@
 				9C96997D2566118C00D655DA /* DateHelper.swift in Sources */,
 				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */,
+				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
 				9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */,
 				9CE0185129B46D7700365E95 /* WiFiSettingViewController.swift in Sources */,
@@ -2478,7 +2530,6 @@
 				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
-				9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */,
 				9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
@@ -2526,7 +2577,6 @@
 				9C9D752B27DF6CC5002611FF /* NavigationProtocol+Top.swift in Sources */,
 				9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */,
 				9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */,
-				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
 				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
 				9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
@@ -2578,7 +2628,6 @@
 				9C8ED2D72801C2A2005527F8 /* FirestoreClient.swift in Sources */,
 				9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */,
 				9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */,
-				9C7E588527761AD400A151C0 /* FooterButtonView.swift in Sources */,
 				9CE0184929B46CE600365E95 /* WiFiListBaseView.swift in Sources */,
 				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 				9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */,
@@ -2642,12 +2691,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
+				9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */,
+				9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */,
 				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
+				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
+				9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
+				9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */,
+				9CDB33B82C1EC05B00A8B2BE /* KUILabelWithImage.swift in Sources */,
 				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
+				9C1F6A302C208659007352F6 /* Constants.swift in Sources */,
+				9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */,
+				9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */,
 				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
+				9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2677,14 +2736,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C1ACF4F2225768A00A3D4D1 /* Base */,
-			);
-			name = HomeViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2853,7 +2904,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_MODULE_NAME = Kikurage;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -2882,7 +2932,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_MODULE_NAME = Kikurage;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -3505,7 +3554,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_MODULE_NAME = Kikurage;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";

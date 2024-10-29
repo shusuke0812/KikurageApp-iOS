@@ -1,5 +1,5 @@
 //
-//  FooterButtonView.swift
+//  KUIFooterButtonView.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2021/12/25.
@@ -9,7 +9,7 @@
 import FontAwesome_swift
 import UIKit
 
-class FooterButtonView: UIView {
+public class KUIFooterButtonView: UIView {
     static let iconSize = CGSize(width: 40, height: 40)
     static let backgroundColor = UIColor.white
     static let cornerRadius: CGFloat = .viewCornerRadius
@@ -32,42 +32,37 @@ class FooterButtonView: UIView {
         return stackView
     }()
 
-    private(set) var cultivationButton: UIButton = {
+    public var cultivationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .leaf, style: .solid, textColor: Constants.Color.cultivation.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
 
-    private(set) var recipeButton: UIButton = {
+    public var recipeButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .utensils, style: .solid, textColor: Constants.Color.recipe.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
 
-    private(set) var communicationButton: UIButton = {
+    public var communicationButton: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.fontAwesomeIcon(name: .handsHelping, style: .solid, textColor: Constants.Color.communication.rawValue, size: iconSize), for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initUI()
+    public init() {
+        super.init(frame: .zero)
+        setupComponent()
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initUI()
+    public required init?(coder: NSCoder) {
+        nil
     }
-}
 
-// MARK: - Initialized
-
-extension FooterButtonView {
-    private func initUI() {
+    private func setupComponent() {
         stackView.addArrangedSubview(cultivationButton)
         stackView.addArrangedSubview(recipeButton)
         stackView.addArrangedSubview(communicationButton)

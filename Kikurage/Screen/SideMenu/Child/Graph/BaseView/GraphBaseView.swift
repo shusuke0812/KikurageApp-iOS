@@ -68,16 +68,16 @@ extension GraphBaseView {
         switch graphDataType {
         case .temperature:
             let dataSet = LineChartDataSet(entries: entrys, label: "[℃]")
-            dataSet.colors = [.subColor]
-            dataSet.circleColors = [.subColor]
+            dataSet.colors = [R.color.subColor()!]
+            dataSet.circleColors = [R.color.subColor()!]
             temperatureLineChartView.data = LineChartData(dataSet: dataSet)
             temperatureLineChartView.xAxis.labelPosition = .bottom
             temperatureLineChartView.leftAxis.addLimitLine(temperatureLimitLine)
             temperatureLineChartView.xAxis.valueFormatter = chartViewHelper
         case .humidity:
             let dataSet = LineChartDataSet(entries: entrys, label: "[%]")
-            dataSet.colors = [.subColor]
-            dataSet.circleColors = [.subColor]
+            dataSet.colors = [R.color.subColor()!]
+            dataSet.circleColors = [R.color.subColor()!]
             humidityLineChartView.data = LineChartData(dataSet: dataSet)
             humidityLineChartView.xAxis.labelPosition = .bottom
             humidityLineChartView.leftAxis.addLimitLine(humidityLimitLine)
