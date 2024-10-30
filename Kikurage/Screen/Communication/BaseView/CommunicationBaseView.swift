@@ -51,7 +51,7 @@ extension CommunicationBaseView {
         facebookButton = UIButton()
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
 
-        informationView.addSubview(informationView)
+        informationView.addSubview(informationLabel)
         addSubview(imageView)
         addSubview(informationView)
         addSubview(facebookButton)
