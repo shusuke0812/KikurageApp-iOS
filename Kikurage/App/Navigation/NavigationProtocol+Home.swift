@@ -33,9 +33,7 @@ extension HomeAccessable {
     }
 
     func pushToCommunication() {
-        guard let vc = R.storyboard.communicationViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = CommunicationViewController()
         push(to: vc)
     }
 
