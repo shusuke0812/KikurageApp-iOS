@@ -39,16 +39,20 @@ extension CommunicationBaseView {
         backgroundColor = .systemGroupedBackground
 
         imageView = UIImageView(image: R.image.communication())
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         informationView = KUIRoundedView(props: KUIRoundedViewProps())
         informationView.translatesAutoresizingMaskIntoConstraints = false
 
         informationLabel = UILabel()
+        informationLabel.textAlignment = .natural
+        informationLabel.numberOfLines = 0
         informationLabel.text = R.string.localizable.screen_communication_information()
         informationLabel.translatesAutoresizingMaskIntoConstraints = false
 
         facebookButton = UIButton()
+        facebookButton.setImage(R.image.facebookButton(), for: .normal)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
 
         informationView.addSubview(informationLabel)
@@ -58,24 +62,24 @@ extension CommunicationBaseView {
 
         NSLayoutConstraint.activate([
             informationLabel.topAnchor.constraint(equalTo: informationView.topAnchor, constant: 10),
-            informationView.leadingAnchor.constraint(equalTo: informationView.leadingAnchor, constant: 15),
-            informationView.trailingAnchor.constraint(equalTo: informationView.trailingAnchor, constant: -15),
-            informationView.bottomAnchor.constraint(equalTo: informationView.bottomAnchor, constant: -10)
+            informationLabel.leadingAnchor.constraint(equalTo: informationView.leadingAnchor, constant: 15),
+            informationLabel.trailingAnchor.constraint(equalTo: informationView.trailingAnchor, constant: -15),
+            informationLabel.bottomAnchor.constraint(equalTo: informationView.bottomAnchor, constant: -10)
         ])
 
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
 
             informationView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            informationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            informationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            informationView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            informationView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
             facebookButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             facebookButton.topAnchor.constraint(equalTo: informationView.bottomAnchor, constant: 30),
-            facebookButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+            facebookButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
 
