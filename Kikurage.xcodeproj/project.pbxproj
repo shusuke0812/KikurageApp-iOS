@@ -17,6 +17,7 @@
 		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
+		9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
 		9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
@@ -323,6 +324,7 @@
 		9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Home.swift"; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -1630,6 +1632,7 @@
 				9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */,
 				9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */,
 				9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */,
+				9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */,
 			);
 			path = Organisms;
 			sourceTree = "<group>";
@@ -2691,6 +2694,7 @@
 				9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */,
 				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
+				9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
 				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
 				9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */,
