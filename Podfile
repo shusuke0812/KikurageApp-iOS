@@ -44,6 +44,7 @@ end
 target 'KikurageUI' do
   #inherit! :search_paths
   pod 'FontAwesome.swift'
+  pod 'FirebaseUI/Storage'
   resource_pods
 end
 
