@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import FirebaseStorageUI
 
 public struct KUIRecipeTableViewCellProps {
-    let image: UIImage
+    let imageStoragePath: String
     let dateString: String
     let title: String
     let description: String
     
-    public init(image: UIImage, dateString: String, title: String, description: String) {
-        self.image = image
+    public init(imageStoragePath: String, dateString: String, title: String, description: String) {
+        self.imageStoragePath = imageStoragePath
         self.dateString = dateString
         self.title = title
         self.description = description
@@ -37,9 +38,18 @@ public class KUIRecipeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateItem(props: KUIRecipeTableViewCellProps) {
+        dateLabel.text = props.dateString
+        titleLabel.text = props.title
+        descriptionLabel.text = props.description
+        
+        let storageReference = Storage.storage().reference(withPath: props.imageStoragePath)
+        recipeImageView.sd_setImage(with: storageReference, placeholderImage: nil)
+    }
+    
     private func setupComponent(props: KUIRecipeTableViewCellProps) {
         recipeImageView = KUIImageView(props: KUIImageViewProps(
-            image: props.image
+            image: nil
         ))
         recipeImageView.translatesAutoresizingMaskIntoConstraints = false
         
