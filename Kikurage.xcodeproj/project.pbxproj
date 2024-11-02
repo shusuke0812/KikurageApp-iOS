@@ -15,6 +15,7 @@
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
 		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
+		9C0A8E972CD610A90030FB24 /* KUICircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A8E962CD610A90030FB24 /* KUICircleButton.swift */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
 		9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */; };
@@ -320,6 +321,7 @@
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Home.swift"; sourceTree = "<group>"; };
+		9C0A8E962CD610A90030FB24 /* KUICircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICircleButton.swift; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -1851,6 +1853,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */,
+				9C0A8E962CD610A90030FB24 /* KUICircleButton.swift */,
 				9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */,
 				9CFD86912C1418CE0029527D /* KUIImageView.swift */,
 				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
@@ -2675,6 +2678,7 @@
 			files = (
 				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
 				9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */,
+				9C0A8E972CD610A90030FB24 /* KUICircleButton.swift in Sources */,
 				9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */,
 				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
