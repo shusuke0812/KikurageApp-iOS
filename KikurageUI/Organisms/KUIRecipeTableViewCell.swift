@@ -54,34 +54,25 @@ public class KUIRecipeTableViewCell: UITableViewCell {
         recipeImageView.translatesAutoresizingMaskIntoConstraints = false
 
         dateLabel = UILabel()
+        dateLabel.font = .systemFont(ofSize: 16)
         dateLabel.text = "-"
-        dateLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
 
         titleLabel = UILabel()
         titleLabel.text = "-"
-        titleLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+        titleLabel.font = .systemFont(ofSize: 16)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         descriptionLabel = UILabel()
         descriptionLabel.text = "-"
+        descriptionLabel.font = .systemFont(ofSize: 16)
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        let stackView = UIStackView(arrangedSubviews: [
-            dateLabel,
-            titleLabel,
-            descriptionLabel
-        ])
-        stackView.spacing = 10
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
         contentView.addSubview(recipeImageView)
-        contentView.addSubview(stackView)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
             recipeImageView.widthAnchor.constraint(equalToConstant: 160),
@@ -91,10 +82,18 @@ public class KUIRecipeTableViewCell: UITableViewCell {
             recipeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             recipeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
 
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            stackView.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            dateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            dateLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+
+            titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
     }
 }
