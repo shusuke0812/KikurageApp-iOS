@@ -26,9 +26,7 @@ extension HomeAccessable {
     }
 
     func pushToRecipe() {
-        guard let vc = R.storyboard.recipeViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = RecipeViewController()
         push(to: vc)
     }
 
