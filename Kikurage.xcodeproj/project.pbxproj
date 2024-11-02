@@ -64,7 +64,6 @@
 		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
 		9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */; };
 		9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */; };
-		9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */; };
 		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
 		9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */; };
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
@@ -373,7 +372,6 @@
 		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
 		9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
 		9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBaseView.swift; sourceTree = "<group>"; };
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
@@ -1280,7 +1278,6 @@
 		9CA20461271C7ABE00D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */,
 				9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */,
 			);
 			path = ViewController;
@@ -2141,7 +2138,6 @@
 				9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */,
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
-				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
