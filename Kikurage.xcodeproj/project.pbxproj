@@ -221,6 +221,7 @@
 		9CE580E129C1F58A006D83E7 /* KikurageBluetoothParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */; };
 		9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CE70F462CD70F750081BF8C /* KUIMaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */; };
 		9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */; };
 		9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */; };
 		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
@@ -532,6 +533,7 @@
 		9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothParser.swift; sourceTree = "<group>"; };
 		9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFi.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIMaterialTextField.swift; sourceTree = "<group>"; };
 		9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDividerView.swift; sourceTree = "<group>"; };
 		9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusListView.swift; sourceTree = "<group>"; };
 		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
@@ -1586,6 +1588,7 @@
 				9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */,
 				9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */,
 				9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */,
+				9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -2690,6 +2693,7 @@
 				9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */,
 				9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */,
 				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
+				9CE70F462CD70F750081BF8C /* KUIMaterialTextField.swift in Sources */,
 				9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
