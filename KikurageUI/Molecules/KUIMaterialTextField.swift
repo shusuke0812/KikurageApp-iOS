@@ -9,10 +9,10 @@
 import UIKit
 
 public struct KUIMaterialTextFieldProps {
-    let maxTextCount: String
+    let maxTextCount: Int
     let placeHolder: String?
     
-    public init(maxTextCount: String, placeHolder: String?) {
+    public init(maxTextCount: Int, placeHolder: String?) {
         self.maxTextCount = maxTextCount
         self.placeHolder = placeHolder
     }
@@ -21,7 +21,7 @@ public struct KUIMaterialTextFieldProps {
 public class KUIMaterialTextField: UIView {
     private var textField: UITextField!
     private var dividerView: KUIDividerView!
-    private var textCountLabel: UILabel!
+    private var textCountLabel: KUITextCountLabel!
 
     public init(props: KUIMaterialTextFieldProps) {
         super.init(frame: .zero)
@@ -39,10 +39,13 @@ public class KUIMaterialTextField: UIView {
         textField.placeholder = props.placeHolder
         textField.translatesAutoresizingMaskIntoConstraints = false
         
-        dividerView = KUIDividerView(props: KUIDividerViewProps(color: .gray))
+        dividerView = KUIDividerView(props: KUIDividerViewProps(color: .lightGray))
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         
-        textCountLabel.text = props.maxTextCount
+        textCountLabel = KUITextCountLabel(props: KUITextCountLabelProps(
+            textColor: .lightGray,
+            maxCount: props.maxTextCount
+        ))
         textCountLabel.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(textField)
