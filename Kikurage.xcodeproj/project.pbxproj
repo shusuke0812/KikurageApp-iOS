@@ -226,6 +226,7 @@
 		9CE74B0D2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE74B0C2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift */; };
 		9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */; };
 		9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */; };
+		9CECFB122CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CECFB112CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift */; };
 		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
@@ -540,6 +541,7 @@
 		9CE74B0C2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIMaterialTextView.swift; sourceTree = "<group>"; };
 		9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDividerView.swift; sourceTree = "<group>"; };
 		9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusListView.swift; sourceTree = "<group>"; };
+		9CECFB112CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUISelectImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
@@ -1595,6 +1597,7 @@
 				9CE74B0C2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift */,
 				9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */,
 				9CE70F472CD7213A0081BF8C /* KUITextCountLabel.swift */,
+				9CECFB112CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -2691,6 +2694,7 @@
 				9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
 				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
+				9CECFB122CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift in Sources */,
 				9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */,
