@@ -11,10 +11,12 @@ import UIKit
 public struct KUIMaterialTextViewProps {
     let maxTextCount: Int
     let placeHolder: String?
+    let backgroundColor: UIColor
 
-    public init(maxTextCount: Int, placeHolder: String?) {
+    public init(maxTextCount: Int, placeHolder: String?, backgroundColor: UIColor) {
         self.maxTextCount = maxTextCount
         self.placeHolder = placeHolder
+        self.backgroundColor = backgroundColor
     }
 }
 
@@ -42,10 +44,13 @@ public class KUIMaterialTextView: UIView {
     private func setupComponent(props: KUIMaterialTextViewProps) {
         textView = UITextView()
         textView.delegate = self
+        textView.backgroundColor = props.backgroundColor
         textView.translatesAutoresizingMaskIntoConstraints = false
 
         textViewPlaceHolderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
+        textViewPlaceHolderLabel.text = props.placeHolder
         textViewPlaceHolderLabel.backgroundColor = .clear
+        textViewPlaceHolderLabel.textColor = UIColor.placeholderText
         textViewPlaceHolderLabel.lineBreakMode = .byWordWrapping
         textViewPlaceHolderLabel.numberOfLines = 0
         textViewPlaceHolderLabel.translatesAutoresizingMaskIntoConstraints = false
