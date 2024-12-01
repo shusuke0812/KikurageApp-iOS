@@ -100,6 +100,13 @@ public class KUISelectImageCollectionViewModel: NSObject {
         selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
         self.collectionViewDelegate = collectionViewDelegate
     }
+    
+    public func setImage(selectedImage: UIImage, index: Int) {
+        if index >= selectedImageMaxNumber {
+            return
+        }
+        selectedImages[index] = selectedImage
+    }
 
     public func cancelImage(index: Int) {
         if index >= selectedImageMaxNumber {
