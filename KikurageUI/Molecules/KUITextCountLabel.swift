@@ -41,6 +41,7 @@ public class KUITextCountLabel: UIView {
         inputTextLabel.textColor = props.textColor
 
         let slashLabel = UILabel()
+        slashLabel.text = "/"
         slashLabel.textColor = props.textColor
 
         maxInputTextLabel = UILabel()
