@@ -60,6 +60,7 @@ public class KUISelectImageCollectionViewCell: UICollectionViewCell {
         selectImageView.translatesAutoresizingMaskIntoConstraints = false
 
         cancelButton = UIButton()
+        cancelButton.tintColor = .darkGray
         cancelButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -100,7 +101,7 @@ public class KUISelectImageCollectionViewModel: NSObject {
         selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
         self.collectionViewDelegate = collectionViewDelegate
     }
-    
+
     public func setImage(selectedImage: UIImage, index: Int) {
         if index >= selectedImageMaxNumber {
             return
