@@ -56,7 +56,8 @@ public class KUISelectImageCollectionViewCell: UICollectionViewCell {
 
     private func setupComponent() {
         selectImageView = UIImageView(image: UIImage(named: "camera"))
-        selectImageView.contentMode = .scaleAspectFill
+        selectImageView.clipsToBounds = true
+        selectImageView.contentMode = .scaleAspectFit
         selectImageView.translatesAutoresizingMaskIntoConstraints = false
 
         cancelButton = UIButton()
