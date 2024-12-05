@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 protocol PostRecipeBaseViewDelegate: AnyObject {
@@ -13,84 +14,22 @@ protocol PostRecipeBaseViewDelegate: AnyObject {
 }
 
 class PostRecipeBaseView: UIView {
-    @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
-    @IBOutlet private(set) weak var recipeNameTextField: UITextField!
-    @IBOutlet private weak var currentRecipeNameNumberLabel: UILabel!
-    @IBOutlet private weak var maxRecipeNameNumberLabel: UILabel!
-    @IBOutlet private(set) weak var recipeMemoTextView: UITextViewWithPlaceholder!
-    @IBOutlet private weak var currentRecipeMemoNumberLabel: UILabel!
-    @IBOutlet private weak var maxRecipeMemoNumberLabel: UILabel!
-    @IBOutlet private(set) weak var dateTextField: UITextField!
-    @IBOutlet private weak var postButton: UIButton!
+    private(set) var cameraCollectionView: UICollectionView!
+    private var recipeNameTextField: KUIMaterialTextField!
+    private var recipeMemoTextView: KUIMaterialTextView!
+    private var dateTextFiled: KUIDropdownTextField!
+    private var postButton: KUIButton!
 
     weak var delegate: PostRecipeBaseViewDelegate?
 
-    var datePicker = UIDatePicker()
-
-    let maxRecipeNameNumer = 20
-    let maxRecipeMemoNumber = 100
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        registerCameraCell()
-        initUI()
-        initDatePicker()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
+        setupAction()
     }
 
-    // MARK: - Action
-
-    @IBAction private func post(_ sender: Any) {
-        delegate?.postRecipeBaseViewDidTappedPostButton(self)
-    }
-}
-
-// MARK: - Initialized
-
-extension PostRecipeBaseView {
-    private func registerCameraCell() {
-        cameraCollectionView.register(R.nib.cameraCell)
-    }
-
-    private func initUI() {
-        backgroundColor = .systemGroupedBackground
-        cameraCollectionView.backgroundColor = .systemGroupedBackground
-        recipeMemoTextView.backgroundColor = .systemGroupedBackground
-
-        recipeMemoTextView.placeholder = R.string.localizable.screen_post_recipe_recipe_memo_textview_placeholder()
-        recipeNameTextField.placeholder = R.string.localizable.screen_post_recipe_recipe_name_textfield_placeholder()
-        dateTextField.placeholder = R.string.localizable.screen_post_recipe_recipe_date_textfield_placeholder()
-        postButton.layer.masksToBounds = true
-        postButton.layer.cornerRadius = .buttonCornerRadius
-
-        maxRecipeNameNumberLabel.text = "\(maxRecipeNameNumer)"
-        maxRecipeMemoNumberLabel.text = "\(maxRecipeMemoNumber)"
-    }
-
-    private func initDatePicker() {
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        }
-        datePicker.datePickerMode = .date
-        datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
-
-        let minDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
-        datePicker.minimumDate = minDate
-        datePicker.maximumDate = Date()
-
-        dateTextField.inputView = datePicker
-    }
-}
-
-// MARK: - Config
-
-extension PostRecipeBaseView {
-    func setCurrentRecipeNameNumber(text: String) {
-        currentRecipeNameNumberLabel.text = "\(text.count)"
-    }
-
-    func setCurrentRecipeMemoNumber(text: String) {
-        currentRecipeMemoNumberLabel.text = "\(text.count)"
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     func cofigCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
@@ -98,12 +37,81 @@ extension PostRecipeBaseView {
         cameraCollectionView.dataSource = dataSource
     }
 
-    func configTextField(delegate: UITextFieldDelegate) {
-        recipeNameTextField.delegate = delegate
-        dateTextField.delegate = delegate
+    private func setupComponent() {
+        backgroundColor = .systemGroupedBackground
+
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 80, height: 80)
+        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumInteritemSpacing = 10
+        cameraCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        cameraCollectionView.backgroundColor = .systemGroupedBackground
+        cameraCollectionView.register(KUISelectImageCollectionViewCell.self, forCellWithReuseIdentifier: KUISelectImageCollectionViewCell.identifier)
+        cameraCollectionView.translatesAutoresizingMaskIntoConstraints = false
+
+        recipeNameTextField = KUIMaterialTextField(props: KUIMaterialTextFieldProps(
+            maxTextCount: 20,
+            placeHolder: R.string.localizable.screen_post_recipe_recipe_name_textfield_placeholder()
+        ))
+        recipeNameTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        recipeMemoTextView = KUIMaterialTextView(props: KUIMaterialTextViewProps(
+            maxTextCount: 100,
+            placeHolder: R.string.localizable.screen_post_recipe_recipe_memo_textview_placeholder(),
+            backgroundColor: .systemGroupedBackground
+        ))
+        recipeMemoTextView.translatesAutoresizingMaskIntoConstraints = false
+
+        dateTextFiled = KUIDropdownTextField(props: KUIDropDownTextFieldProps(
+            variant: .date,
+            textFieldProps: KUITextFieldProps(placeHolder: R.string.localizable.screen_post_recipe_recipe_date_textfield_placeholder())
+        ))
+        dateTextFiled.translatesAutoresizingMaskIntoConstraints = false
+
+        postButton = KUIButton(props: KUIButtonProps(
+            variant: .primary,
+            title: R.string.localizable.screen_post_recipe_post_button_title()
+        ))
+        postButton.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(cameraCollectionView)
+        addSubview(recipeNameTextField)
+        addSubview(recipeMemoTextView)
+        addSubview(dateTextFiled)
+        addSubview(postButton)
+
+        NSLayoutConstraint.activate([
+            cameraCollectionView.heightAnchor.constraint(equalToConstant: 180),
+            cameraCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
+            cameraCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            cameraCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            recipeNameTextField.topAnchor.constraint(equalTo: cameraCollectionView.bottomAnchor, constant: 15),
+            recipeNameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            recipeNameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            recipeMemoTextView.heightAnchor.constraint(equalToConstant: 70),
+            recipeMemoTextView.topAnchor.constraint(equalTo: recipeNameTextField.bottomAnchor, constant: 30),
+            recipeMemoTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            recipeMemoTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            dateTextFiled.topAnchor.constraint(equalTo: recipeMemoTextView.bottomAnchor, constant: 20),
+            dateTextFiled.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            dateTextFiled.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            postButton.heightAnchor.constraint(equalToConstant: 45),
+            postButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            postButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            postButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10)
+        ])
     }
 
-    func configTextView(delegate: UITextViewDelegate) {
-        recipeMemoTextView.delegate = delegate
+    private func setupAction() {
+        postButton.onTap = { [weak self] in
+            guard let self else {
+                return
+            }
+            self.delegate?.postRecipeBaseViewDidTappedPostButton(self)
+        }
     }
 }
