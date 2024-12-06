@@ -11,6 +11,8 @@ import UIKit
 
 protocol PostRecipeBaseViewDelegate: AnyObject {
     func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView)
+    func postRecipeBaseViewDidEndEditingRecipeName(_ postRecipeBaseView: PostRecipeBaseView, text: String)
+    func postRecipeBaseViewDidEndEditingRecipeMemo(_ postRecipeBaseView: PostRecipeBaseView, text: String)
 }
 
 class PostRecipeBaseView: UIView {
@@ -112,6 +114,20 @@ class PostRecipeBaseView: UIView {
                 return
             }
             self.delegate?.postRecipeBaseViewDidTappedPostButton(self)
+        }
+        
+        recipeNameTextField.onDidEndEditing = { [weak self] text in
+            guard let self else {
+                return
+            }
+            self.delegate?.postRecipeBaseViewDidEndEditingRecipeName(self, text: text)
+        }
+        
+        recipeMemoTextView.onDidEndEditing = { [weak self] text in
+            guard let self else {
+                return
+            }
+            self.delegate?.postRecipeBaseViewDidEndEditingRecipeMemo(self, text: text)
         }
     }
 }
