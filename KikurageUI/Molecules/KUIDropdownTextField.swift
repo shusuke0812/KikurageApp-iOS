@@ -26,9 +26,11 @@ public struct KUIDropDownTextFieldProps {
 }
 
 public class KUIDropdownTextField: KUITextField {
+    @available(*, deprecated, message: "Use onDidEndEditing call back")
     public var date: Date {
         datePicker.date
     }
+    public var onDidEndEditing: ((Date) -> Void)?
 
     private let datePicker = UIDatePicker()
 
@@ -67,6 +69,7 @@ public class KUIDropdownTextField: KUITextField {
 
     @objc private func onTapDone() {
         resignFirstResponder()
+        onDidEndEditing?(datePicker.date)
     }
 
     @objc private func onSetDateText() {
