@@ -34,7 +34,7 @@ public class KUITextField: UITextField {
     private func setupComponent(props: KUITextFieldProps) {
         autocorrectionType = .no
         borderStyle = .roundedRect
-        font = .systemFont(ofSize: 14)
+        font = .systemFont(ofSize: 15)
         placeholder = props.placeHolder
         accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
