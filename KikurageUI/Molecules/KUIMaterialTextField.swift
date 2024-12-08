@@ -44,6 +44,7 @@ public class KUIMaterialTextField: UIView {
         textField.borderStyle = .none
         textField.clearButtonMode = .never
         textField.placeholder = props.placeHolder
+        textField.font = .systemFont(ofSize: 15)
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         dividerView = KUIDividerView(props: KUIDividerViewProps(color: .lightGray))

@@ -52,11 +52,13 @@ public class KUIMaterialTextView: UIView {
         textView.delegate = self
         textView.backgroundColor = props.backgroundColor
         textView.inputAccessoryView = toolbar
+        textView.font = .systemFont(ofSize: 15)
         textView.translatesAutoresizingMaskIntoConstraints = false
 
         textViewPlaceHolderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
         textViewPlaceHolderLabel.text = props.placeHolder
         textViewPlaceHolderLabel.backgroundColor = .clear
+        textViewPlaceHolderLabel.font = .systemFont(ofSize: 15)
         textViewPlaceHolderLabel.textColor = UIColor.placeholderText
         textViewPlaceHolderLabel.lineBreakMode = .byWordWrapping
         textViewPlaceHolderLabel.numberOfLines = 0
