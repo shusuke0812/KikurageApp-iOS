@@ -68,8 +68,6 @@
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
 		9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */; };
 		9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD7259870970036CD0F /* RecipeRepository.swift */; };
-		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
-		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
 		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
 		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
@@ -136,7 +134,6 @@
 		9CAC9366278AB4660033DA33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CAC9368278AB4660033DA33 /* Localizable.strings */; };
 		9CACBE7529E273A4006707CB /* KikurageTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CACBE7429E273A4006707CB /* KikurageTableViewHeaderView.swift */; };
 		9CACBE7729E29ADB006707CB /* KikurageBluetoothCentralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CACBE7629E29ADB006707CB /* KikurageBluetoothCentralState.swift */; };
-		9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */; };
 		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
 		9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */; };
@@ -378,8 +375,6 @@
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipe.swift; sourceTree = "<group>"; };
 		9C8B0BD7259870970036CD0F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
-		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
-		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
 		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
@@ -448,7 +443,6 @@
 		9CAC9369278AB4690033DA33 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CACBE7429E273A4006707CB /* KikurageTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageTableViewHeaderView.swift; sourceTree = "<group>"; };
 		9CACBE7629E29ADB006707CB /* KikurageBluetoothCentralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothCentralState.swift; sourceTree = "<group>"; };
-		9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewModel.swift; sourceTree = "<group>"; };
 		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
 		9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
@@ -726,7 +720,6 @@
 				9C9145D027B1E93F0051BE1F /* Manager */,
 				9CE3FE72275B582000FFDF19 /* Plist */,
 				9CA2045A271C799C00D65DD7 /* View */,
-				9CA2046F271C7D0F00D65DD7 /* ViewModel */,
 				9CF0020624E39B290084036B /* Helper */,
 				9CDAFBF624E4B95700E56550 /* Extension */,
 			);
@@ -1223,7 +1216,6 @@
 				9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */,
 				9CBE673928BA5879002DA020 /* EmptyView.swift */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
-				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1392,14 +1384,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		9CA2046F271C7D0F00D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		9CA7F3342537FD75005BED9C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1539,15 +1523,6 @@
 				9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9CAFF9A2255CC57800418745 /* CollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				9C8B1D28255ECB11000CA36C /* CameraCell.swift */,
-				9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */,
-			);
-			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		9CB409D0276F04EF00E413E4 /* Entity */ = {
@@ -2143,7 +2118,6 @@
 				9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */,
 				9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */,
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
-				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
@@ -2535,7 +2509,6 @@
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
-				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
 				9CA95655284E4CED005B7867 /* DebugBaseView.swift in Sources */,
 				9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */,
 				9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */,
@@ -2585,7 +2558,6 @@
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
 				9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
-				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
 				9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */,
