@@ -123,6 +123,6 @@ extension KUIMaterialTextView: UITextViewDelegate {
     }
 
     @objc private func onTapDone() {
-        resignFirstResponder()
+        textView.resignFirstResponder()
     }
 }
