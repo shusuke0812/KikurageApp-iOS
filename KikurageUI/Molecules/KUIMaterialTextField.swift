@@ -80,11 +80,12 @@ public class KUIMaterialTextField: UIView {
 
 extension KUIMaterialTextField: UITextFieldDelegate {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var resultText = ""
-        if let text = textField.text {
-            resultText = (text as NSString).replacingCharacters(in: range, with: text)
+        if let currentString = textField.text, let _range = Range(range, in: currentString) {
+            let newString = currentString.replacingCharacters(in: _range, with: string)
+            return newString.count <= maxTextCount
+        } else {
+            return false
         }
-        return resultText.count <= maxTextCount
     }
 
     public func textFieldDidChangeSelection(_ textField: UITextField) {
