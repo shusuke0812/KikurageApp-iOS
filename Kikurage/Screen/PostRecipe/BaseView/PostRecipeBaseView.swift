@@ -13,6 +13,7 @@ protocol PostRecipeBaseViewDelegate: AnyObject {
     func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView)
     func postRecipeBaseViewDidEndEditingRecipeName(_ postRecipeBaseView: PostRecipeBaseView, text: String)
     func postRecipeBaseViewDidEndEditingRecipeMemo(_ postRecipeBaseView: PostRecipeBaseView, text: String)
+    func postRecipeBaseViewDidEndEditingRecipeDate(_ postRecipeBaseView: PostRecipeBaseView, date: Date)
 }
 
 class PostRecipeBaseView: UIView {
@@ -115,19 +116,26 @@ class PostRecipeBaseView: UIView {
             }
             self.delegate?.postRecipeBaseViewDidTappedPostButton(self)
         }
-        
+
         recipeNameTextField.onDidEndEditing = { [weak self] text in
             guard let self else {
                 return
             }
             self.delegate?.postRecipeBaseViewDidEndEditingRecipeName(self, text: text)
         }
-        
+
         recipeMemoTextView.onDidEndEditing = { [weak self] text in
             guard let self else {
                 return
             }
             self.delegate?.postRecipeBaseViewDidEndEditingRecipeMemo(self, text: text)
+        }
+
+        dateTextFiled.onDidEndEditing = { [weak self] (date: Date) in
+            guard let self else {
+                return
+            }
+            self.delegate?.postRecipeBaseViewDidEndEditingRecipeDate(self, date: date)
         }
     }
 }
