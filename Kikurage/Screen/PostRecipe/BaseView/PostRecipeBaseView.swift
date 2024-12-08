@@ -85,7 +85,7 @@ class PostRecipeBaseView: UIView {
 
         NSLayoutConstraint.activate([
             cameraCollectionView.heightAnchor.constraint(equalToConstant: 180),
-            cameraCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
+            cameraCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
             cameraCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             cameraCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
 
