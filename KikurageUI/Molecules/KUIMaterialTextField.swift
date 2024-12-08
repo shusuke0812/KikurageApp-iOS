@@ -99,7 +99,7 @@ extension KUIMaterialTextField: UITextFieldDelegate {
         }
         onDidEndEditing?(text)
     }
-    
+
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
         return true

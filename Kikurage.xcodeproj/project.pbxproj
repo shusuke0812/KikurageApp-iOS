@@ -97,7 +97,6 @@
 		9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923340255FA0DC000293BB /* KikurageCultivation.swift */; };
 		9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */; };
 		9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */; };
-		9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */; };
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
@@ -410,7 +409,6 @@
 		9C923340255FA0DC000293BB /* KikurageCultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivation.swift; sourceTree = "<group>"; };
 		9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuBaseView.swift; sourceTree = "<group>"; };
 		9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewController.swift; sourceTree = "<group>"; };
-		9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostRecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeBaseView.swift; sourceTree = "<group>"; };
 		9C96997C2566118B00D655DA /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1295,7 +1293,6 @@
 			isa = PBXGroup;
 			children = (
 				9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */,
-				9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2166,7 +2163,6 @@
 				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */,
 				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
-				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

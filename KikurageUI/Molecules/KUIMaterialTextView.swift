@@ -47,7 +47,7 @@ public class KUIMaterialTextView: UIView {
         let toolbar = UIToolbar()
         toolbar.frame = CGRect(x: 0, y: 0, width: frame.width, height: 44)
         toolbar.setItems([flexSpaceItem, doneButtonItem], animated: true)
-        
+
         textView = UITextView()
         textView.delegate = self
         textView.backgroundColor = props.backgroundColor
@@ -121,7 +121,7 @@ extension KUIMaterialTextView: UITextViewDelegate {
         }
         onDidEndEditing?(text)
     }
-    
+
     @objc private func onTapDone() {
         resignFirstResponder()
     }
