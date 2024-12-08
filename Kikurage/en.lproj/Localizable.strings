@@ -137,6 +137,7 @@
 "screen_post_recipe_recipe_date_textfield_placeholder" = "Selecting date";
 "screen_post_recipe_alert_post_recipe_title" = "Is it OK this post content?";
 "screen_post_recipe_alert_post_recipe_success_title" = "Saved recipe record.";
+"screen_post_recipe_post_button_title" = "Save";
 
 // communication
 "screen_communication_title" = "Communication";

@@ -16,9 +16,7 @@ extension RecipeAccessable {
     // MARK: - Modal
 
     func modalToPostRecipe() {
-        guard let vc = R.storyboard.postRecipeViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = PostRecipeViewController()
         present(to: vc, presentationStyle: .automatic)
     }
 }
