@@ -27,9 +27,7 @@ extension CultivationAccessable {
     // MARK: - Modal
 
     func modalToPostCultivation() {
-        guard let vc = R.storyboard.postCultivationViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = PostCultivationViewController()
         present(to: vc, presentationStyle: .automatic)
     }
 }

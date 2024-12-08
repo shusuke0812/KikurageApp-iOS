@@ -125,6 +125,7 @@
 "screen_post_cultivation_alert_post_cultivation_success_title" = "Saved cultivation record.";
 "screen_post_cultivation_valid_memo" = "No memo";
 "screen_post_cultivation_valid_view_date" = "Must select view date";
+"screen_post_cultivation_post_button_title" = "Save";
 
 // recipe
 "screen_recipe_title" = "Recipe";
