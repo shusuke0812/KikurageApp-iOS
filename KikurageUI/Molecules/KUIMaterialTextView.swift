@@ -102,11 +102,12 @@ public class KUIMaterialTextView: UIView {
 
 extension KUIMaterialTextView: UITextViewDelegate {
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        var resultText = ""
-        if let text = textView.text {
-            resultText = (text as NSString).replacingCharacters(in: range, with: text) // TODO: 全角文字が正しくカウントされない問題を修正
+        if let currentString = textView.text, let _range = Range(range, in: currentString) {
+            let newString = currentString.replacingCharacters(in: _range, with: text)
+            return newString.count <= maxTextCount
+        } else {
+            return false
         }
-        return resultText.count <= maxTextCount
     }
 
     public func textViewDidChange(_ textView: UITextView) {
