@@ -42,9 +42,16 @@ public class KUIMaterialTextView: UIView {
     }
 
     private func setupComponent(props: KUIMaterialTextViewProps) {
+        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onTapDone))
+        let flexSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let toolbar = UIToolbar()
+        toolbar.frame = CGRect(x: 0, y: 0, width: frame.width, height: 44)
+        toolbar.setItems([flexSpaceItem, doneButtonItem], animated: true)
+        
         textView = UITextView()
         textView.delegate = self
         textView.backgroundColor = props.backgroundColor
+        textView.inputAccessoryView = toolbar
         textView.translatesAutoresizingMaskIntoConstraints = false
 
         textViewPlaceHolderLabel = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
@@ -113,5 +120,9 @@ extension KUIMaterialTextView: UITextViewDelegate {
             return
         }
         onDidEndEditing?(text)
+    }
+    
+    @objc private func onTapDone() {
+        resignFirstResponder()
     }
 }
