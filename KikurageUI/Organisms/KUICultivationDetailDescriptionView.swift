@@ -37,6 +37,14 @@ public class KUICultivationDetailDescriptionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func updateMemoDateLabel(dateString: String) {
+        memoDateLabel.text = dateString
+    }
+    
+    public func updateMemoDescription(text: String) {
+        memoDescriptionView.updateDescription(text: text)
+    }
+    
     private func setupComponent(props: KUICultivationDetailDescriptionViewProps) {
         memoTitleLabel = UILabel()
         memoTitleLabel.text = props.tittle
