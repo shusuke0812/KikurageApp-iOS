@@ -26,7 +26,7 @@ public class KUICultivationDetailDescriptionView: UIView {
     private var iconImageView: KUICircleImageView!
     private var memoTitleLabel: UILabel!
     private var memoDateLabel: UILabel!
-    private var memoDescriptionView: KUIRoundedTextView!
+    private var memoDescriptionTextView: KUIRoundedTextView!
 
     public init(props: KUICultivationDetailDescriptionViewProps) {
         super.init(frame: .zero)
@@ -42,7 +42,7 @@ public class KUICultivationDetailDescriptionView: UIView {
     }
 
     public func updateMemoDescription(text: String) {
-        memoDescriptionView.updateDescription(text: text)
+        memoDescriptionTextView.updateDescription(text: text)
     }
 
     private func setupComponent(props: KUICultivationDetailDescriptionViewProps) {
@@ -76,12 +76,15 @@ public class KUICultivationDetailDescriptionView: UIView {
         parentStackView.addArrangedSubview(iconImageView)
         parentStackView.addArrangedSubview(childStackView)
 
-        memoDescriptionView = KUIRoundedTextView(props: KUIRoundedTextViewProps(description: "-"))
-        memoDescriptionView.translatesAutoresizingMaskIntoConstraints = false
+        memoDescriptionTextView = KUIRoundedTextView(props: KUIRoundedTextViewProps(description: "-"))
+        memoDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(parentStackView)
+        addSubview(memoDescriptionTextView)
 
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: 50),
-            iconImageView.heightAnchor.constraint(equalToConstant: 50),
+            iconImageView.heightAnchor.constraint(equalToConstant: 50)
         ])
 
         NSLayoutConstraint.activate([
@@ -89,10 +92,10 @@ public class KUICultivationDetailDescriptionView: UIView {
             parentStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             parentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            memoDescriptionView.topAnchor.constraint(equalTo: parentStackView.bottomAnchor, constant: 25),
-            memoDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            memoDescriptionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            memoDescriptionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            memoDescriptionTextView.topAnchor.constraint(equalTo: parentStackView.bottomAnchor, constant: 25),
+            memoDescriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            memoDescriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            memoDescriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
