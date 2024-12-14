@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 class CultivationBaseView: UIView {
@@ -34,7 +35,7 @@ extension CultivationBaseView {
         flowLayout.minimumLineSpacing = .cellSpacing * 2
         flowLayout.minimumInteritemSpacing = .cellSpacing
         flowLayout.sectionInset = UIEdgeInsets(top: .cellSpacing, left: .cellSpacing, bottom: .cellSpacing, right: .cellSpacing)
-        collectionView.register(R.nib.cultivationCollectionViewCell)
+        collectionView.register(KUICultivationCollectionViewCell.self, forCellWithReuseIdentifier: KUICultivationCollectionViewCell.identifier)
     }
 }
 
