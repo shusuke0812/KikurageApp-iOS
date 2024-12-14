@@ -19,9 +19,7 @@ extension HomeAccessable {
     // MARK: - Push
 
     func pushToCultivation() {
-        guard let vc = R.storyboard.cultivationViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = CultivationViewController()
         push(to: vc)
     }
 
