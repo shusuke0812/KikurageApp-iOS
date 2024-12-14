@@ -137,7 +137,7 @@ public class KUICarouselCollectionViewCell: UICollectionViewCell {
 
     private(set) var zoomingImageView: KUIZoomingImageView!
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setupComponsent()
     }
