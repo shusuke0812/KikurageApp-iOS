@@ -18,12 +18,17 @@ public struct KUICarouselCollectionViewProps {
 }
 
 public class KUICarouselCollectionView: UIView {
-    private(set) var collectionView: UICollectionView!
+    private var collectionView: UICollectionView!
     private var pageControl: UIPageControl!
 
     public init(props: KUICarouselCollectionViewProps) {
         super.init(frame: .zero)
         setupComponent(props: props)
+    }
+    
+    public func configDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
     }
     
     required init?(coder: NSCoder) {
