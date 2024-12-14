@@ -9,12 +9,12 @@
 import UIKit
 
 public struct KUICultivationDetailDescriptionViewProps {
-    let image: UIImage
+    let image: UIImage?
     let tittle: String
     let dateString: String
     let description: String
     
-    public init(image: UIImage, tittle: String, dateString: String, description: String) {
+    public init(image: UIImage?, tittle: String, dateString: String, description: String) {
         self.image = image
         self.tittle = tittle
         self.dateString = dateString

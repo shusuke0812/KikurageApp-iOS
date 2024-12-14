@@ -9,9 +9,9 @@
 import UIKit
 
 public struct KUICircleImageViewProps {
-    let image: UIImage
+    let image: UIImage?
     
-    public init(image: UIImage) {
+    public init(image: UIImage?) {
         self.image = image
     }
 }
