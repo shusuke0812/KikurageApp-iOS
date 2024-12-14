@@ -17,9 +17,7 @@ extension CultivationAccessable {
     // MARK: - Push
 
     func pushToCultivationDetail(cultivation: KikurageCultivation) {
-        guard let vc = R.storyboard.cultivationDetailViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = CultivationDetailViewController()
         vc.cultivation = cultivation
         push(to: vc)
     }

@@ -59,7 +59,6 @@
 		9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */; };
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
-		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
 		9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */; };
 		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
 		9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */; };
@@ -367,7 +366,6 @@
 		9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterBaseView.swift; sourceTree = "<group>"; };
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
-		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
 		9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
 		9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBaseView.swift; sourceTree = "<group>"; };
@@ -1234,7 +1232,6 @@
 			isa = PBXGroup;
 			children = (
 				9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */,
-				9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2103,7 +2100,6 @@
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
-				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
