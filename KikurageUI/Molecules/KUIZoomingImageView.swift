@@ -10,7 +10,7 @@
 
 import UIKit
 
-public class KikurageImageView: UIView {
+public class KUIZoomingImageView: UIView {
     private var scrollView: UIScrollView!
     public var imageView: UIImageView!
 
@@ -152,7 +152,7 @@ public class KikurageImageView: UIView {
 
 // MARK: - UIScrollViewDelegate
 
-extension KikurageImageView: UIScrollViewDelegate {
+extension KUIZoomingImageView: UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
     }
