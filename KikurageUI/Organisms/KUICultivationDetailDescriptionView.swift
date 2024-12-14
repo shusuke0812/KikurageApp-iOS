@@ -28,6 +28,8 @@ public class KUICultivationDetailDescriptionView: UIView {
     private var memoDateLabel: UILabel!
     private var memoDescriptionTextView: KUIRoundedTextView!
 
+    private let iconImageWidth: CGFloat = 50
+
     public init(props: KUICultivationDetailDescriptionViewProps) {
         super.init(frame: .zero)
         setupComponent(props: props)
@@ -63,7 +65,10 @@ public class KUICultivationDetailDescriptionView: UIView {
         childStackView.addArrangedSubview(memoTitleLabel)
         childStackView.addArrangedSubview(memoDateLabel)
 
-        iconImageView = KUICircleImageView(props: KUICircleImageViewProps(image: props.image))
+        iconImageView = KUICircleImageView(props: KUICircleImageViewProps(
+            image: props.image,
+            width: iconImageWidth
+        ))
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
 
         let parentStackView = UIStackView()
@@ -83,8 +88,8 @@ public class KUICultivationDetailDescriptionView: UIView {
         addSubview(memoDescriptionTextView)
 
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: 50),
-            iconImageView.heightAnchor.constraint(equalToConstant: 50)
+            iconImageView.widthAnchor.constraint(equalToConstant: iconImageWidth),
+            iconImageView.heightAnchor.constraint(equalToConstant: iconImageWidth)
         ])
 
         NSLayoutConstraint.activate([
