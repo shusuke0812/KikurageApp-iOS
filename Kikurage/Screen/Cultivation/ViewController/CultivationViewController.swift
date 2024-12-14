@@ -13,13 +13,17 @@ import SwiftUI
 import UIKit
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
-    private var baseView: CultivationBaseView { view as! CultivationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CultivationBaseView = .init()
     private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: CultivationViewModelType!
 
     private let disposeBag = RxSwift.DisposeBag()
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
