@@ -26,8 +26,7 @@ public class KUICultivationDetailDescriptionView: UIView {
     private var iconImageView: KUICircleImageView!
     private var memoTitleLabel: UILabel!
     private var memoDateLabel: UILabel!
-    private var memoContentView: KUIRoundedView!
-    private var memoLabel: UILabel!
+    private var memoDescriptionView: KUIRoundedTextView!
 
     public init(props: KUICultivationDetailDescriptionViewProps) {
         super.init(frame: .zero)
@@ -40,8 +39,8 @@ public class KUICultivationDetailDescriptionView: UIView {
     
     private func setupComponent(props: KUICultivationDetailDescriptionViewProps) {
         memoTitleLabel = UILabel()
-        memoLabel.text = props.tittle
-        memoLabel.font = .systemFont(ofSize: 17)
+        memoTitleLabel.text = props.tittle
+        memoTitleLabel.font = .systemFont(ofSize: 17)
         
         memoDateLabel = UILabel()
         memoDateLabel.text = props.dateString
@@ -69,24 +68,12 @@ public class KUICultivationDetailDescriptionView: UIView {
         parentStackView.addArrangedSubview(iconImageView)
         parentStackView.addArrangedSubview(childStackView)
         
-        memoContentView = KUIRoundedView(props: KUIRoundedViewProps())
-        memoContentView.translatesAutoresizingMaskIntoConstraints = false
-        
-        memoLabel = UILabel()
-        memoLabel.font = .systemFont(ofSize: 14)
-        memoLabel.numberOfLines = 0
-        memoLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        memoContentView.addSubview(memoLabel)
+        memoDescriptionView = KUIRoundedTextView(props: KUIRoundedTextViewProps(description: "-"))
+        memoDescriptionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: 50),
             iconImageView.heightAnchor.constraint(equalToConstant: 50),
-            
-            memoLabel.topAnchor.constraint(equalTo: memoContentView.topAnchor, constant: 8),
-            memoLabel.leadingAnchor.constraint(equalTo: memoContentView.leadingAnchor, constant: 8),
-            memoLabel.trailingAnchor.constraint(equalTo: memoContentView.trailingAnchor, constant: -8),
-            memoLabel.bottomAnchor.constraint(equalTo: memoContentView.bottomAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([
@@ -94,10 +81,10 @@ public class KUICultivationDetailDescriptionView: UIView {
             parentStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             parentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            memoContentView.topAnchor.constraint(equalTo: parentStackView.bottomAnchor, constant: 25),
-            memoContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            memoContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            memoContentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            memoDescriptionView.topAnchor.constraint(equalTo: parentStackView.bottomAnchor, constant: 25),
+            memoDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            memoDescriptionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            memoDescriptionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
