@@ -26,13 +26,13 @@ public class KUICarouselCollectionView: UIView {
         setupComponent(props: props)
     }
     
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public func configDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     public func setPageControlNumber(imageCount: Int) {
