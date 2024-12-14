@@ -187,6 +187,7 @@
 		9CD982BE2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982BD2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift */; };
 		9CD982C22D0DB3C100A4AB14 /* KUICircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982C12D0DB3C100A4AB14 /* KUICircleImageView.swift */; };
 		9CD982C42D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982C32D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift */; };
+		9CD982C62D0DC50300A4AB14 /* KUIRoundedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982C52D0DC50300A4AB14 /* KUIRoundedTextView.swift */; };
 		9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */; };
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
@@ -498,6 +499,7 @@
 		9CD982BD2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICarouselCollectionView.swift; sourceTree = "<group>"; };
 		9CD982C12D0DB3C100A4AB14 /* KUICircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICircleImageView.swift; sourceTree = "<group>"; };
 		9CD982C32D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICultivationDetailDescriptionView.swift; sourceTree = "<group>"; };
+		9CD982C52D0DC50300A4AB14 /* KUIRoundedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRoundedTextView.swift; sourceTree = "<group>"; };
 		9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRequestProtocol.swift; sourceTree = "<group>"; };
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -1833,6 +1835,7 @@
 				9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */,
 				9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */,
 				9CD982C12D0DB3C100A4AB14 /* KUICircleImageView.swift */,
+				9CD982C52D0DC50300A4AB14 /* KUIRoundedTextView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -2667,6 +2670,7 @@
 				9CD982C42D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift in Sources */,
 				9CE70F462CD70F750081BF8C /* KUIMaterialTextField.swift in Sources */,
 				9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */,
+				9CD982C62D0DC50300A4AB14 /* KUIRoundedTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
