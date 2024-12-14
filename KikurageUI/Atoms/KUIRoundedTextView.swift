@@ -11,7 +11,7 @@ import UIKit
 public struct KUIRoundedTextViewProps {
     let backgroundColor: UIColor?
     let description: String
-    
+
     public init(
         backgroundColor: UIColor? = .white,
         description: String
@@ -26,18 +26,18 @@ public class KUIRoundedTextView: UITextView {
         super.init(frame: .zero, textContainer: nil)
         setupComponent(props: props)
     }
-    
+
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func updateDescription(text: String) {
         self.text = text
     }
-    
+
     private func setupComponent(props: KUIRoundedTextViewProps) {
         backgroundColor = props.backgroundColor
-        text  = props.description
+        text = props.description
         clipsToBounds = true
         layer.cornerRadius = .viewCornerRadius
         isEditable = false

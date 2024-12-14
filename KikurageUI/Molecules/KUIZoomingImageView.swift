@@ -1,5 +1,5 @@
 //
-//  KikurageImageView.swift
+//  KUIZoomingImageView.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2022/11/8.
