@@ -11,7 +11,7 @@ import UIKit
 
 public struct KUICarouselCollectionViewProps {
     let height: CGFloat
-    
+
     public init(height: CGFloat = 320) {
         self.height = height
     }
@@ -25,16 +25,16 @@ public class KUICarouselCollectionView: UIView {
         super.init(frame: .zero)
         setupComponent(props: props)
     }
-    
+
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func configDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
     }
-    
+
     public func setPageControlNumber(imageCount: Int) {
         if imageCount <= 1 {
             pageControl.numberOfPages = 0
@@ -42,11 +42,11 @@ public class KUICarouselCollectionView: UIView {
             pageControl.numberOfPages = imageCount
         }
     }
-    
+
     public func updateCurrentPage(index: Int) {
         pageControl.currentPage = index
     }
-    
+
     private func setupComponent(props: KUICarouselCollectionViewProps) {
         let flowLayout = KUICarouselCollectionFlowLayout()
         flowLayout.estimatedItemSize = .zero
@@ -54,22 +54,22 @@ public class KUICarouselCollectionView: UIView {
         collectionView.register(KUICarouselCollectionViewCell.self, forCellWithReuseIdentifier: KUICarouselCollectionViewCell.identifier)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         pageControl = UIPageControl()
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = .gray
         pageControl.pageIndicatorTintColor = .white
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        
+
         addSubview(collectionView)
         addSubview(pageControl)
-        
+
         NSLayoutConstraint.activate([
             collectionView.heightAnchor.constraint(equalToConstant: props.height),
             collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
+
             pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             pageControl.leadingAnchor.constraint(equalTo: leadingAnchor),
             pageControl.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -83,7 +83,7 @@ public class KUICarouselCollectionView: UIView {
  - CollectionViewのスクロール停止ポイントを制御する
  - https://github.com/nkmrh/PagingCollectionView/blob/master/LICENSE を元に作成
  */
-internal class KUICarouselCollectionFlowLayout: UICollectionViewFlowLayout {
+class KUICarouselCollectionFlowLayout: UICollectionViewFlowLayout {
     // ユーザーがセルをスクロールして離した時に呼ばれる
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else {
@@ -120,7 +120,7 @@ internal class KUICarouselCollectionFlowLayout: UICollectionViewFlowLayout {
 
         return CGPoint(x: attributes.frame.minX - cellLeftMargin, y: collectionView.contentOffset.y)
     }
-    
+
     /// 画面中央に一番近いセルのattributesを取得する
     private func layoutAttributesForNeabyCenterX(in attributes: [UICollectionViewLayoutAttributes], collectionView: UICollectionView) -> UICollectionViewLayoutAttributes? {
         let screenCenterX = collectionView.contentOffset.x + collectionView.bounds.width * 0.5
@@ -137,26 +137,26 @@ public class KUICarouselCollectionViewCell: UICollectionViewCell {
 
     private(set) var zoomingImageView: KUIZoomingImageView!
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupComponsent()
     }
-    
-    required init?(coder: NSCoder) {
+
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setImage(imageStoragePath: String) {
+
+    public func setImage(imageStoragePath: String) {
         let storageReference = Storage.storage().reference(withPath: imageStoragePath)
         zoomingImageView.imageView.sd_setImage(with: storageReference, placeholderImage: nil)
     }
-    
+
     private func setupComponsent() {
         zoomingImageView = KUIZoomingImageView()
         zoomingImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         contentView.addSubview(zoomingImageView)
-        
+
         NSLayoutConstraint.activate([
             zoomingImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             zoomingImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
