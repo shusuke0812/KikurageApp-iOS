@@ -141,8 +141,6 @@
 		9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */; };
 		9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */; };
 		9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */; };
-		9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */; };
-		9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */; };
 		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
 		9CB0505B28119A1B000975FE /* KikurageRecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0505A28119A1B000975FE /* KikurageRecipeRequest.swift */; };
 		9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */; };
@@ -452,8 +450,6 @@
 		9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountSettingViewController.storyboard; sourceTree = "<group>"; };
 		9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingBaseView.swift; sourceTree = "<group>"; };
 		9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
-		9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCollectionViewCell.swift; sourceTree = "<group>"; };
-		9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
 		9CB0505A28119A1B000975FE /* KikurageRecipeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipeRequest.swift; sourceTree = "<group>"; };
 		9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
@@ -1011,7 +1007,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA2044A271C77DE00D65DD7 /* BaseView */,
-				9CA20458271C793A00D65DD7 /* ChildView */,
 				9CA2045E271C7A6F00D65DD7 /* ViewController */,
 				9CA20468271C7BC000D65DD7 /* ViewModel */,
 			);
@@ -1192,15 +1187,6 @@
 				9C91125025B68F2E007BCECB /* CalendarBaseView.swift */,
 			);
 			path = BaseView;
-			sourceTree = "<group>";
-		};
-		9CA20458271C793A00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */,
-				9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */,
-			);
-			path = ChildView;
 			sourceTree = "<group>";
 		};
 		9CA20459271C796B00D65DD7 /* ChildView */ = {
@@ -2127,7 +2113,6 @@
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
-				9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
@@ -2500,7 +2485,6 @@
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
 				9CE0184F29B46D6400365E95 /* WiFiSettingBaseView.swift in Sources */,
-				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
 				9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */,
 				9CE0184729B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift in Sources */,
 				9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */,
