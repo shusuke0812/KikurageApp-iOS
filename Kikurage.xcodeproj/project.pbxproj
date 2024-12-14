@@ -92,6 +92,7 @@
 		9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */; };
 		9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333D255F9F7E000293BB /* CultivationRepository.swift */; };
 		9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923340255FA0DC000293BB /* KikurageCultivation.swift */; };
+		9C92550B2D0D3A33007258D2 /* KUILoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92550A2D0D3A23007258D2 /* KUILoadingThumbnailView.swift */; };
 		9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */; };
 		9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */; };
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
@@ -186,6 +187,7 @@
 		9CCE9EFE2B932F1200D13911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE9EFD2B932F1200D13911 /* SceneDelegate.swift */; };
 		9CD1886E29758032008EF1ED /* KikurageBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1886D29758032008EF1ED /* KikurageBluetoothManager.swift */; };
 		9CD2497929D3110B00391C44 /* KikurageBluetoothCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2497829D3110B00391C44 /* KikurageBluetoothCompletion.swift */; };
+		9CD7D72E2D05BD030026C795 /* KUICultivationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD7D72D2D05BCF70026C795 /* KUICultivationCollectionViewCell.swift */; };
 		9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */; };
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
@@ -400,6 +402,7 @@
 		9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
 		9C92333D255F9F7E000293BB /* CultivationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationRepository.swift; sourceTree = "<group>"; };
 		9C923340255FA0DC000293BB /* KikurageCultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivation.swift; sourceTree = "<group>"; };
+		9C92550A2D0D3A23007258D2 /* KUILoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUILoadingThumbnailView.swift; sourceTree = "<group>"; };
 		9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuBaseView.swift; sourceTree = "<group>"; };
 		9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewController.swift; sourceTree = "<group>"; };
 		9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeBaseView.swift; sourceTree = "<group>"; };
@@ -496,6 +499,7 @@
 		9CCE9EFD2B932F1200D13911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CD1886D29758032008EF1ED /* KikurageBluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothManager.swift; sourceTree = "<group>"; };
 		9CD2497829D3110B00391C44 /* KikurageBluetoothCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothCompletion.swift; sourceTree = "<group>"; };
+		9CD7D72D2D05BCF70026C795 /* KUICultivationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICultivationCollectionViewCell.swift; sourceTree = "<group>"; };
 		9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRequestProtocol.swift; sourceTree = "<group>"; };
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -1560,6 +1564,7 @@
 		9CC376192C1D94C80098DCD9 /* Molecules */ = {
 			isa = PBXGroup;
 			children = (
+				9C92550A2D0D3A23007258D2 /* KUILoadingThumbnailView.swift */,
 				9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */,
 				9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */,
 				9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */,
@@ -1595,6 +1600,7 @@
 		9CDB33B92C1ED0D000A8B2BE /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				9CD7D72D2D05BCF70026C795 /* KUICultivationCollectionViewCell.swift */,
 				9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */,
 				9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */,
 				9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */,
@@ -2656,9 +2662,11 @@
 				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
 				9CE74B0D2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift in Sources */,
 				9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */,
+				9C92550B2D0D3A33007258D2 /* KUILoadingThumbnailView.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
 				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
 				9CECFB122CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift in Sources */,
+				9CD7D72E2D05BD030026C795 /* KUICultivationCollectionViewCell.swift in Sources */,
 				9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */,
 				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
 				9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */,
