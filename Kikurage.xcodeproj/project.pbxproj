@@ -125,7 +125,6 @@
 		9CA9565B284E4D2A005B7867 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */; };
 		9CAAF9DD2805C169000C671D /* KikurageUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */; };
 		9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */; };
-		9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */; };
 		9CAC93122789E4E60033DA33 /* KikurageFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CAC930F2789E4E50033DA33 /* KikurageFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; };
 		9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -434,7 +433,6 @@
 		9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRequest.swift; sourceTree = "<group>"; };
 		9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivationRequest.swift; sourceTree = "<group>"; };
-		9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAC930F2789E4E50033DA33 /* KikurageFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageFeature.h; sourceTree = "<group>"; };
 		9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageHUD.swift; sourceTree = "<group>"; };
@@ -1203,7 +1201,6 @@
 			children = (
 				9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */,
 				9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */,
-				9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */,
 				9CBE673928BA5879002DA020 /* EmptyView.swift */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
 			);
@@ -2524,7 +2521,6 @@
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */,
 				9C9D752B27DF6CC5002611FF /* NavigationProtocol+Top.swift in Sources */,
-				9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */,
 				9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */,
 				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
 				9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */,
