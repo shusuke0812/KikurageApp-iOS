@@ -25,6 +25,15 @@ class SideMenuViewController: UIViewController, UIViewControllerNavigatable, Men
         super.viewDidLoad()
         viewModel = SideMenuViewModel()
         setDelegateDataSource()
+
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            options: .curveEaseOut,
+            animations: {
+                self.baseView.openAnimations()
+            }
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,10 +48,10 @@ class SideMenuViewController: UIViewController, UIViewControllerNavigatable, Men
         super.touchesEnded(touches, with: event)
         for touch in touches where touch.view == baseView {
             UIView.animate(
-                withDuration: 0.2,
+                withDuration: 0.3,
                 delay: 0,
                 options: .curveEaseIn,
-                animations: { self.baseView.animations() }
+                animations: { self.baseView.closeAnimations() }
             ) { _ in
                 self.dismiss(animated: true, completion: nil)
             }

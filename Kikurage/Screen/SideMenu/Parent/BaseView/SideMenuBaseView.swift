@@ -15,6 +15,8 @@ class SideMenuBaseView: UIView {
     private(set) var tableView: UITableView!
     private var headerHeightConstraint: NSLayoutConstraint!
 
+    private let sideMenuParentViewWidth: CGFloat = 210
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupComponent()
@@ -25,6 +27,7 @@ class SideMenuBaseView: UIView {
     }
 
     private func setupComponent() {
+        frame.origin.x = -sideMenuParentViewWidth
         backgroundColor = .white.withAlphaComponent(0.5)
 
         sideMenuParentView = UIView()
@@ -60,7 +63,7 @@ class SideMenuBaseView: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            sideMenuParentView.widthAnchor.constraint(equalToConstant: 210),
+            sideMenuParentView.widthAnchor.constraint(equalToConstant: sideMenuParentViewWidth),
             sideMenuParentView.topAnchor.constraint(equalTo: topAnchor),
             sideMenuParentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             sideMenuParentView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -94,7 +97,11 @@ extension SideMenuBaseView {
         tableView.dataSource = dataSource
     }
 
-    func animations() {
+    func closeAnimations() {
         layer.position.x = -frame.width
+    }
+
+    func openAnimations() {
+        frame.origin.x = 0
     }
 }
