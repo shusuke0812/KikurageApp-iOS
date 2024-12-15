@@ -11,10 +11,19 @@ import UIKit
 public struct KUIMaterialTextFieldProps {
     let maxTextCount: Int
     let placeHolder: String?
+    let alignment: NSTextAlignment
+    let fontSize: CGFloat
 
-    public init(maxTextCount: Int, placeHolder: String?) {
+    public init(
+        maxTextCount: Int,
+        placeHolder: String? = nil,
+        alignment: NSTextAlignment = .left,
+        fontSize: CGFloat = 15
+    ) {
         self.maxTextCount = maxTextCount
         self.placeHolder = placeHolder
+        self.alignment = alignment
+        self.fontSize = fontSize
     }
 }
 
@@ -34,8 +43,12 @@ public class KUIMaterialTextField: UIView {
         setupComponent(props: props)
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public func setupText(_ value: String) {
+        textField.text = value
     }
 
     private func setupComponent(props: KUIMaterialTextFieldProps) {
@@ -44,7 +57,8 @@ public class KUIMaterialTextField: UIView {
         textField.borderStyle = .none
         textField.clearButtonMode = .never
         textField.placeholder = props.placeHolder
-        textField.font = .systemFont(ofSize: 15)
+        textField.font = .systemFont(ofSize: props.fontSize)
+        textField.textAlignment = props.alignment
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         dividerView = KUIDividerView(props: KUIDividerViewProps(color: .lightGray))
