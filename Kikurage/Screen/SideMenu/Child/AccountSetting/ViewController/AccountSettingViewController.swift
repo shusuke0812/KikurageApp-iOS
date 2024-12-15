@@ -10,10 +10,14 @@ import CropViewController
 import KikurageFeature
 
 class AccountSettingViewController: UIViewController {
-    private var baseView: AccountSettingBaseView { view as! AccountSettingBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: AccountSettingBaseView = .init()
     private var viewModel: AccountSettingViewModel!
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
