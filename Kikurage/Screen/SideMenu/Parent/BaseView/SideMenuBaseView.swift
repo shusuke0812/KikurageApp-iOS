@@ -10,33 +10,79 @@ import KikurageUI
 import UIKit
 
 class SideMenuBaseView: UIView {
-    @IBOutlet private(set) weak var sideMenuParentView: UIView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private(set) weak var tableView: UITableView!
-    @IBOutlet private weak var headerHeightConstraint: NSLayoutConstraint!
+    private(set) var sideMenuParentView: UIView!
+    private var titleLabel: UILabel!
+    private(set) var tableView: UITableView!
+    private var headerHeightConstraint: NSLayoutConstraint!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        registerTableViewCell()
-        initUI()
-        initHeaderHeightConstraint()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupComponent() {
+        backgroundColor = .white.withAlphaComponent(0.5)
+
+        sideMenuParentView = UIView()
+        sideMenuParentView.backgroundColor = R.color.themeColor()
+        sideMenuParentView.translatesAutoresizingMaskIntoConstraints = false
+
+        titleLabel = UILabel()
+        titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        titleLabel.contentMode = .left
+        titleLabel.text = R.string.localizable.side_menu_title()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let headerView = UIView()
+        headerView.backgroundColor = .systemBackground
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.addSubview(titleLabel)
+
+        tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .systemGroupedBackground
+        tableView.isScrollEnabled = false
+        tableView.register(KUISideMenuItemTableViewCell.self, forCellReuseIdentifier: KUISideMenuItemTableViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        sideMenuParentView.addSubview(headerView)
+        sideMenuParentView.addSubview(tableView)
+
+        addSubview(sideMenuParentView)
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
+            titleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10),
+        ])
+
+        NSLayoutConstraint.activate([
+            sideMenuParentView.widthAnchor.constraint(equalToConstant: 210),
+            sideMenuParentView.topAnchor.constraint(equalTo: topAnchor),
+            sideMenuParentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            sideMenuParentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            // Header
+            headerView.heightAnchor.constraint(equalToConstant: 87),
+            headerView.topAnchor.constraint(equalTo: sideMenuParentView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: sideMenuParentView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: sideMenuParentView.trailingAnchor),
+
+            // Body
+            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: sideMenuParentView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: sideMenuParentView.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: sideMenuParentView.bottomAnchor)
+        ])
     }
 }
 
 // MARK: - Config
 
 extension SideMenuBaseView {
-    private func initUI() {
-        tableView.backgroundColor = .systemGroupedBackground
-        tableView.isScrollEnabled = false
-
-        titleLabel.text = R.string.localizable.side_menu_title()
-    }
-
-    private func registerTableViewCell() {
-        tableView.register(KUISideMenuItemTableViewCell.self, forCellReuseIdentifier: KUISideMenuItemTableViewCell.identifier)
-    }
-
     func initHeaderHeightConstraint() {
         let navBarHeight = AppConfig.shared.navigationBarHeight ?? 0
         let safeAreaHeight = AppConfig.shared.safeAreaHeight ?? 0
