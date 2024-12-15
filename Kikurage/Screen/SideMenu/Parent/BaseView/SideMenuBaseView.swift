@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 class SideMenuBaseView: UIView {
@@ -33,8 +34,7 @@ extension SideMenuBaseView {
     }
 
     private func registerTableViewCell() {
-        let nib = UINib(nibName: "SideMenuTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "SideMenuTableViewCell")
+        tableView.register(KUISideMenuItemTableViewCell.self, forCellReuseIdentifier: KUISideMenuItemTableViewCell.identifier)
     }
 
     func initHeaderHeightConstraint() {
