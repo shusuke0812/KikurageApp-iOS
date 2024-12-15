@@ -45,8 +45,8 @@ class CultivationDetailBaseView: UIView {
             carouselCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             contentView.topAnchor.constraint(equalTo: carouselCollectionView.bottomAnchor, constant: 25),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15)
         ])
     }
