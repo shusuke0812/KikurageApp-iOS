@@ -10,12 +10,16 @@ import MessageUI
 import UIKit
 
 class SideMenuViewController: UIViewController, UIViewControllerNavigatable, MenuAccessable {
-    private var baseView: SideMenuBaseView { view as! SideMenuBaseView } // swiftlint:disable:this force_cast
+    private var baseView: SideMenuBaseView = .init()
     private var viewModel: SideMenuViewModel!
 
     private let mail = MFMailComposeViewController()
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
