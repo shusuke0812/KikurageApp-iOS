@@ -6,6 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 protocol AccountSettingBaseViewDelegate: AnyObject {
@@ -14,45 +15,85 @@ protocol AccountSettingBaseViewDelegate: AnyObject {
 }
 
 class AccountSettingBaseView: UIView {
-    @IBOutlet private weak var userImageView: UIImageView!
-    @IBOutlet private weak var kikurageNameTextField: UITextField!
-    @IBOutlet private weak var editButton: UIButton!
+    private var userImageView: KUICircleImageView!
+    private var kikurageNameTextField: KUIMaterialTextField!
+    private var editButton: KUIButton!
+
+    private let userImageViewWidth: CGFloat = 160
 
     weak var delegate: AccountSettingBaseViewDelegate?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
+        setupActions()
     }
 
-    // MARK: - Action
-
-    @IBAction private func edit(_ sender: Any) {
-        delegate?.settingBaseViewDidTappedEditButton(self)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    @IBAction private func editUserImage(_ sender: Any) {
-        delegate?.settingBaseViewDidTappedUserImageView(self)
-    }
-}
-
-// MARK: - Initialized
-
-extension AccountSettingBaseView {
-    private func initUI() {
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
-        userImageView.image = R.image.hakase()
-        userImageView.clipsToBounds = true
-        userImageView.layer.cornerRadius = userImageView.frame.width / 2
-        userImageView.layer.borderWidth = 0.5
-        userImageView.layer.borderColor = UIColor.gray.cgColor
+        userImageView = KUICircleImageView(props: KUICircleImageViewProps(
+            image: R.image.hakase(),
+            width: userImageViewWidth
+        ))
+        userImageView.isUserInteractionEnabled = true
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        editButton.setTitle(R.string.localizable.side_menu_setting_edit_btn_title(), for: .normal)
-        editButton.setTitleColor(.white, for: .normal)
-        editButton.clipsToBounds = true
-        editButton.layer.cornerRadius = .buttonCornerRadius
-        editButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        kikurageNameTextField = KUIMaterialTextField(props: KUIMaterialTextFieldProps(
+            maxTextCount: 30,
+            alignment: .center,
+            fontSize: 20
+        ))
+        kikurageNameTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        editButton = KUIButton(props: KUIButtonProps(
+            variant: .primary,
+            title: R.string.localizable.side_menu_setting_edit_btn_title()
+        ))
+        editButton.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(userImageView)
+        addSubview(kikurageNameTextField)
+        addSubview(editButton)
+
+        NSLayoutConstraint.activate([
+            userImageView.widthAnchor.constraint(equalToConstant: userImageViewWidth),
+            userImageView.heightAnchor.constraint(equalToConstant: userImageViewWidth),
+            userImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            userImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+
+            kikurageNameTextField.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 40),
+            kikurageNameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            kikurageNameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
+            editButton.heightAnchor.constraint(equalToConstant: 45),
+            editButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            editButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
+        ])
+    }
+
+    private func setupActions() {
+        let userImageViewTapGestureRecoizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(onTapUserImageView(_:))
+        )
+        userImageView.addGestureRecognizer(userImageViewTapGestureRecoizer)
+
+        editButton.addAction(.init { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.delegate?.settingBaseViewDidTappedEditButton(self)
+        }, for: .touchUpInside)
+    }
+
+    @objc private func onTapUserImageView(_ sender: UIGestureRecognizer) {
+        delegate?.settingBaseViewDidTappedUserImageView(self)
     }
 }
 
@@ -61,11 +102,7 @@ extension AccountSettingBaseView {
 extension AccountSettingBaseView {
     func setKikurageName(name: String?) {
         if let name = name {
-            kikurageNameTextField.text = name
-            kikurageNameTextField.isEnabled = true
-        } else {
-            kikurageNameTextField.placeholder = R.string.localizable.side_menu_setting_kikurage_name_error()
-            kikurageNameTextField.isEnabled = false
+            kikurageNameTextField.setupText(name)
         }
     }
 }
