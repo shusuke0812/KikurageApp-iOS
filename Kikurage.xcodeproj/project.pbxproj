@@ -105,8 +105,6 @@
 		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
 		9C9B27C92812F42A00B391E3 /* KonashiBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
-		9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */; };
-		9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */; };
 		9C9D752B27DF6CC5002611FF /* NavigationProtocol+Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */; };
 		9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */; };
 		9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0CDA926E8FED800116896 /* SignUpRepository.swift */; };
@@ -415,8 +413,6 @@
 		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonashiBluetooth.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
-		9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
-		9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Top.swift"; sourceTree = "<group>"; };
 		9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigRepository.swift; sourceTree = "<group>"; };
 		9CA0CDA926E8FED800116896 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
@@ -918,8 +914,6 @@
 			isa = PBXGroup;
 			children = (
 				9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */,
-				9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */,
-				9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2102,7 +2096,6 @@
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
 				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
-				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
 				9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */,
 				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
@@ -2489,7 +2482,6 @@
 				9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */,
 				9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
-				9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */,
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
 				9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */,
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
