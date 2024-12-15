@@ -50,6 +50,9 @@ public class KUICarouselCollectionView: UIView {
     private func setupComponent(props: KUICarouselCollectionViewProps) {
         let flowLayout = KUICarouselCollectionFlowLayout()
         flowLayout.estimatedItemSize = .zero
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(KUICarouselCollectionViewCell.self, forCellWithReuseIdentifier: KUICarouselCollectionViewCell.identifier)
         collectionView.showsHorizontalScrollIndicator = false
