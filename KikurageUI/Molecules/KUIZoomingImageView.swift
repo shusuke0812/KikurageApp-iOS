@@ -1,5 +1,5 @@
 //
-//  KikurageImageView.swift
+//  KUIZoomingImageView.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2022/11/8.
@@ -10,14 +10,14 @@
 
 import UIKit
 
-public class KikurageImageView: UIView {
+public class KUIZoomingImageView: UIView {
     private var scrollView: UIScrollView!
     public var imageView: UIImageView!
 
     private var scrollViewSize: CGSize { scrollView.frame.size }
     private var imageViewSize: CGSize { imageView.frame.size }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
 
@@ -25,7 +25,7 @@ public class KikurageImageView: UIView {
         preventScrollingToEmptyAreaOfImageView()
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         initialize()
 
@@ -37,6 +37,7 @@ public class KikurageImageView: UIView {
 
     private func initialize() {
         imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView = UIScrollView()
@@ -152,7 +153,7 @@ public class KikurageImageView: UIView {
 
 // MARK: - UIScrollViewDelegate
 
-extension KikurageImageView: UIScrollViewDelegate {
+extension KUIZoomingImageView: UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
     }

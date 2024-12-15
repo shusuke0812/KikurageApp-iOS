@@ -9,10 +9,14 @@
 import UIKit
 
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: CultivationDetailBaseView { view as! CultivationDetailBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CultivationDetailBaseView = .init()
     private var viewModel: CultivationDetailViewModel!
 
     var cultivation: KikurageCultivation!
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +60,7 @@ extension CultivationDetailViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page = viewModel.currentPage(on: scrollView)
         DispatchQueue.main.async {
-            self.baseView.configPageControl(didChangedCurrentPage: page)
+            self.baseView.configPageControl(didChangeCurrentPage: page)
         }
     }
 }
@@ -67,7 +71,7 @@ extension CultivationDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let horiizontalSpace: CGFloat = 0.0
         let cellWidth: CGFloat = baseView.bounds.width - horiizontalSpace
-        let cellHeight: CGFloat = baseView.collectionView.bounds.height
+        let cellHeight: CGFloat = baseView.carouselCollectionView.bounds.height
         return CGSize(width: cellWidth, height: cellHeight)
     }
 }
