@@ -689,13 +689,6 @@
 			path = Kikurage;
 			sourceTree = "<group>";
 		};
-		9C48A0882919C3D400714DAE /* ImageViewer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImageViewer;
-			sourceTree = "<group>";
-		};
 		9C73CCCF26D53ECB00B4DE55 /* Response */ = {
 			isa = PBXGroup;
 			children = (
@@ -1428,7 +1421,6 @@
 			children = (
 				9CACBE7329E27322006707CB /* CustomView */,
 				9CAC9362278A9AC70033DA33 /* ResourceManager.swift */,
-				9C48A0882919C3D400714DAE /* ImageViewer */,
 				9CBA06CE28748A8D006F2259 /* Logger */,
 				9CAC931E278A53750033DA33 /* HUD */,
 				9C91306C27AC2B2C0024AAF3 /* QRCodeReader */,
