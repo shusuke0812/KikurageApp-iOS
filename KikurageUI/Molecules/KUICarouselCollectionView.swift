@@ -139,7 +139,7 @@ public class KUICarouselCollectionViewCell: UICollectionViewCell {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        setupComponsent()
+        setupComponsent(frame: frame)
     }
 
     public required init?(coder: NSCoder) {
@@ -151,8 +151,8 @@ public class KUICarouselCollectionViewCell: UICollectionViewCell {
         zoomingImageView.imageView.sd_setImage(with: storageReference, placeholderImage: nil)
     }
 
-    private func setupComponsent() {
-        zoomingImageView = KUIZoomingImageView()
+    private func setupComponsent(frame: CGRect) {
+        zoomingImageView = KUIZoomingImageView(frame: frame)
         zoomingImageView.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(zoomingImageView)
