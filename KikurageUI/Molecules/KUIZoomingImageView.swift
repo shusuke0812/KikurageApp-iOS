@@ -37,6 +37,7 @@ public class KUIZoomingImageView: UIView {
 
     private func initialize() {
         imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView = UIScrollView()
