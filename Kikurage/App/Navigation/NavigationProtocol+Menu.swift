@@ -19,9 +19,7 @@ extension MenuAccessable {
     // MARK: - Modal
 
     func modalToCalendar(completion: (() -> Void)? = nil) {
-        guard let vc = R.storyboard.calendarViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = CalendarViewController()
         present(to: vc, presentationStyle: .automatic, completion: completion)
     }
 

@@ -72,7 +72,6 @@
 		9C8ED2D72801C2A2005527F8 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D62801C2A2005527F8 /* FirestoreClient.swift */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
-		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
 		9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125325B69EA0007BCECB /* CalendarViewModel.swift */; };
 		9C91306E27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */; };
@@ -377,7 +376,6 @@
 		9C8ED2D62801C2A2005527F8 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
 		9C91125025B68F2E007BCECB /* CalendarBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBaseView.swift; sourceTree = "<group>"; };
 		9C91125325B69EA0007BCECB /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageQRCodeReaderView.swift; sourceTree = "<group>"; };
@@ -1257,7 +1255,6 @@
 		9CA20464271C7B2400D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */,
 				9C91124A25B68ED0007BCECB /* CalendarViewController.swift */,
 			);
 			path = ViewController;
@@ -2085,7 +2082,6 @@
 				9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */,
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
-				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
