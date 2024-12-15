@@ -12,7 +12,7 @@ public struct KUIMaterialTextFieldProps {
     let maxTextCount: Int
     let placeHolder: String?
 
-    public init(maxTextCount: Int, placeHolder: String?) {
+    public init(maxTextCount: Int, placeHolder: String? = nil) {
         self.maxTextCount = maxTextCount
         self.placeHolder = placeHolder
     }
