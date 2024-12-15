@@ -17,7 +17,7 @@ public class KUIZoomingImageView: UIView {
     private var scrollViewSize: CGSize { scrollView.frame.size }
     private var imageViewSize: CGSize { imageView.frame.size }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
 
@@ -25,7 +25,7 @@ public class KUIZoomingImageView: UIView {
         preventScrollingToEmptyAreaOfImageView()
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         initialize()
 
