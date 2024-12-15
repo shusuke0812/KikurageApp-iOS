@@ -130,7 +130,6 @@
 		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
 		9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */; };
-		9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */; };
 		9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */; };
 		9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */; };
 		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
@@ -436,7 +435,6 @@
 		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
 		9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
-		9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountSettingViewController.storyboard; sourceTree = "<group>"; };
 		9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingBaseView.swift; sourceTree = "<group>"; };
 		9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
@@ -1468,7 +1466,6 @@
 			isa = PBXGroup;
 			children = (
 				9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */,
-				9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2088,7 +2085,6 @@
 				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
-				9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */,
 				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 			);
