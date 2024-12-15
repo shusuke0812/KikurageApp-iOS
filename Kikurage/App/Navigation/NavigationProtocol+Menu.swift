@@ -31,9 +31,7 @@ extension MenuAccessable {
     }
 
     func modalToAccountSetting(completion: (() -> Void)? = nil) {
-        guard let vc = R.storyboard.accountSettingViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = AccountSettingViewController()
         present(to: vc, presentationStyle: .automatic, completion: completion)
     }
 

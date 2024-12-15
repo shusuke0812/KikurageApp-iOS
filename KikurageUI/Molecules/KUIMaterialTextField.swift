@@ -46,7 +46,7 @@ public class KUIMaterialTextField: UIView {
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public func setupText(_ value: String) {
         textField.text = value
     }
