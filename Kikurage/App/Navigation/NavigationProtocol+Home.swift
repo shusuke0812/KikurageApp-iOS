@@ -36,9 +36,7 @@ extension HomeAccessable {
     // MARK: - Modal
 
     func modalToSideMenu() {
-        guard let vc = R.storyboard.sideMenuViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = SideMenuViewController()
         present(to: vc, transitionStyle: .crossDissolve, presentationStyle: .overCurrentContext)
     }
 }
