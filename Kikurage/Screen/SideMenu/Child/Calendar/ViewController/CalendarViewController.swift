@@ -9,10 +9,14 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    private var baseView: CalendarBaseView { view as! CalendarBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: CalendarBaseView = .init()
     private var viewModel: CalendarViewModel!
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
