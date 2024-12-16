@@ -135,7 +135,6 @@
 		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
 		9CB0505B28119A1B000975FE /* KikurageRecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0505A28119A1B000975FE /* KikurageRecipeRequest.swift */; };
 		9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */; };
-		9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
@@ -440,7 +439,6 @@
 		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
 		9CB0505A28119A1B000975FE /* KikurageRecipeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipeRequest.swift; sourceTree = "<group>"; };
 		9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
-		9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphViewController.storyboard; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
@@ -1262,7 +1260,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
-				9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2074,7 +2071,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
-				9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */,
 				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
 				9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */,
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,

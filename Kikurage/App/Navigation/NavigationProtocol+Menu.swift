@@ -24,9 +24,7 @@ extension MenuAccessable {
     }
 
     func modalToGraph(completion: (() -> Void)? = nil) {
-        guard let vc = R.storyboard.graphViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = GraphViewController()
         present(to: vc, presentationStyle: .automatic, completion: completion)
     }
 
