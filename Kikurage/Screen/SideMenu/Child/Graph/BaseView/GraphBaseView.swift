@@ -15,33 +15,87 @@ enum GraphDataType {
 }
 
 class GraphBaseView: UIView {
-    @IBOutlet private weak var temperatureLabel: UILabel!
-    @IBOutlet private weak var humidityLabel: UILabel!
-    @IBOutlet private weak var temperatureLineChartView: LineChartView!
-    @IBOutlet private weak var humidityLineChartView: LineChartView!
+    private var temperatureLabel: UILabel!
+    private var humidityLabel: UILabel!
+    private var temperatureLineChartView: LineChartView!
+    private var humidityLineChartView: LineChartView!
 
-    @IBOutlet private weak var temperatureActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet private weak var humidityActivityIndicator: UIActivityIndicatorView!
+    private var temperatureActivityIndicator: UIActivityIndicatorView!
+    private var humidityActivityIndicator: UIActivityIndicatorView!
 
     private let chartViewHelper = ChartViewHelper()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
     }
-}
 
-// MARK: - Initialized
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-extension GraphBaseView {
-    private func initUI() {
-        temperatureLabel.text = R.string.localizable.side_menu_graph_temperature_subtitle()
-        humidityLabel.text = R.string.localizable.side_menu_graph_humidity_subtitle()
-
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
+        temperatureLabel = UILabel()
+        temperatureLabel.contentMode = .left
+        temperatureLabel.text = R.string.localizable.side_menu_graph_temperature_subtitle()
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        humidityLabel = UILabel()
+        humidityLabel.contentMode = .left
+        humidityLabel.text = R.string.localizable.side_menu_graph_humidity_subtitle()
+        humidityLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        temperatureLineChartView = LineChartView()
         temperatureLineChartView.noDataText = ""
+        temperatureLineChartView.translatesAutoresizingMaskIntoConstraints = false
+
+        humidityLineChartView = LineChartView()
         humidityLineChartView.noDataText = ""
+        humidityLineChartView.translatesAutoresizingMaskIntoConstraints = false
+
+        temperatureActivityIndicator = UIActivityIndicatorView()
+        temperatureActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+
+        humidityActivityIndicator = UIActivityIndicatorView()
+        humidityActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+
+        temperatureLineChartView.addSubview(temperatureActivityIndicator)
+        humidityLineChartView.addSubview(humidityActivityIndicator)
+
+        addSubview(temperatureLabel)
+        addSubview(humidityLabel)
+        addSubview(temperatureLineChartView)
+        addSubview(humidityLineChartView)
+
+        NSLayoutConstraint.activate([
+            temperatureActivityIndicator.centerYAnchor.constraint(equalTo: temperatureLineChartView.centerYAnchor),
+            temperatureActivityIndicator.centerXAnchor.constraint(equalTo: temperatureLineChartView.centerXAnchor),
+
+            humidityActivityIndicator.centerYAnchor.constraint(equalTo: humidityLineChartView.centerYAnchor),
+            humidityActivityIndicator.centerXAnchor.constraint(equalTo: humidityLineChartView.centerXAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            temperatureLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            temperatureLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            temperatureLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+
+            temperatureLineChartView.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: 10),
+            temperatureLineChartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            temperatureLineChartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            temperatureLineChartView.heightAnchor.constraint(equalTo: temperatureLineChartView.widthAnchor, multiplier: 9.0 / 16.0),
+
+            humidityLabel.topAnchor.constraint(equalTo: temperatureLineChartView.bottomAnchor, constant: 40),
+            humidityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            humidityLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+
+            humidityLineChartView.topAnchor.constraint(equalTo: humidityLabel.bottomAnchor, constant: 10),
+            humidityLineChartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            humidityLineChartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            humidityLineChartView.heightAnchor.constraint(equalTo: humidityLineChartView.widthAnchor, multiplier: 9.0 / 16.0),
+        ])
     }
 }
 
