@@ -46,9 +46,7 @@ extension MenuAccessable {
     }
 
     func modalToDebug(completion: (() -> Void)? = nil) {
-        guard let vc = R.storyboard.debugViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = DebugViewController()
         present(to: vc, presentationStyle: .fullScreen, completion: completion)
     }
 
