@@ -114,7 +114,6 @@
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
 		9CA95655284E4CED005B7867 /* DebugBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA95654284E4CED005B7867 /* DebugBaseView.swift */; };
 		9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA95656284E4D03005B7867 /* DebugViewController.swift */; };
-		9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA95658284E4D15005B7867 /* DebugViewController.storyboard */; };
 		9CA9565B284E4D2A005B7867 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */; };
 		9CAAF9DD2805C169000C671D /* KikurageUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */; };
 		9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */; };
@@ -418,7 +417,6 @@
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CA95654284E4CED005B7867 /* DebugBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugBaseView.swift; sourceTree = "<group>"; };
 		9CA95656284E4D03005B7867 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
-		9CA95658284E4D15005B7867 /* DebugViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DebugViewController.storyboard; sourceTree = "<group>"; };
 		9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRequest.swift; sourceTree = "<group>"; };
 		9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivationRequest.swift; sourceTree = "<group>"; };
@@ -1388,7 +1386,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA95656284E4D03005B7867 /* DebugViewController.swift */,
-				9CA95658284E4D15005B7867 /* DebugViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2072,7 +2069,6 @@
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
 				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
-				9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */,
 				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
