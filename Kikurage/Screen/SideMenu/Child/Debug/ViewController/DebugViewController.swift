@@ -10,10 +10,14 @@ import KikurageFeature
 import UIKit
 
 class DebugViewController: UIViewController {
-    private var baseView: DebugBaseView { view as! DebugBaseView } // sswiftlint:disable:this force_cast
+    private var baseView: DebugBaseView = .init()
     private var viewModel: DebugViewModel!
 
     private let konashi = KonashiBluetooth()
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
