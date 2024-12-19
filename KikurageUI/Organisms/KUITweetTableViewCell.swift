@@ -24,6 +24,8 @@ public struct KUITweetTableViewCellProps {
 }
 
 public class KUITweetTableViewCell: UITableViewCell {
+    public static let identifier = "TweetTableViewCell"
+
     private var userIconImageView: UIImageView!
     private var userNameLabel: UILabel!
     private var createdAtLabel: UILabel!
