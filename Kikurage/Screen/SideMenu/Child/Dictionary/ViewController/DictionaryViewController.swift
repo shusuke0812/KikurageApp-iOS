@@ -14,7 +14,7 @@ class DictionaryViewController: UIViewController {
     private var baseView: DictionaryBaseView { view as! DictionaryBaseView } // swiftlint:disable:this force_cast
 
     private lazy var dictionaryTriviaVC: DictionaryTriviaViewController? = {
-        let vc = R.storyboard.dictionaryTriviaViewController.instantiateInitialViewController()
+        let vc = DictionaryTriviaViewController()
         return vc
     }()
 
