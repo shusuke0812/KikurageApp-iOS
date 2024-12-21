@@ -19,7 +19,7 @@ class DictionaryViewController: UIViewController {
     }()
 
     private lazy var dictonaryTwitterVC: DictionaryTwitterViewController? = {
-        let vc = R.storyboard.dictionaryTwitterViewController.instantiateInitialViewController()
+        let vc = DictionaryTwitterViewController()
         return vc
     }()
 

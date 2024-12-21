@@ -55,7 +55,6 @@
 		9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */; };
 		9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */; };
 		9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */; };
-		9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */; };
 		9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */; };
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
@@ -355,7 +354,6 @@
 		9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTriviaViewController.storyboard; sourceTree = "<group>"; };
 		9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaBaseView.swift; sourceTree = "<group>"; };
 		9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewController.swift; sourceTree = "<group>"; };
-		9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTwitterViewController.storyboard; sourceTree = "<group>"; };
 		9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterBaseView.swift; sourceTree = "<group>"; };
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
@@ -774,7 +772,6 @@
 			isa = PBXGroup;
 			children = (
 				9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */,
-				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -2058,7 +2055,6 @@
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
 				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
-				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
