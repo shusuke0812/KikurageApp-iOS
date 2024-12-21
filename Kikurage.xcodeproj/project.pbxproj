@@ -64,8 +64,6 @@
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
 		9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */; };
 		9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD7259870970036CD0F /* RecipeRepository.swift */; };
-		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
-		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
 		9C8ED2D32801A59B005527F8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */; };
 		9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */; };
@@ -366,8 +364,6 @@
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipe.swift; sourceTree = "<group>"; };
 		9C8B0BD7259870970036CD0F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
-		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
-		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRequest.swift; sourceTree = "<group>"; };
@@ -760,7 +756,6 @@
 		9C84701B27F879E000E5F05A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
-				9C8DD2D927F948C200C1C7A4 /* TableViewCell */,
 				9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */,
 			);
 			path = Twitter;
@@ -782,15 +777,6 @@
 				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
 			);
 			path = Twitter;
-			sourceTree = "<group>";
-		};
-		9C8DD2D927F948C200C1C7A4 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */,
-				9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */,
-			);
-			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		9C8DD2DE27F98C0100C1C7A4 /* Tweet */ = {
@@ -2077,7 +2063,6 @@
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
-				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
 				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
@@ -2500,7 +2485,6 @@
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
-				9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
