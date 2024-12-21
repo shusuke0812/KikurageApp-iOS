@@ -84,6 +84,7 @@ public class KUITweetTableViewCell: UITableViewCell {
         tweetLabel = UILabel()
         tweetLabel.font = .systemFont(ofSize: 17.0, weight: .light)
         tweetLabel.contentMode = .left
+        tweetLabel.numberOfLines = 0
         tweetLabel.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(headerStackView)
