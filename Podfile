@@ -18,7 +18,7 @@ def common_pods
   pod 'CropViewController'
   # Other
   pod 'RxSwift', '6.8.0'
-  pod 'RxCocoa', '6.2.0'
+  pod 'RxCocoa', '6.8.0'
   pod 'SDWebImage'
 end
 
