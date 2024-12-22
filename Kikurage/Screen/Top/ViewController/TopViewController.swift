@@ -9,9 +9,13 @@
 import UIKit
 
 class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: TopBaseView { view as! TopBaseView } // swiftlint:disable:this force_cast
+    private let baseView = TopBaseView()
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

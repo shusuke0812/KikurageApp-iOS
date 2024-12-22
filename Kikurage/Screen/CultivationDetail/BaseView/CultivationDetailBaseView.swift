@@ -6,56 +6,49 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 class CultivationDetailBaseView: UIView {
-    @IBOutlet private(set) weak var collectionView: UICollectionView!
-    @IBOutlet private weak var flowLayout: CarouselCollectionFlowLayout!
+    private(set) var carouselCollectionView: KUICarouselCollectionView!
+    private var contentView: KUICultivationDetailDescriptionView!
 
-    @IBOutlet private weak var iconImageView: UIImageView!
-    @IBOutlet private weak var memoTitleLabel: UILabel!
-    @IBOutlet private weak var viewDateLabel: UILabel!
-    @IBOutlet private weak var memoTextView: UITextView!
-
-    @IBOutlet private weak var pageControl: UIPageControl!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
-        setCollectionView()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
     }
-}
 
-// MARK: - Initialized
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-extension CultivationDetailBaseView {
-    private func initUI() {
+    private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
-        viewDateLabel.text = ""
-        memoTitleLabel.text = R.string.localizable.screen_cultivation_detail_memo_title()
+        carouselCollectionView = KUICarouselCollectionView(props: KUICarouselCollectionViewProps())
+        carouselCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
-        memoTextView.text = ""
-        memoTextView.clipsToBounds = true
-        memoTextView.layer.cornerRadius = .viewCornerRadius
-        memoTextView.isEditable = false
-        memoTextView.sizeToFit()
-        memoTextView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        contentView = KUICultivationDetailDescriptionView(props: KUICultivationDetailDescriptionViewProps(
+            image: R.image.hakase()!,
+            tittle: R.string.localizable.screen_cultivation_detail_memo_title(),
+            dateString: "-",
+            description: "-"
+        ))
+        contentView.translatesAutoresizingMaskIntoConstraints = false
 
-        iconImageView.clipsToBounds = true
-        iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
-        iconImageView.layer.borderWidth = 0.5
-        iconImageView.layer.borderColor = UIColor.gray.cgColor
+        addSubview(carouselCollectionView)
+        addSubview(contentView)
 
-        pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = .gray
-        pageControl.pageIndicatorTintColor = .white
-    }
+        NSLayoutConstraint.activate([
+            carouselCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            carouselCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            carouselCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-    private func setCollectionView() {
-        flowLayout.estimatedItemSize = .zero
-        collectionView.register(R.nib.cultivationCarouselCollectionViewCell)
-        collectionView.showsHorizontalScrollIndicator = false
+            contentView.topAnchor.constraint(equalTo: carouselCollectionView.bottomAnchor, constant: 25),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15)
+        ])
     }
 }
 
@@ -63,24 +56,19 @@ extension CultivationDetailBaseView {
 
 extension CultivationDetailBaseView {
     func setUI(cultivation: KikurageCultivation) {
-        viewDateLabel.text = cultivation.viewDate
-        memoTextView.text = cultivation.memo
+        contentView.updateMemoDateLabel(dateString: cultivation.viewDate)
+        contentView.updateMemoDescription(text: cultivation.memo)
     }
 
     func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
-        collectionView.delegate = delegate
-        collectionView.dataSource = dataSource
+        carouselCollectionView.configDelegate(delegate: delegate, dataSource: dataSource)
     }
 
     func configPageControl(imageCount: Int) {
-        if imageCount <= 1 {
-            pageControl.numberOfPages = 0
-        } else {
-            pageControl.numberOfPages = imageCount
-        }
+        carouselCollectionView.setPageControlNumber(imageCount: imageCount)
     }
 
-    func configPageControl(didChangedCurrentPage index: Int) {
-        pageControl.currentPage = index
+    func configPageControl(didChangeCurrentPage index: Int) {
+        carouselCollectionView.updateCurrentPage(index: index)
     }
 }

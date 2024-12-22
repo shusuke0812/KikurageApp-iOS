@@ -6,18 +6,43 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 class DictionaryTwitterBaseView: UIView {
-    @IBOutlet private(set) weak var tableView: UITableView!
-    @IBOutlet private weak var loadingIndicatorView: UIActivityIndicatorView!
+    private(set) var tableView: UITableView!
+    private var loadingIndicatorView: UIActivityIndicatorView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
+    }
 
-        tableView.register(R.nib.tweetTableViewCell)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
+    private func setupComponent() {
+        tableView = UITableView()
+        tableView.register(KUITweetTableViewCell.self, forCellReuseIdentifier: KUITweetTableViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        loadingIndicatorView = UIActivityIndicatorView()
         loadingIndicatorView.isHidden = true
+        loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(tableView)
+        addSubview(loadingIndicatorView)
+
+        NSLayoutConstraint.activate([
+            loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 

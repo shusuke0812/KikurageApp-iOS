@@ -10,9 +10,13 @@ import PKHUD
 import UIKit
 
 class CommunicationViewController: UIViewController, UIViewControllerNavigatable, CommunicationAccessable {
-    private var baseView: CommunicationBaseView { view as! CommunicationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CommunicationBaseView = .init()
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
