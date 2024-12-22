@@ -10,11 +10,11 @@ import KikurageFeature
 import RxSwift
 import UIKit
 
-class HomeViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable, RecipeAccessable, CommunicationAccessable {
-    private var baseView: HomeBaseView { view as! HomeBaseView } // swiftlint:disable:this force_cast
+class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAccessable {
+    private var baseView: HomeBaseView = .init()
     private var viewModel: HomeViewModelType!
 
-    @IBOutlet private weak var sideMenuBarButtonItem: UIBarButtonItem!
+    private var sideMenuBarButtonItem: UIBarButtonItem!
 
     private let disposeBag = RxSwift.DisposeBag()
     private var dateTimer: Timer?
@@ -27,6 +27,10 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
     }
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +77,11 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, Cultiva
 extension HomeViewController {
     private func setNavigationItem() {
         setNavigationBackButton(buttonTitle: R.string.localizable.common_navigation_back_btn_title(), buttonColor: .black)
+
+        sideMenuBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "line.horizontal.3")
+        )
+        navigationItem.leftBarButtonItems = [sideMenuBarButtonItem]
     }
 
     private func setDateTimer() {
@@ -144,7 +153,7 @@ extension HomeViewController {
         sideMenuBarButtonItem.rx.tap.asDriver()
             .drive(
                 onNext: { [weak self] in
-                    self?.performSegue(withIdentifier: R.segue.homeViewController.sideMenu.identifier, sender: nil)
+                    self?.modalToSideMenu()
                 }
             )
             .disposed(by: disposeBag)

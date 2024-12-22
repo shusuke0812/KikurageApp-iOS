@@ -14,30 +14,51 @@ protocol DictionaryBaseViewDelegate: AnyObject {
 }
 
 class DictionaryBaseView: UIView {
-    @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    private var segmentedControl: UISegmentedControl!
+    private var containerView: UIView!
 
     weak var delegate: DictionaryBaseViewDelegate?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
     }
 
-    // MARK: - Action
-
-    @IBAction private func changeViews(_ sender: Any) {
-        delegate?.dictionaryBaseView(self, didChangeSegmentedAt: segmentedControl.selectedSegmentIndex)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-}
 
-// MARK: - Initialized
+    private func setupComponent() {
+        backgroundColor = .white
 
-extension DictionaryBaseView {
-    private func initUI() {
-        segmentedControl.setTitle(R.string.localizable.side_menu_dictionary_segment_title_trivia(), forSegmentAt: 0)
-        segmentedControl.setTitle(R.string.localizable.side_menu_dictionary_segment_title_twitter(), forSegmentAt: 1)
+        segmentedControl = UISegmentedControl(items: [
+            R.string.localizable.side_menu_dictionary_segment_title_trivia(),
+            R.string.localizable.side_menu_dictionary_segment_title_twitter()
+        ])
         segmentedControl.selectedSegmentIndex = .zero
+        segmentedControl.addTarget(self, action: #selector(changeViews(_:)), for: .valueChanged)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+
+        containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(segmentedControl)
+        addSubview(containerView)
+
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            containerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+
+    @objc private func changeViews(_ sender: Any) {
+        delegate?.dictionaryBaseView(self, didChangeSegmentedAt: segmentedControl.selectedSegmentIndex)
     }
 }
 

@@ -11,19 +11,23 @@
 import UIKit
 
 class DictionaryViewController: UIViewController {
-    private var baseView: DictionaryBaseView { view as! DictionaryBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DictionaryBaseView = .init()
 
     private lazy var dictionaryTriviaVC: DictionaryTriviaViewController? = {
-        let vc = R.storyboard.dictionaryTriviaViewController.instantiateInitialViewController()
+        let vc = DictionaryTriviaViewController()
         return vc
     }()
 
     private lazy var dictonaryTwitterVC: DictionaryTwitterViewController? = {
-        let vc = R.storyboard.dictionaryTwitterViewController.instantiateInitialViewController()
+        let vc = DictionaryTwitterViewController()
         return vc
     }()
 
     private var currentViewController: UIViewController?
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

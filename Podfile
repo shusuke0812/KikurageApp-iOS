@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '14.0'
 use_frameworks!
 
 def common_pods
@@ -15,18 +15,21 @@ def common_pods
   pod 'IQKeyboardManagerSwift'
   pod 'PKHUD', '~> 5.0'
   pod 'HorizonCalendar'
-  pod 'FontAwesome.swift'
   pod 'CropViewController'
   # Other
-  pod 'R.swift'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'SDWebImage'
 end
 
+def resource_pods
+  pod 'R.swift'
+end
+
 target 'Kikurage' do
   # Pods for kikurageApp
   common_pods
+  resource_pods
   
   pod 'FirebaseCrashlytics'
   pod 'FirebaseAnalytics'
@@ -36,6 +39,13 @@ target 'KikurageFeature' do
   #inherit! :search_paths
   #common_podsは含めいないようにする（特にFirebaseを含めると`LoginHelper`で行うData型からUser型へのキャストができなくなる）
   pod 'konashi-ios-sdk'
+end
+
+target 'KikurageUI' do
+  #inherit! :search_paths
+  pod 'FontAwesome.swift'
+  pod 'FirebaseUI/Storage'
+  resource_pods
 end
 
 target 'KikurageTests' do

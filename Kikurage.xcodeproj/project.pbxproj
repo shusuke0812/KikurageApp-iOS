@@ -7,26 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */; };
 		1EC0D13DCD5BB81B9696898D /* Pods_KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */; };
 		3D1BBFFA2EA0467A40E1EA88 /* Pods_KikurageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */; };
 		46D472BB8A619D6135A18436 /* Pods_KikurageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
-		9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DCF932546F55800C27051 /* HomeAdviceView.swift */; };
-		9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DCF962546F58600C27051 /* HomeAdviceView.xib */; };
+		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
+		9C0A8E972CD610A90030FB24 /* KUICircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0A8E962CD610A90030FB24 /* KUICircleButton.swift */; };
 		9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */; };
 		9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C147B1C223E493A0034D8AB /* MessageUI.framework */; };
+		9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */; };
 		9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */; };
 		9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */; };
-		9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */; };
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
+		9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */; };
+		9C1F6A302C208659007352F6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1F6A2F2C208659007352F6 /* Constants.swift */; };
+		9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
-		9C48A08C2919C53000714DAE /* KikurageImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C48A08B2919C53000714DAE /* KikurageImageView.swift */; };
-		9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
 		9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C665EF02739704F000EE152 /* InfoPlist.strings */; };
 		9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */; };
@@ -38,12 +40,9 @@
 		9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */; };
 		9C7DCE9C26EE158D00F62DF8 /* FirebaseAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9B26EE158D00F62DF8 /* FirebaseAPIError.swift */; };
 		9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9D26EE165400F62DF8 /* ClientError.swift */; };
-		9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C7DE9F126E130A60006B36F /* TopViewController.storyboard */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
-		9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105D25649637005A92C7 /* UIColor+Extension.swift */; };
 		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C7E58832776109B00A151C0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */; };
-		9C7E588527761AD400A151C0 /* FooterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E588427761AD400A151C0 /* FooterButtonView.swift */; };
 		9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */; };
 		9C81EA6F27B7E9D10028D027 /* PageObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */; };
 		9C81EA7227B7EE640028D027 /* TopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA7127B7EE640028D027 /* TopPage.swift */; };
@@ -53,35 +52,22 @@
 		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
 		9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */; };
 		9C84701527F83ED900E5F05A /* DictionaryTriviaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */; };
-		9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */; };
 		9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */; };
 		9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */; };
-		9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */; };
 		9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */; };
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
-		9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */; };
 		9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */; };
-		9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */; };
-		9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */; };
-		9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */; };
-		9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */; };
-		9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */; };
 		9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */; };
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
 		9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */; };
 		9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD7259870970036CD0F /* RecipeRepository.swift */; };
-		9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B1D28255ECB11000CA36C /* CameraCell.swift */; };
-		9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */; };
-		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
-		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
 		9C8ED2D32801A59B005527F8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */; };
 		9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */; };
 		9C8ED2D72801C2A2005527F8 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D62801C2A2005527F8 /* FirestoreClient.swift */; };
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
-		9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */; };
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
 		9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125325B69EA0007BCECB /* CalendarViewModel.swift */; };
 		9C91306E27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */; };
@@ -89,19 +75,17 @@
 		9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */; };
 		9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */; };
 		9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */; };
-		9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */; };
 		9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */; };
 		9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */; };
-		9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */; };
 		9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */; };
 		9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91E74E25C9207C00B3E2E0 /* R.generated.swift */; };
 		9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923334255F9760000293BB /* PostCultivationViewController.swift */; };
 		9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */; };
 		9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92333D255F9F7E000293BB /* CultivationRepository.swift */; };
 		9C923341255FA0DC000293BB /* KikurageCultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C923340255FA0DC000293BB /* KikurageCultivation.swift */; };
+		9C92550B2D0D3A33007258D2 /* KUILoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92550A2D0D3A23007258D2 /* KUILoadingThumbnailView.swift */; };
 		9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */; };
 		9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */; };
-		9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */; };
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
 		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
@@ -115,10 +99,6 @@
 		9C9B273627F00F11000743D0 /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B273527F00F11000743D0 /* AppVersion.swift */; };
 		9C9B27C92812F42A00B391E3 /* KonashiBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */; };
 		9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */; };
-		9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */; };
-		9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */; };
-		9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */; };
-		9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */; };
 		9C9D752B27DF6CC5002611FF /* NavigationProtocol+Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */; };
 		9C9FABE12757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */; };
 		9CA0CDAA26E8FED800116896 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0CDA926E8FED800116896 /* SignUpRepository.swift */; };
@@ -130,11 +110,9 @@
 		9CA7F36F25381F63005BED9C /* KikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */; };
 		9CA95655284E4CED005B7867 /* DebugBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA95654284E4CED005B7867 /* DebugBaseView.swift */; };
 		9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA95656284E4D03005B7867 /* DebugViewController.swift */; };
-		9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA95658284E4D15005B7867 /* DebugViewController.storyboard */; };
 		9CA9565B284E4D2A005B7867 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */; };
 		9CAAF9DD2805C169000C671D /* KikurageUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */; };
 		9CAAF9DF2805C6B4000C671D /* KikurageCultivationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */; };
-		9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */; };
 		9CAC93122789E4E60033DA33 /* KikurageFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CAC930F2789E4E50033DA33 /* KikurageFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; };
 		9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -144,30 +122,24 @@
 		9CAC9366278AB4660033DA33 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CAC9368278AB4660033DA33 /* Localizable.strings */; };
 		9CACBE7529E273A4006707CB /* KikurageTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CACBE7429E273A4006707CB /* KikurageTableViewHeaderView.swift */; };
 		9CACBE7729E29ADB006707CB /* KikurageBluetoothCentralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CACBE7629E29ADB006707CB /* KikurageBluetoothCentralState.swift */; };
-		9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */; };
 		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
 		9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */; };
-		9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */; };
 		9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */; };
 		9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */; };
-		9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */; };
-		9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */; };
 		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
 		9CB0505B28119A1B000975FE /* KikurageRecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB0505A28119A1B000975FE /* KikurageRecipeRequest.swift */; };
 		9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */; };
-		9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
+		9CB6D0652D130C37005540B8 /* KUITweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */; };
 		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBA06D028748AA7006F2259 /* KikurageLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */; };
 		9CBAC0B52882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAC0B42882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift */; };
 		9CBB0BF0280B179700FFC7BF /* KikurageStateGraphRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
-		9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */; };
-		9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */; };
 		9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */; };
 		9CBBEBD22881A3DC00424DC8 /* KikurageQRCodeReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBEBD12881A3DC00424DC8 /* KikurageQRCodeReaderViewModel.swift */; };
 		9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD27FE275845EE007191CE /* AppConfig.swift */; };
@@ -177,9 +149,14 @@
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
 		9CC103B1270818A200067823 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC103B0270818A200067823 /* LoginUser.swift */; };
+		9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */; };
+		9CC29EC12C12035C00353262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC29EC02C12035C00353262 /* Assets.xcassets */; };
+		9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */; };
 		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
+		9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */; };
+		9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */; };
 		9CC47ACB27FC80E900F2DC17 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */; };
 		9CC6752D288D36E30003B18A /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC6752C288D36E30003B18A /* SessionSetupResult.swift */; };
 		9CC7F4D729CEDC460045C866 /* WiFiSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */; };
@@ -192,11 +169,20 @@
 		9CCE9EFE2B932F1200D13911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE9EFD2B932F1200D13911 /* SceneDelegate.swift */; };
 		9CD1886E29758032008EF1ED /* KikurageBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1886D29758032008EF1ED /* KikurageBluetoothManager.swift */; };
 		9CD2497929D3110B00391C44 /* KikurageBluetoothCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2497829D3110B00391C44 /* KikurageBluetoothCompletion.swift */; };
+		9CD7D72E2D05BD030026C795 /* KUICultivationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD7D72D2D05BCF70026C795 /* KUICultivationCollectionViewCell.swift */; };
+		9CD982BC2D0D740E00A4AB14 /* KUIZoomingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C48A08B2919C53000714DAE /* KUIZoomingImageView.swift */; };
+		9CD982BE2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982BD2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift */; };
+		9CD982C22D0DB3C100A4AB14 /* KUICircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982C12D0DB3C100A4AB14 /* KUICircleImageView.swift */; };
+		9CD982C42D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982C32D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift */; };
+		9CD982C62D0DC50300A4AB14 /* KUIRoundedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD982C52D0DC50300A4AB14 /* KUIRoundedTextView.swift */; };
 		9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */; };
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
+		9CDB33B82C1EC05B00A8B2BE /* KUILabelWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */; };
+		9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
+		9CDD6F502D0EA11000F71AB9 /* KUISideMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD6F4F2D0EA11000F71AB9 /* KUISideMenuItemTableViewCell.swift */; };
 		9CDE8BE12B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */; };
 		9CE0184329B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */; };
 		9CE0184529B46CBE00365E95 /* WiFiSelectDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184429B46CBE00365E95 /* WiFiSelectDeviceViewController.swift */; };
@@ -209,7 +195,6 @@
 		9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */; };
 		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
 		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
-		9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */; };
 		9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
@@ -220,8 +205,23 @@
 		9CE580E129C1F58A006D83E7 /* KikurageBluetoothParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */; };
 		9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CE70F462CD70F750081BF8C /* KUIMaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */; };
+		9CE70F482CD7213A0081BF8C /* KUITextCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE70F472CD7213A0081BF8C /* KUITextCountLabel.swift */; };
+		9CE74B0D2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE74B0C2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift */; };
+		9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */; };
+		9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */; };
+		9CECFB122CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CECFB112CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift */; };
+		9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
+		9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF788E32C0F574200E0438B /* KikurageUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9CF788E72C0F574200E0438B /* KikurageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF788E12C0F574100E0438B /* KikurageUI.framework */; };
+		9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9CF788E12C0F574100E0438B /* KikurageUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86912C1418CE0029527D /* KUIImageView.swift */; };
+		9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */; };
+		9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD869D2C147C3F0029527D /* KUITextField.swift */; };
+		9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */; };
+		9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */; };
 		A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */; };
 /* End PBXBuildFile section */
 
@@ -247,6 +247,13 @@
 			remoteGlobalIDString = 9CAC930C2789E4E50033DA33;
 			remoteInfo = KikurageFeature;
 		};
+		9CF788E52C0F574200E0438B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C1ACF3F2225768A00A3D4D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CF788E02C0F574100E0438B;
+			remoteInfo = KikurageUI;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -257,6 +264,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9CAC93162789E4E60033DA33 /* KikurageFeature.framework in Embed Frameworks */,
+				9CF788E82C0F574200E0438B /* KikurageUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF4F0CA2C42CCB5004DEBDE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,10 +283,14 @@
 
 /* Begin PBXFileReference section */
 		045BAAA6BB2C1B5F96CDC0F5 /* Pods-Kikurage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.release.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.release.xcconfig"; sourceTree = "<group>"; };
+		080D77307B475EAF7C1DA769 /* Pods_KikurageData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E140392E0F98C3B27D3E33E /* Pods-KikurageFeature.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.debug.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.debug.xcconfig"; sourceTree = "<group>"; };
 		20A222AA8447C19CE80FDC6B /* Pods-KikurageUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.production.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.production.xcconfig"; sourceTree = "<group>"; };
 		24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3475EE07E03DA48A65166170 /* Pods-KikurageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUITests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.debug.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.debug.xcconfig"; sourceTree = "<group>"; };
+		3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.debug.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.debug.xcconfig"; sourceTree = "<group>"; };
 		5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.debug.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.debug.xcconfig"; sourceTree = "<group>"; };
 		57FCE360124515D995DBAF58 /* Pods_Kikurage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kikurage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.staging.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.staging.xcconfig"; sourceTree = "<group>"; };
@@ -276,26 +298,31 @@
 		5B6B92F43BF672B6A13776C1 /* Pods-KikurageTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.staging.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikurage.production.xcconfig"; path = "Target Support Files/Pods-Kikurage/Pods-Kikurage.production.xcconfig"; sourceTree = "<group>"; };
 		8070A4260AA307A0911D71A2 /* Pods-KikurageFeature.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.production.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.production.xcconfig"; sourceTree = "<group>"; };
+		85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.production.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.production.xcconfig"; sourceTree = "<group>"; };
+		86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageUI.staging.xcconfig"; path = "Target Support Files/Pods-KikurageUI/Pods-KikurageUI.staging.xcconfig"; sourceTree = "<group>"; };
+		886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.production.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.production.xcconfig"; sourceTree = "<group>"; };
+		8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.debug.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.debug.xcconfig"; sourceTree = "<group>"; };
 		8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		9C0DCF932546F55800C27051 /* HomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdviceView.swift; sourceTree = "<group>"; };
-		9C0DCF962546F58600C27051 /* HomeAdviceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAdviceView.xib; sourceTree = "<group>"; };
+		9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Home.swift"; sourceTree = "<group>"; };
+		9C0A8E962CD610A90030FB24 /* KUICircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICircleButton.swift; sourceTree = "<group>"; };
 		9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewController.swift; sourceTree = "<group>"; };
 		9C147B1C223E493A0034D8AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KikurageDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		9C1ACF4F2225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeViewController.storyboard; sourceTree = "<group>"; };
 		9C1ACF512225768A00A3D4D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C1F6A2F2C208659007352F6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
 		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
-		9C48A08B2919C53000714DAE /* KikurageImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageImageView.swift; sourceTree = "<group>"; };
-		9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostCultivationViewController.storyboard; sourceTree = "<group>"; };
+		9C48A08B2919C53000714DAE /* KUIZoomingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIZoomingImageView.swift; sourceTree = "<group>"; };
 		9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
 		9C665EEF2739704F000EE152 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C665EF127397053000EE152 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -308,12 +335,11 @@
 		9C7DCE9826EE07D500F62DF8 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		9C7DCE9B26EE158D00F62DF8 /* FirebaseAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIError.swift; sourceTree = "<group>"; };
 		9C7DCE9D26EE165400F62DF8 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
-		9C7DE9F126E130A60006B36F /* TopViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopViewController.storyboard; sourceTree = "<group>"; };
 		9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationBaseView.swift; sourceTree = "<group>"; };
 		9C7E105D25649637005A92C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
-		9C7E588427761AD400A151C0 /* FooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterButtonView.swift; sourceTree = "<group>"; };
+		9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIFooterButtonView.swift; sourceTree = "<group>"; };
 		9C7EC14B25A97EEF00FE8855 /* LoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
 		9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageObjectable.swift; sourceTree = "<group>"; };
 		9C81EA7127B7EE640028D027 /* TopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPage.swift; sourceTree = "<group>"; };
@@ -323,35 +349,22 @@
 		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateListenerRepository.swift; sourceTree = "<group>"; };
 		9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaViewController.swift; sourceTree = "<group>"; };
-		9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTriviaViewController.storyboard; sourceTree = "<group>"; };
 		9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaBaseView.swift; sourceTree = "<group>"; };
 		9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewController.swift; sourceTree = "<group>"; };
-		9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTwitterViewController.storyboard; sourceTree = "<group>"; };
 		9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterBaseView.swift; sourceTree = "<group>"; };
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
-		9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationDetailViewController.storyboard; sourceTree = "<group>"; };
 		9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
-		9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CultivationViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecipeViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunicationViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeviceRegisterViewController.storyboard; sourceTree = "<group>"; };
-		9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenuViewController.storyboard; sourceTree = "<group>"; };
 		9C8B0BCE2598662E0036CD0F /* RecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBaseView.swift; sourceTree = "<group>"; };
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipe.swift; sourceTree = "<group>"; };
 		9C8B0BD7259870970036CD0F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
-		9C8B1D28255ECB11000CA36C /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
-		9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCell.xib; sourceTree = "<group>"; };
-		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
-		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRequest.swift; sourceTree = "<group>"; };
 		9C8ED2D62801C2A2005527F8 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarViewController.storyboard; sourceTree = "<group>"; };
 		9C91125025B68F2E007BCECB /* CalendarBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBaseView.swift; sourceTree = "<group>"; };
 		9C91125325B69EA0007BCECB /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		9C91306D27AC2B5F0024AAF3 /* KikurageQRCodeReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageQRCodeReaderView.swift; sourceTree = "<group>"; };
@@ -360,19 +373,17 @@
 		9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifierManager.swift; sourceTree = "<group>"; };
 		9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
 		9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
 		9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBaseView.swift; sourceTree = "<group>"; };
 		9C91E74E25C9207C00B3E2E0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9C923334255F9760000293BB /* PostCultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewController.swift; sourceTree = "<group>"; };
 		9C92333A255F97B4000293BB /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
 		9C92333D255F9F7E000293BB /* CultivationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationRepository.swift; sourceTree = "<group>"; };
 		9C923340255FA0DC000293BB /* KikurageCultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivation.swift; sourceTree = "<group>"; };
+		9C92550A2D0D3A23007258D2 /* KUILoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUILoadingThumbnailView.swift; sourceTree = "<group>"; };
 		9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuBaseView.swift; sourceTree = "<group>"; };
 		9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewController.swift; sourceTree = "<group>"; };
-		9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostRecipeViewController.storyboard; sourceTree = "<group>"; };
 		9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeBaseView.swift; sourceTree = "<group>"; };
 		9C96997C2566118B00D655DA /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,10 +398,6 @@
 		9C9B273527F00F11000743D0 /* AppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		9C9B27C82812F42A00B391E3 /* KonashiBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonashiBluetooth.swift; sourceTree = "<group>"; };
 		9C9B6C702770B0F7004B2D62 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
-		9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
-		9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
-		9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
-		9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Top.swift"; sourceTree = "<group>"; };
 		9C9FABE02757B32E008E6D7A /* FirebaseRemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigRepository.swift; sourceTree = "<group>"; };
 		9CA0CDA926E8FED800116896 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
@@ -402,11 +409,9 @@
 		9CA7F36E25381F63005BED9C /* KikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CA95654284E4CED005B7867 /* DebugBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugBaseView.swift; sourceTree = "<group>"; };
 		9CA95656284E4D03005B7867 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
-		9CA95658284E4D15005B7867 /* DebugViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DebugViewController.storyboard; sourceTree = "<group>"; };
 		9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		9CAAF9DC2805C169000C671D /* KikurageUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUserRequest.swift; sourceTree = "<group>"; };
 		9CAAF9DE2805C6B4000C671D /* KikurageCultivationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageCultivationRequest.swift; sourceTree = "<group>"; };
-		9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingThumbnailView.swift; sourceTree = "<group>"; };
 		9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAC930F2789E4E50033DA33 /* KikurageFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageFeature.h; sourceTree = "<group>"; };
 		9CAC931C2789E5E90033DA33 /* KikurageHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageHUD.swift; sourceTree = "<group>"; };
@@ -416,22 +421,18 @@
 		9CAC9369278AB4690033DA33 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CACBE7429E273A4006707CB /* KikurageTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageTableViewHeaderView.swift; sourceTree = "<group>"; };
 		9CACBE7629E29ADB006707CB /* KikurageBluetoothCentralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothCentralState.swift; sourceTree = "<group>"; };
-		9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewModel.swift; sourceTree = "<group>"; };
 		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
 		9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
-		9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountSettingViewController.storyboard; sourceTree = "<group>"; };
 		9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingBaseView.swift; sourceTree = "<group>"; };
 		9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
-		9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCollectionViewCell.swift; sourceTree = "<group>"; };
-		9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
 		9CB0505A28119A1B000975FE /* KikurageRecipeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipeRequest.swift; sourceTree = "<group>"; };
 		9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
-		9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphViewController.storyboard; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITweetTableViewCell.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageLogger.swift; sourceTree = "<group>"; };
@@ -439,8 +440,6 @@
 		9CBB0BEF280B179700FFC7BF /* KikurageStateGraphRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateGraphRequest.swift; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB32D427365E3900A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
-		9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CultivationCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewModel.swift; sourceTree = "<group>"; };
 		9CBBEBD12881A3DC00424DC8 /* KikurageQRCodeReaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageQRCodeReaderViewModel.swift; sourceTree = "<group>"; };
 		9CBD27FE275845EE007191CE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
@@ -450,9 +449,14 @@
 		9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CC103B0270818A200067823 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
+		9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIUnderlinedTextButton.swift; sourceTree = "<group>"; };
+		9CC29EC02C12035C00353262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "R-KikurageUI.generated.swift"; sourceTree = "<group>"; };
 		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
+		9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDropdownTextField.swift; sourceTree = "<group>"; };
+		9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRoundedView.swift; sourceTree = "<group>"; };
 		9CC47ACA27FC80E900F2DC17 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		9CC6752C288D36E30003B18A /* SessionSetupResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
 		9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -465,11 +469,19 @@
 		9CCE9EFD2B932F1200D13911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CD1886D29758032008EF1ED /* KikurageBluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothManager.swift; sourceTree = "<group>"; };
 		9CD2497829D3110B00391C44 /* KikurageBluetoothCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothCompletion.swift; sourceTree = "<group>"; };
+		9CD7D72D2D05BCF70026C795 /* KUICultivationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICultivationCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CD982BD2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICarouselCollectionView.swift; sourceTree = "<group>"; };
+		9CD982C12D0DB3C100A4AB14 /* KUICircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICircleImageView.swift; sourceTree = "<group>"; };
+		9CD982C32D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUICultivationDetailDescriptionView.swift; sourceTree = "<group>"; };
+		9CD982C52D0DC50300A4AB14 /* KUIRoundedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIRoundedTextView.swift; sourceTree = "<group>"; };
 		9CD984EE280174AA009D52A9 /* FirestoreRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRequestProtocol.swift; sourceTree = "<group>"; };
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUILabelWithImage.swift; sourceTree = "<group>"; };
+		9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIHomeAdviceView.swift; sourceTree = "<group>"; };
 		9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationBaseView.swift; sourceTree = "<group>"; };
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
+		9CDD6F4F2D0EA11000F71AB9 /* KUISideMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUISideMenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		9CDE8BE02B4574AB0078B318 /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
 		9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceBaseView.swift; sourceTree = "<group>"; };
 		9CE0184429B46CBE00365E95 /* WiFiSelectDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewController.swift; sourceTree = "<group>"; };
@@ -482,7 +494,6 @@
 		9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
 		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
 		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
-		9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryViewController.storyboard; sourceTree = "<group>"; };
 		9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -493,13 +504,30 @@
 		9CE580E029C1F58A006D83E7 /* KikurageBluetoothParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageBluetoothParser.swift; sourceTree = "<group>"; };
 		9CE580E329C1F701006D83E7 /* KikurageWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageWiFi.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
+		9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIMaterialTextField.swift; sourceTree = "<group>"; };
+		9CE70F472CD7213A0081BF8C /* KUITextCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITextCountLabel.swift; sourceTree = "<group>"; };
+		9CE74B0C2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIMaterialTextView.swift; sourceTree = "<group>"; };
+		9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDividerView.swift; sourceTree = "<group>"; };
+		9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusListView.swift; sourceTree = "<group>"; };
+		9CECFB112CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUISelectImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIButton.swift; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
+		9CF788E12C0F574100E0438B /* KikurageUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KikurageUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF788E32C0F574200E0438B /* KikurageUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KikurageUI.h; sourceTree = "<group>"; };
+		9CFD86912C1418CE0029527D /* KUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIImageView.swift; sourceTree = "<group>"; };
+		9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		9CFD869D2C147C3F0029527D /* KUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITextField.swift; sourceTree = "<group>"; };
+		9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIPasswordField.swift; sourceTree = "<group>"; };
+		9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUIDeviceStatusImageView.swift; sourceTree = "<group>"; };
+		9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageData.staging.xcconfig"; path = "Target Support Files/Pods-KikurageData/Pods-KikurageData.staging.xcconfig"; sourceTree = "<group>"; };
 		A0B151603DF4982FFFAA4670 /* Pods-kikurageApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.release.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.release.xcconfig"; sourceTree = "<group>"; };
 		B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KikurageFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.production.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.production.xcconfig"; sourceTree = "<group>"; };
 		C2B15B86CDC574E80B6D91CC /* Pods-KikurageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.debug.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C861E00ACE4D9774215A3728 /* Pods-KikurageFeature.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageFeature.staging.xcconfig"; path = "Target Support Files/Pods-KikurageFeature/Pods-KikurageFeature.staging.xcconfig"; sourceTree = "<group>"; };
 		D514314A151EB43465955FA2 /* Pods-KikurageTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageTests.production.xcconfig"; path = "Target Support Files/Pods-KikurageTests/Pods-KikurageTests.production.xcconfig"; sourceTree = "<group>"; };
+		E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KikurageDomain.staging.xcconfig"; path = "Target Support Files/Pods-KikurageDomain/Pods-KikurageDomain.staging.xcconfig"; sourceTree = "<group>"; };
 		F64405252FCD1BFF9274507A /* Pods-kikurageApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kikurageApp.debug.xcconfig"; path = "Target Support Files/Pods-kikurageApp/Pods-kikurageApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -509,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
+				9CF788E72C0F574200E0438B /* KikurageUI.framework in Frameworks */,
 				A60154E634BCCCDFFC7C5683 /* Pods_Kikurage.framework in Frameworks */,
 				9CAC93152789E4E60033DA33 /* KikurageFeature.framework in Frameworks */,
 			);
@@ -538,6 +567,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CF788DE2C0F574100E0438B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E3F819BDE4D65D1401B0DB1 /* Pods_KikurageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -559,6 +596,15 @@
 				3475EE07E03DA48A65166170 /* Pods-KikurageUITests.debug.xcconfig */,
 				5A477614F97D17A458C66253 /* Pods-KikurageUITests.staging.xcconfig */,
 				20A222AA8447C19CE80FDC6B /* Pods-KikurageUITests.production.xcconfig */,
+				3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */,
+				86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */,
+				85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */,
+				3C068B1F4BA8634D5F7AF9D0 /* Pods-KikurageData.debug.xcconfig */,
+				9EF7E4993E3FFA8F894F9D72 /* Pods-KikurageData.staging.xcconfig */,
+				886723028451B3E9211CB3C0 /* Pods-KikurageData.production.xcconfig */,
+				8BAFEEFE8DC45D30FED0AB93 /* Pods-KikurageDomain.debug.xcconfig */,
+				E394374F028E2A95E09942D2 /* Pods-KikurageDomain.staging.xcconfig */,
+				BD6FBA6F63C2C9CD02AC5972 /* Pods-KikurageDomain.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -571,6 +617,9 @@
 				24C14C09EC6FF7658D2549BC /* Pods_KikurageTests.framework */,
 				B904CF8D46C9D2FD024AB3B8 /* Pods_KikurageFeature.framework */,
 				8DF9CD4B67843E0FC748A6D6 /* Pods_KikurageUITests.framework */,
+				914C498B59F6F1E246A3ED91 /* Pods_KikurageUI.framework */,
+				080D77307B475EAF7C1DA769 /* Pods_KikurageData.framework */,
+				2CD6E862D7BBE589EF10F3D6 /* Pods_KikurageDomain.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,8 +628,10 @@
 			isa = PBXGroup;
 			children = (
 				9C91E74E25C9207C00B3E2E0 /* R.generated.swift */,
+				9CC29EC62C120C4000353262 /* R-KikurageUI.generated.swift */,
 				9C1ACF492225768A00A3D4D1 /* Kikurage */,
 				9CAC930E2789E4E50033DA33 /* KikurageFeature */,
+				9CF788E22C0F574200E0438B /* KikurageUI */,
 				9C96F7022768E97300C2E778 /* KikurageTests */,
 				9C9145C527B1E77C0051BE1F /* KikurageUITests */,
 				9C1ACF482225768A00A3D4D1 /* Products */,
@@ -596,6 +647,7 @@
 				9C96F7012768E97300C2E778 /* KikurageTests.xctest */,
 				9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */,
 				9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */,
+				9CF788E12C0F574100E0438B /* KikurageUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -615,14 +667,6 @@
 				9C03D033277DC1B20074C914 /* Settings.bundle */,
 			);
 			path = Kikurage;
-			sourceTree = "<group>";
-		};
-		9C48A0882919C3D400714DAE /* ImageViewer */ = {
-			isa = PBXGroup;
-			children = (
-				9C48A08B2919C53000714DAE /* KikurageImageView.swift */,
-			);
-			path = ImageViewer;
 			sourceTree = "<group>";
 		};
 		9C73CCCF26D53ECB00B4DE55 /* Response */ = {
@@ -646,7 +690,6 @@
 				9C9145D027B1E93F0051BE1F /* Manager */,
 				9CE3FE72275B582000FFDF19 /* Plist */,
 				9CA2045A271C799C00D65DD7 /* View */,
-				9CA2046F271C7D0F00D65DD7 /* ViewModel */,
 				9CF0020624E39B290084036B /* Helper */,
 				9CDAFBF624E4B95700E56550 /* Extension */,
 			);
@@ -707,7 +750,6 @@
 		9C84701B27F879E000E5F05A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
-				9C8DD2D927F948C200C1C7A4 /* TableViewCell */,
 				9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */,
 			);
 			path = Twitter;
@@ -717,7 +759,6 @@
 			isa = PBXGroup;
 			children = (
 				9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */,
-				9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */,
 			);
 			path = Trivia;
 			sourceTree = "<group>";
@@ -726,18 +767,8 @@
 			isa = PBXGroup;
 			children = (
 				9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */,
-				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
 			);
 			path = Twitter;
-			sourceTree = "<group>";
-		};
-		9C8DD2D927F948C200C1C7A4 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */,
-				9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */,
-			);
-			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		9C8DD2DE27F98C0100C1C7A4 /* Tweet */ = {
@@ -853,8 +884,6 @@
 			isa = PBXGroup;
 			children = (
 				9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */,
-				9C9B6C722770B906004B2D62 /* SideMenuTableViewCell.swift */,
-				9C9B6C732770B906004B2D62 /* SideMenuTableViewCell.xib */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -863,7 +892,6 @@
 			isa = PBXGroup;
 			children = (
 				9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */,
-				9C8A524E24E4ADFD0025B179 /* SideMenuViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -896,6 +924,8 @@
 				9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */,
 				9CA20444271C777300D65DD7 /* Top */,
 				9CA2043E271C76CB00D65DD7 /* Login */,
+				9CFD86952C1432C40029527D /* SignUp */,
+				9CFD86992C14330B0029527D /* DeviceRegister */,
 				9CA2043F271C76D500D65DD7 /* Home */,
 				9CA20440271C76DD00D65DD7 /* Cultivation */,
 				9CA20448271C77BB00D65DD7 /* CultivationDetail */,
@@ -922,7 +952,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA20446271C778700D65DD7 /* BaseView */,
-				9CA20456271C78CA00D65DD7 /* ChildView */,
 				9CA2045D271C7A4900D65DD7 /* ViewController */,
 				9CA20467271C7B9E00D65DD7 /* ViewModel */,
 			);
@@ -933,7 +962,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA2044A271C77DE00D65DD7 /* BaseView */,
-				9CA20458271C793A00D65DD7 /* ChildView */,
 				9CA2045E271C7A6F00D65DD7 /* ViewController */,
 				9CA20468271C7BC000D65DD7 /* ViewModel */,
 			);
@@ -944,7 +972,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA2044F271C782500D65DD7 /* BaseView */,
-				9CA20457271C790B00D65DD7 /* ChildView */,
 				9CA20461271C7ABE00D65DD7 /* ViewController */,
 				9CA2046B271C7C0700D65DD7 /* ViewModel */,
 			);
@@ -964,8 +991,6 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */,
-				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
-				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -999,7 +1024,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA2044B271C77E600D65DD7 /* BaseView */,
-				9CA20459271C796B00D65DD7 /* ChildView */,
 				9CA2045F271C7A9000D65DD7 /* ViewController */,
 				9CA20469271C7BD200D65DD7 /* ViewModel */,
 			);
@@ -1119,52 +1143,13 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		9CA20456271C78CA00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9C0DCF932546F55800C27051 /* HomeAdviceView.swift */,
-				9C0DCF962546F58600C27051 /* HomeAdviceView.xib */,
-				9C7E588427761AD400A151C0 /* FooterButtonView.swift */,
-			);
-			path = ChildView;
-			sourceTree = "<group>";
-		};
-		9CA20457271C790B00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9C9D48A925A142EF009FCC64 /* RecipeTableViewCell.swift */,
-				9C9D48AA25A142EF009FCC64 /* RecipeTableViewCell.xib */,
-			);
-			path = ChildView;
-			sourceTree = "<group>";
-		};
-		9CA20458271C793A00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9CAFF9A3255CC5B500418745 /* CultivationCollectionViewCell.swift */,
-				9CAFF9A4255CC5B500418745 /* CultivationCollectionViewCell.xib */,
-			);
-			path = ChildView;
-			sourceTree = "<group>";
-		};
-		9CA20459271C796B00D65DD7 /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				9CBB82C5259425760009B284 /* CultivationCarouselCollectionViewCell.swift */,
-				9CBB82C6259425760009B284 /* CultivationCarouselCollectionViewCell.xib */,
-			);
-			path = ChildView;
-			sourceTree = "<group>";
-		};
 		9CA2045A271C799C00D65DD7 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */,
 				9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */,
-				9CAC930427894E990033DA33 /* LoadingThumbnailView.swift */,
 				9CBE673928BA5879002DA020 /* EmptyView.swift */,
 				9C82B429253068CF00E650B5 /* XibView.swift */,
-				9CAFF9A2255CC57800418745 /* CollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1173,7 +1158,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA7627E26E26B70000F7EE2 /* TopViewController.swift */,
-				9C7DE9F126E130A60006B36F /* TopViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1182,11 +1166,6 @@
 			isa = PBXGroup;
 			children = (
 				9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */,
-				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
-				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
-				9C91C2AC26E4E445007FB864 /* LoginViewController.storyboard */,
-				9C91C2B626E4E7AC007FB864 /* SignUpViewController.storyboard */,
-				9C8A524C24E4ADC90025B179 /* DeviceRegisterViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1195,7 +1174,6 @@
 			isa = PBXGroup;
 			children = (
 				9C1ACF4C2225768A00A3D4D1 /* HomeViewController.swift */,
-				9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1203,7 +1181,6 @@
 		9CA2045E271C7A6F00D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524624E4AD780025B179 /* CultivationViewController.storyboard */,
 				9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */,
 			);
 			path = ViewController;
@@ -1213,7 +1190,6 @@
 			isa = PBXGroup;
 			children = (
 				9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */,
-				9C8740D5258D710A0025A8B3 /* CultivationDetailViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1222,7 +1198,6 @@
 			isa = PBXGroup;
 			children = (
 				9C923334255F9760000293BB /* PostCultivationViewController.swift */,
-				9C4B62382562B48600E405F6 /* PostCultivationViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1230,7 +1205,6 @@
 		9CA20461271C7ABE00D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524824E4AD970025B179 /* RecipeViewController.storyboard */,
 				9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */,
 			);
 			path = ViewController;
@@ -1240,7 +1214,6 @@
 			isa = PBXGroup;
 			children = (
 				9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */,
-				9C9621312599C50100F2E4A0 /* PostRecipeViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1248,7 +1221,6 @@
 		9CA20463271C7AF700D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C8A524A24E4ADAF0025B179 /* CommunicationViewController.storyboard */,
 				9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */,
 			);
 			path = ViewController;
@@ -1257,7 +1229,6 @@
 		9CA20464271C7B2400D65DD7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9C91124D25B68EE9007BCECB /* CalendarViewController.storyboard */,
 				9C91124A25B68ED0007BCECB /* CalendarViewController.swift */,
 			);
 			path = ViewController;
@@ -1267,7 +1238,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
-				9CB38F2425AC10F7004B0CA7 /* GraphViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1276,8 +1246,6 @@
 			isa = PBXGroup;
 			children = (
 				9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */,
-				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
-				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1346,14 +1314,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		9CA2046F271C7D0F00D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CAE6E712567443B000972BA /* CameraCollectionViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		9CA7F3342537FD75005BED9C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1406,7 +1366,6 @@
 			isa = PBXGroup;
 			children = (
 				9CA95656284E4D03005B7867 /* DebugViewController.swift */,
-				9CA95658284E4D15005B7867 /* DebugViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1424,7 +1383,6 @@
 			children = (
 				9CACBE7329E27322006707CB /* CustomView */,
 				9CAC9362278A9AC70033DA33 /* ResourceManager.swift */,
-				9C48A0882919C3D400714DAE /* ImageViewer */,
 				9CBA06CE28748A8D006F2259 /* Logger */,
 				9CAC931E278A53750033DA33 /* HUD */,
 				9C91306C27AC2B2C0024AAF3 /* QRCodeReader */,
@@ -1482,7 +1440,6 @@
 			isa = PBXGroup;
 			children = (
 				9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */,
-				9CAFDC0A27802F4300C40094 /* AccountSettingViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1493,15 +1450,6 @@
 				9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9CAFF9A2255CC57800418745 /* CollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				9C8B1D28255ECB11000CA36C /* CameraCell.swift */,
-				9C8B1D2B255ECBE0000CA36C /* CameraCell.xib */,
-			);
-			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		9CB409D0276F04EF00E413E4 /* Entity */ = {
@@ -1536,6 +1484,24 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		9CC376192C1D94C80098DCD9 /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				9C48A08B2919C53000714DAE /* KUIZoomingImageView.swift */,
+				9C92550A2D0D3A23007258D2 /* KUILoadingThumbnailView.swift */,
+				9CC3761A2C1D94FB0098DCD9 /* KUIDropdownTextField.swift */,
+				9CDB33B72C1EC05B00A8B2BE /* KUILabelWithImage.swift */,
+				9C7E588427761AD400A151C0 /* KUIFooterButtonView.swift */,
+				9CE74B0C2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift */,
+				9CE70F452CD70F750081BF8C /* KUIMaterialTextField.swift */,
+				9CE70F472CD7213A0081BF8C /* KUITextCountLabel.swift */,
+				9CECFB112CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift */,
+				9CD982BD2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift */,
+				9CDD6F4F2D0EA11000F71AB9 /* KUISideMenuItemTableViewCell.swift */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
 		9CC4D0D5289207BB0054FDB5 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -1550,12 +1516,25 @@
 				9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */,
 				9C07E7E12530194900720768 /* UIViewController+Extension.swift */,
 				9C82B42325305E6C00E650B5 /* UIView+Extension.swift */,
-				9C7E105D25649637005A92C7 /* UIColor+Extension.swift */,
 				9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */,
 				9C97679526EF798100126F80 /* NotificationName+Extension.swift */,
 				9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		9CDB33B92C1ED0D000A8B2BE /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
+				9CD7D72D2D05BCF70026C795 /* KUICultivationCollectionViewCell.swift */,
+				9CDB33BA2C1ED13300A8B2BE /* KUIHomeAdviceView.swift */,
+				9CEC98E42C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift */,
+				9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */,
+				9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */,
+				9CD982C32D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift */,
+				9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */,
+			);
+			path = Organisms;
 			sourceTree = "<group>";
 		};
 		9CDE8BDF2B4574580078B318 /* UseCase */ = {
@@ -1709,7 +1688,6 @@
 				9C84701D27F879F800E5F05A /* Twitter */,
 				9C84701C27F879F200E5F05A /* Trivia */,
 				9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */,
-				9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1729,6 +1707,7 @@
 				9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */,
 				9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */,
 				9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */,
+				9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */,
 				9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */,
 				9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */,
 				9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */,
@@ -1781,6 +1760,106 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		9CF03CF82C10A83800EC2F48 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				9CF03CF92C10A92F00EC2F48 /* KUIButton.swift */,
+				9C0A8E962CD610A90030FB24 /* KUICircleButton.swift */,
+				9CC29EBE2C11F34600353262 /* KUIUnderlinedTextButton.swift */,
+				9CFD86912C1418CE0029527D /* KUIImageView.swift */,
+				9CFD869D2C147C3F0029527D /* KUITextField.swift */,
+				9CFD86A12C148C2E0029527D /* KUIPasswordField.swift */,
+				9CC3761C2C1DE5C10098DCD9 /* KUIRoundedView.swift */,
+				9CEC98E22C2FCA4600AB0D97 /* KUIDividerView.swift */,
+				9CD982C12D0DB3C100A4AB14 /* KUICircleImageView.swift */,
+				9CD982C52D0DC50300A4AB14 /* KUIRoundedTextView.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		9CF788E22C0F574200E0438B /* KikurageUI */ = {
+			isa = PBXGroup;
+			children = (
+				9CF03CF82C10A83800EC2F48 /* Atoms */,
+				9CC376192C1D94C80098DCD9 /* Molecules */,
+				9CDB33B92C1ED0D000A8B2BE /* Organisms */,
+				9C1F6A2F2C208659007352F6 /* Constants.swift */,
+				9C7E105D25649637005A92C7 /* UIColor+Extension.swift */,
+				9CFD86932C141A0C0029527D /* CGFloat+Extension.swift */,
+				9CF788E32C0F574200E0438B /* KikurageUI.h */,
+				9CC29EC02C12035C00353262 /* Assets.xcassets */,
+			);
+			path = KikurageUI;
+			sourceTree = "<group>";
+		};
+		9CFD86952C1432C40029527D /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				9CFD86962C1432CF0029527D /* BaseView */,
+				9CFD86972C1432D60029527D /* ViewController */,
+				9CFD86982C1432E00029527D /* ViewModel */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		9CFD86962C1432CF0029527D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9C91C2B826E4E88E007FB864 /* SignUpBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		9CFD86972C1432D60029527D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CFD86982C1432E00029527D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CFD86992C14330B0029527D /* DeviceRegister */ = {
+			isa = PBXGroup;
+			children = (
+				9CFD869C2C1433230029527D /* BaseView */,
+				9CFD869B2C14331C0029527D /* ViewController */,
+				9CFD869A2C1433140029527D /* ViewModel */,
+			);
+			path = DeviceRegister;
+			sourceTree = "<group>";
+		};
+		9CFD869A2C1433140029527D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9C87EB0B25A6E275006CB1D7 /* DeviceRegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9CFD869B2C14331C0029527D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9C12F9642244F9FC00BA9FCB /* DeviceRegisterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9CFD869C2C1433230029527D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1789,6 +1868,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CAC93122789E4E60033DA33 /* KikurageFeature.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF788DC2C0F574100E0438B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CF788E42C0F574200E0438B /* KikurageUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1815,6 +1902,7 @@
 			);
 			dependencies = (
 				9CAC93142789E4E60033DA33 /* PBXTargetDependency */,
+				9CF788E62C0F574200E0438B /* PBXTargetDependency */,
 			);
 			name = Kikurage;
 			productName = kikurageApp;
@@ -1880,6 +1968,27 @@
 			productReference = 9CAC930D2789E4E50033DA33 /* KikurageFeature.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		9CF788E02C0F574100E0438B /* KikurageUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CF788EC2C0F574300E0438B /* Build configuration list for PBXNativeTarget "KikurageUI" */;
+			buildPhases = (
+				3F5CF707B4C8649FDCD8DAEB /* [CP] Check Pods Manifest.lock */,
+				9CC29EC32C1206E200353262 /* R.swift Run Script */,
+				9CF788DC2C0F574100E0438B /* Headers */,
+				9CF788DD2C0F574100E0438B /* Sources */,
+				9CF788DE2C0F574100E0438B /* Frameworks */,
+				9CF788DF2C0F574100E0438B /* Resources */,
+				9CF4F0CA2C42CCB5004DEBDE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KikurageUI;
+			productName = KikurageUI;
+			productReference = 9CF788E12C0F574100E0438B /* KikurageUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1904,6 +2013,10 @@
 					9CAC930C2789E4E50033DA33 = {
 						CreatedOnToolsVersion = 13.0;
 					};
+					9CF788E02C0F574100E0438B = {
+						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1510;
+					};
 				};
 			};
 			buildConfigurationList = 9C1ACF422225768A00A3D4D1 /* Build configuration list for PBXProject "Kikurage" */;
@@ -1921,8 +2034,9 @@
 			projectRoot = "";
 			targets = (
 				9C1ACF462225768A00A3D4D1 /* Kikurage */,
-				9C96F7002768E97300C2E778 /* KikurageTests */,
 				9CAC930C2789E4E50033DA33 /* KikurageFeature */,
+				9CF788E02C0F574100E0438B /* KikurageUI */,
+				9C96F7002768E97300C2E778 /* KikurageTests */,
 				9C9145C327B1E77B0051BE1F /* KikurageUITests */,
 			);
 		};
@@ -1934,39 +2048,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
-				9CB38F2525AC10F7004B0CA7 /* GraphViewController.storyboard in Resources */,
-				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
-				9CA95659284E4D15005B7867 /* DebugViewController.storyboard in Resources */,
-				9CBB82C8259425760009B284 /* CultivationCarouselCollectionViewCell.xib in Resources */,
-				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
-				9C8B1D2C255ECBE0000CA36C /* CameraCell.xib in Resources */,
-				9C8A524924E4AD970025B179 /* RecipeViewController.storyboard in Resources */,
-				9C91C2B726E4E7AC007FB864 /* SignUpViewController.storyboard in Resources */,
-				9C91C2AD26E4E445007FB864 /* LoginViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
-				9C91124E25B68EE9007BCECB /* CalendarViewController.storyboard in Resources */,
-				9C8740D6258D710A0025A8B3 /* CultivationDetailViewController.storyboard in Resources */,
-				9C8A524B24E4ADAF0025B179 /* CommunicationViewController.storyboard in Resources */,
-				9CAFF9A6255CC5B500418745 /* CultivationCollectionViewCell.xib in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
-				9C7DE9F226E130A60006B36F /* TopViewController.storyboard in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
-				9C8A524724E4AD780025B179 /* CultivationViewController.storyboard in Resources */,
-				9C0DCF972546F58600C27051 /* HomeAdviceView.xib in Resources */,
-				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
-				9C8A524D24E4ADC90025B179 /* DeviceRegisterViewController.storyboard in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
-				9C8A524F24E4ADFD0025B179 /* SideMenuViewController.storyboard in Resources */,
-				9C4B62392562B48600E405F6 /* PostCultivationViewController.storyboard in Resources */,
-				9C1ACF502225768A00A3D4D1 /* HomeViewController.storyboard in Resources */,
-				9C9B6C752770B906004B2D62 /* SideMenuTableViewCell.xib in Resources */,
-				9CAFDC0B27802F4300C40094 /* AccountSettingViewController.storyboard in Resources */,
-				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
-				9C9621322599C50100F2E4A0 /* PostRecipeViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
-				9C9D48AC25A142EF009FCC64 /* RecipeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1990,6 +2078,14 @@
 			files = (
 				9CAC9322278A5A950033DA33 /* Assets.xcassets in Resources */,
 				9CAC9366278AB4660033DA33 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF788DF2C0F574100E0438B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CC29EC12C12035C00353262 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2028,6 +2124,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F5CF707B4C8649FDCD8DAEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KikurageUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4B03F7A3ABD0202AB42AE7B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -2149,6 +2267,26 @@
 			shellPath = /bin/sh;
 			shellScript = ". ${PROJECT_DIR}/Scripts/SwiftLint.sh\n";
 		};
+		9CC29EC32C1206E200353262 /* R.swift Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "R.swift Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/R-KikurageUI.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R-KikurageUI.generated.swift\"\n";
+		};
 		9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2252,6 +2390,7 @@
 				9C96997D2566118C00D655DA /* DateHelper.swift in Sources */,
 				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C87EB0C25A6E275006CB1D7 /* DeviceRegisterViewModel.swift in Sources */,
+				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
 				9CBD27FF275845EE007191CE /* AppConfig.swift in Sources */,
 				9CE0185129B46D7700365E95 /* WiFiSettingViewController.swift in Sources */,
@@ -2270,15 +2409,12 @@
 				9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */,
 				9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */,
 				9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */,
-				9C9D48AB25A142EF009FCC64 /* RecipeTableViewCell.swift in Sources */,
 				9C92333E255F9F7E000293BB /* CultivationRepository.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
-				9C0DCF942546F55800C27051 /* HomeAdviceView.swift in Sources */,
 				9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */,
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9C7EC14C25A97EEF00FE8855 /* LoginHelper.swift in Sources */,
 				9CE0184F29B46D6400365E95 /* WiFiSettingBaseView.swift in Sources */,
-				9CAFF9A5255CC5B500418745 /* CultivationCollectionViewCell.swift in Sources */,
 				9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */,
 				9CE0184729B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift in Sources */,
 				9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */,
@@ -2293,7 +2429,6 @@
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */,
 				9CBD6C422540F75C005531F4 /* KikurageStateHelper.swift in Sources */,
-				9CAE6E722567443B000972BA /* CameraCollectionViewModel.swift in Sources */,
 				9CA95655284E4CED005B7867 /* DebugBaseView.swift in Sources */,
 				9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */,
 				9C91E74F25C9207C00B3E2E0 /* R.generated.swift in Sources */,
@@ -2303,7 +2438,6 @@
 				9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */,
 				9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
-				9C9B6C742770B906004B2D62 /* SideMenuTableViewCell.swift in Sources */,
 				9C1ACF4B2225768A00A3D4D1 /* AppDelegate.swift in Sources */,
 				9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */,
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
@@ -2319,9 +2453,7 @@
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */,
 				9C9D752B27DF6CC5002611FF /* NavigationProtocol+Top.swift in Sources */,
-				9CAC930527894E990033DA33 /* LoadingThumbnailView.swift in Sources */,
 				9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */,
-				9C7E105E25649637005A92C7 /* UIColor+Extension.swift in Sources */,
 				9CA7628126E28CBE000F7EE2 /* AppPresenter.swift in Sources */,
 				9C9981D227F9ACF90068FD61 /* TwitterSearchRequest.swift in Sources */,
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
@@ -2338,13 +2470,10 @@
 				9C7DCE9926EE07D500F62DF8 /* LoginRepository.swift in Sources */,
 				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,
 				9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */,
-				9CBB82C7259425760009B284 /* CultivationCarouselCollectionViewCell.swift in Sources */,
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
-				9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
-				9C8B1D29255ECB11000CA36C /* CameraCell.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
 				9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */,
@@ -2373,7 +2502,6 @@
 				9C8ED2D72801C2A2005527F8 /* FirestoreClient.swift in Sources */,
 				9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */,
 				9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */,
-				9C7E588527761AD400A151C0 /* FooterButtonView.swift in Sources */,
 				9CE0184929B46CE600365E95 /* WiFiListBaseView.swift in Sources */,
 				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 				9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */,
@@ -2423,12 +2551,50 @@
 				9CD1886E29758032008EF1ED /* KikurageBluetoothManager.swift in Sources */,
 				9CC7F4DD29CF2F2F0045C866 /* KikurageWiFiScan.swift in Sources */,
 				9CCBA01229B5D5A70006F4F6 /* KikurageBluetoothPeripheral.swift in Sources */,
-				9C48A08C2919C53000714DAE /* KikurageImageView.swift in Sources */,
 				9CAC9363278A9AC70033DA33 /* ResourceManager.swift in Sources */,
 				9C9B27C92812F42A00B391E3 /* KonashiBluetooth.swift in Sources */,
 				9CBAC0B52882D2C7007AD29A /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				9CACBE7729E29ADB006707CB /* KikurageBluetoothCentralState.swift in Sources */,
 				9CE580E429C1F701006D83E7 /* KikurageWiFi.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CF788DD2C0F574100E0438B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CFD86A02C14893A0029527D /* KUITextField.swift in Sources */,
+				9CDB33BB2C1ED13300A8B2BE /* KUIHomeAdviceView.swift in Sources */,
+				9CDD6F502D0EA11000F71AB9 /* KUISideMenuItemTableViewCell.swift in Sources */,
+				9C0A8E972CD610A90030FB24 /* KUICircleButton.swift in Sources */,
+				9CFE28CE2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift in Sources */,
+				9CFD86922C1418CE0029527D /* KUIImageView.swift in Sources */,
+				9CC29EBF2C11F34600353262 /* KUIUnderlinedTextButton.swift in Sources */,
+				9CE74B0D2CD7A9BC008B4BE4 /* KUIMaterialTextView.swift in Sources */,
+				9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */,
+				9C92550B2D0D3A33007258D2 /* KUILoadingThumbnailView.swift in Sources */,
+				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
+				9CB6D0652D130C37005540B8 /* KUITweetTableViewCell.swift in Sources */,
+				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
+				9CECFB122CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift in Sources */,
+				9CD982BE2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift in Sources */,
+				9CD7D72E2D05BD030026C795 /* KUICultivationCollectionViewCell.swift in Sources */,
+				9CEC98E32C2FCA4600AB0D97 /* KUIDividerView.swift in Sources */,
+				9CC29EC72C120C4000353262 /* R-KikurageUI.generated.swift in Sources */,
+				9CD982C22D0DB3C100A4AB14 /* KUICircleImageView.swift in Sources */,
+				9CD982BC2D0D740E00A4AB14 /* KUIZoomingImageView.swift in Sources */,
+				9C1F6A312C20872E007352F6 /* UIColor+Extension.swift in Sources */,
+				9CDB33B82C1EC05B00A8B2BE /* KUILabelWithImage.swift in Sources */,
+				9CF03CFA2C10A92F00EC2F48 /* KUIButton.swift in Sources */,
+				9C1F6A302C208659007352F6 /* Constants.swift in Sources */,
+				9CEC98E52C2FD9C900AB0D97 /* KUIDeviceStatusListView.swift in Sources */,
+				9CC3761D2C1DE5C10098DCD9 /* KUIRoundedView.swift in Sources */,
+				9CFD86942C141A0C0029527D /* CGFloat+Extension.swift in Sources */,
+				9CE70F482CD7213A0081BF8C /* KUITextCountLabel.swift in Sources */,
+				9CD982C42D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift in Sources */,
+				9CE70F462CD70F750081BF8C /* KUIMaterialTextField.swift in Sources */,
+				9C1F6A2E2C2081E9007352F6 /* KUIFooterButtonView.swift in Sources */,
+				9CD982C62D0DC50300A4AB14 /* KUIRoundedTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2450,17 +2616,14 @@
 			target = 9CAC930C2789E4E50033DA33 /* KikurageFeature */;
 			targetProxy = 9CAC93132789E4E60033DA33 /* PBXContainerItemProxy */;
 		};
+		9CF788E62C0F574200E0438B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CF788E02C0F574100E0438B /* KikurageUI */;
+			targetProxy = 9CF788E52C0F574200E0438B /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9C1ACF4E2225768A00A3D4D1 /* HomeViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9C1ACF4F2225768A00A3D4D1 /* Base */,
-			);
-			name = HomeViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2629,13 +2792,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5253457AB1B57D733259926F /* Pods-Kikurage.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_MODULE_NAME = Kikurage;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
@@ -2644,7 +2807,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shusuke.${TARGET_NAME}${BUNDLE_ID_SUFFIX}";
 				PRODUCT_MODULE_NAME = "${APP_MODULE_NAME}";
 				PRODUCT_NAME = "${APP_DISPLAY_NAME}";
@@ -2657,13 +2820,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F229247D2C49F56EFC177CF /* Pods-Kikurage.production.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_MODULE_NAME = Kikurage;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2671,7 +2834,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shusuke.${TARGET_NAME}${BUNDLE_ID_SUFFIX}";
 				PRODUCT_MODULE_NAME = "${APP_MODULE_NAME}";
 				PRODUCT_NAME = "${APP_DISPLAY_NAME}";
@@ -3279,13 +3442,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 588AA3E367BCD46CB86D6034 /* Pods-Kikurage.staging.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APP_MODULE_NAME = Kikurage;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
@@ -3294,7 +3457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shusuke.${TARGET_NAME}${BUNDLE_ID_SUFFIX}";
 				PRODUCT_MODULE_NAME = "${APP_MODULE_NAME}";
 				PRODUCT_NAME = "${APP_DISPLAY_NAME}";
@@ -3302,6 +3465,219 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Staging;
+		};
+		9CF788E92C0F574300E0438B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B07219137EB93755CA67D06 /* Pods-KikurageUI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9CF788EA2C0F574300E0438B /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86E5F9FB9A9A248957C5FDE9 /* Pods-KikurageUI.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Staging;
+		};
+		9CF788EB2C0F574300E0438B /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B05DE53E4A86CDB5170A34 /* Pods-KikurageUI.production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2XL9QYTD77;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 shusuke. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 /* End XCBuildConfiguration section */
 
@@ -3352,6 +3728,16 @@
 				9CAC93182789E4E60033DA33 /* Debug */,
 				9CAC93192789E4E60033DA33 /* Staging */,
 				9CAC931A2789E4E60033DA33 /* Production */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Production;
+		};
+		9CF788EC2C0F574300E0438B /* Build configuration list for PBXNativeTarget "KikurageUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CF788E92C0F574300E0438B /* Debug */,
+				9CF788EA2C0F574300E0438B /* Staging */,
+				9CF788EB2C0F574300E0438B /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Production;
