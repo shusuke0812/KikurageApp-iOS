@@ -195,7 +195,6 @@
 		9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */; };
 		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
 		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
-		9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */; };
 		9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
@@ -495,7 +494,6 @@
 		9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
 		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
 		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
-		9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryViewController.storyboard; sourceTree = "<group>"; };
 		9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -1690,7 +1688,6 @@
 				9C84701D27F879F800E5F05A /* Twitter */,
 				9C84701C27F879F200E5F05A /* Trivia */,
 				9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */,
-				9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2057,7 +2054,6 @@
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
-				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

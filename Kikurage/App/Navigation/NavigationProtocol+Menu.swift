@@ -34,9 +34,7 @@ extension MenuAccessable {
     }
 
     func modalToDictionary(completion: (() -> Void)? = nil) {
-        guard let vc = R.storyboard.dictionaryViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = DictionaryViewController()
         present(to: vc, presentationStyle: .automatic, completion: completion)
     }
 
