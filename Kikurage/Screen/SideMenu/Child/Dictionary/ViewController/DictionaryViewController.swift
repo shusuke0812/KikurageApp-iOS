@@ -11,7 +11,7 @@
 import UIKit
 
 class DictionaryViewController: UIViewController {
-    private var baseView: DictionaryBaseView { view as! DictionaryBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DictionaryBaseView = .init()
 
     private lazy var dictionaryTriviaVC: DictionaryTriviaViewController? = {
         let vc = DictionaryTriviaViewController()
@@ -24,6 +24,10 @@ class DictionaryViewController: UIViewController {
     }()
 
     private var currentViewController: UIViewController?
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
