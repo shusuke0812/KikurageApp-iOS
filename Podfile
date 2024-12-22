@@ -17,7 +17,7 @@ def common_pods
   pod 'HorizonCalendar'
   pod 'CropViewController'
   # Other
-  pod 'RxSwift', '6.2.0'
+  pod 'RxSwift', '6.8.0'
   pod 'RxCocoa', '6.2.0'
   pod 'SDWebImage'
 end
