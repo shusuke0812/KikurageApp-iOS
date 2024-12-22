@@ -6,15 +6,15 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import FirebaseRemoteConfig
 import Foundation
-import Firebase
 import KikurageFeature
 
 enum FirebaseRemoteConfigPrimaryKey: String {
-    case facebookGroupUrl   = "facebook_group_url"
-    case termsUrl           = "terms_url"
-    case privacyPolicyUrl   = "privacy_policy_url"
-    case latestAppVersion   = "ios_latest_app_version"
+    case facebookGroupURL = "facebook_group_url"
+    case termsURL = "terms_url"
+    case privacyPolicyURL = "privacy_policy_url"
+    case latestAppVersion = "ios_latest_app_version"
 }
 
 protocol FirebaseRemoteConfigRepositoryProtocol {
@@ -28,7 +28,7 @@ class FirebaseRemoteConfigRepository: FirebaseRemoteConfigRepositoryProtocol {
         remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
         #if DEBUG
-        settings.minimumFetchInterval = 0
+            settings.minimumFetchInterval = 0
         #endif
         remoteConfig.configSettings = settings
     }

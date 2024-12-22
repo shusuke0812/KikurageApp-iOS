@@ -6,17 +6,17 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import FirebaseFirestore
 import Foundation
-import Firebase
 
 struct KikurageStateRequest: FirestoreRequestProtocol {
     typealias Response = KikurageState
 
-    var productId: String = ""
+    var productID: String = ""
 
     var documentReference: DocumentReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.states).document(productId)
+        return db.collection(Constants.FirestoreCollectionName.states).document(productID)
     }
 
     // MARK: Not using

@@ -6,14 +6,15 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
-import Firebase
+import FirebaseFirestore
+import FirebaseStorage
 import RxSwift
+import UIKit
 
 protocol RecipeRepositoryProtocol {
     /// 料理記録を投稿する
     func postRecipe(request: KikurageRecipeRequest, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
-    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe) -> Single<DocumentReference>
+    func postRecipe(kikurageUserID: String, kikurageRecipe: KikurageRecipe) -> Single<DocumentReference>
     /// 料理画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
@@ -23,7 +24,7 @@ protocol RecipeRepositoryProtocol {
     func postRecipeImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]>
     /// 栽培画像のStoragePathを更新する
     func putRecipeImage(request: KikurageRecipeRequest, completion: @escaping (Result<Void, ClientError>) -> Void)
-    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String]) -> Single<[String]>
+    func putRecipeImage(kikurageUserID: String, documentID: String, imageStorageFullPaths: [String]) -> Single<[String]>
     /// 栽培記録を取得する
     func getRecipes(request: KikurageRecipeRequest, completion: @escaping (Result<[KikurageRecipeTuple], ClientError>) -> Void)
     func getRecipes(request: KikurageRecipeRequest) -> Single<[KikurageRecipeTuple]>
@@ -39,8 +40,8 @@ class RecipeRepository: RecipeRepositoryProtocol {
         self.firestoreClient = firestoreClient
         self.rxFirestoreClient = rxFirestoreClient
 
-        self.metaData = StorageMetadata()
-        self.metaData.contentType = "image/jpeg"
+        metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
     }
 }
 
@@ -57,7 +58,8 @@ extension RecipeRepository {
             }
         }
     }
-    func postRecipe(kikurageUserId: String, kikurageRecipe: KikurageRecipe) -> Single<DocumentReference> {
+
+    func postRecipe(kikurageUserID: String, kikurageRecipe: KikurageRecipe) -> Single<DocumentReference> {
         Single<DocumentReference>.create { single in
             let db = Firestore.firestore()
             var data: [String: Any]!
@@ -68,7 +70,7 @@ extension RecipeRepository {
             }
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
-            let documentReference: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes).addDocument(data: data) { error in
+            let documentReference: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.recipes).addDocument(data: data) { error in
                 if let error = error {
                     dump(error)
                     single(.failure(ClientError.apiError(.createError)))
@@ -81,6 +83,7 @@ extension RecipeRepository {
             return Disposables.create()
         }
     }
+
     func putRecipeImage(request: KikurageRecipeRequest, completion: @escaping (Result<Void, ClientError>) -> Void) {
         firestoreClient.putDocumentRequest(request) { result in
             switch result {
@@ -91,10 +94,11 @@ extension RecipeRepository {
             }
         }
     }
-    func putRecipeImage(kikurageUserId: String, documentId: String, imageStorageFullPaths: [String]) -> Single<[String]> {
+
+    func putRecipeImage(kikurageUserID: String, documentID: String, imageStorageFullPaths: [String]) -> Single<[String]> {
         Single<[String]>.create { single in
             let db = Firestore.firestore()
-            let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserId).collection(Constants.FirestoreCollectionName.recipes).document(documentId)
+            let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.recipes).document(documentID)
             documentReference.updateData([
                 "imageStoragePaths": imageStorageFullPaths
             ]) { error in
@@ -108,6 +112,7 @@ extension RecipeRepository {
             return Disposables.create()
         }
     }
+
     func getRecipes(request: KikurageRecipeRequest, completion: @escaping (Result<[KikurageRecipeTuple], ClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
@@ -118,6 +123,7 @@ extension RecipeRepository {
             }
         }
     }
+
     func getRecipes(request: KikurageRecipeRequest) -> Single<[KikurageRecipeTuple]> {
         rxFirestoreClient.getDocumentsRequest(request)
     }
@@ -163,6 +169,7 @@ extension RecipeRepository {
             }
         }
     }
+
     func postRecipeImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]> {
         Single<[String]>.create { single in
             var imageStorageFullPaths: [String] = []

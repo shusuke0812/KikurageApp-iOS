@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import FirebaseAuth
 import Foundation
-import Firebase
 
 protocol SignUpRepositoryProtocol {
     /// 新規ユーザー登録を行う
@@ -17,8 +17,7 @@ protocol SignUpRepositoryProtocol {
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void)
 }
 
-class SignUpRepository: SignUpRepositoryProtocol {
-}
+class SignUpRepository: SignUpRepositoryProtocol {}
 
 // MARK: - Firebase Authentication
 
@@ -40,8 +39,8 @@ extension SignUpRepository {
                     completion(.failure(ClientError.apiError(.createError)))
                     return
                 }
-                LoginHelper.shared.setUserInUserDefaults(user: user)
-                let loginUser = LoginUser(uid: user.uid)
+                let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
+                LoginHelper.shared.setUserInUserDefaults(user: loginUser)
                 completion(.success(loginUser))
             }
         }

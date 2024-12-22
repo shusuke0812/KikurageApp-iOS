@@ -6,8 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import FirebaseFirestore
 import Foundation
-import Firebase
 
 struct KikurageUserRequest: FirestoreRequestProtocol {
     typealias Response = KikurageUser

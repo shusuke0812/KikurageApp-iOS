@@ -6,15 +6,14 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import FirebaseAuth
 import Foundation
-import Firebase
 
 protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void)
 }
 
-class LoginRepository: LoginRepositoryProtocol {
-}
+class LoginRepository: LoginRepositoryProtocol {}
 
 // MARK: - Firebase Authentication
 
@@ -30,9 +29,8 @@ extension LoginRepository {
                 completion(.failure(ClientError.apiError(.readError)))
                 return
             }
-            LoginHelper.shared.setUserInUserDefaults(user: user)
-
-            let loginUser = LoginUser(uid: user.uid)
+            let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
+            LoginHelper.shared.setUserInUserDefaults(user: loginUser)
             completion(.success(loginUser))
         }
     }

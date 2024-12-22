@@ -6,8 +6,9 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import FirebaseAuth
 import Foundation
-import Firebase
+import KikurageFeature
 
 class LoginHelper {
     static let shared = LoginHelper()
@@ -18,31 +19,33 @@ class LoginHelper {
     private init() {}
 
     /// 認証ユーザーID
-    var kikurageUserId: String? {
+    var kikurageUserID: String? {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
-                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                if let user = try NSKeyedUnarchiver.unarchivedObject(ofClass: LoginUser.self, from: userData) {
                     return user.isEmailVerified ? user.uid : nil
                 }
             } catch {
-                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
+                KLogManager.debug(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return nil
     }
+
     /// ログイン判定
     var isLogin: Bool {
         if let userData = UserDefaults.standard.object(forKey: Constants.UserDefaultsKey.firebaseUser) as? Data {
             do {
-                if let user = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? User {
+                if let user = try NSKeyedUnarchiver.unarchivedObject(ofClass: LoginUser.self, from: userData) {
                     return user.isEmailVerified
                 }
             } catch {
-                print(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
+                KLogManager.debug(FirebaseAPIError.loadUserError.description() + error.localizedDescription)
             }
         }
         return false
     }
+
     /// Firebaseユーザー情報を更新
     func userReload(completion: (() -> Void)? = nil) {
         Auth.auth().currentUser?.reload { [weak self] _ in
@@ -51,6 +54,7 @@ class LoginHelper {
             }
         }
     }
+
     /// Firebaeユーザーを取得
     func userListener(completion: (() -> Void)? = nil) {
         userListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
@@ -58,26 +62,38 @@ class LoginHelper {
             completion?()
         }
     }
+
     /// Firebaseユーザーリスナをデタッチ
     func userListenerDetach() {
-        Auth.auth().removeStateDidChangeListener(userListenerHandle!)  // swiftlint:disable:this force_unwrapping
+        Auth.auth().removeStateDidChangeListener(userListenerHandle!) // swiftlint:disable:this force_unwrapping
     }
+
     /// ユーザー情報を`UserDefaults`へ保存する
     /// - Parameter user: Firebase Auth ユーザー
-    func setUserInUserDefaults(user: User) {
+    func setUserInUserDefaults(user: LoginUser) {
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: true)
             UserDefaults.standard.set(data, forKey: Constants.UserDefaultsKey.firebaseUser)
         } catch {
-            print(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
+            KLogManager.debug(ClientError.saveUserDefaultsError.description() + error.localizedDescription)
         }
     }
+
+    func removeUserFromUserDefaults() {
+        UserDefaults.standard.removeObject(forKey: Constants.UserDefaultsKey.firebaseUser)
+    }
+
     func logout(onError: (() -> Void)? = nil) {
-        // FIXME: Auth.auth().signOutを追加
-        let rootVC = UIApplication.shared.windows.first?.rootViewController
-        if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
-            rootVC.logout(rootVC: rootVC)
-        } else {
+        do {
+            try Auth.auth().signOut()
+            removeUserFromUserDefaults()
+            let rootVC = UIApplication.shared.windows.first?.rootViewController
+            if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
+                rootVC.logout(rootVC: rootVC)
+            } else {
+                onError?()
+            }
+        } catch {
             onError?()
         }
     }

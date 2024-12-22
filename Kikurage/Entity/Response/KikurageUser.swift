@@ -6,8 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct KikurageUser: Codable {
     var productKey: String = ""

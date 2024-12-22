@@ -6,9 +6,9 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
-import SwiftUI
 import SafariServices
+import SwiftUI
+import UIKit
 
 // MEMO: UIViewControllerにExtensionすると将来的にメソッド名が衝突する可能性があるため、独自プロトコルに定義し、そのプロトコルのExtensionで拡張する方針
 protocol UIViewControllerNavigatable {
@@ -36,18 +36,23 @@ extension UIViewControllerNavigatable where Self: UIViewController {
     func setNavigationBar(title: String) {
         self.title = title
     }
+
     func setNavigationBackButton(buttonTitle: String, buttonColor: UIColor) {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = buttonColor
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: buttonTitle, style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = buttonColor
     }
+
     func openImagePicker() {
         let picker = UIImagePickerController()
         picker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         picker.sourceType = .photoLibrary
-        self.present(picker, animated: true, completion: nil)
+        present(picker, animated: true, completion: nil)
     }
+
     func adjustNavigationBarBackgroundColor() {
-        guard let nc = self.navigationController else { return }
+        guard let nc = navigationController else {
+            return
+        }
 
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -55,6 +60,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         nc.navigationBar.standardAppearance = appearance
         nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
     }
+
     func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView> {
         let _view = EmptyView(type: type)
         let hostingVC = UIHostingController(rootView: _view)
@@ -74,6 +80,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
 
         return hostingVC
     }
+
     func removeEmptyView(hostingVC: UIHostingController<EmptyView>?) {
         hostingVC?.willMove(toParent: nil)
         hostingVC?.view.removeFromSuperview()

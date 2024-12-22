@@ -6,7 +6,6 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Firebase
 import FirebaseFirestoreSwift
 
 protocol KikurageUserRepositoryProtocol {
@@ -37,6 +36,7 @@ extension KikurageUserRepository {
             }
         }
     }
+
     func postKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<Void, ClientError>) -> Void) {
         firestoreClient.postDocumentRequest(request) { result in
             switch result {

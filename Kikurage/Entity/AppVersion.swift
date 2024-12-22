@@ -12,20 +12,20 @@ struct AppVersion {
     let major: Int
     let minor: Int
     let patch: Int
-    
+
     init?(versionString: String) {
         guard let versions = versions(versionString) else {
             return nil
         }
-        self.major = versions[0]
-        self.minor = versions[1]
-        self.patch = versions[2]
+        major = versions[0]
+        minor = versions[1]
+        patch = versions[2]
     }
-    
+
     var versionString: String {
         return "\(major)\(separator)\(minor)\(separator)\(patch)"
     }
-    
+
     static var currentAppVersion: AppVersion {
         guard let versionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {
             fatalError("can not read app version")
@@ -43,17 +43,17 @@ extension AppVersion: Comparable {
         } else if lhs.major > rhs.major {
             return false
         }
-        
+
         if lhs.minor < rhs.minor {
             return true
         } else if lhs.minor > rhs.minor {
             return false
         }
-        
+
         if lhs.patch < rhs.patch {
             return true
         }
-        
+
         return false
     }
 }

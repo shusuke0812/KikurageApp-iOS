@@ -4,11 +4,11 @@ Kikurage Cultivation App
 ## What is Kikurage ?
 Wood ear which is kind of mushroom is called `Kikurage` in Japanese.
 
-## Backgroud
+## Story
 In 2018 summer, we participated Startup Weekend in Tokyo.  
 Developers who like Kikurage made an IoT product, this won a third prize in this event with 12 teams. After that, we challenged Crowdfunding and [GUGEN](https://gugen.jp/). Now on continuing to develop.
 
-## About
+## Summary
 Moblie App parts of this IoT product can be monitoring and observing to Kikurage cultivation state. This app use with [Kikurage cultivatuion kits](https://www.midorikoubou.jp/shopdetail/000000000007/).
 
 ![devices](https://user-images.githubusercontent.com/33107697/160163230-b7ed139a-3d9d-4802-b131-272959902e08.png)
@@ -16,17 +16,28 @@ Moblie App parts of this IoT product can be monitoring and observing to Kikurage
 ### IoT system
 ![iot_system](https://user-images.githubusercontent.com/33107697/160153702-cb5e7b65-3795-4dfe-8902-1a273e7d30ae.png)
 
-### Contents
-1. Can watch Condition good or bad of Kikurage cultivation environment.
-2. Can record Kikurage cultivating condition with using photo, memo and date.
-3. Can ask the other users in Facebook group.
+### Technologies in use
+
+|  Keywords  |  Status  |
+| :--- | :---- |
+|  Bluetooth  |  [DONE](https://github.com/shusuke0812/KikurageApp-iOS/tree/develop/KikurageFeature/Bluetooth)  |
+|  NFC  |  In-progress  |
+|  Firebase Firestore  |  DONE  |
+|  Firebase Storage  |  DONE  |
+|  Firebase Authentication  |  DONE  |
+|  TwitterAPI  |  DONE  |
+|  RxSwift  |  DONE  |
+|  QR code reader  |  [DONE](https://github.com/shusuke0812/KikurageApp-iOS/tree/develop/KikurageFeature/QRCodeReader)  |
+|  Logger  |  [DONE](https://github.com/shusuke0812/KikurageApp-iOS/tree/develop/KikurageFeature/Logger)  |
+
+<br />
 
 ![ui](https://user-images.githubusercontent.com/33107697/160155691-1730da8b-0ea7-4f0b-b703-7790fc54d552.png)
 
 ## Development
-- Xcode 14.2 (14C18)
+- Xcode 15.0 (15A240d)
 - Swift 5.6 
-- CocoaPods 1.11.3  
+- CocoaPods 1.13.0  
 - MacOS Ventura 13.0 / MacBook Arm Processor Model
 - Target OS：iOS 14.0 
 
@@ -83,9 +94,9 @@ The author do not take any responsibility for your using this sorce. For more in
 ![system](https://user-images.githubusercontent.com/33107697/147388919-75406b53-610b-4760-a622-d219d019acbe.png)
 
 ## 開発環境
-- Xcode 14.2 (14C18)
+- Xcode 15.0 (15A240d)
 - Swift 5.6 
-- CocoaPods 1.11.3  
+- CocoaPods 1.13.0  
 - MacOS Ventura 13.0 / MacBook Arm Processor Model
 - Target OS：iOS 14.0  
 

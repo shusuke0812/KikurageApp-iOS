@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import UIKit
 import KikurageFeature
+import UIKit
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
@@ -26,13 +26,13 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         initHUD()
 
-        presenter = AppPresenter(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository(), firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
+        presenter = AppPresenter(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
         presenter.delegate = self
 
         fetchRemoteConfig()
 
-        if let userId = LoginHelper.shared.kikurageUserId {
-            presenter.loadKikurageUser(userId: userId)
+        if LoginHelper.shared.isLogin {
+            presenter.login()
         } else {
             showTopPage()
         }
@@ -50,11 +50,12 @@ class AppRootController: UIViewController {
 
 extension AppRootController {
     private func fetchRemoteConfig() {
-        presenter.loadFacebookGroupUrl()
-        presenter.loadTermsUrl()
-        presenter.loadPrivacyPolicyUrl()
+        presenter.loadFacebookGroupURL()
+        presenter.loadTermsURL()
+        presenter.loadPrivacyPolicyURL()
         presenter.loadLatestAppVersion()
     }
+
     private func initHUD() {
         view.addSubview(kikurageHUD)
 
@@ -69,17 +70,19 @@ extension AppRootController {
 
 extension AppRootController {
     private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
+        let vc = HomeViewController()
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
+
     private func showTopPage() {
-        guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else { return }
+        let vc = TopViewController()
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
+
     private func changeViewController(_ vc: UIViewController) {
         removeCurrentViewController()
         setCurrentViewController(vc)
@@ -87,18 +90,23 @@ extension AppRootController {
 
         kikurageHUD.stopRotateAnimation()
     }
+
     private func setCurrentViewController(_ vc: UIViewController) {
         currentViewController = vc
         addChild(vc)
         view.addSubview(vc.view)
         didMove(toParent: vc)
     }
+
     private func removeCurrentViewController() {
-        guard let vc = currentViewController else { return }
+        guard let vc = currentViewController else {
+            return
+        }
         vc.willMove(toParent: nil)
         vc.view.removeFromSuperview()
         vc.removeFromParent()
     }
+
     func logout(rootVC: AppRootController) {
         closeAllViewControllers(rootVC: rootVC) { [weak self] in
             DispatchQueue.main.async {
@@ -106,6 +114,7 @@ extension AppRootController {
             }
         }
     }
+
     private func closeAllViewControllers(rootVC: AppRootController, completion: (() -> Void)?) {
         let nc = currentViewController as? CustomNavigationController
         nc?.popToRootViewController(animated: false)
@@ -118,12 +127,17 @@ extension AppRootController {
 // MARK: - AppPresenter Delegate
 
 extension AppRootController: AppPresenterDelegate {
-    func didSuccessGetKikurageInfo(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+        if let user = kikurageInfo.user {
+            FirebaseAnalyticsHelper.setUserProperty()
+            FirebaseAnalyticsHelper.setUserID(user.productKey)
+        }
         DispatchQueue.main.async {
             self.showHomePage(kikurageInfo: kikurageInfo)
         }
     }
-    func didFailedGetKikurageInfo(errorMessage: String) {
+
+    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String) {
         DispatchQueue.main.async {
             self.showTopPage()
         }

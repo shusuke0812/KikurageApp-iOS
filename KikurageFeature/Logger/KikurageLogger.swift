@@ -32,11 +32,13 @@ public struct KLogManager: KLoggerProtocol {
         static let category = "default"
     }
 
+    private static let filter = "🔥"
+
     private init() {}
 
     private static func klog(level: OSLogType, file: String, function: String, line: Int, message: String) {
         let logger = os.Logger(subsystem: Config.subsystem, category: Config.category)
-        logger.log(level: level, "\(className(from: file)).\(function) #\(line): \(message)")
+        logger.log(level: level, "\(filter): \(className(from: file)).\(function) #\(line): \(message)")
     }
 
     public static func debug(file: String = #file, function: String = #function, line: Int = #line, _ message: String = "") {
@@ -49,10 +51,10 @@ public struct KLogManager: KLoggerProtocol {
 
     public static func devFatalError(_ message: String) {
         #if DEBUG
-        let className = self.className(from: #file)
-        let function = #function
-        let line = #line
-        fatalError("DEBUG: [Fatal] \(className).\(function) #\(line): \(message)")
+            let className = self.className(from: #file)
+            let function = #function
+            let line = #line
+            fatalError("\(filter): [Fatal] \(className).\(function) #\(line): \(message)")
         #endif
     }
 }
@@ -71,7 +73,7 @@ public struct KLogger: KLoggerProtocol {
 
     private static func printToConsole(logLevel: LogLevel, file: String, function: String, line: Int, message: String) {
         #if DEBUG
-        print("DEBUG: " + "\(dateString) [\(logLevel.rawValue.uppercased())] \(self.className(from: file)).\(function) #\(line): \(message)")
+            print("DEBUG: " + "\(dateString) [\(logLevel.rawValue.uppercased())] \(className(from: file)).\(function) #\(line): \(message)")
         #endif
     }
 
@@ -97,10 +99,10 @@ public struct KLogger: KLoggerProtocol {
 
     public static func devFatalError(_ message: String) {
         #if DEBUG
-        let className = self.className(from: #file)
-        let function = #function
-        let line = #line
-        fatalError("DEBUG: [Fatal] \(className).\(function) #\(line): \(message)")
+            let className = self.className(from: #file)
+            let function = #function
+            let line = #line
+            fatalError("DEBUG: [Fatal] \(className).\(function) #\(line): \(message)")
         #endif
     }
 }
@@ -114,9 +116,10 @@ private struct DateHelper {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
+
     /// Date型をログに使うString型へ変換する
     static func formatToStringForLog() -> String {
-        self.dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
-        return self.dateFormatter.string(from: Date())
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+        return dateFormatter.string(from: Date())
     }
 }

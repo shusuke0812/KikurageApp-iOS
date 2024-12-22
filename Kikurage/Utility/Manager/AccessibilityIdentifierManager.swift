@@ -27,9 +27,11 @@ enum AccessibilityIdentifierManager {
     static func loginEmailTextField(file: String = #file) -> String {
         className(from: file) + "_" + "email_textfield"
     }
+
     static func loginPasswordTextField(file: String = #file) -> String {
         className(from: file) + "_" + "password_textfield"
     }
+
     static func loginLoginButton(file: String = #file) -> String {
         className(from: file) + "_" + "login_button"
     }

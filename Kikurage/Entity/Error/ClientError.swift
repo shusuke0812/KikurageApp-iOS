@@ -24,12 +24,18 @@ enum ClientError: Error {
 
     func description() -> String {
         switch self {
-        case .networkConnectionError:   return R.string.localizable.error_client_network_connection()
-        case .parseError:               return R.string.localizable.error_client_parse()
-        case .responseParseError:       return R.string.localizable.error_client_response_parse()
-        case .apiError:                 return R.string.localizable.error_client_api()
-        case .unknown:                  return R.string.localizable.error_client_unknown()
-        case .saveUserDefaultsError:    return R.string.localizable.error_client_save_user_defaults()
+        case .networkConnectionError:
+            return R.string.localizable.error_client_network_connection()
+        case .parseError:
+            return R.string.localizable.error_client_parse()
+        case .responseParseError:
+            return R.string.localizable.error_client_response_parse()
+        case .apiError:
+            return R.string.localizable.error_client_api()
+        case .unknown:
+            return R.string.localizable.error_client_unknown()
+        case .saveUserDefaultsError:
+            return R.string.localizable.error_client_save_user_defaults()
         }
     }
 }

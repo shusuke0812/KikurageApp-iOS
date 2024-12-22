@@ -6,7 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Firebase
+import FirebaseFirestore
 import RxSwift
 
 protocol KikurageStateListenerRepositoryProtocol {
@@ -45,6 +45,7 @@ extension KikurageStateListenerRepository {
             }
         }
     }
+
     func listenKikurageState(productKey: String) -> Observable<KikurageState> {
         Observable<KikurageState>.create { [weak self] observer in
             let db = Firestore.firestore()

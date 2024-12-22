@@ -18,22 +18,22 @@ extension TopAccessable {
     // MARK: - Push
 
     func pushToLogin() {
-        guard let vc = R.storyboard.loginViewController.instantiateInitialViewController() else { return }
+        let vc = LoginViewController()
         push(to: vc)
     }
 
     func pushToSignUp() {
-        guard let vc = R.storyboard.signUpViewController.instantiateInitialViewController() else { return }
+        let vc = SignUpViewController()
         push(to: vc)
     }
 
     func pushToDeviceRegister() {
-        guard let vc = R.storyboard.deviceRegisterViewController.instantiateInitialViewController() else { return }
+        let vc = DeviceRegisterViewController()
         push(to: vc)
     }
 
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser) {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else { return }
+        let vc = HomeViewController()
         vc.kikurageUser = kikurageUser
         vc.kikurageState = kikurageState
         push(to: vc)

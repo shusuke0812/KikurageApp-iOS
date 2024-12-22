@@ -6,13 +6,14 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
 public class KikurageQRCodeReaderView: UIView {
     public var windowOrientation: UIInterfaceOrientation {
-        self.window?.windowScene?.interfaceOrientation ?? .unknown
+        window?.windowScene?.interfaceOrientation ?? .unknown
     }
+
     public var previewLayer: AVCaptureVideoPreviewLayer?
 
     override init(frame: CGRect) {
@@ -34,6 +35,7 @@ public class KikurageQRCodeReaderView: UIView {
 
         self.previewLayer = previewLayer
     }
+
     public func configCaptureOrientation(_ orientation: AVCaptureVideoOrientation) {
         previewLayer?.connection?.videoOrientation = orientation
     }

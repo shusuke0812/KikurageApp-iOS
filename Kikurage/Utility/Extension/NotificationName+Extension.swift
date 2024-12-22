@@ -1,5 +1,5 @@
 //
-//  NotificationCenter+Extension.swift
+//  NotificationName+Extension.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2021/9/13.
@@ -9,6 +9,6 @@
 import Foundation
 
 extension Notification.Name {
-    static let updatedCultivations  = Notification.Name("UpdatedCultivations")
-    static let updatedRecipes       = Notification.Name("UpdatedRecipes")
+    static let updatedCultivations = Notification.Name("UpdatedCultivations")
+    static let updatedRecipes = Notification.Name("UpdatedRecipes")
 }
