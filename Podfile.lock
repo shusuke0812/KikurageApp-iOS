@@ -1247,12 +1247,12 @@ PODS:
     - PromisesObjC (= 2.4.0)
   - R.swift (7.7.0)
   - RecaptchaInterop (100.0.0)
-  - RxCocoa (6.2.0):
-    - RxRelay (= 6.2.0)
-    - RxSwift (= 6.2.0)
-  - RxRelay (6.2.0):
-    - RxSwift (= 6.2.0)
-  - RxSwift (6.2.0)
+  - RxCocoa (6.8.0):
+    - RxRelay (= 6.8.0)
+    - RxSwift (= 6.8.0)
+  - RxRelay (6.8.0):
+    - RxSwift (= 6.8.0)
+  - RxSwift (6.8.0)
   - SDWebImage (5.19.7):
     - SDWebImage/Core (= 5.19.7)
   - SDWebImage/Core (5.19.7)
@@ -1275,8 +1275,8 @@ DEPENDENCIES:
   - konashi-ios-sdk
   - PKHUD (~> 5.0)
   - R.swift
-  - RxCocoa (= 6.2.0)
-  - RxSwift (= 6.2.0)
+  - RxCocoa (= 6.8.0)
+  - RxSwift (= 6.8.0)
   - SDWebImage
 
 SPEC REPOS:
@@ -1376,12 +1376,12 @@ SPEC CHECKSUMS:
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   R.swift: 33e7082885d0c0bac7ae20ef7d2845a6a920ca11
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
-  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
-  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  RxCocoa: 2d33c1e1e5d66492052ad46b11024ae287572880
+  RxRelay: 335c78b926a2aea8d863a6d25f1ed3b5ad8e8705
+  RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: e9a7d47d3e919cc687329c6b73f328f3b6e744fa
+PODFILE CHECKSUM: 962d5234c387324c18c0d4b4f95e2c923dce7c2f
 
 COCOAPODS: 1.15.2
