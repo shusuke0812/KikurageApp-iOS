@@ -52,10 +52,8 @@
 		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
 		9C83E1902734B19000A52188 /* KikurageStateListenerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */; };
 		9C84701527F83ED900E5F05A /* DictionaryTriviaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */; };
-		9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */; };
 		9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */; };
 		9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */; };
-		9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */; };
 		9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */; };
 		9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */; };
 		9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */; };
@@ -64,8 +62,6 @@
 		9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */; };
 		9C8B0BD525986B7D0036CD0F /* KikurageRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */; };
 		9C8B0BD8259870980036CD0F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B0BD7259870970036CD0F /* RecipeRepository.swift */; };
-		9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */; };
-		9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */; };
 		9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */; };
 		9C8ED2D32801A59B005527F8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */; };
 		9C8ED2D52801B833005527F8 /* KikurageStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */; };
@@ -137,6 +133,7 @@
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
+		9CB6D0652D130C37005540B8 /* KUITweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */; };
 		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBA06D028748AA7006F2259 /* KikurageLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */; };
@@ -198,7 +195,6 @@
 		9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */; };
 		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
 		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
-		9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */; };
 		9CE029B027F4969E002BDD30 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
@@ -353,10 +349,8 @@
 		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		9C83E18F2734B19000A52188 /* KikurageStateListenerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateListenerRepository.swift; sourceTree = "<group>"; };
 		9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaViewController.swift; sourceTree = "<group>"; };
-		9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTriviaViewController.storyboard; sourceTree = "<group>"; };
 		9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaBaseView.swift; sourceTree = "<group>"; };
 		9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewController.swift; sourceTree = "<group>"; };
-		9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryTwitterViewController.storyboard; sourceTree = "<group>"; };
 		9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterBaseView.swift; sourceTree = "<group>"; };
 		9C8740CE258D70A90025A8B3 /* CultivationDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailBaseView.swift; sourceTree = "<group>"; };
 		9C8740D1258D70D50025A8B3 /* CultivationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationDetailViewController.swift; sourceTree = "<group>"; };
@@ -365,8 +359,6 @@
 		9C8B0BD1259868FF0036CD0F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		9C8B0BD425986B7D0036CD0F /* KikurageRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageRecipe.swift; sourceTree = "<group>"; };
 		9C8B0BD7259870970036CD0F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepository.swift; sourceTree = "<group>"; };
-		9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
-		9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9C8DD2DF27F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		9C8ED2D22801A59B005527F8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9C8ED2D42801B833005527F8 /* KikurageStateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageStateRequest.swift; sourceTree = "<group>"; };
@@ -440,6 +432,7 @@
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITweetTableViewCell.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBA06CF28748AA7006F2259 /* KikurageLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageLogger.swift; sourceTree = "<group>"; };
@@ -501,7 +494,6 @@
 		9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
 		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
 		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
-		9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DictionaryViewController.storyboard; sourceTree = "<group>"; };
 		9CE029AF27F4969E002BDD30 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -758,7 +750,6 @@
 		9C84701B27F879E000E5F05A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
-				9C8DD2D927F948C200C1C7A4 /* TableViewCell */,
 				9C84702227F882B400E5F05A /* DictionaryTwitterBaseView.swift */,
 			);
 			path = Twitter;
@@ -768,7 +759,6 @@
 			isa = PBXGroup;
 			children = (
 				9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */,
-				9C84701627F83EE600E5F05A /* DictionaryTriviaViewController.storyboard */,
 			);
 			path = Trivia;
 			sourceTree = "<group>";
@@ -777,18 +767,8 @@
 			isa = PBXGroup;
 			children = (
 				9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */,
-				9C84702027F87FB600E5F05A /* DictionaryTwitterViewController.storyboard */,
 			);
 			path = Twitter;
-			sourceTree = "<group>";
-		};
-		9C8DD2D927F948C200C1C7A4 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				9C8DD2DA27F948E600C1C7A4 /* TweetTableViewCell.swift */,
-				9C8DD2DC27F94A2C00C1C7A4 /* TweetTableViewCell.xib */,
-			);
-			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		9C8DD2DE27F98C0100C1C7A4 /* Tweet */ = {
@@ -1552,6 +1532,7 @@
 				9CFE28CD2C3369D90064BBC8 /* KUIDeviceStatusImageView.swift */,
 				9C18920B2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift */,
 				9CD982C32D0DB80200A4AB14 /* KUICultivationDetailDescriptionView.swift */,
+				9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */,
 			);
 			path = Organisms;
 			sourceTree = "<group>";
@@ -1707,7 +1688,6 @@
 				9C84701D27F879F800E5F05A /* Twitter */,
 				9C84701C27F879F200E5F05A /* Trivia */,
 				9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */,
-				9CE029AD27F49116002BDD30 /* DictionaryViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2068,16 +2048,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */,
-				9C84701727F83EE600E5F05A /* DictionaryTriviaViewController.storyboard in Resources */,
-				9C84702127F87FB600E5F05A /* DictionaryTwitterViewController.storyboard in Resources */,
 				9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */,
 				9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */,
 				9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */,
 				9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */,
-				9C8DD2DD27F94A2C00C1C7A4 /* TweetTableViewCell.xib in Resources */,
 				9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */,
 				9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */,
-				9CE029AE27F49116002BDD30 /* DictionaryViewController.storyboard in Resources */,
 				9C03D034277DC1B20074C914 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2497,7 +2473,6 @@
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9C9981D427F9AE8D0068FD61 /* Tweet.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
-				9C8DD2DB27F948E600C1C7A4 /* TweetTableViewCell.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
 				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
@@ -2599,6 +2574,7 @@
 				9C18920C2CD3C0E3001DAC50 /* KUIRecipeTableViewCell.swift in Sources */,
 				9C92550B2D0D3A33007258D2 /* KUILoadingThumbnailView.swift in Sources */,
 				9CFD86A22C148C2E0029527D /* KUIPasswordField.swift in Sources */,
+				9CB6D0652D130C37005540B8 /* KUITweetTableViewCell.swift in Sources */,
 				9CC3761B2C1D94FB0098DCD9 /* KUIDropdownTextField.swift in Sources */,
 				9CECFB122CDC3E8E00EDC855 /* KUISelectImageCollectionViewCell.swift in Sources */,
 				9CD982BE2D0D7A8500A4AB14 /* KUICarouselCollectionView.swift in Sources */,
