@@ -54,7 +54,7 @@ extension LoginViewController: LoginBaseViewDelegate {
 // MARK: - UITextField Delegate
 
 extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }
