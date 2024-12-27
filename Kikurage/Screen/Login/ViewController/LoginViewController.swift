@@ -9,7 +9,7 @@
 import PKHUD
 import UIKit
 
-class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
+class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginAccessable {
     private let baseView = LoginBaseView()
     private var viewModel: LoginViewModel!
 

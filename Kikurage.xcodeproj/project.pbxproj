@@ -133,6 +133,7 @@
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
+		9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */; };
 		9CB6D0652D130C37005540B8 /* KUITweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */; };
 		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
@@ -432,6 +433,7 @@
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Login.swift"; sourceTree = "<group>"; };
 		9CB6D0642D130C37005540B8 /* KUITweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KUITweetTableViewCell.swift; sourceTree = "<group>"; };
 		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
@@ -1707,6 +1709,7 @@
 				9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */,
 				9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */,
 				9C9D752A27DF6CC5002611FF /* NavigationProtocol+Top.swift */,
+				9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */,
 				9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */,
 				9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */,
 				9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */,
@@ -2425,6 +2428,7 @@
 				9C8B0BCF2598662E0036CD0F /* RecipeBaseView.swift in Sources */,
 				9C9981D827F9ED4D0068FD61 /* TwitterSeachRepository.swift in Sources */,
 				9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */,
+				9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */,
 				9CD984EF280174AA009D52A9 /* FirestoreRequestProtocol.swift in Sources */,
 				9C7DCE9E26EE165400F62DF8 /* ClientError.swift in Sources */,
 				9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */,
