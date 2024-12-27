@@ -134,7 +134,7 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             return
         }
         if let services = peripheral.services {
-            services.forEach { service in
+            for service in services {
                 peripheralDiscoverCharacteristics(service: service)
             }
         }
@@ -146,7 +146,7 @@ extension KikurageBluetoothManager: CBPeripheralDelegate {
             return
         }
         if let characteristics = service.characteristics {
-            characteristics.forEach { characteristic in
+            for characteristic in characteristics {
                 let uuidString = characteristic.uuid.uuidString.lowercased()
                 if uuidString == KikurageBluetoothUUID.Characteristic.readWiFi.uuidString {
                     notifyWiFiScanCharacteristic = characteristic

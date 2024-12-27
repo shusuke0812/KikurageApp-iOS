@@ -14,7 +14,7 @@ class UITextViewWithPlaceholder: UITextView {
     /// プレースホルダー文字列
     var placeholder: String = "" {
         didSet {
-            placeholderLabel.text = self.placeholder
+            placeholderLabel.text = placeholder
             placeholderLabel.sizeToFit()
         }
     }

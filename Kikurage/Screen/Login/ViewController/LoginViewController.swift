@@ -10,8 +10,12 @@ import PKHUD
 import UIKit
 
 class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private var baseView: LoginBaseView { view as! LoginBaseView } // swiftlint:disable:this force_cast
+    private let baseView = LoginBaseView()
     private var viewModel: LoginViewModel!
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +54,7 @@ extension LoginViewController: LoginBaseViewDelegate {
 // MARK: - UITextField Delegate
 
 extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }

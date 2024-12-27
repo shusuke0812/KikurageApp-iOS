@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit.UICollectionView
 
 class CultivationDetailViewModel: NSObject {
@@ -39,8 +40,8 @@ extension CultivationDetailViewModel: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCarouselCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        cell.setUI(cultivationImageStoragePath: cultivation.imageStoragePaths[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KUICarouselCollectionViewCell.identifier, for: indexPath) as! KUICarouselCollectionViewCell // swiftlint:disable:this force_cast
+        cell.setImage(imageStoragePath: cultivation.imageStoragePaths[indexPath.row])
         return cell
     }
 }

@@ -6,19 +6,24 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import PKHUD
 import RxSwift
 import SwiftUI
 import UIKit
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
-    private var baseView: CultivationBaseView { view as! CultivationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: CultivationBaseView = .init()
     private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: CultivationViewModelType!
 
     private let disposeBag = RxSwift.DisposeBag()
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +98,9 @@ extension CultivationViewController {
     private func rxBaseView() {
         viewModel.output.cultivations.bind(to: baseView.collectionView.rx.items) { collectionView, row, element in
             let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.cultivationCollectionViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-            cell.setUI(cultivation: element.data)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KUICultivationCollectionViewCell.identifier, for: indexPath) as! KUICultivationCollectionViewCell // swiftlint:disable:this force_cast
+            cell.setImage(imageStoragePath: element.data.imageStoragePaths.first)
+            cell.setViewDate(dateString: element.data.viewDate)
             return cell
         }
         .disposed(by: disposeBag)

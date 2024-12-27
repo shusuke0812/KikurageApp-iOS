@@ -14,23 +14,41 @@ protocol DictionaryTriviaBaseViewDelegate: AnyObject {
 }
 
 class DictionaryTriviaBaseView: UIView {
-    @IBOutlet private weak var webView: WKWebView!
-    @IBOutlet private weak var loadingIndicatorView: UIActivityIndicatorView!
+    private var webView: WKWebView!
+    private var loadingIndicatorView: UIActivityIndicatorView!
 
     weak var delegate: DictionaryTriviaBaseViewDelegate?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
     }
-}
 
-// MARK: - Initialized
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-extension DictionaryTriviaBaseView {
-    private func initUI() {
-        loadingIndicatorView.isHidden = true
+    private func setupComponent() {
+        webView = WKWebView()
         webView.navigationDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+
+        loadingIndicatorView = UIActivityIndicatorView()
+        loadingIndicatorView.isHidden = true
+        loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(webView)
+        addSubview(loadingIndicatorView)
+
+        NSLayoutConstraint.activate([
+            webView.topAnchor.constraint(equalTo: topAnchor),
+            webView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
 

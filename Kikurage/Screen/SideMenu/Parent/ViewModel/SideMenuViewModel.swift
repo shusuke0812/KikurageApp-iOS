@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit.UITableView
 
 class SideMenuViewModel: NSObject {
@@ -104,8 +105,8 @@ extension SideMenuViewModel {
         #endif
     }
 
-    private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> SideMenuTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.sideMenuTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
+    private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> KUISideMenuItemTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: KUISideMenuItemTableViewCell.identifier, for: indexPath) as! KUISideMenuItemTableViewCell // swiftlint:disable:this force_cast
         let rowType = section.rows[indexPath.row]
 
         cell.setSideMenuContent(title: rowType.title, iconImageName: rowType.iconImageName)

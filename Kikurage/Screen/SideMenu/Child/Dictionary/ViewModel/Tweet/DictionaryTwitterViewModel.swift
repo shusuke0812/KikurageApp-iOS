@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KikurageUI
 import UIKit.UITableView
 
 protocol DictionaryTwitterViewModelDelegate: AnyObject {
@@ -49,10 +50,14 @@ extension DictionaryTwitterViewModel: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.tweetTableViewCell, for: indexPath) else {
-            return UITableViewCell()
-        }
-        cell.setUI(tweet: tweets[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: KUITweetTableViewCell.identifier, for: indexPath) as! KUITweetTableViewCell // swiftlint:disable:this force_cast
+        let tweet = tweets[indexPath.row]
+        cell.updateItem(props: KUITweetTableViewCellProps(
+            userName: tweet.user.name,
+            createdAtString: DateHelper.formatToString(date: tweet.createdAt),
+            tweet: tweet.text,
+            iconImageURL: URL(string: tweet.user.profileImageURL)
+        ))
         return cell
     }
 }

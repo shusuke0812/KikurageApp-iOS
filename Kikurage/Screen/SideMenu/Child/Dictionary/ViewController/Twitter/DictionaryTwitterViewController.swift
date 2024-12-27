@@ -10,9 +10,13 @@ import SwiftUI
 import UIKit
 
 class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: DictionaryTwitterBaseView { view as! DictionaryTwitterBaseView } // swiftlint:disable:this force_cast
+    private var baseView: DictionaryTwitterBaseView = .init()
     private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: DictionaryTwitterViewModel!
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

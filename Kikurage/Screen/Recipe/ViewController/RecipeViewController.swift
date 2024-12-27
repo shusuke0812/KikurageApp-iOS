@@ -6,6 +6,7 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import PKHUD
 import RxSwift
 import SafariServices
@@ -13,7 +14,7 @@ import SwiftUI
 import UIKit
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
-    private var baseView: RecipeBaseView { view as! RecipeBaseView } // swiftlint:disable:this force_cast
+    private var baseView: RecipeBaseView = .init()
     private var emptyHostingVC: UIHostingController<EmptyView>!
     private var viewModel: RecipeViewModelType!
 
@@ -21,6 +22,10 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
     private let cellHeight: CGFloat = 160.0
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,15 +73,13 @@ extension RecipeViewController {
     }
 
     private func setDelegateDataSource() {
-        baseView.configTableView(delegate: self)
+        baseView.setupTableViewDelegate(delegate: self)
     }
 
     private func setRefreshControl() {
-        let refresh = UIRefreshControl()
-        refresh.addAction(.init { [weak self] _ in
+        baseView.onRefresh = { [weak self] in
             self?.refresh()
-        }, for: .valueChanged)
-        baseView.setRefreshControlInTableView(refresh)
+        }
     }
 
     private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
@@ -94,8 +97,13 @@ extension RecipeViewController {
     private func rxBaseView() {
         viewModel.output.recipes.bind(to: baseView.tableView.rx.items) { tableview, row, element in
             let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
-            let cell = tableview.dequeueReusableCell(withIdentifier: R.reuseIdentifier.recipeTableViewCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-            cell.setUI(recipe: element.data)
+            let cell = tableview.dequeueReusableCell(withIdentifier: "recipe_cell", for: indexPath) as! KUIRecipeTableViewCell // swiftlint:disable:this force_cast
+            cell.updateItem(props: KUIRecipeTableViewCellProps(
+                imageStoragePath: element.data.imageStoragePaths.first!,
+                dateString: element.data.cookDate,
+                title: element.data.name,
+                description: element.data.memo
+            ))
             return cell
         }
         .disposed(by: diposeBag)

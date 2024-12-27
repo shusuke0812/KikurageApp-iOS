@@ -6,20 +6,28 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import PKHUD
 import UIKit
 
 class PostCultivationViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: PostCultivationBaseView { view as! PostCultivationBaseView } // swiftlint:disable:this force_cast
+    private var baseView: PostCultivationBaseView = .init()
     private var viewModel: PostCultivationViewModel!
-    private var cameraCollectionViewModel: CameraCollectionViewModel!
+    private var cameraCollectionViewModel: KUISelectImageCollectionViewModel!
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
-        cameraCollectionViewModel = CameraCollectionViewModel(selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber)
+        cameraCollectionViewModel = KUISelectImageCollectionViewModel(
+            selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber,
+            collectionViewDelegate: self
+        )
         setDelegateDataSource()
         setNavigation()
         adjustNavigationBarBackgroundColor()
@@ -42,11 +50,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
 extension PostCultivationViewController {
     private func setDelegateDataSource() {
         baseView.delegate = self
-        baseView.configTextView(delegate: self)
-        baseView.configTextView(delegate: self)
         baseView.configCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
-        baseView.configTextField(delegate: self)
-        cameraCollectionViewModel.cameraCellDelegate = self
         viewModel.delegate = self
     }
 
@@ -60,6 +64,14 @@ extension PostCultivationViewController {
 // MARK: - PostCultivatioBaseView Delegate
 
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
+    func postCultivationBaseViewDidEndEditingCultivationMemo(_ postCultivationBaseView: PostCultivationBaseView, text: String) {
+        viewModel.cultivation.memo = text
+    }
+
+    func postCultivationBaseViewDidEndEditingCultivationDate(_ postCultivationBaseView: PostCultivationBaseView, date: Date) {
+        viewModel.cultivation.viewDate = DateHelper.formatToString(date: date)
+    }
+
     func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView) {
         if viewModel.postValidation() {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
@@ -75,41 +87,10 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     }
 }
 
-// MARK: - UITextField Delegate
-
-extension PostCultivationViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        let dateString = DateHelper.formatToString(date: baseView.datePicker.date)
-        baseView.dateTextField.text = dateString
-        viewModel.cultivation.viewDate = dateString
-    }
-}
-
-// MARK: - UITextView Delegate
-
-extension PostCultivationViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        var resultText = ""
-        if let text = textView.text {
-            resultText = (text as NSString).replacingCharacters(in: range, with: text)
-        }
-        return resultText.count <= baseView.maxTextViewNumber
-    }
-
-    func textViewDidChange(_ textView: UITextView) {
-        guard let text = textView.text else {
-            return
-        }
-        baseView.textView.switchPlaceholderDisplay(text: text)
-        viewModel.cultivation.memo = text
-        baseView.setCurrentTextViewNumber(text: text)
-    }
-}
-
 // MARK: - CameraCell Delegate
 
-extension PostCultivationViewController: CameraCellDelegate {
-    func didTapImageCancelButton(cell: CameraCell) {
+extension PostCultivationViewController: KUISelectImageCollectionViewCellDelegate {
+    func didTapImageCancelButton(cell: KUISelectImageCollectionViewCell) {
         let index = cell.tag
         cameraCollectionViewModel.cancelImage(index: index)
         baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])

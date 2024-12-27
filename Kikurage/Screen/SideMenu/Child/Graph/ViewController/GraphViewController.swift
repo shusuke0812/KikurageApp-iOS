@@ -9,10 +9,14 @@
 import UIKit
 
 class GraphViewController: UIViewController {
-    private var baseView: GraphBaseView { view as! GraphBaseView } // swiftlint:disable:this force_cast
+    private var baseView: GraphBaseView = .init()
     private var viewModel: GraphViewModel!
 
     // MARK: - Lifecycle
+
+    override func loadView() {
+        view = baseView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

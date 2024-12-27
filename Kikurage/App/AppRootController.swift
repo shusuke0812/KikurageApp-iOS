@@ -70,9 +70,7 @@ extension AppRootController {
 
 extension AppRootController {
     private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        guard let vc = R.storyboard.homeViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = HomeViewController()
         vc.kikurageUser = kikurageInfo.user
         vc.kikurageState = kikurageInfo.state
         let nc = CustomNavigationController(rootViewController: vc)
@@ -80,9 +78,7 @@ extension AppRootController {
     }
 
     private func showTopPage() {
-        guard let vc = R.storyboard.topViewController.instantiateInitialViewController() else {
-            return
-        }
+        let vc = TopViewController()
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }

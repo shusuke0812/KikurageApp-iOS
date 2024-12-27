@@ -6,87 +6,33 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KikurageUI
 import UIKit
 
 protocol PostCultivationBaseViewDelegate: AnyObject {
     func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView)
+    func postCultivationBaseViewDidEndEditingCultivationMemo(_ postCultivationBaseView: PostCultivationBaseView, text: String)
+    func postCultivationBaseViewDidEndEditingCultivationDate(_ postCultivationBaseView: PostCultivationBaseView, date: Date)
 }
 
 class PostCultivationBaseView: UIView {
-    @IBOutlet private(set) weak var cameraCollectionView: UICollectionView!
-    @IBOutlet private(set) weak var textView: UITextViewWithPlaceholder!
-    @IBOutlet private weak var currentTextViewNumberLabel: UILabel!
-    @IBOutlet private weak var maxTextViewNumberLabel: UILabel!
-    @IBOutlet private(set) weak var dateTextField: UITextField!
-    @IBOutlet private weak var postButton: UIButton!
+    private(set) var cameraCollectionView: UICollectionView!
+    private var cultivationMemoTextView: KUIMaterialTextView!
+    private var dateTextField: KUIDropdownTextField!
+    private var postButton: KUIButton!
 
     weak var delegate: PostCultivationBaseViewDelegate?
 
-    var datePicker = UIDatePicker()
-    /// 観察メモの最大入力可能文字数
-    let maxTextViewNumber = 200
-
     // MARK: - Lifecycle
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        registerCameraCell()
-        initUI()
-        initDatePicker()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
+        setupAction()
     }
 
-    // MARK: - Action
-
-    @IBAction private func post(_ sender: Any) {
-        delegate?.postCultivationBaseViewDidTappedPostButton(self)
-    }
-}
-
-// MARK: - Initialized
-
-extension PostCultivationBaseView {
-    private func registerCameraCell() {
-        cameraCollectionView.register(R.nib.cameraCell)
-    }
-
-    private func initUI() {
-        // 背景色
-        backgroundColor = .systemGroupedBackground
-        cameraCollectionView.backgroundColor = .systemGroupedBackground
-        textView.backgroundColor = .systemGroupedBackground
-        // プレースホルダー
-        textView.placeholder = R.string.localizable.screen_post_cultivation_textview_placeholder()
-        dateTextField.placeholder = R.string.localizable.screen_post_cultivation_date_textfield_placeholder()
-        // 保存するボタン
-        postButton.layer.masksToBounds = true
-        postButton.layer.cornerRadius = .buttonCornerRadius
-        // 最大入力文字数
-        maxTextViewNumberLabel.text = "\(maxTextViewNumber)"
-    }
-
-    private func initDatePicker() {
-        // DatePickerの基本設定
-        if #available(iOS 13.4, *) {
-            datePicker.preferredDatePickerStyle = .wheels
-        }
-        datePicker.datePickerMode = .date
-        datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
-        // 現在の日付の1ヶ月前
-        let minDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
-        // DatePickerの範囲設定
-        datePicker.minimumDate = minDate
-        datePicker.maximumDate = Date()
-        // TextFieldの入力にDatePickerを接続
-        dateTextField.inputView = datePicker
-    }
-}
-
-// MARK: - Config
-
-extension PostCultivationBaseView {
-    func setCurrentTextViewNumber(text: String) {
-        currentTextViewNumberLabel.text = "\(text.count)"
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
@@ -94,11 +40,84 @@ extension PostCultivationBaseView {
         cameraCollectionView.dataSource = dataSource
     }
 
-    func configTextView(delegate: UITextViewDelegate) {
-        textView.delegate = delegate
+    private func setupComponent() {
+        backgroundColor = .systemGroupedBackground
+
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 80, height: 80)
+        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumInteritemSpacing = 10
+        cameraCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        cameraCollectionView.backgroundColor = .systemGroupedBackground
+        cameraCollectionView.register(KUISelectImageCollectionViewCell.self, forCellWithReuseIdentifier: KUISelectImageCollectionViewCell.identifier)
+        cameraCollectionView.translatesAutoresizingMaskIntoConstraints = false
+
+        cultivationMemoTextView = KUIMaterialTextView(props: KUIMaterialTextViewProps(
+            maxTextCount: 200,
+            placeHolder: R.string.localizable.screen_post_cultivation_textview_placeholder(),
+            backgroundColor: .systemGroupedBackground
+        ))
+        cultivationMemoTextView.translatesAutoresizingMaskIntoConstraints = false
+
+        dateTextField = KUIDropdownTextField(props: KUIDropDownTextFieldProps(
+            variant: .date,
+            textFieldProps: KUITextFieldProps(placeHolder: R.string.localizable.screen_post_cultivation_date_textfield_placeholder())
+        ))
+        dateTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        postButton = KUIButton(props: KUIButtonProps(
+            variant: .primary,
+            title: R.string.localizable.screen_post_cultivation_post_button_title()
+        ))
+        postButton.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(cameraCollectionView)
+        addSubview(cultivationMemoTextView)
+        addSubview(dateTextField)
+        addSubview(postButton)
+
+        NSLayoutConstraint.activate([
+            cameraCollectionView.heightAnchor.constraint(equalToConstant: 180),
+            cameraCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            cameraCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            cameraCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            cultivationMemoTextView.heightAnchor.constraint(equalToConstant: 70),
+            cultivationMemoTextView.topAnchor.constraint(equalTo: cameraCollectionView.bottomAnchor, constant: 15),
+            cultivationMemoTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            cultivationMemoTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            dateTextField.topAnchor.constraint(equalTo: cultivationMemoTextView.bottomAnchor, constant: 20),
+            dateTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            dateTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+
+            postButton.heightAnchor.constraint(equalToConstant: 45),
+            postButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            postButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            postButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10)
+        ])
     }
 
-    func configTextField(delegate: UITextFieldDelegate) {
-        dateTextField.delegate = delegate
+    private func setupAction() {
+        postButton.onTap = { [weak self] in
+            guard let self else {
+                return
+            }
+            self.delegate?.postCultivationBaseViewDidTappedPostButton(self)
+        }
+
+        cultivationMemoTextView.onDidEndEditing = { [weak self] text in
+            guard let self else {
+                return
+            }
+            self.delegate?.postCultivationBaseViewDidEndEditingCultivationMemo(self, text: text)
+        }
+
+        dateTextField.onDidEndEditing = { [weak self] (date: Date) in
+            guard let self else {
+                return
+            }
+            self.delegate?.postCultivationBaseViewDidEndEditingCultivationDate(self, date: date)
+        }
     }
 }

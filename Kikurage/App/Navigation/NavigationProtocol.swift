@@ -37,13 +37,14 @@ protocol PopNavigationProtocol where Self: UIViewController {
 // MARK: - Modal
 
 protocol ModalNavigationProtocol where Self: UIViewController {
-    func present(to vc: UIViewController, style: UIModalPresentationStyle, completion: (() -> Void)?)
+    func present(to vc: UIViewController, transitionStyle: UIModalTransitionStyle, presentationStyle: UIModalPresentationStyle, completion: (() -> Void)?)
 }
 
 extension ModalNavigationProtocol {
-    func present(to vc: UIViewController, style: UIModalPresentationStyle = .fullScreen, completion: (() -> Void)? = nil) {
+    func present(to vc: UIViewController, transitionStyle: UIModalTransitionStyle = .coverVertical, presentationStyle: UIModalPresentationStyle = .fullScreen, completion: (() -> Void)? = nil) {
         let nc = CustomNavigationController(rootViewController: vc)
-        nc.modalPresentationStyle = style
+        nc.modalTransitionStyle = transitionStyle
+        nc.modalPresentationStyle = presentationStyle
         present(nc, animated: true, completion: completion)
     }
 }

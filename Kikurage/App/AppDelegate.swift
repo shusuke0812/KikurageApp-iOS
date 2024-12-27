@@ -56,7 +56,7 @@ extension AppDelegate {
 
 extension AppDelegate: MXMetricManagerSubscriber {
     func didReceive(_ payloads: [MXMetricPayload]) {
-        payloads.forEach { payload in
+        for payload in payloads {
             let jsonData = payload.jsonRepresentation()
             let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
@@ -66,7 +66,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
 
     @available(iOS 14.0, *)
     func didReceive(_ payloads: [MXDiagnosticPayload]) {
-        payloads.forEach { payload in
+        for payload in payloads {
             let jsonData = payload.jsonRepresentation()
             let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server

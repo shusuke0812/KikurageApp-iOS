@@ -7,30 +7,41 @@
 //
 
 import HorizonCalendar
+import KikurageUI
 import UIKit
 
 class CalendarBaseView: UIView {
-    @IBOutlet private weak var contentView: UIView!
+    private var contentView: UIView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        initUI()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupComponent()
     }
-}
 
-// MARK: - Initialized
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-extension CalendarBaseView {
-    private func initUI() {
+    private func setupComponent() {
+        backgroundColor = .white
+
+        contentView = UIView()
         contentView.backgroundColor = .systemGroupedBackground
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(contentView)
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 
-    private func initCalendarView(_ cultivationStartDateComponents: DateComponents, _ cultivationTerm: Int) {
+    private func setupCalendarView(_ cultivationStartDateComponents: DateComponents, _ cultivationTerm: Int) {
         // Calendar
-        let calendarParentView = UIView()
-        calendarParentView.backgroundColor = .white
-        calendarParentView.clipsToBounds = true
-        calendarParentView.layer.cornerRadius = .viewCornerRadius
+        let calendarParentView = KUIRoundedView(props: KUIRoundedViewProps(backgroundColor: .white))
         calendarParentView.translatesAutoresizingMaskIntoConstraints = false
 
         let calendarView = CalendarView(initialContent: makeContent(cultivationStartDateComponents))
@@ -39,10 +50,7 @@ extension CalendarBaseView {
         let contentViewWidth = UIScreen.main.bounds.size.width - (15 * 2)
 
         // Cultivation start date
-        let dateParentView = UIView()
-        dateParentView.backgroundColor = .white
-        dateParentView.clipsToBounds = true
-        dateParentView.layer.cornerRadius = .viewCornerRadius
+        let dateParentView = KUIRoundedView(props: KUIRoundedViewProps(backgroundColor: .white))
         dateParentView.translatesAutoresizingMaskIntoConstraints = false
 
         let label = UILabel()
@@ -98,6 +106,6 @@ extension CalendarBaseView {
 
 extension CalendarBaseView {
     func initCalendarView(cultivationStartDateComponents: DateComponents, cultivationTerm: Int) {
-        initCalendarView(cultivationStartDateComponents, cultivationTerm)
+        setupCalendarView(cultivationStartDateComponents, cultivationTerm)
     }
 }
