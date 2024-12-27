@@ -11,6 +11,7 @@ import UIKit
 protocol TopAccessable: PushNavigationProtocol, SafariViewNavigationProtocol {
     func pushToLogin()
     func pushToSignUp()
+    func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser)
     func presentToSafariView(urlString: String?, onError: (() -> Void)?)
 }
 
