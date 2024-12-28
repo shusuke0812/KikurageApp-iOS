@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '14.0'
+platform :ios, '15.0'
 use_frameworks!
 
 def common_pods
@@ -62,14 +62,25 @@ post_install do | installer |
   installer.pods_project.targets.each do | target |
     target.build_configurations.each do | config |
       # 暫定：M1 Macのシミュレータ向けビルドを通す処理
+      config.build_settings['ENABLE_BITCODE'] = 'YES'
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
       # Xcode14.3.1にした時に出るToolchainsのエラーを消すための処理
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
     end
     # Make it work with GoogleDataTransport
     if target.name.start_with? "GoogleDataTransport"
       target.build_configurations.each do |config|
         config.build_settings['CLANG_WARN_STRICT_PROTOTYPES'] = 'NO'
+      end
+    end
+    # Xcode16
+    if target.name == 'BoringSSL-GRPC'
+      target.source_build_phase.files.each do |file|
+        if file.settings && file.settings['COMPILER_FLAGS']
+          flags = file.settings['COMPILER_FLAGS'].split
+          flags.reject! { |flag| flag == '-GCC_WARN_INHIBIT_ALL_WARNINGS' }
+          file.settings['COMPILER_FLAGS'] = flags.join(' ')
+        end
       end
     end
   end

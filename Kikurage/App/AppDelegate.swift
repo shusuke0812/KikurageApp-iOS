@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         configCrashlyticsUserID()
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardManager.shared.keyboardDistance = 40
 
         MXMetricManager.shared.add(self)
 
