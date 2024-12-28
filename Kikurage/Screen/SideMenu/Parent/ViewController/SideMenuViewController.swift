@@ -9,7 +9,7 @@
 import MessageUI
 import UIKit
 
-class SideMenuViewController: UIViewController, UIViewControllerNavigatable, MenuAccessable {
+class SideMenuViewController: UIViewController, UIViewControllerNavigatable, SideMenuAccessable {
     private var baseView: SideMenuBaseView = .init()
     private var viewModel: SideMenuViewModel!
 
