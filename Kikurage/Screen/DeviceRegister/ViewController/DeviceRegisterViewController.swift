@@ -11,7 +11,7 @@ import KikurageFeature
 import PKHUD
 import UIKit
 
-class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
+class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, DeviceRegisterAccessable {
     private var baseView = DeviceRegisterBaseView()
     private var viewModel: DeviceRegisterViewModel!
     private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!

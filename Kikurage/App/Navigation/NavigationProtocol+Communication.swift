@@ -9,13 +9,13 @@
 import UIKit
 
 protocol CommunicationAccessable: PushNavigationProtocol, SafariViewNavigationProtocol {
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
+    func presentToSafariView(urlString: String?, onError: (() -> Void)?)
 }
 
 extension CommunicationAccessable {
     // MARK: - SafariView
 
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?) {
-        presentSafariView(from: vc, urlString: urlString, onError: onError)
+    func presentToSafariView(urlString: String?, onError: (() -> Void)?) {
+        presentSafariView(urlString: urlString, onError: onError)
     }
 }
