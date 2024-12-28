@@ -28,11 +28,6 @@ extension TopAccessable {
         push(to: vc)
     }
 
-    func pushToDeviceRegister() {
-        let vc = DeviceRegisterViewController()
-        push(to: vc)
-    }
-
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser) {
         let vc = HomeViewController()
         vc.kikurageUser = kikurageUser
