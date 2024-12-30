@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KikurageFeature
+import KikurageService
 import UIKit.UITableView
 
 protocol WiFiSettingViewModelDelegate: AnyObject {
@@ -100,11 +100,11 @@ extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
 // MARK: - KikurageBluetoothPeripheralMangerDelegate
 
 extension WiFiSettingViewModel: KikurageBluetoothPeripheralMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor state: KikurageFeature.KikurageBluetoothPeripheralState) {}
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, error: Error) {}
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, message: String) {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
         guard let completionMessage = KikurageBluetoothParser.decodeBluetoothCompletion(message)?.getKikurageBluetoothCompletion() else {
             return
         }

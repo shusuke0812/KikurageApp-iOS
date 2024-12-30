@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KikurageFeature
+import KikurageService
 
 protocol APIRequestProtocol {
     associatedtype Response: Codable

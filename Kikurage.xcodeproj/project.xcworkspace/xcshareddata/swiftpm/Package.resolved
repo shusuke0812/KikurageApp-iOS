@@ -1,5 +1,4 @@
 {
-  "originHash" : "67583d55956ff684eeff9c101514ca75af8a01da09882ed73ec531f74b8a48e8",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -20,21 +19,21 @@
       }
     },
     {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ChartsOrg/Charts",
+      "state" : {
+        "revision" : "dd9c72e3d7e751e769971092a6bd72d39198ae63",
+        "version" : "5.1.0"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "revision" : "2e02253fd1ce99145bcbf1bb367ccf61bd0ca46b",
         "version" : "11.6.0"
-      }
-    },
-    {
-      "identity" : "fontawesome.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/thii/FontAwesome.swift",
-      "state" : {
-        "revision" : "07883a32d49dfc7bdedbeea115067b53dfbeeb43",
-        "version" : "1.9.1"
       }
     },
     {
@@ -83,12 +82,93 @@
       }
     },
     {
+      "identity" : "horizoncalendar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/HorizonCalendar",
+      "state" : {
+        "branch" : "master",
+        "revision" : "697c6f22f7e2f6da69fd0ca5dca0d08c973ea3a8"
+      }
+    },
+    {
       "identity" : "interop-ios-for-google-sdks",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/interop-ios-for-google-sdks.git",
       "state" : {
         "revision" : "2d12673670417654f08f5f90fdd62926dc3a2648",
         "version" : "100.0.0"
+      }
+    },
+    {
+      "identity" : "iqkeyboardcore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardCore.git",
+      "state" : {
+        "revision" : "ae9d197f1d8c491b312e30eafb0193d164519c5a",
+        "version" : "1.0.7"
+      }
+    },
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
+      "state" : {
+        "revision" : "42e0d94355eba5448fd250f7229d150d268dc3ab",
+        "version" : "8.0.0"
+      }
+    },
+    {
+      "identity" : "iqkeyboardnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardNotification.git",
+      "state" : {
+        "revision" : "25c6a83380042141d9a2f80cdb2832595a7bf6bc",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "iqkeyboardreturnmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardReturnManager.git",
+      "state" : {
+        "revision" : "bc5c272e4d37cc217a3d10d052557a1916c09cf9",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "iqkeyboardtoolbar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardToolbar.git",
+      "state" : {
+        "revision" : "78ccb63857a03334ecfcba566f8f504015965ee3",
+        "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "iqkeyboardtoolbarmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardToolbarManager.git",
+      "state" : {
+        "revision" : "298c128c8f58776bb72de7b0259c9a5b9b157d61",
+        "version" : "1.1.2"
+      }
+    },
+    {
+      "identity" : "iqtextinputviewnotification",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQTextInputViewNotification.git",
+      "state" : {
+        "revision" : "4347f8eb6bf8880014606684105e447229cc29ea",
+        "version" : "1.0.8"
+      }
+    },
+    {
+      "identity" : "iqtextview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQTextView.git",
+      "state" : {
+        "revision" : "76f514eba5218bdf67659168ba227c77da5f75fe",
+        "version" : "1.0.5"
       }
     },
     {
@@ -119,6 +199,15 @@
       }
     },
     {
+      "identity" : "pkhud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pkluz/PKHUD.git",
+      "state" : {
+        "revision" : "8fd26f23057c6bebd6695524b1c3e05e93aba571",
+        "version" : "5.4.0"
+      }
+    },
+    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
@@ -134,6 +223,15 @@
       "state" : {
         "revision" : "a9abc6b0afe0fc4a5a71e1d7d2872143dff2d2f1",
         "version" : "7.8.0"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "c7c7d2cf50a3211fe2843f76869c698e4e417930",
+        "version" : "6.8.0"
       }
     },
     {
@@ -155,6 +253,15 @@
       }
     },
     {
+      "identity" : "tocropviewcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TimOliver/TOCropViewController",
+      "state" : {
+        "revision" : "a634cb7cdfd580006e79a6e74e64417fe9e9783b",
+        "version" : "2.7.4"
+      }
+    },
+    {
       "identity" : "xcodeedit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomlokhorst/XcodeEdit",
@@ -164,5 +271,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

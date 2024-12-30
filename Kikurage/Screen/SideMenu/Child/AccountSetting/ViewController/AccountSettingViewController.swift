@@ -7,7 +7,8 @@
 //
 
 import CropViewController
-import KikurageFeature
+import KikurageService
+import UIKit
 
 class AccountSettingViewController: UIViewController {
     private var baseView: AccountSettingBaseView = .init()

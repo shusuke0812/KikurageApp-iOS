@@ -7,7 +7,7 @@
 //
 
 import AVFoundation
-import KikurageFeature
+import KikurageService
 import PKHUD
 import UIKit
 

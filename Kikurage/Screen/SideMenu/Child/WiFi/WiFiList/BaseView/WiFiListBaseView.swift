@@ -6,7 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KikurageService
 import UIKit
 
 class WiFiListBaseView: UIView {

@@ -8,7 +8,8 @@
 
 import FirebaseAuth
 import Foundation
-import KikurageFeature
+import KikurageService
+import UIKit
 
 class LoginHelper {
     static let shared = LoginHelper()

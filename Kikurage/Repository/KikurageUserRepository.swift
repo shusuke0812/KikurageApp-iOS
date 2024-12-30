@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 protocol KikurageUserRepositoryProtocol {
     /// きくらげユーザーを読み込む

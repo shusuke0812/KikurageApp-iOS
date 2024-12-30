@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 import RxSwift
 
 protocol KikurageStateRepositoryProtocol {

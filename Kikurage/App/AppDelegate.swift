@@ -9,7 +9,7 @@
 import FirebaseCore
 import FirebaseCrashlytics
 import IQKeyboardManagerSwift
-import KikurageFeature
+import KikurageService
 import MetricKit
 import UIKit
 

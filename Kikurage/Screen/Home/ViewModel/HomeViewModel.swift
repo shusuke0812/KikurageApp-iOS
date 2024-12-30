@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KikurageFeature
+import KikurageService
 import RxSwift
 
 protocol HomeViewModelInput {

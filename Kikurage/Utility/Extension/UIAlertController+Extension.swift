@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KikurageService
 import UIKit
 
 extension UIAlertController {

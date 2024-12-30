@@ -8,7 +8,7 @@
 
 import FirebaseRemoteConfig
 import Foundation
-import KikurageFeature
+import KikurageService
 
 enum FirebaseRemoteConfigPrimaryKey: String {
     case facebookGroupURL = "facebook_group_url"

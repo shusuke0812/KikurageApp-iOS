@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KikurageFeature
+import KikurageService
 import UIKit.UITableView
 
 protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
@@ -72,7 +72,7 @@ extension WiFiSelectDeviceViewModel: UITableViewDataSource {
 // MARK: - KikurageBluetoothCentralManagerDelegate
 
 extension WiFiSelectDeviceViewModel: KikurageBluetoothCentralManagerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdate state: KikurageFeature.KikurageBluetoothConnectionState) {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothConnectionState) {
         switch state {
         case .connect:
             break
@@ -100,7 +100,7 @@ extension WiFiSelectDeviceViewModel: KikurageBluetoothCentralManagerDelegate {
 // MARK: - KikurageBluetoothPeripheralMangerDelegate
 
 extension WiFiSelectDeviceViewModel: KikurageBluetoothPeripheralMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageFeature.KikurageBluetoothManager, didUpdateFor state: KikurageFeature.KikurageBluetoothPeripheralState) {
+    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {
         switch state {
         case .didDiscoverCharacteristic:
             if let selectedIndexPath = selectedIndexPath {

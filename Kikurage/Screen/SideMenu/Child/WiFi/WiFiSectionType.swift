@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KikurageFeature
+import KikurageService
 
 enum WiFiSelectDeviceSectionType {
     case device
