@@ -6,7 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import FontAwesome_swift
+import FontAwesome
 import UIKit
 
 public class KUIFooterButtonView: UIView {
