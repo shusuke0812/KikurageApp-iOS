@@ -1,5 +1,5 @@
-import XCTest
 @testable import KikurageUI
+import XCTest
 
 final class KikurageUITests: XCTestCase {
     func testExample() throws {
