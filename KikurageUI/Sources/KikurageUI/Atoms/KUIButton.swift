@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RswiftResources
 
 public enum KUIButtonVariant {
     case primary

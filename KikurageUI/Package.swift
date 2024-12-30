@@ -18,7 +18,7 @@ let package = Package(
         .package(url: "https://github.com/thii/FontAwesome.swift", from: "1.9.0"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
         .package(url: "https://github.com/onevcat/Kingfisher", .upToNextMajor(from: "8.0.0")),
-        .package(url: "https://github.com/mac-cain13/R.swift", from: "7.8.0")
+        .package(url: "https://github.com/mac-cain13/R.swift", from: "7.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
