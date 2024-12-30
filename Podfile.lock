@@ -1056,11 +1056,6 @@ PODS:
     - FirebaseCoreExtension (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
-  - FirebaseStorageUI (14.2.0):
-    - FirebaseStorage (< 12.0, >= 8.0)
-    - SDWebImage (~> 5.6)
-  - FirebaseUI/Storage (14.2.0):
-    - FirebaseStorageUI (~> 14.2)
   - FontAwesome.swift (1.9.1)
   - GoogleAppMeasurement (10.29.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.29.0)
@@ -1253,9 +1248,6 @@ PODS:
   - RxRelay (6.8.0):
     - RxSwift (= 6.8.0)
   - RxSwift (6.8.0)
-  - SDWebImage (5.20.0):
-    - SDWebImage/Core (= 5.20.0)
-  - SDWebImage/Core (5.20.0)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
@@ -1268,7 +1260,6 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FirebaseRemoteConfig
   - FirebaseStorage
-  - FirebaseUI/Storage
   - FontAwesome.swift
   - HorizonCalendar
   - IQKeyboardManagerSwift
@@ -1277,7 +1268,6 @@ DEPENDENCIES:
   - R.swift
   - RxCocoa (= 6.8.0)
   - RxSwift (= 6.8.0)
-  - SDWebImage
 
 SPEC REPOS:
   trunk:
@@ -1303,8 +1293,6 @@ SPEC REPOS:
     - FirebaseSessions
     - FirebaseSharedSwift
     - FirebaseStorage
-    - FirebaseStorageUI
-    - FirebaseUI
     - FontAwesome.swift
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -1332,7 +1320,6 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - SDWebImage
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
@@ -1358,8 +1345,6 @@ SPEC CHECKSUMS:
   FirebaseSessions: dbd14adac65ce996228652c1fc3a3f576bdf3ecc
   FirebaseSharedSwift: 20530f495084b8d840f78a100d8c5ee613375f6e
   FirebaseStorage: 436c30aa46f2177ba152f268fe4452118b8a4856
-  FirebaseStorageUI: 22fcea916105f65d47d38a3108b540282cab229d
-  FirebaseUI: 3909853fc34f316c822e195376f144b1b0c6ca15
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
@@ -1387,9 +1372,8 @@ SPEC CHECKSUMS:
   RxCocoa: 2d33c1e1e5d66492052ad46b11024ae287572880
   RxRelay: 335c78b926a2aea8d863a6d25f1ed3b5ad8e8705
   RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
-  SDWebImage: 73c6079366fea25fa4bb9640d5fb58f0893facd8
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: b35ebce7a1fd97e6261c6fb185aedb0b6201abe5
+PODFILE CHECKSUM: 13083255626dc610c40e6a284739d8bd495208ad
 
 COCOAPODS: 1.16.2

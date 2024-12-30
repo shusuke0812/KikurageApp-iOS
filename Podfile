@@ -8,7 +8,6 @@ def common_pods
   pod 'FirebaseFirestore'
   pod 'FirebaseStorage'
   pod 'FirebaseFirestoreSwift'
-  pod 'FirebaseUI/Storage'
   pod 'FirebaseRemoteConfig'
   # UI
   pod 'Charts'
@@ -19,7 +18,6 @@ def common_pods
   # Other
   pod 'RxSwift', '6.8.0'
   pod 'RxCocoa', '6.8.0'
-  pod 'SDWebImage'
 end
 
 def resource_pods
@@ -44,7 +42,7 @@ end
 target 'KikurageUI' do
   #inherit! :search_paths
   pod 'FontAwesome.swift'
-  pod 'FirebaseUI/Storage'
+  pod 'FirebaseStorage'
   resource_pods
 end
 
