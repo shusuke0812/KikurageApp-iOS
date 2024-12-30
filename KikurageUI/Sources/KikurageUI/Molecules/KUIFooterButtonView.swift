@@ -6,52 +6,16 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import FontAwesome
 import UIKit
 
 public class KUIFooterButtonView: UIView {
-    static let iconSize = CGSize(width: 40, height: 40)
-    static let backgroundColor = UIColor.white
-    static let cornerRadius: CGFloat = .viewCornerRadius
+    private let buttonWidth: CGFloat = 30
+    private let cornerRadius: CGFloat = .viewCornerRadius
 
-    private var parentView: UIView = {
-        let view = UIView()
-        view.backgroundColor = backgroundColor
-        view.clipsToBounds = true
-        view.layer.cornerRadius = cornerRadius
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    private var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    public var cultivationButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage.fontAwesomeIcon(name: .leaf, style: .solid, textColor: Constants.Color.cultivation.rawValue, size: iconSize), for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-
-    public var recipeButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage.fontAwesomeIcon(name: .utensils, style: .solid, textColor: Constants.Color.recipe.rawValue, size: iconSize), for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-
-    public var communicationButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage.fontAwesomeIcon(name: .handsHelping, style: .solid, textColor: Constants.Color.communication.rawValue, size: iconSize), for: .normal)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
+    private var parentView: UIView!
+    public var cultivationButton: UIButton!
+    public var recipeButton: UIButton!
+    public var communicationButton: UIButton!
 
     public init() {
         super.init(frame: .zero)
@@ -63,9 +27,48 @@ public class KUIFooterButtonView: UIView {
     }
 
     private func setupComponent() {
+        parentView = UIView()
+        parentView.backgroundColor = .white
+        parentView.clipsToBounds = true
+        parentView.layer.cornerRadius = cornerRadius
+        parentView.translatesAutoresizingMaskIntoConstraints = false
+
+        let cultivationImage = UIImage(
+            systemName: "leaf.fill",
+            withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: buttonWidth))
+        )?.withTintColor(.systemBlue, renderingMode: .alwaysTemplate)
+        cultivationButton = UIButton()
+        cultivationButton.setImage(cultivationImage, for: .normal)
+        cultivationButton.tintColor = .systemBlue
+        cultivationButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let recipeImage = UIImage(
+            systemName: "fork.knife",
+            withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: buttonWidth))
+        )?.withTintColor(.systemOrange, renderingMode: .alwaysTemplate)
+        recipeButton = UIButton()
+        recipeButton.setImage(recipeImage, for: .normal)
+        recipeButton.tintColor = .systemOrange
+        recipeButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let communicationImage = UIImage(
+            systemName: "person.2.fill",
+            withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: buttonWidth))
+        )?.withTintColor(.systemGreen, renderingMode: .alwaysTemplate)
+        communicationButton = UIButton()
+        communicationButton.setImage(communicationImage, for: .normal)
+        communicationButton.tintColor = .systemGreen
+        communicationButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(cultivationButton)
         stackView.addArrangedSubview(recipeButton)
         stackView.addArrangedSubview(communicationButton)
+
         parentView.addSubview(stackView)
         addSubview(parentView)
 

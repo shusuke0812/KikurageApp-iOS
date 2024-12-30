@@ -12,10 +12,10 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "KikurageUI",
-            targets: ["KikurageUI"]),
+            targets: ["KikurageUI"]
+        ),
     ],
     dependencies: [
-        .package(url: "https://github.com/thii/FontAwesome.swift", from: "1.9.0"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
         .package(url: "https://github.com/onevcat/Kingfisher", .upToNextMajor(from: "8.0.0")),
         .package(url: "https://github.com/mac-cain13/R.swift", from: "7.0.0")
@@ -28,7 +28,6 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
                 .product(name: "Kingfisher", package: "kingfisher"),
-                .product(name: "FontAwesome", package: "fontawesome.swift"),
                 .product(name: "RswiftLibrary", package: "R.swift")
             ],
             plugins: [.plugin(name: "RswiftGeneratePublicResources", package: "R.swift")]
