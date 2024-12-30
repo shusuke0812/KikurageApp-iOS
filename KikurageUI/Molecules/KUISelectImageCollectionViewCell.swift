@@ -6,7 +6,8 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import FirebaseStorageUI
+import FirebaseStorage
+import Kingfisher
 import UIKit
 
 public protocol KUISelectImageCollectionViewCellDelegate: AnyObject {
@@ -50,7 +51,14 @@ public class KUISelectImageCollectionViewCell: UICollectionViewCell {
             return
         }
         let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-        selectImageView.sd_setImage(with: storageReference)
+        storageReference.downloadURL { [weak self] completion in
+            switch completion {
+            case .success(let url):
+                self?.selectImageView.kf.setImage(with: url, placeholder: nil)
+            case .failure:
+                break
+            }
+        }
         selectImageView.contentMode = .scaleAspectFill
     }
 

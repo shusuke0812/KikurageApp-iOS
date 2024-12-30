@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import FirebaseStorageUI
+import FirebaseStorage
 import UIKit
 
 public class KUICultivationCollectionViewCell: UICollectionViewCell {
@@ -28,9 +28,12 @@ public class KUICultivationCollectionViewCell: UICollectionViewCell {
     public func setImage(imageStoragePath: String?) {
         if let imageStoragePath = imageStoragePath, !imageStoragePath.isEmpty {
             let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-            imageView.sd_setImage(with: storageReference, placeholderImage: nil) { _, error, _, _ in
-                if let error = error {
-                    return
+            storageReference.downloadURL { [weak self] completion in
+                switch completion {
+                case .success(let url):
+                    self?.imageView.kf.setImage(with: url, placeholder: nil)
+                case .failure:
+                    break
                 }
             }
         }

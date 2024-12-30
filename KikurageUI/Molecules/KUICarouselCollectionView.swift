@@ -6,7 +6,8 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import FirebaseStorageUI
+import FirebaseStorage
+import Kingfisher
 import UIKit
 
 public struct KUICarouselCollectionViewProps {
@@ -151,7 +152,14 @@ public class KUICarouselCollectionViewCell: UICollectionViewCell {
 
     public func setImage(imageStoragePath: String) {
         let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-        zoomingImageView.imageView.sd_setImage(with: storageReference, placeholderImage: nil)
+        storageReference.downloadURL { [weak self] completion in
+            switch completion {
+            case .success(let url):
+                self?.zoomingImageView.imageView.kf.setImage(with: url, placeholder: nil)
+            case .failure:
+                break
+            }
+        }
     }
 
     private func setupComponsent(frame: CGRect) {

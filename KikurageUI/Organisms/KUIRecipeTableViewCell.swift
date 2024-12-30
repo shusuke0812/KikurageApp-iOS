@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import FirebaseStorageUI
+import FirebaseStorage
 import UIKit
 
 public struct KUIRecipeTableViewCellProps {
@@ -44,7 +44,14 @@ public class KUIRecipeTableViewCell: UITableViewCell {
         descriptionLabel.text = props.description
 
         let storageReference = Storage.storage().reference(withPath: props.imageStoragePath)
-        recipeImageView.sd_setImage(with: storageReference, placeholderImage: nil)
+        storageReference.downloadURL { [weak self] completion in
+            switch completion {
+            case .success(let url):
+                self?.recipeImageView.kf.setImage(with: url, placeholder: nil)
+            case .failure:
+                break
+            }
+        }
     }
 
     private func setupComponent() {

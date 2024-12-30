@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import SDWebImage
+import Kingfisher
 import UIKit
 
 public struct KUITweetTableViewCellProps {
@@ -46,7 +46,8 @@ public class KUITweetTableViewCell: UITableViewCell {
         userNameLabel.text = props.userName
         createdAtLabel.text = props.createdAtString
         tweetLabel.text = props.tweet
-        userIconImageView.sd_setImage(with: props.iconImageURL)
+        // userIconImageView.sd_setImage(with: props.iconImageURL)
+        userIconImageView.kf.setImage(with: props.iconImageURL, placeholder: nil)
     }
 
     private func setupComponent() {
