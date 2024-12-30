@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "KikurageService",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],
@@ -12,7 +13,8 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "KikurageService",
-            targets: ["KikurageService"]),
+            targets: ["KikurageService"]
+        ),
     ],
     dependencies: [
     ],

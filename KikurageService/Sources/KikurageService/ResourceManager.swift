@@ -16,6 +16,7 @@ class ResorceManager {
     // MARK: Localizable
 
     /// Localizable.stringデータから文字列を取得する
+    @available(*, deprecated, message: "This is legacy system. You should replace to `String catalogs`")
     static func getLocalizedString(_ string: String) -> String {
         NSLocalizedString(string, tableName: nil, bundle: Bundle(for: self), comment: string)
     }
