@@ -9,6 +9,7 @@
 import FirebaseStorage
 import Kingfisher
 import UIKit
+import RswiftResources
 
 public protocol KUISelectImageCollectionViewCellDelegate: AnyObject {
     func didTapImageCancelButton(cell: KUISelectImageCollectionViewCell)
