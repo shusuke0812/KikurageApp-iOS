@@ -25,6 +25,6 @@ class ResorceManager {
 
     /// AssetsデータからUIImageを取得する
     static func getImage(name: String) -> UIImage? {
-        UIImage(named: name, in: Bundle(for: self), compatibleWith: nil)
+        UIImage(named: name, in: .module, compatibleWith: nil)
     }
 }
