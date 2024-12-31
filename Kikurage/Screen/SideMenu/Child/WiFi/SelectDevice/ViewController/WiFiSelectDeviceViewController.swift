@@ -7,6 +7,7 @@
 //
 
 import KikurageService
+import KikurageUI
 import PKHUD
 import UIKit
 
@@ -62,7 +63,7 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        baseView.setupTableViewHeaderView(KikurageTableViewHeaderView.create(tableView: tableView))
+        baseView.setupTableViewHeaderView(KUITableHeaderView.create(tableView: tableView))
         baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
         return baseView.tableViewHeaderView
     }

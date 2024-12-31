@@ -7,6 +7,7 @@
 //
 
 import KikurageService
+import KikurageUI
 import UIKit
 
 class WiFiListViewController: UIViewController, WiFiAccessable {
@@ -64,7 +65,7 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
 
 extension WiFiListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        baseView.setupTableViewHeaderView(KikurageTableViewHeaderView.create(tableView: tableView), sectionNumber: section)
+        baseView.setupTableViewHeaderView(KUITableHeaderView.create(tableView: tableView), sectionNumber: section)
         baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
         return baseView.tableViewHeaderView
     }

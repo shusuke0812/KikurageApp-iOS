@@ -1,6 +1,6 @@
 //
-//  KikurageTableViewHeaderView.swift
-//  KikurageFeature
+//  KUITableHeaderView.swift
+//  KikurageUI
 //
 //  Created by Shusuke Ota on 2023/04/09.
 //  Copyright © 2023 shusuke. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
+public class KUITableHeaderView: UITableViewHeaderFooterView {
     private let titleLabel = UILabel()
     private let loadingIndicatorView = UIActivityIndicatorView()
 
@@ -23,10 +23,10 @@ public class KikurageTableViewHeaderView: UITableViewHeaderFooterView {
         nil
     }
 
-    public static let indetifier: String = "KikurageTableViewHeaderView"
+    public static let indetifier: String = "KUITableHeaderView"
 
-    public static func create(tableView: UITableView) -> KikurageTableViewHeaderView {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: Self.indetifier) as! KikurageTableViewHeaderView // swiftlint:disable:this force_cast
+    public static func create(tableView: UITableView) -> KUITableHeaderView {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: Self.indetifier) as! KUITableHeaderView // swiftlint:disable:this force_cast
         return view
     }
 
