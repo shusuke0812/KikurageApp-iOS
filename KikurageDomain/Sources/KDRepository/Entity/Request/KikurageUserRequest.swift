@@ -6,22 +6,22 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDFirebase
 import FirebaseFirestore
-import Foundation
 
-struct KikurageUserRequest: FirestoreRequestProtocol {
-    typealias Response = KikurageUser
+public struct KikurageUserRequest: FirestoreRequestProtocol {
+    public typealias Response = KikurageUser
 
     var uid: String = ""
 
-    var documentReference: DocumentReference? {
+    public var documentReference: DocumentReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(uid)
+        return db.collection(FirestoreCollectionName.users).document(uid)
     }
 
-    var body: [String: Any]? = [:]
+    public var body: [String: Any]? = [:]
 
     // MARK: Not using
 
-    var collectionReference: CollectionReference?
+    public var collectionReference: CollectionReference?
 }
