@@ -152,6 +152,8 @@ public struct FirestoreClient: FirestoreClientProtocol {
 }
 
 public struct RxFirestoreClient: RxFirestoreClientProtocol {
+    public init() {}
+
     // MARK: - GET
 
     public func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response> {

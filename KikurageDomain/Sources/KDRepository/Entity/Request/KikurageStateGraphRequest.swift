@@ -6,21 +6,22 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDFirebase
 import FirebaseFirestore
-import Foundation
 
-struct KiikurageStateGraphRequest: FirestoreRequestProtocol {
-    typealias Response = KikurageStateGraph
+public struct KiikurageStateGraphRequest: FirestoreRequestProtocol {
+    public typealias Response = KikurageStateGraph
 
-    var productID: String = ""
+    public var productID: String = ""
 
-    var collectionReference: CollectionReference? {
+    // TODO: documentReferenceはInfrastructure.Interceptorに定義する
+    public var collectionReference: CollectionReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.states).document(productID).collection(Constants.FirestoreCollectionName.graph)
+        return db.collection(FirestoreCollectionName.states).document(productID).collection(FirestoreCollectionName.graph)
     }
 
     // MARK: Not using
 
-    var documentReference: DocumentReference?
-    var body: [String: Any]?
+    public var documentReference: DocumentReference?
+    public var body: [String: Any]?
 }

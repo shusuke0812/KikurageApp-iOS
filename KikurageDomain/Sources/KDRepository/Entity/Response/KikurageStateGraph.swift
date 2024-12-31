@@ -8,18 +8,18 @@
 
 import Foundation
 
-typealias KikurageStateGraphTuple = (data: KikurageStateGraph, documentID: String)
+public typealias KikurageStateGraphTuple = (data: KikurageStateGraph, documentID: String)
 
-struct KikurageStateGraph: Codable {
-    var mondayData: TimeData?
-    var tuesdayData: TimeData?
-    var wednesdayData: TimeData?
-    var thursdayData: TimeData?
-    var fridayData: TimeData?
-    var saturdayData: TimeData?
-    var sundayData: TimeData?
+public struct KikurageStateGraph: Codable {
+    public var mondayData: TimeData?
+    public var tuesdayData: TimeData?
+    public var wednesdayData: TimeData?
+    public var thursdayData: TimeData?
+    public var fridayData: TimeData?
+    public var saturdayData: TimeData?
+    public var sundayData: TimeData?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case mondayData = "monday"
         case tuesdayData = "tuesday"
         case wednesdayData = "wednesday"
@@ -30,12 +30,12 @@ struct KikurageStateGraph: Codable {
     }
 }
 
-struct TimeData: Codable {
-    var date: Date?
-    var temperature: Int?
-    var humidity: Int?
+public struct TimeData: Codable {
+    public var date: Date?
+    public var temperature: Int?
+    public var humidity: Int?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case date
         case temperature
         case humidity

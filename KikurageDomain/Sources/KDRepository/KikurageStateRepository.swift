@@ -7,14 +7,14 @@
 //
 
 import KDFirebase
-import KDRestApi
+import RxSwift
 
-protocol KikurageStateRepositoryProtocol {
+public protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む
-    func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
+    func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void)
     func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState>
     /// グラフデータを読み込む
-    func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
+    func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], FirebaseClientError>) -> Void)
 }
 
 public class KikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -30,7 +30,7 @@ public class KikurageStateRepository: KikurageStateRepositoryProtocol {
 // MARK: - Firebase Firestore
 
 extension KikurageStateRepository {
-    func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
+    public func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void) {
         firestoreClient.getDocumentRequest(request) { result in
             switch result {
             case .success(let kikurageState):
@@ -41,11 +41,11 @@ extension KikurageStateRepository {
         }
     }
 
-    func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
+    public func getKikurageState(request: KikurageStateRequest) -> Single<KikurageState> {
         rxFirestoreClient.getDocumentRequest(request)
     }
 
-    func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
+    public func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], FirebaseClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
             case .success(let kikurageStateGraph):
