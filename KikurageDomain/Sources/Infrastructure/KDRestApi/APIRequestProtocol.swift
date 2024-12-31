@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import KikurageService
 
 public protocol APIRequestProtocol {
     associatedtype Response: Codable
@@ -24,14 +23,14 @@ public protocol APIRequestProtocol {
 }
 
 extension APIRequestProtocol {
-    func buildURLRequest() -> URLRequest {
+     public func buildURLRequest() -> URLRequest {
         let url = URL(string: baseURL.appending(path))! // swiftlint:disable:this force_unwrapping
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         switch method {
         case .get:
             components?.queryItems = parameters
         default:
-            KLogger.devFatalError("this is not supported http method: \(method)")
+            assertionFailure("this is not supported http method: \(method)")
         }
 
         var urlRequest = URLRequest(url: url)

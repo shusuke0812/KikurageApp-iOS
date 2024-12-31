@@ -8,13 +8,15 @@
 import Foundation
 import RxSwift
 
-protocol APIClientProtocol {
+public protocol APIClientProtocol {
     func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, RestApiClientError>) -> Void)
     func sendRequest<T: APIRequestProtocol>(_ request: T) -> Single<T.Response>
 }
 
-struct APIClient: APIClientProtocol {
-    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, RestApiClientError>) -> Void) {
+public struct APIClient: APIClientProtocol {
+    public init() {}
+
+    public func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, RestApiClientError>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
             if let error = error {
@@ -41,7 +43,7 @@ struct APIClient: APIClientProtocol {
         task.resume()
     }
 
-    func sendRequest<T: APIRequestProtocol>(_ request: T) -> Single<T.Response> {
+    public func sendRequest<T: APIRequestProtocol>(_ request: T) -> Single<T.Response> {
         Single<T.Response>.create { single in
             let session = URLSession.shared
             let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
