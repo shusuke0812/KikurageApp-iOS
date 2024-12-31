@@ -23,7 +23,8 @@ let package = Package(
             name: "KDRepository",
             dependencies: [
                 .target(name: "KDFirebase"),
-                .target(name: "KDRestApi")
+                .target(name: "KDRestApi"),
+                .product(name: "RxSwift", package: "RxSwift")
             ],
             path: "Sources/KDRepository"
         ),
