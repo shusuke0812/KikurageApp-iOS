@@ -9,7 +9,7 @@
 import KDFirebase
 import KDRestApi
 
-enum FirebaseRemoteConfigPrimaryKey: String {
+public enum FirebaseRemoteConfigPrimaryKey: String {
     case facebookGroupURL = "facebook_group_url"
     case termsURL = "terms_url"
     case privacyPolicyURL = "privacy_policy_url"
@@ -20,10 +20,10 @@ protocol FirebaseRemoteConfigRepositoryProtocol {
     func fetch(key: FirebaseRemoteConfigPrimaryKey, completion: @escaping (Result<String, Error>) -> Void)
 }
 
-class FirebaseRemoteConfigRepository: FirebaseRemoteConfigRepositoryProtocol {
+public class FirebaseRemoteConfigRepository: FirebaseRemoteConfigRepositoryProtocol {
     private let remoteConfig: RemoteConfig
 
-    init() {
+    public init() {
         remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
         #if DEBUG

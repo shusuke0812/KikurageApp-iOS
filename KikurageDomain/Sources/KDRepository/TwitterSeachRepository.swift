@@ -13,10 +13,10 @@ protocol TwitterSearchRepositoryProtocol {
     func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, ClientError>) -> Void)
 }
 
-class TwitterSearchRepository: TwitterSearchRepositoryProtocol {
+public class TwitterSearchRepository: TwitterSearchRepositoryProtocol {
     private let apiClient: APIClientProtocol
 
-    init(apiClient: APIClientProtocol = APIClient()) {
+    public init(apiClient: APIClientProtocol = APIClient()) {
         self.apiClient = apiClient
     }
 

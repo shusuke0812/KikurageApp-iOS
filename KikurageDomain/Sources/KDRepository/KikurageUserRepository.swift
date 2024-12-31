@@ -16,10 +16,10 @@ protocol KikurageUserRepositoryProtocol {
     func postKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<Void, ClientError>) -> Void)
 }
 
-class KikurageUserRepository: KikurageUserRepositoryProtocol {
+public class KikurageUserRepository: KikurageUserRepositoryProtocol {
     private let firestoreClient: FirestoreClientProtocol
 
-    init(firestoreClient: FirestoreClientProtocol = FirestoreClient()) {
+    public init(firestoreClient: FirestoreClientProtocol = FirestoreClient()) {
         self.firestoreClient = firestoreClient
     }
 }

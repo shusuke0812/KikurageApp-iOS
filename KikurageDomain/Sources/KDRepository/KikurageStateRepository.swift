@@ -17,11 +17,11 @@ protocol KikurageStateRepositoryProtocol {
     func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void)
 }
 
-class KikurageStateRepository: KikurageStateRepositoryProtocol {
+public class KikurageStateRepository: KikurageStateRepositoryProtocol {
     private let firestoreClient: FirestoreClientProtocol
     private let rxFirestoreClient: RxFirestoreClientProtocol
 
-    init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
+    public init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
         self.firestoreClient = firestoreClient
         self.rxFirestoreClient = rxFirestoreClient
     }

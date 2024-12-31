@@ -15,7 +15,7 @@ protocol KikurageStateListenerRepositoryProtocol {
     func listenKikurageState(productKey: String) -> Observable<KikurageState>
 }
 
-class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
+public class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
     private var kikurageStateListener: ListenerRegistration?
 
     deinit {

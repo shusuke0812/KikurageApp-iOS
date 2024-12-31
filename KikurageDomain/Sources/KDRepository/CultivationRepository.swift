@@ -28,13 +28,13 @@ protocol CultivationRepositoryProtocol {
     func getCultivations(request: KikurageCultivationRequest) -> Single<[KikurageCultivationTuple]>
 }
 
-class CultivationRepository: CultivationRepositoryProtocol {
+public class CultivationRepository: CultivationRepositoryProtocol {
     private let firestoreClient: FirestoreClientProtocol
     private let rxFirestoreClient: RxFirestoreClientProtocol
     /// Storageへ保存するデータのメタデータ
     private let metaData: StorageMetadata
 
-    init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
+    public init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
         self.firestoreClient = firestoreClient
         self.rxFirestoreClient = rxFirestoreClient
 

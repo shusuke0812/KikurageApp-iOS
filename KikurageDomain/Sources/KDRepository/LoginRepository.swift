@@ -13,7 +13,7 @@ protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void)
 }
 
-class LoginRepository: LoginRepositoryProtocol {}
+public class LoginRepository: LoginRepositoryProtocol {}
 
 // MARK: - Firebase Authentication
 

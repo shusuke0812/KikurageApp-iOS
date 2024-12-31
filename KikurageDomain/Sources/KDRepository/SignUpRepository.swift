@@ -17,7 +17,7 @@ protocol SignUpRepositoryProtocol {
     func registerUser(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, ClientError>) -> Void)
 }
 
-class SignUpRepository: SignUpRepositoryProtocol {}
+public class SignUpRepository: SignUpRepositoryProtocol {}
 
 // MARK: - Firebase Authentication
 
