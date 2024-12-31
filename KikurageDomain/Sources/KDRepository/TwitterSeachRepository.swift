@@ -6,7 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import Foundation
+import KDFirebase
+import KDRestApi
 
 protocol TwitterSearchRepositoryProtocol {
     func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, ClientError>) -> Void)

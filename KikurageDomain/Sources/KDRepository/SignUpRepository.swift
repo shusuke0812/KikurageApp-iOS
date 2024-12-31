@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import FirebaseAuth
-import Foundation
+import KDFirebase
+import KDRestApi
 
 protocol SignUpRepositoryProtocol {
     /// 新規ユーザー登録を行う

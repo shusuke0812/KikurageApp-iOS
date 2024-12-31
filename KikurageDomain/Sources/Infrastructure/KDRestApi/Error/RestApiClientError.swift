@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ClientError: Error {
+public enum RestApiClientError: Error {
     /// 通信に失敗（ex. 端末オフライン、URLホストが見つからない etc）
     case networkConnectionError(Error)
     /// エンコード、デコードに失敗
@@ -16,7 +16,7 @@ enum ClientError: Error {
     /// レスポンスの変換に失敗（ex. レスポンスのJSON形式とResonse型がアンマッチ、JSONデータが一部欠けていた etc）
     case responseParseError(Error)
     /// APIからのエラーレスポンス（400-500番台）
-    case apiError(FirebaseAPIError) // TODO: change general error type, REF: https://github.com/ishkawa/APIKit/tree/2.0.1/Sources
+    case apiError(Error)
     /// 不明なエラー
     case unknown
     /// UserDefaultsの保存に失敗

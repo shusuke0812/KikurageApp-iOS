@@ -6,27 +6,25 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseFirestore
-import FirebaseStorage
-import RxSwift
-import UIKit
+import KDFirebase
+import Foundation
 
 protocol CultivationRepositoryProtocol {
     /// 栽培記録を投稿する
-    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
+    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void)
     func postCultivation(kikurageUserID: String, kikurageCultivation: KikurageCultivation) -> Single<DocumentReference>
     /// 栽培画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
     ///   - imageStoragePath: 画像を保存するStorageパス
     ///   - completion: 投稿成功、失敗のハンドル
-    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void)
+    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void)
     func postCultivationImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]>
     /// 栽培画像のStoragePathを更新する
-    func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, ClientError>) -> Void)
+    func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
     func putCultivationImage(kikurageUserID: String, documentID: String, imageStorageFullPaths: [String]) -> Single<[String]>
     /// 栽培記録を取得する
-    func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], ClientError>) -> Void)
+    func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void)
     func getCultivations(request: KikurageCultivationRequest) -> Single<[KikurageCultivationTuple]>
 }
 

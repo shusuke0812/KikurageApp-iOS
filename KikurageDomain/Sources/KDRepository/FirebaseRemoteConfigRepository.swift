@@ -6,9 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import FirebaseRemoteConfig
-import Foundation
-import KikurageService
+import KDFirebase
+import KDRestApi
 
 enum FirebaseRemoteConfigPrimaryKey: String {
     case facebookGroupURL = "facebook_group_url"

@@ -1,21 +1,20 @@
 //
-//  APIClient.swift
-//  Kikurage
+//  File.swift
+//  KikurageDomain
 //
-//  Created by Shusuke Ota on 2022/4/3.
-//  Copyright © 2022 shusuke. All rights reserved.
+//  Created by Shusuke Ota on 2024/12/31.
 //
 
 import Foundation
 import RxSwift
 
 protocol APIClientProtocol {
-    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void)
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, RestApiClientError>) -> Void)
     func sendRequest<T: APIRequestProtocol>(_ request: T) -> Single<T.Response>
 }
 
 struct APIClient: APIClientProtocol {
-    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) {
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, RestApiClientError>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
             if let error = error {
@@ -52,7 +51,7 @@ struct APIClient: APIClientProtocol {
                 }
                 guard let data = data, let response = response as? HTTPURLResponse else {
                     // TODO: change error type
-                    single(.failure(ClientError.unknown))
+                    single(.failure(RestApiClientError.unknown))
                     return
                 }
                 if (200 ..< 300).contains(response.statusCode) {
@@ -60,11 +59,11 @@ struct APIClient: APIClientProtocol {
                         let apiResponse = try request.decodeData(T.Response.self, from: data)
                         single(.success(apiResponse))
                     } catch {
-                        single(.failure(ClientError.parseError(error)))
+                        single(.failure(RestApiClientError.parseError(error)))
                     }
                 } else {
                     // TODO: decode in case of custom error type
-                    single(.failure(ClientError.unknown))
+                    single(.failure(RestApiClientError.unknown))
                 }
             }
             task.resume()

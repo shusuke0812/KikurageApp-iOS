@@ -6,10 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseFirestore
-import FirebaseStorage
-import RxSwift
-import UIKit
+import KDFirebase
+import KDRestApi
 
 protocol RecipeRepositoryProtocol {
     /// 料理記録を投稿する

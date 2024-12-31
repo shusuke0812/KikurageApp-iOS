@@ -6,8 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseFirestore
-import RxSwift
+import KDFirebase
+import KDRestApi
 
 protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む

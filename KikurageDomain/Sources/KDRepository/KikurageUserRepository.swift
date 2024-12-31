@@ -6,7 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import FirebaseFirestore
+import KDFirebase
+import KDRestApi
 
 protocol KikurageUserRepositoryProtocol {
     /// きくらげユーザーを読み込む

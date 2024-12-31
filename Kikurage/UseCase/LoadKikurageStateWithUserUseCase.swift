@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KDRepository
 
 typealias KikurageStateUserTuple = (user: KikurageUser, state: KikurageState)
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FirebaseAPIError: Error {
+public enum FirebaseAPIError: Error {
     case createError
     case readError
     case deleteError
@@ -19,7 +19,7 @@ enum FirebaseAPIError: Error {
     /// ユーザ情報の取得に失敗
     case loadUserError
 
-    func description() -> String {
+    public func description() -> String {
         switch self {
         case .createError:
             return R.string.localizable.error_firebase_create()

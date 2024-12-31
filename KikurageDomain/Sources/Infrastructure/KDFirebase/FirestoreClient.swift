@@ -1,9 +1,8 @@
 //
-//  FirestoreClient.swift
-//  Kikurage
+//  File.swift
+//  KikurageDomain
 //
-//  Created by Shusuke Ota on 2022/4/9.
-//  Copyright © 2022 shusuke. All rights reserved.
+//  Created by Shusuke Ota on 2024/12/31.
 //
 
 import FirebaseFirestore
@@ -11,12 +10,12 @@ import Foundation
 import RxSwift
 
 protocol FirestoreClientProtocol {
-    func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void)
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], ClientError>) -> Void)
-    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration?
-    func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
-    func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, ClientError>) -> Void)
-    func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void)
+    func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void)
+    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void)
+    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration?
+    func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
+    func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void)
+    func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
 }
 
 protocol RxFirestoreClientProtocol {
@@ -24,38 +23,38 @@ protocol RxFirestoreClientProtocol {
     func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentID: String)]>
 }
 
-struct FirestoreClient: FirestoreClientProtocol {
+public struct FirestoreClient: FirestoreClientProtocol {
     // MARK: - GET
 
-    func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) {
+    func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) {
         request.documentReference?.getDocument { snapshot, error in
             if let error = error {
                 dump(error)
-                completion(.failure(ClientError.apiError(.readError)))
+                completion(.failure(FirebaseClientError.apiError(.readError)))
                 return
             }
             guard let snapshotData = snapshot?.data() else {
-                completion(.failure(ClientError.apiError(.readError)))
+                completion(.failure(FirebaseClientError.apiError(.readError)))
                 return
             }
             do {
                 let firebaseResponse = try Firestore.Decoder().decode(T.Response.self, from: snapshotData)
                 completion(.success(firebaseResponse))
             } catch {
-                completion(.failure(ClientError.responseParseError(error)))
+                completion(.failure(FirebaseClientError.responseParseError(error)))
             }
         }
     }
 
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], ClientError>) -> Void) {
+    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void) {
         request.collectionReference?.getDocuments { snapshot, error in
             if let error = error {
                 dump(error)
-                completion(.failure(ClientError.apiError(.readError)))
+                completion(.failure(FirebaseClientError.apiError(.readError)))
                 return
             }
             guard let snapshot = snapshot else {
-                completion(.failure(ClientError.apiError(.readError)))
+                completion(.failure(FirebaseClientError.apiError(.readError)))
                 return
             }
             var firebaseResponses: [(data: T.Response, documentID: String)] = []
@@ -66,36 +65,36 @@ struct FirestoreClient: FirestoreClientProtocol {
                 }
                 completion(.success(firebaseResponses))
             } catch {
-                completion(.failure(ClientError.responseParseError(error)))
+                completion(.failure(FirebaseClientError.responseParseError(error)))
             }
         }
     }
 
-    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, ClientError>) -> Void) -> ListenerRegistration? {
+    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration? {
         request.documentReference?.addSnapshotListener { snapshot, error in
             if let error = error {
                 dump(error)
-                completion(.failure(ClientError.apiError(.readError)))
+                completion(.failure(FirebaseClientError.apiError(.readError)))
                 return
             }
             guard let snapshotData = snapshot?.data() else {
-                completion(.failure(ClientError.apiError(.readError)))
+                completion(.failure(FirebaseClientError.apiError(.readError)))
                 return
             }
             do {
                 let apiResponse = try Firestore.Decoder().decode(T.Response.self, from: snapshotData)
                 completion(.success(apiResponse))
             } catch {
-                completion(.failure(ClientError.responseParseError(error)))
+                completion(.failure(FirebaseClientError.responseParseError(error)))
             }
         }
     }
 
     // MARK: - POST
 
-    func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void) {
+   func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         guard let body = request.body else {
-            completion(.failure(ClientError.unknown))
+            completion(.failure(FirebaseClientError.unknown))
             return
         }
         let dispatchGroup = DispatchGroup()
@@ -103,7 +102,7 @@ struct FirestoreClient: FirestoreClientProtocol {
         request.documentReference?.setData(body) { error in
             if let error = error {
                 dump(error)
-                completion(.failure(ClientError.apiError(.createError)))
+                completion(.failure(FirebaseClientError.apiError(.createError)))
             }
             dispatchGroup.leave()
         }
@@ -113,9 +112,9 @@ struct FirestoreClient: FirestoreClientProtocol {
     }
 
     /// In case of saving data with using document ID into Firebase Storage
-    func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
+    func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void) {
         guard let body = request.body, let collectionReference = request.collectionReference else {
-            completion(.failure(ClientError.unknown))
+            completion(.failure(FirebaseClientError.unknown))
             return
         }
         let dispatchGroup = DispatchGroup()
@@ -123,7 +122,7 @@ struct FirestoreClient: FirestoreClientProtocol {
         let documentReference: DocumentReference = collectionReference.addDocument(data: body) { error in
             if let error = error {
                 dump(error)
-                completion(.failure(ClientError.apiError(.createError)))
+                completion(.failure(FirebaseClientError.apiError(.createError)))
             }
             dispatchGroup.leave()
         }
@@ -134,15 +133,15 @@ struct FirestoreClient: FirestoreClientProtocol {
 
     // MARK: - PUT
 
-    func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, ClientError>) -> Void) {
+    func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         guard let body = request.body else {
-            completion(.failure(ClientError.unknown))
+            completion(.failure(FirebaseClientError.unknown))
             return
         }
         request.documentReference?.updateData(body) { error in
             if let error = error {
                 dump(error)
-                completion(.failure(ClientError.apiError(.updateError)))
+                completion(.failure(FirebaseClientError.apiError(.updateError)))
             } else {
                 completion(.success(()))
             }
@@ -150,40 +149,40 @@ struct FirestoreClient: FirestoreClientProtocol {
     }
 }
 
-struct RxFirestoreClient: RxFirestoreClientProtocol {
+public struct RxFirestoreClient: RxFirestoreClientProtocol {
     // MARK: - GET
 
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response> {
         Single<T.Response>.create { single in
             request.documentReference?.getDocument { snapshot, error in
                 if error != nil {
-                    single(.failure(ClientError.apiError(.readError)))
+                    single(.failure(FirebaseClientError.apiError(.readError)))
                     return
                 }
                 guard let snapshotData = snapshot?.data() else {
-                    single(.failure(ClientError.apiError(.readError)))
+                    single(.failure(FirebaseClientError.apiError(.readError)))
                     return
                 }
                 do {
                     let firebaseResponse = try Firestore.Decoder().decode(T.Response.self, from: snapshotData)
                     single(.success(firebaseResponse))
                 } catch {
-                    single(.failure(ClientError.responseParseError(error)))
+                    single(.failure(FirebaseClientError.responseParseError(error)))
                 }
             }
             return Disposables.create()
         }
     }
 
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentID: String)]> {
+   func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentID: String)]> {
         Single<[(data: T.Response, documentID: String)]>.create { single in
             request.collectionReference?.getDocuments { snapshot, error in
                 if error != nil {
-                    single(.failure(ClientError.apiError(.readError)))
+                    single(.failure(FirebaseClientError.apiError(.readError)))
                     return
                 }
                 guard let snapshot = snapshot else {
-                    single(.failure(ClientError.apiError(.readError)))
+                    single(.failure(FirebaseClientError.apiError(.readError)))
                     return
                 }
                 var firebaseResponses: [(data: T.Response, documentID: String)] = []
@@ -194,7 +193,7 @@ struct RxFirestoreClient: RxFirestoreClientProtocol {
                     }
                     single(.success(firebaseResponses))
                 } catch {
-                    single(.failure(ClientError.responseParseError(error)))
+                    single(.failure(FirebaseClientError.responseParseError(error)))
                 }
             }
             return Disposables.create()
