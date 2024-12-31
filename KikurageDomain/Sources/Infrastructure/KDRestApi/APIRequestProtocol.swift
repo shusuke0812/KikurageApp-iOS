@@ -9,7 +9,7 @@
 import Foundation
 import KikurageService
 
-protocol APIRequestProtocol {
+public protocol APIRequestProtocol {
     associatedtype Response: Codable
 
     var baseURL: String { get }
