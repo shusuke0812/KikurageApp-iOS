@@ -21,20 +21,20 @@ public enum FirebaseClientError: Error {
     /// UserDefaultsの保存に失敗
     case saveUserDefaultsError
 
-    func description() -> String {
+    public func description() -> String {
         switch self {
         case .networkConnectionError:
-            return R.string.localizable.error_client_network_connection()
+            return NSLocalizedString("error_firebase_create", bundle: .main, comment: "")
         case .parseError:
-            return R.string.localizable.error_client_parse()
+            return NSLocalizedString("error_client_parse", bundle: .main, comment: "")
         case .responseParseError:
-            return R.string.localizable.error_client_response_parse()
+            return NSLocalizedString("error_client_response_parse", bundle: .main, comment: "")
         case .apiError:
-            return R.string.localizable.error_client_api()
+            return NSLocalizedString("error_client_api", bundle: .main, comment: "")
         case .unknown:
-            return R.string.localizable.error_client_unknown()
+            return NSLocalizedString("error_client_unknown", bundle: .main, comment: "")
         case .saveUserDefaultsError:
-            return R.string.localizable.error_client_save_user_defaults()
+            return NSLocalizedString("error_client_save_user_defaults", bundle: .main, comment: "")
         }
     }
 }

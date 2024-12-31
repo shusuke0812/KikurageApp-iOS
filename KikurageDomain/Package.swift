@@ -5,13 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "KikurageDomain",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],
     products: [
         .library(
             name: "KDRepository",
-            targets: ["KDRepository"]),
+            targets: ["KDRepository"])
     ],
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
@@ -34,16 +35,22 @@ let package = Package(
                 .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
-                .product(name: "RxSwift", package: "RxSwift")
+                .product(name: "RxSwift", package: "RxSwift"),
             ],
-            path: "Sources/Infrastructure/KDFirebase"
+            path: "Sources/Infrastructure/KDFirebase",
+            resources: [
+                .process("Sources/Resources")
+            ]
         ),
         .target(
             name: "KDRestApi",
             dependencies: [
                 .product(name: "RxSwift", package: "RxSwift")
             ],
-            path: "Sources/Infrastructure/KDRestApi"
+            path: "Sources/Infrastructure/KDRestApi",
+            resources: [
+                .process("Sources/Resources")
+            ]
         ),
         .target(
             name: "KDBluetooth",
