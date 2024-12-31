@@ -5,7 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "KikurageService",
-    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],

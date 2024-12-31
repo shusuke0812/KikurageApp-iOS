@@ -1,5 +1,5 @@
 //
-//  KikurageHUD.swift
+//  KUIHUD.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2022/1/9.
@@ -8,35 +8,15 @@
 
 import UIKit
 
-public class KikurageHUD: UIView {
-    // MARK: Property
-
-    private var loadingImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ResorceManager.getImage(name: "hakase")?.withRenderingMode(.alwaysTemplate)
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .gray
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    private var loadingLabel: UILabel = {
-        let label = UILabel()
-        label.text = ResorceManager.getLocalizedString("loading_text")
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        label.textColor = .gray
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+public class KUIHUD: UIView {
+    private var loadingImageView: UIImageView!
+    private var loadingLabel: UILabel!
 
     private let loadingImageWidth: CGFloat = 60
 
-    // MARK: Initialized
-
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initUI()
+        setupComponent()
     }
 
     required init?(coder: NSCoder) {
@@ -46,11 +26,24 @@ public class KikurageHUD: UIView {
 
 // MARK: - Config
 
-extension KikurageHUD {
+extension KUIHUD {
     // Private
 
-    private func initUI() {
+    private func setupComponent() {
         backgroundColor = .clear
+
+        loadingImageView = UIImageView()
+        loadingImageView.image = R.image.hakase()
+        loadingImageView.contentMode = .scaleAspectFit
+        loadingImageView.tintColor = .gray
+        loadingImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        loadingLabel = UILabel()
+        loadingLabel.text = R.string.localizable.loading_text()
+        loadingLabel.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        loadingLabel.textColor = .gray
+        loadingLabel.textAlignment = .center
+        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
 
         let stackView = UIStackView()
         stackView.axis = .vertical

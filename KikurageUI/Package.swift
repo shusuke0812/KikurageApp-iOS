@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "KikurageUI",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],
