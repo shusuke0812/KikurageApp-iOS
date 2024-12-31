@@ -12,7 +12,6 @@ import RxSwift
 public protocol FirestoreClientProtocol {
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void)
     func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void)
-    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration?
     func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
     func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void)
     func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
@@ -66,26 +65,6 @@ public struct FirestoreClient: FirestoreClientProtocol {
                     firebaseResponses.append((data: firebaseResponse, documentID: document.documentID))
                 }
                 completion(.success(firebaseResponses))
-            } catch {
-                completion(.failure(FirebaseClientError.responseParseError(error)))
-            }
-        }
-    }
-
-    public func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration? {
-        request.documentReference?.addSnapshotListener { snapshot, error in
-            if let error = error {
-                dump(error)
-                completion(.failure(FirebaseClientError.apiError(.readError)))
-                return
-            }
-            guard let snapshotData = snapshot?.data() else {
-                completion(.failure(FirebaseClientError.apiError(.readError)))
-                return
-            }
-            do {
-                let apiResponse = try Firestore.Decoder().decode(T.Response.self, from: snapshotData)
-                completion(.success(apiResponse))
             } catch {
                 completion(.failure(FirebaseClientError.responseParseError(error)))
             }
