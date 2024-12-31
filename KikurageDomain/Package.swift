@@ -24,7 +24,8 @@ let package = Package(
             dependencies: [
                 .target(name: "KDFirebase"),
                 .target(name: "KDRestApi"),
-                .product(name: "RxSwift", package: "RxSwift")
+                .product(name: "RxSwift", package: "RxSwift"),
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
             ],
             path: "Sources/KDRepository"
         ),
