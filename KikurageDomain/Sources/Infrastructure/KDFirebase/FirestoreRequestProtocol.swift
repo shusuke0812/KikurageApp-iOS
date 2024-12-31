@@ -21,7 +21,7 @@ public protocol FirestoreRequestProtocol {
 }
 
 extension FirestoreRequestProtocol {
-    func buildBody(from data: Self.Response) -> [String: Any]? {
+    public func buildBody(from data: Self.Response) -> [String: Any]? {
         do {
             return try Firestore.Encoder().encode(data)
         } catch {

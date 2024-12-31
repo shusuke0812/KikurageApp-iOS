@@ -9,7 +9,7 @@ import FirebaseFirestore
 import Foundation
 import RxSwift
 
-protocol FirestoreClientProtocol {
+public protocol FirestoreClientProtocol {
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void)
     func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void)
     func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration?
@@ -18,15 +18,17 @@ protocol FirestoreClientProtocol {
     func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
 }
 
-protocol RxFirestoreClientProtocol {
+public protocol RxFirestoreClientProtocol {
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response>
     func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentID: String)]>
 }
 
 public struct FirestoreClient: FirestoreClientProtocol {
+    public init() {}
+
     // MARK: - GET
 
-    func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) {
+    public func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) {
         request.documentReference?.getDocument { snapshot, error in
             if let error = error {
                 dump(error)
@@ -46,7 +48,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
         }
     }
 
-    func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void) {
+    public func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void) {
         request.collectionReference?.getDocuments { snapshot, error in
             if let error = error {
                 dump(error)
@@ -70,7 +72,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
         }
     }
 
-    func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration? {
+    public func listenDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void) -> ListenerRegistration? {
         request.documentReference?.addSnapshotListener { snapshot, error in
             if let error = error {
                 dump(error)
@@ -92,7 +94,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
 
     // MARK: - POST
 
-   func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         guard let body = request.body else {
             completion(.failure(FirebaseClientError.unknown))
             return
@@ -112,7 +114,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
     }
 
     /// In case of saving data with using document ID into Firebase Storage
-    func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void) {
+    public func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void) {
         guard let body = request.body, let collectionReference = request.collectionReference else {
             completion(.failure(FirebaseClientError.unknown))
             return
@@ -133,7 +135,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
 
     // MARK: - PUT
 
-    func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         guard let body = request.body else {
             completion(.failure(FirebaseClientError.unknown))
             return
@@ -152,7 +154,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
 public struct RxFirestoreClient: RxFirestoreClientProtocol {
     // MARK: - GET
 
-    func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response> {
+    public func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<T.Response> {
         Single<T.Response>.create { single in
             request.documentReference?.getDocument { snapshot, error in
                 if error != nil {
@@ -174,7 +176,7 @@ public struct RxFirestoreClient: RxFirestoreClientProtocol {
         }
     }
 
-   func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentID: String)]> {
+    public func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T) -> Single<[(data: T.Response, documentID: String)]> {
         Single<[(data: T.Response, documentID: String)]>.create { single in
             request.collectionReference?.getDocuments { snapshot, error in
                 if error != nil {
