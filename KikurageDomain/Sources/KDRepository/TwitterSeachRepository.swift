@@ -6,11 +6,10 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import KDRestApi
 
-protocol TwitterSearchRepositoryProtocol {
-    func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, ClientError>) -> Void)
+public protocol TwitterSearchRepositoryProtocol {
+    func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, RestApiClientError>) -> Void)
 }
 
 public class TwitterSearchRepository: TwitterSearchRepositoryProtocol {
@@ -22,7 +21,7 @@ public class TwitterSearchRepository: TwitterSearchRepositoryProtocol {
 
     // MARK: - API Method
 
-    func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, ClientError>) -> Void) {
+    public func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, RestApiClientError>) -> Void) {
         apiClient.sendRequest(request) { result in
             switch result {
             case .success(let response):

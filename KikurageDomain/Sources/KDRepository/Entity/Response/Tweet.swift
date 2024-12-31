@@ -10,16 +10,16 @@
 
 import Foundation
 
-struct Tweet: Codable {
-    let statuses: [Status]
+public struct Tweet: Codable {
+    public let statuses: [Status]
 
-    struct Status: Codable {
-        let id: Int64
-        let text: String
-        let user: User
-        let createdAt: Date
+    public struct Status: Codable {
+        public let id: Int64
+        public let text: String
+        public let user: User
+        public let createdAt: Date
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case id
             case text
             case user
@@ -27,12 +27,12 @@ struct Tweet: Codable {
         }
     }
 
-    struct User: Codable {
-        let name: String
-        let screenName: String
-        let profileImageURL: String
+    public struct User: Codable {
+        public let name: String
+        public let screenName: String
+        public let profileImageURL: String
 
-        enum CodingKeys: String, CodingKey {
+        public enum CodingKeys: String, CodingKey {
             case name
             case screenName = "screen_name"
             case profileImageURL = "profile_image_url_https"

@@ -8,15 +8,16 @@
 
 // Doc: https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets
 
+import KDRestApi
 import Foundation
 
-struct TwitterSearchRequest: APIRequestProtocol {
-    let searchWord: String
-    let searchCount: Int
-    let maxID: Int64?
-    let sinceID: Int64?
+public struct TwitterSearchRequest: APIRequestProtocol {
+    public let searchWord: String
+    public let searchCount: Int
+    public let maxID: Int64?
+    public let sinceID: Int64?
 
-    typealias Response = Tweet
+    public typealias Response = Tweet
 
     var bearerToken: String {
         guard let url = Bundle.main.url(forResource: "TwitterAccessKey", withExtension: "json") else {
@@ -33,19 +34,19 @@ struct TwitterSearchRequest: APIRequestProtocol {
 
     // MARK: APIRequestProtocol properties
 
-    var baseURL: String {
+    public var baseURL: String {
         "https://api.twitter.com/1.1"
     }
 
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         .get
     }
 
-    var path: String {
+    public var path: String {
         "/search/tweets.json"
     }
 
-    var parameters: [URLQueryItem]? {
+    public var parameters: [URLQueryItem]? {
         [
             URLQueryItem(name: "q", value: searchWord),
             URLQueryItem(name: "count", value: "\(searchCount)"),
@@ -54,22 +55,30 @@ struct TwitterSearchRequest: APIRequestProtocol {
         ]
     }
 
-    var header: [String: String]? {
+    public var header: [String: String]? {
         [
             "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
             "Authorization": "Bearer \(bearerToken)"
         ]
     }
 
-    var body: Data? {
+    public var body: Data? {
         nil
     }
 
     // MARK: - Response decoder
 
-    func decodeData<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
+    public func decodeData<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(DateHelper.twitterSearchDateFormat)
+        decoder.dateDecodingStrategy = .formatted(twitterSearchDateFormat)
         return try decoder.decode(type, from: data)
     }
+    
+    private var twitterSearchDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
 }
