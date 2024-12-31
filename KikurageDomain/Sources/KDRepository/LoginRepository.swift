@@ -10,6 +10,7 @@ import KDFirebase
 
 protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
+    func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
 }
 
 public class LoginRepository: LoginRepositoryProtocol {
@@ -36,6 +37,30 @@ extension LoginRepository {
                 completion(.success(loginUser))
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+    
+    func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void) {
+        firebaseAuthClient.signUp(registerInfo: registerInfo) { result in
+            switch result {
+            case .success(let authDataResult):
+                guard let user = authDataResult?.user else {
+                    completion(.failure(.apiError(.readError)))
+                    return
+                }
+                user.sendEmailVerification { error in
+                    if let error = error {
+                        dump(error)
+                        completion(.failure(.apiError(.createError)))
+                        return
+                    }
+                    let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
+                    //TODO: ローカルストアに保存する LoginHelper.shared.setUserInUserDefaults(user: loginUser)
+                    completion(.success(loginUser))
+                }
+            case .failure(let error):
+                completion(.failure(.apiError(.createError)))
             }
         }
     }
