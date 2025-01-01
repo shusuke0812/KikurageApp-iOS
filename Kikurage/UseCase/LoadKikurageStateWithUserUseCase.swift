@@ -12,7 +12,7 @@ import KDRepository
 typealias KikurageStateUserTuple = (user: KikurageUser, state: KikurageState)
 
 protocol LoadKikurageStateWithUserUseCaseProtocol {
-    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, ClientError>) -> Void)
+    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, Error>) -> Void)
 }
 
 class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol {
@@ -24,7 +24,7 @@ class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
         self.kikurageUserRepository = kikurageUserRepository
     }
 
-    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, ClientError>) -> Void) {
+    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, Error>) -> Void) {
         let userRequest = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: userRequest) { [weak self] response in
             switch response {
