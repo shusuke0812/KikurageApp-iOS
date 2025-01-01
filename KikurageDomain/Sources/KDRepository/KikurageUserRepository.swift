@@ -8,7 +8,7 @@
 
 import KDFirebase
 
-protocol KikurageUserRepositoryProtocol {
+public protocol KikurageUserRepositoryProtocol {
     /// きくらげユーザーを読み込む
     func getKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<KikurageUser, FirebaseClientError>) -> Void)
     /// きくらげユーザーを登録する
@@ -26,7 +26,7 @@ public class KikurageUserRepository: KikurageUserRepositoryProtocol {
 // MARK: - Firebase Firestore
 
 extension KikurageUserRepository {
-    func getKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<KikurageUser, FirebaseClientError>) -> Void) {
+    public func getKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<KikurageUser, FirebaseClientError>) -> Void) {
         firestoreClient.getDocumentRequest(request) { result in
             switch result {
             case .success(let kikurageUser):
@@ -37,7 +37,7 @@ extension KikurageUserRepository {
         }
     }
 
-    func postKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func postKikurageUser(request: KikurageUserRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firestoreClient.postDocumentRequest(request) { result in
             switch result {
             case .success():
