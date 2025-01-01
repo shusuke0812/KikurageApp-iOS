@@ -7,12 +7,14 @@
 //
 
 import KDFirebase
+import RxSwift
 import Foundation
 
 protocol CultivationRepositoryProtocol {
-    /// 栽培記録を投稿する
-    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void)
-    func postCultivation(kikurageUserID: String, kikurageCultivation: KikurageCultivation) -> Single<DocumentReference>
+    /// - Parameters:
+    ///   - completion: [Success] Document  ID to save images in Firebase Storage
+    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<String, FirebaseClientError>) -> Void)
+    func postCultivation(request: KikurageCultivationRequest) -> Single<String>
     /// 栽培画像を保存する（直列処理）
     /// - Parameters:
     ///   - imageData: 保存する画像データ
@@ -22,7 +24,7 @@ protocol CultivationRepositoryProtocol {
     func postCultivationImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]>
     /// 栽培画像のStoragePathを更新する
     func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
-    func putCultivationImage(kikurageUserID: String, documentID: String, imageStorageFullPaths: [String]) -> Single<[String]>
+    func putCultivationImage(request: KikurageCultivationRequest) -> Single<Void>
     /// 栽培記録を取得する
     func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void)
     func getCultivations(request: KikurageCultivationRequest) -> Single<[KikurageCultivationTuple]>
@@ -30,59 +32,49 @@ protocol CultivationRepositoryProtocol {
 
 public class CultivationRepository: CultivationRepositoryProtocol {
     private let firestoreClient: FirestoreClientProtocol
+    private let firebaseStorageClient: FirebaseStorageClientProtocol
     private let rxFirestoreClient: RxFirestoreClientProtocol
-    /// Storageへ保存するデータのメタデータ
-    private let metaData: StorageMetadata
 
-    public init(firestoreClient: FirestoreClientProtocol = FirestoreClient(), rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient()) {
+    public init(
+        firestoreClient: FirestoreClientProtocol = FirestoreClient(),
+        rxFirestoreClient: RxFirestoreClientProtocol = RxFirestoreClient(),
+        firebaseStorageClient: FirebaseStorageClientProtocol = FirebaseStorageClient()
+    ) {
         self.firestoreClient = firestoreClient
         self.rxFirestoreClient = rxFirestoreClient
-
-        metaData = StorageMetadata()
-        metaData.contentType = "image/jpeg"
+        self.firebaseStorageClient = firebaseStorageClient
     }
 }
 
 // MARK: - Firebase Firestore
 
 extension CultivationRepository {
-    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<DocumentReference, ClientError>) -> Void) {
-        firestoreClient.postDocumentWithGetReferenceReques(request) { result in
+    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<String, FirebaseClientError>) -> Void) {
+        firestoreClient.postDocumentWithGetReferenceRequest(request) { result in
             switch result {
             case .success(let documentReference):
-                completion(.success(documentReference))
+                completion(.success(documentReference.documentID))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
-    func postCultivation(kikurageUserID: String, kikurageCultivation: KikurageCultivation) -> Single<DocumentReference> {
-        Single<DocumentReference>.create { single in
-            let db = Firestore.firestore()
-            var data: [String: Any]!
-            do {
-                data = try Firestore.Encoder().encode(kikurageCultivation)
-            } catch {
-                single(.failure(ClientError.parseError(error)))
-            }
-            let dispatchGroup = DispatchGroup()
-            dispatchGroup.enter()
-            let documentReference: DocumentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.cultivations).addDocument(data: data) { error in
-                if let error = error {
-                    dump(error)
-                    single(.failure(ClientError.apiError(.createError)))
+    func postCultivation(request: KikurageCultivationRequest) -> Single<String> {
+        Single<String>.create { [weak self] single in
+            self?.firestoreClient.postDocumentWithGetReferenceRequest(request) { result in
+                switch result {
+                case .success(let documentReference):
+                    single(.success(documentReference.documentID))
+                case .failure(let error):
+                    single(.failure(error))
                 }
-                dispatchGroup.leave()
-            }
-            dispatchGroup.notify(queue: .main) {
-                single(.success(documentReference))
             }
             return Disposables.create()
         }
     }
 
-    func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, ClientError>) -> Void) {
+    func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firestoreClient.putDocumentRequest(request) { result in
             switch result {
             case .success():
@@ -93,25 +85,21 @@ extension CultivationRepository {
         }
     }
 
-    func putCultivationImage(kikurageUserID: String, documentID: String, imageStorageFullPaths: [String]) -> Single<[String]> {
-        Single<[String]>.create { single in
-            let db = Firestore.firestore()
-            let documentReference = db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.cultivations).document(documentID)
-            documentReference.updateData([
-                "imageStoragePaths": imageStorageFullPaths
-            ]) { error in
-                if let error = error {
-                    dump(error)
-                    single(.failure(ClientError.apiError(.updateError)))
-                } else {
-                    single(.success(imageStorageFullPaths))
+    func putCultivationImage(request: KikurageCultivationRequest) -> Single<Void> {
+        Single<Void>.create { [weak self] single in
+            self?.firestoreClient.putDocumentRequest(request) { result in
+                switch result {
+                case .success:
+                    single(.success(()))
+                case .failure(let error):
+                    single(.failure(error))
                 }
             }
             return Disposables.create()
         }
     }
-
-    func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], ClientError>) -> Void) {
+    
+    func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
             case .success(let cultivations):
@@ -130,77 +118,18 @@ extension CultivationRepository {
 // MARK: - Firebase Storage
 
 extension CultivationRepository {
-    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], ClientError>) -> Void) {
-        // 画像保存後のフルパス格納用
-        var imageStorageFullPaths: [String] = []
-        // 直列処理（画像を１つずつ保存する）
-        let dispatchSemaphore = DispatchSemaphore(value: 0)
-        let dispatchQueue = DispatchQueue(label: "com.shusuke.KikurageApp.upload_cultivation_images_queue")
-        // エラー結果を保持する変数
-        var resultError: Error?
-        dispatchQueue.async {
-            for (i, imageData) in zip(imageData.indices, imageData) {
-                guard let imageData = imageData else {
-                    dispatchSemaphore.signal()
-                    return
-                }
-                let fileName: String = DateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
-                let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
-                _ = storageReference.putData(imageData, metadata: self.metaData) { _, error in
-                    if let error = error {
-                        resultError = error
-                        dispatchSemaphore.signal()
-                        return
-                    }
-                    imageStorageFullPaths.append(storageReference.fullPath)
-                    dispatchSemaphore.signal()
-                }
-                dispatchSemaphore.wait()
-            }
-            DispatchQueue.main.async {
-                if let resultError = resultError {
-                    dump(resultError)
-                    completion(.failure(ClientError.apiError(.createError)))
-                } else {
-                    completion(.success(imageStorageFullPaths))
-                }
+    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void) {
+        firebaseStorageClient.postImages(imageData: imageData, imageStoragePath: imageStoragePath) { result in
+            switch result {
+            case .success(let imageStoragePaths):
+                completion(.success(imageStoragePaths))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
 
     func postCultivationImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]> {
-        Single<[String]>.create { single in
-            var imageStorageFullPaths: [String] = []
-            let dispatchSemaphore = DispatchSemaphore(value: 0)
-            let dispathcQueue = DispatchQueue(label: "com.shusuke.KikurageApp.upload_cultivation_images_queue")
-            var resultError: Error?
-            dispathcQueue.async {
-                for (i, imageData) in zip(imageData.indices, imageData) {
-                    guard let imageData = imageData else {
-                        dispatchSemaphore.signal()
-                        return
-                    }
-                    let fileName: String = DateHelper.formatToStringForImageData(date: Date()) + "_\(i).jpeg"
-                    let storageReference = Storage.storage().reference().child(imageStoragePath + fileName)
-                    _ = storageReference.putData(imageData, metadata: self.metaData) { _, error in
-                        if let error = error {
-                            resultError = error
-                            dispatchSemaphore.signal()
-                            return
-                        }
-                        imageStorageFullPaths.append(storageReference.fullPath)
-                        dispatchSemaphore.signal()
-                    }
-                    dispatchSemaphore.wait()
-                }
-                if let resultError = resultError {
-                    dump(resultError)
-                    single(.failure(ClientError.apiError(.createError)))
-                } else {
-                    single(.success(imageStorageFullPaths))
-                }
-            }
-            return Disposables.create()
-        }
+        return firebaseStorageClient.postImages(imageData: imageData, imageStoragePath: imageStoragePath)
     }
 }

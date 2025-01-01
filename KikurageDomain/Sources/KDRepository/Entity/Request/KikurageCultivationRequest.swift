@@ -6,28 +6,29 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDFirebase
 import FirebaseFirestore
 import Foundation
 
-struct KikurageCultivationRequest: FirestoreRequestProtocol {
-    typealias Response = KikurageCultivation
+public struct KikurageCultivationRequest: FirestoreRequestProtocol {
+    public typealias Response = KikurageCultivation
 
-    var kikurageUserID: String = ""
-    var documentID: String = ""
-    var imageStorageFullPaths: [String] = []
+    public var kikurageUserID: String = ""
+    public var documentID: String = ""
+    public var imageStorageFullPaths: [String] = []
 
     /// For using PUT method
-    var documentReference: DocumentReference? {
+    public var documentReference: DocumentReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.cultivations).document(documentID)
+        return db.collection(FirestoreCollectionName.users).document(kikurageUserID).collection(FirestoreCollectionName.cultivations).document(documentID)
     }
 
     /// For using POST and GET method
-    var collectionReference: CollectionReference? {
+    public var collectionReference: CollectionReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.cultivations)
+        return db.collection(FirestoreCollectionName.users).document(kikurageUserID).collection(FirestoreCollectionName.cultivations)
     }
 
     /// Using `self.buildBody()` to set this parameter
-    var body: [String: Any]? = [:]
+    public var body: [String: Any]? = [:]
 }

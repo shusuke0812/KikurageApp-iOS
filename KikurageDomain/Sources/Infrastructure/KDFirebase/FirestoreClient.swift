@@ -13,7 +13,7 @@ public protocol FirestoreClientProtocol {
     func getDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, FirebaseClientError>) -> Void)
     func getDocumentsRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<[(data: T.Response, documentID: String)], FirebaseClientError>) -> Void)
     func postDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
-    func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void)
+    func postDocumentWithGetReferenceRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void)
     func putDocumentRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
 }
 
@@ -93,7 +93,7 @@ public struct FirestoreClient: FirestoreClientProtocol {
     }
 
     /// In case of saving data with using document ID into Firebase Storage
-    public func postDocumentWithGetReferenceReques<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void) {
+    public func postDocumentWithGetReferenceRequest<T: FirestoreRequestProtocol>(_ request: T, completion: @escaping (Result<DocumentReference, FirebaseClientError>) -> Void) {
         guard let body = request.body, let collectionReference = request.collectionReference else {
             completion(.failure(FirebaseClientError.unknown))
             return
