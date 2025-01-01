@@ -7,65 +7,46 @@
 //
 
 import KDFirebase
-import KDRestApi
+import RxSwift
 
 protocol KikurageStateListenerRepositoryProtocol {
     /// きくらげの状態を監視して更新を通知する
-    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void)
+    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void)
     func listenKikurageState(productKey: String) -> Observable<KikurageState>
 }
 
 public class KikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol {
-    private var kikurageStateListener: ListenerRegistration?
+    private var firestoreListenClient: FirestoreListenClientProtocol
 
-    deinit {
-        kikurageStateListener?.remove()
+    public init(firestoreListenClient: FirestoreListenClientProtocol = FirestoreListenClient()) {
+        self.firestoreListenClient = firestoreListenClient
     }
 }
 
 // MARK: - Firebase
 
 extension KikurageStateListenerRepository {
-    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
-        kikurageStateListener = Firestore.firestore().collection(Constants.FirestoreCollectionName.states).document(productKey).addSnapshotListener { snapshot, error in
-            if let error = error {
-                dump(error)
-                completion(.failure(ClientError.apiError(.readError)))
-                return
-            }
-            guard let snapshotData = snapshot?.data() else {
-                completion(.failure(ClientError.apiError(.readError)))
-                return
-            }
-            do {
-                let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
-                completion(.success(kikurageState))
-            } catch {
-                completion(.failure(ClientError.responseParseError(error)))
+    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void) {
+        let request = KikurageStateRequest(productID: productKey)
+        firestoreListenClient.listenDocumentRequest(request) { result in
+            switch result {
+            case .success(let state):
+                completion(.success(state))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
 
     func listenKikurageState(productKey: String) -> Observable<KikurageState> {
         Observable<KikurageState>.create { [weak self] observer in
-            let db = Firestore.firestore()
-            let docRef: DocumentReference = db.collection(Constants.FirestoreCollectionName.states).document(productKey)
-
-            self?.kikurageStateListener = docRef.addSnapshotListener { snapshot, error in
-                if let error = error {
-                    dump(error)
-                    observer.onError(ClientError.apiError(.readError))
-                    return
-                }
-                guard let snapshotData = snapshot?.data() else {
-                    observer.onError(ClientError.apiError(.readError))
-                    return
-                }
-                do {
-                    let kikurageState: KikurageState = try Firestore.Decoder().decode(KikurageState.self, from: snapshotData)
-                    observer.onNext(kikurageState)
-                } catch {
-                    observer.onError(ClientError.responseParseError(error))
+            let request = KikurageStateRequest(productID: productKey)
+            self?.firestoreListenClient.listenDocumentRequest(request) { result in
+                switch result {
+                case  .success(let state):
+                    observer.onNext(state)
+                case .failure(let error):
+                    observer.onError(error)
                 }
             }
             return Disposables.create()
