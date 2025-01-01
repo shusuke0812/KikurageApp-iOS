@@ -10,7 +10,7 @@ import KDFirebase
 import RxSwift
 import Foundation
 
-protocol CultivationRepositoryProtocol {
+public protocol CultivationRepositoryProtocol {
     /// - Parameters:
     ///   - completion: [Success] Document  ID to save images in Firebase Storage
     func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<String, FirebaseClientError>) -> Void)
@@ -49,7 +49,7 @@ public class CultivationRepository: CultivationRepositoryProtocol {
 // MARK: - Firebase Firestore
 
 extension CultivationRepository {
-    func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<String, FirebaseClientError>) -> Void) {
+    public func postCultivation(request: KikurageCultivationRequest, completion: @escaping (Result<String, FirebaseClientError>) -> Void) {
         firestoreClient.postDocumentWithGetReferenceRequest(request) { result in
             switch result {
             case .success(let documentReference):
@@ -60,7 +60,7 @@ extension CultivationRepository {
         }
     }
 
-    func postCultivation(request: KikurageCultivationRequest) -> Single<String> {
+    public func postCultivation(request: KikurageCultivationRequest) -> Single<String> {
         Single<String>.create { [weak self] single in
             self?.firestoreClient.postDocumentWithGetReferenceRequest(request) { result in
                 switch result {
@@ -74,7 +74,7 @@ extension CultivationRepository {
         }
     }
 
-    func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firestoreClient.putDocumentRequest(request) { result in
             switch result {
             case .success():
@@ -85,7 +85,7 @@ extension CultivationRepository {
         }
     }
 
-    func putCultivationImage(request: KikurageCultivationRequest) -> Single<Void> {
+    public func putCultivationImage(request: KikurageCultivationRequest) -> Single<Void> {
         Single<Void>.create { [weak self] single in
             self?.firestoreClient.putDocumentRequest(request) { result in
                 switch result {
@@ -99,7 +99,7 @@ extension CultivationRepository {
         }
     }
     
-    func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void) {
+    public func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {
             case .success(let cultivations):
@@ -110,7 +110,7 @@ extension CultivationRepository {
         }
     }
 
-    func getCultivations(request: KikurageCultivationRequest) -> Single<[KikurageCultivationTuple]> {
+    public func getCultivations(request: KikurageCultivationRequest) -> Single<[KikurageCultivationTuple]> {
         rxFirestoreClient.getDocumentsRequest(request)
     }
 }
@@ -118,7 +118,7 @@ extension CultivationRepository {
 // MARK: - Firebase Storage
 
 extension CultivationRepository {
-    func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void) {
+    public func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void) {
         firebaseStorageClient.postImages(imageData: imageData, imageStoragePath: imageStoragePath) { result in
             switch result {
             case .success(let imageStoragePaths):
@@ -129,7 +129,7 @@ extension CultivationRepository {
         }
     }
 
-    func postCultivationImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]> {
+    public func postCultivationImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]> {
         return firebaseStorageClient.postImages(imageData: imageData, imageStoragePath: imageStoragePath)
     }
 }
