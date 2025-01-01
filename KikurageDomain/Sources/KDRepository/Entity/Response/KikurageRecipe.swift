@@ -9,17 +9,17 @@
 import FirebaseFirestore
 import Foundation
 
-typealias KikurageRecipeTuple = (data: KikurageRecipe, documentID: String)
+public typealias KikurageRecipeTuple = (data: KikurageRecipe, documentID: String)
 
-struct KikurageRecipe: Codable {
-    var name: String = ""
-    var memo: String = ""
-    var imageStoragePaths: [String] = []
-    var cookDate: String = ""
-    var createdAt: Timestamp?
-    var updatedAt: Timestamp?
+public struct KikurageRecipe: Codable {
+    public var name: String = ""
+    public var memo: String = ""
+    public var imageStoragePaths: [String] = []
+    public var cookDate: String = ""
+    public var createdAt: Timestamp?
+    public var updatedAt: Timestamp?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case name
         case memo
         case imageStoragePaths
@@ -28,7 +28,7 @@ struct KikurageRecipe: Codable {
         case updatedAt
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(memo, forKey: .memo)

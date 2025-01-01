@@ -6,28 +6,40 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDFirebase
 import FirebaseFirestore
 import Foundation
 
-struct KikurageRecipeRequest: FirestoreRequestProtocol {
-    typealias Response = KikurageRecipe
+public struct KikurageRecipeRequest: FirestoreRequestProtocol {
+    public init(
+        kikurageUserID: String,
+        documentID: String,
+        imageStorageFullPaths: [String],
+        body: [String : Any]? = nil
+    ) {
+        self.kikurageUserID = kikurageUserID
+        self.documentID = documentID
+        self.imageStorageFullPaths = imageStorageFullPaths
+        self.body = body
+    }
+    public typealias Response = KikurageRecipe
 
-    var kikurageUserID: String = ""
-    var documentID: String = ""
-    var imageStorageFullPaths: [String] = []
+    public let kikurageUserID: String
+    public let documentID: String
+    public let imageStorageFullPaths: [String]
 
     /// For using PUT method
-    var documentReference: DocumentReference? {
+    public var documentReference: DocumentReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.recipes).document(documentID)
+        return db.collection(FirestoreCollectionName.users).document(kikurageUserID).collection(FirestoreCollectionName.recipes).document(documentID)
     }
 
     /// For using POST and GET method
-    var collectionReference: CollectionReference? {
+    public var collectionReference: CollectionReference? {
         let db = Firestore.firestore()
-        return db.collection(Constants.FirestoreCollectionName.users).document(kikurageUserID).collection(Constants.FirestoreCollectionName.recipes)
+        return db.collection(FirestoreCollectionName.users).document(kikurageUserID).collection(FirestoreCollectionName.recipes)
     }
 
     /// Using `self.buildBody()` to set this parameter
-    var body: [String: Any]? = [:]
+    public var body: [String: Any]? = [:]
 }
