@@ -10,9 +10,19 @@ import KDFirebase
 import FirebaseFirestore
 
 public struct KikurageStateRequest: FirestoreRequestProtocol {
+    public init(
+        productID: String,
+        collectionReference: CollectionReference? = nil,
+        body: [String : Any]? = nil
+    ) {
+        self.productID = productID
+        self.collectionReference = collectionReference
+        self.body = body
+    }
+
     public typealias Response = KikurageState
 
-    public var productID: String = ""
+    public let productID: String
 
     // TODO: documentReferenceはInfrastructure.Interceptorに定義する
     public var documentReference: DocumentReference? {
