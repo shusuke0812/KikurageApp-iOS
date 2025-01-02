@@ -9,6 +9,6 @@ import Foundation
 
 public enum LocalStoreError: Error {
     case notFound
-    case failedToDecode
-    case failedToEncode
+    case failedToDecode(Error?)
+    case failedToEncode(Error?)
 }

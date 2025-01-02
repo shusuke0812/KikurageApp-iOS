@@ -8,15 +8,15 @@
 import Foundation
 
 public protocol UserDefaultClientProtocol {
-    func read<T>(with key: String, completion: @escaping (Result<T, Error?>) -> Void)
-    func update<T>(with key: String, onError: ((Error) -> Void)?)
+    func read<T>(with key: String, completion: @escaping (Result<T, LocalStoreError>) -> Void)
+    func update<T>(with key: String, onError: ((LocalStoreError) -> Void)?)
     func remove(with key: String)
 }
 
 public class UserDefaultClient: UserDefaultClientProtocol {
     public init() {}
     
-    func read<T>(with key: String, completion: @escaping (Result<T, Error?>) -> Void) {
+    func read<T>(with key: String, completion: @escaping (Result<T, LocalStoreError>) -> Void) {
         if let data = UserDefaults.standard.object(forKey: key) as? Data {
             do {
                 if let response = try NSKeyedUnarchiver.unarchivedObject(ofClass: T.self, from: data) {
@@ -24,19 +24,19 @@ public class UserDefaultClient: UserDefaultClientProtocol {
                     return
                 }
             } catch {
-                completion(.failure(error))
+                completion(.failure(.failedToDecode(error)))
                 return
             }
         }
-        completion(.failure(nil))
+        completion(.failure(.notFound))
     }
     
-    func update<T>(with key: String, onError: ((Error) -> Void)?) {
+    func update<T>(with key: String, onError: ((LocalStoreError) -> Void)?) {
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: T, requiringSecureCoding: true)
             UserDefaults.standard.set(data, forKey: key)
         } catch {
-            onError?(error)
+            onError?(.failedToEncode(error))
         }
     }
     
