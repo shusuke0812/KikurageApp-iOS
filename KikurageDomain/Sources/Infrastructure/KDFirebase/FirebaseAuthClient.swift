@@ -13,8 +13,14 @@ public protocol FirebaseAuthClientProtocol {
     func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<AuthDataResult?, FirebaseClientError>) -> Void)
 }
 
-public struct FirebaseAuthClient: FirebaseAuthClientProtocol {
+public class FirebaseAuthClient: FirebaseAuthClientProtocol {
+    private var userListenerHandler: AuthStateDidChangeListenerHandle?
+
     public init() {}
+    
+    deinit {
+        listenUserDetach()
+    }
 
     public func login(loginInfo: (email: String, password: String), completion: @escaping (Result<AuthDataResult?, FirebaseClientError>) -> Void) {
         Auth.auth().signIn(withEmail: loginInfo.email, password: loginInfo.password) { authDataResult, error in
@@ -43,5 +49,24 @@ public struct FirebaseAuthClient: FirebaseAuthClientProtocol {
         } catch {
             completion(.failure(.apiError(.updateError)))
         }
+    }
+    
+    public func listenUserAttach(onUpdate: @escaping (User) -> Void) {
+        if userListenerHandler != nil {
+            return
+        }
+        userListenerHandler = Auth.auth().addStateDidChangeListener { _, user in
+            guard let user = user else {
+                return
+            }
+            onUpdate(user)
+        }
+    }
+    
+    private func listenUserDetach() {
+        guard let userListenerHandler = userListenerHandler else {
+            return
+        }
+        Auth.auth().removeStateDidChangeListener(userListenerHandler)
     }
 }
