@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FirebaseClientError.swift
 //  KikurageDomain
 //
 //  Created by Shusuke Ota on 2024/12/31.

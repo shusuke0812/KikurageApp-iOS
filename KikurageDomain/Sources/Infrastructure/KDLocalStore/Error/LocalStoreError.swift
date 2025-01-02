@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  LocalStoreError.swift
 //  KikurageDomain
 //
 //  Created by Shusuke Ota on 2025/1/2.

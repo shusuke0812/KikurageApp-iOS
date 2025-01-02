@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FirestoreClient.swift
 //  KikurageDomain
 //
 //  Created by Shusuke Ota on 2024/12/31.
