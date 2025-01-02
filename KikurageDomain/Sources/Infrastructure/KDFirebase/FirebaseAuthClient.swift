@@ -35,4 +35,13 @@ public struct FirebaseAuthClient: FirebaseAuthClientProtocol {
             completion(.success(authDataResult))
         }
     }
+    
+    public func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(()))
+        } catch {
+            completion(.failure(.apiError(.updateError)))
+        }
+    }
 }
