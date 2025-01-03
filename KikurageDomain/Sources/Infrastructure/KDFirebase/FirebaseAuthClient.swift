@@ -11,6 +11,8 @@ import Foundation
 public protocol FirebaseAuthClientProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<AuthDataResult?, FirebaseClientError>) -> Void)
     func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<AuthDataResult?, FirebaseClientError>) -> Void)
+    func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
+    func listenUserAttach(onUpdate: @escaping (User) -> Void)
 }
 
 public class FirebaseAuthClient: FirebaseAuthClientProtocol {
