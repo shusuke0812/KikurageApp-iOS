@@ -43,7 +43,8 @@ let package = Package(
             name: "KDLoginManager",
             dependencies: [
                 .target(name: "KDFirebase"),
-                .target(name: "KDLocalStore")
+                .target(name: "KDLocalStore"),
+                .target(name: "KDEntity")
             ],
             path: "Sources/KDLoginManager"
         ),
@@ -52,6 +53,7 @@ let package = Package(
             dependencies: [
                 .target(name: "KDFirebase"),
                 .target(name: "KDRestApi"),
+                .target(name: "KDLocalStore"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
             ],
             path: "Sources/KDEntity"
