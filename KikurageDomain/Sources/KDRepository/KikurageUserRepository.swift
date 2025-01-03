@@ -7,6 +7,7 @@
 //
 
 import KDFirebase
+import KDEntity
 
 public protocol KikurageUserRepositoryProtocol {
     /// きくらげユーザーを読み込む

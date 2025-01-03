@@ -7,6 +7,7 @@
 //
 
 import KDFirebase
+import KDEntity
 
 protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)

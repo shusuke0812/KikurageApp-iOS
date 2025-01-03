@@ -7,6 +7,7 @@
 //
 
 import KDFirebase
+import KDEntity
 import Foundation
 import RxSwift
 

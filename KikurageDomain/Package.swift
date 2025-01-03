@@ -12,10 +12,15 @@ let package = Package(
     products: [
         .library(
             name: "KDRepository",
-            targets: ["KDRepository"]),
+            targets: ["KDRepository"]
+        ),
         .library(
             name: "KDLoginManager",
             targets: ["KDLoginManager"]
+        ),
+        .library(
+            name: "KDEntity",
+            targets: ["KDEntity"]
         )
     ],
     dependencies: [
@@ -28,6 +33,7 @@ let package = Package(
             dependencies: [
                 .target(name: "KDFirebase"),
                 .target(name: "KDRestApi"),
+                .target(name: "KDEntity"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
             ],
@@ -40,6 +46,15 @@ let package = Package(
                 .target(name: "KDLocalStore")
             ],
             path: "Sources/KDLoginManager"
+        ),
+        .target(
+            name: "KDEntity",
+            dependencies: [
+                .target(name: "KDFirebase"),
+                .target(name: "KDRestApi"),
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
+            ],
+            path: "Sources/KDEntity"
         ),
         // MARK: - Infrastructure
         .target(

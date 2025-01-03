@@ -7,6 +7,7 @@
 //
 
 import KDRestApi
+import KDEntity
 
 public protocol TwitterSearchRepositoryProtocol {
     func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, RestApiClientError>) -> Void)
