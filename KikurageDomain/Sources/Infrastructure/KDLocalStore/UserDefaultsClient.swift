@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol UserDefaultClientProtocol {
-    func read<T: UserDefaultsRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, LocalStoreError>) -> Void)
+    func read<T: UserDefaultsRequestProtocol>(_ request: T) -> Result<T.Response, LocalStoreError>
     func update<T: UserDefaultsRequestProtocol>(_ request: T, onError: ((LocalStoreError) -> Void)?)
     func remove<T: UserDefaultsRequestProtocol>(_ request: T)
 }
@@ -16,20 +16,18 @@ public protocol UserDefaultClientProtocol {
 public class UserDefaultClient: UserDefaultClientProtocol {
     public init() {}
     
-    public func read<T: UserDefaultsRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, LocalStoreError>) -> Void) {
+    public func read<T: UserDefaultsRequestProtocol>(_ request: T) -> Result<T.Response, LocalStoreError> {
         if let data = UserDefaults.standard.object(forKey: request.key) as? Data {
             do {
                 // TODO: Replace to JSONEncoder and JSONDecoder
                 if let response = try NSKeyedUnarchiver.unarchivedObject(ofClass: T.Response.self, from: data) {
-                    completion(.success(response))
-                    return
+                    return .success(response)
                 }
             } catch {
-                completion(.failure(.failedToDecode(error)))
-                return
+                return .failure(.failedToDecode(error))
             }
         }
-        completion(.failure(.notFound))
+        return .failure(.notFound)
     }
     
     public func update<T: UserDefaultsRequestProtocol>(_ request: T, onError: ((LocalStoreError) -> Void)?) {
