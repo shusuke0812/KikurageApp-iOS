@@ -13,6 +13,7 @@ public protocol FirebaseAuthClientProtocol {
     func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<AuthDataResult?, FirebaseClientError>) -> Void)
     func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
     func listenUserAttach(onUpdate: @escaping (User) -> Void)
+    func reloadUser(onError: ((Error?) -> Void)?)
 }
 
 public class FirebaseAuthClient: FirebaseAuthClientProtocol {
@@ -62,6 +63,12 @@ public class FirebaseAuthClient: FirebaseAuthClientProtocol {
                 return
             }
             onUpdate(user)
+        }
+    }
+    
+    public func reloadUser(onError: ((Error?) -> Void)?) {
+        Auth.auth().currentUser?.reload { error in
+            onError?(error)
         }
     }
     
