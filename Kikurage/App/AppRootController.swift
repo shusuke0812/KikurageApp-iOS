@@ -7,6 +7,7 @@
 //
 
 import KikurageUI
+import KSAppService
 import UIKit
 
 class AppRootController: UIViewController {

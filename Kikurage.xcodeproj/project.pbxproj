@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
+		9C06D2F12D28124700B52292 /* KSAppService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F02D28124700B52292 /* KSAppService */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
 		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
@@ -320,6 +321,7 @@
 				9CCA43B72D22C535005A78ED /* FirebaseAnalytics in Frameworks */,
 				9CCA43C42D22C5A9005A78ED /* DGCharts in Frameworks */,
 				9CCA43CC2D22C67A005A78ED /* PKHUD in Frameworks */,
+				9C06D2F12D28124700B52292 /* KSAppService in Frameworks */,
 				9CCA43D82D22C755005A78ED /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2532,6 +2534,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9C06D2F02D28124700B52292 /* KSAppService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSAppService;
+		};
 		9C697E1A2D23C2F1005BC4DA /* KDRepository */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KDRepository;
