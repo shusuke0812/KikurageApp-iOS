@@ -14,10 +14,6 @@ enum Constants {
         static let maxNumber = 8
     }
 
-    enum UserDefaultsKey {
-        static let firebaseUser = "firebase_user"
-    }
-
     enum Week: String, CaseIterable {
         case monday
         case tuesday
