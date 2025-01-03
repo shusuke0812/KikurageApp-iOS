@@ -13,23 +13,23 @@ import Foundation
  * When custon login user in UserDefaults,
  * archive and unarchive processing of these data must conform to NSObject and NSSecureCoding protocols
  */
-class LoginUser: NSObject, NSSecureCoding {
-    static var supportsSecureCoding = true
+public class LoginUser: NSObject, NSSecureCoding {
+    public static var supportsSecureCoding = true
 
-    let uid: String
-    let isEmailVerified: Bool
+    public let uid: String
+    public let isEmailVerified: Bool
 
-    init(uid: String, isEmailVerified: Bool) {
+    public init(uid: String, isEmailVerified: Bool) {
         self.uid = uid
         self.isEmailVerified = isEmailVerified
     }
 
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         uid = coder.decodeObject(forKey: "uidKey") as! String // swiftlint:disable:this force_cast
         isEmailVerified = coder.decodeBool(forKey: "isEmailVerifiedKey")
     }
 
-    func encode(with coder: NSCoder) {
+    public func encode(with coder: NSCoder) {
         coder.encode(uid, forKey: "uidKey")
         coder.encode(isEmailVerified, forKey: "isEmailVerifiedKey")
     }

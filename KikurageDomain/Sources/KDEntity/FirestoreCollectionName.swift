@@ -9,13 +9,13 @@ import Foundation
 
 public enum FirestoreCollectionName {
     /// 栽培ステートコレクション
-    static let states = "kikurageStates"
+    public static let states = "kikurageStates"
     /// 栽培ステート配下のグラフサブコレクション名
-    static let graph = "graph"
+    public static let graph = "graph"
     /// ユーザーコレクション名
-    static let users = "kikurageUsers"
+    public static let users = "kikurageUsers"
     /// ユーザー配下の栽培サブコレクション名
-    static let cultivations = "cultivations"
+    public static let cultivations = "cultivations"
     /// ユーザー配下の料理サブコレクション名
-    static let recipes = "recipes"
+    public static let recipes = "recipes"
 }
