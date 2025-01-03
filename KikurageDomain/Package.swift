@@ -12,7 +12,11 @@ let package = Package(
     products: [
         .library(
             name: "KDRepository",
-            targets: ["KDRepository"])
+            targets: ["KDRepository"]),
+        .library(
+            name: "KDLoginManager",
+            targets: ["KDLoginManager"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
@@ -28,6 +32,14 @@ let package = Package(
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
             ],
             path: "Sources/KDRepository"
+        ),
+        .target(
+            name: "KDLoginManager",
+            dependencies: [
+                .target(name: "KDFirebase"),
+                .target(name: "KDLocalStore")
+            ],
+            path: "Sources/KDLoginManager"
         ),
         // MARK: - Infrastructure
         .target(
@@ -57,6 +69,10 @@ let package = Package(
         .target(
             name: "KDBluetooth",
             path: "Sources/Infrastructure/KDBluetooth"
+        ),
+        .target(
+            name: "KDLocalStore",
+            path: "Sources/Infrastructure/KDLocalStore"
         )
     ]
 )
