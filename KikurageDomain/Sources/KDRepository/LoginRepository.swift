@@ -12,6 +12,7 @@ import KDEntity
 protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
     func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
+    func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
 }
 
 public class LoginRepository: LoginRepositoryProtocol {
@@ -64,5 +65,9 @@ extension LoginRepository {
                 completion(.failure(.apiError(.createError)))
             }
         }
+    }
+    
+    func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+        firebaseAuthClient.logout(completion: completion)
     }
 }
