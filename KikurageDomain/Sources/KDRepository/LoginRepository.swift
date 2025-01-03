@@ -9,7 +9,7 @@
 import KDFirebase
 import KDEntity
 
-protocol LoginRepositoryProtocol {
+public protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
     func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
     func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
@@ -26,7 +26,7 @@ public class LoginRepository: LoginRepositoryProtocol {
 // MARK: - Firebase Authentication
 
 extension LoginRepository {
-    func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void) {
+    public func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void) {
         firebaseAuthClient.login(loginInfo: loginInfo) { result in
             switch result {
             case .success(let authDataResult):
@@ -43,7 +43,7 @@ extension LoginRepository {
         }
     }
     
-    func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void) {
+    public func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void) {
         firebaseAuthClient.signUp(registerInfo: registerInfo) { result in
             switch result {
             case .success(let authDataResult):
@@ -67,7 +67,7 @@ extension LoginRepository {
         }
     }
     
-    func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firebaseAuthClient.logout(completion: completion)
     }
 }
