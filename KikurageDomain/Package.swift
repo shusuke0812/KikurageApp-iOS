@@ -68,7 +68,7 @@ let package = Package(
             ],
             path: "Sources/Infrastructure/KDFirebase",
             resources: [
-                .process("Sources/Resources")
+                .process("../../Resources")
             ]
         ),
         .target(
@@ -78,7 +78,7 @@ let package = Package(
             ],
             path: "Sources/Infrastructure/KDRestApi",
             resources: [
-                .process("Sources/Resources")
+                .process("../../Resources")
             ]
         ),
         .target(
