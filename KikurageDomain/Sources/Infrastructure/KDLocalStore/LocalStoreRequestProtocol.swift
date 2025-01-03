@@ -16,4 +16,5 @@ public protocol UserDefaultsRequestProtocol {
     associatedtype Response: NSObject, NSSecureCoding
     
     var key: String { get }
+    var saveData: Response { get }
 }
