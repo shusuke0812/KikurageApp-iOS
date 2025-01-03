@@ -14,9 +14,9 @@ public struct LoginUserRequest: UserDefaultsRequestProtocol {
     public var key: String {
         "firebase_user"
     }
-    public var saveData: LoginUser
+    public var saveData: LoginUser?
     
-    public init(loginUser: LoginUser) {
+    public init(loginUser: LoginUser? = nil) {
         self.saveData = loginUser
     }
 }
