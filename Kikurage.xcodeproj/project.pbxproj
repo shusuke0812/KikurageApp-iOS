@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C06D2F12D28124700B52292 /* KSAppService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F02D28124700B52292 /* KSAppService */; };
+		9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F22D281B1A00B52292 /* KUIKit */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
 		9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07E7E12530194900720768 /* UIViewController+Extension.swift */; };
 		9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C09280E2CCFEA88006DBD0C /* NavigationProtocol+Home.swift */; };
@@ -100,7 +101,6 @@
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
 		9CC7F4D729CEDC460045C866 /* WiFiSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */; };
-		9CCA43B02D22B753005A78ED /* KikurageUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43AF2D22B753005A78ED /* KikurageUI */; };
 		9CCA43B72D22C535005A78ED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43B62D22C535005A78ED /* FirebaseAnalytics */; };
 		9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43B82D22C535005A78ED /* FirebaseAuth */; };
 		9CCA43BB2D22C535005A78ED /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43BA2D22C535005A78ED /* FirebaseCrashlytics */; };
@@ -308,12 +308,12 @@
 			files = (
 				9CCA43BF2D22C535005A78ED /* FirebaseRemoteConfig in Frameworks */,
 				9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */,
-				9CCA43B02D22B753005A78ED /* KikurageUI in Frameworks */,
 				9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */,
 				9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
 				9CCA43BB2D22C535005A78ED /* FirebaseCrashlytics in Frameworks */,
+				9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */,
 				9CCA43CF2D22C6A5005A78ED /* HorizonCalendar in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
 				9CCA43BD2D22C535005A78ED /* FirebaseFirestore in Frameworks */,
@@ -2538,13 +2538,13 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KSAppService;
 		};
+		9C06D2F22D281B1A00B52292 /* KUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KUIKit;
+		};
 		9C697E1A2D23C2F1005BC4DA /* KDRepository */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KDRepository;
-		};
-		9CCA43AF2D22B753005A78ED /* KikurageUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KikurageUI;
 		};
 		9CCA43B62D22C535005A78ED /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
