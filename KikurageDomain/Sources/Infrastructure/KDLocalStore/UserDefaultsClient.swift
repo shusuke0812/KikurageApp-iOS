@@ -8,18 +8,19 @@
 import Foundation
 
 public protocol UserDefaultClientProtocol {
-    func read<T>(with key: String, completion: @escaping (Result<T, LocalStoreError>) -> Void)
-    func update<T>(with key: String, onError: ((LocalStoreError) -> Void)?)
-    func remove(with key: String)
+    func read<T: UserDefaultsRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, LocalStoreError>) -> Void)
+    func update<T: UserDefaultsRequestProtocol>(_ request: T, onError: ((LocalStoreError) -> Void)?)
+    func remove<T: UserDefaultsRequestProtocol>(_ request: T)
 }
 
 public class UserDefaultClient: UserDefaultClientProtocol {
     public init() {}
     
-    func read<T>(with key: String, completion: @escaping (Result<T, LocalStoreError>) -> Void) {
-        if let data = UserDefaults.standard.object(forKey: key) as? Data {
+    public func read<T: UserDefaultsRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, LocalStoreError>) -> Void) {
+        if let data = UserDefaults.standard.object(forKey: request.key) as? Data {
             do {
-                if let response = try NSKeyedUnarchiver.unarchivedObject(ofClass: T.self, from: data) {
+                // TODO: Replace to JSONEncoder and JSONDecoder
+                if let response = try NSKeyedUnarchiver.unarchivedObject(ofClass: T.Response.self, from: data) {
                     completion(.success(response))
                     return
                 }
@@ -31,16 +32,16 @@ public class UserDefaultClient: UserDefaultClientProtocol {
         completion(.failure(.notFound))
     }
     
-    func update<T>(with key: String, onError: ((LocalStoreError) -> Void)?) {
+    public func update<T: UserDefaultsRequestProtocol>(_ request: T, onError: ((LocalStoreError) -> Void)?) {
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: T, requiringSecureCoding: true)
-            UserDefaults.standard.set(data, forKey: key)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: T.Response.self, requiringSecureCoding: true)
+            UserDefaults.standard.set(data, forKey: request.key)
         } catch {
             onError?(.failedToEncode(error))
         }
     }
     
-    func remove(with key: String) {
-        UserDefaults.standard.removeObject(forKey: key)
+    public func remove<T: UserDefaultsRequestProtocol>(_ request: T) {
+        UserDefaults.standard.removeObject(forKey: request.key)
     }
 }
