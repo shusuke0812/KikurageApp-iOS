@@ -31,8 +31,7 @@ let package = Package(
         // MARK: - Features
         .target(
             name: "KSFeatures",
-            dependencies: [],
-            resources: [.process("Resources")]
+            dependencies: []
         ),
     ]
 )
