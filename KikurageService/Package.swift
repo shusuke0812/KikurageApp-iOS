@@ -22,7 +22,9 @@ let package = Package(
         .target(
             name: "AppService",
             dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain")
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain"),
+                .target(name: "KSFeatures")
             ],
             path: "Sources/AppService"
         ),

@@ -6,6 +6,9 @@
 //
 
 import KDRepository
+import KDEntity
+import KDLoginManager
+import KSFeatures
 import Foundation
 
 public protocol AppPresenterDelete: AnyObject {
@@ -15,19 +18,21 @@ public protocol AppPresenterDelete: AnyObject {
 
 public class AppPresenter {
     private let appConfigRepository: AppConfigRepositoryProtocol
-    private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol // TODO: KSFeaturesに移動する
+    private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
+    private let loginManager: LoginManager
     
     public  init(
         appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository()
     ) {
         self.appConfigRepository = appConfigRepository
+        self.loginManager = LoginManager()
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
     
     public func login() {
-        let userID = LoginHelper.shared.kikurageUserID ?? "" // TODO: KikurageDomain/InfrastructureにLocalStoreClientを定義する、KDLoginManagerに移動する
-        loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] responses in
-            switch responses {
+        let userId  = loginManager.userId ?? ""
+        loadKikurageStateWithUserUseCase.invoke(uid: userId) { [weak self] (result: KikurageStateUserTuple) in
+            switch result {
             case .success(let res):
                 self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
             case .failure(let error):
@@ -40,9 +45,9 @@ public class AppPresenter {
         appConfigRepository.getFacebookGroupUrl { response in
             switch response {
             case .success(let urlString):
-                AppConfig.shared.facebookGroupURL = urlString
+                AppConfig.shared.facebookGroupUrlString = urlString
             case .failure(let error):
-                //KLogManager.debug("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription)
+                //KLogManager.debug("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
@@ -51,9 +56,9 @@ public class AppPresenter {
         appConfigRepository.getTermsUrl { response in
             switch response {
             case .success(let urlString):
-                AppConfig.shared.termsURL = urlString
+                AppConfig.shared.termsUrlString = urlString
             case .failure(let error):
-                //KLogManager.debug("Failed to get Terms Url from Remote Config : " + error.localizedDescription)
+                //KLogManager.debug("Failed to get Terms Url from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
@@ -62,9 +67,9 @@ public class AppPresenter {
         appConfigRepository.getPrivacyPolicyUrl { response in
             switch response {
             case .success(let urlString):
-                AppConfig.shared.privacyPolicyURL = urlString
+                AppConfig.shared.privacyPolicyUrlString = urlString
             case .failure(let error):
-                //KLogManager.debug("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription)
+                //KLogManager.debug("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
@@ -76,7 +81,7 @@ public class AppPresenter {
                 let appVersion = AppVersion(versionString: appVersionString)
                 AppConfig.shared.latestAppVersion = appVersion
             case .failure(let error):
-                KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
+                //KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
