@@ -8,6 +8,7 @@
 
 import PKHUD
 import UIKit
+import KSLoginService
 
 class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginAccessable {
     private let baseView = LoginBaseView()

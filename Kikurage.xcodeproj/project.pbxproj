@@ -30,7 +30,6 @@
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
 		9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */; };
 		9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */; };
-		9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
 		9C7E58832776109B00A151C0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */; };
 		9C81EA6F27B7E9D10028D027 /* PageObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */; };
@@ -135,6 +134,7 @@
 		9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */; };
 		9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -193,7 +193,6 @@
 		9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewController.swift; sourceTree = "<group>"; };
 		9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
-		9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationBaseView.swift; sourceTree = "<group>"; };
 		9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageObjectable.swift; sourceTree = "<group>"; };
@@ -308,6 +307,7 @@
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
 				9CCA43BB2D22C535005A78ED /* FirebaseCrashlytics in Frameworks */,
 				9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */,
+				9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */,
 				9CCA43CF2D22C6A5005A78ED /* HorizonCalendar in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
 				9CCA43BD2D22C535005A78ED /* FirebaseFirestore in Frameworks */,
@@ -590,7 +590,6 @@
 			children = (
 				9CA20443271C772C00D65DD7 /* BaseView */,
 				9CA2045C271C7A2100D65DD7 /* ViewController */,
-				9CA20466271C7B7E00D65DD7 /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -884,14 +883,6 @@
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CA20466271C7B7E00D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA20467271C7B9E00D65DD7 /* ViewModel */ = {
@@ -1706,7 +1697,6 @@
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9CE0184B29B46CF300365E95 /* WiFiListViewController.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
-				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
 				9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */,
 				9C8B0BD2259868FF0036CD0F /* RecipeViewModel.swift in Sources */,
 				9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */,
@@ -2603,6 +2593,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSLoginService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

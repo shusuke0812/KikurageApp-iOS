@@ -1,31 +1,31 @@
 //
 //  LoginViewModel.swift
-//  Kikurage
+//  KikurageService
 //
-//  Created by Shusuke Ota on 2021/9/12.
-//  Copyright © 2021 shusuke. All rights reserved.
+//  Created by Shusuke Ota on 2025/1/4.
 //
 
 import Foundation
+import KDRepository
+import KDEntity
+import KSFeatures
 
-protocol LoginViewModelDelegate: AnyObject {
+public protocol LoginViewModelDelegate: AnyObject {
     func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState)
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String)
 }
 
-class LoginViewModel {
-    private var signUpRepository: SignUpRepositoryProtocol
+public class LoginViewModel {
     private var loginRepository: LoginRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
 
-    weak var delegate: LoginViewModelDelegate?
+    public weak var delegate: LoginViewModelDelegate?
 
     private var loginUser: LoginUser?
     private var email: String = ""
     private var password: String = ""
 
-    init(signUpRepository: SignUpRepositoryProtocol, loginRepository: LoginRepositoryProtocol) {
-        self.signUpRepository = signUpRepository
+    public init(loginRepository: LoginRepositoryProtocol) {
         self.loginRepository = loginRepository
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
@@ -38,16 +38,16 @@ extension LoginViewModel {
         (email, password)
     }
 
-    func resetLoginInputs() {
+    public func resetLoginInputs() {
         email = ""
         password = ""
     }
 
-    func setEmail(_ value: String) {
+    public func setEmail(_ value: String) {
         email = value
     }
 
-    func setPassword(_ value: String) {
+    public func setPassword(_ value: String) {
         password = value
     }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
@@ -56,7 +56,7 @@ extension LoginViewModel {
 // MARK: - Firebase Authentication
 
 extension LoginViewModel {
-    func login() {
+    public func login() {
         let loginInfo = setLoginInfo()
         loginRepository.login(loginInfo: loginInfo) { [weak self] response in
             switch response {
@@ -67,7 +67,7 @@ extension LoginViewModel {
                     case .success(let res):
                         self?.delegate?.loginViewModelDidSuccessLogin(self, user: res.user, state: res.state)
                     case .failure(let error):
-                        self?.delegate?.loginViewModelDidFailedLogin(self, with: error.description())
+                        self?.delegate?.loginViewModelDidFailedLogin(self, with: "") // TODO: Error descriptionを渡す. InfrastructureにError型を定義しているので、それらをMapするError型をKDRepositoryに定義してService層へ通知する
                     }
                 }
             case .failure(let error):
