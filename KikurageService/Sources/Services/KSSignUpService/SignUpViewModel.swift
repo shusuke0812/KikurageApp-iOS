@@ -7,23 +7,25 @@
 //
 
 import Foundation
+import KDRepository
+import KDEntity
 
-protocol SignUpViewModelDelegate: AnyObject {
+public protocol SignUpViewModelDelegate: AnyObject {
     func signUpViewModelDidSuccessRegisterUser(_ signUpViewModel: SignUpViewModel)
     func signUpViewModelDidFailedRegisterUser(_ signUpViewModel: SignUpViewModel, with errorMessage: String)
 }
 
-class SignUpViewModel {
-    private var signUpRepository: SignUpRepositoryProtocol
-
-    weak var delegate: SignUpViewModelDelegate?
-
+public class SignUpViewModel {
+    private var loginRepository: LoginRepositoryProtocol
     private var loginUser: LoginUser?
-    var email: String = ""
-    var password: String = ""
 
-    init(signUpRepository: SignUpRepositoryProtocol) {
-        self.signUpRepository = signUpRepository
+    public weak var delegate: SignUpViewModelDelegate?
+
+    public var email: String = ""
+    public var password: String = ""
+
+    public init(loginRepository: LoginRepositoryProtocol) {
+        self.loginRepository = loginRepository
     }
 }
 
@@ -34,7 +36,7 @@ extension SignUpViewModel {
         (email, password)
     }
 
-    func initUserInfo() {
+    public func initUserInfo() {
         email = ""
         password = ""
     }
@@ -45,9 +47,9 @@ extension SignUpViewModel {
 
 extension SignUpViewModel {
     /// ユーザー登録する
-    func registerUser() {
+    public func registerUser() {
         let registerInfo = setRegisterInfo()
-        signUpRepository.registerUser(registerInfo: registerInfo) { [weak self] response in
+        loginRepository.signUp(registerInfo: registerInfo) { [weak self] response in
             switch response {
             case .success(let loginUser):
                 self?.loginUser = loginUser

@@ -9,6 +9,7 @@
 import PKHUD
 import RxCocoa
 import UIKit
+import KSSignUpService
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignUpAccessable {
     private let baseView = SignUpBaseView()

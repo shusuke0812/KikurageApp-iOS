@@ -74,7 +74,6 @@
 		9CA95655284E4CED005B7867 /* DebugBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA95654284E4CED005B7867 /* DebugBaseView.swift */; };
 		9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA95656284E4D03005B7867 /* DebugViewController.swift */; };
 		9CA9565B284E4D2A005B7867 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */; };
-		9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */; };
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
 		9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */; };
 		9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */; };
@@ -135,6 +134,7 @@
 		9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
+		9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -239,7 +239,6 @@
 		9CA95654284E4CED005B7867 /* DebugBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugBaseView.swift; sourceTree = "<group>"; };
 		9CA95656284E4D03005B7867 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		9CA9565A284E4D2A005B7867 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
-		9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
 		9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
 		9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingBaseView.swift; sourceTree = "<group>"; };
@@ -309,6 +308,7 @@
 				9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */,
 				9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */,
 				9CCA43CF2D22C6A5005A78ED /* HorizonCalendar in Frameworks */,
+				9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
 				9CCA43BD2D22C535005A78ED /* FirebaseFirestore in Frameworks */,
 				9CCA43C92D22C601005A78ED /* IQKeyboardManagerSwift in Frameworks */,
@@ -1272,7 +1272,6 @@
 			children = (
 				9CFD86962C1432CF0029527D /* BaseView */,
 				9CFD86972C1432D60029527D /* ViewController */,
-				9CFD86982C1432E00029527D /* ViewModel */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1291,14 +1290,6 @@
 				9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CFD86982C1432E00029527D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CAE97F226E660C40011CE52 /* SignUpViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CFD86992C14330B0029527D /* DeviceRegister */ = {
@@ -1687,7 +1678,6 @@
 				9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */,
 				9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */,
 				9C8DD2E027F98C2400C1C7A4 /* DictionaryTwitterViewModel.swift in Sources */,
-				9CAE97F326E660C40011CE52 /* SignUpViewModel.swift in Sources */,
 				9CE0184329B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift in Sources */,
 				9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */,
 				9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */,
@@ -2597,6 +2587,10 @@
 		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSLoginService;
+		};
+		9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSSignUpService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

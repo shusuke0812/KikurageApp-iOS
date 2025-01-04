@@ -11,7 +11,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(name: "KSAppService", targets: ["KSAppService"]),
-        .library(name: "KSLoginService", targets: ["KSLoginService"])
+        .library(name: "KSLoginService", targets: ["KSLoginService"]),
+        .library(name: "KSSignUpService", targets: ["KSSignUpService"]),
     ],
     dependencies: [
         .package(path: "../KikurageDomain")
@@ -35,6 +36,14 @@ let package = Package(
                 .target(name: "KSFeatures")
             ],
             path: "Sources/Services/KSLoginService"
+        ),
+        .target(
+            name: "KSSignUpService",
+            dependencies: [
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDEntity", package: "KikurageDomain"),
+            ],
+            path: "Sources/Services/KSSignUpService"
         ),
         // MARK: - Features
         .target(
