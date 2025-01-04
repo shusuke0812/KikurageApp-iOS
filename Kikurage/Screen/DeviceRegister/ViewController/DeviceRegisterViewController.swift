@@ -7,14 +7,14 @@
 //
 
 import AVFoundation
-import KikurageService
+import KSDeviceRegisterService
 import PKHUD
 import UIKit
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, DeviceRegisterAccessable {
     private var baseView = DeviceRegisterBaseView()
     private var viewModel: DeviceRegisterViewModel!
-    private var qrCodeReaderViewModel: KikurageQRCodeReaderViewModel!
+    private var qrCodeReaderViewModel: QRCodeReaderViewModel!
 
     private let queue = DispatchQueue.global(qos: .userInitiated)
 
@@ -27,7 +27,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
-        qrCodeReaderViewModel = KikurageQRCodeReaderViewModel()
+        qrCodeReaderViewModel = QRCodeReaderViewModel()
         qrCodeReaderViewModel.delegate = self
         setDelegateDataSource()
 
@@ -158,7 +158,7 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
 
 // MARK: - KikurageQRCodeReaderViewModel Delegate
 
-extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
+extension DeviceRegisterViewController: QRCodeReaderViewModelDelegate {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
         DispatchQueue.main.async {
             if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.qrcodeReaderView.windowOrientation) {
@@ -168,12 +168,12 @@ extension DeviceRegisterViewController: KikurageQRCodeReaderViewModelDelegate {
         }
     }
 
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError) {}
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, authorize: SessionSetupResult) {}
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession) {}
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, authorize: SessionSetupResult) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession) {}
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason) {}
 
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String) {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didRead qrCodeString: String) {
         DispatchQueue.main.async {
             self.baseView.showKikurageQrcodeReaderView(isHidden: true)
             self.baseView.setProductKeyText(qrCodeString)

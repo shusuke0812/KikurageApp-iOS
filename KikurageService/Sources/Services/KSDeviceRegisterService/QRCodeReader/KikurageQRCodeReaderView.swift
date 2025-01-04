@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-public class KikurageQRCodeReaderView: UIView {
+public class QRCodeReaderView: UIView {
     public var windowOrientation: UIInterfaceOrientation {
         window?.windowScene?.interfaceOrientation ?? .unknown
     }

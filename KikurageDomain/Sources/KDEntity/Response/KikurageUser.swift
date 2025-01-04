@@ -8,16 +8,25 @@
 
 import KDFirebase
 import Foundation
+import FirebaseFirestore
 
 public struct KikurageUser: Codable {
     public var productKey: String = ""
     public var kikurageName: String = ""
     public var cultivationStartDate = Date()
+    
+    private var stateRef: DocumentReference?
+    
+    public init() {}
 
     public enum CodingKeys: String, CodingKey {
         case productKey
         case kikurageName
         case cultivationStartDate
+    }
+    
+    public mutating func setStateRef(productKey: String) {
+        stateRef = Firestore.firestore().document("/" + FirestoreCollectionName.states + "/\(productKey)")
     }
 
     public func encode(to encoder: Encoder) throws {

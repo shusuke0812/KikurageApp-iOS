@@ -11,24 +11,24 @@
 import AVFoundation
 import Foundation
 
-public protocol KikurageQRCodeReaderViewModelDelegate: AnyObject {
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didRead qrCodeString: String)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didNotRead error: SessionSetupError)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, authorize: SessionSetupResult)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason)
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession)
+public protocol QRCodeReaderViewModelDelegate: AnyObject {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didRead qrCodeString: String)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didNotRead error: SessionSetupError)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, authorize: SessionSetupResult)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason)
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession)
 }
 
-public class KikurageQRCodeReaderViewModel: NSObject {
+public class QRCodeReaderViewModel: NSObject {
     private let captureSessionQueue = DispatchQueue(label: (Bundle.main.bundleIdentifier ?? "missing_bundle_id") + "_capture.session")
     private var isCaptureSessionRunning = false
     private var kvos = [NSKeyValueObservation]()
 
     // MARK: - Event notification
 
-    public weak var delegate: KikurageQRCodeReaderViewModelDelegate?
+    public weak var delegate: QRCodeReaderViewModelDelegate?
 
     // MARK: - AVCapture
 
@@ -289,7 +289,7 @@ public class KikurageQRCodeReaderViewModel: NSObject {
 
 // MARK: - AVCaptureMetadataOutputObjects Delegate
 
-extension KikurageQRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate {
+extension QRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate {
     public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] { // swiftlint:disable:this force_cast
             guard let value = metadata.stringValue else {

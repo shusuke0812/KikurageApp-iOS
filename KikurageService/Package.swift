@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "KSAppService", targets: ["KSAppService"]),
         .library(name: "KSLoginService", targets: ["KSLoginService"]),
         .library(name: "KSSignUpService", targets: ["KSSignUpService"]),
+        .library(name: "KSDeviceRegisterService", targets: ["KSDeviceRegisterService"])
     ],
     dependencies: [
         .package(path: "../KikurageDomain")
@@ -44,6 +45,15 @@ let package = Package(
                 .product(name: "KDEntity", package: "KikurageDomain"),
             ],
             path: "Sources/Services/KSSignUpService"
+        ),
+        .target(
+            name: "KSDeviceRegisterService",
+            dependencies: [
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain"),
+            ],
+            path: "Sources/Services/KSDeviceRegisterService"
         ),
         // MARK: - Features
         .target(

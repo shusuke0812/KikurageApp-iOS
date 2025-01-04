@@ -6,29 +6,33 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import FirebaseFirestore
+import KDRepository
+import KDEntity
+import KDLoginManager
 import UIKit
 
-protocol DeviceRegisterViewModelDelegate: AnyObject {
+public protocol DeviceRegisterViewModelDelegate: AnyObject {
     func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel)
     func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String)
     func deviceRegisterViewModelDidSuccessPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel)
     func deviceRegisterViewModelDidFailedPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel, with errorMessage: String)
 }
 
-class DeviceRegisterViewModel {
+public class DeviceRegisterViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
+    private let loginManager: LoginManager
     /// きくらげの状態
-    var kikurageState: KikurageState?
+    public var kikurageState: KikurageState?
     /// きくらげユーザー
-    var kikurageUser: KikurageUser?
+    public var kikurageUser: KikurageUser?
 
-    weak var delegate: DeviceRegisterViewModelDelegate?
+    public weak var delegate: DeviceRegisterViewModelDelegate?
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
+        self.loginManager = LoginManager()
         kikurageUser = KikurageUser()
     }
 }
@@ -37,11 +41,11 @@ class DeviceRegisterViewModel {
 
 extension DeviceRegisterViewModel {
     /// ユーザーにステートのリファレンスを登録する
-    func setStateReference(productKey: String) {
-        kikurageUser?.stateRef = Firestore.firestore().document("/" + Constants.FirestoreCollectionName.states + "/\(productKey)")
+    public func setStateReference(productKey: String) {
+        kikurageUser?.setStateRef(productKey: productKey)
     }
 
-    func validateRegistration(productKey: String?, kikurageName: String?, cultivationStartDateString: String?) -> Bool {
+    public func validateRegistration(productKey: String?, kikurageName: String?, cultivationStartDateString: String?) -> Bool {
         guard let productKey = productKey, let kikurageName = kikurageName, let cultivationStartDateString = cultivationStartDateString else {
             return false
         }
@@ -56,7 +60,7 @@ extension DeviceRegisterViewModel {
 
 extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
-    func loadKikurageState() {
+    public func loadKikurageState() {
         let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
         let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
@@ -71,13 +75,13 @@ extension DeviceRegisterViewModel {
     }
 
     /// きくらげユーザーを登録する
-    func registerKikurageUser() {
+    public func registerKikurageUser() {
         guard let kikurageUser = kikurageUser else {
-            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: "error") // TODO: R.string.localizable.common_load_user_error() に置き換え
             return
         }
-        guard let uid = LoginHelper.shared.kikurageUserID else {
-            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: R.string.localizable.common_load_user_error())
+        guard let uid = loginManager.userId else {
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: "error")  // TODO: R.string.localizable.common_load_user_error()
             return
         }
         var request = KikurageUserRequest(uid: uid)
