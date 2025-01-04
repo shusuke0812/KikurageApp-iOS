@@ -13,8 +13,8 @@ import Foundation
 public struct KikurageRecipeRequest: FirestoreRequestProtocol {
     public init(
         kikurageUserID: String,
-        documentID: String,
-        imageStorageFullPaths: [String],
+        documentID: String = "",
+        imageStorageFullPaths: [String] = [],
         body: [String : Any]? = nil
     ) {
         self.kikurageUserID = kikurageUserID
@@ -25,8 +25,8 @@ public struct KikurageRecipeRequest: FirestoreRequestProtocol {
     public typealias Response = KikurageRecipe
 
     public let kikurageUserID: String
-    public let documentID: String
-    public let imageStorageFullPaths: [String]
+    public var documentID: String
+    public var imageStorageFullPaths: [String]
 
     /// For using PUT method
     public var documentReference: DocumentReference? {

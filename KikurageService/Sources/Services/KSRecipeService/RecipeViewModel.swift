@@ -6,44 +6,47 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import RxRelay
+import KDRepository
+import KDEntity
+import KSFeatures
+import RxCocoa
 import RxSwift
 import UIKit.UITableView
 
-protocol RecipeViewModelInput {
+public protocol RecipeViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
     func loadRecipes(kikurageUserID: String)
 }
 
-protocol RecipeViewModelOutput {
+public protocol RecipeViewModelOutput {
     var recipes: Observable<[KikurageRecipeTuple]> { get }
     var recipe: Observable<KikurageRecipeTuple> { get }
-    var error: Observable<ClientError> { get }
+    var error: Observable<Error> { get }
 }
 
-protocol RecipeViewModelType {
+public protocol RecipeViewModelType {
     var input: RecipeViewModelInput { get }
     var output: RecipeViewModelOutput { get }
 }
 
-class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewModelOutput {
+public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewModelOutput {
     private let recipeRepository: RecipeRepositoryProtocol
 
     private let disposeBag = RxSwift.DisposeBag()
     private let subject = PublishSubject<[KikurageRecipeTuple]>()
-    private let errorSubject = PublishSubject<ClientError>()
+    private let errorSubject = PublishSubject<Error>()
 
-    var input: RecipeViewModelInput { self }
-    var output: RecipeViewModelOutput { self }
+    public var input: RecipeViewModelInput { self }
+    public var output: RecipeViewModelOutput { self }
 
-    var itemSelected: AnyObserver<IndexPath>
+    public var itemSelected: AnyObserver<IndexPath>
 
-    var recipes: Observable<[KikurageRecipeTuple]> { subject.asObservable() }
-    var recipe: Observable<KikurageRecipeTuple>
-    var error: Observable<ClientError> { errorSubject.asObserver() }
+    public var recipes: Observable<[KikurageRecipeTuple]> { subject.asObservable() }
+    public var recipe: Observable<KikurageRecipeTuple>
+    public var error: Observable<Error> { errorSubject.asObserver() }
 
-    init(recipeRepository: RecipeRepositoryProtocol) {
+    public init(recipeRepository: RecipeRepositoryProtocol) {
         self.recipeRepository = recipeRepository
 
         // for selected table view item
@@ -91,7 +94,7 @@ extension RecipeViewModel {
 
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
-    func loadRecipes(kikurageUserID: String) {
+    public func loadRecipes(kikurageUserID: String) {
         let request = KikurageRecipeRequest(kikurageUserID: kikurageUserID)
         recipeRepository.getRecipes(request: request)
             .subscribe(
@@ -103,8 +106,7 @@ extension RecipeViewModel {
                     self.subject.onNext(_recipes)
                 },
                 onFailure: { [weak self] error in
-                    let _error = error as! ClientError // swiftlint:disable:this force_cast
-                    self?.errorSubject.onNext(_error)
+                    self?.errorSubject.onNext(error)
                 }
             )
             .disposed(by: disposeBag)
