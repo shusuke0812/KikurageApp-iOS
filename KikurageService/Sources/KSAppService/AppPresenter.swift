@@ -21,7 +21,9 @@ public class AppPresenter {
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
     private let loginManager: LoginManager
     
-    public  init(
+    public weak var delegate: AppPresenterDelete?
+    
+    public init(
         appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository()
     ) {
         self.appConfigRepository = appConfigRepository
@@ -31,12 +33,12 @@ public class AppPresenter {
     
     public func login() {
         let userId  = loginManager.userId ?? ""
-        loadKikurageStateWithUserUseCase.invoke(uid: userId) { [weak self] (result: KikurageStateUserTuple) in
+        loadKikurageStateWithUserUseCase.invoke(uid: userId) { [weak self] result in
             switch result {
             case .success(let res):
                 self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
-            case .failure(let error):
-                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: error.description())
+            case .failure:
+                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: "") // TODO: Error descriptionを渡す. InfrastructureにError型を定義しているので、それらをMapするError型をKDRepositoryに定義してService層へ通知する
             }
         }
     }
@@ -46,7 +48,8 @@ public class AppPresenter {
             switch response {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupUrlString = urlString
-            case .failure(let error):
+            case .failure:
+                break
                 //KLogManager.debug("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
@@ -57,7 +60,8 @@ public class AppPresenter {
             switch response {
             case .success(let urlString):
                 AppConfig.shared.termsUrlString = urlString
-            case .failure(let error):
+            case .failure:
+                break
                 //KLogManager.debug("Failed to get Terms Url from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
@@ -68,7 +72,8 @@ public class AppPresenter {
             switch response {
             case .success(let urlString):
                 AppConfig.shared.privacyPolicyUrlString = urlString
-            case .failure(let error):
+            case .failure:
+                break
                 //KLogManager.debug("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
@@ -80,7 +85,8 @@ public class AppPresenter {
             case .success(let appVersionString):
                 let appVersion = AppVersion(versionString: appVersionString)
                 AppConfig.shared.latestAppVersion = appVersion
-            case .failure(let error):
+            case .failure:
+                break
                 //KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
