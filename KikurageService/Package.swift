@@ -25,7 +25,7 @@ let package = Package(
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .target(name: "KSFeatures")
             ],
-            path: "Sources/KSAppService"
+            path: "Sources/Services/KSAppService"
         ),
         .target(
             name: "KSLoginService",
@@ -34,7 +34,7 @@ let package = Package(
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .target(name: "KSFeatures")
             ],
-            path: "Sources/KSLoginService"
+            path: "Sources/Services/KSLoginService"
         ),
         // MARK: - Features
         .target(
