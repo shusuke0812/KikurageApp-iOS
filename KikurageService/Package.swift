@@ -31,7 +31,10 @@ let package = Package(
         // MARK: - Features
         .target(
             name: "KSFeatures",
-            dependencies: []
+            dependencies: [
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDEntity", package: "KikurageDomain"),
+            ]
         ),
     ]
 )
