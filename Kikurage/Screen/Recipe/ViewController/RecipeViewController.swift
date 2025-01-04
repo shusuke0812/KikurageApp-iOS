@@ -6,7 +6,7 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KUIKit
 import PKHUD
 import RxSwift
 import SafariServices

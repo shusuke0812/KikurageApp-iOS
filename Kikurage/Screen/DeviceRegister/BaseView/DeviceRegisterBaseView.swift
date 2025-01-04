@@ -7,7 +7,7 @@
 //
 
 import KikurageService
-import KikurageUI
+import KUIKit
 import UIKit
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {

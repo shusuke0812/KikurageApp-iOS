@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KikurageUI
+import KUIKit
 import UIKit.UITableView
 
 protocol DictionaryTwitterViewModelDelegate: AnyObject {

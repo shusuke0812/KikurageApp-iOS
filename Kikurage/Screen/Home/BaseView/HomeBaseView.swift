@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KUIKit
 import UIKit
 
 class HomeBaseView: UIView {

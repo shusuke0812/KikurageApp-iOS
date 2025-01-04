@@ -7,7 +7,7 @@
 //
 
 import HorizonCalendar
-import KikurageUI
+import KUIKit
 import UIKit
 
 class CalendarBaseView: UIView {
