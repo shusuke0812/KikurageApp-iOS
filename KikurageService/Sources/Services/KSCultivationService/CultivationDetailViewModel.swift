@@ -7,13 +7,14 @@
 //
 
 import KUIKit
+import KDEntity
 import UIKit.UICollectionView
 
-class CultivationDetailViewModel: NSObject {
+public class CultivationDetailViewModel: NSObject {
     private(set) var cultivation: KikurageCultivation
     private let sectionNumber = 1
 
-    init(cultivation: KikurageCultivation) {
+    public init(cultivation: KikurageCultivation) {
         self.cultivation = cultivation
     }
 }
@@ -21,7 +22,7 @@ class CultivationDetailViewModel: NSObject {
 // MARK: - Config
 
 extension CultivationDetailViewModel {
-    func currentPage(on scrollView: UIScrollView) -> Int {
+    public func currentPage(on scrollView: UIScrollView) -> Int {
         let left = scrollView.contentOffset.x
         let width = scrollView.bounds.size.width
         return Int(left / width)
@@ -31,15 +32,15 @@ extension CultivationDetailViewModel {
 // MARK: - UICollectionView DataSource
 
 extension CultivationDetailViewModel: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         sectionNumber
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         cultivation.imageStoragePaths.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KUICarouselCollectionViewCell.identifier, for: indexPath) as! KUICarouselCollectionViewCell // swiftlint:disable:this force_cast
         cell.setImage(imageStoragePath: cultivation.imageStoragePaths[indexPath.row])
         return cell

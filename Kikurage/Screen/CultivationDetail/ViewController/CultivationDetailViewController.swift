@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KSCultivationService
 
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: CultivationDetailBaseView = .init()
