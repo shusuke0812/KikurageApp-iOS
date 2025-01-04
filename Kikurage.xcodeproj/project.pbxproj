@@ -62,7 +62,6 @@
 		9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */; };
 		9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */; };
 		9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */; };
-		9C96997D2566118C00D655DA /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C96997C2566118B00D655DA /* DateHelper.swift */; };
 		9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C97679526EF798100126F80 /* NotificationName+Extension.swift */; };
 		9C9981CD27F9A5060068FD61 /* TwitterAccessKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C9981CC27F9A5060068FD61 /* TwitterAccessKey.json */; };
 		9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */; };
@@ -77,7 +76,6 @@
 		9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */; };
 		9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */; };
 		9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */; };
-		9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */; };
 		9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
@@ -226,7 +224,6 @@
 		9C949B1025AD4211004FEE1F /* SideMenuBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuBaseView.swift; sourceTree = "<group>"; };
 		9C96212E2599C4DA00F2E4A0 /* PostRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewController.swift; sourceTree = "<group>"; };
 		9C9621342599DA5800F2E4A0 /* PostRecipeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeBaseView.swift; sourceTree = "<group>"; };
-		9C96997C2566118B00D655DA /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9C96F7012768E97300C2E778 /* KikurageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97679526EF798100126F80 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		9C9981CC27F9A5060068FD61 /* TwitterAccessKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TwitterAccessKey.json; sourceTree = "<group>"; };
@@ -242,7 +239,6 @@
 		9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
 		9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingBaseView.swift; sourceTree = "<group>"; };
 		9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
-		9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
 		9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
@@ -608,7 +604,6 @@
 			children = (
 				9CA2044A271C77DE00D65DD7 /* BaseView */,
 				9CA2045E271C7A6F00D65DD7 /* ViewController */,
-				9CA20468271C7BC000D65DD7 /* ViewModel */,
 			);
 			path = Cultivation;
 			sourceTree = "<group>";
@@ -882,14 +877,6 @@
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CA20468271C7BC000D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CAFF9A9255CC6BF00418745 /* CultivationViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA20469271C7BD200D65DD7 /* ViewModel */ = {
@@ -1251,7 +1238,6 @@
 			isa = PBXGroup;
 			children = (
 				9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */,
-				9C96997C2566118B00D655DA /* DateHelper.swift */,
 				9CBD6C412540F75C005531F4 /* KikurageStateHelper.swift */,
 				9C90935D25B6666C00496F38 /* ChartViewHelper.swift */,
 			);
@@ -1592,7 +1578,6 @@
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
 				9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */,
 				9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */,
-				9C96997D2566118C00D655DA /* DateHelper.swift in Sources */,
 				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
@@ -1664,7 +1649,6 @@
 				9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */,
 				9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */,
 				9CE0184529B46CBE00365E95 /* WiFiSelectDeviceViewController.swift in Sources */,
-				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9CE0184B29B46CF300365E95 /* WiFiListViewController.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
 				9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */,

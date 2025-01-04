@@ -1,14 +1,13 @@
 //
 //  DateHelper.swift
-//  Kikurage
+//  KikurageService
 //
-//  Created by Shusuke Ota on 2020/11/19.
-//  Copyright © 2020 shusuke. All rights reserved.
+//  Created by Shusuke Ota on 2025/1/4.
 //
 
 import Foundation
 
-struct DateHelper {
+public struct DateHelper {
     private init() {}
 
     private static let defaultDateFormatter: DateFormatter = {
@@ -28,14 +27,14 @@ struct DateHelper {
     }()
 
     /// 現在時刻を取得する
-    static func now() -> String {
+    public static func now() -> String {
         let now = Date()
         return defaultDateFormatter.string(from: now)
     }
 
     /// Date型を指定したString型に変換する
     /// - Parameter date: 日付
-    static func formatToString(date: Date) -> String {
+    public static func formatToString(date: Date) -> String {
         originalDateFormatter.dateFormat = "yyyy/MM/dd"
         return originalDateFormatter.string(from: date)
     }
@@ -48,19 +47,19 @@ struct DateHelper {
     }
 
     /// String型をDate型に変換する
-    static func formatToDate(dateString: String) -> Date? {
+    public static func formatToDate(dateString: String) -> Date? {
         originalDateFormatter.dateFormat = "yyyy/MM/dd"
         return originalDateFormatter.date(from: dateString)
     }
 
     /// Date型からDateComponentsを取得する
     /// - Parameter date: 日付（デフォルトは現在時刻）
-    static func getDateComponents(date: Date = Date()) -> DateComponents {
+    public  static func getDateComponents(date: Date = Date()) -> DateComponents {
         Calendar.current.dateComponents([.year, .month, .day], from: date)
     }
 
     /// `TwitterSearchAPI`レスポンスに使用する
-    static let twitterSearchDateFormat: DateFormatter = {
+    public static let twitterSearchDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)

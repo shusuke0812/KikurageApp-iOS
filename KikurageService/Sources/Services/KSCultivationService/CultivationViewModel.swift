@@ -6,45 +6,48 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KDRepository
+import KDEntity
+import KSFeatures
 import Foundation
-import RxCocoa
 import RxSwift
+import RxCocoa
 import UIKit.UICollectionView
 
-protocol CultivationViewModelInput {
+public protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
     func loadCultivations(kikurageUserID: String)
 }
 
-protocol CultivationViewModelOutput {
+public protocol CultivationViewModelOutput {
     var cultivations: Observable<[KikurageCultivationTuple]> { get }
     var cultivation: Observable<KikurageCultivationTuple> { get }
-    var error: Observable<ClientError> { get }
+    var error: Observable<Error> { get }
 }
 
-protocol CultivationViewModelType {
+public protocol CultivationViewModelType {
     var input: CultivationViewModelInput { get }
     var output: CultivationViewModelOutput { get }
 }
 
-class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
+public class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
 
     private let disposeBag = RxSwift.DisposeBag()
     private let subject = PublishSubject<[KikurageCultivationTuple]>()
-    private let errorSubject = PublishSubject<ClientError>()
+    private let errorSubject = PublishSubject<Error>()
 
-    var input: CultivationViewModelInput { self }
-    var output: CultivationViewModelOutput { self }
+    public var input: CultivationViewModelInput { self }
+    public var output: CultivationViewModelOutput { self }
 
-    let itemSelected: AnyObserver<IndexPath>
+    public let itemSelected: AnyObserver<IndexPath>
 
-    var cultivations: Observable<[KikurageCultivationTuple]> { subject.asObservable() }
-    let cultivation: Observable<KikurageCultivationTuple>
-    var error: Observable<ClientError> { errorSubject.asObserver() }
+    public var cultivations: Observable<[KikurageCultivationTuple]> { subject.asObservable() }
+    public let cultivation: Observable<KikurageCultivationTuple>
+    public var error: Observable<Error> { errorSubject.asObserver() }
 
-    init(cultivationRepository: CultivationRepositoryProtocol) {
+    public init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
 
         // for selected collection view item
@@ -92,7 +95,7 @@ extension CultivationViewModel {
 
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
-    func loadCultivations(kikurageUserID: String) {
+    public func loadCultivations(kikurageUserID: String) {
         let request = KikurageCultivationRequest(kikurageUserID: kikurageUserID)
         cultivationRepository.getCultivations(request: request)
             .subscribe(
@@ -104,8 +107,7 @@ extension CultivationViewModel {
                     self.subject.onNext(_cultivations)
                 },
                 onFailure: { [weak self] error in
-                    let _error = error as! ClientError // swiftlint:disable:this force_cast
-                    self?.errorSubject.onNext(_error)
+                    self?.errorSubject.onNext(error)
                 }
             )
             .disposed(by: disposeBag)

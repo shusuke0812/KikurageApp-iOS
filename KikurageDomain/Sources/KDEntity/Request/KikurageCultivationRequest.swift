@@ -16,6 +16,10 @@ public struct KikurageCultivationRequest: FirestoreRequestProtocol {
     public var kikurageUserID: String = ""
     public var documentID: String = ""
     public var imageStorageFullPaths: [String] = []
+    
+    public init(kikurageUserID: String) {
+        self.kikurageUserID = kikurageUserID
+    }
 
     /// For using PUT method
     public var documentReference: DocumentReference? {
