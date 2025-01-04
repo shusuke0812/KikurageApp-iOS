@@ -6,24 +6,26 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KDEntity
+import KDRepository
 import Foundation
 
-protocol PostCultivationViewModelDelegate: AnyObject {
+public protocol PostCultivationViewModelDelegate: AnyObject {
     func postCultivationViewModelDidSuccessPostCultivation(_ postCultivationViewModel: PostCultivationViewModel)
     func postCultivationViewModelDidFailedPostCultivation(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String)
     func postCultivationViewModelDidSuccessPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel)
     func postCultivationViewModelDidFailedPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String)
 }
 
-class PostCultivationViewModel {
+public class PostCultivationViewModel {
     private let cultivationRepository: CultivationRepositoryProtocol
 
-    weak var delegate: PostCultivationViewModelDelegate?
+    public weak var delegate: PostCultivationViewModelDelegate?
 
-    var cultivation: KikurageCultivation
-    var postedCultivationDocumentID: String?
+    public var cultivation: KikurageCultivation
+    public var postedCultivationDocumentID: String?
 
-    init(cultivationRepository: CultivationRepositoryProtocol) {
+    public init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
         cultivation = KikurageCultivation()
     }
@@ -32,12 +34,12 @@ class PostCultivationViewModel {
 // MARK: - Validation
 
 extension PostCultivationViewModel {
-    func postValidation() -> Bool {
+    public func postValidation() -> Bool {
         if cultivation.viewDate.isEmpty {
             return false
         }
         if cultivation.memo.isEmpty {
-            cultivation.memo = R.string.localizable.screen_post_cultivation_valid_memo()
+            cultivation.memo = "memo" // TODO: R.string.localizable.screen_post_cultivation_valid_memo()
         }
         return true
     }
@@ -46,13 +48,13 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Firestore
 
 extension PostCultivationViewModel {
-    func postCultivation(kikurageUserID: String) {
+    public func postCultivation(kikurageUserID: String) {
         var request = KikurageCultivationRequest(kikurageUserID: kikurageUserID)
         request.body = request.buildBody(from: cultivation)
         cultivationRepository.postCultivation(request: request) { [weak self] response in
             switch response {
-            case .success(let documentReference):
-                self?.postedCultivationDocumentID = documentReference.documentID
+            case .success(let documentId):
+                self?.postedCultivationDocumentID = documentId
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivation(self!)
             case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
@@ -78,12 +80,12 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Storage
 
 extension PostCultivationViewModel {
-    func postCultivationImages(kikurageUserID: String, imageData: [Data?]) {
+    public func postCultivationImages(kikurageUserID: String, imageData: [Data?]) {
         guard let postedCultivationDocumentID = postedCultivationDocumentID else {
-            delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: FirebaseAPIError.documentIDError.description())
+            delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return
         }
-        let imageStoragePath = "\(Constants.FirestoreCollectionName.users)/\(kikurageUserID)/\(Constants.FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
+        let imageStoragePath = "\(FirestoreCollectionName.users)/\(kikurageUserID)/\(FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
