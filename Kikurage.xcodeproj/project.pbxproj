@@ -21,7 +21,6 @@
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
-		9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
@@ -33,14 +32,12 @@
 		9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */; };
 		9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */; };
 		9C7E105A25648DB8005A92C7 /* CultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */; };
-		9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */; };
 		9C7E58832776109B00A151C0 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */; };
 		9C81EA6F27B7E9D10028D027 /* PageObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */; };
 		9C81EA7227B7EE640028D027 /* TopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA7127B7EE640028D027 /* TopPage.swift */; };
 		9C81EA7527B7F3CF0028D027 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C81EA7427B7F3CF0028D027 /* LoginPage.swift */; };
 		9C82B417253037BD00E650B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B416253037BD00E650B5 /* Constants.swift */; };
 		9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B42325305E6C00E650B5 /* UIView+Extension.swift */; };
-		9C82B42A253068CF00E650B5 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B429253068CF00E650B5 /* XibView.swift */; };
 		9C84701527F83ED900E5F05A /* DictionaryTriviaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */; };
 		9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */; };
 		9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */; };
@@ -187,7 +184,6 @@
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
 		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
-		9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+SignUp.swift"; sourceTree = "<group>"; };
 		9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+DeviceRegister.swift"; sourceTree = "<group>"; };
 		9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
@@ -199,14 +195,12 @@
 		9C751F80257E0FC000A3D90B /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		9C7DCE9626EE04BC00F62DF8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9C7E105925648DB8005A92C7 /* CultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationBaseView.swift; sourceTree = "<group>"; };
-		9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		9C7E58822776109B00A151C0 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		9C81EA6E27B7E9D10028D027 /* PageObjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageObjectable.swift; sourceTree = "<group>"; };
 		9C81EA7127B7EE640028D027 /* TopPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPage.swift; sourceTree = "<group>"; };
 		9C81EA7427B7F3CF0028D027 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		9C82B416253037BD00E650B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C82B42325305E6C00E650B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		9C82B429253068CF00E650B5 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		9C84701427F83ED900E5F05A /* DictionaryTriviaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaViewController.swift; sourceTree = "<group>"; };
 		9C84701827F83FC100E5F05A /* DictionaryTriviaBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTriviaBaseView.swift; sourceTree = "<group>"; };
 		9C84701E27F87FAC00E5F05A /* DictionaryTwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewController.swift; sourceTree = "<group>"; };
@@ -799,10 +793,7 @@
 		9CA2045A271C799C00D65DD7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C2F15A325930697006480ED /* CarouselCollectionFlowLayout.swift */,
-				9C7E14E72563F9F500D2D8EF /* UITextViewWithPlaceholder.swift */,
 				9CBE673928BA5879002DA020 /* EmptyView.swift */,
-				9C82B429253068CF00E650B5 /* XibView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1674,7 +1665,6 @@
 				9CA95655284E4CED005B7867 /* DebugBaseView.swift in Sources */,
 				9C9A8DA126DFB9DE006C31E7 /* AppRootController.swift in Sources */,
 				9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */,
-				9C2F15A425930697006480ED /* CarouselCollectionFlowLayout.swift in Sources */,
 				9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */,
 				9C84701F27F87FAC00E5F05A /* DictionaryTwitterViewController.swift in Sources */,
 				9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */,
@@ -1697,7 +1687,6 @@
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
-				9C7E14E82563F9F500D2D8EF /* UITextViewWithPlaceholder.swift in Sources */,
 				9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */,
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
@@ -1716,7 +1705,6 @@
 				9CE0184529B46CBE00365E95 /* WiFiSelectDeviceViewController.swift in Sources */,
 				9CAFF9AA255CC6BF00418745 /* CultivationViewModel.swift in Sources */,
 				9CE0184B29B46CF300365E95 /* WiFiListViewController.swift in Sources */,
-				9C82B42A253068CF00E650B5 /* XibView.swift in Sources */,
 				9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */,
 				9C7DCE9726EE04BD00F62DF8 /* LoginViewModel.swift in Sources */,
 				9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */,
