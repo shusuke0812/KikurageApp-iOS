@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import KikurageService
+import KDRepository
+import KDEntity
 import RxSwift
 
 protocol HomeViewModelInput {
@@ -19,7 +20,7 @@ protocol HomeViewModelInput {
 
 protocol HomeViewModelOutput {
     var kikurageState: Observable<KikurageState> { get }
-    var error: Observable<ClientError> { get }
+    var error: Observable<Error> { get }
 }
 
 protocol HomeViewModelType {
@@ -32,7 +33,7 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
     private let subject = PublishSubject<KikurageState>()
-    private let errorSubject = PublishSubject<ClientError>()
+    private let errorSubject = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
 
     var input: HomeViewModelInput { self }
@@ -40,7 +41,7 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
 
     var kikurageUser: KikurageUser
     var kikurageState: Observable<KikurageState> { subject.asObservable() }
-    var error: Observable<ClientError> { errorSubject.asObservable() }
+    var error: Observable<Error> { errorSubject.asObservable() }
 
     init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
@@ -50,7 +51,7 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     }
 
     deinit {
-        KLogger.debug("call deinit")
+        //KLogger.debug("call deinit")
     }
 }
 
@@ -72,7 +73,6 @@ extension HomeViewModel {
                     self?.subject.onNext(kikurageState)
                 },
                 onFailure: { [weak self] error in
-                    let error = error as! ClientError // swiftlint:disable:this force_cast
                     self?.errorSubject.onNext(error)
                 }
             )
@@ -87,7 +87,6 @@ extension HomeViewModel {
                     self?.subject.onNext(kikurageState)
                 },
                 onError: { [weak self] error in
-                    let error = error as! ClientError // swiftlint:disable:this force_cast
                     self?.errorSubject.onNext(error)
                 }
             )

@@ -83,7 +83,6 @@
 		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
 		9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */; };
-		9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
 		9CBB82CB25944C730009B284 /* CultivationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB82CA25944C730009B284 /* CultivationDetailViewModel.swift */; };
@@ -135,6 +134,7 @@
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
 		9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */; };
 		9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */; };
+		9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F432D2916FD006E6A01 /* KSHomeService */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -248,7 +248,6 @@
 		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Login.swift"; sourceTree = "<group>"; };
-		9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB32D427365E3900A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -298,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CCA43BF2D22C535005A78ED /* FirebaseRemoteConfig in Frameworks */,
+				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
 				9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */,
 				9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */,
 				9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */,
@@ -599,7 +599,6 @@
 			children = (
 				9CA20446271C778700D65DD7 /* BaseView */,
 				9CA2045D271C7A4900D65DD7 /* ViewController */,
-				9CA20467271C7B9E00D65DD7 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -883,14 +882,6 @@
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CA20467271C7B9E00D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CB7D5FD254043FB00D57801 /* HomeViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA20468271C7BC000D65DD7 /* ViewModel */ = {
@@ -1654,7 +1645,6 @@
 				9C92333B255F97B4000293BB /* PostCultivationViewModel.swift in Sources */,
 				9C91C2B926E4E88E007FB864 /* SignUpBaseView.swift in Sources */,
 				9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */,
-				9CB7D5FE254043FB00D57801 /* HomeViewModel.swift in Sources */,
 				9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */,
 				9C8740D2258D70D50025A8B3 /* CultivationDetailViewController.swift in Sources */,
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
@@ -2585,6 +2575,10 @@
 		9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSDeviceRegisterService;
+		};
+		9CEE7F432D2916FD006E6A01 /* KSHomeService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSHomeService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

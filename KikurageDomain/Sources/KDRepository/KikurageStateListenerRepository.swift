@@ -10,7 +10,7 @@ import KDFirebase
 import KDEntity
 import RxSwift
 
-protocol KikurageStateListenerRepositoryProtocol {
+public protocol KikurageStateListenerRepositoryProtocol {
     /// きくらげの状態を監視して更新を通知する
     func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void)
     func listenKikurageState(productKey: String) -> Observable<KikurageState>
@@ -27,7 +27,7 @@ public class KikurageStateListenerRepository: KikurageStateListenerRepositoryPro
 // MARK: - Firebase
 
 extension KikurageStateListenerRepository {
-    func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void) {
+    public func listenKikurageState(productKey: String, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void) {
         let request = KikurageStateRequest(productID: productKey)
         firestoreListenClient.listenDocumentRequest(request) { result in
             switch result {
@@ -39,7 +39,7 @@ extension KikurageStateListenerRepository {
         }
     }
 
-    func listenKikurageState(productKey: String) -> Observable<KikurageState> {
+    public func listenKikurageState(productKey: String) -> Observable<KikurageState> {
         Observable<KikurageState>.create { [weak self] observer in
             let request = KikurageStateRequest(productID: productKey)
             self?.firestoreListenClient.listenDocumentRequest(request) { result in

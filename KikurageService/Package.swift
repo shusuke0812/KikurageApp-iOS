@@ -13,10 +13,12 @@ let package = Package(
         .library(name: "KSAppService", targets: ["KSAppService"]),
         .library(name: "KSLoginService", targets: ["KSLoginService"]),
         .library(name: "KSSignUpService", targets: ["KSSignUpService"]),
-        .library(name: "KSDeviceRegisterService", targets: ["KSDeviceRegisterService"])
+        .library(name: "KSDeviceRegisterService", targets: ["KSDeviceRegisterService"]),
+        .library(name: "KSHomeService", targets: ["KSHomeService"]),
     ],
     dependencies: [
-        .package(path: "../KikurageDomain")
+        .package(path: "../KikurageDomain"),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0"))
     ],
     targets: [
         .target(
@@ -54,6 +56,15 @@ let package = Package(
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
             ],
             path: "Sources/Services/KSDeviceRegisterService"
+        ),
+        .target(
+            name: "KSHomeService",
+            dependencies: [
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "RxSwift", package: "RxSwift"),
+            ],
+            path: "Sources/Services/KSHomeService"
         ),
         // MARK: - Features
         .target(
