@@ -12,21 +12,17 @@ public struct AppVersion {
     public let minor: Int
     public let patch: Int
     
-    private let separator: Character = "."
-    
     public init?(versionString: String) {
         guard let versions = versions(versionString) else {
             return nil
         }
+        major = versions[0]
+        minor = versions[1]
+        patch = versions[2]
     }
     
     public var versionString: String {
         "\(major)\(separator)\(minor)\(separator)\(patch)"
-    }
-    
-    private func versions(_ versionString: String) -> [Int]? {
-        let versions = versionString.split(separator: separator).compactMap { Int($0) }
-        return (versions.count == 3) ? versions : nil
     }
     
     // MARK: Comparable
@@ -62,4 +58,11 @@ public struct AppVersion {
         }
         return false
     }
+}
+
+fileprivate let separator: Character = "."
+
+fileprivate func versions(_ versionString: String) -> [Int]? {
+    let versions = versionString.split(separator: separator).compactMap { Int($0) }
+    return (versions.count == 3) ? versions : nil
 }
