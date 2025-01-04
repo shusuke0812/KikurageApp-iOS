@@ -7,6 +7,7 @@
 //
 
 import KUIKit
+import KSRecipeService
 import PKHUD
 import UIKit
 

@@ -20,7 +20,6 @@
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
-		9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
@@ -180,7 +179,6 @@
 		9C1ACF542225768A00A3D4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1ACF562225768A00A3D4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
-		9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+SignUp.swift"; sourceTree = "<group>"; };
 		9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+DeviceRegister.swift"; sourceTree = "<group>"; };
 		9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
@@ -704,7 +702,6 @@
 			children = (
 				9CA2044E271C781C00D65DD7 /* BaseView */,
 				9CA20462271C7AE100D65DD7 /* ViewController */,
-				9CA2046C271C7C5A00D65DD7 /* ViewModel */,
 			);
 			path = PostRecipe;
 			sourceTree = "<group>";
@@ -872,14 +869,6 @@
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CA2046C271C7C5A00D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9C2B2575259C1C3B001E5582 /* PostRecipeViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA2046D271C7C7900D65DD7 /* ViewModel */ = {
@@ -1608,7 +1597,6 @@
 				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
-				9C2B2576259C1C3B001E5582 /* PostRecipeViewModel.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
 				9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */,
 				9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */,
