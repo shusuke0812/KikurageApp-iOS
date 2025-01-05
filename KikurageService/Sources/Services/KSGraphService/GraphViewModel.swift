@@ -6,29 +6,31 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KDEntity
+import KDRepository
 import Foundation
 
-protocol GraphViewModelDelegate: AnyObject {
+public protocol GraphViewModelDelegate: AnyObject {
     func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel)
     func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String)
     func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel)
     func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String)
 }
 
-class GraphViewModel {
+public class GraphViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
-    weak var delegate: GraphViewModelDelegate?
+    public weak var delegate: GraphViewModelDelegate?
     /// きくらげの１週間データ
-    var kikurageStateGraph: [KikurageStateGraphTuple] = []
+    public var kikurageStateGraph: [KikurageStateGraphTuple] = []
     /// きくらげの１週間の温度データ
-    var temperatureGraphDatas: [Int] = []
+    public var temperatureGraphDatas: [Int] = []
     /// きくらげの１週間の湿度データ
-    var humidityGraphDatas: [Int] = []
-    var kikurageUser: KikurageUser?
+    public var humidityGraphDatas: [Int] = []
+    public var kikurageUser: KikurageUser?
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
     }
@@ -69,7 +71,7 @@ extension GraphViewModel {
 extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
-    func loadKikurageStateGraph(productID: String) {
+    public func loadKikurageStateGraph(productID: String) {
         let request = KiikurageStateGraphRequest(productID: productID)
         kikurageStateRepository.getKikurageStateGraph(request: request) { [weak self] response in
             switch response {
@@ -86,7 +88,7 @@ extension GraphViewModel {
 
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
-    func loadKikurageUser(uid: String) {
+    public func loadKikurageUser(uid: String) {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {

@@ -21,6 +21,7 @@
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482412D2A1CA200829067 /* KSCalendarService */; };
+		9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482432D2A1F4C00829067 /* KSGraphService */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
@@ -75,7 +76,6 @@
 		9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */; };
 		9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
-		9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
 		9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
@@ -235,7 +235,6 @@
 		9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
-		9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Login.swift"; sourceTree = "<group>"; };
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
@@ -288,6 +287,7 @@
 				9CCA43BF2D22C535005A78ED /* FirebaseRemoteConfig in Frameworks */,
 				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
 				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
+				9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */,
 				9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */,
 				9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */,
 				9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */,
@@ -744,7 +744,6 @@
 			children = (
 				9CA20453271C786500D65DD7 /* BaseView */,
 				9CA20465271C7B3F00D65DD7 /* ViewController */,
-				9CA2046D271C7C7900D65DD7 /* ViewModel */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -868,14 +867,6 @@
 				9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CA2046D271C7C7900D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CA95650284E4C54005B7867 /* Debug */ = {
@@ -1584,7 +1575,6 @@
 				9C8740CF258D70A90025A8B3 /* CultivationDetailBaseView.swift in Sources */,
 				9CA7627D26E26B28000F7EE2 /* TopBaseView.swift in Sources */,
 				9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */,
-				9CB38F2B25AC1240004B0CA7 /* GraphViewModel.swift in Sources */,
 				9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */,
 				9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */,
 				9C82B417253037BD00E650B5 /* Constants.swift in Sources */,
@@ -2423,6 +2413,10 @@
 		9C2482412D2A1CA200829067 /* KSCalendarService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSCalendarService;
+		};
+		9C2482432D2A1F4C00829067 /* KSGraphService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSGraphService;
 		};
 		9C697E1A2D23C2F1005BC4DA /* KDRepository */ = {
 			isa = XCSwiftPackageProductDependency;

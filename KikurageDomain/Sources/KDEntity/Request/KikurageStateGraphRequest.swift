@@ -13,6 +13,10 @@ public struct KiikurageStateGraphRequest: FirestoreRequestProtocol {
     public typealias Response = KikurageStateGraph
 
     public var productID: String = ""
+    
+    public init(productID: String) {
+        self.productID = productID
+    }
 
     // TODO: documentReferenceはInfrastructure.Interceptorに定義する
     public var collectionReference: CollectionReference? {

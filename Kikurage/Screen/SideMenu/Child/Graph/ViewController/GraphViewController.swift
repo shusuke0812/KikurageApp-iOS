@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KSGraphService
 import UIKit
 
 class GraphViewController: UIViewController {
