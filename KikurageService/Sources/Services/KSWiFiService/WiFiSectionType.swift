@@ -15,7 +15,7 @@ public enum WiFiSelectDeviceSectionType {
     public var title: String {
         switch self {
         case .device:
-            return R.string.localizable.side_menu_wifi_select_device_section_title()
+            return ResourceManager.getLocalizedString("side_menu_wifi_select_device_section_title")
         }
     }
 }
@@ -28,11 +28,11 @@ public enum WiFiListSectionType {
     public var title: String {
         switch self {
         case .spec:
-            return R.string.localizable.side_menu_wifi_spec_section_title()
+            return ResourceManager.getLocalizedString("side_menu_wifi_spec_section_title")
         case .enterWifi:
-            return R.string.localizable.side_menu_wifi_enter_wifi_section_title()
+            return ResourceManager.getLocalizedString("side_menu_wifi_enter_wifi_section_title")
         case .selectWifi:
-            return R.string.localizable.side_menu_wifi_select_wifi_section_title()
+            return ResourceManager.getLocalizedString("side_menu_wifi_select_wifi_section_title")
         }
     }
 
@@ -56,13 +56,13 @@ public enum WiFiListSectionType {
         public var title: String {
             switch self {
             case .deviceName:
-                return R.string.localizable.side_menu_wifi_spec_section_device_name_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_spec_section_device_name_row_title")
             case .deviceID:
-                return R.string.localizable.side_menu_wifi_spec_section_device_id_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_spec_section_device_id_row_title")
             case .rssi:
-                return R.string.localizable.side_menu_wifi_spec_section_rssi_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_spec_section_rssi_row_title")
             case .enterWifi:
-                return R.string.localizable.side_menu_wifi_spec_section_wifi_enter_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_spec_section_wifi_enter_row_title")
             }
         }
 
@@ -89,9 +89,9 @@ public enum WiFiSettingSectionType {
     public var title: String {
         switch self {
         case .required:
-            return R.string.localizable.side_menu_wifi_setting_section_required_title()
+            return ResourceManager.getLocalizedString("side_menu_wifi_setting_section_required_title")
         case .optional:
-            return R.string.localizable.side_menu_wifi_setting_section_optional_title()
+            return ResourceManager.getLocalizedString("side_menu_wifi_setting_section_optional_title")
         }
     }
 
@@ -115,11 +115,11 @@ public enum WiFiSettingSectionType {
             case .ssid:
                 return "SSID"
             case .password:
-                return R.string.localizable.side_menu_wifi_setting_section_password_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_setting_section_password_row_title")
             case .activeScan:
-                return R.string.localizable.side_menu_wifi_setting_section_active_scan_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_setting_section_active_scan_row_title")
             case .security:
-                return R.string.localizable.side_menu_wifi_setting_section_security_row_title()
+                return ResourceManager.getLocalizedString("side_menu_wifi_setting_section_security_row_title")
             }
         }
     }

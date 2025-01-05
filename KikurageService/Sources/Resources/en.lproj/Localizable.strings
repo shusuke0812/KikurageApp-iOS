@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  KikurageService
+
+  Created by Shusuke Ota on 2024/12/31.
+  
+*/
+
+/****
+ * side menu
+ */
+
+// wifi
+"side_menu_wifi_select_device_section_title" = "Devices";
+"side_menu_wifi_spec_section_title" = "Spec";
+"side_menu_wifi_enter_wifi_section_title" = "WiFi";
+"side_menu_wifi_select_wifi_section_title" = "Searching WiFi";
+"side_menu_wifi_spec_section_device_name_row_title" = "Device name";
+"side_menu_wifi_spec_section_device_id_row_title" = "Device ID";
+"side_menu_wifi_spec_section_rssi_row_title" = "RSSI";
+"side_menu_wifi_spec_section_wifi_enter_row_title" = "Manual Enter";
+"side_menu_wifi_setting_section_required_title" = "Required";
+"side_menu_wifi_setting_section_optional_title" = "Optional";
+"side_menu_wifi_setting_section_password_row_title" = "Password";
+"side_menu_wifi_setting_section_active_scan_row_title" = "Active Scan";
+"side_menu_wifi_setting_section_security_row_title" = "Security";

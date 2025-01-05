@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "KikurageService",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15)
     ],
@@ -137,7 +138,10 @@ let package = Package(
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .target(name: "KSFeatures")
             ],
-            path: "Sources/Services/KSWiFiService"
+            path: "Sources/Services/KSWiFiService",
+            resources: [
+                .process("../../Resources")
+            ]
         ),
         .target(
             name: "KSDebugService",
@@ -150,6 +154,9 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
+            ],
+            resources: [
+                .process("Resources")
             ]
         ),
     ]

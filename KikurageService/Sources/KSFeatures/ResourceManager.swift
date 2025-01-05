@@ -12,19 +12,19 @@ import UIKit
  * Assets / Localizable からデータを取得するManagerクラス
  * （bundleを指定しないとframework内のbundleが呼ばれないため）
  */
-class ResorceManager {
+public class ResourceManager {
     // MARK: Localizable
 
     /// Localizable.stringデータから文字列を取得する
     @available(*, deprecated, message: "This is legacy system. You should replace to `String catalogs`")
-    static func getLocalizedString(_ string: String) -> String {
-        NSLocalizedString(string, tableName: nil, bundle: .module, comment: string)
+    public static func getLocalizedString(_ string: String) -> String {
+        NSLocalizedString(string, tableName: nil, bundle: .main, comment: string)
     }
 
     // MARK: Assets
 
     /// AssetsデータからUIImageを取得する
-    static func getImage(name: String) -> UIImage? {
-        UIImage(named: name, in: .module, compatibleWith: nil)
+    public static func getImage(name: String) -> UIImage? {
+        UIImage(named: name, in: .main, compatibleWith: nil)
     }
 }
