@@ -47,6 +47,20 @@ extension DebugViewController {
 
 extension DebugViewController: DebugBaseViewDelegate {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView) {
-        LoginHelper.shared.logout()
+        viewModel.logout { result in
+            switch result {
+            case .success:
+                let scenes = UIApplication.shared.connectedScenes
+                let windowScene = scenes.first as? UIWindowScene
+                let rootVC =  windowScene?.keyWindow?.rootViewController
+                if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
+                    rootVC.logout(rootVC: rootVC)
+                } else {
+                    // error: do nothing
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

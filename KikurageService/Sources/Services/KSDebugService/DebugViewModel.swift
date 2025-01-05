@@ -6,12 +6,32 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDLoginManager
+import KDRepository
 import Foundation
 
 public protocol DebugViewModelDelegate: AnyObject {}
 
 public class DebugViewModel {
+    private let loginManager: LoginManager
+    private let loginRepository: LoginRepositoryProtocol
+
     public weak var delegate: DebugViewModelDelegate?
 
-    public init() {}
+    public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
+        self.loginRepository = loginRepository
+        loginManager = LoginManager()
+    }
+    
+    public func logout(completion: @escaping ((Result<Void, Error>) -> Void)) {
+        loginRepository.logout { [weak self] result in
+            switch result {
+            case .success:
+                self?.loginManager.removeUser()
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

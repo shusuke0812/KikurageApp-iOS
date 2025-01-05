@@ -152,7 +152,10 @@ let package = Package(
         ),
         .target(
             name: "KSDebugService",
-            dependencies: [],
+            dependencies: [
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain")
+            ],
             path: "Sources/Services/KSDebugService"
         ),
         // MARK: - Features
