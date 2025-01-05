@@ -8,6 +8,7 @@
 
 import KDRepository
 import KDEntity
+import KDLoginManager
 import KSFeatures
 import RxCocoa
 import RxSwift
@@ -16,7 +17,7 @@ import UIKit.UITableView
 public protocol RecipeViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
-    func loadRecipes(kikurageUserID: String)
+    func loadRecipes()
 }
 
 public protocol RecipeViewModelOutput {
@@ -32,6 +33,7 @@ public protocol RecipeViewModelType {
 
 public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewModelOutput {
     private let recipeRepository: RecipeRepositoryProtocol
+    private let loginManager: LoginManager
 
     private let disposeBag = RxSwift.DisposeBag()
     private let subject = PublishSubject<[KikurageRecipeTuple]>()
@@ -48,6 +50,7 @@ public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeV
 
     public init(recipeRepository: RecipeRepositoryProtocol) {
         self.recipeRepository = recipeRepository
+        self.loginManager = LoginManager()
 
         // for selected table view item
         let _recipe = PublishRelay<KikurageRecipeTuple>()
@@ -94,8 +97,12 @@ extension RecipeViewModel {
 
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
-    public func loadRecipes(kikurageUserID: String) {
-        let request = KikurageRecipeRequest(kikurageUserID: kikurageUserID)
+    public func loadRecipes() {
+        guard let userId = loginManager.userId else {
+            //errorSubject.onNext(error) // TODO: Error型を定義してVCへ通知する
+            return
+        }
+        let request = KikurageRecipeRequest(kikurageUserID: userId)
         recipeRepository.getRecipes(request: request)
             .subscribe(
                 onSuccess: { [weak self] recipes in

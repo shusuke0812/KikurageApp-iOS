@@ -8,6 +8,8 @@
 
 import KUIKit
 import KSRecipeService
+import KDRepository
+import KDEntity
 import PKHUD
 import RxSwift
 import SafariServices
@@ -38,10 +40,8 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
         adjustNavigationBarBackgroundColor()
 
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            HUD.show(.progress)
-            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
-        }
+        HUD.show(.progress)
+        viewModel.input.loadRecipes()
 
         // Rx
         rxBaseView()
@@ -60,9 +60,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
     // MARK: - Action
 
     private func refresh() {
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
-        }
+        viewModel.input.loadRecipes()
     }
 }
 
@@ -129,7 +127,8 @@ extension RecipeViewController {
                         return
                     }
                     self.baseView.tableView.refreshControl?.endRefreshing()
-                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                    // TODO: error.description()をアラートに表示させる
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: "error", message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
                 }
             }
         )
@@ -167,9 +166,7 @@ extension RecipeViewController {
     }
 
     @objc private func didPostRecipe(notification: Notification) {
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            HUD.show(.progress)
-            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
-        }
+        HUD.show(.progress)
+        viewModel.input.loadRecipes()
     }
 }
