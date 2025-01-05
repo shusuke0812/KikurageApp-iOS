@@ -22,6 +22,7 @@ let package = Package(
         .library(name: "KSAccountSettingService", targets: ["KSAccountSettingService"]),
         .library(name: "KSDictionaryService", targets: ["KSDictionaryService"]),
         .library(name: "KSWiFiService", targets: ["KSWiFiService"]),
+        .library(name: "KSDebugService", targets: ["KSDebugService"]),
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
@@ -137,6 +138,11 @@ let package = Package(
                 .target(name: "KSFeatures")
             ],
             path: "Sources/Services/KSWiFiService"
+        ),
+        .target(
+            name: "KSDebugService",
+            dependencies: [],
+            path: "Sources/Services/KSDebugService"
         ),
         // MARK: - Features
         .target(

@@ -6,7 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KikurageService
+import KSDebugService
 import UIKit
 
 class DebugViewController: UIViewController {

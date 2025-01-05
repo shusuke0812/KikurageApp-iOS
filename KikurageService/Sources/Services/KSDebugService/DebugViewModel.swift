@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol DebugViewModelDelegate: AnyObject {}
+public protocol DebugViewModelDelegate: AnyObject {}
 
-class DebugViewModel {
-    weak var delegate: DebugViewModelDelegate?
+public class DebugViewModel {
+    public weak var delegate: DebugViewModelDelegate?
 
-    init() {}
+    public init() {}
 }
