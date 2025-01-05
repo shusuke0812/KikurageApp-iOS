@@ -8,6 +8,7 @@
 
 import KUIKit
 import KSRecipeService
+import KDRepository
 import PKHUD
 import UIKit
 
@@ -64,7 +65,7 @@ extension PostRecipeViewController {
 
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func postRecipeBaseViewDidEndEditingRecipeDate(_ postRecipeBaseView: PostRecipeBaseView, date: Date) {
-        viewModel.recipe.cookDate = DateHelper.formatToString(date: date)
+        viewModel.updateCookDate(date: date)
     }
 
     func postRecipeBaseViewDidEndEditingRecipeName(_ postRecipeBaseView: PostRecipeBaseView, text: String) {
@@ -78,9 +79,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView) {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             HUD.show(.progress)
-            if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-                self.viewModel.postRecipe(kikurageUserID: kikurageUserID)
-            }
+            self.viewModel.postRecipe()
         }
     }
 
@@ -136,9 +135,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         // 選択した画像のみData型に変換する
         let postIamgeData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.3).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            postRecipeViewModel.postRecipeImages(kikurageUserID: kikurageUserID, imageData: postIamgeData)
-        }
+        postRecipeViewModel.postRecipeImages(imageData: postIamgeData)
     }
 
     func postRecipeViewModelDidFailedPostRecipe(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String) {

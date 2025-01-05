@@ -7,6 +7,7 @@
 //
 
 import KUIKit
+import KSAppService
 import UIKit
 
 class SideMenuBaseView: UIView {

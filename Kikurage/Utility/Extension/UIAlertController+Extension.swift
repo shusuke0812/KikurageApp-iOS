@@ -16,12 +16,12 @@ extension UIAlertController {
         // キャンセル｜OK というボタン配置にするためにCancelActionを先にAddする
         if let cancelButtonTitle = cancelButtonTitle {
             let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { _ in
-                KLogManager.debug(logMessage)
+                //KLogManager.debug(logMessage)
             }
             alert.addAction(cancelAction)
         }
         let okAction = UIAlertAction(title: okButtonTitle, style: .default) { _ in
-            KLogManager.debug(logMessage)
+            //KLogManager.debug(logMessage)
             if let completionOk = completionOk {
                 completionOk()
             }

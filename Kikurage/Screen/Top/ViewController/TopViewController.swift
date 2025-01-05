@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KSAppService
 import UIKit
 
 class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
@@ -43,12 +44,12 @@ extension TopViewController {
 
 extension TopViewController: TopBaseViewDelegate {
     func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
-        let urlString = AppConfig.shared.termsURL
+        let urlString = AppConfig.shared.termsUrlString
         presentSafariView(urlString: urlString, onError: nil)
     }
 
     func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
-        let urlString = AppConfig.shared.privacyPolicyURL
+        let urlString = AppConfig.shared.privacyPolicyUrlString
         presentSafariView(urlString: urlString, onError: nil)
     }
 

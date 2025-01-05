@@ -96,6 +96,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxCocoa", package: "RxSwift"),
                 .target(name: "KSFeatures")
