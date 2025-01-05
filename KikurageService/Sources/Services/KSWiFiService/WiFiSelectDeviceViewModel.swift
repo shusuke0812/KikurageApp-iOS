@@ -16,14 +16,14 @@ public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
 }
 
 public class WiFiSelectDeviceViewModel: NSObject {
-    private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
-
-    private let bluetoothManager = KikurageBluetoothManager.shared
-    private(set) var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
-    private var selectedIndexPath: IndexPath?
-    private var bluetoothCentralState: KikurageBluetoothCentralState?
+    public private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
+    public private(set) var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
+    public private(set) var bluetoothCentralState: KikurageBluetoothCentralState?
 
     public weak var delegate: WiFiSelectDeviceViewModelDelegate?
+    
+    private let bluetoothManager = KikurageBluetoothManager.shared
+    private var selectedIndexPath: IndexPath?
 
     public override init() {
         super.init()

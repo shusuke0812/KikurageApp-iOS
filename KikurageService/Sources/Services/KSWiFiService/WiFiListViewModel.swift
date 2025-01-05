@@ -17,12 +17,12 @@ public protocol WiFiListViewModelDelegate: AnyObject {
 
 public class WiFiListViewModel: NSObject {
     public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
+    public private(set) var wifiList = KikurageWiFiList()
+    public let bluetoothPeripheral: KikurageBluetoothPeripheral
+    
+    public weak var delegate: WiFiListViewModelDelegate?
 
     private let bluetoothManager = KikurageBluetoothManager.shared
-    private let bluetoothPeripheral: KikurageBluetoothPeripheral
-    private(set) var wifiList = KikurageWiFiList()
-
-    public weak var delegate: WiFiListViewModelDelegate?
 
     public init(bluetoothPeripheral: KikurageBluetoothPeripheral) {
         self.bluetoothPeripheral = bluetoothPeripheral

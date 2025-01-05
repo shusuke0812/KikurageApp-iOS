@@ -15,7 +15,7 @@ public struct KikurageBluetoothPeripheral {
     public let peripheral: CBPeripheral
     public let uuid: UUID
 
-    init(advertisementData: [String: Any], rssi: NSNumber, peripheral: CBPeripheral) {
+    public init(advertisementData: [String: Any], rssi: NSNumber, peripheral: CBPeripheral) {
         self.advertisementData = advertisementData
         self.rssi = rssi
         self.peripheral = peripheral
