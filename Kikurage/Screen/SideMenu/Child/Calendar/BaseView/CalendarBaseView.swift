@@ -39,12 +39,12 @@ class CalendarBaseView: UIView {
         ])
     }
 
-    private func setupCalendarView(_ cultivationStartDateComponents: DateComponents, _ cultivationTerm: Int) {
+    private func setupCalendarView(cultivationStartDateComponents: DateComponents, currentDateComponents: DateComponents, cultivationTerm: Int) {
         // Calendar
         let calendarParentView = KUIRoundedView(props: KUIRoundedViewProps(backgroundColor: .white))
         calendarParentView.translatesAutoresizingMaskIntoConstraints = false
 
-        let calendarView = CalendarView(initialContent: makeContent(cultivationStartDateComponents))
+        let calendarView = CalendarView(initialContent: makeContent(cultivationStartDateComponents: cultivationStartDateComponents, currentDateComponents: currentDateComponents))
         calendarView.translatesAutoresizingMaskIntoConstraints = false
 
         let contentViewWidth = UIScreen.main.bounds.size.width - (15 * 2)
@@ -88,9 +88,9 @@ class CalendarBaseView: UIView {
         ])
     }
 
-    private func makeContent(_ cultivationStartDateComponents: DateComponents) -> CalendarViewContent {
+    private func makeContent(cultivationStartDateComponents: DateComponents, currentDateComponents: DateComponents) -> CalendarViewContent {
         let calendar = Calendar.current
-        let nowDateComponents = DateHelper.getDateComponents()
+        let nowDateComponents = currentDateComponents
         let startDate = calendar.date(from: cultivationStartDateComponents)!
         let endDate = calendar.date(from: nowDateComponents)!
 
@@ -105,7 +105,7 @@ class CalendarBaseView: UIView {
 // MARK: - Config
 
 extension CalendarBaseView {
-    func initCalendarView(cultivationStartDateComponents: DateComponents, cultivationTerm: Int) {
-        setupCalendarView(cultivationStartDateComponents, cultivationTerm)
+    func initCalendarView(cultivationStartDateComponents: DateComponents, currentDateComponents: DateComponents, cultivationTerm: Int) {
+        setupCalendarView(cultivationStartDateComponents: cultivationStartDateComponents, currentDateComponents: currentDateComponents, cultivationTerm: cultivationTerm)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KDLoginManager
 import KDRepository
 import KDEntity
 
@@ -16,6 +17,7 @@ public protocol SignUpViewModelDelegate: AnyObject {
 }
 
 public class SignUpViewModel {
+    private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
     private var loginUser: LoginUser?
 
@@ -25,7 +27,20 @@ public class SignUpViewModel {
     public var password: String = ""
 
     public init(loginRepository: LoginRepositoryProtocol) {
+        self.loginManager = LoginManager()
         self.loginRepository = loginRepository
+    }
+    
+    public func reloadUser(completion: @escaping ((Result<Void, Error>) -> Void)) {
+        loginManager.reloadUser { [weak self] result in
+            switch result {
+            case .success:
+                self?.loginManager.listenUserDetach()
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
 

@@ -9,6 +9,8 @@
 import PKHUD
 import UIKit
 import KSLoginService
+import KDRepository
+import KDEntity
 
 class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginAccessable {
     private let baseView = LoginBaseView()
@@ -21,7 +23,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
-        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository())
+        viewModel = LoginViewModel(loginRepository: LoginRepository())
 
         setDelegate()
         adjustNavigationBarBackgroundColor()

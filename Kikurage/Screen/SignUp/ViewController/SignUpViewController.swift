@@ -10,6 +10,7 @@ import PKHUD
 import RxCocoa
 import UIKit
 import KSSignUpService
+import KDRepository
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignUpAccessable {
     private let baseView = SignUpBaseView()
@@ -24,7 +25,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_signup_title()
-        viewModel = SignUpViewModel(signUpRepository: SignUpRepository())
+        viewModel = SignUpViewModel(loginRepository: LoginRepository())
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -80,9 +81,13 @@ extension SignUpViewController: SignUpViewModelDelegate {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: "仮登録完了", message: "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください", okButtonTitle: "次へ", cancelButtonTitle: nil) {
-                LoginHelper.shared.userReload { [weak self] in
-                    self?.pushToDeviceRegister()
-                    LoginHelper.shared.userListenerDetach()
+                self.viewModel.reloadUser { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.pushToDeviceRegister()
+                    case .failure(let error):
+                        assertionFailure("\(error)")
+                    }
                 }
             }
         }

@@ -55,6 +55,10 @@ public class LoginManager {
         userDefaultClient.remove(request)
     }
     
+    public func listenUserDetach() {
+        firebaseAuthClient.listenUserDetach()
+    }
+    
     private var user: LoginUser? {
         let request = LoginUserRequest()
         let result = userDefaultClient.read(request)

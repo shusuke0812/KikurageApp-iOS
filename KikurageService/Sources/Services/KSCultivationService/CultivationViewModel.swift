@@ -8,6 +8,7 @@
 
 import KDRepository
 import KDEntity
+import KDLoginManager
 import KSFeatures
 import Foundation
 import RxSwift
@@ -17,7 +18,7 @@ import UIKit.UICollectionView
 public protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
-    func loadCultivations(kikurageUserID: String)
+    func loadCultivations()
 }
 
 public protocol CultivationViewModelOutput {
@@ -33,6 +34,7 @@ public protocol CultivationViewModelType {
 
 public class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
+    private let loginManager: LoginManager
 
     private let disposeBag = RxSwift.DisposeBag()
     private let subject = PublishSubject<[KikurageCultivationTuple]>()
@@ -49,6 +51,7 @@ public class CultivationViewModel: CultivationViewModelType, CultivationViewMode
 
     public init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
+        self.loginManager = LoginManager()
 
         // for selected collection view item
         let _cultivation = PublishRelay<KikurageCultivationTuple>()
@@ -95,8 +98,12 @@ extension CultivationViewModel {
 
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
-    public func loadCultivations(kikurageUserID: String) {
-        let request = KikurageCultivationRequest(kikurageUserID: kikurageUserID)
+    public func loadCultivations() {
+        guard let userId = loginManager.userId else {
+            //errorSubject.onNext() // TODO: Error型を定義してVCに通知する
+            return
+        }
+        let request = KikurageCultivationRequest(kikurageUserID: userId)
         cultivationRepository.getCultivations(request: request)
             .subscribe(
                 onSuccess: { [weak self] cultivations in

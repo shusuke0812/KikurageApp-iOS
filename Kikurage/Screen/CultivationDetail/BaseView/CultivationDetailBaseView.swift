@@ -7,6 +7,7 @@
 //
 
 import KUIKit
+import KDEntity
 import UIKit
 
 class CultivationDetailBaseView: UIView {
