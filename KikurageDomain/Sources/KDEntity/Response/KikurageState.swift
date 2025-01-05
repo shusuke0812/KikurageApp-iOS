@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public struct KikurageState: Codable {
     public var temperature: Int?
@@ -40,4 +40,15 @@ public enum KikurageStateType: String, Codable {
     case normal
     case wet
     case dry
+    
+    public func getStateImages() -> [UIImage] {
+        var kikurageStateImages: [UIImage] = []
+        let beforeImage = UIImage(named: "\(rawValue)_01")! // swiftlint:disable:this force_unwrapping
+        let afterImage = UIImage(named: "\(rawValue)_02")! // swiftlint:disable:this force_unwrapping
+
+        kikurageStateImages.append(beforeImage)
+        kikurageStateImages.append(afterImage)
+
+        return kikurageStateImages
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KDEntity
 import KSCultivationService
 
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {

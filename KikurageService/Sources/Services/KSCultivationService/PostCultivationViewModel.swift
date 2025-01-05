@@ -8,6 +8,8 @@
 
 import KDEntity
 import KDRepository
+import KDLoginManager
+import KSFeatures
 import Foundation
 
 public protocol PostCultivationViewModelDelegate: AnyObject {
@@ -19,6 +21,7 @@ public protocol PostCultivationViewModelDelegate: AnyObject {
 
 public class PostCultivationViewModel {
     private let cultivationRepository: CultivationRepositoryProtocol
+    private let loginManager: LoginManager
 
     public weak var delegate: PostCultivationViewModelDelegate?
 
@@ -28,6 +31,12 @@ public class PostCultivationViewModel {
     public init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
         cultivation = KikurageCultivation()
+        loginManager = LoginManager()
+    }
+    
+    public func updateViewDate(date: Date) {
+        let dateString = DateHelper.formatToString(date: date)
+        cultivation.viewDate = dateString
     }
 }
 
@@ -48,8 +57,12 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Firestore
 
 extension PostCultivationViewModel {
-    public func postCultivation(kikurageUserID: String) {
-        var request = KikurageCultivationRequest(kikurageUserID: kikurageUserID)
+    public func postCultivation() {
+        guard let userId = loginManager.userId else {
+            delegate?.postCultivationViewModelDidFailedPostCultivation(self, with: "error")
+            return
+        }
+        var request = KikurageCultivationRequest(kikurageUserID: userId)
         request.body = request.buildBody(from: cultivation)
         cultivationRepository.postCultivation(request: request) { [weak self] response in
             switch response {
@@ -57,7 +70,7 @@ extension PostCultivationViewModel {
                 self?.postedCultivationDocumentID = documentId
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivation(self!)
             case .failure(let error):
-                self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
+                self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: "error") // TODO: error.description()
             }
         }
     }
@@ -80,16 +93,16 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Storage
 
 extension PostCultivationViewModel {
-    public func postCultivationImages(kikurageUserID: String, imageData: [Data?]) {
-        guard let postedCultivationDocumentID = postedCultivationDocumentID else {
+    public func postCultivationImages(imageData: [Data?]) {
+        guard let userId = loginManager.userId, let postedCultivationDocumentID = postedCultivationDocumentID else {
             delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return
         }
-        let imageStoragePath = "\(FirestoreCollectionName.users)/\(kikurageUserID)/\(FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
+        let imageStoragePath = "\(FirestoreCollectionName.users)/\(userId)/\(FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self?.putCultivationImages(kikurageUserID: kikurageUserID, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
+                self?.putCultivationImages(kikurageUserID: userId, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivationImages(self!, with: error.description())
             }

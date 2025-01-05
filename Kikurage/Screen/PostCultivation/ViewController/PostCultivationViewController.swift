@@ -8,6 +8,7 @@
 
 import KUIKit
 import KSCultivationService
+import KDRepository
 import PKHUD
 import UIKit
 
@@ -70,7 +71,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
     }
 
     func postCultivationBaseViewDidEndEditingCultivationDate(_ postCultivationBaseView: PostCultivationBaseView, date: Date) {
-        viewModel.cultivation.viewDate = DateHelper.formatToString(date: date)
+        viewModel.updateViewDate(date: date)
     }
 
     func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView) {
@@ -78,9 +79,7 @@ extension PostCultivationViewController: PostCultivationBaseViewDelegate {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
                 // HUD表示（始）
                 HUD.show(.progress)
-                if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-                    self.viewModel.postCultivation(kikurageUserID: kikurageUserID)
-                }
+                self.viewModel.postCultivation()
             }
         } else {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_valid_view_date(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
@@ -105,9 +104,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
         // nil要素を取り除いた選択した画像のみのData型に変換する
         let postImageData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.3).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            viewModel.postCultivationImages(kikurageUserID: kikurageUserID, imageData: postImageData)
-        }
+        viewModel.postCultivationImages(imageData: postImageData)
     }
 
     func postCultivationViewModelDidFailedPostCultivation(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {

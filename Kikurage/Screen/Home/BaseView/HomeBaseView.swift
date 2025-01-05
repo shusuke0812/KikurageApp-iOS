@@ -195,7 +195,7 @@ extension HomeBaseView {
     private func displayKikurageStateImage(type: KikurageStateType) {
         statusEmptyView.removeFromSuperview()
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        statusImageView.runAnimation(images: KikurageStateHelper.setStateImage(type: type))
+        statusImageView.runAnimation(images: type.getStateImages())
     }
 
     private func displayFailedKikurageStateImage() {

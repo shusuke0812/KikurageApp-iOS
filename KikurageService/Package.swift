@@ -27,7 +27,8 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0"))
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
     ],
     targets: [
         .target(
@@ -36,6 +37,8 @@ let package = Package(
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
+                .product(name: "FirebaseCore", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"),
                 .target(name: "KSFeatures")
             ],
             path: "Sources/Services/KSAppService"
@@ -81,6 +84,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxCocoa", package: "RxSwift"),
                 .target(name: "KSFeatures")
