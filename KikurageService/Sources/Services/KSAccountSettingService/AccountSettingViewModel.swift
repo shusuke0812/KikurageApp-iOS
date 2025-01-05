@@ -6,21 +6,23 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDEntity
+import KDRepository
 import Foundation
 
-protocol AccountSettingViewModelDelegate: AnyObject {
+public protocol AccountSettingViewModelDelegate: AnyObject {
     func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel)
     func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: AccountSettingViewModel, with errorMessage: String)
 }
 
-class AccountSettingViewModel {
+public class AccountSettingViewModel {
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
-    weak var delegate: AccountSettingViewModelDelegate?
+    public weak var delegate: AccountSettingViewModelDelegate?
 
-    var kikurageUser: KikurageUser?
+    public var kikurageUser: KikurageUser?
 
-    init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
     }
 }
@@ -28,7 +30,7 @@ class AccountSettingViewModel {
 // MARK: - Firebase Firestore
 
 extension AccountSettingViewModel {
-    func loadKikurageUser(uid: String) {
+    public func loadKikurageUser(uid: String) {
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {

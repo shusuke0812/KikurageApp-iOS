@@ -7,7 +7,7 @@
 //
 
 import CropViewController
-import KikurageService
+import KSAccountSettingService
 import UIKit
 
 class AccountSettingViewController: UIViewController {

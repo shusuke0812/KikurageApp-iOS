@@ -22,6 +22,7 @@
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482412D2A1CA200829067 /* KSCalendarService */; };
 		9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482432D2A1F4C00829067 /* KSGraphService */; };
+		9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482452D2A228200829067 /* KSAccountSettingService */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
@@ -73,7 +74,6 @@
 		9CAFDBFD27800D0700C40094 /* AcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */; };
 		9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */; };
 		9CAFDC0D278038F200C40094 /* AccountSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */; };
-		9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */; };
 		9CB38F2225AC10D9004B0CA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */; };
 		9CB38F2825AC1135004B0CA7 /* GraphBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */; };
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
@@ -232,7 +232,6 @@
 		9CAFDBFC27800D0700C40094 /* AcknowledgementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementController.swift; sourceTree = "<group>"; };
 		9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
 		9CAFDC0C278038F200C40094 /* AccountSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingBaseView.swift; sourceTree = "<group>"; };
-		9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		9CB38F2125AC10D9004B0CA7 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		9CB38F2725AC1135004B0CA7 /* GraphBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphBaseView.swift; sourceTree = "<group>"; };
 		9CB409D1276F051400E413E4 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
@@ -289,6 +288,7 @@
 				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
 				9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */,
 				9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */,
+				9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */,
 				9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */,
 				9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
@@ -916,7 +916,6 @@
 			children = (
 				9CAFDC052780212100C40094 /* BaseView */,
 				9CAFDC062780212A00C40094 /* ViewController */,
-				9CAFDC072780213300C40094 /* ViewModel */,
 			);
 			path = AccountSetting;
 			sourceTree = "<group>";
@@ -935,14 +934,6 @@
 				9CAFDC0827802F1F00C40094 /* AccountSettingViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		9CAFDC072780213300C40094 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CAFDC0E2780482900C40094 /* AccountSettingViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CB409D0276F04EF00E413E4 /* Entity */ = {
@@ -1527,7 +1518,6 @@
 				9CC7F4D729CEDC460045C866 /* WiFiSettingTableViewCell.swift in Sources */,
 				9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */,
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
-				9CAFDC0F2780482900C40094 /* AccountSettingViewModel.swift in Sources */,
 				9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */,
 				9CBE673A28BA5879002DA020 /* EmptyView.swift in Sources */,
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
@@ -2417,6 +2407,10 @@
 		9C2482432D2A1F4C00829067 /* KSGraphService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSGraphService;
+		};
+		9C2482452D2A228200829067 /* KSAccountSettingService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSAccountSettingService;
 		};
 		9C697E1A2D23C2F1005BC4DA /* KDRepository */ = {
 			isa = XCSwiftPackageProductDependency;
