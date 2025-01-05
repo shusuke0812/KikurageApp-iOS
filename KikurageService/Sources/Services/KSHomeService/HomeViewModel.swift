@@ -6,29 +6,31 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import Foundation
 import KDRepository
 import KDEntity
+import KSFeatures
 import RxSwift
+import Foundation
 
-protocol HomeViewModelInput {
+public protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
 
     func loadKikurageState()
     func listenKikurageState()
 }
 
-protocol HomeViewModelOutput {
+public protocol HomeViewModelOutput {
     var kikurageState: Observable<KikurageState> { get }
     var error: Observable<Error> { get }
+    var dateNowString: String { get }
 }
 
-protocol HomeViewModelType {
+public protocol HomeViewModelType {
     var input: HomeViewModelInput { get }
     var output: HomeViewModelOutput { get }
 }
 
-class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
+public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
@@ -36,14 +38,18 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     private let errorSubject = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
 
-    var input: HomeViewModelInput { self }
-    var output: HomeViewModelOutput { self }
+    public var input: HomeViewModelInput { self }
+    public var output: HomeViewModelOutput { self }
 
-    var kikurageUser: KikurageUser
-    var kikurageState: Observable<KikurageState> { subject.asObservable() }
-    var error: Observable<Error> { errorSubject.asObservable() }
+    public var kikurageUser: KikurageUser
+    public var kikurageState: Observable<KikurageState> { subject.asObservable() }
+    public var error: Observable<Error> { errorSubject.asObservable() }
+    
+    public var dateNowString: String {
+        DateHelper.now()
+    }
 
-    init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
+    public init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
         self.kikurageUser = kikurageUser
 
         self.kikurageStateRepository = kikurageStateRepository
@@ -65,7 +71,7 @@ extension HomeViewModel {
 
 extension HomeViewModel {
     /// きくらげの状態を読み込む
-    func loadKikurageState() {
+    public func loadKikurageState() {
         let request = KikurageStateRequest(productID: kikurageUser.productKey)
         kikurageStateRepository.getKikurageState(request: request)
             .subscribe(
@@ -80,7 +86,7 @@ extension HomeViewModel {
     }
 
     /// きくらげの状態をリッスンする
-    func listenKikurageState() {
+    public func listenKikurageState() {
         kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
             .subscribe(
                 onNext: { [weak self] kikurageState in

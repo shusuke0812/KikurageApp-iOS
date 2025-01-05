@@ -7,6 +7,7 @@
 //
 
 import CropViewController
+import KDRepository
 import KSAccountSettingService
 import UIKit
 
@@ -26,9 +27,7 @@ class AccountSettingViewController: UIViewController {
         setDelegateDataSource()
         setNavigation()
 
-        if let userID = LoginHelper.shared.kikurageUserID {
-            viewModel.loadKikurageUser(uid: userID)
-        }
+        viewModel.loadKikurageUser()
     }
 
     override func viewDidAppear(_ animated: Bool) {

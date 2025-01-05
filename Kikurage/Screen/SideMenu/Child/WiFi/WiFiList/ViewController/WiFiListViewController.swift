@@ -7,6 +7,7 @@
 //
 
 import KSWiFiService
+import KSFeatures
 import KUIKit
 import UIKit
 

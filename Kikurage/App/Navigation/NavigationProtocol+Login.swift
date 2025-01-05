@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import KDEntity
 import Foundation
 
 protocol LoginAccessable: PushNavigationProtocol {

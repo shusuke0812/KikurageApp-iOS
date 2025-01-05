@@ -72,6 +72,7 @@ let package = Package(
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "RxSwift", package: "RxSwift"),
+                .target(name: "KSFeatures")
             ],
             path: "Sources/Services/KSHomeService"
         ),
@@ -111,6 +112,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain")
             ],
             path: "Sources/Services/KSGraphService"
         ),
@@ -119,6 +121,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain")
             ],
             path: "Sources/Services/KSAccountSettingService"
         ),
@@ -156,7 +159,7 @@ let package = Package(
                 .product(name: "KDEntity", package: "KikurageDomain"),
             ],
             resources: [
-                .process("Resources")
+                .process("../Resources")
             ]
         ),
     ]

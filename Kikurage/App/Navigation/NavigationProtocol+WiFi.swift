@@ -6,7 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KikurageService
+import KSFeatures
 import UIKit
 
 protocol WiFiAccessable: PushNavigationProtocol {

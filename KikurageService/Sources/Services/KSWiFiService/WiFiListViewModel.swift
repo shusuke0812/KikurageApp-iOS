@@ -16,7 +16,7 @@ public protocol WiFiListViewModelDelegate: AnyObject {
 }
 
 public class WiFiListViewModel: NSObject {
-    private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
+    public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
     private let bluetoothPeripheral: KikurageBluetoothPeripheral

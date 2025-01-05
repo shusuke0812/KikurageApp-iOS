@@ -6,6 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDLoginManager
 import KDEntity
 import KDRepository
 import Foundation
@@ -17,6 +18,7 @@ public protocol AccountSettingViewModelDelegate: AnyObject {
 
 public class AccountSettingViewModel {
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
+    private let loginManager: LoginManager
 
     public weak var delegate: AccountSettingViewModelDelegate?
 
@@ -24,13 +26,18 @@ public class AccountSettingViewModel {
 
     public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
+        self.loginManager = LoginManager()
     }
 }
 
 // MARK: - Firebase Firestore
 
 extension AccountSettingViewModel {
-    public func loadKikurageUser(uid: String) {
+    public func loadKikurageUser() {
+        guard let uid = loginManager.userId else {
+            delegate?.settingViewModelDidFailedGetKikurageUser(self, with: "error")
+            return
+        }
         let request = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
@@ -38,7 +45,7 @@ extension AccountSettingViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.settingViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: error.description())
+                self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: "error") // TODO: error.description()
             }
         }
     }

@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KDRepository
 import KSGraphService
 import UIKit
 
@@ -53,11 +54,8 @@ extension GraphViewController {
     }
 
     private func loadKikurageUser() {
-        guard let userID = LoginHelper.shared.kikurageUserID else {
-            return
-        }
         baseView.startGraphActivityIndicators()
-        viewModel.loadKikurageUser(uid: userID)
+        viewModel.loadKikurageUser()
     }
 
     private func loadKikurageStateGraph() {

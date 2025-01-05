@@ -6,6 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KDEntity
 import UIKit
 
 protocol TopAccessable: PushNavigationProtocol, SafariViewNavigationProtocol {

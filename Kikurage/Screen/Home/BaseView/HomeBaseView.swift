@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KDEntity
 import KUIKit
 import UIKit
 
@@ -61,7 +62,7 @@ extension HomeBaseView {
         statusImageView.translatesAutoresizingMaskIntoConstraints = false
 
         nowTimeLabel = UILabel()
-        nowTimeLabel.text = DateHelper.now()
+        nowTimeLabel.text = "-"
         nowTimeLabel.font = .systemFont(ofSize: 11)
         nowTimeLabel.textAlignment = .right
         nowTimeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -187,8 +188,8 @@ extension HomeBaseView {
         }
     }
 
-    func updateTimeLabel() {
-        nowTimeLabel.text = DateHelper.now()
+    func updateTimeLabel(dateString: String) {
+        nowTimeLabel.text = dateString
     }
 
     private func displayKikurageStateImage(type: KikurageStateType) {

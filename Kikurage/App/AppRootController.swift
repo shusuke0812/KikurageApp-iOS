@@ -6,7 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KUIKit
 import KSAppService
 import UIKit
 
