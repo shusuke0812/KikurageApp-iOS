@@ -20,6 +20,7 @@
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
+		9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482412D2A1CA200829067 /* KSCalendarService */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
@@ -47,7 +48,6 @@
 		9C90935E25B6666C00496F38 /* ChartViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90935D25B6666C00496F38 /* ChartViewHelper.swift */; };
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
-		9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125325B69EA0007BCECB /* CalendarViewModel.swift */; };
 		9C9145C727B1E77C0051BE1F /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C627B1E77C0051BE1F /* LoginUITests.swift */; };
 		9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */; };
 		9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */; };
@@ -206,7 +206,6 @@
 		9C90935D25B6666C00496F38 /* ChartViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHelper.swift; sourceTree = "<group>"; };
 		9C91124A25B68ED0007BCECB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		9C91125025B68F2E007BCECB /* CalendarBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBaseView.swift; sourceTree = "<group>"; };
-		9C91125325B69EA0007BCECB /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9145C627B1E77C0051BE1F /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
 		9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -288,6 +287,7 @@
 			files = (
 				9CCA43BF2D22C535005A78ED /* FirebaseRemoteConfig in Frameworks */,
 				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
+				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
 				9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */,
 				9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */,
 				9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */,
@@ -762,7 +762,6 @@
 			children = (
 				9CA20455271C788000D65DD7 /* BaseView */,
 				9CA20464271C7B2400D65DD7 /* ViewController */,
-				9CA2046E271C7C8600D65DD7 /* ViewModel */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -875,14 +874,6 @@
 			isa = PBXGroup;
 			children = (
 				9CB38F2A25AC1240004B0CA7 /* GraphViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9CA2046E271C7C8600D65DD7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9C91125325B69EA0007BCECB /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1537,7 +1528,6 @@
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
 				9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */,
-				9C91125425B69EA0007BCECB /* CalendarViewModel.swift in Sources */,
 				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
@@ -2429,6 +2419,10 @@
 		9C06D2F22D281B1A00B52292 /* KUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KUIKit;
+		};
+		9C2482412D2A1CA200829067 /* KSCalendarService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSCalendarService;
 		};
 		9C697E1A2D23C2F1005BC4DA /* KDRepository */ = {
 			isa = XCSwiftPackageProductDependency;
