@@ -8,6 +8,8 @@
 
 import KUIKit
 import KSAppService
+import KDRepository
+import KDEntity
 import UIKit
 
 class AppRootController: UIViewController {
@@ -27,12 +29,12 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         initHUD()
 
-        presenter = AppPresenter(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
+        presenter = AppPresenter(appConfigRepository: AppConfigRepository())
         presenter.delegate = self
 
         fetchRemoteConfig()
 
-        if LoginHelper.shared.isLogin {
+        if presenter.isLogin {
             presenter.login()
         } else {
             showTopPage()

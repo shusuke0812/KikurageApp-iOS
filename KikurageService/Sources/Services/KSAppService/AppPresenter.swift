@@ -11,17 +11,21 @@ import KDLoginManager
 import KSFeatures
 import Foundation
 
-public protocol AppPresenterDelete: AnyObject {
+public protocol AppPresenterDelegate: AnyObject {
     func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
     func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String)
 }
 
 public class AppPresenter {
+    public var isLogin: Bool {
+        loginManager.isLogin
+    }
+
     private let appConfigRepository: AppConfigRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
     private let loginManager: LoginManager
     
-    public weak var delegate: AppPresenterDelete?
+    public weak var delegate: AppPresenterDelegate?
     
     public init(
         appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository()
@@ -43,7 +47,7 @@ public class AppPresenter {
         }
     }
     
-    func loadFacebookGroupURL() {
+    public func loadFacebookGroupURL() {
         appConfigRepository.getFacebookGroupUrl { response in
             switch response {
             case .success(let urlString):
@@ -55,7 +59,7 @@ public class AppPresenter {
         }
     }
 
-    func loadTermsURL() {
+    public func loadTermsURL() {
         appConfigRepository.getTermsUrl { response in
             switch response {
             case .success(let urlString):
@@ -67,7 +71,7 @@ public class AppPresenter {
         }
     }
 
-    func loadPrivacyPolicyURL() {
+    public func loadPrivacyPolicyURL() {
         appConfigRepository.getPrivacyPolicyUrl { response in
             switch response {
             case .success(let urlString):
@@ -79,7 +83,7 @@ public class AppPresenter {
         }
     }
 
-    func loadLatestAppVersion() {
+    public func loadLatestAppVersion() {
         appConfigRepository.getLatestAppVersion { response in
             switch response {
             case .success(let appVersionString):

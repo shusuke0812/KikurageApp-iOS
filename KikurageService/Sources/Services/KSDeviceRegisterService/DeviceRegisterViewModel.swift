@@ -9,6 +9,7 @@
 import KDRepository
 import KDEntity
 import KDLoginManager
+import KSFeatures
 import UIKit
 
 public protocol DeviceRegisterViewModelDelegate: AnyObject {
@@ -34,6 +35,10 @@ public class DeviceRegisterViewModel {
         self.kikurageUserRepository = kikurageUserRepository
         self.loginManager = LoginManager()
         kikurageUser = KikurageUser()
+    }
+    
+    public func getDateString(date: Date) -> String {
+        DateHelper.formatToString(date: date)
     }
 }
 

@@ -8,6 +8,7 @@
 
 import AVFoundation
 import KSDeviceRegisterService
+import KDRepository
 import PKHUD
 import UIKit
 
@@ -86,7 +87,7 @@ extension DeviceRegisterViewController: UITextFieldDelegate {
 
     private func setCultivationStartDateTextFieldData() {
         let date: Date = baseView.cultivationStartDateTextField.date
-        let dataString: String = DateHelper.formatToString(date: date)
+        let dataString: String = viewModel.getDateString(date: date)
         baseView.cultivationStartDateTextField.text = dataString
         viewModel.kikurageUser?.cultivationStartDate = date
     }
@@ -159,7 +160,7 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
 // MARK: - KikurageQRCodeReaderViewModel Delegate
 
 extension DeviceRegisterViewController: QRCodeReaderViewModelDelegate {
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
         DispatchQueue.main.async {
             if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.qrcodeReaderView.windowOrientation) {
                 self.baseView.qrcodeReaderView.configCaptureOrientation(videoOrientation)
@@ -182,7 +183,7 @@ extension DeviceRegisterViewController: QRCodeReaderViewModelDelegate {
         viewModel.setStateReference(productKey: qrCodeString)
     }
 
-    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: KikurageQRCodeReaderViewModel, didNotRead error: SessionSetupError) {
+    func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didNotRead error: SessionSetupError) {
         DispatchQueue.main.async {
             self.baseView.showKikurageQrcodeReaderView(isHidden: true)
         }
