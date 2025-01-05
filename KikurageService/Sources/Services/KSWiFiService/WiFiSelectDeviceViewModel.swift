@@ -8,7 +8,6 @@
 
 import KSFeatures
 import Foundation
-import UIKit.UITableView
 
 public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
@@ -20,9 +19,9 @@ public class WiFiSelectDeviceViewModel: NSObject {
     private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
-    private var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
+    private(set) var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
     private var selectedIndexPath: IndexPath?
-    private(set) var bluetoothCentralState: KikurageBluetoothCentralState?
+    private var bluetoothCentralState: KikurageBluetoothCentralState?
 
     public weak var delegate: WiFiSelectDeviceViewModelDelegate?
 
@@ -39,6 +38,10 @@ public class WiFiSelectDeviceViewModel: NSObject {
     private func add(peripheral: KikurageBluetoothPeripheral) {
         bluetoothPeripherals.add(peripheral: peripheral)
     }
+    
+    public func sectionRows() -> Int {
+        bluetoothPeripherals.listCount
+    }
 
     public func connectToPeripheral(indexPath: IndexPath) {
         let peripheral = bluetoothPeripherals.getElement(indexPath: indexPath).peripheral
@@ -48,24 +51,6 @@ public class WiFiSelectDeviceViewModel: NSObject {
 
     public func scanForPeripherals() {
         bluetoothManager.scanForPeripherals()
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension WiFiSelectDeviceViewModel: UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
-    }
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        bluetoothPeripherals.listCount
-    }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
-        cell.updateComponent(peripheral: bluetoothPeripherals.getElement(indexPath: indexPath))
-        return cell
     }
 }
 

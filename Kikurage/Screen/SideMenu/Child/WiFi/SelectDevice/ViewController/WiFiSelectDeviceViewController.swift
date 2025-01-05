@@ -44,7 +44,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
     }
 
     private func setupProtocols() {
-        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+        baseView.setupTableViewProtocols(delegate: self, dataSource: self)
     }
 
     private func setupNavigation() {
@@ -66,6 +66,24 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
         baseView.setupTableViewHeaderView(KUITableHeaderView.create(tableView: tableView))
         baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
         return baseView.tableViewHeaderView
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension WiFiSelectDeviceViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.sectionRows()
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
+        cell.updateComponent(peripheral: viewModel.bluetoothPeripherals.getElement(indexPath: indexPath))
+        return cell
     }
 }
 

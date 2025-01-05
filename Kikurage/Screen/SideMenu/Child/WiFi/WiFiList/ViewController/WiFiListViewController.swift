@@ -53,7 +53,7 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
     }
 
     private func setupProtocols() {
-        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+        baseView.setupTableViewProtocols(delegate: self, dataSource: self)
     }
 
     private func transitionToWiFiSetting(selectedSSID: String) {
@@ -73,6 +73,37 @@ extension WiFiListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let ssid = viewModel.getSelectedSSID(indexPath: indexPath)
         transitionToWiFiSetting(selectedSSID: ssid)
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension WiFiListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.sectionRows(section: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = viewModel.sections[indexPath.section]
+        switch section {
+        case .spec:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListSpecTableViewCell", for: indexPath) as! WiFiListSpecTableViewCell // swiftlint:disable:this force_cast
+            cell.updateComponent(title: section.rows[indexPath.row].title)
+            cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: bluetoothPeripheral))
+            return cell
+        case .enterWifi:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
+            cell.updateComponent(title: section.rows[indexPath.row].title)
+            return cell
+        case .selectWifi:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
+            cell.updateComponent(title: viewModel.wifiList.getWiFiTitle(indexPath: indexPath))
+            return cell
+        }
     }
 }
 

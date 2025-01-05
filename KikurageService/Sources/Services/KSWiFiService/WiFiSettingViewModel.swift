@@ -8,7 +8,6 @@
 
 import KSFeatures
 import Foundation
-import UIKit.UITableView
 
 public protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
@@ -20,7 +19,7 @@ public class WiFiSettingViewModel: NSObject {
     private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
-    private var wifiSetting: KikurageWiFiSetting
+    private(set) var wifiSetting: KikurageWiFiSetting
 
     public weak var delegate: WiFiSettingViewModelDelegate?
 
@@ -29,28 +28,8 @@ public class WiFiSettingViewModel: NSObject {
         super.init()
         bluetoothManager.peripheralDelegate = self
     }
-
-    public func setupWiFi() {
-        bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
-    }
-
-    private func validateWiFiSetting() -> Bool {
-        !wifiSetting.ssid.isEmpty && !wifiSetting.password.isEmpty
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension WiFiSettingViewModel: UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
-    }
-
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        sections[section].title
-    }
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    public func sectionRows(section: Int) -> Int {
         let section = sections[section]
         switch section {
         case .required:
@@ -60,40 +39,12 @@ extension WiFiSettingViewModel: UITableViewDataSource {
         }
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = sections[indexPath.section]
-        let row = section.rows[indexPath.row]
-        switch section {
-        case .required:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSettingTableViewCell", for: indexPath) as! WiFiSettingTableViewCell // swiftlint:disable:this force_cast
-            cell.updateComponent(title: row.title)
-            cell.type = row
-            cell.delegate = self
-            if row == .ssid {
-                cell.updateComponent(textFieldText: wifiSetting.ssid)
-            }
-            return cell
-        case .optional:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
-            cell.updateComponent(title: row.title)
-            return cell
-        }
+    public func setupWiFi() {
+        bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
     }
-}
 
-// MARK: - WiFiSettingTableViewCellDelegate
-
-extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
-    public func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String) {
-        switch wifiSettingTableViewCell.type {
-        case .ssid:
-            wifiSetting.ssid = text
-        case .password:
-            wifiSetting.password = text
-        case .activeScan, .security:
-            break // never called
-        }
-        delegate?.wifiSettingViewModel(self, canSetWiFi: validateWiFiSetting())
+    private func validateWiFiSetting() -> Bool {
+        !wifiSetting.ssid.isEmpty && !wifiSetting.password.isEmpty
     }
 }
 
