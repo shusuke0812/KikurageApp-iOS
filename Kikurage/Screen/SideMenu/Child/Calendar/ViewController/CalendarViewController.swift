@@ -7,6 +7,7 @@
 //
 
 import KSCalendarService
+import KDRepository
 import UIKit
 
 class CalendarViewController: UIViewController {
@@ -25,9 +26,7 @@ class CalendarViewController: UIViewController {
         setDelegateDataSource()
         setNavigation()
 
-        if let userID = LoginHelper.shared.kikurageUserID {
-            viewModel.loadKikurageUser(uid: userID)
-        }
+        viewModel.loadKikurageUser()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +59,7 @@ extension CalendarViewController {
 
 extension CalendarViewController: CalendarViewModelDelegate {
     func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {
-        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, cultivationTerm: calendarViewModel.cultivationTerm ?? 0)
+        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, currentDateComponents: viewModel.cultivationDateComponents, cultivationTerm: calendarViewModel.cultivationTerm ?? 0)
     }
 
     func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String) {

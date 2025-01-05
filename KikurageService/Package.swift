@@ -110,6 +110,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
+                .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .target(name: "KSFeatures")
             ],
             path: "Sources/Services/KSCalendarService"

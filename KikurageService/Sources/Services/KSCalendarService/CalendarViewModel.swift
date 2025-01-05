@@ -8,6 +8,7 @@
 
 import KDEntity
 import KDRepository
+import KDLoginManager
 import KSFeatures
 import Foundation
 
@@ -17,16 +18,22 @@ public protocol CalendarViewModelDelegate: AnyObject {
 }
 
 public class CalendarViewModel {
-    private let kikurageUserRepository: KikurageUserRepositoryProtocol
+    public private(set) var cultivationDateComponents: DateComponents
+    public private(set) var cultivationTerm: Int?
+    public var currentDateComponents: DateComponents {
+        DateHelper.getDateComponents()
+    }
 
     public weak var delegate: CalendarViewModelDelegate?
+    
+    private let kikurageUserRepository: KikurageUserRepositoryProtocol
+    private let loginManager: LoginManager
 
     private(set) var kikurageUser: KikurageUser?
-    private(set) var cultivationDateComponents: DateComponents
-    private(set) var cultivationTerm: Int?
 
     public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
+        self.loginManager = LoginManager()
         cultivationDateComponents = DateHelper.getDateComponents()
         cultivationTerm = 0
     }
@@ -57,8 +64,12 @@ extension CalendarViewModel {
 extension CalendarViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
-    public func loadKikurageUser(uid: String) {
-        let request = KikurageUserRequest(uid: uid)
+    public func loadKikurageUser() {
+        guard let userId = loginManager.userId else {
+            delegate?.calendarViewModelDidFailedGetKikurageUser(self, with: "error")
+            return
+        }
+        let request = KikurageUserRequest(uid: userId)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageUser):
@@ -67,7 +78,7 @@ extension CalendarViewModel {
                 self?.calcCultivationTerm()
                 self?.delegate?.calendarViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.calendarViewModelDidFailedGetKikurageUser(self!, with: error.description())
+                self?.delegate?.calendarViewModelDidFailedGetKikurageUser(self!, with: "error") // TODO: error.description()
             }
         }
     }
