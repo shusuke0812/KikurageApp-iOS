@@ -7,6 +7,8 @@
 //
 
 import KSDictionaryService
+import KDRepository
+import KDEntity
 import SwiftUI
 import UIKit
 

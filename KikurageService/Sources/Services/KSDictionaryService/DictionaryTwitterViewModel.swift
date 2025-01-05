@@ -20,11 +20,11 @@ public protocol DictionaryTwitterViewModelDelegate: AnyObject {
 }
 
 public class DictionaryTwitterViewModel: NSObject {
-    private let twitterSearchRepository: TwitterSearchRepositoryProtocol
+    public private(set) var tweets: [Tweet.Status] = []
 
     public weak var delegate: DictionaryTwitterViewModelDelegate?
 
-    private(set) var tweets: [Tweet.Status] = []
+    private let twitterSearchRepository: TwitterSearchRepositoryProtocol
 
     public init(twitterSearchRepository: TwitterSearchRepositoryProtocol) {
         self.twitterSearchRepository = twitterSearchRepository
