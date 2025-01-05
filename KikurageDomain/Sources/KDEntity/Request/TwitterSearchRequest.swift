@@ -16,6 +16,13 @@ public struct TwitterSearchRequest: APIRequestProtocol {
     public let searchCount: Int
     public let maxID: Int64?
     public let sinceID: Int64?
+    
+    public init(searchWord: String, searchCount: Int, maxID: Int64?, sinceID: Int64?) {
+        self.searchWord = searchWord
+        self.searchCount = searchCount
+        self.maxID = maxID
+        self.sinceID = sinceID
+    }
 
     public typealias Response = Tweet
 

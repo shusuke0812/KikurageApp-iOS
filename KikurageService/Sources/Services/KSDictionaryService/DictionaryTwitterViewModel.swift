@@ -6,29 +6,33 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import Foundation
-import KUIKit
-import UIKit.UITableView
 
-protocol DictionaryTwitterViewModelDelegate: AnyObject {
+import KUIKit
+import KDEntity
+import KDRepository
+import KSFeatures
+import UIKit.UITableView
+import Foundation
+
+public protocol DictionaryTwitterViewModelDelegate: AnyObject {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel)
     func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String)
 }
 
-class DictionaryTwitterViewModel: NSObject {
+public class DictionaryTwitterViewModel: NSObject {
     private let twitterSearchRepository: TwitterSearchRepositoryProtocol
 
-    weak var delegate: DictionaryTwitterViewModelDelegate?
+    public weak var delegate: DictionaryTwitterViewModelDelegate?
 
     private(set) var tweets: [Tweet.Status] = []
 
-    init(twitterSearchRepository: TwitterSearchRepositoryProtocol) {
+    public init(twitterSearchRepository: TwitterSearchRepositoryProtocol) {
         self.twitterSearchRepository = twitterSearchRepository
     }
 }
 
 extension DictionaryTwitterViewModel {
-    func loadTweets() {
+    public func loadTweets() {
         let twitterSearchRequest = TwitterSearchRequest(searchWord: "きくらげ", searchCount: 10, maxID: nil, sinceID: nil)
         twitterSearchRepository.getTweets(request: twitterSearchRequest) { [weak self] response in
             switch response {
@@ -45,11 +49,11 @@ extension DictionaryTwitterViewModel {
 // MARK: - UITableViewDataSource
 
 extension DictionaryTwitterViewModel: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tweets.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: KUITweetTableViewCell.identifier, for: indexPath) as! KUITweetTableViewCell // swiftlint:disable:this force_cast
         let tweet = tweets[indexPath.row]
         cell.updateItem(props: KUITweetTableViewCellProps(

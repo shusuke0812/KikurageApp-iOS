@@ -6,6 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KSDictionaryService
 import SwiftUI
 import UIKit
 

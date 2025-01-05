@@ -8,4 +8,6 @@
 
 import Foundation
 
-class DictionaryViewModel {}
+public class DictionaryViewModel {
+    public init() {}
+}
