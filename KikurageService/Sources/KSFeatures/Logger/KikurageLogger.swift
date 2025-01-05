@@ -106,20 +106,3 @@ public struct KLogger: KLoggerProtocol {
         #endif
     }
 }
-
-// MARK: - TimerStamp
-
-private struct DateHelper {
-    private static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .gregorian)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
-
-    /// Date型をログに使うString型へ変換する
-    static func formatToStringForLog() -> String {
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
-        return dateFormatter.string(from: Date())
-    }
-}
