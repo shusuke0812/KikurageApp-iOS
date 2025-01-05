@@ -108,13 +108,10 @@
 		9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */; };
 		9CE0184329B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */; };
 		9CE0184529B46CBE00365E95 /* WiFiSelectDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184429B46CBE00365E95 /* WiFiSelectDeviceViewController.swift */; };
-		9CE0184729B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184629B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift */; };
 		9CE0184929B46CE600365E95 /* WiFiListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184829B46CE600365E95 /* WiFiListBaseView.swift */; };
 		9CE0184B29B46CF300365E95 /* WiFiListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184A29B46CF300365E95 /* WiFiListViewController.swift */; };
-		9CE0184D29B46D0500365E95 /* WiFiListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184C29B46D0500365E95 /* WiFiListViewModel.swift */; };
 		9CE0184F29B46D6400365E95 /* WiFiSettingBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0184E29B46D6400365E95 /* WiFiSettingBaseView.swift */; };
 		9CE0185129B46D7700365E95 /* WiFiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185029B46D7700365E95 /* WiFiSettingViewController.swift */; };
-		9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */; };
 		9CE029AA27F4901E002BDD30 /* DictionaryBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */; };
 		9CE029AC27F490C8002BDD30 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */; };
 		9CE1EE3E27D4B8FA00B5BE9C /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */; };
@@ -122,7 +119,6 @@
 		9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */; };
 		9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */; };
 		9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */; };
-		9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
 		9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */; };
@@ -132,6 +128,7 @@
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
+		9CFBA7E22D2A59930029ABF9 /* KSWiFiService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CFBA7E12D2A59930029ABF9 /* KSWiFiService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,13 +251,10 @@
 		9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterBaseView.swift; sourceTree = "<group>"; };
 		9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceBaseView.swift; sourceTree = "<group>"; };
 		9CE0184429B46CBE00365E95 /* WiFiSelectDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewController.swift; sourceTree = "<group>"; };
-		9CE0184629B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
 		9CE0184829B46CE600365E95 /* WiFiListBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListBaseView.swift; sourceTree = "<group>"; };
 		9CE0184A29B46CF300365E95 /* WiFiListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListViewController.swift; sourceTree = "<group>"; };
-		9CE0184C29B46D0500365E95 /* WiFiListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListViewModel.swift; sourceTree = "<group>"; };
 		9CE0184E29B46D6400365E95 /* WiFiSettingBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingBaseView.swift; sourceTree = "<group>"; };
 		9CE0185029B46D7700365E95 /* WiFiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewController.swift; sourceTree = "<group>"; };
-		9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
 		9CE029A927F4901E002BDD30 /* DictionaryBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBaseView.swift; sourceTree = "<group>"; };
 		9CE029AB27F490C8002BDD30 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		9CE1EE3D27D4B8FA00B5BE9C /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
@@ -268,7 +262,6 @@
 		9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Cultivation.swift"; sourceTree = "<group>"; };
 		9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceTableViewCell.swift; sourceTree = "<group>"; };
-		9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSectionType.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +292,7 @@
 				9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
 				9CCA43BD2D22C535005A78ED /* FirebaseFirestore in Frameworks */,
+				9CFBA7E22D2A59930029ABF9 /* KSWiFiService in Frameworks */,
 				9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */,
 				9CCA43C92D22C601005A78ED /* IQKeyboardManagerSwift in Frameworks */,
 				9CCA43B72D22C535005A78ED /* FirebaseAnalytics in Frameworks */,
@@ -969,7 +963,6 @@
 				9CE0183229B46B5D00365E95 /* SelectDevice */,
 				9CE0183329B46B7A00365E95 /* WiFiList */,
 				9CE0183429B46B8B00365E95 /* WiFiSetting */,
-				9CE41D6429B5892000E797E3 /* WiFiSectionType.swift */,
 			);
 			path = WiFi;
 			sourceTree = "<group>";
@@ -979,7 +972,6 @@
 			children = (
 				9CE0183629B46BFB00365E95 /* BaseView */,
 				9CE0183729B46C0200365E95 /* ViewController */,
-				9CE0183829B46C0E00365E95 /* ViewModel */,
 			);
 			path = SelectDevice;
 			sourceTree = "<group>";
@@ -989,7 +981,6 @@
 			children = (
 				9CE0183B29B46C2F00365E95 /* BaseView */,
 				9CE0183A29B46C2700365E95 /* ViewController */,
-				9CE0183929B46C1F00365E95 /* ViewModel */,
 			);
 			path = WiFiList;
 			sourceTree = "<group>";
@@ -999,7 +990,6 @@
 			children = (
 				9CE0183E29B46C4300365E95 /* BaseView */,
 				9CE0183D29B46C3C00365E95 /* ViewController */,
-				9CE0183C29B46C3600365E95 /* ViewModel */,
 			);
 			path = WiFiSetting;
 			sourceTree = "<group>";
@@ -1021,22 +1011,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		9CE0183829B46C0E00365E95 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CE0184629B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9CE0183929B46C1F00365E95 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CE0184C29B46D0500365E95 /* WiFiListViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		9CE0183A29B46C2700365E95 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,14 +1027,6 @@
 				9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */,
 			);
 			path = BaseView;
-			sourceTree = "<group>";
-		};
-		9CE0183C29B46C3600365E95 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9CE0185229B46D8400365E95 /* WiFiSettingViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9CE0183D29B46C3C00365E95 /* ViewController */ = {
@@ -1489,7 +1455,6 @@
 				9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
-				9CE41D6529B5892000E797E3 /* WiFiSectionType.swift in Sources */,
 				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
@@ -1511,8 +1476,6 @@
 				9C12F9652244F9FC00BA9FCB /* DeviceRegisterViewController.swift in Sources */,
 				9CE0184F29B46D6400365E95 /* WiFiSettingBaseView.swift in Sources */,
 				9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */,
-				9CE0184729B46CCB00365E95 /* WiFiSelectDeviceViewModel.swift in Sources */,
-				9CE0185329B46D8400365E95 /* WiFiSettingViewModel.swift in Sources */,
 				9C7E58832776109B00A151C0 /* CGFloat+Extension.swift in Sources */,
 				9CDD1FC225A69040006DA852 /* DeviceRegisterBaseView.swift in Sources */,
 				9CAFDC0927802F1F00C40094 /* AccountSettingViewController.swift in Sources */,
@@ -1532,7 +1495,6 @@
 				9C82B42425305E6C00E650B5 /* UIView+Extension.swift in Sources */,
 				9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */,
 				9CCE9EFE2B932F1200D13911 /* SceneDelegate.swift in Sources */,
-				9CE0184D29B46D0500365E95 /* WiFiListViewModel.swift in Sources */,
 				9CA9565B284E4D2A005B7867 /* DebugViewModel.swift in Sources */,
 				9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */,
 				9C9D752B27DF6CC5002611FF /* NavigationProtocol+Top.swift in Sources */,
@@ -2491,6 +2453,10 @@
 		9CEE7F472D296020006E6A01 /* KSRecipeService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSRecipeService;
+		};
+		9CFBA7E12D2A59930029ABF9 /* KSWiFiService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KSWiFiService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

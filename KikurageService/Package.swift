@@ -21,6 +21,7 @@ let package = Package(
         .library(name: "KSGraphService", targets: ["KSGraphService"]),
         .library(name: "KSAccountSettingService", targets: ["KSAccountSettingService"]),
         .library(name: "KSDictionaryService", targets: ["KSDictionaryService"]),
+        .library(name: "KSWiFiService", targets: ["KSWiFiService"]),
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
@@ -127,6 +128,15 @@ let package = Package(
                 .target(name: "KSFeatures")
             ],
             path: "Sources/Services/KSDictionaryService"
+        ),
+        .target(
+            name: "KSWiFiService",
+            dependencies: [
+                .product(name: "KDRepository", package: "KikurageDomain"),
+                .product(name: "KDEntity", package: "KikurageDomain"),
+                .target(name: "KSFeatures")
+            ],
+            path: "Sources/Services/KSWiFiService"
         ),
         // MARK: - Features
         .target(

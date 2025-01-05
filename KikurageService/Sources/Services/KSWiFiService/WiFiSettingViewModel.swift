@@ -6,31 +6,31 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KSFeatures
 import Foundation
-import KikurageService
 import UIKit.UITableView
 
-protocol WiFiSettingViewModelDelegate: AnyObject {
+public protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
     func wifiSettingViewModelDidSuccessSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
     func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
 }
 
-class WiFiSettingViewModel: NSObject {
+public class WiFiSettingViewModel: NSObject {
     private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
 
     private let bluetoothManager = KikurageBluetoothManager.shared
     private var wifiSetting: KikurageWiFiSetting
 
-    weak var delegate: WiFiSettingViewModelDelegate?
+    public weak var delegate: WiFiSettingViewModelDelegate?
 
-    init(selectedSSID: String) {
+    public init(selectedSSID: String) {
         wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
         super.init()
         bluetoothManager.peripheralDelegate = self
     }
 
-    func setupWiFi() {
+    public func setupWiFi() {
         bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
     }
 
@@ -42,15 +42,15 @@ class WiFiSettingViewModel: NSObject {
 // MARK: - UITableViewDataSource
 
 extension WiFiSettingViewModel: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
     }
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sections[section].title
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = sections[section]
         switch section {
         case .required:
@@ -60,7 +60,7 @@ extension WiFiSettingViewModel: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         let row = section.rows[indexPath.row]
         switch section {
@@ -84,7 +84,7 @@ extension WiFiSettingViewModel: UITableViewDataSource {
 // MARK: - WiFiSettingTableViewCellDelegate
 
 extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
-    func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String) {
+    public func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String) {
         switch wifiSettingTableViewCell.type {
         case .ssid:
             wifiSetting.ssid = text
@@ -100,11 +100,11 @@ extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
 // MARK: - KikurageBluetoothPeripheralMangerDelegate
 
 extension WiFiSettingViewModel: KikurageBluetoothPeripheralMangerDelegate {
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {}
+    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
+    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
 
-    func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
+    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
         guard let completionMessage = KikurageBluetoothParser.decodeBluetoothCompletion(message)?.getKikurageBluetoothCompletion() else {
             return
         }

@@ -6,13 +6,13 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KSFeatures
 import Foundation
-import KikurageService
 
-enum WiFiSelectDeviceSectionType {
+public enum WiFiSelectDeviceSectionType {
     case device
 
-    var title: String {
+    public var title: String {
         switch self {
         case .device:
             return R.string.localizable.side_menu_wifi_select_device_section_title()
@@ -20,12 +20,12 @@ enum WiFiSelectDeviceSectionType {
     }
 }
 
-enum WiFiListSectionType {
+public enum WiFiListSectionType {
     case spec
     case enterWifi
     case selectWifi
 
-    var title: String {
+    public var title: String {
         switch self {
         case .spec:
             return R.string.localizable.side_menu_wifi_spec_section_title()
@@ -36,7 +36,7 @@ enum WiFiListSectionType {
         }
     }
 
-    var rows: [SectionRowType] {
+    public var rows: [SectionRowType] {
         switch self {
         case .spec:
             return [.deviceName, .deviceID, .rssi]
@@ -47,13 +47,13 @@ enum WiFiListSectionType {
         }
     }
 
-    enum SectionRowType {
+    public enum SectionRowType {
         case deviceName
         case deviceID
         case rssi
         case enterWifi
 
-        var title: String {
+        public var title: String {
             switch self {
             case .deviceName:
                 return R.string.localizable.side_menu_wifi_spec_section_device_name_row_title()
@@ -66,7 +66,7 @@ enum WiFiListSectionType {
             }
         }
 
-        func getSpecTitle(bluetoothPeripheral: KikurageBluetoothPeripheral) -> String {
+        public func getSpecTitle(bluetoothPeripheral: KikurageBluetoothPeripheral) -> String {
             switch self {
             case .deviceName:
                 return bluetoothPeripheral.deviceName
@@ -82,11 +82,11 @@ enum WiFiListSectionType {
     }
 }
 
-enum WiFiSettingSectionType {
+public enum WiFiSettingSectionType {
     case required
     case optional
 
-    var title: String {
+    public var title: String {
         switch self {
         case .required:
             return R.string.localizable.side_menu_wifi_setting_section_required_title()
@@ -95,7 +95,7 @@ enum WiFiSettingSectionType {
         }
     }
 
-    var rows: [SectionRowType] {
+    public var rows: [SectionRowType] {
         switch self {
         case .required:
             return [.ssid, .password]
@@ -104,13 +104,13 @@ enum WiFiSettingSectionType {
         }
     }
 
-    enum SectionRowType {
+    public enum SectionRowType {
         case ssid
         case password
         case activeScan
         case security
 
-        var title: String {
+        public var title: String {
             switch self {
             case .ssid:
                 return "SSID"
