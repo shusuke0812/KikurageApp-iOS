@@ -35,7 +35,6 @@ extension LoginRepository {
                     return
                 }
                 let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
-                // TODO: ローカルストアに保存する（LoginHelper.shared.setUserInUserDefaults(user: loginUser)）
                 completion(.success(loginUser))
             case .failure(let error):
                 completion(.failure(error))
