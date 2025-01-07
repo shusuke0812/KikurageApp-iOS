@@ -7,7 +7,6 @@
 //
 
 import KDEntity
-import KDRepository
 import KSAppService
 import KUIKit
 import UIKit
@@ -29,7 +28,7 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         initHUD()
 
-        presenter = AppPresenter(appConfigRepository: AppConfigRepository())
+        presenter = AppPresenter()
         presenter.delegate = self
 
         fetchRemoteConfig()
