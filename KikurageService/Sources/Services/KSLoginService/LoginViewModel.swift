@@ -7,6 +7,7 @@
 
 import Foundation
 import KDEntity
+import KDLoginManager
 import KDRepository
 import KSFeatures
 
@@ -16,16 +17,17 @@ public protocol LoginViewModelDelegate: AnyObject {
 }
 
 public class LoginViewModel {
+    private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
 
     public weak var delegate: LoginViewModelDelegate?
 
-    private var loginUser: LoginUser?
     private var email: String = ""
     private var password: String = ""
 
     public init(loginRepository: LoginRepositoryProtocol) {
+        loginManager = LoginManager()
         self.loginRepository = loginRepository
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
@@ -61,7 +63,7 @@ extension LoginViewModel {
         loginRepository.login(loginInfo: loginInfo) { [weak self] response in
             switch response {
             case .success(let loginUser):
-                self?.loginUser = loginUser
+                self?.loginManager.saveUser(loginUser: loginUser)
                 self?.loadKikurageStateWithUserUseCase.invoke(uid: loginUser.uid) { [weak self] responses in
                     switch responses {
                     case .success(let res):
