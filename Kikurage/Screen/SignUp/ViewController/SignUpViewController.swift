@@ -6,11 +6,11 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KDRepository
+import KSSignUpService
 import PKHUD
 import RxCocoa
 import UIKit
-import KSSignUpService
-import KDRepository
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignUpAccessable {
     private let baseView = SignUpBaseView()

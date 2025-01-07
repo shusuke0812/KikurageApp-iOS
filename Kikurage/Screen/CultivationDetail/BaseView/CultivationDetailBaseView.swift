@@ -6,8 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KUIKit
 import KDEntity
+import KUIKit
 import UIKit
 
 class CultivationDetailBaseView: UIView {

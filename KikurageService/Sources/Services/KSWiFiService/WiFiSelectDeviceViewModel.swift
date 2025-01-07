@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KSFeatures
 import Foundation
+import KSFeatures
 
 public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
@@ -21,11 +21,11 @@ public class WiFiSelectDeviceViewModel: NSObject {
     public private(set) var bluetoothCentralState: KikurageBluetoothCentralState?
 
     public weak var delegate: WiFiSelectDeviceViewModelDelegate?
-    
+
     private let bluetoothManager = KikurageBluetoothManager.shared
     private var selectedIndexPath: IndexPath?
 
-    public override init() {
+    override public init() {
         super.init()
         bluetoothManager.peripheralDelegate = self
         bluetoothManager.centralDelegate = self
@@ -38,7 +38,7 @@ public class WiFiSelectDeviceViewModel: NSObject {
     private func add(peripheral: KikurageBluetoothPeripheral) {
         bluetoothPeripherals.add(peripheral: peripheral)
     }
-    
+
     public func sectionRows() -> Int {
         bluetoothPeripherals.listCount
     }

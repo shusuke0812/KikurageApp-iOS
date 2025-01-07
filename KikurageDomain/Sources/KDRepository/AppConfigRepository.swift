@@ -1,5 +1,5 @@
 //
-//  FirebaseRemoteConfigRepository.swift
+//  AppConfigRepository.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2021/12/1.
@@ -16,9 +16,9 @@ enum FirebaseRemoteConfigPrimaryKey: String {
 }
 
 public protocol AppConfigRepositoryProtocol {
-    func getFacebookGroupUrl(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
-    func getTermsUrl(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
-    func getPrivacyPolicyUrl(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
+    func getFacebookGroupURL(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
+    func getTermsURL(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
+    func getPrivacyPolicyURL(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
     func getLatestAppVersion(completion: @escaping (Result<String, FirebaseClientError>) -> Void)
 }
 
@@ -31,7 +31,7 @@ public class AppConfigRepository: AppConfigRepositoryProtocol {
 }
 
 extension AppConfigRepository {
-    public func getFacebookGroupUrl(completion: @escaping (Result<String, FirebaseClientError>) -> Void) {
+    public func getFacebookGroupURL(completion: @escaping (Result<String, FirebaseClientError>) -> Void) {
         firebaseRemoteConfigClient.fetch(key: FirebaseRemoteConfigPrimaryKey.facebookGroupURL.rawValue) { result in
             switch result {
             case .success(let url):
@@ -41,8 +41,8 @@ extension AppConfigRepository {
             }
         }
     }
-    
-    public func getTermsUrl(completion: @escaping (Result<String, KDFirebase.FirebaseClientError>) -> Void) {
+
+    public func getTermsURL(completion: @escaping (Result<String, KDFirebase.FirebaseClientError>) -> Void) {
         firebaseRemoteConfigClient.fetch(key: FirebaseRemoteConfigPrimaryKey.termsURL.rawValue) { result in
             switch result {
             case .success(let url):
@@ -52,8 +52,8 @@ extension AppConfigRepository {
             }
         }
     }
-    
-    public func getPrivacyPolicyUrl(completion: @escaping (Result<String, KDFirebase.FirebaseClientError>) -> Void) {
+
+    public func getPrivacyPolicyURL(completion: @escaping (Result<String, KDFirebase.FirebaseClientError>) -> Void) {
         firebaseRemoteConfigClient.fetch(key: FirebaseRemoteConfigPrimaryKey.privacyPolicyURL.rawValue) { result in
             switch result {
             case .success(let url):
@@ -63,7 +63,7 @@ extension AppConfigRepository {
             }
         }
     }
-    
+
     public func getLatestAppVersion(completion: @escaping (Result<String, KDFirebase.FirebaseClientError>) -> Void) {
         firebaseRemoteConfigClient.fetch(key: FirebaseRemoteConfigPrimaryKey.latestAppVersion.rawValue) { result in
             switch result {

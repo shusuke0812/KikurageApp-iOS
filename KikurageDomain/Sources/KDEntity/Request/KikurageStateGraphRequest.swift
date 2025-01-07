@@ -6,14 +6,14 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import FirebaseFirestore
+import KDFirebase
 
 public struct KiikurageStateGraphRequest: FirestoreRequestProtocol {
     public typealias Response = KikurageStateGraph
 
     public var productID: String = ""
-    
+
     public init(productID: String) {
         self.productID = productID
     }

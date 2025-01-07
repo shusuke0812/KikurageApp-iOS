@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import KDEntity
+import KDFirebase
 
 public protocol LoginRepositoryProtocol {
     func login(loginInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void)
@@ -17,7 +17,7 @@ public protocol LoginRepositoryProtocol {
 
 public class LoginRepository: LoginRepositoryProtocol {
     private let firebaseAuthClient: FirebaseAuthClientProtocol
-    
+
     public init(firebaseAuthClient: FirebaseAuthClientProtocol = FirebaseAuthClient()) {
         self.firebaseAuthClient = firebaseAuthClient
     }
@@ -35,14 +35,14 @@ extension LoginRepository {
                     return
                 }
                 let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
-                //TODO: ローカルストアに保存する（LoginHelper.shared.setUserInUserDefaults(user: loginUser)）
+                // TODO: ローカルストアに保存する（LoginHelper.shared.setUserInUserDefaults(user: loginUser)）
                 completion(.success(loginUser))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
-    
+
     public func signUp(registerInfo: (email: String, password: String), completion: @escaping (Result<LoginUser, FirebaseClientError>) -> Void) {
         firebaseAuthClient.signUp(registerInfo: registerInfo) { result in
             switch result {
@@ -58,7 +58,7 @@ extension LoginRepository {
                         return
                     }
                     let loginUser = LoginUser(uid: user.uid, isEmailVerified: user.isEmailVerified)
-                    //TODO: ローカルストアに保存する LoginHelper.shared.setUserInUserDefaults(user: loginUser)
+                    // TODO: ローカルストアに保存する LoginHelper.shared.setUserInUserDefaults(user: loginUser)
                     completion(.success(loginUser))
                 }
             case .failure(let error):
@@ -66,7 +66,7 @@ extension LoginRepository {
             }
         }
     }
-    
+
     public func logout(completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firebaseAuthClient.logout(completion: completion)
     }

@@ -8,15 +8,15 @@
 
 // Doc: https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets
 
-import KDRestApi
 import Foundation
+import KDRestApi
 
 public struct TwitterSearchRequest: APIRequestProtocol {
     public let searchWord: String
     public let searchCount: Int
     public let maxID: Int64?
     public let sinceID: Int64?
-    
+
     public init(searchWord: String, searchCount: Int, maxID: Int64?, sinceID: Int64?) {
         self.searchWord = searchWord
         self.searchCount = searchCount
@@ -80,7 +80,7 @@ public struct TwitterSearchRequest: APIRequestProtocol {
         decoder.dateDecodingStrategy = .formatted(twitterSearchDateFormat)
         return try decoder.decode(type, from: data)
     }
-    
+
     private var twitterSearchDateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy"

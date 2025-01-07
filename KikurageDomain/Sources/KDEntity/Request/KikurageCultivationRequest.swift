@@ -6,9 +6,9 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import FirebaseFirestore
 import Foundation
+import KDFirebase
 
 public struct KikurageCultivationRequest: FirestoreRequestProtocol {
     public typealias Response = KikurageCultivation
@@ -16,7 +16,7 @@ public struct KikurageCultivationRequest: FirestoreRequestProtocol {
     public var kikurageUserID: String = ""
     public var documentID: String = ""
     public var imageStorageFullPaths: [String] = []
-    
+
     public init(
         kikurageUserID: String,
         documentID: String = ""

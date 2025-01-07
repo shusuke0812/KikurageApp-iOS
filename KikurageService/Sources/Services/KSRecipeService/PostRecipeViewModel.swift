@@ -6,11 +6,11 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDEntity
-import KDRepository
-import KDLoginManager
-import KSFeatures
 import Foundation
+import KDEntity
+import KDLoginManager
+import KDRepository
+import KSFeatures
 
 public protocol PostRecipeViewModelDelegate: AnyObject {
     func postRecipeViewModelDidSuccessPostRecipe(_ postRecipeViewModel: PostRecipeViewModel)
@@ -33,7 +33,7 @@ public class PostRecipeViewModel {
         loginManager = LoginManager()
         recipe = KikurageRecipe()
     }
-    
+
     public func updateCookDate(date: Date) {
         let dateString = DateHelper.formatToString(date: date)
         recipe.cookDate = dateString
@@ -44,16 +44,16 @@ public class PostRecipeViewModel {
 
 extension PostRecipeViewModel {
     public func postRecipe() {
-        guard let userId = loginManager.userId else {
+        guard let userID = loginManager.userID else {
             delegate?.postRecipeViewModelDidFailedPostRecipe(self, with: "error")
             return
         }
-        var request = KikurageRecipeRequest(kikurageUserID: userId)
+        var request = KikurageRecipeRequest(kikurageUserID: userID)
         request.body = request.buildBody(from: recipe)
         recipeRepository.postRecipe(request: request) { [weak self] response in
             switch response {
-            case .success(let documentId):
-                self?.postedRecipeDocumentID = documentId
+            case .success(let documentID):
+                self?.postedRecipeDocumentID = documentID
                 self?.delegate?.postRecipeViewModelDidSuccessPostRecipe(self!)
             case .failure(let error):
                 self?.delegate?.postRecipeViewModelDidFailedPostRecipe(self!, with: "error") // TODO: error.description()
@@ -79,15 +79,15 @@ extension PostRecipeViewModel {
 
 extension PostRecipeViewModel {
     public func postRecipeImages(imageData: [Data?]) {
-        guard let userId = loginManager.userId, let postedRecipeDocumentID = postedRecipeDocumentID else {
+        guard let userID = loginManager.userID, let postedRecipeDocumentID = postedRecipeDocumentID else {
             delegate?.postRecipeViewModelDidFailedPostRecipeImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return
         }
-        let imageStoragePath = "\(FirestoreCollectionName.users)/\(userId)/\(FirestoreCollectionName.recipes)/\(postedRecipeDocumentID)/images/"
+        let imageStoragePath = "\(FirestoreCollectionName.users)/\(userID)/\(FirestoreCollectionName.recipes)/\(postedRecipeDocumentID)/images/"
         recipeRepository.postRecipeImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self?.putRecipeImages(kikurageUserID: userId, firestoreDocumentID: postedRecipeDocumentID, imageStorageFullPaths: imageStorageFullPaths)
+                self?.putRecipeImages(kikurageUserID: userID, firestoreDocumentID: postedRecipeDocumentID, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 self?.delegate?.postRecipeViewModelDidFailedPostRecipeImages(self!, with: error.description())
             }

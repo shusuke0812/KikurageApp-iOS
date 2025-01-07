@@ -6,9 +6,9 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KSHomeService
 import KDEntity
 import KDRepository
+import KSHomeService
 import RxSwift
 import UIKit
 
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
     var kikurageUser: KikurageUser!
 
     deinit {
-        //KLogger.debug("call deinit")
+        // KLogger.debug("call deinit")
     }
 
     // MARK: - Lifecycle

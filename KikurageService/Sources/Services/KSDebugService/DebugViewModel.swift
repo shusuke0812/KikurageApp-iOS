@@ -6,9 +6,9 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import Foundation
 import KDLoginManager
 import KDRepository
-import Foundation
 
 public protocol DebugViewModelDelegate: AnyObject {}
 
@@ -22,7 +22,7 @@ public class DebugViewModel {
         self.loginRepository = loginRepository
         loginManager = LoginManager()
     }
-    
+
     public func logout(completion: @escaping ((Result<Void, Error>) -> Void)) {
         loginRepository.logout { [weak self] result in
             switch result {

@@ -6,15 +6,14 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KSAppService
 import IQKeyboardManagerSwift
+import KSAppService
 import MetricKit
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         let appDelegateConfig = AppDelegateConfig()
         appDelegateConfig.initialize()
 
@@ -31,12 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        //KLogManager.debug()
+        // KLogManager.debug()
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        //KLogManager.debug()
+        // KLogManager.debug()
         MXMetricManager.shared.remove(self)
     }
 }
@@ -49,7 +48,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
             let jsonData = payload.jsonRepresentation()
             let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
-            //KLogManager.debug(jsonString ?? "not found")
+            // KLogManager.debug(jsonString ?? "not found")
         }
     }
 
@@ -59,7 +58,7 @@ extension AppDelegate: MXMetricManagerSubscriber {
             let jsonData = payload.jsonRepresentation()
             let jsonString = String(data: jsonData, encoding: .utf8)
             // ex. send user log to Log server
-            //KLogManager.debug(jsonString ?? "not found")
+            // KLogManager.debug(jsonString ?? "not found")
         }
     }
 }

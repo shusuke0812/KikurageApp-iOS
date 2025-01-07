@@ -6,9 +6,9 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDRepository
 import KDEntity
 import KDLoginManager
+import KDRepository
 import KSFeatures
 import UIKit
 
@@ -33,10 +33,10 @@ public class DeviceRegisterViewModel {
     public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
         kikurageUser = KikurageUser()
     }
-    
+
     public func getDateString(date: Date) -> String {
         DateHelper.formatToString(date: date)
     }
@@ -85,8 +85,8 @@ extension DeviceRegisterViewModel {
             delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: "error") // TODO: R.string.localizable.common_load_user_error() に置き換え
             return
         }
-        guard let uid = loginManager.userId else {
-            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: "error")  // TODO: R.string.localizable.common_load_user_error()
+        guard let uid = loginManager.userID else {
+            delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: "error") // TODO: R.string.localizable.common_load_user_error()
             return
         }
         var request = KikurageUserRequest(uid: uid)

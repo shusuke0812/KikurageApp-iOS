@@ -6,22 +6,23 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import FirebaseFirestore
 import Foundation
+import KDFirebase
 
 public struct KikurageRecipeRequest: FirestoreRequestProtocol {
     public init(
         kikurageUserID: String,
         documentID: String = "",
         imageStorageFullPaths: [String] = [],
-        body: [String : Any]? = nil
+        body: [String: Any]? = nil
     ) {
         self.kikurageUserID = kikurageUserID
         self.documentID = documentID
         self.imageStorageFullPaths = imageStorageFullPaths
         self.body = body
     }
+
     public typealias Response = KikurageRecipe
 
     public let kikurageUserID: String

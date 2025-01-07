@@ -6,10 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDFirebase
-import KDEntity
-import RxSwift
 import Foundation
+import KDEntity
+import KDFirebase
+import RxSwift
 
 public protocol CultivationRepositoryProtocol {
     /// - Parameters:
@@ -99,7 +99,7 @@ extension CultivationRepository {
             return Disposables.create()
         }
     }
-    
+
     public func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void) {
         firestoreClient.getDocumentsRequest(request) { result in
             switch result {

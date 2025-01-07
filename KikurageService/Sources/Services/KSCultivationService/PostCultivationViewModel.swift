@@ -6,11 +6,11 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDEntity
-import KDRepository
-import KDLoginManager
-import KSFeatures
 import Foundation
+import KDEntity
+import KDLoginManager
+import KDRepository
+import KSFeatures
 
 public protocol PostCultivationViewModelDelegate: AnyObject {
     func postCultivationViewModelDidSuccessPostCultivation(_ postCultivationViewModel: PostCultivationViewModel)
@@ -33,7 +33,7 @@ public class PostCultivationViewModel {
         cultivation = KikurageCultivation()
         loginManager = LoginManager()
     }
-    
+
     public func updateViewDate(date: Date) {
         let dateString = DateHelper.formatToString(date: date)
         cultivation.viewDate = dateString
@@ -58,16 +58,16 @@ extension PostCultivationViewModel {
 
 extension PostCultivationViewModel {
     public func postCultivation() {
-        guard let userId = loginManager.userId else {
+        guard let userID = loginManager.userID else {
             delegate?.postCultivationViewModelDidFailedPostCultivation(self, with: "error")
             return
         }
-        var request = KikurageCultivationRequest(kikurageUserID: userId)
+        var request = KikurageCultivationRequest(kikurageUserID: userID)
         request.body = request.buildBody(from: cultivation)
         cultivationRepository.postCultivation(request: request) { [weak self] response in
             switch response {
-            case .success(let documentId):
-                self?.postedCultivationDocumentID = documentId
+            case .success(let documentID):
+                self?.postedCultivationDocumentID = documentID
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivation(self!)
             case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: "error") // TODO: error.description()
@@ -94,15 +94,15 @@ extension PostCultivationViewModel {
 
 extension PostCultivationViewModel {
     public func postCultivationImages(imageData: [Data?]) {
-        guard let userId = loginManager.userId, let postedCultivationDocumentID = postedCultivationDocumentID else {
+        guard let userID = loginManager.userID, let postedCultivationDocumentID = postedCultivationDocumentID else {
             delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return
         }
-        let imageStoragePath = "\(FirestoreCollectionName.users)/\(userId)/\(FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
+        let imageStoragePath = "\(FirestoreCollectionName.users)/\(userID)/\(FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self?.putCultivationImages(kikurageUserID: userId, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
+                self?.putCultivationImages(kikurageUserID: userID, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivationImages(self!, with: error.description())
             }

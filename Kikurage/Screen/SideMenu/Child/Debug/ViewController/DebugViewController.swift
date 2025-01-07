@@ -52,7 +52,7 @@ extension DebugViewController: DebugBaseViewDelegate {
             case .success:
                 let scenes = UIApplication.shared.connectedScenes
                 let windowScene = scenes.first as? UIWindowScene
-                let rootVC =  windowScene?.keyWindow?.rootViewController
+                let rootVC = windowScene?.keyWindow?.rootViewController
                 if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
                     rootVC.logout(rootVC: rootVC)
                 } else {

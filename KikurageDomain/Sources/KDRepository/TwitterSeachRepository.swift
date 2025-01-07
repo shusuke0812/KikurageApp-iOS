@@ -6,8 +6,8 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDRestApi
 import KDEntity
+import KDRestApi
 
 public protocol TwitterSearchRepositoryProtocol {
     func getTweets(request: TwitterSearchRequest, completion: @escaping (Result<Tweet, RestApiClientError>) -> Void)

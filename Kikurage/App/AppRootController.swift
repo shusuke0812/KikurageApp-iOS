@@ -6,10 +6,10 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KUIKit
-import KSAppService
-import KDRepository
 import KDEntity
+import KDRepository
+import KSAppService
+import KUIKit
 import UIKit
 
 class AppRootController: UIViewController {

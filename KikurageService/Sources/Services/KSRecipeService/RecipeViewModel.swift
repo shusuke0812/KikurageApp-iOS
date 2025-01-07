@@ -6,9 +6,9 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDRepository
 import KDEntity
 import KDLoginManager
+import KDRepository
 import KSFeatures
 import RxCocoa
 import RxSwift
@@ -50,7 +50,7 @@ public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeV
 
     public init(recipeRepository: RecipeRepositoryProtocol) {
         self.recipeRepository = recipeRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
 
         // for selected table view item
         let _recipe = PublishRelay<KikurageRecipeTuple>()
@@ -98,11 +98,11 @@ extension RecipeViewModel {
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
     public func loadRecipes() {
-        guard let userId = loginManager.userId else {
-            //errorSubject.onNext(error) // TODO: Error型を定義してVCへ通知する
+        guard let userID = loginManager.userID else {
+            // errorSubject.onNext(error) // TODO: Error型を定義してVCへ通知する
             return
         }
-        let request = KikurageRecipeRequest(kikurageUserID: userId)
+        let request = KikurageRecipeRequest(kikurageUserID: userID)
         recipeRepository.getRecipes(request: request)
             .subscribe(
                 onSuccess: { [weak self] recipes in

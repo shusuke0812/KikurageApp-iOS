@@ -6,8 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import KDEntity
+import KDFirebase
 
 public protocol KikurageUserRepositoryProtocol {
     /// きくらげユーザーを読み込む

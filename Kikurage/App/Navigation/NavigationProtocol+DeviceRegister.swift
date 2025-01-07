@@ -6,8 +6,8 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import KDEntity
 import Foundation
+import KDEntity
 
 protocol DeviceRegisterAccessable: PushNavigationProtocol {
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser)

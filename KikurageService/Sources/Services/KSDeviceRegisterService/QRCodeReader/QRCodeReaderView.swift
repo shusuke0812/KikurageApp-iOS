@@ -1,5 +1,5 @@
 //
-//  KikurageQRCodeReaderView.swift
+//  QRCodeReaderView.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2022/2/4.

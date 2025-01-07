@@ -6,11 +6,11 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDRepository
+import Foundation
 import KDEntity
+import KDRepository
 import KSFeatures
 import RxSwift
-import Foundation
 
 public protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
@@ -44,7 +44,7 @@ public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModel
     public var kikurageUser: KikurageUser
     public var kikurageState: Observable<KikurageState> { subject.asObservable() }
     public var error: Observable<Error> { errorSubject.asObservable() }
-    
+
     public var dateNowString: String {
         DateHelper.now()
     }
@@ -57,7 +57,7 @@ public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModel
     }
 
     deinit {
-        //KLogger.debug("call deinit")
+        // KLogger.debug("call deinit")
     }
 }
 

@@ -6,14 +6,14 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import FirebaseFirestore
+import KDFirebase
 
 public struct KikurageStateRequest: FirestoreRequestProtocol {
     public init(
         productID: String,
         collectionReference: CollectionReference? = nil,
-        body: [String : Any]? = nil
+        body: [String: Any]? = nil
     ) {
         self.productID = productID
         self.collectionReference = collectionReference

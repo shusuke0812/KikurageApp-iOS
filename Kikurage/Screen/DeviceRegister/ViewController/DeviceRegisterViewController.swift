@@ -7,8 +7,8 @@
 //
 
 import AVFoundation
-import KSDeviceRegisterService
 import KDRepository
+import KSDeviceRegisterService
 import PKHUD
 import UIKit
 

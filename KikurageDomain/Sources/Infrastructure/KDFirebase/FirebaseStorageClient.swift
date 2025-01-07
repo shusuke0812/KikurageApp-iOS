@@ -16,18 +16,18 @@ public protocol FirebaseStorageClientProtocol {
 
 public class FirebaseStorageClient: FirebaseStorageClientProtocol {
     private let metaData: StorageMetadata
-    
+
     public init() {
         metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
     }
-    
+
     public func postImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void) {
         var imageStorageFullPaths: [String] = []
-        
+
         let dispatchSemaphore = DispatchSemaphore(value: 0)
         let dispatchQueue = DispatchQueue(label: "com.shusuke.KikurageApp.upload_images_queue")
-        
+
         var resultError: Error?
         dispatchQueue.async { [weak self] in
             for (i, imageData) in zip(imageData.indices, imageData) {
@@ -56,7 +56,7 @@ public class FirebaseStorageClient: FirebaseStorageClientProtocol {
             }
         }
     }
-    
+
     public func postImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]> {
         Single<[String]>.create { single in
             var imageStorageFullPaths: [String] = []
@@ -92,16 +92,16 @@ public class FirebaseStorageClient: FirebaseStorageClientProtocol {
     }
 }
 
-fileprivate struct DateHelper {
+private struct DateHelper {
     private init() {}
-    
+
     private static let originalDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
-    
+
     static func formatToStringForImageData(date: Date) -> String {
         originalDateFormatter.dateFormat = "yyyyMMddHHmmss"
         return originalDateFormatter.string(from: date)

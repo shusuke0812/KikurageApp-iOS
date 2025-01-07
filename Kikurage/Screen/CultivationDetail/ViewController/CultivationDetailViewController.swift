@@ -6,9 +6,9 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import UIKit
 import KDEntity
 import KSCultivationService
+import UIKit
 
 class CultivationDetailViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: CultivationDetailBaseView = .init()

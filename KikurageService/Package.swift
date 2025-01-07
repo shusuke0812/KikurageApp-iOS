@@ -162,7 +162,9 @@ let package = Package(
             ],
             path: "Sources/Services/KSDebugService"
         ),
+
         // MARK: - Features
+
         .target(
             name: "KSFeatures",
             dependencies: [

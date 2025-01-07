@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KSFeatures
 import Foundation
+import KSFeatures
 
 public enum WiFiSelectDeviceSectionType {
     case device

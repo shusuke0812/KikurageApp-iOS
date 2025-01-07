@@ -23,7 +23,7 @@ public class FirebaseRemoteConfigClient: FirebaseRemoteConfigClientProtocol {
         #endif
         remoteConfig.configSettings = settings
     }
-    
+
     public func fetch(key: String, completion: @escaping (Result<String, FirebaseClientError>) -> Void) {
         remoteConfig.fetchAndActivate { [weak self] status, error in
             if let error = error {

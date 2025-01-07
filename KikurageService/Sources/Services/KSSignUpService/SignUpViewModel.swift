@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import KDEntity
 import KDLoginManager
 import KDRepository
-import KDEntity
 
 public protocol SignUpViewModelDelegate: AnyObject {
     func signUpViewModelDidSuccessRegisterUser(_ signUpViewModel: SignUpViewModel)
@@ -27,10 +27,10 @@ public class SignUpViewModel {
     public var password: String = ""
 
     public init(loginRepository: LoginRepositoryProtocol) {
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
         self.loginRepository = loginRepository
     }
-    
+
     public func reloadUser(completion: @escaping ((Result<Void, Error>) -> Void)) {
         loginManager.reloadUser { [weak self] result in
             switch result {

@@ -6,10 +6,10 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDLoginManager
-import KDEntity
-import KDRepository
 import Foundation
+import KDEntity
+import KDLoginManager
+import KDRepository
 
 public protocol GraphViewModelDelegate: AnyObject {
     func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel)
@@ -35,7 +35,7 @@ public class GraphViewModel {
     public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
     }
 }
 
@@ -90,8 +90,8 @@ extension GraphViewModel {
     }
 
     public func loadKikurageUser() {
-        guard let uid = loginManager.userId else {
-            delegate?.graphViewModelDidFailedGetKikurageUser(self, with: "not found user id") //TODO: error.description()
+        guard let uid = loginManager.userID else {
+            delegate?.graphViewModelDidFailedGetKikurageUser(self, with: "not found user id") // TODO: error.description()
             return
         }
         let request = KikurageUserRequest(uid: uid)
@@ -101,7 +101,7 @@ extension GraphViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.graphViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: "error") //TODO: error.description()
+                self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: "error") // TODO: error.description()
             }
         }
     }

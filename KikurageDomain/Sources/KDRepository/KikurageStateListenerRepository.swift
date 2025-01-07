@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import KDEntity
+import KDFirebase
 import RxSwift
 
 public protocol KikurageStateListenerRepositoryProtocol {
@@ -44,7 +44,7 @@ extension KikurageStateListenerRepository {
             let request = KikurageStateRequest(productID: productKey)
             self?.firestoreListenClient.listenDocumentRequest(request) { result in
                 switch result {
-                case  .success(let state):
+                case .success(let state):
                     observer.onNext(state)
                 case .failure(let error):
                     observer.onError(error)

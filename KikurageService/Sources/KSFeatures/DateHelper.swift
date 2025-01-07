@@ -54,10 +54,10 @@ public struct DateHelper {
 
     /// Date型からDateComponentsを取得する
     /// - Parameter date: 日付（デフォルトは現在時刻）
-    public  static func getDateComponents(date: Date = Date()) -> DateComponents {
+    public static func getDateComponents(date: Date = Date()) -> DateComponents {
         Calendar.current.dateComponents([.year, .month, .day], from: date)
     }
-    
+
     /// Date型をログに使うString型へ変換する
     public static func formatToStringForLog() -> String {
         originalDateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"

@@ -6,13 +6,12 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-
-import KUIKit
+import Foundation
 import KDEntity
 import KDRepository
 import KSFeatures
+import KUIKit
 import UIKit.UITableView
-import Foundation
 
 public protocol DictionaryTwitterViewModelDelegate: AnyObject {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel)

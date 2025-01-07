@@ -35,7 +35,7 @@ let package = Package(
                 .target(name: "KDRestApi"),
                 .target(name: "KDEntity"),
                 .product(name: "RxSwift", package: "RxSwift"),
-                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), // TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
             ],
             path: "Sources/KDRepository"
         ),
@@ -54,11 +54,13 @@ let package = Package(
                 .target(name: "KDFirebase"),
                 .target(name: "KDRestApi"),
                 .target(name: "KDLocalStore"),
-                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), //TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), // TODO: Request型に定義したFirestoreの処理をInterceptorに移動したら削除する
             ],
             path: "Sources/KDEntity"
         ),
+
         // MARK: - Infrastructure
+
         .target(
             name: "KDFirebase",
             dependencies: [

@@ -15,7 +15,7 @@ public struct KikurageCultivation: Codable {
     public var memo: String = ""
     public var imageStoragePaths: [String] = []
     public var viewDate: String = ""
-    
+
     public init() {}
 
     public enum CodingKeys: String, CodingKey {

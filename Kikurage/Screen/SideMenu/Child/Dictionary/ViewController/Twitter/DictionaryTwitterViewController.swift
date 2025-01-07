@@ -6,9 +6,9 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KSDictionaryService
-import KDRepository
 import KDEntity
+import KDRepository
+import KSDictionaryService
 import SwiftUI
 import UIKit
 

@@ -6,8 +6,8 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KSFeatures
 import Foundation
+import KSFeatures
 
 public protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
@@ -16,19 +16,19 @@ public protocol WiFiSettingViewModelDelegate: AnyObject {
 }
 
 public class WiFiSettingViewModel: NSObject {
-    private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
-
-    private let bluetoothManager = KikurageBluetoothManager.shared
-    private(set) var wifiSetting: KikurageWiFiSetting
+    public private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
+    public private(set) var wifiSetting: KikurageWiFiSetting
 
     public weak var delegate: WiFiSettingViewModelDelegate?
+
+    private let bluetoothManager = KikurageBluetoothManager.shared
 
     public init(selectedSSID: String) {
         wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
         super.init()
         bluetoothManager.peripheralDelegate = self
     }
-    
+
     public func sectionRows(section: Int) -> Int {
         let section = sections[section]
         switch section {
@@ -43,7 +43,15 @@ public class WiFiSettingViewModel: NSObject {
         bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
     }
 
-    private func validateWiFiSetting() -> Bool {
+    public func updateWiFiSetting(ssid: String) {
+        wifiSetting.ssid = ssid
+    }
+
+    public func updateWiFiSetting(password: String) {
+        wifiSetting.password = password
+    }
+
+    public func validateWiFiSetting() -> Bool {
         !wifiSetting.ssid.isEmpty && !wifiSetting.password.isEmpty
     }
 }

@@ -6,17 +6,17 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDFirebase
-import Foundation
 import FirebaseFirestore
+import Foundation
+import KDFirebase
 
 public struct KikurageUser: Codable {
     public var productKey: String = ""
     public var kikurageName: String = ""
     public var cultivationStartDate = Date()
-    
+
     private var stateRef: DocumentReference?
-    
+
     public init() {}
 
     public enum CodingKeys: String, CodingKey {
@@ -24,7 +24,7 @@ public struct KikurageUser: Codable {
         case kikurageName
         case cultivationStartDate
     }
-    
+
     public mutating func setStateRef(productKey: String) {
         stateRef = Firestore.firestore().document("/" + FirestoreCollectionName.states + "/\(productKey)")
     }

@@ -115,17 +115,19 @@ extension WiFiSettingViewController: UITableViewDataSource {
 
 // MARK: - WiFiSettingTableViewCellDelegate
 
-extension WiFiSettingViewModel: WiFiSettingTableViewCellDelegate {
+extension WiFiSettingViewController: WiFiSettingTableViewCellDelegate {
     public func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String) {
         switch wifiSettingTableViewCell.type {
         case .ssid:
-            viewModel.wifiSetting.ssid = text
+            viewModel.updateWiFiSetting(ssid: text)
         case .password:
-            viewModel.wifiSetting.password = text
+            viewModel.updateWiFiSetting(password: text)
         case .activeScan, .security:
             break // never called
         }
-        delegate?.wifiSettingViewModel(self, canSetWiFi: validateWiFiSetting())
+        DispatchQueue.main.async {
+            self.baseView.enableSettingButton(isEnabled: self.viewModel.validateWiFiSetting())
+        }
     }
 }
 

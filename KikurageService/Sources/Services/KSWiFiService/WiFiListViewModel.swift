@@ -6,10 +6,10 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KDRepository
-import KDEntity
-import KSFeatures
 import Foundation
+import KDEntity
+import KDRepository
+import KSFeatures
 
 public protocol WiFiListViewModelDelegate: AnyObject {
     func viewModelUpdateWiFiList(_ wifiListViewModel: WiFiListViewModel)
@@ -19,7 +19,7 @@ public class WiFiListViewModel: NSObject {
     public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
     public private(set) var wifiList = KikurageWiFiList()
     public let bluetoothPeripheral: KikurageBluetoothPeripheral
-    
+
     public weak var delegate: WiFiListViewModelDelegate?
 
     private let bluetoothManager = KikurageBluetoothManager.shared
@@ -29,7 +29,7 @@ public class WiFiListViewModel: NSObject {
         super.init()
         bluetoothManager.peripheralDelegate = self
     }
-    
+
     public func sectionRows(section: Int) -> Int {
         switch sections[section] {
         case .spec, .enterWifi:

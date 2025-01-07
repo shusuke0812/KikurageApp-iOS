@@ -5,10 +5,10 @@
 //  Created by Shusuke Ota on 2025/1/5.
 //
 
-import KDLoginManager
 import FirebaseCore
 import FirebaseCrashlytics
 import Foundation
+import KDLoginManager
 
 public class AppDelegateConfig {
     private let loginManager: LoginManager
@@ -16,15 +16,14 @@ public class AppDelegateConfig {
     public init() {
         loginManager = LoginManager()
     }
-    
+
     public func initialize() {
         FirebaseApp.configure()
-        initializeCrashlyticsUserId()
-        
+        initializeCrashlyticsUserID()
     }
-    
-    private func initializeCrashlyticsUserId() {
-        let userId = loginManager.userId ?? "no id"
-        Crashlytics.crashlytics().setUserID(userId)
+
+    private func initializeCrashlyticsUserID() {
+        let userID = loginManager.userID ?? "no id"
+        Crashlytics.crashlytics().setUserID(userID)
     }
 }

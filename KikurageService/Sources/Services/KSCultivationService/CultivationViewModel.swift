@@ -6,13 +6,13 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDRepository
+import Foundation
 import KDEntity
 import KDLoginManager
+import KDRepository
 import KSFeatures
-import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 import UIKit.UICollectionView
 
 public protocol CultivationViewModelInput {
@@ -51,7 +51,7 @@ public class CultivationViewModel: CultivationViewModelType, CultivationViewMode
 
     public init(cultivationRepository: CultivationRepositoryProtocol) {
         self.cultivationRepository = cultivationRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
 
         // for selected collection view item
         let _cultivation = PublishRelay<KikurageCultivationTuple>()
@@ -99,11 +99,11 @@ extension CultivationViewModel {
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
     public func loadCultivations() {
-        guard let userId = loginManager.userId else {
-            //errorSubject.onNext() // TODO: Error型を定義してVCに通知する
+        guard let userID = loginManager.userID else {
+            // errorSubject.onNext() // TODO: Error型を定義してVCに通知する
             return
         }
-        let request = KikurageCultivationRequest(kikurageUserID: userId)
+        let request = KikurageCultivationRequest(kikurageUserID: userID)
         cultivationRepository.getCultivations(request: request)
             .subscribe(
                 onSuccess: { [weak self] cultivations in

@@ -6,10 +6,10 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDLoginManager
-import KDEntity
-import KDRepository
 import Foundation
+import KDEntity
+import KDLoginManager
+import KDRepository
 
 public protocol AccountSettingViewModelDelegate: AnyObject {
     func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel)
@@ -26,7 +26,7 @@ public class AccountSettingViewModel {
 
     public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
     }
 }
 
@@ -34,7 +34,7 @@ public class AccountSettingViewModel {
 
 extension AccountSettingViewModel {
     public func loadKikurageUser() {
-        guard let uid = loginManager.userId else {
+        guard let uid = loginManager.userID else {
             delegate?.settingViewModelDidFailedGetKikurageUser(self, with: "error")
             return
         }

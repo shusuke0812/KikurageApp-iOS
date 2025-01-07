@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KUIKit
 import KSAppService
+import KUIKit
 import UIKit
 
 class SideMenuBaseView: UIView {

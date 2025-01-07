@@ -40,7 +40,7 @@ public enum KikurageStateType: String, Codable {
     case normal
     case wet
     case dry
-    
+
     public func getStateImages() -> [UIImage] {
         var kikurageStateImages: [UIImage] = []
         let beforeImage = UIImage(named: "\(rawValue)_01")! // swiftlint:disable:this force_unwrapping

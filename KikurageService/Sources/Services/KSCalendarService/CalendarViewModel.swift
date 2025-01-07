@@ -6,11 +6,11 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDEntity
-import KDRepository
-import KDLoginManager
-import KSFeatures
 import Foundation
+import KDEntity
+import KDLoginManager
+import KDRepository
+import KSFeatures
 
 public protocol CalendarViewModelDelegate: AnyObject {
     func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel)
@@ -25,7 +25,7 @@ public class CalendarViewModel {
     }
 
     public weak var delegate: CalendarViewModelDelegate?
-    
+
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
 
@@ -33,7 +33,7 @@ public class CalendarViewModel {
 
     public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageUserRepository = kikurageUserRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
         cultivationDateComponents = DateHelper.getDateComponents()
         cultivationTerm = 0
     }
@@ -65,11 +65,11 @@ extension CalendarViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
     public func loadKikurageUser() {
-        guard let userId = loginManager.userId else {
+        guard let userID = loginManager.userID else {
             delegate?.calendarViewModelDidFailedGetKikurageUser(self, with: "error")
             return
         }
-        let request = KikurageUserRequest(uid: userId)
+        let request = KikurageUserRequest(uid: userID)
         kikurageUserRepository.getKikurageUser(request: request) { [weak self] response in
             switch response {
             case .success(let kikurageUser):

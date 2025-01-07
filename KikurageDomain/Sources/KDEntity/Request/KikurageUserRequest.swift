@@ -6,13 +6,13 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KDFirebase
 import FirebaseFirestore
+import KDFirebase
 
 public struct KikurageUserRequest: FirestoreRequestProtocol {
     public init(
         uid: String,
-        body: [String : Any]? = nil,
+        body: [String: Any]? = nil,
         collectionReference: CollectionReference? = nil
     ) {
         self.uid = uid

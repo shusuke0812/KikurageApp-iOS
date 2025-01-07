@@ -1,15 +1,15 @@
 //
-//  File.swift
+//  AppPresenter.swift
 //  KikurageService
 //
 //  Created by Shusuke Ota on 2025/1/1.
 //
 
-import KDRepository
+import Foundation
 import KDEntity
 import KDLoginManager
+import KDRepository
 import KSFeatures
-import Foundation
 
 public protocol AppPresenterDelegate: AnyObject {
     func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
@@ -24,20 +24,20 @@ public class AppPresenter {
     private let appConfigRepository: AppConfigRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
     private let loginManager: LoginManager
-    
+
     public weak var delegate: AppPresenterDelegate?
-    
+
     public init(
         appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository()
     ) {
         self.appConfigRepository = appConfigRepository
-        self.loginManager = LoginManager()
+        loginManager = LoginManager()
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
-    
+
     public func login() {
-        let userId  = loginManager.userId ?? ""
-        loadKikurageStateWithUserUseCase.invoke(uid: userId) { [weak self] result in
+        let userID = loginManager.userID ?? ""
+        loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] result in
             switch result {
             case .success(let res):
                 self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
@@ -46,39 +46,39 @@ public class AppPresenter {
             }
         }
     }
-    
+
     public func loadFacebookGroupURL() {
-        appConfigRepository.getFacebookGroupUrl { response in
+        appConfigRepository.getFacebookGroupURL { response in
             switch response {
             case .success(let urlString):
-                AppConfig.shared.facebookGroupUrlString = urlString
+                AppConfig.shared.facebookGroupURLString = urlString
             case .failure:
                 break
-                //KLogManager.debug("Failed to get Facebook Group Url from Remote Config : " + error.localizedDescription) // TODO: Logger
+                // KLogManager.debug("Failed to get Facebook Group URL from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
 
     public func loadTermsURL() {
-        appConfigRepository.getTermsUrl { response in
+        appConfigRepository.getTermsURL { response in
             switch response {
             case .success(let urlString):
-                AppConfig.shared.termsUrlString = urlString
+                AppConfig.shared.termsURLString = urlString
             case .failure:
                 break
-                //KLogManager.debug("Failed to get Terms Url from Remote Config : " + error.localizedDescription) // TODO: Logger
+                // KLogManager.debug("Failed to get Terms URL from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
 
     public func loadPrivacyPolicyURL() {
-        appConfigRepository.getPrivacyPolicyUrl { response in
+        appConfigRepository.getPrivacyPolicyURL { response in
             switch response {
             case .success(let urlString):
-                AppConfig.shared.privacyPolicyUrlString = urlString
+                AppConfig.shared.privacyPolicyURLString = urlString
             case .failure:
                 break
-                //KLogManager.debug("Failed to get Privacy Policy Url from Remote Config : " + error.localizedDescription) // TODO: Logger
+                // KLogManager.debug("Failed to get Privacy Policy URL from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }
@@ -91,7 +91,7 @@ public class AppPresenter {
                 AppConfig.shared.latestAppVersion = appVersion
             case .failure:
                 break
-                //KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription) // TODO: Logger
+                // KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription) // TODO: Logger
             }
         }
     }

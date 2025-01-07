@@ -23,7 +23,7 @@ public protocol APIRequestProtocol {
 }
 
 extension APIRequestProtocol {
-     public func buildURLRequest() -> URLRequest {
+    public func buildURLRequest() -> URLRequest {
         let url = URL(string: baseURL.appending(path))! // swiftlint:disable:this force_unwrapping
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         switch method {

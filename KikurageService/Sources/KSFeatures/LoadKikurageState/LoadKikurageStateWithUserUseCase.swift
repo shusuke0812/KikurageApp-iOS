@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import KDRepository
 import KDEntity
+import KDRepository
 
 public typealias KikurageStateUserTuple = (user: KikurageUser, state: KikurageState)
 

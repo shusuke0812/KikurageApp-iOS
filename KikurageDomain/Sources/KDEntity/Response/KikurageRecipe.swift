@@ -18,7 +18,7 @@ public struct KikurageRecipe: Codable {
     public var cookDate: String = ""
     public var createdAt: Timestamp?
     public var updatedAt: Timestamp?
-    
+
     public init() {}
 
     public enum CodingKeys: String, CodingKey {
