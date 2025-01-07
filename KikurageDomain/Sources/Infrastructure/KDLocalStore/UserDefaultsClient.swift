@@ -31,8 +31,12 @@ public class UserDefaultClient: UserDefaultClientProtocol {
     }
 
     public func update<T: UserDefaultsRequestProtocol>(_ request: T, onError: ((LocalStoreError) -> Void)?) {
+        guard let saveData = request.saveData else {
+            onError?(.notFound)
+            return
+        }
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: T.Response.self, requiringSecureCoding: true)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: saveData, requiringSecureCoding: true)
             UserDefaults.standard.set(data, forKey: request.key)
         } catch {
             onError?(.failedToEncode(error))
