@@ -19,7 +19,6 @@ public protocol SignUpViewModelDelegate: AnyObject {
 public class SignUpViewModel {
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
-    private var loginUser: LoginUser?
 
     public weak var delegate: SignUpViewModelDelegate?
 
@@ -67,7 +66,7 @@ extension SignUpViewModel {
         loginRepository.signUp(registerInfo: registerInfo) { [weak self] response in
             switch response {
             case .success(let loginUser):
-                self?.loginUser = loginUser
+                self?.loginManager.saveUser(loginUser: loginUser)
                 self?.delegate?.signUpViewModelDidSuccessRegisterUser(self!)
             case .failure(let error):
                 self?.delegate?.signUpViewModelDidFailedRegisterUser(self!, with: error.description())
