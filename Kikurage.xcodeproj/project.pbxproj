@@ -28,7 +28,6 @@
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
 		9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C665EF02739704F000EE152 /* InfoPlist.strings */; };
-		9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 9C697E1A2D23C2F1005BC4DA /* KDRepository */; };
 		9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */; };
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
 		9C6EF77B2229F0DE00550AC2 /* CommunicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF77A2229F0DE00550AC2 /* CommunicationViewController.swift */; };
@@ -86,16 +85,9 @@
 		9CC2A93E27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */; };
 		9CC2A94027DC902900DA9DF7 /* NavigationProtocol+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */; };
 		9CC7F4D729CEDC460045C866 /* WiFiSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC7F4D629CEDC460045C866 /* WiFiSettingTableViewCell.swift */; };
-		9CCA43B72D22C535005A78ED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43B62D22C535005A78ED /* FirebaseAnalytics */; };
-		9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43B82D22C535005A78ED /* FirebaseAuth */; };
-		9CCA43BB2D22C535005A78ED /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43BA2D22C535005A78ED /* FirebaseCrashlytics */; };
-		9CCA43BD2D22C535005A78ED /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43BC2D22C535005A78ED /* FirebaseFirestore */; };
-		9CCA43BF2D22C535005A78ED /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43BE2D22C535005A78ED /* FirebaseRemoteConfig */; };
-		9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43C02D22C535005A78ED /* FirebaseStorage */; };
 		9CCA43C42D22C5A9005A78ED /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43C32D22C5A9005A78ED /* DGCharts */; };
 		9CCA43C92D22C601005A78ED /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43C82D22C601005A78ED /* IQKeyboardManagerSwift */; };
 		9CCA43CC2D22C67A005A78ED /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43CB2D22C67A005A78ED /* PKHUD */; };
-		9CCA43CF2D22C6A5005A78ED /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43CE2D22C6A5005A78ED /* HorizonCalendar */; };
 		9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43D12D22C6D8005A78ED /* CropViewController */; };
 		9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43D42D22C714005A78ED /* RxCocoa */; };
 		9CCA43D82D22C755005A78ED /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43D72D22C755005A78ED /* RswiftLibrary */; };
@@ -118,6 +110,7 @@
 		9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */; };
 		9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
+		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
 		9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */; };
 		9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */; };
@@ -271,30 +264,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CCA43BF2D22C535005A78ED /* FirebaseRemoteConfig in Frameworks */,
 				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
 				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
 				9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */,
-				9C697E1B2D23C2F1005BC4DA /* KDRepository in Frameworks */,
 				9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */,
 				9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */,
-				9CCA43B92D22C535005A78ED /* FirebaseAuth in Frameworks */,
-				9CCA43C12D22C535005A78ED /* FirebaseStorage in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
-				9CCA43BB2D22C535005A78ED /* FirebaseCrashlytics in Frameworks */,
 				9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */,
+				9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */,
 				9CEE7F462D2931CA006E6A01 /* KSCultivationService in Frameworks */,
 				9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */,
-				9CCA43CF2D22C6A5005A78ED /* HorizonCalendar in Frameworks */,
 				9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
-				9CCA43BD2D22C535005A78ED /* FirebaseFirestore in Frameworks */,
 				9CFBA7E22D2A59930029ABF9 /* KSWiFiService in Frameworks */,
 				9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */,
 				9CCA43C92D22C601005A78ED /* IQKeyboardManagerSwift in Frameworks */,
-				9CCA43B72D22C535005A78ED /* FirebaseAnalytics in Frameworks */,
 				9CCA43C42D22C5A9005A78ED /* DGCharts in Frameworks */,
 				9CCA43CC2D22C67A005A78ED /* PKHUD in Frameworks */,
 				9C06D2F12D28124700B52292 /* KSAppService in Frameworks */,
@@ -1262,7 +1248,6 @@
 			mainGroup = 9C1ACF3E2225768A00A3D4D1;
 			packageReferences = (
 				9CCA43A72D226AFD005A78ED /* XCLocalSwiftPackageReference "KikurageUI" */,
-				9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9CCA43C22D22C5A9005A78ED /* XCRemoteSwiftPackageReference "Charts" */,
 				9CCA43C72D22C601005A78ED /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				9CCA43CA2D22C67A005A78ED /* XCRemoteSwiftPackageReference "PKHUD" */,
@@ -2253,14 +2238,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.6.0;
-			};
-		};
 		9CCA43C22D22C5A9005A78ED /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ChartsOrg/Charts";
@@ -2344,40 +2321,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KSDictionaryService;
 		};
-		9C697E1A2D23C2F1005BC4DA /* KDRepository */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KDRepository;
-		};
-		9CCA43B62D22C535005A78ED /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		9CCA43B82D22C535005A78ED /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		9CCA43BA2D22C535005A78ED /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		9CCA43BC2D22C535005A78ED /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		9CCA43BE2D22C535005A78ED /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
-		9CCA43C02D22C535005A78ED /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43B52D22C535005A78ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
 		9CCA43C32D22C5A9005A78ED /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43C22D22C5A9005A78ED /* XCRemoteSwiftPackageReference "Charts" */;
@@ -2392,11 +2335,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43CA2D22C67A005A78ED /* XCRemoteSwiftPackageReference "PKHUD" */;
 			productName = PKHUD;
-		};
-		9CCA43CE2D22C6A5005A78ED /* HorizonCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43CD2D22C6A5005A78ED /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
-			productName = HorizonCalendar;
 		};
 		9CCA43D12D22C6D8005A78ED /* CropViewController */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2417,6 +2355,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CCA43CD2D22C6A5005A78ED /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
+			productName = HorizonCalendar;
 		};
 		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
 			isa = XCSwiftPackageProductDependency;
