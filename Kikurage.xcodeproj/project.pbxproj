@@ -261,6 +261,7 @@
 		9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceTableViewCell.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
+		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
 		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,6 +331,7 @@
 		9C1ACF3E2225768A00A3D4D1 = {
 			isa = PBXGroup;
 			children = (
+				9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */,
 				9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */,
 				9CCA43B22D22B950005A78ED /* KikurageService */,
 				9CCA43B12D22B7A6005A78ED /* KikurageUI */,
