@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KALogger
 import KDEntity
 import KDLoginManager
 import KDRepository
@@ -52,9 +53,8 @@ public class AppPresenter {
             switch response {
             case .success(let urlString):
                 AppConfig.shared.facebookGroupURLString = urlString
-            case .failure:
-                break
-                // KLogManager.debug("Failed to get Facebook Group URL from Remote Config : " + error.localizedDescription) // TODO: Logger
+            case .failure(let error):
+                KLogManager.debug("Failed to get Facebook Group URL from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -64,9 +64,8 @@ public class AppPresenter {
             switch response {
             case .success(let urlString):
                 AppConfig.shared.termsURLString = urlString
-            case .failure:
-                break
-                // KLogManager.debug("Failed to get Terms URL from Remote Config : " + error.localizedDescription) // TODO: Logger
+            case .failure(let error):
+                KLogManager.debug("Failed to get Terms URL from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -76,9 +75,8 @@ public class AppPresenter {
             switch response {
             case .success(let urlString):
                 AppConfig.shared.privacyPolicyURLString = urlString
-            case .failure:
-                break
-                // KLogManager.debug("Failed to get Privacy Policy URL from Remote Config : " + error.localizedDescription) // TODO: Logger
+            case .failure(let error):
+                KLogManager.debug("Failed to get Privacy Policy URL from Remote Config : " + error.localizedDescription)
             }
         }
     }
@@ -89,9 +87,8 @@ public class AppPresenter {
             case .success(let appVersionString):
                 let appVersion = AppVersion(versionString: appVersionString)
                 AppConfig.shared.latestAppVersion = appVersion
-            case .failure:
-                break
-                // KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription) // TODO: Logger
+            case .failure(let error):
+                KLogManager.debug("Failed to get iOS App Version from Remote Config : " + error.localizedDescription)
             }
         }
     }

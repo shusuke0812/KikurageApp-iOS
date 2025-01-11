@@ -27,6 +27,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
+        .package(path: "../KikurageAnalytics"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
     ],
@@ -37,6 +38,7 @@ let package = Package(
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
+                .product(name: "KALogger", package: "KikurageAnalytics"),
                 .product(name: "FirebaseCore", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"),
                 .target(name: "KSSLoadKikurageStateUseCase")
