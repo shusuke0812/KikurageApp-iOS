@@ -39,8 +39,8 @@ let package = Package(
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .product(name: "KALogger", package: "KikurageAnalytics"),
+                .product(name: "KACrashlytics", package: "KikurageAnalytics"),
                 .product(name: "FirebaseCore", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"),
                 .target(name: "KSSLoadKikurageStateUseCase")
             ],
             path: "Sources/Services/KSAppService"
