@@ -7,8 +7,6 @@
 //
 
 import KAAnalytics
-import KDEntity
-import KDRepository
 import KSLoginService
 import PKHUD
 import UIKit
@@ -24,7 +22,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
-        viewModel = LoginViewModel(loginRepository: LoginRepository())
+        viewModel = LoginViewModel()
 
         setDelegate()
         adjustNavigationBarBackgroundColor()

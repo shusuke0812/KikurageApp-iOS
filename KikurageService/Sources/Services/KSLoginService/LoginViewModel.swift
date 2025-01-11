@@ -6,10 +6,11 @@
 //
 
 import Foundation
-import KDEntity
 import KDLoginManager
 import KDRepository
 import KSSLoadKikurageStateUseCase
+
+@_exported import KDEntity
 
 public protocol LoginViewModelDelegate: AnyObject {
     func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState)
@@ -26,7 +27,7 @@ public class LoginViewModel {
     private var email: String = ""
     private var password: String = ""
 
-    public init(loginRepository: LoginRepositoryProtocol) {
+    public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
