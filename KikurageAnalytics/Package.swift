@@ -9,17 +9,13 @@ let package = Package(
         .iOS(.v15)
     ],
     products: [
-        .library(
-            name: "KikurageAnalytics",
-            targets: [
-                "KikurageLogger"
-            ]
+        .library(name: "KALogger", targets: ["KALogger"]
         ),
     ],
     targets: [
         .target(
-            name: "KikurageLogger",
-            path: "Sources/KikurageLogger"
+            name: "KALogger",
+            path: "Sources/KALogger"
         ),
     ]
 )
