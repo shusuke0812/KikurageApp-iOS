@@ -149,10 +149,7 @@ let package = Package(
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .target(name: "KSFeatures")
             ],
-            path: "Sources/Services/KSWiFiService",
-            resources: [
-                .process("../../Resources")
-            ]
+            path: "Sources/Services/KSWiFiService"
         ),
         .target(
             name: "KSDebugService",
@@ -170,9 +167,6 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
-            ],
-            resources: [
-                .process("../Resources")
             ]
         ),
     ]

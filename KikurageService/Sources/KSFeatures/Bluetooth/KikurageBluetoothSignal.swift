@@ -21,13 +21,13 @@ public enum KikurageBluetoothSignal {
     public var image: UIImage? {
         switch self {
         case .lost:
-            return ResourceManager.getImage(name: "signal-lost")
+            return R.Image.signalLost
         case .weak:
-            return ResourceManager.getImage(name: "signal-weak")
+            return R.Image.signalWeak
         case .fair:
-            return ResourceManager.getImage(name: "signal-fair")
+            return R.Image.signalFair
         case .good:
-            return ResourceManager.getImage(name: "signal-good")
+            return R.Image.signalGood
         }
     }
 
