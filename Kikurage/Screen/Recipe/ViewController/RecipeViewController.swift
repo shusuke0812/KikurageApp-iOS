@@ -6,6 +6,7 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSRecipeService
 import KUIKit
 import PKHUD
@@ -52,7 +53,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.recipe)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.recipe)
     }
 
     // MARK: - Action

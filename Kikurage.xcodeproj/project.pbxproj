@@ -26,7 +26,6 @@
 		9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482472D2A244200829067 /* KSDictionaryService */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
-		9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */; };
 		9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C665EF02739704F000EE152 /* InfoPlist.strings */; };
 		9C6EF7772229F0B900550AC2 /* CultivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */; };
 		9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EF7782229F0CD00550AC2 /* RecipeViewController.swift */; };
@@ -111,6 +110,7 @@
 		9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
+		9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
 		9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */; };
 		9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */; };
@@ -169,7 +169,6 @@
 		9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Production.plist"; sourceTree = "<group>"; };
 		9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+SignUp.swift"; sourceTree = "<group>"; };
 		9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+DeviceRegister.swift"; sourceTree = "<group>"; };
-		9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsHelper.swift; sourceTree = "<group>"; };
 		9C665EEF2739704F000EE152 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C665EF127397053000EE152 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9C6EF7762229F0B900550AC2 /* CultivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultivationViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +284,7 @@
 				9CCA43CC2D22C67A005A78ED /* PKHUD in Frameworks */,
 				9C06D2F12D28124700B52292 /* KSAppService in Frameworks */,
 				9CCA43D82D22C755005A78ED /* RswiftLibrary in Frameworks */,
+				9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */,
 				9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1093,7 +1093,6 @@
 		9CF0020624E39B290084036B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				9C5C4AE82A81C37E00818E2A /* FirebaseAnalyticsHelper.swift */,
 				9C90935D25B6666C00496F38 /* ChartViewHelper.swift */,
 			);
 			path = Helper;
@@ -1443,7 +1442,6 @@
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
-				9C5C4AE92A81C37E00818E2A /* FirebaseAnalyticsHelper.swift in Sources */,
 				9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */,
 				9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
@@ -2360,6 +2358,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43CD2D22C6A5005A78ED /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
 			productName = HorizonCalendar;
+		};
+		9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KAAnalytics;
 		};
 		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -10,7 +10,8 @@ let package = Package(
     ],
     products: [
         .library(name: "KALogger", targets: ["KALogger"]),
-        .library(name: "KACrashlytics", targets: ["KACrashlytics"])
+        .library(name: "KACrashlytics", targets: ["KACrashlytics"]),
+        .library(name: "KAAnalytics", targets: ["KAAnalytics"])
     ],
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0"))
@@ -26,6 +27,13 @@ let package = Package(
                 .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk")
             ],
             path: "Sources/KACrashlytics"
+        ),
+        .target(
+            name: "KAAnalytics",
+            dependencies: [
+                .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
+            ],
+            path: "Sources/KAAnalytics"
         )
     ]
 )

@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import KAAnalytics
 import KSDeviceRegisterService
 import PKHUD
 import UIKit
@@ -45,7 +46,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.deviceRegister)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.deviceRegister)
     }
 
     override func viewDidDisappear(_ animated: Bool) {

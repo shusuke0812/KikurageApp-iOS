@@ -8,6 +8,7 @@
 
 // Doc: https://developer.apple.com/documentation/uikit/view_controllers/creating_a_custom_container_view_controller
 
+import KAAnalytics
 import UIKit
 
 class DictionaryViewController: UIViewController {
@@ -75,10 +76,10 @@ extension DictionaryViewController {
         removeContainerViewController()
         if index == 0 {
             setContainerViewController(dictionaryTriviaVC)
-            FirebaseAnalyticsHelper.sendScreenViewEvent(.dictionaryTrivia)
+            FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTrivia)
         } else if index == 1 {
             setContainerViewController(dictonaryTwitterVC)
-            FirebaseAnalyticsHelper.sendScreenViewEvent(.dictionaryTwitter)
+            FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTwitter)
         }
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSHomeService
 import RxSwift
 import UIKit
@@ -68,7 +69,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.home)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.home)
     }
 }
 

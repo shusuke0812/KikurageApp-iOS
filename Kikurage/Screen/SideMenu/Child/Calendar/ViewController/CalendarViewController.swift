@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSCalendarService
 import UIKit
 
@@ -30,7 +31,7 @@ class CalendarViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.calendar)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.calendar)
     }
 
     // MARK: - Action

@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSAppService
 import UIKit
 
@@ -28,7 +29,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable, TopAcces
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.top)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.top)
     }
 }
 

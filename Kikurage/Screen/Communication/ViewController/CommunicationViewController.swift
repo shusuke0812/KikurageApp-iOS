@@ -6,6 +6,7 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSAppService
 import PKHUD
 import UIKit
@@ -43,7 +44,7 @@ extension CommunicationViewController {
 
 extension CommunicationViewController: CommunicationBaseViewDelegate {
     func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView) {
-        FirebaseAnalyticsHelper.sendTapEvent(.communicationFacebookButton)
+        FirebaseAnalyticsManager.sendTapEvent(.communicationFacebookButton)
         let urlString = AppConfig.shared.facebookGroupURLString
         presentToSafariView(urlString: urlString, onError: nil)
     }

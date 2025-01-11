@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSSignUpService
 import PKHUD
 import RxCocoa
@@ -32,7 +33,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.signUp)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.signUp)
     }
 }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSCultivationService
 import KUIKit
 import PKHUD
@@ -51,7 +52,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.cultivation)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.cultivation)
     }
 
     // MARK: - Action

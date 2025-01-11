@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSCultivationService
 import UIKit
 
@@ -30,7 +31,7 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.cultivationDetail)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.cultivationDetail)
     }
 }
 

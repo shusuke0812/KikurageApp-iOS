@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KDEntity
 import KDRepository
 import KSLoginService
@@ -31,7 +32,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.login)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.login)
     }
 }
 

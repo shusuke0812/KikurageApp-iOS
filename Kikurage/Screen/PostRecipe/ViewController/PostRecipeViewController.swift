@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSRecipeService
 import KUIKit
 import PKHUD
@@ -34,7 +35,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.postRecipe)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.postRecipe)
     }
 
     // MARK: - Action
@@ -101,7 +102,7 @@ extension PostRecipeViewController: KUISelectImageCollectionViewCellDelegate {
 
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        FirebaseAnalyticsHelper.sendTapEvent(.recipeImageButton)
+        FirebaseAnalyticsManager.sendTapEvent(.recipeImageButton)
         openImagePicker()
     }
 }

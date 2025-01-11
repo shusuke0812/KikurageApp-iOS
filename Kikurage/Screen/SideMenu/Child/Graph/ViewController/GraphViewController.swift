@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSGraphService
 import UIKit
 
@@ -29,7 +30,7 @@ class GraphViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.graph)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.graph)
     }
 
     // MARK: - Action

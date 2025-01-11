@@ -1,40 +1,13 @@
 //
-//  FirebaseAnalyticsHelper.swift
-//  Kikurage
+//  FirebaseAnalyticsScreenViewEvent.swift
+//  KikurageAnalytics
 //
-//  Created by Shusuke Ota on 2023/8/8.
-//  Copyright © 2023 shusuke. All rights reserved.
+//  Created by Shusuke Ota on 2025/1/11.
 //
 
-import FirebaseAnalytics
 import Foundation
 
-// GA4 Recommended events: https://support.google.com/firebase/answer/9267735?sjid=12444164303384159030-AP
-
-enum FirebaseAnalyticsTapEvent {
-    case debug
-    case communicationFacebookButton
-    case accountSettingButton
-    case cultivationImageButton
-    case recipeImageButton
-
-    var name: String {
-        switch self {
-        case .debug:
-            return "debug"
-        case .communicationFacebookButton:
-            return "facebook_button"
-        case .accountSettingButton:
-            return "account_setting"
-        case .cultivationImageButton:
-            return "cultivation_image"
-        case .recipeImageButton:
-            return "recipe_image"
-        }
-    }
-}
-
-enum FirebaseAnalyticsScreenViewEvent {
+public enum FirebaseAnalyticsScreenViewEvent {
     case top
     case login
     case signUp
@@ -54,7 +27,7 @@ enum FirebaseAnalyticsScreenViewEvent {
     case dictionaryTwitter
     case wifi
 
-    var screenName: String {
+    public var screenName: String {
         switch self {
         case .top:
             return "Top"
@@ -95,7 +68,7 @@ enum FirebaseAnalyticsScreenViewEvent {
         }
     }
 
-    var screenClass: String {
+    public var screenClass: String {
         switch self {
         case .top:
             return "app/top"
@@ -134,29 +107,5 @@ enum FirebaseAnalyticsScreenViewEvent {
         case .wifi:
             return "app/home/side_menu/wifi"
         }
-    }
-}
-
-struct FirebaseAnalyticsHelper {
-    static func sendTapEvent(_ event: FirebaseAnalyticsTapEvent) {
-        Analytics.logEvent(AnalyticsEventSelectItem, parameters: [
-            AnalyticsParameterItemID: "id_\(event.name)",
-            AnalyticsParameterItemName: event.name
-        ])
-    }
-
-    static func sendScreenViewEvent(_ event: FirebaseAnalyticsScreenViewEvent) {
-        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
-            AnalyticsParameterScreenName: event.screenName,
-            AnalyticsParameterScreenClass: event.screenClass
-        ])
-    }
-
-    static func setUserProperty(_ deviceModel: String = "M5Stack_GRAY") {
-        Analytics.setUserProperty(deviceModel, forName: "device_model")
-    }
-
-    static func setUserID(_ idString: String) {
-        Analytics.setUserID(idString)
     }
 }

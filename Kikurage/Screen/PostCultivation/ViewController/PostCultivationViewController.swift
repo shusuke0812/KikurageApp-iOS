@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSCultivationService
 import KUIKit
 import PKHUD
@@ -36,7 +37,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.postCultivation)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.postCultivation)
     }
 
     // MARK: - Action
@@ -135,7 +136,7 @@ extension PostCultivationViewController: PostCultivationViewModelDelegate {
 
 extension PostCultivationViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        FirebaseAnalyticsHelper.sendTapEvent(.cultivationImageButton)
+        FirebaseAnalyticsManager.sendTapEvent(.cultivationImageButton)
         openImagePicker()
     }
 }

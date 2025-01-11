@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSAppService
 import KUIKit
 import UIKit
@@ -130,8 +131,8 @@ extension AppRootController {
 extension AppRootController: AppPresenterDelegate {
     func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         if let user = kikurageInfo.user {
-            FirebaseAnalyticsHelper.setUserProperty()
-            FirebaseAnalyticsHelper.setUserID(user.productKey)
+            FirebaseAnalyticsManager.setUserProperty()
+            FirebaseAnalyticsManager.setUserID(user.productKey)
         }
         DispatchQueue.main.async {
             self.showHomePage(kikurageInfo: kikurageInfo)

@@ -6,6 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KAAnalytics
 import KSWiFiService
 import KUIKit
 import PKHUD
@@ -33,7 +34,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
             baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()
         }
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.wifi)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.wifi)
     }
 
     // MARK: - Action
