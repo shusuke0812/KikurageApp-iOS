@@ -31,7 +31,7 @@ public class CalendarViewModel {
 
     private(set) var kikurageUser: KikurageUser?
 
-    public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
         cultivationDateComponents = DateHelper.getDateComponents()

@@ -7,11 +7,12 @@
 //
 
 import Foundation
-import KDEntity
 import KDRepository
 import KSSDateHelper
 import KUIKit
 import UIKit.UITableView
+
+@_exported import KDEntity
 
 public protocol DictionaryTwitterViewModelDelegate: AnyObject {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel)
@@ -25,7 +26,7 @@ public class DictionaryTwitterViewModel: NSObject {
 
     private let twitterSearchRepository: TwitterSearchRepositoryProtocol
 
-    public init(twitterSearchRepository: TwitterSearchRepositoryProtocol) {
+    public init(twitterSearchRepository: TwitterSearchRepositoryProtocol = TwitterSearchRepository()) {
         self.twitterSearchRepository = twitterSearchRepository
     }
 }

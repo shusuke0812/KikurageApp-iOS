@@ -32,7 +32,10 @@ public class GraphViewModel {
     public var humidityGraphDatas: [Int] = []
     public var kikurageUser: KikurageUser?
 
-    public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(
+        kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
+        kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()
+    ) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()

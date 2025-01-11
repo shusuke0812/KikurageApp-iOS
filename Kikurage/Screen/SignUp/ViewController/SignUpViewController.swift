@@ -6,7 +6,6 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDRepository
 import KSSignUpService
 import PKHUD
 import RxCocoa
@@ -25,7 +24,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_signup_title()
-        viewModel = SignUpViewModel(loginRepository: LoginRepository())
+        viewModel = SignUpViewModel()
 
         setDelegate()
         adjustNavigationBarBackgroundColor()

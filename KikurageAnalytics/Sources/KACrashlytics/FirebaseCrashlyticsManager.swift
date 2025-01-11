@@ -10,8 +10,8 @@ import FirebaseCrashlytics
 public struct FirebaseCrashlyticsManager {
     public init() {}
 
-    public func configUserId(_ id: String?) {
-        let userId = id ?? "no id"
-        Crashlytics.crashlytics().setUserID(userId)
+    public func configUserID(_ id: String?) {
+        let userID = id ?? "no id"
+        Crashlytics.crashlytics().setUserID(userID)
     }
 }

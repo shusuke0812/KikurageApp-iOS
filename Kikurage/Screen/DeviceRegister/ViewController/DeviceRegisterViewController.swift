@@ -7,7 +7,6 @@
 //
 
 import AVFoundation
-import KDRepository
 import KSDeviceRegisterService
 import PKHUD
 import UIKit
@@ -27,7 +26,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = DeviceRegisterViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        viewModel = DeviceRegisterViewModel()
         qrCodeReaderViewModel = QRCodeReaderViewModel()
         qrCodeReaderViewModel.delegate = self
         setDelegateDataSource()

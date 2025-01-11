@@ -6,8 +6,6 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KDEntity
-import KDRepository
 import KSCultivationService
 import KUIKit
 import PKHUD
@@ -30,7 +28,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
+        viewModel = CultivationViewModel()
 
         setDelegateDataSource()
         setNavigationItem()

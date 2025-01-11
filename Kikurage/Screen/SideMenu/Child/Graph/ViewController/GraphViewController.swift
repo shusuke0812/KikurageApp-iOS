@@ -6,7 +6,6 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDRepository
 import KSGraphService
 import UIKit
 
@@ -22,7 +21,7 @@ class GraphViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        viewModel = GraphViewModel()
         setDelegateDataSource()
         setNavigation()
         loadKikurageUser()

@@ -6,8 +6,6 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KDEntity
-import KDRepository
 import KSHomeService
 import RxSwift
 import UIKit
@@ -37,7 +35,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Config
-        viewModel = HomeViewModel(kikurageUser: kikurageUser, kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository())
+        viewModel = HomeViewModel(kikurageUser: kikurageUser)
         viewModel.input.listenKikurageState()
 
         // UI

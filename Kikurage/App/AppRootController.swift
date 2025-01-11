@@ -6,7 +6,6 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KDEntity
 import KSAppService
 import KUIKit
 import UIKit

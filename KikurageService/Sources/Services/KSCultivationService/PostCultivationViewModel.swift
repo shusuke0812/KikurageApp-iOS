@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import KDEntity
 import KDLoginManager
 import KDRepository
 import KSSDateHelper
+
+@_exported import KDEntity
 
 public protocol PostCultivationViewModelDelegate: AnyObject {
     func postCultivationViewModelDidSuccessPostCultivation(_ postCultivationViewModel: PostCultivationViewModel)
@@ -28,7 +29,7 @@ public class PostCultivationViewModel {
     public var cultivation: KikurageCultivation
     public var postedCultivationDocumentID: String?
 
-    public init(cultivationRepository: CultivationRepositoryProtocol) {
+    public init(cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()) {
         self.cultivationRepository = cultivationRepository
         cultivation = KikurageCultivation()
         loginManager = LoginManager()

@@ -6,9 +6,10 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDEntity
 import KUIKit
 import UIKit.UICollectionView
+
+@_exported import KDEntity
 
 public class CultivationDetailViewModel: NSObject {
     private(set) var cultivation: KikurageCultivation

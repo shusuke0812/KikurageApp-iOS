@@ -7,12 +7,13 @@
 //
 
 import Foundation
-import KDEntity
 import KDLoginManager
 import KDRepository
 import KSSDateHelper
 import RxCocoa
 import RxSwift
+
+@_exported import KDEntity
 
 public protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
@@ -48,7 +49,7 @@ public class CultivationViewModel: CultivationViewModelType, CultivationViewMode
     public let cultivation: Observable<KikurageCultivationTuple>
     public var error: Observable<Error> { errorSubject.asObserver() }
 
-    public init(cultivationRepository: CultivationRepositoryProtocol) {
+    public init(cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()) {
         self.cultivationRepository = cultivationRepository
         loginManager = LoginManager()
 

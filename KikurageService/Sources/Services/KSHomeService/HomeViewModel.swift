@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import KDEntity
 import KDRepository
 import KSSDateHelper
 import RxSwift
+
+@_exported import KDEntity
 
 public protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
@@ -49,7 +50,11 @@ public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModel
         DateHelper.now()
     }
 
-    public init(kikurageUser: KikurageUser, kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol) {
+    public init(
+        kikurageUser: KikurageUser,
+        kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
+        kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol = KikurageStateListenerRepository()
+    ) {
         self.kikurageUser = kikurageUser
 
         self.kikurageStateRepository = kikurageStateRepository

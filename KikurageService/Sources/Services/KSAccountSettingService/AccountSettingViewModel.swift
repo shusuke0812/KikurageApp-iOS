@@ -24,7 +24,7 @@ public class AccountSettingViewModel {
 
     public var kikurageUser: KikurageUser?
 
-    public init(kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
     }

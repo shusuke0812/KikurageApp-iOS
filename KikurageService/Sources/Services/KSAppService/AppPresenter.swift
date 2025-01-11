@@ -7,10 +7,11 @@
 
 import Foundation
 import KALogger
-import KDEntity
 import KDLoginManager
 import KDRepository
 import KSSLoadKikurageStateUseCase
+
+@_exported import KDEntity
 
 public protocol AppPresenterDelegate: AnyObject {
     func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))

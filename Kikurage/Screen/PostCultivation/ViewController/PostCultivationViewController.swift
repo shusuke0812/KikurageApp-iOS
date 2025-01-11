@@ -6,7 +6,6 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDRepository
 import KSCultivationService
 import KUIKit
 import PKHUD
@@ -25,7 +24,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = PostCultivationViewModel(cultivationRepository: CultivationRepository())
+        viewModel = PostCultivationViewModel()
         cameraCollectionViewModel = KUISelectImageCollectionViewModel(
             selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber,
             collectionViewDelegate: self

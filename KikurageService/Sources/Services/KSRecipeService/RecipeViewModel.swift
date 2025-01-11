@@ -6,13 +6,14 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDEntity
 import KDLoginManager
 import KDRepository
 import KSSDateHelper
 import RxCocoa
 import RxSwift
 import UIKit.UITableView
+
+@_exported import KDEntity
 
 public protocol RecipeViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
@@ -48,7 +49,7 @@ public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeV
     public var recipe: Observable<KikurageRecipeTuple>
     public var error: Observable<Error> { errorSubject.asObserver() }
 
-    public init(recipeRepository: RecipeRepositoryProtocol) {
+    public init(recipeRepository: RecipeRepositoryProtocol = RecipeRepository()) {
         self.recipeRepository = recipeRepository
         loginManager = LoginManager()
 

@@ -6,8 +6,6 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KDEntity
-import KDRepository
 import KSRecipeService
 import KUIKit
 import PKHUD
@@ -33,7 +31,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()
-        viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
+        viewModel = RecipeViewModel()
         setDelegateDataSource()
         setNotificationCenter()
         setRefreshControl()

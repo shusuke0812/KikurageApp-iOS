@@ -28,7 +28,7 @@ public class PostRecipeViewModel {
     public var recipe: KikurageRecipe
     public var postedRecipeDocumentID: String?
 
-    public init(recipeRepository: RecipeRepositoryProtocol) {
+    public init(recipeRepository: RecipeRepositoryProtocol = RecipeRepository()) {
         self.recipeRepository = recipeRepository
         loginManager = LoginManager()
         recipe = KikurageRecipe()

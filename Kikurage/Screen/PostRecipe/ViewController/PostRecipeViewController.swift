@@ -6,7 +6,6 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KDRepository
 import KSRecipeService
 import KUIKit
 import PKHUD
@@ -27,7 +26,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
             selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber,
             collectionViewDelegate: self
         )
-        viewModel = PostRecipeViewModel(recipeRepository: RecipeRepository())
+        viewModel = PostRecipeViewModel()
         setDelegateDataSource()
         setNavigation()
         adjustNavigationBarBackgroundColor()

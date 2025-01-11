@@ -30,7 +30,10 @@ public class DeviceRegisterViewModel {
 
     public weak var delegate: DeviceRegisterViewModelDelegate?
 
-    public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(
+        kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
+        kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()
+    ) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()

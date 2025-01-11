@@ -25,7 +25,7 @@ public class SignUpViewModel {
     public var email: String = ""
     public var password: String = ""
 
-    public init(loginRepository: LoginRepositoryProtocol) {
+    public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
     }

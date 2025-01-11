@@ -7,7 +7,6 @@
 //
 
 import CropViewController
-import KDRepository
 import KSAccountSettingService
 import UIKit
 
@@ -23,7 +22,7 @@ class AccountSettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = AccountSettingViewModel(kikurageUserRepository: KikurageUserRepository())
+        viewModel = AccountSettingViewModel()
         setDelegateDataSource()
         setNavigation()
 
