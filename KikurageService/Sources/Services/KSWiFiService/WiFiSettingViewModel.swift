@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KSFeatures
+import KSSBluetooth
 
 public protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)

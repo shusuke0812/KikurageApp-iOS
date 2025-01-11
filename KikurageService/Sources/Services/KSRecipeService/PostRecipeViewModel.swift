@@ -10,7 +10,7 @@ import Foundation
 import KDEntity
 import KDLoginManager
 import KDRepository
-import KSFeatures
+import KSSDateHelper
 
 public protocol PostRecipeViewModelDelegate: AnyObject {
     func postRecipeViewModelDidSuccessPostRecipe(_ postRecipeViewModel: PostRecipeViewModel)

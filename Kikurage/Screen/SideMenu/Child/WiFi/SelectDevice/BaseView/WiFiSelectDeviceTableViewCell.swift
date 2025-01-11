@@ -6,7 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KSFeatures
+import KSSBluetooth
 import UIKit
 
 class WiFiSelectDeviceTableViewCell: UITableViewCell {

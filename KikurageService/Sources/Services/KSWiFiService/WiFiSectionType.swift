@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KSFeatures
+import KSSBluetooth
 
 public enum WiFiSelectDeviceSectionType {
     case device

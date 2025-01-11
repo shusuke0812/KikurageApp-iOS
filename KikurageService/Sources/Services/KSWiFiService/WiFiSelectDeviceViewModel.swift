@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KSFeatures
+@_exported import KSSBluetooth
 
 public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)

@@ -61,8 +61,6 @@ public struct KLogManager: KLoggerProtocol {
 
 @available(*, deprecated, message: "there is KLogManager which is able to use for iOS14 or newer")
 public struct KLogger: KLoggerProtocol {
-    private static var dateString: String = DateHelper.formatToStringForLog()
-
     enum LogLevel: String {
         case verbose
         case debug
@@ -104,5 +102,23 @@ public struct KLogger: KLoggerProtocol {
             let line = #line
             fatalError("DEBUG: [Fatal] \(className).\(function) #\(line): \(message)")
         #endif
+    }
+
+    private static var dateString: String {
+        DateHelper.formatToStringForLog()
+    }
+
+    private static struct DateHelper {
+        private static let originalDateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.calendar = Calendar(identifier: .gregorian)
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            return formatter
+        }()
+
+        private static func formatToStringForLog() -> String {
+            originalDateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+            return originalDateFormatter.string(from: Date())
+        }
     }
 }

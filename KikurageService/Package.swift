@@ -39,7 +39,7 @@ let package = Package(
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .product(name: "FirebaseCore", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSLoadKikurageStateUseCase")
             ],
             path: "Sources/Services/KSAppService"
         ),
@@ -48,7 +48,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSLoadKikurageStateUseCase")
             ],
             path: "Sources/Services/KSLoginService"
         ),
@@ -67,7 +67,7 @@ let package = Package(
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSDeviceRegisterService"
         ),
@@ -77,7 +77,7 @@ let package = Package(
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "RxSwift", package: "RxSwift"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSHomeService"
         ),
@@ -89,7 +89,7 @@ let package = Package(
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxCocoa", package: "RxSwift"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSCultivationService"
         ),
@@ -101,7 +101,7 @@ let package = Package(
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxCocoa", package: "RxSwift"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSRecipeService"
         ),
@@ -111,7 +111,7 @@ let package = Package(
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
                 .product(name: "KDLoginManager", package: "KikurageDomain"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSCalendarService"
         ),
@@ -138,7 +138,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSDictionaryService"
         ),
@@ -147,7 +147,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
-                .target(name: "KSFeatures")
+                .target(name: "KSSBluetooth")
             ],
             path: "Sources/Services/KSWiFiService"
         ),
@@ -160,14 +160,23 @@ let package = Package(
             path: "Sources/Services/KSDebugService"
         ),
 
-        // MARK: - Features
+        // MARK: - SharedServices
 
         .target(
-            name: "KSFeatures",
+            name: "KSSBluetooth",
+            path: "Sources/SharedServices/KSSBluetooth"
+        ),
+        .target(
+            name: "KSSLoadKikurageStateUseCase",
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
-            ]
+            ],
+            path: "Sources/SharedServices/KSSLoadKikurageStateUseCase"
+        ),
+        .target(
+            name: "KSSDateHelper",
+            path: "Sources/SharedServices/KSSDateHelper"
         ),
     ]
 )

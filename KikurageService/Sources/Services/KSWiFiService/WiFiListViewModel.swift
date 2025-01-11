@@ -9,7 +9,7 @@
 import Foundation
 import KDEntity
 import KDRepository
-import KSFeatures
+@_exported import KSSBluetooth
 
 public protocol WiFiListViewModelDelegate: AnyObject {
     func viewModelUpdateWiFiList(_ wifiListViewModel: WiFiListViewModel)

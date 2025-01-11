@@ -9,7 +9,7 @@
 import KDEntity
 import KDLoginManager
 import KDRepository
-import KSFeatures
+import KSSDateHelper
 import UIKit
 
 public protocol DeviceRegisterViewModelDelegate: AnyObject {
