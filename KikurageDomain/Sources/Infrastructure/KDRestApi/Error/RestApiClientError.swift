@@ -11,6 +11,8 @@ import Foundation
 public enum RestApiClientError: Error {
     /// 通信に失敗（ex. 端末オフライン、URLホストが見つからない etc）
     case networkConnectionError(Error)
+    /// レスポンス無し
+    case noResponse
     /// エンコード、デコードに失敗
     case parseError(Error)
     /// レスポンスの変換に失敗（ex. レスポンスのJSON形式とResonse型がアンマッチ、JSONデータが一部欠けていた etc）
@@ -26,6 +28,8 @@ public enum RestApiClientError: Error {
         switch self {
         case .networkConnectionError:
             return R.LocalizableString.errorClientNetworkConnection
+        case .noResponse:
+            return R.LocalizableString.errorClientNoData
         case .parseError:
             return R.LocalizableString.errorClientParse
         case .responseParseError:

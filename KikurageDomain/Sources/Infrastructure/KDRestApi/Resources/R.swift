@@ -10,6 +10,7 @@ import Foundation
 enum R {
     enum LocalizableString {
         static let errorClientNetworkConnection = string(localized: "error_client_network_connection")
+        static let errorClientNoData = string(localized: "error_client_no_response")
         static let errorClientParse = string(localized: "error_client_parse")
         static let errorClientResponseParse = string(localized: "error_client_response_parse")
         static let errorClientApi = string(localized: "error_client_api")
