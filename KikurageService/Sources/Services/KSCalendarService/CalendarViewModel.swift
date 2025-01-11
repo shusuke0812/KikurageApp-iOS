@@ -66,7 +66,7 @@ extension CalendarViewModel {
     /// - Parameter uid: ユーザーID
     public func loadKikurageUser() {
         guard let userID = loginManager.userID else {
-            delegate?.calendarViewModelDidFailedGetKikurageUser(self, with: "error")
+            delegate?.calendarViewModelDidFailedGetKikurageUser(self, with: "error") TODO: Error型を定義してVCに通知する
             return
         }
         let request = KikurageUserRequest(uid: userID)
@@ -78,7 +78,7 @@ extension CalendarViewModel {
                 self?.calcCultivationTerm()
                 self?.delegate?.calendarViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.calendarViewModelDidFailedGetKikurageUser(self!, with: "error") // TODO: error.description()
+                self?.delegate?.calendarViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
     }

@@ -45,7 +45,7 @@ extension AccountSettingViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.settingViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: "error") // TODO: error.description()
+                self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
     }

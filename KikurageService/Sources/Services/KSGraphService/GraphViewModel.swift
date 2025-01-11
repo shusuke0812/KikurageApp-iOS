@@ -104,7 +104,7 @@ extension GraphViewModel {
                 self?.kikurageUser = kikurageUser
                 self?.delegate?.graphViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
-                self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: "error") // TODO: error.description()
+                self?.delegate?.graphViewModelDidFailedGetKikurageUser(self!, with: error.description())
             }
         }
     }

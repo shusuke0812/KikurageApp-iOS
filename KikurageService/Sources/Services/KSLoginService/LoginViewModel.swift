@@ -69,7 +69,7 @@ extension LoginViewModel {
                     case .success(let res):
                         self?.delegate?.loginViewModelDidSuccessLogin(self, user: res.user, state: res.state)
                     case .failure(let error):
-                        self?.delegate?.loginViewModelDidFailedLogin(self, with: "") // TODO: Error descriptionを渡す. InfrastructureにError型を定義しているので、それらをMapするError型をKDRepositoryに定義してService層へ通知する
+                        self?.delegate?.loginViewModelDidFailedLogin(self, with: error.description())
                     }
                 }
             case .failure(let error):

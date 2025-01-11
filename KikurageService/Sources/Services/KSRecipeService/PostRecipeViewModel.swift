@@ -56,7 +56,7 @@ extension PostRecipeViewModel {
                 self?.postedRecipeDocumentID = documentID
                 self?.delegate?.postRecipeViewModelDidSuccessPostRecipe(self!)
             case .failure(let error):
-                self?.delegate?.postRecipeViewModelDidFailedPostRecipe(self!, with: "error") // TODO: error.description()
+                self?.delegate?.postRecipeViewModelDidFailedPostRecipe(self!, with: error.description())
             }
         }
     }

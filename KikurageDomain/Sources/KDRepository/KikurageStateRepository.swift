@@ -7,8 +7,9 @@
 //
 
 import KDEntity
-import KDFirebase
 import RxSwift
+
+@_exported import KDFirebase
 
 public protocol KikurageStateRepositoryProtocol {
     /// KikurageStateを読み込む

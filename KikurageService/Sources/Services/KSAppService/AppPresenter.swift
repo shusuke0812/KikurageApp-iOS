@@ -43,8 +43,8 @@ public class AppPresenter {
             switch result {
             case .success(let res):
                 self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
-            case .failure:
-                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: "") // TODO: Error descriptionを渡す. InfrastructureにError型を定義しているので、それらをMapするError型をKDRepositoryに定義してService層へ通知する
+            case .failure(let error):
+                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: error.description())
             }
         }
     }

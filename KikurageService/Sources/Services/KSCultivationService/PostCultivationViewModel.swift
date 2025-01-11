@@ -60,7 +60,7 @@ extension PostCultivationViewModel {
 extension PostCultivationViewModel {
     public func postCultivation() {
         guard let userID = loginManager.userID else {
-            delegate?.postCultivationViewModelDidFailedPostCultivation(self, with: "error")
+            delegate?.postCultivationViewModelDidFailedPostCultivation(self, with: "error") // TODO: Error型を定義してVCに通知する
             return
         }
         var request = KikurageCultivationRequest(kikurageUserID: userID)
@@ -71,7 +71,7 @@ extension PostCultivationViewModel {
                 self?.postedCultivationDocumentID = documentID
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivation(self!)
             case .failure(let error):
-                self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: "error") // TODO: error.description()
+                self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
             }
         }
     }
