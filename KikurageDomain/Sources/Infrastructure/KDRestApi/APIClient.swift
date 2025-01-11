@@ -51,8 +51,7 @@ public struct APIClient: APIClientProtocol {
                     return
                 }
                 guard let data = data, let response = response as? HTTPURLResponse else {
-                    // TODO: change error type
-                    single(.failure(RestApiClientError.unknown))
+                    single(.failure(RestApiClientError.noResponse))
                     return
                 }
                 if (200 ..< 300).contains(response.statusCode) {
