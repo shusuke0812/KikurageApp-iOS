@@ -24,17 +24,17 @@ public enum FirebaseClientError: Error {
     public func description() -> String {
         switch self {
         case .networkConnectionError:
-            return NSLocalizedString("error_firebase_create", bundle: .main, comment: "")
+            return R.LocalizableString.errorClientNetworkConnection
         case .parseError:
-            return NSLocalizedString("error_client_parse", bundle: .main, comment: "")
+            return R.LocalizableString.errorClientParse
         case .responseParseError:
-            return NSLocalizedString("error_client_response_parse", bundle: .main, comment: "")
+            return R.LocalizableString.errorClientResponseParse
         case .apiError:
-            return NSLocalizedString("error_client_api", bundle: .main, comment: "")
+            return R.LocalizableString.errorClientApi
         case .unknown:
-            return NSLocalizedString("error_client_unknown", bundle: .main, comment: "")
+            return R.LocalizableString.errorClientUnknown
         case .saveUserDefaultsError:
-            return NSLocalizedString("error_client_save_user_defaults", bundle: .main, comment: "")
+            return R.LocalizableString.errorClientSaveUserDefaults
         }
     }
 }

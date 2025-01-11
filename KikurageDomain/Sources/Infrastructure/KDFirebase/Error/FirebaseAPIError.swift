@@ -22,17 +22,17 @@ public enum FirebaseAPIError: Error {
     public func description() -> String {
         switch self {
         case .createError:
-            return NSLocalizedString("error_firebase_create", bundle: .main, comment: "")
+            return R.LocalizableString.errorFirebaseCreate
         case .readError:
-            return NSLocalizedString("error_firebase_read", bundle: .main, comment: "")
+            return R.LocalizableString.errorFirebaseRead
         case .deleteError:
-            return NSLocalizedString("error_firebase_delete", bundle: .main, comment: "")
+            return R.LocalizableString.errorFirebaseDelete
         case .updateError:
-            return NSLocalizedString("error_firebase_update", bundle: .main, comment: "")
+            return R.LocalizableString.errorFirebaseUpdate
         case .documentIDError:
-            return NSLocalizedString("error_firebase_document_id", bundle: .main, comment: "")
+            return R.LocalizableString.errorFirebaseDocumentID
         case .loadUserError:
-            return NSLocalizedString("error_firebase_load_user", bundle: .main, comment: "")
+            return R.LocalizableString.errorFirebaseLoadUser
         }
     }
 }

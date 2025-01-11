@@ -70,20 +70,14 @@ let package = Package(
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
                 .product(name: "RxSwift", package: "RxSwift"),
             ],
-            path: "Sources/Infrastructure/KDFirebase",
-            resources: [
-                .process("../../Resources")
-            ]
+            path: "Sources/Infrastructure/KDFirebase"
         ),
         .target(
             name: "KDRestApi",
             dependencies: [
                 .product(name: "RxSwift", package: "RxSwift")
             ],
-            path: "Sources/Infrastructure/KDRestApi",
-            resources: [
-                .process("../../Resources")
-            ]
+            path: "Sources/Infrastructure/KDRestApi"
         ),
         .target(
             name: "KDBluetooth",
