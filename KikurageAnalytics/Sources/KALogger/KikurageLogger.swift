@@ -108,15 +108,15 @@ public struct KLogger: KLoggerProtocol {
         DateHelper.formatToStringForLog()
     }
 
-    private static struct DateHelper {
-        private static let originalDateFormatter: DateFormatter = {
+    private struct DateHelper {
+        static let originalDateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.calendar = Calendar(identifier: .gregorian)
             formatter.locale = Locale(identifier: "en_US_POSIX")
             return formatter
         }()
 
-        private static func formatToStringForLog() -> String {
+        static func formatToStringForLog() -> String {
             originalDateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
             return originalDateFormatter.string(from: Date())
         }
