@@ -24,6 +24,7 @@
 		9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482432D2A1F4C00829067 /* KSGraphService */; };
 		9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482452D2A228200829067 /* KSAccountSettingService */; };
 		9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482472D2A244200829067 /* KSDictionaryService */; };
+		9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2BDE8C2D33A9610067005D /* KALogger */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
 		9C665EEE2739704F000EE152 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C665EF02739704F000EE152 /* InfoPlist.strings */; };
@@ -267,6 +268,7 @@
 				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
 				9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */,
 				9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */,
+				9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */,
 				9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
@@ -2323,6 +2325,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		9C2BDE8C2D33A9610067005D /* KALogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KALogger;
 		};
 		9CCA43C32D22C5A9005A78ED /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
