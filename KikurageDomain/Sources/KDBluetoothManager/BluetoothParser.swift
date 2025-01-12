@@ -8,25 +8,25 @@
 
 import Foundation
 
-public struct KikurageBluetoothParser {
-    public static func decodeWiFi(_ jsonString: String) -> KikurageWiFi? {
+public struct BluetoothParser {
+    public static func decodeWiFi(_ jsonString: String) -> WiFi? {
         do {
             guard let jsonData = jsonString.data(using: .utf8) else {
                 return nil
             }
-            let response = try JSONDecoder().decode(KikurageWiFi.self, from: jsonData)
+            let response = try JSONDecoder().decode(WiFi.self, from: jsonData)
             return response
         } catch {
             return nil
         }
     }
 
-    public static func decodeBluetoothCompletion(_ jsonString: String) -> KikurageBluetoothCompletionMessage? {
+    public static func decodeBluetoothCompletion(_ jsonString: String) -> BluetoothCompletionMessage? {
         do {
             guard let jsonData = jsonString.data(using: .utf8) else {
                 return nil
             }
-            let response = try JSONDecoder().decode(KikurageBluetoothCompletionMessage.self, from: jsonData)
+            let response = try JSONDecoder().decode(BluetoothCompletionMessage.self, from: jsonData)
             return response
         } catch {
             return nil

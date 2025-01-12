@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct KikurageWiFi: Decodable {
+public struct WiFi: Decodable {
     public let totalCount: Int
     public let count: Int
     public let ssid: String
@@ -39,14 +39,14 @@ public struct KikurageWiFi: Decodable {
     }
 }
 
-public struct KikurageWiFiList {
-    public var list: [KikurageWiFi]
+public struct WiFiList {
+    public var list: [WiFi]
 
     public init() {
         list = []
     }
 
-    public mutating func addElement(wifi: KikurageWiFi) {
+    public mutating func addElement(wifi: WiFi) {
         if let _ = list.first(where: { $0.ssid == wifi.ssid }) {
             return
         }

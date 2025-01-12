@@ -9,7 +9,7 @@
 import CoreBluetooth
 import Foundation
 
-public struct KikurageBluetoothPeripheral {
+public struct BluetoothPeripheral {
     public let advertisementData: [String: Any]
     public let rssi: NSNumber
     public let peripheral: CBPeripheral
@@ -52,13 +52,13 @@ public struct KikurageBluetoothPeripheral {
 }
 
 public struct KikurageBluetoothPeripheralList {
-    private var list: [KikurageBluetoothPeripheral]
+    private var list: [BluetoothPeripheral]
 
-    public init(list: [KikurageBluetoothPeripheral]) {
+    public init(list: [BluetoothPeripheral]) {
         self.list = list
     }
 
-    public mutating func add(peripheral: KikurageBluetoothPeripheral) {
+    public mutating func add(peripheral: BluetoothPeripheral) {
         list.append(peripheral)
     }
 
@@ -66,11 +66,11 @@ public struct KikurageBluetoothPeripheralList {
         list.count
     }
 
-    public func getElement(indexPath: IndexPath) -> KikurageBluetoothPeripheral {
+    public func getElement(indexPath: IndexPath) -> BluetoothPeripheral {
         list[indexPath.row]
     }
 
-    public func getElement(index: Int) -> KikurageBluetoothPeripheral {
+    public func getElement(index: Int) -> BluetoothPeripheral {
         list[index]
     }
 }

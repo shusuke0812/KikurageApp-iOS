@@ -9,7 +9,7 @@
 import CoreBluetooth
 import Foundation
 
-public enum KikurageBluetoothUUID {
+public enum BluetoothUUID {
     public enum LocalName {
         static let debugM5Stack = "kikurage-device-m5-stack"
     }

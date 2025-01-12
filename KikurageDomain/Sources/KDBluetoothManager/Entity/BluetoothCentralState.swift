@@ -9,22 +9,10 @@
 import CoreBluetooth
 import Foundation
 
-public struct KikurageBluetoothCentralState {
+public struct BluetoothCentralState {
     public let value: CBManagerState
 
     public init(value: CBManagerState) {
         self.value = value
     }
-}
-
-public enum KikurageBluetoothConnectionState {
-    case standby
-    case connect
-    case fail(Error?)
-    case disconnect(Error?)
-}
-
-public enum KikurageBluetoothPeripheralState {
-    case standby
-    case didDiscoverCharacteristic
 }

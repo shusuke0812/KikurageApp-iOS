@@ -149,7 +149,7 @@ let package = Package(
             dependencies: [
                 .product(name: "KDRepository", package: "KikurageDomain"),
                 .product(name: "KDEntity", package: "KikurageDomain"),
-                .target(name: "KSSBluetooth")
+                .product(name: "KDBluetoothManager", package: "KikurageDomain")
             ],
             path: "Sources/Services/KSWiFiService"
         ),
@@ -163,11 +163,6 @@ let package = Package(
         ),
 
         // MARK: - SharedServices
-
-        .target(
-            name: "KSSBluetooth",
-            path: "Sources/SharedServices/KSSBluetooth"
-        ),
         .target(
             name: "KSSLoadKikurageStateUseCase",
             dependencies: [

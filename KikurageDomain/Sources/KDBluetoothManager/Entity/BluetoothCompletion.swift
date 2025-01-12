@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct KikurageBluetoothCompletionMessage: Decodable {
+public struct BluetoothCompletionMessage: Decodable {
     let type: String
     let description: String
 
@@ -17,7 +17,7 @@ public struct KikurageBluetoothCompletionMessage: Decodable {
         case description
     }
 
-    public func getKikurageBluetoothCompletion() -> KikurageBluetoothCompletion {
+    public func getBluetoothCompletion() -> BluetoothCompletion {
         if type == "success" {
             switch description.lowercased() {
             case "wifi setting success":
@@ -36,7 +36,7 @@ public struct KikurageBluetoothCompletionMessage: Decodable {
     }
 }
 
-public enum KikurageBluetoothCompletion {
+public enum BluetoothCompletion {
     case wifiSettingSuccess
     case wifiSettingFail
     case notFound

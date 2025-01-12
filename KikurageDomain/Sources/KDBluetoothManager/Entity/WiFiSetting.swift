@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct KikurageWiFiSetting: Encodable {
+public struct WiFiSetting: Encodable {
     public var ssid: String
     public var password: String
 

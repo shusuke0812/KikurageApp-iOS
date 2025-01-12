@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum KikurageBluetoothCommand {
+public enum BluetoothCommand {
     case writeStopWiFiScan
     case writeStartWiFiScan
     case writeWiFiSetting(KikurageWiFiSetting)

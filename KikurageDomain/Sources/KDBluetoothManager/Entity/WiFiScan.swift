@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KikurageWiFiScan: Encodable {
+struct WiFiScan: Encodable {
     private let isStop: Bool
 
     init(isStop: Bool) {
