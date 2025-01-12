@@ -24,8 +24,8 @@ public protocol CultivationRepositoryProtocol {
     func postCultivationImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void)
     func postCultivationImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]>
     /// 栽培画像のStoragePathを更新する
-    func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
-    func putCultivationImage(request: KikurageCultivationRequest) -> Single<Void>
+    func putCultivationImagePaths(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
+    func putCultivationImagePaths(request: KikurageCultivationRequest) -> Single<Void>
     /// 栽培記録を取得する
     func getCultivations(request: KikurageCultivationRequest, completion: @escaping (Result<[KikurageCultivationTuple], FirebaseClientError>) -> Void)
     func getCultivations(request: KikurageCultivationRequest) -> Single<[KikurageCultivationTuple]>
@@ -75,7 +75,7 @@ extension CultivationRepository {
         }
     }
 
-    public func putCultivationImage(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func putCultivationImagePaths(request: KikurageCultivationRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firestoreClient.putDocumentRequest(request) { result in
             switch result {
             case .success():
@@ -86,7 +86,7 @@ extension CultivationRepository {
         }
     }
 
-    public func putCultivationImage(request: KikurageCultivationRequest) -> Single<Void> {
+    public func putCultivationImagePaths(request: KikurageCultivationRequest) -> Single<Void> {
         Single<Void>.create { [weak self] single in
             self?.firestoreClient.putDocumentRequest(request) { result in
                 switch result {

@@ -76,10 +76,10 @@ extension PostCultivationViewModel {
         }
     }
 
-    private func putCultivationImages(kikurageUserID: String, firestoreDocumentID: String, imageStorageFullPaths: [String]) {
+    private func putCultivationImagePaths(kikurageUserID: String, firestoreDocumentID: String, imageStorageFullPaths: [String]) {
         var request = KikurageCultivationRequest(kikurageUserID: kikurageUserID, documentID: firestoreDocumentID)
         request.body = ["imageStoragePaths": imageStorageFullPaths]
-        cultivationRepository.putCultivationImage(request: request) { [weak self] response in
+        cultivationRepository.putCultivationImagePaths(request: request) { [weak self] response in
             switch response {
             case .success():
                 self?.cultivation.imageStoragePaths = imageStorageFullPaths
@@ -103,7 +103,7 @@ extension PostCultivationViewModel {
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self?.putCultivationImages(kikurageUserID: userID, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
+                self?.putCultivationImagePaths(kikurageUserID: userID, firestoreDocumentID: postedCultivationDocumentID, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivationImages(self!, with: error.description())
             }
