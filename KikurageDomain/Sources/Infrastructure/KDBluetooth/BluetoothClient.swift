@@ -11,7 +11,7 @@ import Foundation
 public protocol BluetoothCentralManagerDelegate: AnyObject {
     func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdate state: CBManagerState)
     func bluetoothManager(_ bluetoothClient: BluetoothClient, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber)
-    func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdate state: BluetoothConnectionState)
+    func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdate connectionState: BluetoothConnectionState)
 }
 
 public protocol BluetoothPeripheralMangerDelegate: AnyObject {
