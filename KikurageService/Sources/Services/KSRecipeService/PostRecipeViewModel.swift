@@ -61,10 +61,10 @@ extension PostRecipeViewModel {
         }
     }
 
-    private func putRecipeImages(kikurageUserID: String, firestoreDocumentID: String, imageStorageFullPaths: [String]) {
+    private func putRecipeImagePath(kikurageUserID: String, firestoreDocumentID: String, imageStorageFullPaths: [String]) {
         var request = KikurageRecipeRequest(kikurageUserID: kikurageUserID, documentID: firestoreDocumentID)
         request.body = ["imageStoragePaths": imageStorageFullPaths]
-        recipeRepository.putRecipeImage(request: request) { [weak self] response in
+        recipeRepository.putRecipeImagePath(request: request) { [weak self] response in
             switch response {
             case .success():
                 self?.delegate?.postRecipeViewModelDidSuccessPostRecipeImages(self!)
@@ -87,7 +87,7 @@ extension PostRecipeViewModel {
         recipeRepository.postRecipeImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {
             case .success(let imageStorageFullPaths):
-                self?.putRecipeImages(kikurageUserID: userID, firestoreDocumentID: postedRecipeDocumentID, imageStorageFullPaths: imageStorageFullPaths)
+                self?.putRecipeImagePath(kikurageUserID: userID, firestoreDocumentID: postedRecipeDocumentID, imageStorageFullPaths: imageStorageFullPaths)
             case .failure(let error):
                 self?.delegate?.postRecipeViewModelDidFailedPostRecipeImages(self!, with: error.description())
             }

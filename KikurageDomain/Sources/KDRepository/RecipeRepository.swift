@@ -23,8 +23,8 @@ public protocol RecipeRepositoryProtocol {
     func postRecipeImages(imageData: [Data?], imageStoragePath: String, completion: @escaping (Result<[String], FirebaseClientError>) -> Void)
     func postRecipeImages(imageData: [Data?], imageStoragePath: String) -> Single<[String]>
     /// 栽培画像のStoragePathを更新する
-    func putRecipeImage(request: KikurageRecipeRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
-    func putRecipeImage(request: KikurageRecipeRequest) -> Single<Void>
+    func putRecipeImagePath(request: KikurageRecipeRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void)
+    func putRecipeImagePath(request: KikurageRecipeRequest) -> Single<Void>
     /// 栽培記録を取得する
     func getRecipes(request: KikurageRecipeRequest, completion: @escaping (Result<[KikurageRecipeTuple], FirebaseClientError>) -> Void)
     func getRecipes(request: KikurageRecipeRequest) -> Single<[KikurageRecipeTuple]>
@@ -74,7 +74,7 @@ extension RecipeRepository {
         }
     }
 
-    public func putRecipeImage(request: KikurageRecipeRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
+    public func putRecipeImagePath(request: KikurageRecipeRequest, completion: @escaping (Result<Void, FirebaseClientError>) -> Void) {
         firestoreClient.putDocumentRequest(request) { result in
             switch result {
             case .success():
@@ -85,7 +85,7 @@ extension RecipeRepository {
         }
     }
 
-    public func putRecipeImage(request: KikurageRecipeRequest) -> Single<Void> {
+    public func putRecipeImagePath(request: KikurageRecipeRequest) -> Single<Void> {
         Single<Void>.create { [weak self] single in
             self?.firestoreClient.putDocumentRequest(request) { result in
                 switch result {
