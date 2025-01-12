@@ -24,6 +24,7 @@ public struct KUIRecipeTableViewCellProps {
 }
 
 public class KUIRecipeTableViewCell: UITableViewCell {
+    private var loadingThumbnailView: KUILoadingThumbnailView!
     private var recipeImageView: KUIImageView!
     private var dateLabel: UILabel!
     private var titleLabel: UILabel!
@@ -55,6 +56,13 @@ public class KUIRecipeTableViewCell: UITableViewCell {
     }
 
     private func setupComponent() {
+        loadingThumbnailView = KUILoadingThumbnailView(props: KUILoadingThumbnailViewProps(
+            thumbnailText: "読み込み中..." // TODO: localize
+        ))
+        loadingThumbnailView.clipsToBounds = true
+        loadingThumbnailView.layer.cornerRadius = .viewCornerRadius
+        loadingThumbnailView.translatesAutoresizingMaskIntoConstraints = false
+
         recipeImageView = KUIImageView(props: KUIImageViewProps(
             image: nil
         ))
@@ -76,29 +84,35 @@ public class KUIRecipeTableViewCell: UITableViewCell {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        contentView.addSubview(recipeImageView)
+        loadingThumbnailView.addSubview(recipeImageView)
+        contentView.addSubview(loadingThumbnailView)
         contentView.addSubview(dateLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
 
         NSLayoutConstraint.activate([
-            recipeImageView.widthAnchor.constraint(equalToConstant: 160),
-            recipeImageView.heightAnchor.constraint(equalToConstant: 160),
+            loadingThumbnailView.widthAnchor.constraint(equalToConstant: 160),
+            loadingThumbnailView.heightAnchor.constraint(equalToConstant: 160),
 
-            recipeImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            recipeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            recipeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            loadingThumbnailView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            loadingThumbnailView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            loadingThumbnailView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+
+            recipeImageView.topAnchor.constraint(equalTo: loadingThumbnailView.topAnchor),
+            recipeImageView.leadingAnchor.constraint(equalTo: loadingThumbnailView.leadingAnchor),
+            recipeImageView.trailingAnchor.constraint(equalTo: loadingThumbnailView.trailingAnchor),
+            recipeImageView.bottomAnchor.constraint(equalTo: loadingThumbnailView.bottomAnchor),
 
             dateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            dateLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
+            dateLabel.leadingAnchor.constraint(equalTo: loadingThumbnailView.trailingAnchor, constant: 10),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
 
             titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: loadingThumbnailView.trailingAnchor, constant: 10),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
 
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: recipeImageView.trailingAnchor, constant: 10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: loadingThumbnailView.trailingAnchor, constant: 10),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
