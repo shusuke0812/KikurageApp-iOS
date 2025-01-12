@@ -46,6 +46,7 @@ public class FirebaseStorageClient: FirebaseStorageClientProtocol {
                     imageStorageFullPaths.append(storageReference.fullPath)
                     dispatchSemaphore.signal()
                 }
+                dispatchSemaphore.wait()
             }
             DispatchQueue.main.async {
                 if let resultError = resultError {
@@ -80,6 +81,7 @@ public class FirebaseStorageClient: FirebaseStorageClientProtocol {
                         imageStorageFullPaths.append(storageReference.fullPath)
                         dispatchSemaphore.signal()
                     }
+                    dispatchSemaphore.wait()
                 }
                 if let resultError = resultError {
                     single(.failure(FirebaseClientError.apiError(.createError)))
