@@ -6,23 +6,24 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import CoreBluetooth
 import Foundation
 
 public enum BluetoothCommand {
     case writeStopWiFiScan
     case writeStartWiFiScan
-    case writeWiFiSetting(KikurageWiFiSetting)
+    case writeWiFiSetting(WiFiSetting)
 
     public var valueJsonData: Data? {
         switch self {
         case .writeStartWiFiScan:
-            let command = KikurageWiFiScan(isStop: false)
-            return KikurageBluetoothParser.encodeBluetootCommand(command)
+            let command = WiFiScan(isStop: false)
+            return BluetoothParser.encodeBluetootCommand(command)
         case .writeStopWiFiScan:
-            let command = KikurageWiFiScan(isStop: true)
-            return KikurageBluetoothParser.encodeBluetootCommand(command)
+            let command = WiFiScan(isStop: true)
+            return BluetoothParser.encodeBluetootCommand(command)
         case .writeWiFiSetting(let wifiSetting):
-            return KikurageBluetoothParser.encodeBluetootCommand(wifiSetting)
+            return BluetoothParser.encodeBluetootCommand(wifiSetting)
         }
     }
 }
