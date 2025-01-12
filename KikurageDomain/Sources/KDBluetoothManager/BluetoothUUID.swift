@@ -51,14 +51,14 @@ public enum BluetoothUUID {
         var cbUUID: CBUUID {
             CBUUID(string: uuidString)
         }
-    }
-
-    static func configCharactericticCBUUID() -> [CBUUID] {
-        [
-            Characteristic.writeStopWiFiScan.cbUUID,
-            Characteristic.readWiFi.cbUUID,
-            Characteristic.writeWiFiSetting.cbUUID,
-            Characteristic.readCompletion.cbUUID
-        ]
+        
+        static func configCharactericticCBUUID() -> [CBUUID] {
+            [
+                Self.writeStopWiFiScan.cbUUID,
+                Self.readWiFi.cbUUID,
+                Self.writeWiFiSetting.cbUUID,
+                Self.readCompletion.cbUUID
+            ]
+        }
     }
 }

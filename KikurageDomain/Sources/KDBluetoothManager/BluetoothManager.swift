@@ -6,10 +6,13 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KDBluetooth
 import CoreBluetooth
 import Foundation
 
 public class BluetoothManager: NSObject {
+    private let client: BluetoothClient
+
     private var writeWiFiScanCharacteristic: CBCharacteristic?
     private var notifyWiFiScanCharacteristic: CBCharacteristic?
     private var writeWiFiSettingChracteristic: CBCharacteristic?
@@ -25,6 +28,10 @@ public class BluetoothManager: NSObject {
     }
 
     override private init() {
+        self.client = BluetoothClient(
+            serviceId: BluetoothUUID.Service.m5stack.cbUUID,
+            characteristicIds: BluetoothUUID.Characteristic.configCharactericticCBUUID()
+        )
         super.init()
     }
 
