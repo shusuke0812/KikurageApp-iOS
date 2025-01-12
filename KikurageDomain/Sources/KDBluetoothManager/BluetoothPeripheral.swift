@@ -47,7 +47,7 @@ public struct BluetoothPeripheral {
     }
 
     public func validateConnection() -> Bool {
-        deviceName == KikurageBluetoothUUID.LocalName.debugM5Stack
+        deviceName == BluetoothUUID.LocalName.debugM5Stack
     }
 }
 
@@ -64,10 +64,6 @@ public struct KikurageBluetoothPeripheralList {
 
     public var listCount: Int {
         list.count
-    }
-
-    public func getElement(indexPath: IndexPath) -> BluetoothPeripheral {
-        list[indexPath.row]
     }
 
     public func getElement(index: Int) -> BluetoothPeripheral {

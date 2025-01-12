@@ -11,7 +11,16 @@ import CoreBluetooth
 import Foundation
 
 public class BluetoothManager: NSObject {
-    private let client: BluetoothClient
+    public static var shared: BluetoothManager {
+        if _shared == nil {
+            _shared = BluetoothManager()
+        }
+        return _shared! // swiftlint:disable:this force_unwrapping
+    }
+    
+    public private(set) var peripherals = KikurageBluetoothPeripheralList(list: [])
+    
+    private let bluetoothClient: BluetoothClient
 
     private var writeWiFiScanCharacteristic: CBCharacteristic?
     private var notifyWiFiScanCharacteristic: CBCharacteristic?
@@ -19,16 +28,11 @@ public class BluetoothManager: NSObject {
     private var notifyWiFiCompletionChracteristic: CBCharacteristic?
 
     private static var _shared: BluetoothManager?
-
-    public static var shared: BluetoothManager {
-        if _shared == nil {
-            _shared = BluetoothManager()
-        }
-        return _shared! // swiftlint:disable:this force_unwrapping
-    }
+    
+    // MARK: - Config
 
     override private init() {
-        self.client = BluetoothClient(
+        self.bluetoothClient = BluetoothClient(
             serviceId: BluetoothUUID.Service.m5stack.cbUUID,
             characteristicIds: BluetoothUUID.Characteristic.configCharactericticCBUUID()
         )
@@ -44,11 +48,18 @@ public class BluetoothManager: NSObject {
     public func release() {
         BluetoothManager._shared = nil
     }
-
-
-    public func connectPeripheral(_ peripheral: CBPeripheral) {
-
+    
+    // MARK: - Scan / Connect
+    
+    public func startScan() {
+        bluetoothClient.scanForPeripherals()
     }
+    
+    public func connect(index: Int) {
+        let peripheral = peripherals.getElement(index: index).peripheral
+        bluetoothClient.connectPeripheral(peripheral)
+    }
+
 
     public func writeCommand(_ command: BluetoothCommand) {
         guard let sendData = command.valueJsonData, let characteristic = getCharacteristic(command) else {
