@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  KikurageService
+
+  Created by Shusuke Ota on 2024/12/31.
+  
+*/
+
+"screen_post_cultivation_valid_memo" = "No memo";

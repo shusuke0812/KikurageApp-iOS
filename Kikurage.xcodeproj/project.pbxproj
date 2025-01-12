@@ -1165,7 +1165,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9CCA43DC2D22C822005A78ED /* PBXTargetDependency */,
+				9C2BDE872D33A19D0067005D /* PBXTargetDependency */,
 			);
 			name = Kikurage;
 			productName = kikurageApp;
@@ -1525,6 +1525,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9C2BDE872D33A19D0067005D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 9C2BDE862D33A19D0067005D /* RswiftGenerateInternalResources */;
+		};
 		9C9145CB27B1E77C0051BE1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9C1ACF462225768A00A3D4D1 /* Kikurage */;
@@ -1534,10 +1538,6 @@
 			isa = PBXTargetDependency;
 			target = 9C1ACF462225768A00A3D4D1 /* Kikurage */;
 			targetProxy = 9C96F7052768E97300C2E778 /* PBXContainerItemProxy */;
-		};
-		9CCA43DC2D22C822005A78ED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 9CCA43DB2D22C822005A78ED /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2319,6 +2319,11 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KSDictionaryService;
 		};
+		9C2BDE862D33A19D0067005D /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
 		9CCA43C32D22C5A9005A78ED /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43C22D22C5A9005A78ED /* XCRemoteSwiftPackageReference "Charts" */;
@@ -2348,11 +2353,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = RswiftLibrary;
-		};
-		9CCA43DB2D22C822005A78ED /* RswiftGenerateInternalResources */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */ = {
 			isa = XCSwiftPackageProductDependency;

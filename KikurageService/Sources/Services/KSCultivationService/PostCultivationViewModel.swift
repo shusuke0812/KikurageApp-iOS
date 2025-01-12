@@ -49,7 +49,7 @@ extension PostCultivationViewModel {
             return false
         }
         if cultivation.memo.isEmpty {
-            cultivation.memo = "memo" // TODO: R.string.localizable.screen_post_cultivation_valid_memo()
+            cultivation.memo = R.LocalizableString.postCultivationValidMemo
         }
         return true
     }
