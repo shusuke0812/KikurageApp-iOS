@@ -48,7 +48,7 @@ public class KUICultivationCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = .viewCornerRadius
 
         loadingThumbnailView = KUILoadingThumbnailView(props: KUILoadingThumbnailViewProps(
-            thumbnailText: "読み込み中..." // TODO: localize
+            thumbnailText: R.string.localizable.loading_text()
         ))
         loadingThumbnailView.translatesAutoresizingMaskIntoConstraints = false
 

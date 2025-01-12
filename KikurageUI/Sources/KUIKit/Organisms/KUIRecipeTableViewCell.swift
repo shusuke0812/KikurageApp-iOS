@@ -57,7 +57,7 @@ public class KUIRecipeTableViewCell: UITableViewCell {
 
     private func setupComponent() {
         loadingThumbnailView = KUILoadingThumbnailView(props: KUILoadingThumbnailViewProps(
-            thumbnailText: "読み込み中..." // TODO: localize
+            thumbnailText: R.string.localizable.loading_text()
         ))
         loadingThumbnailView.clipsToBounds = true
         loadingThumbnailView.layer.cornerRadius = .viewCornerRadius
