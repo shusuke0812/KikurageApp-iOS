@@ -26,6 +26,9 @@ public class BluetoothManager: NSObject {
     }
     
     public private(set) var peripherals = KikurageBluetoothPeripheralList(list: [])
+    public var isBluetoothAvailable: Bool {
+        centralState?.value == .poweredOn
+    }
     
     public var delegate: BluetoothManagerDelegate?
     
