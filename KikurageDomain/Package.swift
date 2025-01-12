@@ -16,6 +16,7 @@ let package = Package(
         .library(name: "KDBluetoothManager", targets: ["KDBluetoothManager"])
     ],
     dependencies: [
+        .package(path: "../KikurageAnalytics"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0"))
     ],
@@ -53,7 +54,8 @@ let package = Package(
         .target(
             name: "KDBluetoothManager",
             dependencies: [
-                .target(name: "KDBluetooth")
+                .target(name: "KDBluetooth"),
+                .product(name: "KALogger", package: "KikurageAnalytics")
             ],
             path: "Sources/KDBluetoothManager"
         ),
