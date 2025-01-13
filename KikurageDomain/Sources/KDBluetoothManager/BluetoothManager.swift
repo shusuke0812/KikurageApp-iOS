@@ -90,6 +90,11 @@ public class BluetoothManager: NSObject {
         bluetoothClient.connectPeripheral(peripheral)
     }
 
+    public func disconnect() {
+        bluetoothClient.disconnectPeripheral()
+        selectedPeripheral = nil
+    }
+
     // MARK: - GATT
 
     public func writeCommand(_ command: BluetoothCommand) {

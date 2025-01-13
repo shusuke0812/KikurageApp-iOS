@@ -30,6 +30,8 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        viewModel.disconnectPeripheral()
+
         if viewModel.isBluetoothAvailable {
             baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()

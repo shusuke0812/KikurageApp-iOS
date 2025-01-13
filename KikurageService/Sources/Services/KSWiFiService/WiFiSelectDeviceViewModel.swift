@@ -54,6 +54,10 @@ public class WiFiSelectDeviceViewModel: NSObject {
 
         return (signal, peripheral)
     }
+
+    public func disconnectPeripheral() {
+        bluetoothManager.disconnect()
+    }
 }
 
 // MARK: - BluetoothManagerConnectionDelegate

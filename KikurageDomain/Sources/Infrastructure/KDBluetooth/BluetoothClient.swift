@@ -57,6 +57,14 @@ public class BluetoothClient: NSObject {
         connectToPeripheral = peripheral
     }
 
+    public func disconnectPeripheral() {
+        guard let peripheral = connectToPeripheral else {
+            return
+        }
+        centralManager.cancelPeripheralConnection(peripheral)
+        connectToPeripheral = nil
+    }
+
     public func writeWithResponse(_ characteristic: CBCharacteristic, data: Data) {
         connectToPeripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
