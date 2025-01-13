@@ -7,96 +7,77 @@
 //
 
 import Foundation
-@_exported import KSSBluetooth
+import KDBluetoothManager
 
 public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
-    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral)
-    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, error: Error?)
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, selected indexPath: IndexPath)
+    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
 }
 
 public class WiFiSelectDeviceViewModel: NSObject {
     public private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
-    public private(set) var bluetoothPeripherals = KikurageBluetoothPeripheralList(list: [])
-    public private(set) var bluetoothCentralState: KikurageBluetoothCentralState?
+    public var isBluetoothAvailable: Bool {
+        bluetoothManager.isBluetoothAvailable
+    }
+    public var bluetoothSignal: BluetoothSignal? {
+        guard let peripheral = peripheral else {
+            return nil
+        }
+        return BluetoothSignal.getSignal(rssi: peripheral.rssiInt)
+    }
+    
+    public var peripheral: BluetoothPeripheral? {
+        guard let selectedIndexPath = selectedIndexPath else {
+            return nil
+        }
+        return bluetoothManager.peripherals.getElement(index: selectedIndexPath.row)
+    }
 
     public weak var delegate: WiFiSelectDeviceViewModelDelegate?
 
-    private let bluetoothManager = KikurageBluetoothManager.shared
+    private let bluetoothManager = BluetoothManager.shared
     private var selectedIndexPath: IndexPath?
 
     override public init() {
         super.init()
-        bluetoothManager.peripheralDelegate = self
-        bluetoothManager.centralDelegate = self
+        bluetoothManager.delegate = self
     }
 
     deinit {
         bluetoothManager.release()
     }
 
-    private func add(peripheral: KikurageBluetoothPeripheral) {
-        bluetoothPeripherals.add(peripheral: peripheral)
-    }
-
     public func sectionRows() -> Int {
-        bluetoothPeripherals.listCount
+        bluetoothManager.peripherals.listCount
     }
-
+    
     public func connectToPeripheral(indexPath: IndexPath) {
-        let peripheral = bluetoothPeripherals.getElement(indexPath: indexPath).peripheral
-        bluetoothManager.connectPeripheral(peripheral)
+        bluetoothManager.connect(index: indexPath.row)
         selectedIndexPath = indexPath
     }
 
     public func scanForPeripherals() {
-        bluetoothManager.scanForPeripherals()
+        bluetoothManager.startScan()
     }
 }
 
-// MARK: - KikurageBluetoothCentralManagerDelegate
+// MARK: - BluetoothManagerDelegate
 
-extension WiFiSelectDeviceViewModel: KikurageBluetoothCentralManagerDelegate {
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothConnectionState) {
-        switch state {
-        case .connect:
-            break
-        case .disconnect(let error):
-            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
-        case .fail(let error):
-            delegate?.viewModelDidFailConnectionToPeripheral(self, error: error)
-        case .standby:
-            break
+extension WiFiSelectDeviceViewModel: BluetoothManagerDelegate {
+    public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {
+        if !isConnected {
+            delegate?.viewModelDidFailConnectionToPeripheral(self)
         }
     }
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdate state: KikurageBluetoothCentralState) {
-        bluetoothCentralState = state
+    
+    public func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
+        delegate?.viewModelDidAddPeripheral(self)
     }
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didDiscover peripheral: KikurageBluetoothPeripheral) {
-        if peripheral.validateConnection() {
-            add(peripheral: peripheral)
-            delegate?.viewModelDidAddPeripheral(self)
+    
+    public func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager) {
+        if let selectedIndexPath = selectedIndexPath {
+            delegate?.viewModelDidSuccessConnectionToPeripheral(self, selected: selectedIndexPath)
         }
     }
-}
-
-// MARK: - KikurageBluetoothPeripheralMangerDelegate
-
-extension WiFiSelectDeviceViewModel: KikurageBluetoothPeripheralMangerDelegate {
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {
-        switch state {
-        case .didDiscoverCharacteristic:
-            if let selectedIndexPath = selectedIndexPath {
-                delegate?.viewModelDidSuccessConnectionToPeripheral(self, peripheral: bluetoothPeripherals.getElement(indexPath: selectedIndexPath))
-            }
-        case .standby:
-            break
-        }
-    }
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {}
 }

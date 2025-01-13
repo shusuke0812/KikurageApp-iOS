@@ -30,7 +30,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if viewModel.bluetoothCentralState?.value == .poweredOn {
+        if viewModel.isBluetoothAvailable {
             baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()
         }
@@ -83,7 +83,12 @@ extension WiFiSelectDeviceViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
-        cell.updateComponent(peripheral: viewModel.bluetoothPeripherals.getElement(indexPath: indexPath))
+        cell.updateComponent(
+            signalImage: viewModel.bluetoothSignal?.image,
+            rssiString: viewModel.peripheral?.rssiString ?? "-",
+            deviceName: viewModel.peripheral?.deviceName ?? "-",
+            serviceCountString: viewModel.peripheral?.serviceCountString  ?? "-"
+        )
         return cell
     }
 }
@@ -98,14 +103,14 @@ extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
         }
     }
 
-    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral) {
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, selected indexPath: IndexPath) {
         DispatchQueue.main.async {
             HUD.hide()
-            self.pushToWiFiList(bluetoothPeriperal: peripheral)
+            self.pushToWiFiList(selected: indexPath)
         }
     }
 
-    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, error: Error?) {
+    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
         }

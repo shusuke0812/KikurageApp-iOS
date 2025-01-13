@@ -14,8 +14,8 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
     private let baseView = WiFiListBaseView()
     private let viewModel: WiFiListViewModel
 
-    init(bluetoothPeriperal: KikurageBluetoothPeripheral) {
-        viewModel = WiFiListViewModel(bluetoothPeripheral: bluetoothPeriperal)
+    init(selectedIndexPath: IndexPath) {
+        viewModel = WiFiListViewModel(selectedIndextPath: selectedIndexPath)
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -18,14 +18,14 @@ public protocol WiFiListViewModelDelegate: AnyObject {
 public class WiFiListViewModel: NSObject {
     public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
     public private(set) var wifiList = KikurageWiFiList()
-    public let bluetoothPeripheral: KikurageBluetoothPeripheral
+    public let selectedIndextPath: IndexPath
 
     public weak var delegate: WiFiListViewModelDelegate?
 
     private let bluetoothManager = KikurageBluetoothManager.shared
 
-    public init(bluetoothPeripheral: KikurageBluetoothPeripheral) {
-        self.bluetoothPeripheral = bluetoothPeripheral
+    public init(selectedIndextPath: IndexPath) {
+        self.selectedIndextPath = selectedIndextPath
         super.init()
         bluetoothManager.peripheralDelegate = self
     }
