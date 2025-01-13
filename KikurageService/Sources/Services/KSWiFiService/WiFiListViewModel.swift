@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import KDEntity
-import KDRepository
-@_exported import KSSBluetooth
+import KDBluetoothManager
 
 public protocol WiFiListViewModelDelegate: AnyObject {
     func viewModelUpdateWiFiList(_ wifiListViewModel: WiFiListViewModel)
@@ -17,17 +15,19 @@ public protocol WiFiListViewModelDelegate: AnyObject {
 
 public class WiFiListViewModel: NSObject {
     public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
-    public private(set) var wifiList = KikurageWiFiList()
-    public let selectedIndextPath: IndexPath
-
+    public private(set) var wifiList = WiFiList()
+    
+    public var selectedPeripheral: BluetoothPeripheral? {
+        bluetoothManager.selectedPeripheral
+    }
+    
     public weak var delegate: WiFiListViewModelDelegate?
+    
+    private let bluetoothManager = BluetoothManager.shared
 
-    private let bluetoothManager = KikurageBluetoothManager.shared
-
-    public init(selectedIndextPath: IndexPath) {
-        self.selectedIndextPath = selectedIndextPath
+    public override init() {
         super.init()
-        bluetoothManager.peripheralDelegate = self
+        bluetoothManager.delegate = self
     }
 
     public func sectionRows(section: Int) -> Int {
@@ -58,15 +58,15 @@ public class WiFiListViewModel: NSObject {
     }
 }
 
-// MARK: - KikurageBluetoothPeripheralMangerDelegate
+// MARK: - BluetoothManagerDelegate
 
-extension WiFiListViewModel: KikurageBluetoothPeripheralMangerDelegate {
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {}
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
-        guard let wifi = KikurageBluetoothParser.decodeWiFi(message) else {
+extension WiFiListViewModel: BluetoothManagerDelegate {
+    public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {}
+    public func bluetoothManagerDidDiscovered(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
+    public func bluetoothManagerDidConnected(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
+    
+    public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {
+        guard let wifi = BluetoothParser.decodeWiFi(message) else {
             return
         }
         wifiList.addElement(wifi: wifi)

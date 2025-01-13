@@ -15,6 +15,7 @@ public protocol BluetoothManagerDelegate {
     func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool)
     func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager)
     func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager)
+    func bluetoothManagerDidReceivedValue(_ bluetoothManager: BluetoothManager, message: String)
 }
 
 public class BluetoothManager: NSObject {
@@ -25,7 +26,8 @@ public class BluetoothManager: NSObject {
         return _shared! // swiftlint:disable:this force_unwrapping
     }
     
-    public private(set) var peripherals = KikurageBluetoothPeripheralList(list: [])
+    public private(set) var peripherals = BluetoothPeripheralList(list: [])
+    public private(set) var selectedPeripheral: BluetoothPeripheral?
     public var isBluetoothAvailable: Bool {
         centralState?.value == .poweredOn
     }
@@ -66,6 +68,10 @@ public class BluetoothManager: NSObject {
 
     public func release() {
         BluetoothManager._shared = nil
+    }
+    
+    public func setupSelectedPeripheral(index: Int) {
+        selectedPeripheral = peripherals.getElement(index: index)
     }
     
     // MARK: - Scan / Connect
@@ -137,7 +143,7 @@ extension BluetoothManager: BluetoothPeripheralMangerDelegate {
         
     }
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, message: String) {
-        
+        delegate?.bluetoothManagerDidReceivedValue(self, message: message)
     }
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdateFor state: BluetoothPeripheralState) {
         switch state {

@@ -103,10 +103,10 @@ extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
         }
     }
 
-    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, selected indexPath: IndexPath) {
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
-            self.pushToWiFiList(selected: indexPath)
+            self.pushToWiFiList()
         }
     }
 

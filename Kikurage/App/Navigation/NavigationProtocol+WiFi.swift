@@ -9,14 +9,14 @@
 import UIKit
 
 protocol WiFiAccessable: PushNavigationProtocol {
-    func pushToWiFiList(selected indexPath: IndexPath)
+    func pushToWiFiList()
     func pushToWiFiSetting(selectedSSID: String)
     func pushToWiFiSettingSuccess()
 }
 
 extension WiFiAccessable {
-    func pushToWiFiList(selected indexPath: IndexPath) {
-        let vc = WiFiListViewController(selectedIndexPath: indexPath)
+    func pushToWiFiList() {
+        let vc = WiFiListViewController()
         push(to: vc)
     }
 

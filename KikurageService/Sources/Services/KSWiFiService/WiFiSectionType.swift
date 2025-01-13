@@ -66,7 +66,7 @@ public enum WiFiListSectionType {
             }
         }
 
-        public func getSpecTitle(bluetoothPeripheral: KikurageBluetoothPeripheral) -> String {
+        public func getSpecTitle(bluetoothPeripheral: BluetoothPeripheral) -> String {
             switch self {
             case .deviceName:
                 return bluetoothPeripheral.deviceName

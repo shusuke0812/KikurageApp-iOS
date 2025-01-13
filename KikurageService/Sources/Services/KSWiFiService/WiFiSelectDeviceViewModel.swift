@@ -11,7 +11,7 @@ import KDBluetoothManager
 
 public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
-    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, selected indexPath: IndexPath)
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
     func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
 }
 
@@ -62,9 +62,11 @@ public class WiFiSelectDeviceViewModel: NSObject {
     }
 }
 
-// MARK: - BluetoothManagerDelegate
+// MARK: - BluetoothManagerConnectionDelegate
 
 extension WiFiSelectDeviceViewModel: BluetoothManagerDelegate {
+    public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {}
+    
     public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {
         if !isConnected {
             delegate?.viewModelDidFailConnectionToPeripheral(self)
@@ -72,12 +74,14 @@ extension WiFiSelectDeviceViewModel: BluetoothManagerDelegate {
     }
     
     public func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
+
         delegate?.viewModelDidAddPeripheral(self)
     }
     
     public func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager) {
         if let selectedIndexPath = selectedIndexPath {
-            delegate?.viewModelDidSuccessConnectionToPeripheral(self, selected: selectedIndexPath)
+            bluetoothManager.setupSelectedPeripheral(index: selectedIndexPath.row)
+            delegate?.viewModelDidSuccessConnectionToPeripheral(self)
         }
     }
 }

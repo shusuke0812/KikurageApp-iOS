@@ -14,8 +14,8 @@ class WiFiListViewController: UIViewController, WiFiAccessable {
     private let baseView = WiFiListBaseView()
     private let viewModel: WiFiListViewModel
 
-    init(selectedIndexPath: IndexPath) {
-        viewModel = WiFiListViewModel(selectedIndextPath: selectedIndexPath)
+    init() {
+        viewModel = WiFiListViewModel()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -93,7 +93,7 @@ extension WiFiListViewController: UITableViewDataSource {
         case .spec:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListSpecTableViewCell", for: indexPath) as! WiFiListSpecTableViewCell // swiftlint:disable:this force_cast
             cell.updateComponent(title: section.rows[indexPath.row].title)
-            cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: viewModel.bluetoothPeripheral))
+            cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: viewModel.selectedPeripheral))
             return cell
         case .enterWifi:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast

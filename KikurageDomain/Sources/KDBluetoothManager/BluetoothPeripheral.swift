@@ -51,7 +51,7 @@ public struct BluetoothPeripheral {
     }
 }
 
-public struct KikurageBluetoothPeripheralList {
+public struct BluetoothPeripheralList {
     private var list: [BluetoothPeripheral]
 
     public init(list: [BluetoothPeripheral]) {
