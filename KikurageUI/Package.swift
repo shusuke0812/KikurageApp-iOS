@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.7.0")),
         .package(url: "https://github.com/onevcat/Kingfisher", .upToNextMajor(from: "8.1.3")),
         .package(url: "https://github.com/mac-cain13/R.swift", from: "7.8.0")
     ],

@@ -29,7 +29,7 @@ let package = Package(
         .package(path: "../KikurageDomain"),
         .package(path: "../KikurageAnalytics"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.8.0")),
-        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0")),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.7.0")),
     ],
     targets: [
         .target(
