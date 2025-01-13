@@ -16,7 +16,7 @@ protocol WiFiAccessable: PushNavigationProtocol {
 
 extension WiFiAccessable {
     func pushToWiFiList(selected indexPath: IndexPath) {
-        let vc = WiFiListViewController(bluetoothPeriperal: bluetoothPeriperal)
+        let vc = WiFiListViewController(selectedIndexPath: indexPath)
         push(to: vc)
     }
 
