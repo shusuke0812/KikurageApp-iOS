@@ -11,7 +11,7 @@ import KDBluetooth
 import CoreBluetooth
 import Foundation
 
-public protocol BluetoothManagerConnectionDelegate {
+public protocol BluetoothManagerDelegate {
     func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool)
     func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager)
     func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager)
@@ -30,7 +30,7 @@ public class BluetoothManager: NSObject {
         centralState?.value == .poweredOn
     }
     
-    public var connectionDelegate: BluetoothManagerConnectionDelegate?
+    public var delegate: BluetoothManagerDelegate?
     
     private let bluetoothClient: BluetoothClient
 
@@ -111,20 +111,20 @@ extension BluetoothManager: BluetoothCentralManagerDelegate {
         let peripheral = BluetoothPeripheral(advertisementData: advertisementData, rssi: RSSI, peripheral: peripheral)
         if peripheral.validateConnection() {
             peripherals.add(peripheral: peripheral)
-            connectionDelegate?.bluetoothManagerDidDiscovered(self)
+            delegate?.bluetoothManagerDidDiscovered(self)
         }
     }
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdate connectionState: BluetoothConnectionState) {
         switch connectionState {
         case .connect:
-            connectionDelegate?.bluetoothManager(self, isConnected: true)
+            delegate?.bluetoothManager(self, isConnected: true)
         case .disconnect(let error), .fail(let error):
             if let error = error {
                 KLogManager.debug("\(error)")
             }
-            connectionDelegate?.bluetoothManager(self, isConnected: false)
+            delegate?.bluetoothManager(self, isConnected: false)
         case .standby:
-            connectionDelegate?.bluetoothManager(self, isConnected: false)
+            delegate?.bluetoothManager(self, isConnected: false)
         }
         
     }
@@ -162,7 +162,7 @@ extension BluetoothManager: BluetoothPeripheralMangerDelegate {
                     bluetoothClient.setupNotify(for: characteristic)
                 }
             }
-            connectionDelegate?.bluetoothManagerDidConnected(self)
+            delegate?.bluetoothManagerDidConnected(self)
         case .standby:
             KLogManager.debug("characteristic state: standby")
             break
