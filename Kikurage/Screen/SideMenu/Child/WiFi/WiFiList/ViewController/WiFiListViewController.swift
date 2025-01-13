@@ -92,8 +92,11 @@ extension WiFiListViewController: UITableViewDataSource {
         switch section {
         case .spec:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListSpecTableViewCell", for: indexPath) as! WiFiListSpecTableViewCell // swiftlint:disable:this force_cast
+            guard let selectedPeripheral = viewModel.selectedPeripheral else {
+                return cell
+            }
             cell.updateComponent(title: section.rows[indexPath.row].title)
-            cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: viewModel.selectedPeripheral))
+            cell.updateComponent(stateTitle: section.rows[indexPath.row].getSpecTitle(bluetoothPeripheral: selectedPeripheral))
             return cell
         case .enterWifi:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast

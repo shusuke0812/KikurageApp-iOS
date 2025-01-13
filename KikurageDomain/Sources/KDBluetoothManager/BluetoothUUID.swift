@@ -1,5 +1,5 @@
 //
-//  KikurageBluetoothUUID.swift
+//  BluetoothUUID.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2023/3/5.
@@ -51,13 +51,13 @@ public enum BluetoothUUID {
         var cbUUID: CBUUID {
             CBUUID(string: uuidString)
         }
-        
+
         static func configCharactericticCBUUID() -> [CBUUID] {
             [
-                Self.writeStopWiFiScan.cbUUID,
-                Self.readWiFi.cbUUID,
-                Self.writeWiFiSetting.cbUUID,
-                Self.readCompletion.cbUUID
+                writeStopWiFiScan.cbUUID,
+                readWiFi.cbUUID,
+                writeWiFiSetting.cbUUID,
+                readCompletion.cbUUID
             ]
         }
     }

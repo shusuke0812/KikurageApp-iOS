@@ -27,7 +27,7 @@ class WiFiSelectDeviceTableViewCell: UITableViewCell {
     private func setupComponent() {
         accessoryType = .disclosureIndicator
 
-        bleSignalImageView.image = KikurageBluetoothSignal().image
+        bleSignalImageView.image = nil
         bleSignalImageView.translatesAutoresizingMaskIntoConstraints = false
 
         bleSignalLabel.text = "-"

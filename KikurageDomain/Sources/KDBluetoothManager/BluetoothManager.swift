@@ -1,15 +1,15 @@
 //
-//  KikurageBluetoothManager.swift
+//  BluetoothManager.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2023/1/16.
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KALogger
-import KDBluetooth
 import CoreBluetooth
 import Foundation
+import KALogger
+import KDBluetooth
 
 public protocol BluetoothManagerDelegate {
     func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool)
@@ -25,42 +25,46 @@ public class BluetoothManager: NSObject {
         }
         return _shared! // swiftlint:disable:this force_unwrapping
     }
-    
+
     public private(set) var peripherals = BluetoothPeripheralList(list: [])
     public private(set) var selectedPeripheral: BluetoothPeripheral?
     public var isBluetoothAvailable: Bool {
         centralState?.value == .poweredOn
     }
-    
+
     public var delegate: BluetoothManagerDelegate?
-    
+
     private let bluetoothClient: BluetoothClient
 
     private var writeWiFiScanCharacteristic: CBCharacteristic?
     private var notifyWiFiScanCharacteristic: CBCharacteristic?
     private var writeWiFiSettingChracteristic: CBCharacteristic?
     private var notifyWiFiCompletionChracteristic: CBCharacteristic?
-    
+
     private var centralState: BluetoothCentralState?
 
     private static var _shared: BluetoothManager?
-    
+
     // MARK: - Config
 
     override private init() {
-        self.bluetoothClient = BluetoothClient(
-            serviceId: BluetoothUUID.Service.m5stack.cbUUID,
-            characteristicIds: BluetoothUUID.Characteristic.configCharactericticCBUUID()
+        bluetoothClient = BluetoothClient(
+            serviceID: BluetoothUUID.Service.m5stack.cbUUID,
+            characteristicIDs: BluetoothUUID.Characteristic.configCharactericticCBUUID()
         )
         super.init()
+
+        setupDelegate()
     }
 
     deinit {
+        bluetoothClient.centralDelegate = nil
+        bluetoothClient.peripheralDelegate = nil
         writeWiFiScanCharacteristic = nil
         notifyWiFiScanCharacteristic = nil
         notifyWiFiCompletionChracteristic = nil
     }
-    
+
     private func setupDelegate() {
         bluetoothClient.centralDelegate = self
         bluetoothClient.peripheralDelegate = self
@@ -68,18 +72,19 @@ public class BluetoothManager: NSObject {
 
     public func release() {
         BluetoothManager._shared = nil
+        delegate = nil
     }
-    
+
     public func setupSelectedPeripheral(index: Int) {
         selectedPeripheral = peripherals.getElement(index: index)
     }
-    
+
     // MARK: - Scan / Connect
-    
+
     public func startScan() {
         bluetoothClient.scanForPeripherals()
     }
-    
+
     public func connect(index: Int) {
         let peripheral = peripherals.getElement(index: index).peripheral
         bluetoothClient.connectPeripheral(peripheral)
@@ -110,9 +115,10 @@ extension BluetoothManager: BluetoothCentralManagerDelegate {
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdate state: CBManagerState) {
         let cs = BluetoothCentralState(value: state)
         centralState = cs
-        
+
         KLogManager.debug("central state: \(state)")
     }
+
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         let peripheral = BluetoothPeripheral(advertisementData: advertisementData, rssi: RSSI, peripheral: peripheral)
         if peripheral.validateConnection() {
@@ -120,6 +126,7 @@ extension BluetoothManager: BluetoothCentralManagerDelegate {
             delegate?.bluetoothManagerDidDiscovered(self)
         }
     }
+
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdate connectionState: BluetoothConnectionState) {
         switch connectionState {
         case .connect:
@@ -132,19 +139,18 @@ extension BluetoothManager: BluetoothCentralManagerDelegate {
         case .standby:
             delegate?.bluetoothManager(self, isConnected: false)
         }
-        
     }
 }
 
 // MARK: - BluetoothPeripheralMangerDelegate
 
 extension BluetoothManager: BluetoothPeripheralMangerDelegate {
-    public func bluetoothManager(_ bluetoothClient: BluetoothClient, error: Error) {
-        
-    }
+    public func bluetoothManager(_ bluetoothClient: BluetoothClient, error: Error) {}
+
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, message: String) {
         delegate?.bluetoothManagerDidReceivedValue(self, message: message)
     }
+
     public func bluetoothManager(_ bluetoothClient: BluetoothClient, didUpdateFor state: BluetoothPeripheralState) {
         switch state {
         case .didDiscoverCharacteristic(let characteristics):
@@ -171,7 +177,6 @@ extension BluetoothManager: BluetoothPeripheralMangerDelegate {
             delegate?.bluetoothManagerDidConnected(self)
         case .standby:
             KLogManager.debug("characteristic state: standby")
-            break
         }
     }
 }

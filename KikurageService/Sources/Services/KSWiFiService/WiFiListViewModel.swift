@@ -16,16 +16,16 @@ public protocol WiFiListViewModelDelegate: AnyObject {
 public class WiFiListViewModel: NSObject {
     public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
     public private(set) var wifiList = WiFiList()
-    
+
     public var selectedPeripheral: BluetoothPeripheral? {
         bluetoothManager.selectedPeripheral
     }
-    
+
     public weak var delegate: WiFiListViewModelDelegate?
-    
+
     private let bluetoothManager = BluetoothManager.shared
 
-    public override init() {
+    override public init() {
         super.init()
         bluetoothManager.delegate = self
     }
@@ -64,7 +64,7 @@ extension WiFiListViewModel: BluetoothManagerDelegate {
     public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {}
     public func bluetoothManagerDidDiscovered(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
     public func bluetoothManagerDidConnected(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
-    
+
     public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {
         guard let wifi = BluetoothParser.decodeWiFi(message) else {
             return

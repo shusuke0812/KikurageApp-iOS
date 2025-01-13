@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import KSSBluetooth
+import KDBluetoothManager
 
 public protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
@@ -17,16 +17,16 @@ public protocol WiFiSettingViewModelDelegate: AnyObject {
 
 public class WiFiSettingViewModel: NSObject {
     public private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
-    public private(set) var wifiSetting: KikurageWiFiSetting
+    public private(set) var wifiSetting: WiFiSetting
 
     public weak var delegate: WiFiSettingViewModelDelegate?
 
-    private let bluetoothManager = KikurageBluetoothManager.shared
+    private let bluetoothManager = BluetoothManager.shared
 
     public init(selectedSSID: String) {
-        wifiSetting = KikurageWiFiSetting(ssid: selectedSSID, password: "")
+        wifiSetting = WiFiSetting(ssid: selectedSSID, password: "")
         super.init()
-        bluetoothManager.peripheralDelegate = self
+        bluetoothManager.delegate = self
     }
 
     public func sectionRows(section: Int) -> Int {
@@ -56,15 +56,15 @@ public class WiFiSettingViewModel: NSObject {
     }
 }
 
-// MARK: - KikurageBluetoothPeripheralMangerDelegate
+// MARK: - BluetoothManagerDelegate
 
-extension WiFiSettingViewModel: KikurageBluetoothPeripheralMangerDelegate {
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, didUpdateFor state: KikurageBluetoothPeripheralState) {}
+extension WiFiSettingViewModel: BluetoothManagerDelegate {
+    public func bluetoothManager(_ bluetoothManager: KDBluetoothManager.BluetoothManager, isConnected: Bool) {}
+    public func bluetoothManagerDidDiscovered(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
+    public func bluetoothManagerDidConnected(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
 
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, error: Error) {}
-
-    public func bluetoothManager(_ kikurageBluetoothManager: KikurageBluetoothManager, message: String) {
-        guard let completionMessage = KikurageBluetoothParser.decodeBluetoothCompletion(message)?.getKikurageBluetoothCompletion() else {
+    public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {
+        guard let completionMessage = BluetoothParser.decodeBluetoothCompletion(message)?.getBluetoothCompletion() else {
             return
         }
 

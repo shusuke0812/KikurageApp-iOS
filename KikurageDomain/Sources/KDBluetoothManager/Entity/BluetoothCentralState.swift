@@ -1,5 +1,5 @@
 //
-//  KikurageBluetoothCentralState.swift
+//  BluetoothCentralState.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2023/04/09.

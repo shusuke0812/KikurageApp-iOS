@@ -23,59 +23,59 @@ public protocol BluetoothPeripheralMangerDelegate: AnyObject {
 public class BluetoothClient: NSObject {
     private var centralManager: CBCentralManager!
     private var connectToPeripheral: CBPeripheral!
-    
-    private let connectServiceId: CBUUID
-    private let connectCharacteristicIds: [CBUUID]
-    
+
+    private let connectServiceID: CBUUID
+    private let connectCharacteristicIDs: [CBUUID]
+
     public weak var peripheralDelegate: BluetoothPeripheralMangerDelegate?
     public weak var centralDelegate: BluetoothCentralManagerDelegate?
-    
-    public init(serviceId: CBUUID, characteristicIds: [CBUUID]) {
-        self.connectServiceId = serviceId
-        self.connectCharacteristicIds = characteristicIds
+
+    public init(serviceID: CBUUID, characteristicIDs: [CBUUID]) {
+        connectServiceID = serviceID
+        connectCharacteristicIDs = characteristicIDs
         super.init()
 
         setupManager()
     }
-    
+
     deinit {
         peripheralDelegate = nil
         centralDelegate = nil
     }
-    
+
     private func setupManager() {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
-    
+
     public func scanForPeripherals() {
         // TODO: setting original service ID
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
-    
+
     public func connectPeripheral(_ peripheral: CBPeripheral) {
         centralManager.connect(peripheral, options: nil)
         connectToPeripheral = peripheral
     }
-    
+
     public func writeWithResponse(_ characteristic: CBCharacteristic, data: Data) {
         connectToPeripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
-    
+
     public func writeWOResponse(_ characteristic: CBCharacteristic, data: Data) {
         connectToPeripheral.writeValue(data, for: characteristic, type: .withoutResponse)
     }
-    
+
     public func setupNotify(for characteristic: CBCharacteristic) {
         connectToPeripheral.setNotifyValue(true, for: characteristic)
     }
-    
+
     private func peripheralDiscoverServices() {
         connectToPeripheral.delegate = self
-        connectToPeripheral.discoverServices([connectServiceId])
+        connectToPeripheral.discoverServices([connectServiceID])
     }
-    
+
     private func peripheralDiscoverCharacteristics(service: CBService) {
-        connectToPeripheral.discoverCharacteristics(connectCharacteristicIds, for: service)
+        connectToPeripheral.discoverCharacteristics(connectCharacteristicIDs, for: service)
     }
 }
 

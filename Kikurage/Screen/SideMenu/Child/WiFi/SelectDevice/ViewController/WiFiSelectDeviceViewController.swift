@@ -84,10 +84,10 @@ extension WiFiSelectDeviceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
         cell.updateComponent(
-            signalImage: viewModel.bluetoothSignal?.image,
-            rssiString: viewModel.peripheral?.rssiString ?? "-",
-            deviceName: viewModel.peripheral?.deviceName ?? "-",
-            serviceCountString: viewModel.peripheral?.serviceCountString  ?? "-"
+            signalImage: viewModel.getPeripheralInfo(index: indexPath.row).signal.image,
+            rssiString: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.rssiString,
+            deviceName: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.deviceName,
+            serviceCountString: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.serviceCountString
         )
         return cell
     }

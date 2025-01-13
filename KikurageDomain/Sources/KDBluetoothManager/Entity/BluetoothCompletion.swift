@@ -1,5 +1,5 @@
 //
-//  KikurageBluetoothCompletion.swift
+//  BluetoothCompletion.swift
 //  KikurageFeature
 //
 //  Created by Shusuke Ota on 2023/03/28.

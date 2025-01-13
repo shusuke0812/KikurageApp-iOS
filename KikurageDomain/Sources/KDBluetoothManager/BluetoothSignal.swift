@@ -1,6 +1,6 @@
 //
-//  KikurageBluetoothSignal.swift
-//  KikurageFeature
+//  BluetoothSignal.swift
+//  KikurageDomain
 //
 //  Created by Shusuke Ota on 2023/03/06.
 //  Copyright © 2023 shusuke. All rights reserved.

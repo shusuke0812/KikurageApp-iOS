@@ -18,20 +18,7 @@ public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
 public class WiFiSelectDeviceViewModel: NSObject {
     public private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
     public var isBluetoothAvailable: Bool {
-        bluetoothManager.isBluetoothAvailable
-    }
-    public var bluetoothSignal: BluetoothSignal? {
-        guard let peripheral = peripheral else {
-            return nil
-        }
-        return BluetoothSignal.getSignal(rssi: peripheral.rssiInt)
-    }
-    
-    public var peripheral: BluetoothPeripheral? {
-        guard let selectedIndexPath = selectedIndexPath else {
-            return nil
-        }
-        return bluetoothManager.peripherals.getElement(index: selectedIndexPath.row)
+        return bluetoothManager.isBluetoothAvailable
     }
 
     public weak var delegate: WiFiSelectDeviceViewModelDelegate?
@@ -51,7 +38,7 @@ public class WiFiSelectDeviceViewModel: NSObject {
     public func sectionRows() -> Int {
         bluetoothManager.peripherals.listCount
     }
-    
+
     public func connectToPeripheral(indexPath: IndexPath) {
         bluetoothManager.connect(index: indexPath.row)
         selectedIndexPath = indexPath
@@ -60,24 +47,30 @@ public class WiFiSelectDeviceViewModel: NSObject {
     public func scanForPeripherals() {
         bluetoothManager.startScan()
     }
+
+    public func getPeripheralInfo(index: Int) -> (signal: BluetoothSignal, peripheral: BluetoothPeripheral) {
+        let peripheral = bluetoothManager.peripherals.getElement(index: index)
+        let signal = BluetoothSignal.getSignal(rssi: peripheral.rssiInt)
+
+        return (signal, peripheral)
+    }
 }
 
 // MARK: - BluetoothManagerConnectionDelegate
 
 extension WiFiSelectDeviceViewModel: BluetoothManagerDelegate {
     public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {}
-    
+
     public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {
         if !isConnected {
             delegate?.viewModelDidFailConnectionToPeripheral(self)
         }
     }
-    
-    public func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
 
+    public func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
         delegate?.viewModelDidAddPeripheral(self)
     }
-    
+
     public func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager) {
         if let selectedIndexPath = selectedIndexPath {
             bluetoothManager.setupSelectedPeripheral(index: selectedIndexPath.row)

@@ -12,4 +12,3 @@ public enum BluetoothPeripheralState {
     case standby
     case didDiscoverCharacteristic([CBCharacteristic]?)
 }
-
