@@ -6,7 +6,8 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KDEntity
+import KUIKit
 import UIKit
 
 class HomeBaseView: UIView {
@@ -61,7 +62,7 @@ extension HomeBaseView {
         statusImageView.translatesAutoresizingMaskIntoConstraints = false
 
         nowTimeLabel = UILabel()
-        nowTimeLabel.text = DateHelper.now()
+        nowTimeLabel.text = "-"
         nowTimeLabel.font = .systemFont(ofSize: 11)
         nowTimeLabel.textAlignment = .right
         nowTimeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -187,14 +188,14 @@ extension HomeBaseView {
         }
     }
 
-    func updateTimeLabel() {
-        nowTimeLabel.text = DateHelper.now()
+    func updateTimeLabel(dateString: String) {
+        nowTimeLabel.text = dateString
     }
 
     private func displayKikurageStateImage(type: KikurageStateType) {
         statusEmptyView.removeFromSuperview()
         // 2つの画像を交互に表示する処理（アニメーションのSTOPはViewWillDisapperへ記載）
-        statusImageView.runAnimation(images: KikurageStateHelper.setStateImage(type: type))
+        statusImageView.runAnimation(images: type.getStateImages())
     }
 
     private func displayFailedKikurageStateImage() {

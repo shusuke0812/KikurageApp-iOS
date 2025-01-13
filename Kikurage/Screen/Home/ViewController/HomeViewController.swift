@@ -6,7 +6,8 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KAAnalytics
+import KSHomeService
 import RxSwift
 import UIKit
 
@@ -23,7 +24,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
     var kikurageUser: KikurageUser!
 
     deinit {
-        KLogger.debug("call deinit")
+        // KLogger.debug("call deinit")
     }
 
     // MARK: - Lifecycle
@@ -35,7 +36,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Config
-        viewModel = HomeViewModel(kikurageUser: kikurageUser, kikurageStateRepository: KikurageStateRepository(), kikurageStateListenerRepository: KikurageStateListenerRepository())
+        viewModel = HomeViewModel(kikurageUser: kikurageUser)
         viewModel.input.listenKikurageState()
 
         // UI
@@ -68,7 +69,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.home)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.home)
     }
 }
 
@@ -93,7 +94,7 @@ extension HomeViewController {
     }
 
     @objc private func updateUI() {
-        baseView.updateTimeLabel()
+        baseView.updateTimeLabel(dateString: viewModel.output.dateNowString)
     }
 
     private func makeForeBackgroundObserver() {
@@ -119,7 +120,7 @@ extension HomeViewController {
 
         viewModel.output.error.subscribe(
             onNext: { [weak self] error in
-                self?.onFailedLoadingKikurageState(errorMessage: error.description())
+                self?.onFailedLoadingKikurageState(errorMessage: "error") // TODO: error.description()
             }
         )
         .disposed(by: disposeBag)

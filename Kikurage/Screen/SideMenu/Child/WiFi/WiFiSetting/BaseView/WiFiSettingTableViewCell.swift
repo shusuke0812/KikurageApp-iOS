@@ -6,6 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KSWiFiService
 import UIKit
 
 protocol WiFiSettingTableViewCellDelegate: AnyObject {

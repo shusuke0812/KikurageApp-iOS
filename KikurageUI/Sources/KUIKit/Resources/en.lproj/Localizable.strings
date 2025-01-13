@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  KikurageService
+
+  Created by Shusuke Ota on 2024/12/30.
+  
+*/
+
+"loading_text" = "Loading...";

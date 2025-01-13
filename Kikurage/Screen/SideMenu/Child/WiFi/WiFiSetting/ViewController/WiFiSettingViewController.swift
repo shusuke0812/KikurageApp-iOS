@@ -6,6 +6,7 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KSWiFiService
 import PKHUD
 import UIKit
 
@@ -35,7 +36,7 @@ class WiFiSettingViewController: UIViewController {
     }
 
     private func setupProtocols() {
-        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+        baseView.setupTableViewProtocols(delegate: self, dataSource: self)
         baseView.delegate = self
     }
 
@@ -72,6 +73,60 @@ extension WiFiSettingViewController: UITableViewDelegate {
         case .security:
             // TODO: open action sheet
             print()
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension WiFiSettingViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        viewModel.sections[section].title
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.sectionRows(section: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = viewModel.sections[indexPath.section]
+        let row = section.rows[indexPath.row]
+        switch section {
+        case .required:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSettingTableViewCell", for: indexPath) as! WiFiSettingTableViewCell // swiftlint:disable:this force_cast
+            cell.updateComponent(title: row.title)
+            cell.type = row
+            cell.delegate = self
+            if row == .ssid {
+                cell.updateComponent(textFieldText: viewModel.wifiSetting.ssid)
+            }
+            return cell
+        case .optional:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiListTableViewCell", for: indexPath) as! WiFiListTableViewCell // swiftlint:disable:this force_cast
+            cell.updateComponent(title: row.title)
+            return cell
+        }
+    }
+}
+
+// MARK: - WiFiSettingTableViewCellDelegate
+
+extension WiFiSettingViewController: WiFiSettingTableViewCellDelegate {
+    public func wifiSettingTableViewCell(_ wifiSettingTableViewCell: WiFiSettingTableViewCell, didEnter text: String) {
+        switch wifiSettingTableViewCell.type {
+        case .ssid:
+            viewModel.updateWiFiSetting(ssid: text)
+        case .password:
+            viewModel.updateWiFiSetting(password: text)
+        case .activeScan, .security:
+            break // never called
+        }
+        DispatchQueue.main.async {
+            self.baseView.enableSettingButton(isEnabled: self.viewModel.validateWiFiSetting())
         }
     }
 }

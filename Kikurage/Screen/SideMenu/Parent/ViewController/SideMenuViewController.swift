@@ -9,7 +9,7 @@
 import MessageUI
 import UIKit
 
-class SideMenuViewController: UIViewController, UIViewControllerNavigatable, MenuAccessable {
+class SideMenuViewController: UIViewController, UIViewControllerNavigatable, SideMenuAccessable {
     private var baseView: SideMenuBaseView = .init()
     private var viewModel: SideMenuViewModel!
 
@@ -121,7 +121,7 @@ extension SideMenuViewController {
     private func openSearchRecipePage() {
         let query = (R.string.localizable.side_menu_search_recipe_word()).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         let urlString = "https://cookpad.com/search/\(query)"
-        presentSafariView(from: self, urlString: urlString, onError: {
+        presentSafariView(urlString: urlString, onError: {
             UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_search_recipe_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
         })
     }

@@ -6,10 +6,9 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import FirebaseCore
-import FirebaseCrashlytics
 import IQKeyboardManagerSwift
-import KikurageFeature
+import KALogger
+import KSAppService
 import MetricKit
 import UIKit
 
@@ -17,11 +16,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KLogManager.debug()
-        FirebaseApp.configure()
-        configCrashlyticsUserID()
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 40
+        let appDelegateConfig = AppDelegateConfig()
+        appDelegateConfig.initialize()
+
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardManager.shared.keyboardDistance = 40
 
         MXMetricManager.shared.add(self)
 
@@ -40,15 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         KLogManager.debug()
         MXMetricManager.shared.remove(self)
-    }
-}
-
-// MARK: - Private
-
-extension AppDelegate {
-    private func configCrashlyticsUserID() {
-        let userID = LoginHelper.shared.kikurageUserID ?? "no id"
-        Crashlytics.crashlytics().setUserID(userID)
     }
 }
 

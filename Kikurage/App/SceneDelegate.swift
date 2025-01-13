@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KALogger
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

@@ -7,7 +7,9 @@
 //
 
 import CropViewController
-import KikurageFeature
+import KAAnalytics
+import KSAccountSettingService
+import UIKit
 
 class AccountSettingViewController: UIViewController {
     private var baseView: AccountSettingBaseView = .init()
@@ -21,18 +23,16 @@ class AccountSettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = AccountSettingViewModel(kikurageUserRepository: KikurageUserRepository())
+        viewModel = AccountSettingViewModel()
         setDelegateDataSource()
         setNavigation()
 
-        if let userID = LoginHelper.shared.kikurageUserID {
-            viewModel.loadKikurageUser(uid: userID)
-        }
+        viewModel.loadKikurageUser()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.accountSetting)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.accountSetting)
     }
 
     // MARK: - Action
@@ -66,7 +66,7 @@ extension AccountSettingViewController: AccountSettingBaseViewDelegate {
 
     func settingBaseViewDidTappedEditButton(_ settingBaseView: AccountSettingBaseView) {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
-        FirebaseAnalyticsHelper.sendTapEvent(.accountSettingButton)
+        FirebaseAnalyticsManager.sendTapEvent(.accountSettingButton)
         print("DEBUG: ボタンがタップされました")
     }
 }

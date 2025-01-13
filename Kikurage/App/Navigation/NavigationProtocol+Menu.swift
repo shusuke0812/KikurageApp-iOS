@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol MenuAccessable: ModalNavigationProtocol, SafariViewNavigationProtocol {
+protocol SideMenuAccessable: ModalNavigationProtocol, SafariViewNavigationProtocol {
     func modalToCalendar(completion: (() -> Void)?)
     func modalToGraph(completion: (() -> Void)?)
     func modalToAccountSetting(completion: (() -> Void)?)
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)?)
+    func presentToSafariView(urlString: String?, onError: (() -> Void)?)
 }
 
-extension MenuAccessable {
+extension SideMenuAccessable {
     // MARK: - Modal
 
     func modalToCalendar(completion: (() -> Void)? = nil) {
@@ -50,7 +50,7 @@ extension MenuAccessable {
 
     // MARK: - SafariView
 
-    func presentToSafariView(from vc: UIViewController, urlString: String?, onError: (() -> Void)? = nil) {
-        presentSafariView(from: vc, urlString: urlString, onError: onError)
+    func presentToSafariView(urlString: String?, onError: (() -> Void)? = nil) {
+        presentSafariView(urlString: urlString, onError: onError)
     }
 }

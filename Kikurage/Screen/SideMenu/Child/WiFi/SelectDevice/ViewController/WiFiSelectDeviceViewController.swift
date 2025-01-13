@@ -6,7 +6,9 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KAAnalytics
+import KSWiFiService
+import KUIKit
 import PKHUD
 import UIKit
 
@@ -28,11 +30,13 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if viewModel.bluetoothCentralState?.value == .poweredOn {
+        viewModel.disconnectPeripheral()
+
+        if viewModel.isBluetoothAvailable {
             baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()
         }
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.wifi)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.wifi)
     }
 
     // MARK: - Action
@@ -43,7 +47,7 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
     }
 
     private func setupProtocols() {
-        baseView.setupTableViewProtocols(delegate: self, dataSource: viewModel)
+        baseView.setupTableViewProtocols(delegate: self, dataSource: self)
     }
 
     private func setupNavigation() {
@@ -62,9 +66,32 @@ extension WiFiSelectDeviceViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        baseView.setupTableViewHeaderView(KikurageTableViewHeaderView.create(tableView: tableView))
+        baseView.setupTableViewHeaderView(KUITableHeaderView.create(tableView: tableView))
         baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
         return baseView.tableViewHeaderView
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension WiFiSelectDeviceViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.sectionRows()
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
+        cell.updateComponent(
+            signalImage: viewModel.getPeripheralInfo(index: indexPath.row).signal.image,
+            rssiString: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.rssiString,
+            deviceName: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.deviceName,
+            serviceCountString: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.serviceCountString
+        )
+        return cell
     }
 }
 
@@ -78,14 +105,14 @@ extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
         }
     }
 
-    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, peripheral: KikurageBluetoothPeripheral) {
+    func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
-            self.pushToWiFiList(bluetoothPeriperal: peripheral)
+            self.pushToWiFiList()
         }
     }
 
-    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel, error: Error?) {
+    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
         DispatchQueue.main.async {
             HUD.hide()
         }

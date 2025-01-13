@@ -6,7 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import Charts
+import DGCharts
 import UIKit
 
 enum GraphDataType {

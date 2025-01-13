@@ -6,7 +6,6 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KikurageFeature
 import UIKit
 
 class WiFiListSpecTableViewCell: UITableViewCell {

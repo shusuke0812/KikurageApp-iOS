@@ -6,10 +6,12 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
+import KSLoginService
 import PKHUD
 import UIKit
 
-class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
+class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginAccessable {
     private let baseView = LoginBaseView()
     private var viewModel: LoginViewModel!
 
@@ -20,7 +22,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAcc
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
-        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository())
+        viewModel = LoginViewModel()
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -28,7 +30,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, TopAcc
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.login)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.login)
     }
 }
 
@@ -54,7 +56,7 @@ extension LoginViewController: LoginBaseViewDelegate {
 // MARK: - UITextField Delegate
 
 extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else {
             return
         }

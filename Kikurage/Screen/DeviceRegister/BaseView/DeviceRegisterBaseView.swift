@@ -6,8 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KikurageFeature
-import KikurageUI
+import KSDeviceRegisterService
+import KUIKit
 import UIKit
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {
@@ -19,7 +19,7 @@ class DeviceRegisterBaseView: UIView {
     private(set) var productKeyTextField: KUITextField!
     private(set) var kikurageNameTextField: KUITextField!
     private(set) var cultivationStartDateTextField: KUIDropdownTextField!
-    private(set) var qrcodeReaderView: KikurageQRCodeReaderView!
+    private(set) var qrcodeReaderView: QRCodeReaderView!
     private var deviceRegisterButton: KUIButton!
     private var qrcodeReaderButton: UIButton!
 
@@ -58,7 +58,7 @@ class DeviceRegisterBaseView: UIView {
         qrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
         qrcodeReaderButton.translatesAutoresizingMaskIntoConstraints = false
 
-        qrcodeReaderView = KikurageQRCodeReaderView()
+        qrcodeReaderView = QRCodeReaderView()
         qrcodeReaderView.backgroundColor = .white
         qrcodeReaderView.translatesAutoresizingMaskIntoConstraints = false
 
