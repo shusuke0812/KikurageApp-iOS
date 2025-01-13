@@ -6,6 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
+import KSCalendarService
 import UIKit
 
 class CalendarViewController: UIViewController {
@@ -20,18 +22,16 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = CalendarViewModel(kikurageUserRepository: KikurageUserRepository())
+        viewModel = CalendarViewModel()
         setDelegateDataSource()
         setNavigation()
 
-        if let userID = LoginHelper.shared.kikurageUserID {
-            viewModel.loadKikurageUser(uid: userID)
-        }
+        viewModel.loadKikurageUser()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.calendar)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.calendar)
     }
 
     // MARK: - Action
@@ -59,7 +59,7 @@ extension CalendarViewController {
 
 extension CalendarViewController: CalendarViewModelDelegate {
     func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {
-        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, cultivationTerm: calendarViewModel.cultivationTerm ?? 0)
+        baseView.initCalendarView(cultivationStartDateComponents: calendarViewModel.cultivationDateComponents, currentDateComponents: viewModel.cultivationDateComponents, cultivationTerm: calendarViewModel.cultivationTerm ?? 0)
     }
 
     func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String) {

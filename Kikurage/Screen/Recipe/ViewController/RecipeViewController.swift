@@ -6,7 +6,9 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KAAnalytics
+import KSRecipeService
+import KUIKit
 import PKHUD
 import RxSwift
 import SafariServices
@@ -30,17 +32,15 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItem()
-        viewModel = RecipeViewModel(recipeRepository: RecipeRepository())
+        viewModel = RecipeViewModel()
         setDelegateDataSource()
         setNotificationCenter()
         setRefreshControl()
 
         adjustNavigationBarBackgroundColor()
 
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            HUD.show(.progress)
-            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
-        }
+        HUD.show(.progress)
+        viewModel.input.loadRecipes()
 
         // Rx
         rxBaseView()
@@ -53,15 +53,13 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.recipe)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.recipe)
     }
 
     // MARK: - Action
 
     private func refresh() {
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
-        }
+        viewModel.input.loadRecipes()
     }
 }
 
@@ -128,7 +126,8 @@ extension RecipeViewController {
                         return
                     }
                     self.baseView.tableView.refreshControl?.endRefreshing()
-                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                    // TODO: error.description()をアラートに表示させる
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: "error", message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
                 }
             }
         )
@@ -166,9 +165,7 @@ extension RecipeViewController {
     }
 
     @objc private func didPostRecipe(notification: Notification) {
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            HUD.show(.progress)
-            viewModel.input.loadRecipes(kikurageUserID: kikurageUserID)
-        }
+        HUD.show(.progress)
+        viewModel.input.loadRecipes()
     }
 }

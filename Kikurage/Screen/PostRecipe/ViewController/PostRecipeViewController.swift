@@ -6,7 +6,9 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KAAnalytics
+import KSRecipeService
+import KUIKit
 import PKHUD
 import UIKit
 
@@ -25,7 +27,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
             selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber,
             collectionViewDelegate: self
         )
-        viewModel = PostRecipeViewModel(recipeRepository: RecipeRepository())
+        viewModel = PostRecipeViewModel()
         setDelegateDataSource()
         setNavigation()
         adjustNavigationBarBackgroundColor()
@@ -33,7 +35,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.postRecipe)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.postRecipe)
     }
 
     // MARK: - Action
@@ -63,7 +65,7 @@ extension PostRecipeViewController {
 
 extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func postRecipeBaseViewDidEndEditingRecipeDate(_ postRecipeBaseView: PostRecipeBaseView, date: Date) {
-        viewModel.recipe.cookDate = DateHelper.formatToString(date: date)
+        viewModel.updateCookDate(date: date)
     }
 
     func postRecipeBaseViewDidEndEditingRecipeName(_ postRecipeBaseView: PostRecipeBaseView, text: String) {
@@ -77,9 +79,7 @@ extension PostRecipeViewController: PostRecipeBaseViewDelegate {
     func postRecipeBaseViewDidTappedPostButton(_ postRecipeBaseView: PostRecipeBaseView) {
         UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_recipe_alert_post_recipe_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
             HUD.show(.progress)
-            if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-                self.viewModel.postRecipe(kikurageUserID: kikurageUserID)
-            }
+            self.viewModel.postRecipe()
         }
     }
 
@@ -102,7 +102,7 @@ extension PostRecipeViewController: KUISelectImageCollectionViewCellDelegate {
 
 extension PostRecipeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        FirebaseAnalyticsHelper.sendTapEvent(.recipeImageButton)
+        FirebaseAnalyticsManager.sendTapEvent(.recipeImageButton)
         openImagePicker()
     }
 }
@@ -135,9 +135,7 @@ extension PostRecipeViewController: PostRecipeViewModelDelegate {
         // 選択した画像のみData型に変換する
         let postIamgeData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.3).filter { $0 != nil }
         // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            postRecipeViewModel.postRecipeImages(kikurageUserID: kikurageUserID, imageData: postIamgeData)
-        }
+        postRecipeViewModel.postRecipeImages(imageData: postIamgeData)
     }
 
     func postRecipeViewModelDidFailedPostRecipe(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String) {

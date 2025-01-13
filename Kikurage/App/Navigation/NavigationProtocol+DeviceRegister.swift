@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KDEntity
 
 protocol DeviceRegisterAccessable: PushNavigationProtocol {
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser)

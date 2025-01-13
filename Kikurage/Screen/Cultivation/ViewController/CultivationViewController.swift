@@ -6,7 +6,9 @@
 //  Copyright © 2019 shusuke. All rights reserved.
 //
 
-import KikurageUI
+import KAAnalytics
+import KSCultivationService
+import KUIKit
 import PKHUD
 import RxSwift
 import SwiftUI
@@ -27,7 +29,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = CultivationViewModel(cultivationRepository: CultivationRepository())
+        viewModel = CultivationViewModel()
 
         setDelegateDataSource()
         setNavigationItem()
@@ -36,10 +38,8 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
         adjustNavigationBarBackgroundColor()
 
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            HUD.show(.progress)
-            viewModel.input.loadCultivations(kikurageUserID: kikurageUserID)
-        }
+        HUD.show(.progress)
+        viewModel.input.loadCultivations()
 
         // RX
         rxBaseView()
@@ -52,15 +52,13 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.cultivation)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.cultivation)
     }
 
     // MARK: - Action
 
     private func refresh() {
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            viewModel.input.loadCultivations(kikurageUserID: kikurageUserID)
-        }
+        viewModel.input.loadCultivations()
     }
 }
 
@@ -125,7 +123,8 @@ extension CultivationViewController {
                 DispatchQueue.main.async {
                     HUD.hide()
                     self.baseView.collectionView.refreshControl?.endRefreshing()
-                    UIAlertController.showAlert(style: .alert, viewController: self, title: error.description(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                    // TODO: error.description()を表示させる
+                    UIAlertController.showAlert(style: .alert, viewController: self, title: "error", message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
                 }
             }
         )
@@ -173,9 +172,7 @@ extension CultivationViewController {
     }
 
     @objc private func didPostCultivation(notification: Notification) {
-        if let kikurageUserID = LoginHelper.shared.kikurageUserID {
-            HUD.show(.progress)
-            viewModel.input.loadCultivations(kikurageUserID: kikurageUserID)
-        }
+        HUD.show(.progress)
+        viewModel.input.loadCultivations()
     }
 }

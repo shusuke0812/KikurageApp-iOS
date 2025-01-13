@@ -6,6 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
+import KSLoginService
 import PKHUD
 import UIKit
 
@@ -20,7 +22,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
-        viewModel = LoginViewModel(signUpRepository: SignUpRepository(), loginRepository: LoginRepository())
+        viewModel = LoginViewModel()
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -28,7 +30,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.login)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.login)
     }
 }
 

@@ -6,15 +6,17 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KAAnalytics
+import KSAppService
+import KUIKit
 import UIKit
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
     private var presenter: AppPresenter!
 
-    private let kikurageHUD: KikurageHUD = {
-        let hud = KikurageHUD()
+    private let hud: KUIHUD = {
+        let hud = KUIHUD()
         hud.startRotateAnimation(duration: 1.0, rotateAxis: .y)
         hud.translatesAutoresizingMaskIntoConstraints = false
         return hud
@@ -26,12 +28,12 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         initHUD()
 
-        presenter = AppPresenter(firebaseRemoteCofigRepository: FirebaseRemoteConfigRepository())
+        presenter = AppPresenter()
         presenter.delegate = self
 
         fetchRemoteConfig()
 
-        if LoginHelper.shared.isLogin {
+        if presenter.isLogin {
             presenter.login()
         } else {
             showTopPage()
@@ -57,11 +59,11 @@ extension AppRootController {
     }
 
     private func initHUD() {
-        view.addSubview(kikurageHUD)
+        view.addSubview(hud)
 
         NSLayoutConstraint.activate([
-            kikurageHUD.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            kikurageHUD.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            hud.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            hud.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
@@ -88,7 +90,7 @@ extension AppRootController {
         setCurrentViewController(vc)
         setScreenHeaderHeight(vc)
 
-        kikurageHUD.stopRotateAnimation()
+        hud.stopRotateAnimation()
     }
 
     private func setCurrentViewController(_ vc: UIViewController) {
@@ -129,8 +131,8 @@ extension AppRootController {
 extension AppRootController: AppPresenterDelegate {
     func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
         if let user = kikurageInfo.user {
-            FirebaseAnalyticsHelper.setUserProperty()
-            FirebaseAnalyticsHelper.setUserID(user.productKey)
+            FirebaseAnalyticsManager.setUserProperty()
+            FirebaseAnalyticsManager.setUserID(user.productKey)
         }
         DispatchQueue.main.async {
             self.showHomePage(kikurageInfo: kikurageInfo)

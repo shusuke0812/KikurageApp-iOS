@@ -6,6 +6,7 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KSDictionaryService
 import SwiftUI
 import UIKit
 
@@ -20,7 +21,7 @@ class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = DictionaryTwitterViewModel(twitterSearchRepository: TwitterSearchRepository())
+        viewModel = DictionaryTwitterViewModel()
         viewModel.delegate = self
         baseView.configTableView(delegate: self, dataSource: viewModel)
 

@@ -6,6 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
+import KSSignUpService
 import PKHUD
 import RxCocoa
 import UIKit
@@ -23,7 +25,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_signup_title()
-        viewModel = SignUpViewModel(signUpRepository: SignUpRepository())
+        viewModel = SignUpViewModel()
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -31,7 +33,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.signUp)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.signUp)
     }
 }
 
@@ -79,9 +81,13 @@ extension SignUpViewController: SignUpViewModelDelegate {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: "仮登録完了", message: "入力したメールアドレスに送ったリンクから本登録を行い次へ進んでください", okButtonTitle: "次へ", cancelButtonTitle: nil) {
-                LoginHelper.shared.userReload { [weak self] in
-                    self?.pushToDeviceRegister()
-                    LoginHelper.shared.userListenerDetach()
+                self.viewModel.reloadUser { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.pushToDeviceRegister()
+                    case .failure(let error):
+                        assertionFailure("\(error)")
+                    }
                 }
             }
         }

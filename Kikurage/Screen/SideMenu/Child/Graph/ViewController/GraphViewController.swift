@@ -6,6 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
+import KSGraphService
 import UIKit
 
 class GraphViewController: UIViewController {
@@ -20,7 +22,7 @@ class GraphViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = GraphViewModel(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        viewModel = GraphViewModel()
         setDelegateDataSource()
         setNavigation()
         loadKikurageUser()
@@ -28,7 +30,7 @@ class GraphViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.graph)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.graph)
     }
 
     // MARK: - Action
@@ -52,11 +54,8 @@ extension GraphViewController {
     }
 
     private func loadKikurageUser() {
-        guard let userID = LoginHelper.shared.kikurageUserID else {
-            return
-        }
         baseView.startGraphActivityIndicators()
-        viewModel.loadKikurageUser(uid: userID)
+        viewModel.loadKikurageUser()
     }
 
     private func loadKikurageStateGraph() {

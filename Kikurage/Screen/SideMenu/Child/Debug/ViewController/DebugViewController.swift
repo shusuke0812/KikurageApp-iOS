@@ -6,14 +6,12 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KikurageFeature
+import KSDebugService
 import UIKit
 
 class DebugViewController: UIViewController {
     private var baseView: DebugBaseView = .init()
     private var viewModel: DebugViewModel!
-
-    private let konashi = KonashiBluetooth()
 
     override func loadView() {
         view = baseView
@@ -25,7 +23,6 @@ class DebugViewController: UIViewController {
         baseView.delegate = self
         viewModel = DebugViewModel()
 
-        konashi.delegate = self
         baseView.activityIndicatorView.startAnimating()
     }
 
@@ -50,34 +47,20 @@ extension DebugViewController {
 
 extension DebugViewController: DebugBaseViewDelegate {
     func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView) {
-        LoginHelper.shared.logout()
-    }
-
-    func debugBaseViewDidTappedKonashiFind(_ debugBaseView: DebugBaseView) {
-        konashi.find()
-        konashi.readRSSI()
-    }
-}
-
-// MARK: - KonashiBluetooth Delegate
-
-extension DebugViewController: KonashiBluetoothDelegate {
-    func konashiBluetooth(_ konashiBluetooth: KonashiBluetooth, didUpdated rssi: Int32) {
-        let rssiString = String(rssi)
-        DispatchQueue.main.async {
-            self.baseView.setRSSILabel(rssiString)
-        }
-    }
-
-    func konashiBluetoothDisconnected(_ konashiBluetooth: KonashiBluetooth) {
-        DispatchQueue.main.async {
-            self.baseView.setRSSILabel("disconnected")
-        }
-    }
-
-    func konashiBluetoothDidUpdatedPIOInput(_ konashiBluetooth: KonashiBluetooth, message: String) {
-        DispatchQueue.main.async {
-            self.baseView.setPIOLabel(message)
+        viewModel.logout { result in
+            switch result {
+            case .success:
+                let scenes = UIApplication.shared.connectedScenes
+                let windowScene = scenes.first as? UIWindowScene
+                let rootVC = windowScene?.keyWindow?.rootViewController
+                if rootVC is AppRootController, let rootVC = rootVC as? AppRootController {
+                    rootVC.logout(rootVC: rootVC)
+                } else {
+                    // error: do nothing
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

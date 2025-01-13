@@ -6,6 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KAAnalytics
+import KSAppService
 import UIKit
 
 class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
@@ -27,7 +29,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable, TopAcces
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        FirebaseAnalyticsHelper.sendScreenViewEvent(.top)
+        FirebaseAnalyticsManager.sendScreenViewEvent(.top)
     }
 }
 
@@ -43,12 +45,12 @@ extension TopViewController {
 
 extension TopViewController: TopBaseViewDelegate {
     func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
-        let urlString = AppConfig.shared.termsURL
+        let urlString = AppConfig.shared.termsURLString
         presentSafariView(urlString: urlString, onError: nil)
     }
 
     func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
-        let urlString = AppConfig.shared.privacyPolicyURL
+        let urlString = AppConfig.shared.privacyPolicyURLString
         presentSafariView(urlString: urlString, onError: nil)
     }
 
