@@ -1,6 +1,6 @@
 //
 //  BluetoothCentralState.swift
-//  KikurageFeature
+//  KikurageDomain
 //
 //  Created by Shusuke Ota on 2023/04/09.
 //  Copyright © 2023 shusuke. All rights reserved.

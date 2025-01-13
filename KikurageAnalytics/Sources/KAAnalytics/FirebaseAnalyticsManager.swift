@@ -1,6 +1,6 @@
 //
 //  FirebaseAnalyticsManager.swift
-//  Kikurage
+//  KikurageAnalytics
 //
 //  Created by Shusuke Ota on 2023/8/8.
 //  Copyright © 2023 shusuke. All rights reserved.

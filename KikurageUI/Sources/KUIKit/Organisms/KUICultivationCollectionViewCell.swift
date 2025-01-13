@@ -1,6 +1,6 @@
 //
 //  KUICultivationCollectionViewCell.swift
-//  Kikurage
+//  KikurageUI
 //
 //  Created by Shusuke Ota on 2024/12/8.
 //  Copyright © 2024 shusuke. All rights reserved.

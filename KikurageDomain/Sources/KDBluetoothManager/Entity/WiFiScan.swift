@@ -1,6 +1,6 @@
 //
 //  WiFiScan.swift
-//  KikurageFeature
+//  KikurageDomain
 //
 //  Created by Shusuke Ota on 2023/03/25.
 //  Copyright © 2023 shusuke. All rights reserved.

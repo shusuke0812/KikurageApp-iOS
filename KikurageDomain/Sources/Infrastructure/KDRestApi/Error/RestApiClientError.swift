@@ -1,6 +1,6 @@
 //
 //  RestApiClientError.swift
-//  Kikurage
+//  KikurageDomain
 //
 //  Created by Shusuke Ota on 2021/9/12.
 //  Copyright © 2021 shusuke. All rights reserved.

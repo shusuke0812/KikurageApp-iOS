@@ -1,6 +1,6 @@
 //
 //  LoadKikurageStateWithUserUseCase.swift
-//  Kikurage
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2024/1/3.
 //  Copyright © 2024 shusuke. All rights reserved.

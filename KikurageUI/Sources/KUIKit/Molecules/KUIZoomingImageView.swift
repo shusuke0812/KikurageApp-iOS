@@ -1,6 +1,6 @@
 //
 //  KUIZoomingImageView.swift
-//  KikurageFeature
+//  KikurageUI
 //
 //  Created by Shusuke Ota on 2022/11/8.
 //  Copyright © 2022 shusuke. All rights reserved.

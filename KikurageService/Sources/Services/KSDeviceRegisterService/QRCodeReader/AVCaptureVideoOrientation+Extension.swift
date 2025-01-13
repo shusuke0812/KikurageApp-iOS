@@ -1,6 +1,6 @@
 //
 //  AVCaptureVideoOrientation+Extension.swift
-//  KikurageFeature
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2022/7/16.
 //  Copyright © 2022 shusuke. All rights reserved.

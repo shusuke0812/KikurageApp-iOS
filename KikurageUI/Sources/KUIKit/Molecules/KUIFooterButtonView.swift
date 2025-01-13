@@ -1,6 +1,6 @@
 //
 //  KUIFooterButtonView.swift
-//  Kikurage
+//  KikurageUI
 //
 //  Created by Shusuke Ota on 2021/12/25.
 //  Copyright © 2021 shusuke. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  QRCodeReaderView.swift
-//  KikurageFeature
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2022/2/4.
 //  Copyright © 2022 shusuke. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  SessionSetupResult.swift
-//  KikurageFeature
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2022/7/24.
 //  Copyright © 2022 shusuke. All rights reserved.

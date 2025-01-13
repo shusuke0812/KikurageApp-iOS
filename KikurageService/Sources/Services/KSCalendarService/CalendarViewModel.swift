@@ -1,6 +1,6 @@
 //
 //  CalendarViewModel.swift
-//  Kikurage
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2021/1/19.
 //  Copyright © 2021 shusuke. All rights reserved.

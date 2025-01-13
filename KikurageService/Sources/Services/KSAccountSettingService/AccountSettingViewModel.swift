@@ -1,6 +1,6 @@
 //
 //  AccountSettingViewModel.swift
-//  Kikurage
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2022/1/1.
 //  Copyright © 2022 shusuke. All rights reserved.

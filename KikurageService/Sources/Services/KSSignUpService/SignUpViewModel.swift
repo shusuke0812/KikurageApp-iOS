@@ -1,6 +1,6 @@
 //
 //  SignUpViewModel.swift
-//  Kikurage
+//  KikurageService
 //
 //  Created by Shusuke Ota on 2021/9/6.
 //  Copyright © 2021 shusuke. All rights reserved.

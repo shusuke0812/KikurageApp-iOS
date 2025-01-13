@@ -1,6 +1,6 @@
 //
 //  APIRequestProtocol.swift
-//  Kikurage
+//  KikurageDomain
 //
 //  Created by Shusuke Ota on 2022/4/3.
 //  Copyright © 2022 shusuke. All rights reserved.
