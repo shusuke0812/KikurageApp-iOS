@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "KAAnalytics", targets: ["KAAnalytics"])
     ],
     dependencies: [
-        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.6.0"))
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.7.0"))
     ],
     targets: [
         .target(
