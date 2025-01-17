@@ -91,7 +91,6 @@
 
 // cultivation
 "screen_cultivation_title" = "Cultivation";
-"screen_cultivation_no_cultivation" = "Not found cultivation record";
 
 // cultivation detail
 "screen_cultivation_detail_title" = "Cultivation Detail";
@@ -108,7 +107,6 @@
 
 // recipe
 "screen_recipe_title" = "Recipe";
-"screen_recipe_no_recipe" = "Not found recipe record";
 
 // post recipe
 "screen_post_recipe_title" = "Recipe Save";
@@ -166,7 +164,6 @@
 // dictonary
 "side_menu_dictionary_segment_title_trivia" = "Trivia";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
-"side_menu_dictionary_twitter_no_tweets" = "No Tweets";
 
 // wifi
 "side_menu_wifi_select_device_title" = "Connect";

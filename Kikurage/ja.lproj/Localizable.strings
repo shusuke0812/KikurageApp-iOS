@@ -91,7 +91,6 @@
 
 // cultivation
 "screen_cultivation_title" = "さいばいきろく";
-"screen_cultivation_no_cultivation" = "さいばいきろくがありません";
 
 // cultivation detail
 "screen_cultivation_detail_title" = "さいばいきろく詳細";
@@ -108,7 +107,6 @@
 
 // recipe
 "screen_recipe_title" = "りょうりきろく";
-"screen_recipe_no_recipe" = "りょうりきろくがありません";
 
 // post recipe
 "screen_post_recipe_title" = "りょうりきろく保存";
@@ -166,7 +164,6 @@
 // dictonary
 "side_menu_dictionary_segment_title_trivia" = "豆知識";
 "side_menu_dictionary_segment_title_twitter" = "Twitter";
-"side_menu_dictionary_twitter_no_tweets" = "ツイートがありません";
 
 // wifi
 "side_menu_wifi_select_device_title" = "接続";

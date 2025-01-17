@@ -7,12 +7,13 @@
 //
 
 import KSDictionaryService
+import KUIKit
 import SwiftUI
 import UIKit
 
 class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
     private var baseView: DictionaryTwitterBaseView = .init()
-    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var emptyHostingVC: UIHostingController<KUIEmptyView>!
     private var viewModel: DictionaryTwitterViewModel!
 
     override func loadView() {

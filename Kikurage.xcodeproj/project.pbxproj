@@ -78,7 +78,6 @@
 		9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
-		9CBE673A28BA5879002DA020 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBE673928BA5879002DA020 /* EmptyView.swift */; };
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
 		9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */; };
@@ -225,7 +224,6 @@
 		9CB7D603254050D600D57801 /* HomeBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseView.swift; sourceTree = "<group>"; };
 		9CBB32D227365E3600A1AB6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CBB32D427365E3900A1AB6C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9CBE673928BA5879002DA020 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKikurageStateRepository.swift; sourceTree = "<group>"; };
 		9CC2A93B27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Recipe.swift"; sourceTree = "<group>"; };
@@ -361,7 +359,6 @@
 				9C8DD2E127F9992000C1C7A4 /* AccessToken */,
 				9C9145D027B1E93F0051BE1F /* Manager */,
 				9CE3FE72275B582000FFDF19 /* Plist */,
-				9CA2045A271C799C00D65DD7 /* View */,
 				9CF0020624E39B290084036B /* Helper */,
 				9CDAFBF624E4B95700E56550 /* Extension */,
 			);
@@ -743,14 +740,6 @@
 				9C91125025B68F2E007BCECB /* CalendarBaseView.swift */,
 			);
 			path = BaseView;
-			sourceTree = "<group>";
-		};
-		9CA2045A271C799C00D65DD7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9CBE673928BA5879002DA020 /* EmptyView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9CA2045B271C79D500D65DD7 /* ViewController */ = {
@@ -1440,7 +1429,6 @@
 				9CC2A93C27DC5C2200DA9DF7 /* NavigationProtocol+Recipe.swift in Sources */,
 				9C751F81257E0FC000A3D90B /* UIAlertController+Extension.swift in Sources */,
 				9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */,
-				9CBE673A28BA5879002DA020 /* EmptyView.swift in Sources */,
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,

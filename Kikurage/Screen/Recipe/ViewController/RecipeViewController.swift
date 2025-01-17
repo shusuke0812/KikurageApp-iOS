@@ -17,7 +17,7 @@ import UIKit
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
     private var baseView: RecipeBaseView = .init()
-    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var emptyHostingVC: UIHostingController<KUIEmptyView>!
     private var viewModel: RecipeViewModelType!
 
     private let diposeBag = RxSwift.DisposeBag()

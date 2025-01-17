@@ -7,3 +7,8 @@
 */
 
 "loading_text" = "Loading...";
+
+// KUIEmptyView
+"screen_recipe_no_recipe" = "Not found recipe record";
+"screen_cultivation_no_cultivation" = "Not found cultivation record";
+"side_menu_dictionary_twitter_no_tweets" = "No Tweets";

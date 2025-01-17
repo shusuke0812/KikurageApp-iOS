@@ -6,6 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KUIKit
 import SafariServices
 import SwiftUI
 import UIKit
@@ -27,9 +28,9 @@ protocol UIViewControllerNavigatable {
     func adjustNavigationBarBackgroundColor()
     /// Display empty view.
     /// - Returns: Empty view for holding in VC. It is used when view is removed from VC with `removeEmptyView()`.
-    func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView>
+    func addEmptyView(type: EmptyType) -> UIHostingController<KUIEmptyView>
     /// Do not display empty view
-    func removeEmptyView(hostingVC: UIHostingController<EmptyView>?)
+    func removeEmptyView(hostingVC: UIHostingController<KUIEmptyView>?)
 }
 
 extension UIViewControllerNavigatable where Self: UIViewController {
@@ -61,8 +62,8 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
     }
 
-    func addEmptyView(type: EmptyType) -> UIHostingController<EmptyView> {
-        let _view = EmptyView(type: type)
+    func addEmptyView(type: EmptyType) -> UIHostingController<KUIEmptyView> {
+        let _view = KUIEmptyView(type: type)
         let hostingVC = UIHostingController(rootView: _view)
         addChild(hostingVC)
         hostingVC.didMove(toParent: self)
@@ -81,7 +82,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         return hostingVC
     }
 
-    func removeEmptyView(hostingVC: UIHostingController<EmptyView>?) {
+    func removeEmptyView(hostingVC: UIHostingController<KUIEmptyView>?) {
         hostingVC?.willMove(toParent: nil)
         hostingVC?.view.removeFromSuperview()
         hostingVC?.removeFromParent()

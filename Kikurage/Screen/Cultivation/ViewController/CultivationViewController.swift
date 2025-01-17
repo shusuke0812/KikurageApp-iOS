@@ -16,7 +16,7 @@ import UIKit
 
 class CultivationViewController: UIViewController, UIViewControllerNavigatable, CultivationAccessable {
     private var baseView: CultivationBaseView = .init()
-    private var emptyHostingVC: UIHostingController<EmptyView>!
+    private var emptyHostingVC: UIHostingController<KUIEmptyView>!
     private var viewModel: CultivationViewModelType!
 
     private let disposeBag = RxSwift.DisposeBag()
