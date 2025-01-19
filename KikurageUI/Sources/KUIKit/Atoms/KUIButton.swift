@@ -7,21 +7,22 @@
 //
 
 import UIKit
+import SwiftUI
 
 public enum KUIButtonVariant {
     case primary
     case secondary
 
-    var backgroundColor: UIColor? {
+    var backgroundColor: UIColor {
         switch self {
         case .primary:
-            return R.color.subColor()
+            return R.color.subColor()!
         case .secondary:
             return .white
         }
     }
 
-    var titleColor: UIColor? {
+    var titleColor: UIColor {
         switch self {
         case .primary:
             return .white
@@ -84,5 +85,51 @@ public class KUIButton: UIButton {
             }
             self.onTap?()
         }, for: .touchUpInside)
+    }
+}
+
+public struct KButtonProps {
+    let variant: KUIButtonVariant
+    let title: String
+    let accessibilityIdentifier: String
+    let fontSize: CGFloat
+    let fontWeight: Font.Weight
+
+    public init(
+        variant: KUIButtonVariant,
+        title: String,
+        accessibilityIdentifier: String = "",
+        fontSize: CGFloat = 17.0,
+        fontWeight: Font.Weight = .bold
+    ) {
+        self.variant = variant
+        self.title = title
+        self.fontSize = fontSize
+        self.fontWeight = fontWeight
+        self.accessibilityIdentifier = accessibilityIdentifier
+    }
+}
+
+public struct KButton: View {
+    private let props: KButtonProps
+    public var onTap: (() -> Void)?
+    
+    public init(props: KButtonProps, onTap: (() -> Void)? = nil) {
+        self.props = props
+        self.onTap = onTap
+    }
+
+    public var body: some View {
+        Button(action: {
+            onTap?()
+        }, label: {
+            Text(props.title)
+                .font(.system(size: props.fontSize))
+                .fontWeight(props.fontWeight)
+        })
+        .foregroundColor(Color(uiColor: props.variant.titleColor))
+        .background(Color(uiColor: props.variant.backgroundColor))
+        .cornerRadius(5)
+        .accessibilityIdentifier(props.accessibilityIdentifier)
     }
 }
