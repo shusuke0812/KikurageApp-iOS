@@ -47,7 +47,7 @@ public struct KImageProps {
 
 public struct KImageView: View {
     private let props: KImageProps
-    
+
     public init(props: KImageProps) {
         self.props = props
     }
@@ -56,8 +56,9 @@ public struct KImageView: View {
         if let image = props.image {
             Image(uiImage: image)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fit)
                 .cornerRadius(.viewCornerRadius)
+                .clipped()
         } else {
             // TODO: Not found image
         }
