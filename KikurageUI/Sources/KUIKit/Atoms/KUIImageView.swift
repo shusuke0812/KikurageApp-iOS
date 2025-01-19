@@ -37,10 +37,18 @@ public class KUIImageView: UIImageView {
     }
 }
 
+public struct KImageProps {
+    let image: UIImage?
+
+    public init(image: UIImage?) {
+        self.image = image
+    }
+}
+
 public struct KImageView: View {
-    private let props: KUIImageViewProps
+    private let props: KImageProps
     
-    public init(props: KUIImageViewProps) {
+    public init(props: KImageProps) {
         self.props = props
     }
 
