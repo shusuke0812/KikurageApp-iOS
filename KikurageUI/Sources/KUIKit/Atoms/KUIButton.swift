@@ -6,8 +6,8 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 public enum KUIButtonVariant {
     case primary
@@ -95,26 +95,29 @@ public struct KButtonProps {
     let accessibilityIdentifier: String
     let fontSize: CGFloat
     let fontWeight: Font.Weight
+    let height: CGFloat
 
     public init(
         variant: KUIButtonVariant,
         title: String,
         accessibilityIdentifier: String = "",
         fontSize: CGFloat = 17.0,
-        fontWeight: Font.Weight = .bold
+        fontWeight: Font.Weight = .bold,
+        height: CGFloat = 45
     ) {
         self.variant = variant
         self.title = title
         self.fontSize = fontSize
         self.fontWeight = fontWeight
         self.accessibilityIdentifier = accessibilityIdentifier
+        self.height = height
     }
 }
 
 public struct KButton: View {
     private let props: KButtonProps
     public var onTap: (() -> Void)?
-    
+
     public init(props: KButtonProps, onTap: (() -> Void)? = nil) {
         self.props = props
         self.onTap = onTap
@@ -127,6 +130,7 @@ public struct KButton: View {
             Text(props.title)
                 .font(.system(size: props.fontSize))
                 .fontWeight(props.fontWeight)
+                .frame(maxWidth: .infinity, minHeight: props.height)
         })
         .foregroundColor(Color(uiColor: props.variant.titleColor))
         .background(Color(uiColor: props.variant.backgroundColor))
