@@ -17,6 +17,7 @@ public struct KUIImageViewProps {
     }
 }
 
+@available(*, deprecated, renamed: "KImageView", message: "Need to change to SiwftUI")
 public class KUIImageView: UIImageView {
     public init(props: KUIImageViewProps) {
         super.init(frame: .zero)
@@ -57,8 +58,4 @@ public struct KImageView: View {
             // TODO: Not found image
         }
     }
-}
-
-#Preview {
-    KImageView(props: KImageProps(image: R.image.hakase()))
 }
