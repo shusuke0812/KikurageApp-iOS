@@ -17,6 +17,7 @@ public struct KUIUnderlinedTextButtonProps {
     }
 }
 
+@available(*, deprecated, renamed: "KUnderlinedTextButton", message: "Need to change to SiwftUI")
 public class KUIUnderlinedTextButton: UIButton {
     public var onTap: (() -> Void)?
 
