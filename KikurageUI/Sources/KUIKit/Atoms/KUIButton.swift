@@ -54,6 +54,7 @@ public struct KUIButtonProps {
     }
 }
 
+@available(*, deprecated, renamed: "KButton", message: "Need to change to SiwftUI")
 public class KUIButton: UIButton {
     public var onTap: (() -> Void)?
 
