@@ -1156,7 +1156,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9C2BDE872D33A19D0067005D /* PBXTargetDependency */,
+				9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */,
 			);
 			name = Kikurage;
 			productName = kikurageApp;
@@ -1515,10 +1515,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9C2BDE872D33A19D0067005D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 9C2BDE862D33A19D0067005D /* RswiftGenerateInternalResources */;
-		};
 		9C9145CB27B1E77C0051BE1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9C1ACF462225768A00A3D4D1 /* Kikurage */;
@@ -1528,6 +1524,10 @@
 			isa = PBXTargetDependency;
 			target = 9C1ACF462225768A00A3D4D1 /* Kikurage */;
 			targetProxy = 9C96F7052768E97300C2E778 /* PBXContainerItemProxy */;
+		};
+		9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2309,11 +2309,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KSDictionaryService;
 		};
-		9C2BDE862D33A19D0067005D /* RswiftGenerateInternalResources */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = "plugin:RswiftGenerateInternalResources";
-		};
 		9C2BDE8C2D33A9610067005D /* KALogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KALogger;
@@ -2380,6 +2375,11 @@
 		9CEE7F472D296020006E6A01 /* KSRecipeService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSRecipeService;
+		};
+		9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		9CFBA7E12D2A59930029ABF9 /* KSWiFiService */ = {
 			isa = XCSwiftPackageProductDependency;
