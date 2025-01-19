@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public struct KUIUnderlinedTextButtonProps {
     let title: String
@@ -45,5 +46,34 @@ public class KUIUnderlinedTextButton: UIButton {
             }
             self.onTap?()
         }, for: .touchUpInside)
+    }
+}
+
+public struct KUnderlinedTextButtonProps {
+    let title: String
+
+    public init(title: String) {
+        self.title = title
+    }
+}
+
+public struct KUnderlinedTextButton: View {
+    private let props: KUnderlinedTextButtonProps
+    
+    public var onTap: (() -> Void)?
+    
+    public init(props: KUnderlinedTextButtonProps, onTap: (() -> Void)? = nil) {
+        self.props = props
+        self.onTap = onTap
+    }
+    
+    public var body: some View {
+        Button(action: {
+            onTap?()
+        }, label: {
+            Text(props.title)
+                .font(.system(size: 15))
+                .underline()
+        })
     }
 }
