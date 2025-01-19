@@ -37,16 +37,12 @@ public class KUIImageView: UIImageView {
     }
 }
 
-public struct KImageProps {
-    let image: UIImage?
-
-    public init(image: UIImage?) {
-        self.image = image
-    }
-}
-
 public struct KImageView: View {
-    let props: KImageProps
+    private let props: KUIImageViewProps
+    
+    public init(props: KUIImageViewProps) {
+        self.props = props
+    }
 
     public var body: some View {
         if let image = props.image {
