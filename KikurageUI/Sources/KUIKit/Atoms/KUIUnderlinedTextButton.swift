@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIUnderlinedTextButtonProps {
@@ -16,6 +17,7 @@ public struct KUIUnderlinedTextButtonProps {
     }
 }
 
+@available(*, deprecated, renamed: "KUnderlinedTextButton", message: "Need to change to SiwftUI")
 public class KUIUnderlinedTextButton: UIButton {
     public var onTap: (() -> Void)?
 
@@ -45,5 +47,44 @@ public class KUIUnderlinedTextButton: UIButton {
             }
             self.onTap?()
         }, for: .touchUpInside)
+    }
+}
+
+public struct KUnderlinedTextButtonProps {
+    let title: String
+    let color: Color
+    let fontWeiht: Font.Weight
+
+    public init(
+        title: String,
+        color: Color = .blue,
+        fontWeiht: Font.Weight = .thin
+    ) {
+        self.title = title
+        self.color = color
+        self.fontWeiht = fontWeiht
+    }
+}
+
+public struct KUnderlinedTextButton: View {
+    private let props: KUnderlinedTextButtonProps
+
+    public var onTap: (() -> Void)?
+
+    public init(props: KUnderlinedTextButtonProps, onTap: (() -> Void)? = nil) {
+        self.props = props
+        self.onTap = onTap
+    }
+
+    public var body: some View {
+        Button(action: {
+            onTap?()
+        }, label: {
+            Text(props.title)
+                .foregroundColor(props.color)
+                .font(.system(size: 15))
+                .fontWeight(props.fontWeiht)
+                .underline()
+        })
     }
 }
