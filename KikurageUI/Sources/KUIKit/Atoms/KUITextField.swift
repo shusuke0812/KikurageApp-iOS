@@ -70,7 +70,7 @@ public struct KTextField: View {
             .autocorrectionDisabled()
             .overlay(
                 RoundedRectangle(cornerRadius: 1)
-                    .stroke(props.hasError ? Color.red : Color.gray, lineWidth: 1)
+                    .stroke(props.hasError ? Color.red : Color.gray, lineWidth: 0.5)
             )
     }
 }
