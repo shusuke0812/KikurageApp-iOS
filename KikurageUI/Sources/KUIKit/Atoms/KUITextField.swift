@@ -42,7 +42,7 @@ public class KUITextField: UITextField {
     }
 }
 
-public class KTextFieldProps {
+public struct KTextFieldProps {
     public let placeHolder: String
     @Binding public var inputText: String
     @Binding public var hasError: Bool
@@ -67,10 +67,19 @@ public struct KTextField: View {
 
     public var body: some View {
         TextField(props.placeHolder, text: props.$inputText)
+            .modifier(KTextFieldModifier(hasError: props.$hasError))
+    }
+}
+
+internal struct KTextFieldModifier: ViewModifier {
+    @Binding var hasError: Bool
+    
+    func body(content: Content) -> some View {
+        content
             .autocorrectionDisabled()
             .overlay(
                 RoundedRectangle(cornerRadius: 1)
-                    .stroke(props.hasError ? Color.red : Color.gray, lineWidth: 0.5)
+                    .stroke(hasError ? Color.red : Color.gray, lineWidth: 0.5)
             )
     }
 }
