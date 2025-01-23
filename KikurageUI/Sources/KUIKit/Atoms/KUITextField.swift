@@ -71,14 +71,16 @@ public struct KTextField: View {
     }
 }
 
-internal struct KTextFieldModifier: ViewModifier {
+struct KTextFieldModifier: ViewModifier {
     @Binding var hasError: Bool
-    
+
     func body(content: Content) -> some View {
         content
+            .padding()
+            .frame(height: 44)
             .autocorrectionDisabled()
             .overlay(
-                RoundedRectangle(cornerRadius: 1)
+                RoundedRectangle(cornerRadius: 8)
                     .stroke(hasError ? Color.red : Color.gray, lineWidth: 0.5)
             )
     }
