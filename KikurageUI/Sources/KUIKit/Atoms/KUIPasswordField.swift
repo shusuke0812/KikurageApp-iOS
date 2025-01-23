@@ -6,8 +6,8 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 @available(*, deprecated, renamed: "KPasswordField", message: "Need to change to SiwftUI")
 public class KUIPasswordField: KUITextField {
@@ -27,11 +27,11 @@ public class KUIPasswordField: KUITextField {
 
 public struct KPasswordField: View {
     private var props: KTextFieldProps
-    
+
     public init(props: KTextFieldProps) {
         self.props = props
     }
-    
+
     public var body: some View {
         SecureField(props.placeHolder, text: props.$inputText)
             .modifier(KTextFieldModifier(hasError: props.$hasError))
