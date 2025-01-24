@@ -6,28 +6,25 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import KSLoginService
 import KUIKit
 import SwiftUI
-import UIKit
 
 protocol LoginBaseViewDelegate: AnyObject {
     func loginBaseViewDidTappedLoginButton()
 }
 
 struct LoginBaseView: View {
-    @Binding var inputEmailText: String
-    @Binding var inputPasswordText: String
+    @StateObject var state: LoginViewState
 
     weak var delegate: LoginBaseViewDelegate?
 
     init(
         delegate: LoginBaseViewDelegate?,
-        inputEmailText: Binding<String> = .constant(""),
-        inputPasswordText: Binding<String> = .constant("")
+        state: LoginViewState
     ) {
         self.delegate = delegate
-        _inputEmailText = inputEmailText
-        _inputPasswordText = inputPasswordText
+        _state = StateObject(wrappedValue: state)
     }
 
     var body: some View {
@@ -37,11 +34,11 @@ struct LoginBaseView: View {
             VStack(spacing: 30) {
                 KTextField(props: KTextFieldProps(
                     placeHolder: R.string.localizable.screen_login_email_textfield_placeholer(),
-                    inputText: $inputEmailText
+                    inputText: $state.email
                 ))
                 KPasswordField(props: KTextFieldProps(
                     placeHolder: R.string.localizable.screen_login_password_textfield_placeholer(),
-                    inputText: $inputPasswordText
+                    inputText: $state.password
                 ))
                 KButton(props: KButtonProps(
                     variant: .primary,
@@ -59,6 +56,6 @@ struct LoginBaseView: View {
 
 #Preview {
     LoginBaseView(
-        delegate: nil
+        delegate: nil, state: LoginViewState()
     )
 }
