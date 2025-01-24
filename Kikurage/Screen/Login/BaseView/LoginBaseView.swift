@@ -43,7 +43,8 @@ struct LoginBaseView: View {
                 KButton(props: KButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_login_login_btn_name(),
-                    accessibilityIdentifier: AccessibilityIdentifierManager.loginLoginButton()
+                    accessibilityIdentifier: AccessibilityIdentifierManager.loginLoginButton(),
+                    enabled: $state.enabled
                 )) {
                     delegate?.loginBaseViewDidTappedLoginButton()
                 }

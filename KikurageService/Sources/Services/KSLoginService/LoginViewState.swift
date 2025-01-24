@@ -11,6 +11,7 @@ import Foundation
 public class LoginViewState: ObservableObject {
     @Published public var email: String = ""
     @Published public var password: String = ""
+    @Published public var enabled: Bool = true
 
     public init() {}
 

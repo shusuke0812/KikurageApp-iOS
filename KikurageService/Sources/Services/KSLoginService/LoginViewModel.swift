@@ -5,6 +5,7 @@
 //  Created by Shusuke Ota on 2025/1/4.
 //
 
+import Combine
 import Foundation
 import KDLoginManager
 import KDRepository
@@ -18,26 +19,28 @@ public protocol LoginViewModelDelegate: AnyObject {
 }
 
 public class LoginViewModel {
+    public weak var delegate: LoginViewModelDelegate?
+
+    public var state: LoginViewState
+
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
 
-    public weak var delegate: LoginViewModelDelegate?
-
-    public var state: LoginViewState
+    private var cancellables = Set<AnyCancellable>()
 
     public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
         state = LoginViewState()
+
+        state.$email.combineLatest(state.$password)
+            .map { email, password in
+                !(email.isEmpty || password.isEmpty)
+            }
+            .assign(to: &state.$enabled)
     }
-}
-
-// MARK: - Setting Data
-
-extension LoginViewModel {
-    // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
 
 // MARK: - Firebase Authentication
