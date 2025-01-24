@@ -17,15 +17,15 @@ public protocol LoginViewModelDelegate: AnyObject {
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String)
 }
 
-public class LoginViewModel {
+public class LoginViewModel: ObservableObject {
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
 
     public weak var delegate: LoginViewModelDelegate?
 
-    private var email: String = ""
-    private var password: String = ""
+    @Published public var email: String = ""
+    @Published public var password: String = ""
 
     public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
@@ -44,14 +44,6 @@ extension LoginViewModel {
     public func resetLoginInputs() {
         email = ""
         password = ""
-    }
-
-    public func setEmail(_ value: String) {
-        email = value
-    }
-
-    public func setPassword(_ value: String) {
-        password = value
     }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
