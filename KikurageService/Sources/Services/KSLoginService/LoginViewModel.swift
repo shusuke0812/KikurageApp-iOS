@@ -17,34 +17,26 @@ public protocol LoginViewModelDelegate: AnyObject {
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String)
 }
 
-public class LoginViewModel: ObservableObject {
+public class LoginViewModel {
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
 
     public weak var delegate: LoginViewModelDelegate?
 
-    @Published public var email: String = ""
-    @Published public var password: String = ""
+    public var state: LoginViewState
 
     public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        state = LoginViewState()
     }
 }
 
 // MARK: - Setting Data
 
 extension LoginViewModel {
-    private func setLoginInfo() -> (email: String, password: String) {
-        (email, password)
-    }
-
-    public func resetLoginInputs() {
-        email = ""
-        password = ""
-    }
     // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
 }
 
@@ -52,8 +44,7 @@ extension LoginViewModel {
 
 extension LoginViewModel {
     public func login() {
-        let loginInfo = setLoginInfo()
-        loginRepository.login(loginInfo: loginInfo) { [weak self] response in
+        loginRepository.login(loginInfo: (state.email, state.password)) { [weak self] response in
             switch response {
             case .success(let loginUser):
                 self?.loginManager.saveUser(loginUser: loginUser)
