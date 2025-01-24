@@ -96,6 +96,7 @@ public struct KButtonProps {
     let fontSize: CGFloat
     let fontWeight: Font.Weight
     let height: CGFloat
+    @Binding var enabled: Bool
 
     public init(
         variant: KUIButtonVariant,
@@ -103,7 +104,8 @@ public struct KButtonProps {
         accessibilityIdentifier: String = "",
         fontSize: CGFloat = 17.0,
         fontWeight: Font.Weight = .bold,
-        height: CGFloat = 45
+        height: CGFloat = 45,
+        enabled: Binding<Bool> = .constant(true)
     ) {
         self.variant = variant
         self.title = title
@@ -111,6 +113,7 @@ public struct KButtonProps {
         self.fontWeight = fontWeight
         self.accessibilityIdentifier = accessibilityIdentifier
         self.height = height
+        _enabled = enabled
     }
 }
 
@@ -132,8 +135,9 @@ public struct KButton: View {
                 .fontWeight(props.fontWeight)
                 .frame(maxWidth: .infinity, minHeight: props.height)
         })
+        .disabled(!props.enabled)
         .foregroundColor(Color(uiColor: props.variant.titleColor))
-        .background(Color(uiColor: props.variant.backgroundColor))
+        .background(Color(uiColor: props.enabled ? props.variant.backgroundColor : .lightGray))
         .cornerRadius(5)
         .accessibilityIdentifier(props.accessibilityIdentifier)
     }
