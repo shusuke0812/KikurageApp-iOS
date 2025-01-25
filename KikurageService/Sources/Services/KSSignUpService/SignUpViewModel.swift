@@ -6,6 +6,7 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import Combine
 import Foundation
 import KDEntity
 import KDLoginManager
@@ -17,17 +18,25 @@ public protocol SignUpViewModelDelegate: AnyObject {
 }
 
 public class SignUpViewModel {
+    public weak var delegate: SignUpViewModelDelegate?
+
+    public var state: SignUpState
+
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
 
-    public weak var delegate: SignUpViewModelDelegate?
-
-    public var email: String = ""
-    public var password: String = ""
+    private var cancellables = Set<AnyCancellable>()
 
     public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
+        state = SignUpState()
+
+        state.$email.combineLatest(state.$password)
+            .map { email, password in
+                !(email.isEmpty || password.isEmpty)
+            }
+            .assign(to: &state.$enabled)
     }
 
     public func reloadUser(completion: @escaping ((Result<Void, Error>) -> Void)) {
@@ -43,27 +52,11 @@ public class SignUpViewModel {
     }
 }
 
-// MARK: - Setting Data
-
-extension SignUpViewModel {
-    private func setRegisterInfo() -> (email: String, password: String) {
-        (email, password)
-    }
-
-    public func initUserInfo() {
-        email = ""
-        password = ""
-    }
-    // TODO: email, password の入力バリデーション処理を追加（`VC`の登録ボタン押下時に呼ぶ）
-}
-
 // MARK: - Firebase Authentication
 
 extension SignUpViewModel {
-    /// ユーザー登録する
     public func registerUser() {
-        let registerInfo = setRegisterInfo()
-        loginRepository.signUp(registerInfo: registerInfo) { [weak self] response in
+        loginRepository.signUp(registerInfo: (state.email, state.password)) { [weak self] response in
             switch response {
             case .success(let loginUser):
                 self?.loginManager.saveUser(loginUser: loginUser)
