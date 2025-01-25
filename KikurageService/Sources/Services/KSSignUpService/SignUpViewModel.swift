@@ -19,19 +19,19 @@ public protocol SignUpViewModelDelegate: AnyObject {
 
 public class SignUpViewModel {
     public weak var delegate: SignUpViewModelDelegate?
-    
+
     public var state: SignUpState
-    
+
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
-    
+
     private var cancellables = Set<AnyCancellable>()
 
     public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
         state = SignUpState()
-        
+
         state.$email.combineLatest(state.$password)
             .map { email, password in
                 !(email.isEmpty || password.isEmpty)
