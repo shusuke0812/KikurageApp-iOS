@@ -51,7 +51,7 @@
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
 		9C9145C727B1E77C0051BE1F /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C627B1E77C0051BE1F /* LoginUITests.swift */; };
 		9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */; };
-		9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */; };
+		9C9145D227B1E9E30051BE1F /* AccessibilitIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145D127B1E9E30051BE1F /* AccessibilitIdentifiable.swift */; };
 		9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */; };
 		9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */; };
 		9C91C2B526E4E78E007FB864 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */; };
@@ -200,7 +200,7 @@
 		9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9145C627B1E77C0051BE1F /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
 		9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifierManager.swift; sourceTree = "<group>"; };
+		9C9145D127B1E9E30051BE1F /* AccessibilitIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitIdentifiable.swift; sourceTree = "<group>"; };
 		9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
 		9C91C2B426E4E78E007FB864 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -462,7 +462,7 @@
 		9C9145D027B1E93F0051BE1F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				9C9145D127B1E9E30051BE1F /* AccessibilityIdentifierManager.swift */,
+				9C9145D127B1E9E30051BE1F /* AccessibilitIdentifiable.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1401,7 +1401,7 @@
 				9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */,
 				9CA95657284E4D03005B7867 /* DebugViewController.swift in Sources */,
 				9CE0184329B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift in Sources */,
-				9C9145D227B1E9E30051BE1F /* AccessibilityIdentifierManager.swift in Sources */,
+				9C9145D227B1E9E30051BE1F /* AccessibilitIdentifiable.swift in Sources */,
 				9C9621352599DA5800F2E4A0 /* PostRecipeBaseView.swift in Sources */,
 				9C923335255F9760000293BB /* PostCultivationViewController.swift in Sources */,
 				9C97679626EF798100126F80 /* NotificationName+Extension.swift in Sources */,
