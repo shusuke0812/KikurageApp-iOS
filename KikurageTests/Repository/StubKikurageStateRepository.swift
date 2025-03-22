@@ -8,6 +8,8 @@
 
 import Foundation
 import RxSwift
+@testable import KDRepository
+@testable import KDEntity
 @testable import Kikurage
 
 class StubKikurageStateRepository: KikurageStateRepositoryProtocol {
@@ -23,11 +25,11 @@ class StubKikurageStateRepository: KikurageStateRepositoryProtocol {
 // MARK: - Call Firebase
 
 extension StubKikurageStateRepository {
-    func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, ClientError>) -> Void) {
+    func getKikurageState(request: KikurageStateRequest, completion: @escaping (Result<KikurageState, FirebaseClientError>) -> Void) {
         completion(.success(self.returnKikurageState))
     }
 
-    func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], ClientError>) -> Void) {
+    func getKikurageStateGraph(request: KiikurageStateGraphRequest, completion: @escaping (Result<[KikurageStateGraphTuple], FirebaseClientError>) -> Void) {
         completion(.success(self.returnKikurageStateGraph))
     }
     
