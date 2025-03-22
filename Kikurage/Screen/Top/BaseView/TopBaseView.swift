@@ -53,7 +53,6 @@ class TopBaseView: UIView, AccessibilitIdentifiable {
         loginButton = KUIButton(props: KUIButtonProps(
             variant: .primary,
             title: R.string.localizable.screen_top_login_btn_name()
-//            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
         ))
 
         // SignUp button
