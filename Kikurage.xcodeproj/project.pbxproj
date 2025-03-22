@@ -1167,11 +1167,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C9145CF27B1E77C0051BE1F /* Build configuration list for PBXNativeTarget "KikurageUITests" */;
 			buildPhases = (
-				C9D1B6860FA94EAEE2DB21F9 /* [CP] Check Pods Manifest.lock */,
 				9C9145C027B1E77B0051BE1F /* Sources */,
 				9C9145C127B1E77B0051BE1F /* Frameworks */,
 				9C9145C227B1E77B0051BE1F /* Resources */,
-				17A5C6FCE6C3177BBAC2712C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1187,11 +1185,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C96F70A2768E97300C2E778 /* Build configuration list for PBXNativeTarget "KikurageTests" */;
 			buildPhases = (
-				78DA78938827F62151EAC3FB /* [CP] Check Pods Manifest.lock */,
 				9C96F6FD2768E97300C2E778 /* Sources */,
 				9C96F6FE2768E97300C2E778 /* Frameworks */,
 				9C96F6FF2768E97300C2E778 /* Resources */,
-				5CE081519FB01E9553AD30D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1292,62 +1288,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17A5C6FCE6C3177BBAC2712C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KikurageUITests/Pods-KikurageUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5CE081519FB01E9553AD30D5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KikurageTests/Pods-KikurageTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KikurageTests/Pods-KikurageTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KikurageTests/Pods-KikurageTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		78DA78938827F62151EAC3FB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KikurageTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9CE0B05D29BAB3F200F5E37D /* SwiftFormat Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1383,28 +1323,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = ". ${PROJECT_DIR}/Scripts/GenerateGoogleServiceInfo.sh\n";
-		};
-		C9D1B6860FA94EAEE2DB21F9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KikurageUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
