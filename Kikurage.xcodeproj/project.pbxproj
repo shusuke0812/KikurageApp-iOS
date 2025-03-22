@@ -91,6 +91,11 @@
 		9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43D42D22C714005A78ED /* RxCocoa */; };
 		9CCA43D82D22C755005A78ED /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 9CCA43D72D22C755005A78ED /* RswiftLibrary */; };
 		9CCE9EFE2B932F1200D13911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE9EFD2B932F1200D13911 /* SceneDelegate.swift */; };
+		9CD63AB52D8EB2EC003B4F60 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD63AB42D8EB2EC003B4F60 /* CropViewController */; };
+		9CD63AB82D8EB34A003B4F60 /* KDRepository in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD63AB72D8EB34A003B4F60 /* KDRepository */; };
+		9CD63ABB2D8EB3DC003B4F60 /* KACrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD63ABA2D8EB3DC003B4F60 /* KACrashlytics */; };
+		9CD63ABE2D8EB401003B4F60 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD63ABD2D8EB401003B4F60 /* RxSwift */; };
+		9CD63AC02D8EB408003B4F60 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD63ABF2D8EB408003B4F60 /* RxCocoa */; };
 		9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */; };
 		9CDAFBF824E4BC1400E56550 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */; };
 		9CDD1F6425A68521006DA852 /* CommunicationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD1F6325A68521006DA852 /* CommunicationBaseView.swift */; };
@@ -293,6 +298,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD63AB52D8EB2EC003B4F60 /* CropViewController in Frameworks */,
+				9CD63ABB2D8EB3DC003B4F60 /* KACrashlytics in Frameworks */,
+				9CD63AC02D8EB408003B4F60 /* RxCocoa in Frameworks */,
+				9CD63ABE2D8EB401003B4F60 /* RxSwift in Frameworks */,
+				9CD63AB82D8EB34A003B4F60 /* KDRepository in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2260,6 +2270,30 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = RswiftLibrary;
+		};
+		9CD63AB42D8EB2EC003B4F60 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CCA43D02D22C6D8005A78ED /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		9CD63AB72D8EB34A003B4F60 /* KDRepository */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C697E192D23C2F1005BC4DA /* XCLocalSwiftPackageReference "KikurageDomain" */;
+			productName = KDRepository;
+		};
+		9CD63ABA2D8EB3DC003B4F60 /* KACrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KACrashlytics;
+		};
+		9CD63ABD2D8EB401003B4F60 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CCA43D32D22C714005A78ED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		9CD63ABF2D8EB408003B4F60 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CCA43D32D22C714005A78ED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 		9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
