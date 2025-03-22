@@ -34,7 +34,6 @@ public enum KUIButtonVariant {
 public struct KUIButtonProps {
     let variant: KUIButtonVariant
     let title: String
-    let accessibilityIdentifier: String?
     let fontSize: CGFloat
     let fontWeight: UIFont.Weight
 
@@ -49,7 +48,6 @@ public struct KUIButtonProps {
         self.title = title
         self.fontSize = fontSize
         self.fontWeight = fontWeight
-        self.accessibilityIdentifier = accessibilityIdentifier
     }
 }
 
@@ -73,7 +71,6 @@ public class KUIButton: UIButton {
         setTitleColor(props.variant.titleColor, for: .normal)
         titleLabel?.font = .systemFont(ofSize: props.fontSize, weight: props.fontWeight)
         backgroundColor = props.variant.backgroundColor
-        accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
     }
 

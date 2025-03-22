@@ -10,14 +10,9 @@ import UIKit
 
 public struct KUITextFieldProps {
     let placeHolder: String
-    let accessibilityIdentifier: String?
 
-    public init(
-        placeHolder: String,
-        accessibilityIdentifier: String? = nil
-    ) {
+    public init(placeHolder: String) {
         self.placeHolder = placeHolder
-        self.accessibilityIdentifier = accessibilityIdentifier
     }
 }
 
@@ -36,7 +31,6 @@ public class KUITextField: UITextField {
         borderStyle = .roundedRect
         font = .systemFont(ofSize: 15)
         placeholder = props.placeHolder
-        accessibilityIdentifier = props.accessibilityIdentifier
         translatesAutoresizingMaskIntoConstraints = false
     }
 
