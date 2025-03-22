@@ -20,7 +20,7 @@ extension AccessibilitIdentifiable where Self: UIView {
         for child in mirror.children {
             if let view = child.value as? UIView,
                let propertyName = child.label?.replacingOccurrences(of: ".storage", with: "") {
-                view.accessibilityIdentifier = "\(className(from: filepath)).\(propertyName))"
+                view.accessibilityIdentifier = "\(className(from: filepath)).\(propertyName)"
             }
         }
         #endif
