@@ -8,7 +8,7 @@
 
 import XCTest
 
-class KikurageUITestsLaunchTests: XCTestCase {
+class AppLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

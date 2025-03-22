@@ -50,7 +50,7 @@
 		9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91124A25B68ED0007BCECB /* CalendarViewController.swift */; };
 		9C91125125B68F2E007BCECB /* CalendarBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91125025B68F2E007BCECB /* CalendarBaseView.swift */; };
 		9C9145C727B1E77C0051BE1F /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C627B1E77C0051BE1F /* LoginUITests.swift */; };
-		9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */; };
+		9C9145C927B1E77C0051BE1F /* AppLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145C827B1E77C0051BE1F /* AppLaunchTests.swift */; };
 		9C9145D227B1E9E30051BE1F /* AccessibilitIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9145D127B1E9E30051BE1F /* AccessibilitIdentifiable.swift */; };
 		9C91C2AB26E4E2EE007FB864 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */; };
 		9C91C2AF26E4E520007FB864 /* LoginBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */; };
@@ -199,7 +199,7 @@
 		9C91125025B68F2E007BCECB /* CalendarBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBaseView.swift; sourceTree = "<group>"; };
 		9C9145C427B1E77B0051BE1F /* KikurageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KikurageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9145C627B1E77C0051BE1F /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
-		9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KikurageUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C9145C827B1E77C0051BE1F /* AppLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchTests.swift; sourceTree = "<group>"; };
 		9C9145D127B1E9E30051BE1F /* AccessibilitIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitIdentifiable.swift; sourceTree = "<group>"; };
 		9C91C2AA26E4E2EE007FB864 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C91C2AE26E4E520007FB864 /* LoginBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseView.swift; sourceTree = "<group>"; };
@@ -454,7 +454,7 @@
 			children = (
 				9C81EA6D27B7E9B50028D027 /* Page */,
 				9C9145C627B1E77C0051BE1F /* LoginUITests.swift */,
-				9C9145C827B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift */,
+				9C9145C827B1E77C0051BE1F /* AppLaunchTests.swift */,
 			);
 			path = KikurageUITests;
 			sourceTree = "<group>";
@@ -1424,7 +1424,7 @@
 			files = (
 				9C81EA7227B7EE640028D027 /* TopPage.swift in Sources */,
 				9C81EA6F27B7E9D10028D027 /* PageObjectable.swift in Sources */,
-				9C9145C927B1E77C0051BE1F /* KikurageUITestsLaunchTests.swift in Sources */,
+				9C9145C927B1E77C0051BE1F /* AppLaunchTests.swift in Sources */,
 				9C81EA7527B7F3CF0028D027 /* LoginPage.swift in Sources */,
 				9C9145C727B1E77C0051BE1F /* LoginUITests.swift in Sources */,
 			);
