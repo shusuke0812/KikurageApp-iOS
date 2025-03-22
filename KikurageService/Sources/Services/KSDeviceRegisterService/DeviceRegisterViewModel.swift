@@ -37,7 +37,6 @@ public class DeviceRegisterViewModel {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
-        kikurageUser = KikurageUser()
     }
 
     public func getDateString(date: Date) -> String {
