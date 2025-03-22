@@ -16,7 +16,7 @@ protocol TopBaseViewDelegate: AnyObject {
     func topBaseViewDidTappedSignUpButton(_ topBaseView: TopBaseView)
 }
 
-class TopBaseView: UIView {
+class TopBaseView: UIView, AccessibilitIdentifiable {
     private var topImageView: KUIImageView!
     private var loginButton: KUIButton!
     private var signUpButton: KUIButton!
@@ -36,6 +36,11 @@ class TopBaseView: UIView {
         nil
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        generateAccessibilityIdentifier()
+    }
+
     private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
@@ -47,8 +52,8 @@ class TopBaseView: UIView {
         // Login button
         loginButton = KUIButton(props: KUIButtonProps(
             variant: .primary,
-            title: R.string.localizable.screen_top_login_btn_name(),
-            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
+            title: R.string.localizable.screen_top_login_btn_name()
+//            accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
         ))
 
         // SignUp button
