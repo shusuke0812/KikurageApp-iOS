@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import KDRepository
+@testable import KSHomeService
 @testable import Kikurage
 
 class HomeViewModelTests: XCTestCase {

@@ -13,7 +13,7 @@ protocol LoginBaseViewDelegate: AnyObject {
     func loginBaseViewDidTappedLoginButton(_ loginBaseView: LoginBaseView)
 }
 
-class LoginBaseView: UIView {
+class LoginBaseView: UIView, AccessibilitIdentifiable {
     private(set) var emailTextField: KUITextField!
     private(set) var passwordTextField: KUIPasswordField!
     private var loginButton: KUIButton!
@@ -30,23 +30,25 @@ class LoginBaseView: UIView {
         nil
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        generateAccessibilityIdentifier()
+    }
+
     private func setupComponent() {
         backgroundColor = .systemGroupedBackground
 
         emailTextField = KUITextField(props: KUITextFieldProps(
-            placeHolder: R.string.localizable.screen_login_email_textfield_placeholer(),
-            accessibilityIdentifier: AccessibilityIdentifierManager.loginEmailTextField()
+            placeHolder: R.string.localizable.screen_login_email_textfield_placeholer()
         ))
 
         passwordTextField = KUIPasswordField(props: KUITextFieldProps(
-            placeHolder: R.string.localizable.screen_login_password_textfield_placeholer(),
-            accessibilityIdentifier: AccessibilityIdentifierManager.loginPasswordTextField()
+            placeHolder: R.string.localizable.screen_login_password_textfield_placeholer()
         ))
 
         loginButton = KUIButton(props: KUIButtonProps(
             variant: .primary,
-            title: R.string.localizable.screen_login_login_btn_name(),
-            accessibilityIdentifier: AccessibilityIdentifierManager.loginLoginButton()
+            title: R.string.localizable.screen_login_login_btn_name()
         ))
 
         addSubview(emailTextField)

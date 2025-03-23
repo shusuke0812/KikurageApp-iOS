@@ -10,8 +10,8 @@ import XCTest
 
 class TopPage: PageObjectable {
     enum A11y {
-        static let pageTitle = "ようこそ!"
-        static let loginButton = "TopBaseView_login_button"
+        static let pageTitle = "ようこそ！"
+        static let loginButton = "TopBaseView.loginButton"
     }
     
     // MARK: UIElement
@@ -25,6 +25,7 @@ class TopPage: PageObjectable {
     
     // MARK: Transition
 
+    @discardableResult
     func goToLogin() -> LoginPage {
         _ = loginButton.waitForExistence(timeout: 5)
         loginButton.tap()
