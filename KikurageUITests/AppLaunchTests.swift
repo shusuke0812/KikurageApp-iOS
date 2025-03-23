@@ -23,7 +23,6 @@ class AppLaunchTests: XCTestCase {
 
     func testLaunch() throws {
         let app = XCUIApplication()
-        app.launch()
 
         for i in 1...launchCount {
             app.launch()
