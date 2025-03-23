@@ -10,7 +10,7 @@ import XCTest
 
 class TopPage: PageObjectable {
     enum A11y {
-        static let pageTitle = "ようこそ!"
+        static let pageTitle = "ようこそ！"
         static let loginButton = "TopBaseView.loginButton"
     }
     

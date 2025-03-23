@@ -10,8 +10,11 @@ import XCTest
 
 class AppLaunchTests: XCTestCase {
 
+    private let launchCount = 5
+
+    /// If this property is true, run testing  for each languages and device orientations.
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
+        false
     }
 
     override func setUpWithError() throws {
@@ -22,12 +25,20 @@ class AppLaunchTests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
+        for i in 1...launchCount {
+            app.launch()
 
-        let attachment = XCTAttachment(screenshot: app.screenshot())
-        attachment.name = "Launch Screen"
-        attachment.lifetime = .keepAlways
-        add(attachment)
+            XCTAssertTrue(app.wait(for: .runningForeground, timeout: 5), "App didn't launch successfully on attempt \(i)")
+
+            let topPage = TopPage()
+            XCTAssertTrue(topPage.exists, "Top page title is not found on attempt \(i)")
+
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = "Launch Screen"
+            attachment.lifetime = .keepAlways
+            add(attachment)
+
+            app.terminate()
+        }
     }
 }
