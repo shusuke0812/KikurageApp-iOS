@@ -68,7 +68,7 @@ private struct BodyView: View {
                 props: KButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_top_login_btn_name(),
-                    accessibilityIdentifier: AccessibilityIdentifierManager.topLoginButton()
+                    accessibilityIdentifier: Accessibility.generateIdentifier()
                 ),
                 onTap: onLogin
             )
