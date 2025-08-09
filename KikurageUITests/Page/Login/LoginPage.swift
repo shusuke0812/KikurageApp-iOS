@@ -11,9 +11,9 @@ import XCTest
 class LoginPage: PageObjectable {
     enum A11y {
         static let pageTitle = "ログイン"
-        static let emailTextField = "LoginBaseView_email_textfield"
-        static let passwordTextField = "LoginBaseView_password_textfield"
-        static let loginButton = "LoginBaseView_login_button"
+        static let emailTextField = "LoginBaseView.emailTextField"
+        static let passwordTextField = "LoginBaseView.passwordTextField"
+        static let loginButton = "LoginBaseView.loginButton"
     }
     
     // MARK: UIElement
@@ -22,13 +22,13 @@ class LoginPage: PageObjectable {
         app.navigationBars[A11y.pageTitle].firstMatch
     }
     private var emailTextField: XCUIElement {
-        app.textFields["LoginBaseView_email_textfield"]
+        app.textFields[A11y.emailTextField]
     }
     private var passwordTextField: XCUIElement {
-        app.secureTextFields["LoginBaseView_password_textfield"]
+        app.secureTextFields[A11y.passwordTextField]
     }
     private var loginButton: XCUIElement {
-        app.buttons["LoginBaseView_login_button"]
+        app.buttons[A11y.loginButton]
     }
     
     // MARK: Login
@@ -40,7 +40,7 @@ class LoginPage: PageObjectable {
         passwordTextField.tap()
         passwordTextField.typeText("test123")
         
-        let loginButton = app.buttons["LoginBaseView_login_button"]
+        let loginButton = app.buttons[A11y.loginButton]
         loginButton.tap()
     }
 }

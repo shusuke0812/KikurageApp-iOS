@@ -7,6 +7,7 @@
 //
 
 import Foundation
+@testable import KDEntity
 @testable import Kikurage
 
 enum Stub {
@@ -17,14 +18,8 @@ enum Stub {
                                              advice: "test advice")
     static let kikurageStateGraph = KikurageUser(productKey: "test",
                                                  kikurageName: "test",
-                                                 cultivationStartDate: Date(),
-                                                 stateRef: nil,
-                                                 createdAt: nil,
-                                                 updatedAt: nil)
+                                                 cultivationStartDate: Date())
     static let kikurageUser = KikurageUser(productKey: "testcode",
                                            kikurageName: "test name",
-                                           cultivationStartDate: Date(),
-                                           stateRef: nil,
-                                           createdAt: nil,
-                                           updatedAt: nil)
+                                           cultivationStartDate: Date())
 }

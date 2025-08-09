@@ -11,13 +11,21 @@ import Foundation
 import KDFirebase
 
 public struct KikurageUser: Codable {
-    public var productKey: String = ""
-    public var kikurageName: String = ""
-    public var cultivationStartDate = Date()
+    public var productKey: String
+    public var kikurageName: String
+    public var cultivationStartDate: Date
 
     private var stateRef: DocumentReference?
 
-    public init() {}
+    public init(
+        productKey: String,
+        kikurageName: String,
+        cultivationStartDate: Date = Date()
+    ) {
+        self.productKey = productKey
+        self.kikurageName = kikurageName
+        self.cultivationStartDate = cultivationStartDate
+    }
 
     public enum CodingKeys: String, CodingKey {
         case productKey
