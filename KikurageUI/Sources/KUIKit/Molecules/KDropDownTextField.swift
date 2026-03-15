@@ -66,9 +66,12 @@ public struct KDropDownTextField: View {
                     .datePickerStyle(.wheel)
                     .labelsHidden()
 
-                Button(R.string.localizable.common_done()) {
+                KButton(props: KButtonProps(
+                    variant: .secondary,
+                    title: R.string.localizable.common_done()
+                ), onTap: {
                     showDatePicker = false
-                }
+                })
                 .padding(.horizontal, 24)
             }
             .presentationDetents([.height(300), .medium])
