@@ -6,6 +6,8 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
+import AVFoundation
+import Combine
 import KDEntity
 import KDLoginManager
 import KDRepository
@@ -13,6 +15,7 @@ import KSSDateHelper
 import UIKit
 
 public protocol DeviceRegisterViewModelDelegate: AnyObject {
+    func deviceRegisterViewModelDidFailedValidation(_ deviceRegisterViewModel: DeviceRegisterViewModel)
     func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel)
     func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String)
     func deviceRegisterViewModelDidSuccessPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel)
@@ -23,6 +26,8 @@ public class DeviceRegisterViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
+    /// 入力状態
+    public var state: DeviceRegisterState
     /// きくらげの状態
     public var kikurageState: KikurageState?
     /// きくらげユーザー
@@ -37,6 +42,14 @@ public class DeviceRegisterViewModel {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
+        state = DeviceRegisterState()
+
+        state.$productKey.combineLatest(state.$kikurageName, state.$cultivationStartDate)
+            .map { productKey, kikurageName, cultivationStartDate in
+                let cultivationStartDateString = DateHelper.formatToString(date: cultivationStartDate)
+                return !(productKey.isEmpty || kikurageName.isEmpty || cultivationStartDateString.isEmpty)
+            }
+            .assign(to: &state.$canRegister)
     }
 
     public func getDateString(date: Date) -> String {
@@ -47,19 +60,58 @@ public class DeviceRegisterViewModel {
 // MARK: - Setting Data
 
 extension DeviceRegisterViewModel {
+    /// デバイス登録ボタンタップ時の処理（ViewController から呼ぶ）
+    public func registerDevice() {
+        if state.canRegister {
+            kikurageUser = KikurageUser(
+                productKey: state.productKey,
+                kikurageName: state.kikurageName,
+                cultivationStartDate: state.cultivationStartDate
+            )
+            setStateReference(productKey: state.productKey)
+            loadKikurageState()
+        } else {
+            delegate?.deviceRegisterViewModelDidFailedValidation(self)
+        }
+    }
+
     /// ユーザーにステートのリファレンスを登録する
-    public func setStateReference(productKey: String) {
+    private func setStateReference(productKey: String) {
         kikurageUser?.setStateRef(productKey: productKey)
     }
 
-    public func validateRegistration(productKey: String?, kikurageName: String?, cultivationStartDateString: String?) -> Bool {
-        guard let productKey = productKey, let kikurageName = kikurageName, let cultivationStartDateString = cultivationStartDateString else {
-            return false
+    public func didReadQrCode(qrCodeString: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.state.isQrcodeReaderVisible = false
+            self.state.productKey = qrCodeString
         }
-        if productKey.isEmpty || kikurageName.isEmpty || cultivationStartDateString.isEmpty {
-            return false
+        self.kikurageUser = KikurageUser(
+            productKey: qrCodeString,
+            kikurageName: self.state.kikurageName,
+            cultivationStartDate: self.state.cultivationStartDate
+        )
+        self.setStateReference(productKey: qrCodeString)
+    }
+
+    public func didNotReadQrCode() {
+        DispatchQueue.main.async { [weak self] in
+            self?.state.isQrcodeReaderVisible = false
         }
-        return true
+    }
+
+    /// キャプチャセッション設定時の処理（ViewController から captureSession と videoOrientation を渡す）
+    public func didConfigureCaptureSession(captureSession: AVCaptureSession, videoOrientation: AVCaptureVideoOrientation?) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.state.videoOrientation = videoOrientation
+            self.state.captureSession = captureSession
+        }
+    }
+
+    /// キャプチャセッションを更新（viewDidLayoutSubviews 等から呼ぶ）
+    public func setCaptureSession(_ captureSession: AVCaptureSession?) {
+        state.captureSession = captureSession
     }
 }
 
