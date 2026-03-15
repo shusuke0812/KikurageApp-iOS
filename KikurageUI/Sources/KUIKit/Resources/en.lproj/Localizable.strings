@@ -8,6 +8,9 @@
 
 "loading_text" = "Loading...";
 
+// KDropDownTextField
+"common_done" = "Done";
+
 // KUIEmptyView
 "screen_recipe_no_recipe" = "Not found recipe record";
 "screen_cultivation_no_cultivation" = "Not found cultivation record";
