@@ -12,17 +12,15 @@ import PKHUD
 import UIKit
 
 class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginAccessable {
-    private let baseView = LoginBaseView()
+    private var baseView: LoginBaseView!
     private var viewModel: LoginViewModel!
-
-    override func loadView() {
-        view = baseView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_login_title()
         viewModel = LoginViewModel()
+        baseView = LoginBaseView(delegate: self, state: viewModel.state)
+        addBaseView(baseView: baseView)
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -38,36 +36,16 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
 
 extension LoginViewController {
     private func setDelegate() {
-        baseView.delegate = self
         viewModel.delegate = self
-        baseView.confgTextField(delegate: self)
     }
 }
 
 // MARK: - LoginBaseView Delegate
 
 extension LoginViewController: LoginBaseViewDelegate {
-    func loginBaseViewDidTappedLoginButton(_ loginBaseView: LoginBaseView) {
+    func loginBaseViewDidTappedLoginButton() {
         HUD.show(.progress)
         viewModel.login()
-    }
-}
-
-// MARK: - UITextField Delegate
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        switch textField {
-        case baseView.emailTextField:
-            viewModel.setEmail(text)
-        case baseView.passwordTextField:
-            viewModel.setPassword(text)
-        default:
-            break
-        }
     }
 }
 
@@ -84,9 +62,8 @@ extension LoginViewController: LoginViewModelDelegate {
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String) {
         DispatchQueue.main.async {
             HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) { [weak self] in
-                self?.baseView.initTextFields()
-                loginViewModel?.resetLoginInputs()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
+                loginViewModel?.state.reset()
             }
         }
     }

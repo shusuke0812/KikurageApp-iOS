@@ -8,137 +8,87 @@
 
 import KSDeviceRegisterService
 import KUIKit
+import SwiftUI
 import UIKit
 
 protocol DeviceRegisterBaseViewDelegate: AnyObject {
-    func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView)
-    func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView)
+    func deviceRegisterBaseViewDidTappedDeviceRegisterButton()
+    func deviceRegisterBaseViewDidTappedQrcodeReaderButton()
 }
 
-class DeviceRegisterBaseView: UIView {
-    private(set) var productKeyTextField: KUITextField!
-    private(set) var kikurageNameTextField: KUITextField!
-    private(set) var cultivationStartDateTextField: KUIDropdownTextField!
-    private(set) var qrcodeReaderView: QRCodeReaderView!
-    private var deviceRegisterButton: KUIButton!
-    private var qrcodeReaderButton: UIButton!
-
-    private var showQrcodeReaderViewConstraint: NSLayoutConstraint!
-    private var hideQrcodeReaderViewConstraint: NSLayoutConstraint!
+struct DeviceRegisterBaseView: View {
+    @StateObject var state: DeviceRegisterState
+    @State private var cultivationStartDateHasError = false
 
     weak var delegate: DeviceRegisterBaseViewDelegate?
 
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setupComponent()
-        setupButtonAction()
+    init(
+        delegate: DeviceRegisterBaseViewDelegate?,
+        state: DeviceRegisterState
+    ) {
+        self.delegate = delegate
+        _state = StateObject(wrappedValue: state)
     }
 
-    required init?(coder: NSCoder) {
-        nil
-    }
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+            ScrollView {
+                VStack(spacing: 0) {
+                    KTextField(props: KTextFieldProps(
+                        placeHolder: R.string.localizable.screen_device_register_productkey_textfield_placeholer(),
+                        inputText: $state.productKey
+                    ))
+                    .padding(.top, 40)
 
-    private func setupComponent() {
-        backgroundColor = .systemGroupedBackground
+                    KTextField(props: KTextFieldProps(
+                        placeHolder: R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer(),
+                        inputText: $state.kikurageName
+                    ))
+                    .padding(.top, 25)
 
-        productKeyTextField = KUITextField(props: KUITextFieldProps(
-            placeHolder: R.string.localizable.screen_device_register_productkey_textfield_placeholer()
-        ))
+                    KDropDownTextField(props: KDropDownTextFieldProps(
+                        placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer(),
+                        date: $state.cultivationStartDate,
+                        hasError: $cultivationStartDateHasError
+                    ))
+                    .padding(.top, 25)
 
-        kikurageNameTextField = KUITextField(props: KUITextFieldProps(
-            placeHolder: R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer()
-        ))
+                    Button(R.string.localizable.screen_device_register_qrcode_btn_name()) {
+                        delegate?.deviceRegisterBaseViewDidTappedQrcodeReaderButton()
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundColor(Color(uiColor: .systemBlue))
+                    .padding(.top, 35)
 
-        cultivationStartDateTextField = KUIDropdownTextField(props: KUIDropDownTextFieldProps(
-            variant: .date,
-            textFieldProps: KUITextFieldProps(placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer())
-        ))
+                    if state.isQrcodeReaderVisible {
+                        QRCodeReaderView(
+                            session: state.captureSession,
+                            orientation: state.videoOrientation
+                        )
+                        .frame(height: 240)
+                        .background(Color.white)
+                        .padding(.top, 15)
+                    }
 
-        qrcodeReaderButton = UIButton(type: .system)
-        qrcodeReaderButton.setTitle(R.string.localizable.screen_device_register_qrcode_btn_name(), for: .normal)
-        qrcodeReaderButton.translatesAutoresizingMaskIntoConstraints = false
+                    KButton(props: KButtonProps(
+                        variant: .primary,
+                        title: R.string.localizable.screen_device_register_register_btn_name()
+                    )) {
+                        delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton()
+                    }
+                    .padding(.top, 35)
+                    .padding(.bottom, 40)
 
-        qrcodeReaderView = QRCodeReaderView()
-        qrcodeReaderView.backgroundColor = .white
-        qrcodeReaderView.translatesAutoresizingMaskIntoConstraints = false
-
-        deviceRegisterButton = KUIButton(props: KUIButtonProps(
-            variant: .primary,
-            title: R.string.localizable.screen_device_register_register_btn_name()
-        ))
-
-        addSubview(productKeyTextField)
-        addSubview(kikurageNameTextField)
-        addSubview(cultivationStartDateTextField)
-        addSubview(qrcodeReaderButton)
-        addSubview(qrcodeReaderView)
-        addSubview(deviceRegisterButton)
-
-        NSLayoutConstraint.activate([
-            productKeyTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            productKeyTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            productKeyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-
-            kikurageNameTextField.topAnchor.constraint(equalTo: productKeyTextField.bottomAnchor, constant: 25),
-            kikurageNameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            kikurageNameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-
-            cultivationStartDateTextField.topAnchor.constraint(equalTo: kikurageNameTextField.bottomAnchor, constant: 25),
-            cultivationStartDateTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            cultivationStartDateTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-
-            qrcodeReaderButton.topAnchor.constraint(equalTo: cultivationStartDateTextField.bottomAnchor, constant: 15),
-            qrcodeReaderButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            qrcodeReaderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-
-            qrcodeReaderView.topAnchor.constraint(equalTo: qrcodeReaderButton.bottomAnchor, constant: 15),
-            qrcodeReaderView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            qrcodeReaderView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-
-            deviceRegisterButton.topAnchor.constraint(equalTo: qrcodeReaderView.bottomAnchor, constant: 15),
-            deviceRegisterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            deviceRegisterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            deviceRegisterButton.heightAnchor.constraint(equalToConstant: 45)
-        ])
-
-        showQrcodeReaderViewConstraint = qrcodeReaderView.heightAnchor.constraint(equalToConstant: 240)
-        hideQrcodeReaderViewConstraint = qrcodeReaderView.heightAnchor.constraint(equalToConstant: 0)
-    }
-
-    // MARK: - Action
-
-    private func setupButtonAction() {
-        deviceRegisterButton.onTap = { [weak self] in
-            guard let self else {
-                return
+                    Spacer(minLength: 0)
+                }
+                .padding(.horizontal, 40)
             }
-            self.delegate?.deviceRegisterBaseViewDidTappedDeviceRegisterButton(self)
         }
-        qrcodeReaderButton.addAction(.init { [weak self] _ in
-            guard let self else {
-                return
-            }
-            self.delegate?.deviceRegisterBaseViewDidTappedQrcodeReaderButton(self)
-        }, for: .touchUpInside)
     }
 }
 
-// MARK: - Config
-
-extension DeviceRegisterBaseView {
-    func configTextField(delegate: UITextFieldDelegate) {
-        productKeyTextField.delegate = delegate
-        kikurageNameTextField.delegate = delegate
-        cultivationStartDateTextField.delegate = delegate
-    }
-
-    func showKikurageQrcodeReaderView(isHidden: Bool) {
-        qrcodeReaderView.isHidden = isHidden
-        showQrcodeReaderViewConstraint.isActive = !isHidden
-        hideQrcodeReaderViewConstraint.isActive = isHidden
-    }
-
-    func setProductKeyText(_ text: String) {
-        productKeyTextField.text = text
-    }
+#Preview {
+    DeviceRegisterBaseView(delegate: nil, state: DeviceRegisterState())
 }

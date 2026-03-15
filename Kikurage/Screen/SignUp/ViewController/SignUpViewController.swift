@@ -13,19 +13,17 @@ import RxCocoa
 import UIKit
 
 class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignUpAccessable {
-    private let baseView = SignUpBaseView()
+    private var baseView: SignUpBaseView!
     private var viewModel: SignUpViewModel!
 
     // MARK: - Lifecycle
-
-    override func loadView() {
-        view = baseView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = R.string.localizable.screen_signup_title()
         viewModel = SignUpViewModel()
+        baseView = SignUpBaseView(delegate: self, state: viewModel.state)
+        addBaseView(baseView: baseView)
 
         setDelegate()
         adjustNavigationBarBackgroundColor()
@@ -42,7 +40,6 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
 extension SignUpViewController {
     private func setDelegate() {
         baseView.delegate = self
-        baseView.configTextField(delegate: self)
         viewModel.delegate = self
     }
 }
@@ -50,27 +47,9 @@ extension SignUpViewController {
 // MARK: - SignUpBaseView Delegate
 
 extension SignUpViewController: SignUpBaseViewDelegate {
-    func signUpBaseViewDidTappedRegisterUserButton(_ signUpBaseView: SignUpBaseView) {
+    func signUpBaseViewDidTappedRegisterUserButton() {
         HUD.show(.progress)
         viewModel.registerUser()
-    }
-}
-
-// MARK: - UITextField Delegate
-
-extension SignUpViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        switch textField {
-        case baseView.emailTextField:
-            viewModel.email = text
-        case baseView.passwordTextField:
-            viewModel.password = text
-        default:
-            break
-        }
     }
 }
 
@@ -97,8 +76,7 @@ extension SignUpViewController: SignUpViewModelDelegate {
         DispatchQueue.main.async {
             HUD.hide()
             UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: errorMessage, okButtonTitle: "OK", cancelButtonTitle: nil) {
-                signUpViewModel.initUserInfo()
-                self.baseView.initTextFields()
+                self.viewModel.state.reset()
             }
         }
     }
