@@ -175,30 +175,41 @@ public struct KDeviceStatusListView: View {
     }
 
     public var body: some View {
-        KRoundedView(props: KRoundedViewProps(backgroundColor: Color(uiColor: .systemBackground))) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 0) {
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("現在").font(.system(size: 15))
-                    Text("理想").font(.system(size: 15))
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-                VStack(alignment: .center, spacing: 4) {
-                    Text("温度").font(.system(size: 15))
-                    Text("\(props.temperature)").font(.system(size: 15, weight: .bold))
-                    Text("20-25°C").font(.system(size: 15))
-                }
-                .frame(maxWidth: .infinity)
-
-                VStack(alignment: .center, spacing: 4) {
-                    Text("湿度").font(.system(size: 15))
-                    Text("\(props.humidity)").font(.system(size: 15, weight: .bold))
-                    Text("80%以上").font(.system(size: 15))
-                }
-                .frame(maxWidth: .infinity)
+                Color.clear
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("温度").font(.system(size: 15))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("湿度").font(.system(size: 15))
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(8)
+
+            KDividerView()
+
+            VStack(alignment: .leading, spacing: 15) {
+                HStack(spacing: 0) {
+                    Text("現在").font(.system(size: 15))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(props.temperature)").font(.system(size: 15, weight: .bold))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(props.humidity)").font(.system(size: 15, weight: .bold))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                HStack(spacing: 0) {
+                    Text("理想").font(.system(size: 15))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("20-25°C").font(.system(size: 15))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("80%以上").font(.system(size: 15))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+
+            KDividerView()
         }
+        .padding(8)
     }
 }
 

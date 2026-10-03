@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIDividerViewProps {
@@ -33,5 +34,36 @@ public class KUIDividerView: UIView {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 0.5)
         ])
+    }
+}
+
+public struct KDividerViewProps {
+    let color: Color
+
+    public init(color: Color = Color(uiColor: .lightGray)) {
+        self.color = color
+    }
+}
+
+public struct KDividerView: View {
+    private let props: KDividerViewProps
+
+    public init(props: KDividerViewProps = KDividerViewProps()) {
+        self.props = props
+    }
+
+    public var body: some View {
+        Rectangle()
+            .fill(props.color)
+            .frame(height: 0.5)
+    }
+}
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KDividerView()
+            .padding()
     }
 }
