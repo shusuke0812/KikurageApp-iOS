@@ -73,6 +73,7 @@ struct HomeBaseView: View {
                         description: state.advice,
                         image: R.image.hakase()
                     ))
+                    .frame(maxHeight: .infinity)
                     .padding(.top, 15)
                     .padding(.horizontal, 16)
 
@@ -85,8 +86,6 @@ struct HomeBaseView: View {
                     .padding(.top, 15)
                     .padding(.horizontal, 16)
                     .padding(.bottom, 20)
-
-                    Spacer(minLength: 0)
                 }
             }
         }

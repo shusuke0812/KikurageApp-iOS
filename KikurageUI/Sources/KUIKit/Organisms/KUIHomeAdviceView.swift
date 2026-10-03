@@ -107,14 +107,17 @@ public struct KHomeAdviceView: View {
 
     public var body: some View {
         KRoundedView(props: KRoundedViewProps(backgroundColor: Color(uiColor: .systemBackground))) {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 0) {
                 KLabelWithImage(props: KLabelWithImageProps(
                     variant: .imagePositionRight,
                     title: props.title,
                     image: props.image
                 ))
+                Spacer(minLength: 5)
                 Text(props.description)
                     .font(.system(size: 15))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer(minLength: 5)
             }
             .padding(5)
         }
@@ -130,6 +133,7 @@ public struct KHomeAdviceView: View {
             description: "順調に育っとるぞ。その調子じゃ。",
             image: UIImage(systemName: "face.smiling")
         ))
+        .frame(maxHeight: .infinity)
         .padding(.top, 15)
         .padding(.horizontal, 16)
     }
