@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIHomeAdviceViewProps {
@@ -24,6 +25,7 @@ public struct KUIHomeAdviceViewProps {
     }
 }
 
+@available(*, deprecated, renamed: "KHomeAdviceView", message: "Need to change to SwiftUI")
 public class KUIHomeAdviceView: UIView {
     private var contentView: KUIRoundedView!
     private var headerView: KUILabelWithImage!
@@ -77,5 +79,44 @@ public class KUIHomeAdviceView: UIView {
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
+    }
+}
+
+public struct KHomeAdviceViewProps {
+    let title: String
+    let description: String
+    let image: UIImage?
+
+    public init(
+        title: String,
+        description: String,
+        image: UIImage? = nil
+    ) {
+        self.title = title
+        self.description = description
+        self.image = image
+    }
+}
+
+public struct KHomeAdviceView: View {
+    private let props: KHomeAdviceViewProps
+
+    public init(props: KHomeAdviceViewProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        KRoundedView(props: KRoundedViewProps(backgroundColor: Color(uiColor: .systemBackground))) {
+            VStack(alignment: .leading, spacing: 5) {
+                KLabelWithImage(props: KLabelWithImageProps(
+                    variant: .imagePositionRight,
+                    title: props.title,
+                    image: props.image
+                ))
+                Text(props.description)
+                    .font(.system(size: 15))
+            }
+            .padding(5)
+        }
     }
 }

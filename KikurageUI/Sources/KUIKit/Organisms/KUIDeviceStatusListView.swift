@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIDeviceStatusListViewProps {
@@ -20,6 +21,7 @@ public struct KUIDeviceStatusListViewProps {
     }
 }
 
+@available(*, deprecated, renamed: "KDeviceStatusListView", message: "Need to change to SwiftUI")
 public class KUIDeviceStatusListView: UIView {
     private var temperatureLabel: UILabel!
     private var humidityLabel: UILabel!
@@ -152,5 +154,50 @@ public class KUIDeviceStatusListView: UIView {
         stackView.spacing = 15
 
         return stackView
+    }
+}
+
+public struct KDeviceStatusListViewProps {
+    let temperature: Int
+    let humidity: Int
+
+    public init(temperature: Int, humidity: Int) {
+        self.temperature = temperature
+        self.humidity = humidity
+    }
+}
+
+public struct KDeviceStatusListView: View {
+    private let props: KDeviceStatusListViewProps
+
+    public init(props: KDeviceStatusListViewProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        KRoundedView(props: KRoundedViewProps(backgroundColor: Color(uiColor: .systemBackground))) {
+            HStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("現在").font(.system(size: 15))
+                    Text("理想").font(.system(size: 15))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                VStack(alignment: .center, spacing: 4) {
+                    Text("温度").font(.system(size: 15))
+                    Text("\(props.temperature)").font(.system(size: 15, weight: .bold))
+                    Text("20-25°C").font(.system(size: 15))
+                }
+                .frame(maxWidth: .infinity)
+
+                VStack(alignment: .center, spacing: 4) {
+                    Text("湿度").font(.system(size: 15))
+                    Text("\(props.humidity)").font(.system(size: 15, weight: .bold))
+                    Text("80%以上").font(.system(size: 15))
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .padding(8)
+        }
     }
 }

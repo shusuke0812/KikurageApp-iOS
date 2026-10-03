@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIRoundedViewProps {
@@ -33,5 +34,37 @@ public class KUIRoundedView: UIView {
         clipsToBounds = true
         layer.cornerRadius = .viewCornerRadius
         translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+public struct KRoundedViewProps {
+    let backgroundColor: Color
+    let cornerRadius: CGFloat
+
+    public init(
+        backgroundColor: Color = .white,
+        cornerRadius: CGFloat = .viewCornerRadius
+    ) {
+        self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
+    }
+}
+
+public struct KRoundedView<Content: View>: View {
+    private let props: KRoundedViewProps
+    private let content: () -> Content
+
+    public init(
+        props: KRoundedViewProps = KRoundedViewProps(),
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.props = props
+        self.content = content
+    }
+
+    public var body: some View {
+        RoundedRectangle(cornerRadius: props.cornerRadius)
+            .fill(props.backgroundColor)
+            .overlay(content())
     }
 }
