@@ -201,3 +201,17 @@ public struct KDeviceStatusListView: View {
         }
     }
 }
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KDeviceStatusListView(props: KDeviceStatusListViewProps(
+            temperature: 21,
+            humidity: 83
+        ))
+        .frame(height: 100)
+        .padding(.top, 15)
+        .padding(.horizontal, 16)
+    }
+}

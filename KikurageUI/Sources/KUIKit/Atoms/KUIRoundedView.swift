@@ -68,3 +68,15 @@ public struct KRoundedView<Content: View>: View {
             .overlay(content())
     }
 }
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KRoundedView {
+            Text("Content")
+                .padding()
+        }
+        .padding()
+    }
+}

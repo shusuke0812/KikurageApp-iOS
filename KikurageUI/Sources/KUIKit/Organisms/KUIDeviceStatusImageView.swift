@@ -131,3 +131,45 @@ public struct KDeviceStatusImageView: View {
         }
     }
 }
+
+#Preview("通常時") {
+    GeometryReader { geometry in
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+            KDeviceStatusImageView(props: KDeviceStatusImageViewProps(
+                images: [UIImage(systemName: "face.smiling") ?? UIImage()],
+                isAnimating: false,
+                hasError: false
+            ))
+            .clipShape(RoundedRectangle(cornerRadius: .viewCornerRadius))
+            .frame(
+                width: geometry.size.width - 32,
+                height: (geometry.size.width - 32) * 9.0 / 16.0
+            )
+            .padding(.top, 15)
+            .padding(.horizontal, 16)
+        }
+    }
+}
+
+#Preview("エラー時") {
+    GeometryReader { geometry in
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+            KDeviceStatusImageView(props: KDeviceStatusImageViewProps(
+                images: [],
+                isAnimating: false,
+                hasError: true
+            ))
+            .clipShape(RoundedRectangle(cornerRadius: .viewCornerRadius))
+            .frame(
+                width: geometry.size.width - 32,
+                height: (geometry.size.width - 32) * 9.0 / 16.0
+            )
+            .padding(.top, 15)
+            .padding(.horizontal, 16)
+        }
+    }
+}

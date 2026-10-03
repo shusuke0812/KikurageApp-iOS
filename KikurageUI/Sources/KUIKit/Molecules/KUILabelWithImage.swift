@@ -133,3 +133,23 @@ public struct KLabelWithImage: View {
         }
     }
 }
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        VStack(spacing: 20) {
+            KLabelWithImage(props: KLabelWithImageProps(
+                variant: .imagePositionRight,
+                title: "画像が右",
+                image: UIImage(systemName: "star.fill")
+            ))
+            KLabelWithImage(props: KLabelWithImageProps(
+                variant: .imagePositionLeft,
+                title: "画像が左",
+                image: UIImage(systemName: "star.fill")
+            ))
+        }
+        .padding()
+    }
+}

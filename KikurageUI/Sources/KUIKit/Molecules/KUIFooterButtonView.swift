@@ -129,3 +129,19 @@ public struct KFooterButtonView: View {
         }
     }
 }
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KFooterButtonView(
+            onCultivation: {},
+            onRecipe: {},
+            onCommunication: {}
+        )
+        .frame(height: 50)
+        .padding(.top, 15)
+        .padding(.horizontal, 16)
+        .padding(.bottom, 20)
+    }
+}

@@ -120,3 +120,17 @@ public struct KHomeAdviceView: View {
         }
     }
 }
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KHomeAdviceView(props: KHomeAdviceViewProps(
+            title: "アドバイス",
+            description: "順調に育っとるぞ。その調子じゃ。",
+            image: UIImage(systemName: "face.smiling")
+        ))
+        .padding(.top, 15)
+        .padding(.horizontal, 16)
+    }
+}
