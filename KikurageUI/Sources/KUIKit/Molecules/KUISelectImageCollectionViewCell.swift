@@ -15,6 +15,7 @@ public protocol KUISelectImageCollectionViewCellDelegate: AnyObject {
     func didTapImageCancelButton(cell: KUISelectImageCollectionViewCell)
 }
 
+@available(*, deprecated, renamed: "KSelectImageCell", message: "Need to change to SwiftUI")
 public class KUISelectImageCollectionViewCell: UICollectionViewCell {
     public static let identifier = "CameraCell"
     public weak var delegate: KUISelectImageCollectionViewCellDelegate?
@@ -100,6 +101,7 @@ public class KUISelectImageCollectionViewCell: UICollectionViewCell {
     }
 }
 
+@available(*, deprecated, message: "Need to change to SwiftUI (use KSelectImageGridView's Binding<[UIImage?]> instead)")
 public class KUISelectImageCollectionViewModel: NSObject {
     private var selectedImages: [UIImage?] = []
     private let selectedImageMaxNumber: Int

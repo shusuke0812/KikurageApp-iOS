@@ -25,18 +25,16 @@ public class PostRecipeViewModel {
 
     public weak var delegate: PostRecipeViewModelDelegate?
 
-    public var recipe: KikurageRecipe
+    public let state: PostRecipeState
     public var postedRecipeDocumentID: String?
 
-    public init(recipeRepository: RecipeRepositoryProtocol = RecipeRepository()) {
+    public init(
+        maxImageCount: Int,
+        recipeRepository: RecipeRepositoryProtocol = RecipeRepository()
+    ) {
         self.recipeRepository = recipeRepository
+        state = PostRecipeState(maxImageCount: maxImageCount)
         loginManager = LoginManager()
-        recipe = KikurageRecipe()
-    }
-
-    public func updateCookDate(date: Date) {
-        let dateString = DateHelper.formatToString(date: date)
-        recipe.cookDate = dateString
     }
 }
 
@@ -48,6 +46,11 @@ extension PostRecipeViewModel {
             delegate?.postRecipeViewModelDidFailedPostRecipe(self, with: "error")
             return
         }
+        var recipe = KikurageRecipe()
+        recipe.name = state.name
+        recipe.memo = state.memo
+        recipe.cookDate = DateHelper.formatToString(date: state.date)
+
         var request = KikurageRecipeRequest(kikurageUserID: userID)
         request.body = request.buildBody(from: recipe)
         recipeRepository.postRecipe(request: request) { [weak self] response in
@@ -78,11 +81,14 @@ extension PostRecipeViewModel {
 // MARK: - Firebase Storage
 
 extension PostRecipeViewModel {
-    public func postRecipeImages(imageData: [Data?]) {
+    public func postRecipeImages() {
         guard let userID = loginManager.userID, let postedRecipeDocumentID = postedRecipeDocumentID else {
             delegate?.postRecipeViewModelDidFailedPostRecipeImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return
         }
+        let imageData: [Data?] = state.selectedImages
+            .compactMap { $0 }
+            .map { $0.jpegData(compressionQuality: 0.3) }
         let imageStoragePath = "\(FirestoreCollectionName.users)/\(userID)/\(FirestoreCollectionName.recipes)/\(postedRecipeDocumentID)/images/"
         recipeRepository.postRecipeImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {

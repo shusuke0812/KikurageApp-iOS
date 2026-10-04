@@ -21,6 +21,7 @@ public struct KUIMaterialTextViewProps {
     }
 }
 
+@available(*, deprecated, renamed: "KMaterialTextView", message: "Need to change to SwiftUI")
 public class KUIMaterialTextView: UIView {
     public var onDidEndEditing: ((String) -> Void)?
 
