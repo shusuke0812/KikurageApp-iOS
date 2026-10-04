@@ -8,47 +8,31 @@
 
 import KAAnalytics
 import KSRecipeService
-import KUIKit
-import PKHUD
 import RxSwift
-import SafariServices
-import SwiftUI
 import UIKit
 
 class RecipeViewController: UIViewController, UIViewControllerNavigatable, RecipeAccessable {
-    private var baseView: RecipeBaseView = .init()
-    private var emptyHostingVC: UIHostingController<KUIEmptyView>!
     private var viewModel: RecipeViewModelType!
 
-    private let diposeBag = RxSwift.DisposeBag()
-    private let cellHeight: CGFloat = 160.0
+    private let disposeBag = RxSwift.DisposeBag()
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationItem()
         viewModel = RecipeViewModel()
-        setDelegateDataSource()
-        setNotificationCenter()
-        setRefreshControl()
 
+        let baseView = RecipeBaseView(delegate: self, state: viewModel.state)
+        addBaseView(baseView: baseView)
+
+        setNavigationItem()
+        setNotificationCenter()
         adjustNavigationBarBackgroundColor()
 
-        HUD.show(.progress)
-        viewModel.input.loadRecipes()
+        loadRecipes()
 
-        // Rx
+        // RX
         rxBaseView()
-        rxTransition()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -58,7 +42,8 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
 
     // MARK: - Action
 
-    private func refresh() {
+    private func loadRecipes() {
+        viewModel.state.isLoading = true
         viewModel.input.loadRecipes()
     }
 }
@@ -69,91 +54,32 @@ extension RecipeViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_recipe_title())
     }
-
-    private func setDelegateDataSource() {
-        baseView.setupTableViewDelegate(delegate: self)
-    }
-
-    private func setRefreshControl() {
-        baseView.onRefresh = { [weak self] in
-            self?.refresh()
-        }
-    }
-
-    private func displayEmptyView(recipes: [KikurageRecipeTuple]) {
-        if recipes.isEmpty {
-            emptyHostingVC = addEmptyView(type: .notFoundRecipe)
-        } else {
-            removeEmptyView(hostingVC: emptyHostingVC)
-        }
-    }
 }
 
 // MARK: - Rx
 
 extension RecipeViewController {
     private func rxBaseView() {
-        viewModel.output.recipes.bind(to: baseView.tableView.rx.items) { tableview, row, element in
-            let indexPath = NSIndexPath(row: row, section: 0) as IndexPath
-            let cell = tableview.dequeueReusableCell(withIdentifier: "recipe_cell", for: indexPath) as! KUIRecipeTableViewCell // swiftlint:disable:this force_cast
-            cell.updateItem(props: KUIRecipeTableViewCellProps(
-                imageStoragePath: element.data.imageStoragePaths.first!,
-                dateString: element.data.cookDate,
-                title: element.data.name,
-                description: element.data.memo
-            ))
-            return cell
-        }
-        .disposed(by: diposeBag)
-
         viewModel.output.recipes.subscribe(
             onNext: { [weak self] recipes in
                 DispatchQueue.main.async {
-                    HUD.hide()
-                    self?.baseView.tableView.refreshControl?.endRefreshing()
-                    self?.baseView.tableView.reloadData()
-                    self?.displayEmptyView(recipes: recipes)
+                    self?.viewModel.state.isLoading = false
+                    self?.viewModel.state.recipes = recipes
                 }
             }
         )
-        .disposed(by: diposeBag)
+        .disposed(by: disposeBag)
 
         viewModel.output.error.subscribe(
-            onNext: { [weak self] error in
+            onNext: { [weak self] _ in
                 DispatchQueue.main.async {
-                    HUD.hide()
-                    guard let `self` = self else {
-                        return
-                    }
-                    self.baseView.tableView.refreshControl?.endRefreshing()
                     // TODO: error.description()をアラートに表示させる
-                    UIAlertController.showAlert(style: .alert, viewController: self, title: "error", message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+                    self?.viewModel.state.isLoading = false
+                    self?.viewModel.state.hasError = true
                 }
             }
         )
-        .disposed(by: diposeBag)
-
-        // MEMO: item on table view selected（nothing）
-    }
-
-    private func rxTransition() {
-        baseView.postPageButton.rx.tap.asDriver()
-            .drive(
-                onNext: { [weak self] in
-                    self?.modalToPostRecipe()
-                }
-            )
-            .disposed(by: diposeBag)
-
-        // MEMO: subscrive to selected item on table view（nothing）
-    }
-}
-
-// MARK: - UITableView Delegate
-
-extension RecipeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        cellHeight
+        .disposed(by: disposeBag)
     }
 }
 
@@ -165,7 +91,18 @@ extension RecipeViewController {
     }
 
     @objc private func didPostRecipe(notification: Notification) {
-        HUD.show(.progress)
-        viewModel.input.loadRecipes()
+        loadRecipes()
+    }
+}
+
+// MARK: - RecipeBaseView Delegate
+
+extension RecipeViewController: RecipeBaseViewDelegate {
+    func recipeBaseViewDidTapAddButton() {
+        modalToPostRecipe()
+    }
+
+    func recipeBaseViewDidPullToRefresh() {
+        loadRecipes()
     }
 }

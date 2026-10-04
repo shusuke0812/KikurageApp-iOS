@@ -16,6 +16,7 @@ public struct KUILoadingThumbnailViewProps {
     }
 }
 
+@available(*, deprecated, message: "Need to change to SwiftUI (no longer used; inline the placeholder directly in the SwiftUI component)")
 public class KUILoadingThumbnailView: UIView {
     private var thumbnailLabel: UILabel!
 

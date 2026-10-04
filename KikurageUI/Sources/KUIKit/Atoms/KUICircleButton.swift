@@ -21,6 +21,7 @@ public struct KUICircleButtonProps {
     }
 }
 
+@available(*, deprecated, renamed: "KCircleButton", message: "Need to change to SwiftUI")
 public class KUICircleButton: UIButton {
     public var onTap: (() -> Void)?
 
