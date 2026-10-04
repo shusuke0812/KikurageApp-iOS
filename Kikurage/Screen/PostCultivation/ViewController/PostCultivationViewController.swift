@@ -8,29 +8,22 @@
 
 import KAAnalytics
 import KSCultivationService
-import KUIKit
-import PKHUD
 import UIKit
 
 class PostCultivationViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: PostCultivationBaseView = .init()
     private var viewModel: PostCultivationViewModel!
-    private var cameraCollectionViewModel: KUISelectImageCollectionViewModel!
+    private var selectedImageSlotIndex: Int?
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = PostCultivationViewModel()
-        cameraCollectionViewModel = KUISelectImageCollectionViewModel(
-            selectedImageMaxNumber: Constants.CameraCollectionCell.maxNumber,
-            collectionViewDelegate: self
-        )
-        setDelegateDataSource()
+        viewModel = PostCultivationViewModel(maxImageCount: Constants.CameraCollectionCell.maxNumber)
+        viewModel.delegate = self
+
+        let baseView = PostCultivationBaseView(delegate: self, state: viewModel.state)
+        addBaseView(baseView: baseView)
+
         setNavigation()
         adjustNavigationBarBackgroundColor()
     }
@@ -50,12 +43,6 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
 // MARK: - Initialized
 
 extension PostCultivationViewController {
-    private func setDelegateDataSource() {
-        baseView.delegate = self
-        baseView.configCollectionView(delegate: self, dataSource: cameraCollectionViewModel)
-        viewModel.delegate = self
-    }
-
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -63,37 +50,31 @@ extension PostCultivationViewController {
     }
 }
 
-// MARK: - PostCultivatioBaseView Delegate
+// MARK: - PostCultivationBaseView Delegate
 
 extension PostCultivationViewController: PostCultivationBaseViewDelegate {
-    func postCultivationBaseViewDidEndEditingCultivationMemo(_ postCultivationBaseView: PostCultivationBaseView, text: String) {
-        viewModel.cultivation.memo = text
+    func postCultivationBaseViewDidTapImageSlot(at index: Int) {
+        FirebaseAnalyticsManager.sendTapEvent(.cultivationImageButton)
+        selectedImageSlotIndex = index
+        openImagePicker()
     }
 
-    func postCultivationBaseViewDidEndEditingCultivationDate(_ postCultivationBaseView: PostCultivationBaseView, date: Date) {
-        viewModel.updateViewDate(date: date)
-    }
-
-    func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView) {
+    func postCultivationBaseViewDidTapPostButton() {
         if viewModel.postValidation() {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: R.string.localizable.common_alert_cancel_btn_cancel()) {
-                // HUD表示（始）
-                HUD.show(.progress)
-                self.viewModel.postCultivation()
-            }
+            viewModel.state.alert = .confirmPost
         } else {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_valid_view_date(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+            viewModel.state.alert = .validationFailed
         }
     }
-}
 
-// MARK: - CameraCell Delegate
+    func postCultivationBaseViewDidConfirmPost() {
+        viewModel.state.isPosting = true
+        viewModel.postCultivation()
+    }
 
-extension PostCultivationViewController: KUISelectImageCollectionViewCellDelegate {
-    func didTapImageCancelButton(cell: KUISelectImageCollectionViewCell) {
-        let index = cell.tag
-        cameraCollectionViewModel.cancelImage(index: index)
-        baseView.cameraCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+    func postCultivationBaseViewDidConfirmPostSuccess() {
+        NotificationCenter.default.post(name: .updatedCultivations, object: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -101,43 +82,28 @@ extension PostCultivationViewController: KUISelectImageCollectionViewCellDelegat
 
 extension PostCultivationViewController: PostCultivationViewModelDelegate {
     func postCultivationViewModelDidSuccessPostCultivation(_ postCultivationViewModel: PostCultivationViewModel) {
-        // nil要素を取り除いた選択した画像のみのData型に変換する
-        let postImageData: [Data?] = cameraCollectionViewModel.changeToImageData(compressionQuality: 0.3).filter { $0 != nil }
-        // Firestoreにデータ登録後、そのdocumentIDをパスに使ってStorageへ画像を投稿する
-        viewModel.postCultivationImages(imageData: postImageData)
+        viewModel.postCultivationImages()
     }
 
     func postCultivationViewModelDidFailedPostCultivation(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
-            HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+            self.viewModel.state.isPosting = false
+            self.viewModel.state.alert = .postFailed(message: errorMessage)
         }
     }
 
     func postCultivationViewModelDidSuccessPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel) {
         DispatchQueue.main.async {
-            HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title(), message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) {
-                NotificationCenter.default.post(name: .updatedCultivations, object: nil)
-                self.dismiss(animated: true, completion: nil)
-            }
+            self.viewModel.state.isPosting = false
+            self.viewModel.state.alert = .postSucceeded
         }
     }
 
     func postCultivationViewModelDidFailedPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String) {
         DispatchQueue.main.async {
-            HUD.hide()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title(), cancelButtonTitle: nil, completionOk: nil)
+            self.viewModel.state.isPosting = false
+            self.viewModel.state.alert = .postFailed(message: errorMessage)
         }
-    }
-}
-
-// MARK: - UICollectionView Delegate
-
-extension PostCultivationViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        FirebaseAnalyticsManager.sendTapEvent(.cultivationImageButton)
-        openImagePicker()
     }
 }
 
@@ -148,12 +114,11 @@ extension PostCultivationViewController: UIImagePickerControllerDelegate, UINavi
         guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        guard let selectedIndexPath = baseView.cameraCollectionView.indexPathsForSelectedItems?.first else {
+        guard let selectedImageSlotIndex else {
             return
         }
         picker.dismiss(animated: true) { [weak self] in
-            self?.cameraCollectionViewModel.setImage(selectedImage: originalImage, index: selectedIndexPath.item)
-            self?.baseView.cameraCollectionView.reloadItems(at: [selectedIndexPath])
+            self?.viewModel.state.selectedImages[selectedImageSlotIndex] = originalImage
         }
     }
 

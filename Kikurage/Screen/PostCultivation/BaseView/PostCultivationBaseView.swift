@@ -6,118 +6,111 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KSCultivationService
 import KUIKit
+import SwiftUI
 import UIKit
 
 protocol PostCultivationBaseViewDelegate: AnyObject {
-    func postCultivationBaseViewDidTappedPostButton(_ postCultivationBaseView: PostCultivationBaseView)
-    func postCultivationBaseViewDidEndEditingCultivationMemo(_ postCultivationBaseView: PostCultivationBaseView, text: String)
-    func postCultivationBaseViewDidEndEditingCultivationDate(_ postCultivationBaseView: PostCultivationBaseView, date: Date)
+    func postCultivationBaseViewDidTapImageSlot(at index: Int)
+    func postCultivationBaseViewDidTapPostButton()
+    func postCultivationBaseViewDidConfirmPost()
+    func postCultivationBaseViewDidConfirmPostSuccess()
 }
 
-class PostCultivationBaseView: UIView {
-    private(set) var cameraCollectionView: UICollectionView!
-    private var cultivationMemoTextView: KUIMaterialTextView!
-    private var dateTextField: KUIDropdownTextField!
-    private var postButton: KUIButton!
+struct PostCultivationBaseView: View {
+    @StateObject var state: PostCultivationState
 
     weak var delegate: PostCultivationBaseViewDelegate?
 
-    // MARK: - Lifecycle
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-        setupAction()
+    init(delegate: PostCultivationBaseViewDelegate?, state: PostCultivationState) {
+        self.delegate = delegate
+        _state = StateObject(wrappedValue: state)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
 
-    func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
-        cameraCollectionView.delegate = delegate
-        cameraCollectionView.dataSource = dataSource
-    }
+            VStack(spacing: 0) {
+                ScrollView {
+                    KSelectImageGridView(
+                        selectedImages: $state.selectedImages,
+                        onTapSlot: { index in
+                            delegate?.postCultivationBaseViewDidTapImageSlot(at: index)
+                        }
+                    )
+                }
+                .frame(height: 180)
+                .padding(.top, 30)
+                .padding(.horizontal, 8)
 
-    private func setupComponent() {
-        backgroundColor = .systemGroupedBackground
+                KMaterialTextView(props: KMaterialTextViewProps(
+                    maxTextCount: 200,
+                    placeHolder: R.string.localizable.screen_post_cultivation_textview_placeholder(),
+                    inputText: $state.memo
+                ))
+                .frame(height: 70)
+                .padding(.top, 15)
+                .padding(.horizontal, 8)
 
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 80, height: 80)
-        flowLayout.minimumLineSpacing = 10
-        flowLayout.minimumInteritemSpacing = 10
-        cameraCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        cameraCollectionView.backgroundColor = .systemGroupedBackground
-        cameraCollectionView.register(KUISelectImageCollectionViewCell.self, forCellWithReuseIdentifier: KUISelectImageCollectionViewCell.identifier)
-        cameraCollectionView.translatesAutoresizingMaskIntoConstraints = false
+                KDropDownTextField(props: KDropDownTextFieldProps(
+                    placeHolder: R.string.localizable.screen_post_cultivation_date_textfield_placeholder(),
+                    date: $state.date
+                ))
+                .padding(.top, 20)
+                .padding(.horizontal, 8)
 
-        cultivationMemoTextView = KUIMaterialTextView(props: KUIMaterialTextViewProps(
-            maxTextCount: 200,
-            placeHolder: R.string.localizable.screen_post_cultivation_textview_placeholder(),
-            backgroundColor: .systemGroupedBackground
-        ))
-        cultivationMemoTextView.translatesAutoresizingMaskIntoConstraints = false
+                Spacer(minLength: 0)
 
-        dateTextField = KUIDropdownTextField(props: KUIDropDownTextFieldProps(
-            variant: .date,
-            textFieldProps: KUITextFieldProps(placeHolder: R.string.localizable.screen_post_cultivation_date_textfield_placeholder())
-        ))
-        dateTextField.translatesAutoresizingMaskIntoConstraints = false
-
-        postButton = KUIButton(props: KUIButtonProps(
-            variant: .primary,
-            title: R.string.localizable.screen_post_cultivation_post_button_title()
-        ))
-        postButton.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(cameraCollectionView)
-        addSubview(cultivationMemoTextView)
-        addSubview(dateTextField)
-        addSubview(postButton)
-
-        NSLayoutConstraint.activate([
-            cameraCollectionView.heightAnchor.constraint(equalToConstant: 180),
-            cameraCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
-            cameraCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            cameraCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-
-            cultivationMemoTextView.heightAnchor.constraint(equalToConstant: 70),
-            cultivationMemoTextView.topAnchor.constraint(equalTo: cameraCollectionView.bottomAnchor, constant: 15),
-            cultivationMemoTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            cultivationMemoTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-
-            dateTextField.topAnchor.constraint(equalTo: cultivationMemoTextView.bottomAnchor, constant: 20),
-            dateTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            dateTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-
-            postButton.heightAnchor.constraint(equalToConstant: 45),
-            postButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            postButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            postButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10)
-        ])
-    }
-
-    private func setupAction() {
-        postButton.onTap = { [weak self] in
-            guard let self else {
-                return
+                KButton(props: KButtonProps(
+                    variant: .primary,
+                    title: R.string.localizable.screen_post_cultivation_post_button_title()
+                )) {
+                    delegate?.postCultivationBaseViewDidTapPostButton()
+                }
+                .frame(height: 45)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 10)
             }
-            self.delegate?.postCultivationBaseViewDidTappedPostButton(self)
+
+            if state.isPosting {
+                KProgressHUDView()
+            }
         }
-
-        cultivationMemoTextView.onDidEndEditing = { [weak self] text in
-            guard let self else {
-                return
+        .alert(item: $state.alert) { alert in
+            switch alert {
+            case .validationFailed:
+                return Alert(
+                    title: Text(R.string.localizable.screen_post_cultivation_valid_view_date()),
+                    dismissButton: .default(Text(R.string.localizable.common_alert_ok_btn_ok()))
+                )
+            case .confirmPost:
+                return Alert(
+                    title: Text(R.string.localizable.screen_post_cultivation_alert_post_cultivation_title()),
+                    primaryButton: .default(Text(R.string.localizable.common_alert_ok_btn_ok())) {
+                        delegate?.postCultivationBaseViewDidConfirmPost()
+                    },
+                    secondaryButton: .cancel(Text(R.string.localizable.common_alert_cancel_btn_cancel()))
+                )
+            case .postFailed(let message):
+                return Alert(
+                    title: Text(message),
+                    dismissButton: .default(Text(R.string.localizable.common_alert_ok_btn_ok()))
+                )
+            case .postSucceeded:
+                return Alert(
+                    title: Text(R.string.localizable.screen_post_cultivation_alert_post_cultivation_success_title()),
+                    dismissButton: .default(Text(R.string.localizable.common_alert_ok_btn_ok())) {
+                        delegate?.postCultivationBaseViewDidConfirmPostSuccess()
+                    }
+                )
             }
-            self.delegate?.postCultivationBaseViewDidEndEditingCultivationMemo(self, text: text)
-        }
-
-        dateTextField.onDidEndEditing = { [weak self] (date: Date) in
-            guard let self else {
-                return
-            }
-            self.delegate?.postCultivationBaseViewDidEndEditingCultivationDate(self, date: date)
         }
     }
+}
+
+#Preview {
+    PostCultivationBaseView(delegate: nil, state: PostCultivationState(maxImageCount: Constants.CameraCollectionCell.maxNumber))
 }
