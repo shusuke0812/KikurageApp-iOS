@@ -21,6 +21,7 @@ public struct KUIRoundedTextViewProps {
     }
 }
 
+@available(*, deprecated, message: "Need to change to SwiftUI (use KRoundedView with a Text)")
 public class KUIRoundedTextView: UITextView {
     public init(props: KUIRoundedTextViewProps) {
         super.init(frame: .zero, textContainer: nil)
