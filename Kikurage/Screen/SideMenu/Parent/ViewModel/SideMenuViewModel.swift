@@ -6,11 +6,10 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KUIKit
-import UIKit.UITableView
+import Foundation
 
-class SideMenuViewModel: NSObject {
-    enum Section {
+class SideMenuViewModel {
+    enum Section: Hashable {
         case history
         case support
         case help
@@ -28,7 +27,7 @@ class SideMenuViewModel: NSObject {
         }
     }
 
-    enum SectionRowType {
+    enum SectionRowType: Hashable {
         case calendar
         case graph
         case contact
@@ -88,8 +87,7 @@ class SideMenuViewModel: NSObject {
 
     private(set) var sections: [Section] = []
 
-    override init() {
-        super.init()
+    init() {
         setSection()
     }
 }
@@ -103,35 +101,5 @@ extension SideMenuViewModel {
         #else
             sections = [.history, .support, .help, .setting, .debug]
         #endif
-    }
-
-    private func makeSectionCell(tableView: UITableView, section: Section, indexPath: IndexPath) -> KUISideMenuItemTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: KUISideMenuItemTableViewCell.identifier, for: indexPath) as! KUISideMenuItemTableViewCell // swiftlint:disable:this force_cast
-        let rowType = section.rows[indexPath.row]
-
-        cell.setSideMenuContent(title: rowType.title, iconImageName: rowType.iconImageName)
-
-        return cell
-    }
-}
-
-// MARK: - UITableView DataSource
-
-extension SideMenuViewModel: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        nil
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sections[section].rows.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = sections[indexPath.section]
-        return makeSectionCell(tableView: tableView, section: section, indexPath: indexPath)
     }
 }

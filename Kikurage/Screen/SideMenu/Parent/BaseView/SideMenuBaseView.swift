@@ -8,101 +8,85 @@
 
 import KSAppService
 import KUIKit
+import SwiftUI
 import UIKit
 
-class SideMenuBaseView: UIView {
-    private(set) var sideMenuParentView: UIView!
-    private var titleLabel: UILabel!
-    private(set) var tableView: UITableView!
-    private var headerHeightConstraint: NSLayoutConstraint!
+protocol SideMenuBaseViewDelegate: AnyObject {
+    func sideMenuBaseViewDidSelectItem(_ item: SideMenuViewModel.SectionRowType)
+    func sideMenuBaseViewDidRequestClose()
+}
 
-    private let sideMenuParentViewWidth: CGFloat = 210
+struct SideMenuBaseView: View {
+    let sections: [SideMenuViewModel.Section]
+    weak var delegate: SideMenuBaseViewDelegate?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
+    @State private var isOpen = false
+
+    private let panelWidth: CGFloat = 210
+    private let animationDuration: Double = 0.3
+
+    var body: some View {
+        ZStack(alignment: .leading) {
+            Color.white.opacity(isOpen ? 0.5 : 0)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    closeWithAnimation()
+                }
+
+            VStack(spacing: 0) {
+                // ヘッダー（タイトル。背景のみステータスバーの裏まで伸ばす）
+                Text(R.string.localizable.side_menu_title())
+                    .font(.system(size: 18, weight: .bold))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 15)
+                    .padding(.bottom, 10)
+                    .background(Color(uiColor: .systemBackground))//.ignoresSafeArea(edges: .top))
+
+                // メニュー本体
+                List {
+                    ForEach(sections, id: \.self) { section in
+                        Section {
+                            ForEach(section.rows, id: \.self) { row in
+                                KSideMenuItemRow(props: KSideMenuItemRowProps(
+                                    title: row.title,
+                                    iconImageName: row.iconImageName
+                                ))
+                                .onTapGesture {
+                                    delegate?.sideMenuBaseViewDidSelectItem(row)
+                                }
+                                .listRowInsets(EdgeInsets())
+                                .listRowBackground(Color(uiColor: .systemGroupedBackground))
+                            }
+                        }
+                    }
+                }
+                .listStyle(.grouped)
+                .scrollDisabled(false)
+                .scrollContentBackground(.hidden)
+                .background(Color(uiColor: .systemGroupedBackground))
+            }
+            .frame(width: panelWidth)
+            .offset(x: isOpen ? 0 : -panelWidth)
+
+            Spacer()
+        }
+        .onAppear {
+            withAnimation(.easeOut(duration: animationDuration)) {
+                isOpen = true
+            }
+        }
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupComponent() {
-        frame.origin.x = -sideMenuParentViewWidth
-        backgroundColor = .white.withAlphaComponent(0.5)
-
-        sideMenuParentView = UIView()
-        sideMenuParentView.backgroundColor = R.color.themeColor()
-        sideMenuParentView.translatesAutoresizingMaskIntoConstraints = false
-
-        titleLabel = UILabel()
-        titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        titleLabel.contentMode = .left
-        titleLabel.text = R.string.localizable.side_menu_title()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        let headerView = UIView()
-        headerView.backgroundColor = .systemBackground
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.addSubview(titleLabel)
-
-        tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .systemGroupedBackground
-        tableView.isScrollEnabled = false
-        tableView.register(KUISideMenuItemTableViewCell.self, forCellReuseIdentifier: KUISideMenuItemTableViewCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        sideMenuParentView.addSubview(headerView)
-        sideMenuParentView.addSubview(tableView)
-
-        addSubview(sideMenuParentView)
-
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 15),
-            titleLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -15),
-            titleLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10),
-        ])
-
-        NSLayoutConstraint.activate([
-            sideMenuParentView.widthAnchor.constraint(equalToConstant: sideMenuParentViewWidth),
-            sideMenuParentView.topAnchor.constraint(equalTo: topAnchor),
-            sideMenuParentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sideMenuParentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            // Header
-            headerView.heightAnchor.constraint(equalToConstant: 87),
-            headerView.topAnchor.constraint(equalTo: sideMenuParentView.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: sideMenuParentView.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: sideMenuParentView.trailingAnchor),
-
-            // Body
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: sideMenuParentView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: sideMenuParentView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: sideMenuParentView.bottomAnchor)
-        ])
+    private func closeWithAnimation() {
+        withAnimation(.easeIn(duration: animationDuration)) {
+            isOpen = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+            delegate?.sideMenuBaseViewDidRequestClose()
+        }
     }
 }
 
-// MARK: - Config
-
-extension SideMenuBaseView {
-    func initHeaderHeightConstraint() {
-        let navBarHeight = AppConfig.shared.navigationBarHeight ?? 0
-        let safeAreaHeight = AppConfig.shared.safeAreaHeight ?? 0
-        headerHeightConstraint.constant = navBarHeight + safeAreaHeight
-    }
-
-    func configTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
-    }
-
-    func closeAnimations() {
-        layer.position.x = -frame.width
-    }
-
-    func openAnimations() {
-        frame.origin.x = 0
-    }
+#Preview {
+    SideMenuBaseView(sections: [.history, .support], delegate: nil)
 }
