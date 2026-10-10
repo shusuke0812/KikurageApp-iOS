@@ -6,57 +6,82 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KSCultivationService
 import KUIKit
+import SwiftUI
 import UIKit
 
-class CultivationBaseView: UIView {
-    private(set) var collectionView: UICollectionView!
-    private(set) var postPageButton: KUICircleButton!
+protocol CultivationBaseViewDelegate: AnyObject {
+    func cultivationBaseViewDidTapAddButton()
+    func cultivationBaseViewDidSelectCultivation(_ cultivation: KikurageCultivationTuple)
+    func cultivationBaseViewDidPullToRefresh()
+}
 
-    // MARK: - Lifecycle
+struct CultivationBaseView: View {
+    @StateObject var state: CultivationState
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
+    weak var delegate: CultivationBaseViewDelegate?
+
+    private let columns = [
+        GridItem(.flexible(), spacing: .cellSpacing),
+        GridItem(.flexible(), spacing: .cellSpacing)
+    ]
+
+    init(delegate: CultivationBaseViewDelegate?, state: CultivationState) {
+        self.delegate = delegate
+        _state = StateObject(wrappedValue: state)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+
+            GeometryReader { geometry in
+                ScrollView {
+                    if state.isLoading && state.cultivations.isEmpty {
+                        ProgressView()
+                            .frame(height: geometry.size.height)
+                    } else if state.cultivations.isEmpty {
+                        KUIEmptyView(type: .notFoundCultivation)
+                            .frame(height: geometry.size.height)
+                    } else {
+                        LazyVGrid(columns: columns, spacing: .cellSpacing * 2) {
+                            ForEach(Array(state.cultivations.enumerated()), id: \.offset) { _, cultivation in
+                                KCultivationCell(props: KCultivationCellProps(
+                                    imageStoragePath: cultivation.data.imageStoragePaths.first,
+                                    viewDate: cultivation.data.viewDate
+                                ))
+                                .aspectRatio(1, contentMode: .fit)
+                                .onTapGesture {
+                                    delegate?.cultivationBaseViewDidSelectCultivation(cultivation)
+                                }
+                            }
+                        }
+                        .padding(.cellSpacing)
+                    }
+                }
+                .refreshable {
+                    delegate?.cultivationBaseViewDidPullToRefresh()
+                }
+            }
+
+            KCircleButton(props: KCircleButtonProps(
+                variant: .primary,
+                image: R.image.addMemoButton(),
+                width: 60
+            ), onTap: {
+                delegate?.cultivationBaseViewDidTapAddButton()
+            })
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            .padding(20)
+        }
+        .alert("error", isPresented: $state.hasError) {
+            Button(R.string.localizable.common_alert_ok_btn_ok(), role: .cancel) {}
+        }
     }
+}
 
-    func setRefreshControlInCollectionView(_ refresh: UIRefreshControl) {
-        collectionView.refreshControl = refresh
-    }
-
-    private func setupComponent() {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = .zero
-        flowLayout.minimumLineSpacing = .cellSpacing * 2
-        flowLayout.minimumInteritemSpacing = .cellSpacing
-        flowLayout.sectionInset = UIEdgeInsets(top: .cellSpacing, left: .cellSpacing, bottom: .cellSpacing, right: .cellSpacing)
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .systemGroupedBackground
-        collectionView.register(KUICultivationCollectionViewCell.self, forCellWithReuseIdentifier: KUICultivationCollectionViewCell.identifier)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        postPageButton = KUICircleButton(props: KUICircleButtonProps(
-            variant: .primary,
-            image: R.image.addMemoButton(),
-            width: 60
-        ))
-        postPageButton.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(collectionView)
-        addSubview(postPageButton)
-
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            postPageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            postPageButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
-        ])
-    }
+#Preview {
+    CultivationBaseView(delegate: nil, state: CultivationState())
 }

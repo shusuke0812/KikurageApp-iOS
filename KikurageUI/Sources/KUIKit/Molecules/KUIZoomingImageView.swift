@@ -8,6 +8,9 @@
 
 // ref: https://github.com/gaussbeam/ZoomingImagePager, https://studist.tech/ios-photo-app-ui-with-uikit-but-we-met-pitfall-9c458e5ef8a7
 
+import FirebaseStorage
+import Kingfisher
+import SwiftUI
 import UIKit
 
 public class KUIZoomingImageView: UIView {
@@ -59,8 +62,8 @@ public class KUIZoomingImageView: UIView {
             scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: bottomAnchor),
-            scrollView.contentLayoutGuide.heightAnchor.constraint(equalToConstant: frame.height),
-            scrollView.contentLayoutGuide.widthAnchor.constraint(equalToConstant: frame.width),
+            scrollView.contentLayoutGuide.heightAnchor.constraint(equalTo: heightAnchor),
+            scrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: widthAnchor),
 
             imageView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
@@ -160,5 +163,63 @@ extension KUIZoomingImageView: UIScrollViewDelegate {
 
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         preventScrollingToEmptyAreaOfImageView()
+    }
+}
+
+public struct KZoomingImageViewProps {
+    let imageStoragePath: String
+
+    public init(imageStoragePath: String) {
+        self.imageStoragePath = imageStoragePath
+    }
+}
+
+public struct KZoomingImageView: View {
+    private let props: KZoomingImageViewProps
+
+    public init(props: KZoomingImageViewProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        KZoomingImageViewRepresentable(imageStoragePath: props.imageStoragePath)
+    }
+}
+
+private struct KZoomingImageViewRepresentable: UIViewRepresentable {
+    let imageStoragePath: String
+
+    func makeUIView(context: Context) -> KUIZoomingImageView {
+        let view = KUIZoomingImageView()
+        loadImage(into: view)
+        return view
+    }
+
+    func updateUIView(_ uiView: KUIZoomingImageView, context: Context) {}
+
+    private func loadImage(into view: KUIZoomingImageView) {
+        // ローカルのAsset Catalogに同名の画像があればそれを優先して表示する（Previewなどで使用）
+        if let localImage = UIImage(named: imageStoragePath) {
+            view.imageView.image = localImage
+            return
+        }
+        let storageReference = Storage.storage().reference(withPath: imageStoragePath)
+        storageReference.downloadURL { result in
+            switch result {
+            case .success(let url):
+                view.imageView.kf.setImage(with: url, placeholder: nil)
+            case .failure:
+                break
+            }
+        }
+    }
+}
+
+#Preview {
+    ZStack {
+        Color.black
+            .ignoresSafeArea()
+        KZoomingImageView(props: KZoomingImageViewProps(imageStoragePath: ""))
+            .frame(height: 320)
     }
 }

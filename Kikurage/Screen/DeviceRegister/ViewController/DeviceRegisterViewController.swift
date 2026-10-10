@@ -7,13 +7,14 @@
 //
 
 import AVFoundation
+import KDEntity
 import KAAnalytics
 import KSDeviceRegisterService
 import PKHUD
 import UIKit
 
 class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatable, DeviceRegisterAccessable {
-    private var baseView = DeviceRegisterBaseView()
+    private var baseView: DeviceRegisterBaseView!
     private var viewModel: DeviceRegisterViewModel!
     private var qrCodeReaderViewModel: QRCodeReaderViewModel!
 
@@ -21,27 +22,25 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DeviceRegisterViewModel()
         qrCodeReaderViewModel = QRCodeReaderViewModel()
         qrCodeReaderViewModel.delegate = self
-        setDelegateDataSource()
+
+        baseView = DeviceRegisterBaseView(delegate: self, state: viewModel.state)
+        addBaseView(baseView: baseView)
+
+        viewModel.delegate = self
 
         navigationItem.title = R.string.localizable.screen_device_register_title()
         navigationItem.hidesBackButton = true
         adjustNavigationBarBackgroundColor()
-
-        baseView.showKikurageQrcodeReaderView(isHidden: true)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        baseView.qrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
+        viewModel.setCaptureSession(qrCodeReaderViewModel.captureSession)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -55,67 +54,20 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
     }
 }
 
-// MARK: - Initialized
-
-extension DeviceRegisterViewController {
-    private func setDelegateDataSource() {
-        baseView.delegate = self
-        baseView.configTextField(delegate: self)
-        viewModel.delegate = self
-    }
-}
-
-// MARK: - UITextField Delegate
-
-extension DeviceRegisterViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        switch textField {
-        case baseView.productKeyTextField:
-            viewModel.kikurageUser?.productKey = text
-            viewModel.setStateReference(productKey: text)
-        case baseView.kikurageNameTextField:
-            viewModel.kikurageUser?.kikurageName = text
-        case baseView.cultivationStartDateTextField:
-            setCultivationStartDateTextFieldData()
-        default:
-            break
-        }
-    }
-
-    private func setCultivationStartDateTextFieldData() {
-        let date: Date = baseView.cultivationStartDateTextField.date
-        let dataString: String = viewModel.getDateString(date: date)
-        baseView.cultivationStartDateTextField.text = dataString
-        viewModel.kikurageUser?.cultivationStartDate = date
-    }
-}
-
 // MARK: - DeviceRegisterBaseView Delegate
 
 extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
-    func deviceRegisterBaseViewDidTappedDeviceRegisterButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
-        let validate = viewModel.validateRegistration(
-            productKey: baseView.productKeyTextField.text,
-            kikurageName: baseView.kikurageNameTextField.text,
-            cultivationStartDateString: baseView.cultivationStartDateTextField.text
-        )
-        if validate {
-            HUD.show(.progress)
-            viewModel.loadKikurageState()
-        } else {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
-        }
+    func deviceRegisterBaseViewDidTappedDeviceRegisterButton() {
+        HUD.show(.progress)
+        viewModel.registerDevice()
     }
 
-    func deviceRegisterBaseViewDidTappedQrcodeReaderButton(_ deviceRegisterBaseView: DeviceRegisterBaseView) {
+    func deviceRegisterBaseViewDidTappedQrcodeReaderButton() {
         DispatchQueue.main.async {
-            guard self.baseView.qrcodeReaderView.isHidden else {
+            guard !self.viewModel.state.isQrcodeReaderVisible else {
                 return
             }
-            self.baseView.showKikurageQrcodeReaderView(isHidden: false)
+            self.viewModel.state.isQrcodeReaderVisible = true
         }
         qrCodeReaderViewModel.startRunning()
     }
@@ -124,6 +76,13 @@ extension DeviceRegisterViewController: DeviceRegisterBaseViewDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
+    func deviceRegisterViewModelDidFailedValidation(_ deviceRegisterViewModel: DeviceRegisterViewModel) {
+        DispatchQueue.main.async {
+            HUD.hide()
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "入力されていない\n項目があります", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil, completionOk: nil)
+        }
+    }
+
     func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel) {
         deviceRegisterViewModel.registerKikurageUser()
     }
@@ -162,10 +121,9 @@ extension DeviceRegisterViewController: DeviceRegisterViewModelDelegate {
 extension DeviceRegisterViewController: QRCodeReaderViewModelDelegate {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession) {
         DispatchQueue.main.async {
-            if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.baseView.qrcodeReaderView.windowOrientation) {
-                self.baseView.qrcodeReaderView.configCaptureOrientation(videoOrientation)
-            }
-            self.baseView.qrcodeReaderView.configPreviewLayer(captureSession: qrCodeReaderViewModel.captureSession)
+            let interfaceOrientation = self.view.window?.windowScene?.interfaceOrientation ?? .unknown
+            let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: interfaceOrientation)
+            self.viewModel.didConfigureCaptureSession(captureSession: captureSession, videoOrientation: videoOrientation)
         }
     }
 
@@ -175,17 +133,10 @@ extension DeviceRegisterViewController: QRCodeReaderViewModelDelegate {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, interrupted reason: AVCaptureSession.InterruptionReason) {}
 
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didRead qrCodeString: String) {
-        DispatchQueue.main.async {
-            self.baseView.showKikurageQrcodeReaderView(isHidden: true)
-            self.baseView.setProductKeyText(qrCodeString)
-        }
-        viewModel.kikurageUser?.productKey = qrCodeString
-        viewModel.setStateReference(productKey: qrCodeString)
+        viewModel.didReadQrCode(qrCodeString: qrCodeString)
     }
 
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didNotRead error: SessionSetupError) {
-        DispatchQueue.main.async {
-            self.baseView.showKikurageQrcodeReaderView(isHidden: true)
-        }
+        viewModel.didNotReadQrCode()
     }
 }

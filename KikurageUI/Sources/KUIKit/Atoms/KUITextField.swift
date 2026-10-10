@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUITextFieldProps {
@@ -33,6 +34,48 @@ public class KUITextField: UITextField {
         placeholder = props.placeHolder
         translatesAutoresizingMaskIntoConstraints = false
     }
+}
 
-    // TODO: エラーの場合は枠線を赤色に更新できるようなメソッドを追加する
+public struct KTextFieldProps {
+    public let placeHolder: String
+    @Binding public var inputText: String
+    @Binding public var hasError: Bool
+
+    public init(
+        placeHolder: String,
+        inputText: Binding<String> = .constant(""),
+        hasError: Binding<Bool> = .constant(false)
+    ) {
+        self.placeHolder = placeHolder
+        _inputText = inputText
+        _hasError = hasError
+    }
+}
+
+public struct KTextField: View {
+    private var props: KTextFieldProps
+
+    public init(props: KTextFieldProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        TextField(props.placeHolder, text: props.$inputText)
+            .modifier(KTextFieldModifier(hasError: props.$hasError))
+    }
+}
+
+struct KTextFieldModifier: ViewModifier {
+    @Binding var hasError: Bool
+
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .frame(height: 44)
+            .autocorrectionDisabled()
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(hasError ? Color.red : Color.gray, lineWidth: 0.5)
+            )
+    }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIMaterialTextFieldProps {
@@ -119,5 +120,78 @@ extension KUIMaterialTextField: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+public struct KMaterialTextFieldProps {
+    let maxTextCount: Int
+    let placeHolder: String?
+    @Binding public var inputText: String
+
+    public init(
+        maxTextCount: Int,
+        placeHolder: String? = nil,
+        inputText: Binding<String>
+    ) {
+        self.maxTextCount = maxTextCount
+        self.placeHolder = placeHolder
+        _inputText = inputText
+    }
+}
+
+public struct KMaterialTextField: View {
+    private var props: KMaterialTextFieldProps
+    @FocusState private var isFocused: Bool
+
+    public init(props: KMaterialTextFieldProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        VStack(alignment: .trailing, spacing: 3) {
+            TextField(props.placeHolder ?? "", text: props.$inputText)
+                .font(.system(size: 15))
+                .focused($isFocused)
+                .onChange(of: props.inputText) { newValue in
+                    if newValue.count > props.maxTextCount {
+                        props.inputText = String(newValue.prefix(props.maxTextCount))
+                    }
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button(R.string.localizable.common_done()) {
+                            isFocused = false
+                        }
+                    }
+                }
+
+            KDividerView(props: KDividerViewProps(color: Color(uiColor: .lightGray)))
+
+            Text("\(props.inputText.count)/\(props.maxTextCount)")
+                .font(.system(size: 12))
+                .foregroundColor(Color(uiColor: .lightGray))
+        }
+    }
+}
+
+#Preview {
+    KMaterialTextFieldPreviewWrapper()
+}
+
+private struct KMaterialTextFieldPreviewWrapper: View {
+    @State private var text = ""
+
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+            KMaterialTextField(props: KMaterialTextFieldProps(
+                maxTextCount: 20,
+                placeHolder: "レシピ名を入力してください",
+                inputText: $text
+            ))
+            .padding()
+        }
     }
 }

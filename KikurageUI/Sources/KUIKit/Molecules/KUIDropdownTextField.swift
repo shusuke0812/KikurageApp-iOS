@@ -25,6 +25,7 @@ public struct KUIDropDownTextFieldProps {
     }
 }
 
+@available(*, deprecated, renamed: "KDropDownTextField", message: "Need to change to SwiftUI")
 public class KUIDropdownTextField: KUITextField {
     @available(*, deprecated, message: "Use onDidEndEditing call back")
     public var date: Date {

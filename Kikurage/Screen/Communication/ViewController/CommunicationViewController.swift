@@ -8,22 +8,18 @@
 
 import KAAnalytics
 import KSAppService
-import PKHUD
 import UIKit
 
 class CommunicationViewController: UIViewController, UIViewControllerNavigatable, CommunicationAccessable {
-    private var baseView: CommunicationBaseView = .init()
-
     // MARK: - Lifecycle
-
-    override func loadView() {
-        view = baseView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let baseView = CommunicationBaseView(delegate: self)
+        addBaseView(baseView: baseView)
+
         setNavigationItem()
-        setDelegateDataSource()
         adjustNavigationBarBackgroundColor()
     }
 }
@@ -34,16 +30,12 @@ extension CommunicationViewController {
     private func setNavigationItem() {
         setNavigationBar(title: R.string.localizable.screen_communication_title())
     }
-
-    private func setDelegateDataSource() {
-        baseView.delegate = self
-    }
 }
 
 // MARK: - CommunicationBaseView Delegate
 
 extension CommunicationViewController: CommunicationBaseViewDelegate {
-    func communicationBaseViewDidTapFacebookButton(_ communicationBaseView: CommunicationBaseView) {
+    func communicationBaseViewDidTapFacebookButton() {
         FirebaseAnalyticsManager.sendTapEvent(.communicationFacebookButton)
         let urlString = AppConfig.shared.facebookGroupURLString
         presentToSafariView(urlString: urlString, onError: nil)

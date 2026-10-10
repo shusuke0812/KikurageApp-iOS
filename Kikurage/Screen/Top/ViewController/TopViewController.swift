@@ -11,17 +11,14 @@ import KSAppService
 import UIKit
 
 class TopViewController: UIViewController, UIViewControllerNavigatable, TopAccessable {
-    private let baseView = TopBaseView()
+    private var baseView: TopBaseView!
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegate()
+        baseView = TopBaseView(delegate: self)
+        addBaseView(baseView: baseView)
 
         navigationItem.title = R.string.localizable.screen_top_title()
         adjustNavigationBarBackgroundColor()
@@ -33,32 +30,24 @@ class TopViewController: UIViewController, UIViewControllerNavigatable, TopAcces
     }
 }
 
-// MARK: - Initialized
-
-extension TopViewController {
-    private func setDelegate() {
-        baseView.delegate = self
-    }
-}
-
 // MARK: - TopBaseView Delegate
 
 extension TopViewController: TopBaseViewDelegate {
-    func topBaseViewDidTappedTermsButton(_ topBaseView: TopBaseView) {
+    func topBaseViewDidTappedTermsButton() {
         let urlString = AppConfig.shared.termsURLString
         presentSafariView(urlString: urlString, onError: nil)
     }
 
-    func topBaseViewDidTappedPrivacyPolicyButton(_ topBaseView: TopBaseView) {
+    func topBaseViewDidTappedPrivacyPolicyButton() {
         let urlString = AppConfig.shared.privacyPolicyURLString
         presentSafariView(urlString: urlString, onError: nil)
     }
 
-    func topBaseViewDidTappedLoginButton(_ topBaseView: TopBaseView) {
+    func topBaseViewDidTappedLoginButton() {
         pushToLogin()
     }
 
-    func topBaseViewDidTappedSignUpButton(_ topBaseView: TopBaseView) {
+    func topBaseViewDidTappedSignUpButton() {
         pushToSignUp()
     }
 }

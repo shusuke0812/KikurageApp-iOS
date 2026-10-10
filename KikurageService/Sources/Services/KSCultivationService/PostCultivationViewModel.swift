@@ -26,18 +26,16 @@ public class PostCultivationViewModel {
 
     public weak var delegate: PostCultivationViewModelDelegate?
 
-    public var cultivation: KikurageCultivation
+    public let state: PostCultivationState
     public var postedCultivationDocumentID: String?
 
-    public init(cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()) {
+    public init(
+        maxImageCount: Int,
+        cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()
+    ) {
         self.cultivationRepository = cultivationRepository
-        cultivation = KikurageCultivation()
+        state = PostCultivationState(maxImageCount: maxImageCount)
         loginManager = LoginManager()
-    }
-
-    public func updateViewDate(date: Date) {
-        let dateString = DateHelper.formatToString(date: date)
-        cultivation.viewDate = dateString
     }
 }
 
@@ -45,11 +43,8 @@ public class PostCultivationViewModel {
 
 extension PostCultivationViewModel {
     public func postValidation() -> Bool {
-        if cultivation.viewDate.isEmpty {
-            return false
-        }
-        if cultivation.memo.isEmpty {
-            cultivation.memo = R.LocalizableString.postCultivationValidMemo
+        if state.memo.isEmpty {
+            state.memo = R.LocalizableString.postCultivationValidMemo
         }
         return true
     }
@@ -63,6 +58,10 @@ extension PostCultivationViewModel {
             delegate?.postCultivationViewModelDidFailedPostCultivation(self, with: "error") // TODO: Error型を定義してVCに通知する
             return
         }
+        var cultivation = KikurageCultivation()
+        cultivation.memo = state.memo
+        cultivation.viewDate = DateHelper.formatToString(date: state.date)
+
         var request = KikurageCultivationRequest(kikurageUserID: userID)
         request.body = request.buildBody(from: cultivation)
         cultivationRepository.postCultivation(request: request) { [weak self] response in
@@ -82,7 +81,6 @@ extension PostCultivationViewModel {
         cultivationRepository.putCultivationImagePaths(request: request) { [weak self] response in
             switch response {
             case .success():
-                self?.cultivation.imageStoragePaths = imageStorageFullPaths
                 self?.delegate?.postCultivationViewModelDidSuccessPostCultivationImages(self!)
             case .failure(let error):
                 self?.delegate?.postCultivationViewModelDidFailedPostCultivation(self!, with: error.description())
@@ -94,11 +92,14 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Storage
 
 extension PostCultivationViewModel {
-    public func postCultivationImages(imageData: [Data?]) {
+    public func postCultivationImages() {
         guard let userID = loginManager.userID, let postedCultivationDocumentID = postedCultivationDocumentID else {
             delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return
         }
+        let imageData: [Data?] = state.selectedImages
+            .compactMap { $0 }
+            .map { $0.jpegData(compressionQuality: 0.3) }
         let imageStoragePath = "\(FirestoreCollectionName.users)/\(userID)/\(FirestoreCollectionName.cultivations)/\(postedCultivationDocumentID)/images/"
         cultivationRepository.postCultivationImages(imageData: imageData, imageStoragePath: imageStoragePath) { [weak self] response in
             switch response {

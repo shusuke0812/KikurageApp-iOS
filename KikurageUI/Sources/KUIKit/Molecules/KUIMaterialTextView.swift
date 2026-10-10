@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIMaterialTextViewProps {
@@ -20,6 +21,7 @@ public struct KUIMaterialTextViewProps {
     }
 }
 
+@available(*, deprecated, renamed: "KMaterialTextView", message: "Need to change to SwiftUI")
 public class KUIMaterialTextView: UIView {
     public var onDidEndEditing: ((String) -> Void)?
 
@@ -127,5 +129,91 @@ extension KUIMaterialTextView: UITextViewDelegate {
 
     @objc private func onTapDone() {
         textView.resignFirstResponder()
+    }
+}
+
+public struct KMaterialTextViewProps {
+    let maxTextCount: Int
+    let placeHolder: String?
+    @Binding public var inputText: String
+
+    public init(
+        maxTextCount: Int,
+        placeHolder: String? = nil,
+        inputText: Binding<String>
+    ) {
+        self.maxTextCount = maxTextCount
+        self.placeHolder = placeHolder
+        _inputText = inputText
+    }
+}
+
+public struct KMaterialTextView: View {
+    private var props: KMaterialTextViewProps
+    @FocusState private var isFocused: Bool
+
+    public init(props: KMaterialTextViewProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        VStack(alignment: .trailing, spacing: 3) {
+            ZStack(alignment: .topLeading) {
+                if props.inputText.isEmpty, let placeHolder = props.placeHolder {
+                    Text(placeHolder)
+                        .font(.system(size: 15))
+                        .foregroundColor(Color(uiColor: .placeholderText))
+                        .padding(.top, 8)
+                        .padding(.leading, 5)
+                        .allowsHitTesting(false)
+                }
+                TextEditor(text: props.$inputText)
+                    .font(.system(size: 15))
+                    .focused($isFocused)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
+                    .onChange(of: props.inputText) { newValue in
+                        if newValue.count > props.maxTextCount {
+                            props.inputText = String(newValue.prefix(props.maxTextCount))
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button(R.string.localizable.common_done()) {
+                                isFocused = false
+                            }
+                        }
+                    }
+            }
+
+            KDividerView(props: KDividerViewProps(color: Color(uiColor: .lightGray)))
+
+            Text("\(props.inputText.count)/\(props.maxTextCount)")
+                .font(.system(size: 12))
+                .foregroundColor(Color(uiColor: .lightGray))
+        }
+    }
+}
+
+#Preview {
+    KMaterialTextViewPreviewWrapper()
+}
+
+private struct KMaterialTextViewPreviewWrapper: View {
+    @State private var text = ""
+
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+            KMaterialTextView(props: KMaterialTextViewProps(
+                maxTextCount: 200,
+                placeHolder: "メモを入力してください",
+                inputText: $text
+            ))
+            .frame(height: 70)
+            .padding()
+        }
     }
 }

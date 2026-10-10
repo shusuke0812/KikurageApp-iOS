@@ -8,68 +8,40 @@
 
 import KDEntity
 import KUIKit
+import SwiftUI
 import UIKit
 
-class CultivationDetailBaseView: UIView {
-    private(set) var carouselCollectionView: KUICarouselCollectionView!
-    private var contentView: KUICultivationDetailDescriptionView!
+struct CultivationDetailBaseView: View {
+    let cultivation: KikurageCultivation
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-    }
+    @State private var currentPage: Int = 0
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            KCarouselView(
+                props: KCarouselViewProps(imageStoragePaths: cultivation.imageStoragePaths),
+                currentPage: $currentPage
+            )
 
-    private func setupComponent() {
-        backgroundColor = .systemGroupedBackground
-
-        carouselCollectionView = KUICarouselCollectionView(props: KUICarouselCollectionViewProps())
-        carouselCollectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView = KUICultivationDetailDescriptionView(props: KUICultivationDetailDescriptionViewProps(
-            image: R.image.hakase()!,
-            tittle: R.string.localizable.screen_cultivation_detail_memo_title(),
-            dateString: "-",
-            description: "-"
-        ))
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(carouselCollectionView)
-        addSubview(contentView)
-
-        NSLayoutConstraint.activate([
-            carouselCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            carouselCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            carouselCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            contentView.topAnchor.constraint(equalTo: carouselCollectionView.bottomAnchor, constant: 25),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            contentView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -15)
-        ])
+            KCultivationDetailDescriptionView(props: KCultivationDetailDescriptionViewProps(
+                image: R.image.hakase(),
+                title: R.string.localizable.screen_cultivation_detail_memo_title(),
+                dateString: cultivation.viewDate,
+                description: cultivation.memo
+            ))
+            .frame(maxHeight: .infinity, alignment: .top)
+            .padding(.top, 25)
+            .padding(.horizontal, 15)
+            .padding(.bottom, 15)
+        }
+        .background(Color(uiColor: .systemGroupedBackground))
     }
 }
 
-// MARK: - Config
-
-extension CultivationDetailBaseView {
-    func setUI(cultivation: KikurageCultivation) {
-        contentView.updateMemoDateLabel(dateString: cultivation.viewDate)
-        contentView.updateMemoDescription(text: cultivation.memo)
-    }
-
-    func configCollectionView(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
-        carouselCollectionView.configDelegate(delegate: delegate, dataSource: dataSource)
-    }
-
-    func configPageControl(imageCount: Int) {
-        carouselCollectionView.setPageControlNumber(imageCount: imageCount)
-    }
-
-    func configPageControl(didChangeCurrentPage index: Int) {
-        carouselCollectionView.updateCurrentPage(index: index)
-    }
+#Preview {
+    var cultivation = KikurageCultivation()
+    cultivation.imageStoragePaths = ["wet_01", "wet_02"]
+    cultivation.viewDate = "2024/01/01"
+    cultivation.memo = "今日はきのこがよく育っていました。"
+    return CultivationDetailBaseView(cultivation: cultivation)
 }

@@ -31,6 +31,7 @@ protocol UIViewControllerNavigatable {
     func addEmptyView(type: EmptyType) -> UIHostingController<KUIEmptyView>
     /// Do not display empty view
     func removeEmptyView(hostingVC: UIHostingController<KUIEmptyView>?)
+    func addBaseView(baseView: some View)
 }
 
 extension UIViewControllerNavigatable where Self: UIViewController {
@@ -86,5 +87,21 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         hostingVC?.willMove(toParent: nil)
         hostingVC?.view.removeFromSuperview()
         hostingVC?.removeFromParent()
+    }
+
+    func addBaseView(baseView: some View) {
+        let hc = UIHostingController(rootView: baseView)
+        hc.view.translatesAutoresizingMaskIntoConstraints = false
+
+        addChild(hc)
+        view.addSubview(hc.view)
+        hc.didMove(toParent: self)
+
+        NSLayoutConstraint.activate([
+            hc.view.topAnchor.constraint(equalTo: view.topAnchor),
+            hc.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hc.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

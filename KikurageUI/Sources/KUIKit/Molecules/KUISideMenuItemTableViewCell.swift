@@ -6,8 +6,10 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
+@available(*, deprecated, renamed: "KSideMenuItemRow", message: "Need to change to SwiftUI")
 public class KUISideMenuItemTableViewCell: UITableViewCell {
     public static let identifier = "SideMenuItemTableViewCell"
 
@@ -53,5 +55,55 @@ public class KUISideMenuItemTableViewCell: UITableViewCell {
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6)
         ])
+    }
+}
+
+public struct KSideMenuItemRowProps {
+    let title: String
+    let iconImageName: String
+
+    public init(title: String, iconImageName: String) {
+        self.title = title
+        self.iconImageName = iconImageName
+    }
+}
+
+public struct KSideMenuItemRow: View {
+    private let props: KSideMenuItemRowProps
+
+    public init(props: KSideMenuItemRowProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        HStack(spacing: 18) {
+            Image(systemName: props.iconImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 25, height: 25)
+                .foregroundColor(.black)
+
+            Text(props.title)
+                .font(.system(size: 16))
+                .foregroundColor(.primary)
+
+            Spacer(minLength: 0)
+        }
+        .padding(.leading, 16)
+        .padding(.trailing, 6)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity)
+        .contentShape(Rectangle())
+    }
+}
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        VStack(spacing: 0) {
+            KSideMenuItemRow(props: KSideMenuItemRowProps(title: "カレンダー", iconImageName: "calendar"))
+            KSideMenuItemRow(props: KSideMenuItemRowProps(title: "グラフ", iconImageName: "waveform.path.ecg"))
+        }
     }
 }

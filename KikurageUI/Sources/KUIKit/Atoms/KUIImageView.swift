@@ -6,6 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 public struct KUIImageViewProps {
@@ -16,6 +17,7 @@ public struct KUIImageViewProps {
     }
 }
 
+@available(*, deprecated, renamed: "KImageView", message: "Need to change to SiwftUI")
 public class KUIImageView: UIImageView {
     public init(props: KUIImageViewProps) {
         super.init(frame: .zero)
@@ -32,5 +34,33 @@ public class KUIImageView: UIImageView {
         layer.cornerRadius = .viewCornerRadius
         contentMode = .scaleAspectFill
         translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+public struct KImageProps {
+    let image: UIImage?
+
+    public init(image: UIImage?) {
+        self.image = image
+    }
+}
+
+public struct KImageView: View {
+    private let props: KImageProps
+
+    public init(props: KImageProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        if let image = props.image {
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(.viewCornerRadius)
+                .clipped()
+        } else {
+            // TODO: Not found image
+        }
     }
 }

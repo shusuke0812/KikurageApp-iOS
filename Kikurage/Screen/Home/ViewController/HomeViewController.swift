@@ -12,7 +12,7 @@ import RxSwift
 import UIKit
 
 class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAccessable {
-    private var baseView: HomeBaseView = .init()
+    private var baseView: HomeBaseView!
     private var viewModel: HomeViewModelType!
 
     private var sideMenuBarButtonItem: UIBarButtonItem!
@@ -29,42 +29,36 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Config
         viewModel = HomeViewModel(kikurageUser: kikurageUser)
         viewModel.input.listenKikurageState()
 
-        // UI
-        baseView.setKikurageNameUI(kikurageUser: kikurageUser)
+        baseView = HomeBaseView(delegate: self, state: viewModel.state)
+        addBaseView(baseView: baseView)
+
+        viewModel.state.kikurageName = R.string.localizable.screen_home_kikurage_name(kikurageUser.kikurageName ?? "-")
+
         setNavigationItem()
         adjustNavigationBarBackgroundColor()
-
-        // Other
         makeForeBackgroundObserver()
 
-        // Rx
-        rxTransition()
         rxBaseView()
+        rxSideMenu()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setDateTimer()
         loadKikurageState()
-        startKikurageStateViewAnimation()
+        viewModel.state.isAnimating = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // For prevented memory over usage, timer is stopped and disposed before screen transition
         dateTimer?.invalidate()
         dateTimer = nil
-        baseView.kikurageStatusViewAnimation(false)
+        viewModel.state.isAnimating = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -88,22 +82,14 @@ extension HomeViewController {
     private func setDateTimer() {
         dateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
             DispatchQueue.main.async {
-                self?.updateUI()
+                self?.viewModel.state.nowTimeString = self?.viewModel.output.dateNowString ?? "-"
             }
         })
-    }
-
-    @objc private func updateUI() {
-        baseView.updateTimeLabel(dateString: viewModel.output.dateNowString)
     }
 
     private func makeForeBackgroundObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-    }
-
-    private func startKikurageStateViewAnimation() {
-        baseView.kikurageStatusViewAnimation(true)
     }
 }
 
@@ -113,44 +99,24 @@ extension HomeViewController {
     private func rxBaseView() {
         viewModel.output.kikurageState.subscribe(
             onNext: { [weak self] kikurageState in
-                self?.baseView.setKikurageStateUI(kikurageState: kikurageState)
+                DispatchQueue.main.async {
+                    self?.updateState(kikurageState: kikurageState)
+                }
             }
         )
         .disposed(by: disposeBag)
 
         viewModel.output.error.subscribe(
-            onNext: { [weak self] error in
-                self?.onFailedLoadingKikurageState(errorMessage: "error") // TODO: error.description()
+            onNext: { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.onFailedLoadingKikurageState(errorMessage: "error") // TODO: error.description()
+                }
             }
         )
         .disposed(by: disposeBag)
     }
 
-    private func rxTransition() {
-        baseView.footerButtonView.cultivationButton.rx.tap.asDriver()
-            .drive(
-                onNext: { [weak self] in
-                    self?.pushToCultivation()
-                }
-            )
-            .disposed(by: disposeBag)
-
-        baseView.footerButtonView.recipeButton.rx.tap.asDriver()
-            .drive(
-                onNext: { [weak self] in
-                    self?.pushToRecipe()
-                }
-            )
-            .disposed(by: disposeBag)
-
-        baseView.footerButtonView.communicationButton.rx.tap.asDriver()
-            .drive(
-                onNext: { [weak self] in
-                    self?.pushToCommunication()
-                }
-            )
-            .disposed(by: disposeBag)
-
+    private func rxSideMenu() {
         sideMenuBarButtonItem.rx.tap.asDriver()
             .drive(
                 onNext: { [weak self] in
@@ -158,6 +124,23 @@ extension HomeViewController {
                 }
             )
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - State Update
+
+extension HomeViewController {
+    private func updateState(kikurageState: KikurageState) {
+        viewModel.state.statusMessage = kikurageState.message ?? "-"
+        viewModel.state.temperature = kikurageState.temperature ?? 0
+        viewModel.state.humidity = kikurageState.humidity ?? 0
+        viewModel.state.advice = kikurageState.advice ?? "-"
+        if let type = kikurageState.type {
+            viewModel.state.stateImages = type.getStateImages()
+            viewModel.state.hasStateError = false
+        } else {
+            viewModel.state.hasStateError = true
+        }
     }
 }
 
@@ -174,13 +157,13 @@ extension HomeViewController {
 extension HomeViewController {
     @objc private func willEnterForeground() {
         setDateTimer()
-        startKikurageStateViewAnimation()
+        viewModel.state.isAnimating = true
     }
 
     @objc private func didEnterBackground() {
         dateTimer?.invalidate()
         dateTimer = nil
-        baseView.kikurageStatusViewAnimation(false)
+        viewModel.state.isAnimating = false
     }
 }
 
@@ -188,10 +171,24 @@ extension HomeViewController {
 
 extension HomeViewController {
     private func onFailedLoadingKikurageState(errorMessage: String) {
-        DispatchQueue.main.async {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
-                self?.baseView.setKikurageStateUI(kikurageState: nil)
-            }
+        UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
+            self?.viewModel.state.hasStateError = true
         }
+    }
+}
+
+// MARK: - HomeBaseViewDelegate
+
+extension HomeViewController: HomeBaseViewDelegate {
+    func homeBaseViewDidTapCultivationButton() {
+        pushToCultivation()
+    }
+
+    func homeBaseViewDidTapRecipeButton() {
+        pushToRecipe()
+    }
+
+    func homeBaseViewDidTapCommunicationButton() {
+        pushToCommunication()
     }
 }

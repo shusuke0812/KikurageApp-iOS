@@ -6,68 +6,74 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KSRecipeService
 import KUIKit
+import SwiftUI
 import UIKit
 
-class RecipeBaseView: UIView {
-    var onRefresh: (() -> Void)?
+protocol RecipeBaseViewDelegate: AnyObject {
+    func recipeBaseViewDidTapAddButton()
+    func recipeBaseViewDidPullToRefresh()
+}
 
-    private(set) var tableView: UITableView!
-    private(set) var postPageButton: KUICircleButton!
+struct RecipeBaseView: View {
+    @StateObject var state: RecipeState
 
-    private let tableViewCellIdentifier = "recipe_cell"
+    weak var delegate: RecipeBaseViewDelegate?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-        setupRefreshControl()
+    init(delegate: RecipeBaseViewDelegate?, state: RecipeState) {
+        self.delegate = delegate
+        _state = StateObject(wrappedValue: state)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+
+            GeometryReader { geometry in
+                ScrollView {
+                    if state.isLoading && state.recipes.isEmpty {
+                        ProgressView()
+                            .frame(height: geometry.size.height)
+                    } else if state.recipes.isEmpty {
+                        KUIEmptyView(type: .notFoundRecipe)
+                            .frame(height: geometry.size.height)
+                    } else {
+                        LazyVStack(spacing: 0) {
+                            ForEach(Array(state.recipes.enumerated()), id: \.offset) { _, recipe in
+                                KRecipeCell(props: KRecipeCellProps(
+                                    imageStoragePath: recipe.data.imageStoragePaths.first ?? "",
+                                    dateString: recipe.data.cookDate,
+                                    title: recipe.data.name,
+                                    description: recipe.data.memo
+                                ))
+                                .frame(height: 160)
+                            }
+                        }
+                    }
+                }
+                .refreshable {
+                    delegate?.recipeBaseViewDidPullToRefresh()
+                }
+            }
+
+            KCircleButton(props: KCircleButtonProps(
+                variant: .primary,
+                image: R.image.addMemoButton(),
+                width: 60
+            ), onTap: {
+                delegate?.recipeBaseViewDidTapAddButton()
+            })
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            .padding(20)
+        }
+        .alert("error", isPresented: $state.hasError) {
+            Button(R.string.localizable.common_alert_ok_btn_ok(), role: .cancel) {}
+        }
     }
+}
 
-    func setupTableViewDelegate(delegate: UITableViewDelegate) {
-        tableView.delegate = delegate
-    }
-
-    private func setupComponent() {
-        backgroundColor = .systemGroupedBackground
-
-        tableView = UITableView()
-        tableView.backgroundColor = .systemGroupedBackground
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
-        tableView.register(KUIRecipeTableViewCell.self, forCellReuseIdentifier: tableViewCellIdentifier)
-        tableView.tableFooterView = UIView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        postPageButton = KUICircleButton(props: KUICircleButtonProps(
-            variant: .primary,
-            image: R.image.addMemoButton(),
-            width: 60
-        ))
-        postPageButton.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(tableView)
-        addSubview(postPageButton)
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-
-            postPageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            postPageButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        ])
-    }
-
-    private func setupRefreshControl() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addAction(.init { [weak self] _ in
-            self?.onRefresh?()
-        }, for: .valueChanged)
-        tableView.refreshControl = refreshControl
-    }
+#Preview {
+    RecipeBaseView(delegate: nil, state: RecipeState())
 }
