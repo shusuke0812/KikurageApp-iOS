@@ -37,6 +37,6 @@ extension HomeAccessable {
 
     func modalToSideMenu() {
         let vc = SideMenuViewController()
-        present(to: vc, transitionStyle: .crossDissolve, presentationStyle: .overCurrentContext)
+        presentSideMenu(to: vc)
     }
 }

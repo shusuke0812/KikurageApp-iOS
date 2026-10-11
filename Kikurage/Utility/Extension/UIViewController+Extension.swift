@@ -31,7 +31,8 @@ protocol UIViewControllerNavigatable {
     func addEmptyView(type: EmptyType) -> UIHostingController<KUIEmptyView>
     /// Do not display empty view
     func removeEmptyView(hostingVC: UIHostingController<KUIEmptyView>?)
-    func addBaseView(baseView: some View)
+    @discardableResult
+    func addBaseView<Content: View>(baseView: Content) -> UIHostingController<Content>
 }
 
 extension UIViewControllerNavigatable where Self: UIViewController {
@@ -89,7 +90,7 @@ extension UIViewControllerNavigatable where Self: UIViewController {
         hostingVC?.removeFromParent()
     }
 
-    func addBaseView(baseView: some View) {
+    func addBaseView<Content: View>(baseView: Content) -> UIHostingController<Content> {
         let hc = UIHostingController(rootView: baseView)
         hc.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -103,5 +104,6 @@ extension UIViewControllerNavigatable where Self: UIViewController {
             hc.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             hc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        return hc
     }
 }

@@ -7,80 +7,24 @@
 //
 
 import MessageUI
+import SwiftUI
 import UIKit
 
 class SideMenuViewController: UIViewController, UIViewControllerNavigatable, SideMenuAccessable {
-    private var baseView: SideMenuBaseView = .init()
     private var viewModel: SideMenuViewModel!
-
-    private let mail = MFMailComposeViewController()
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
         viewModel = SideMenuViewModel()
-        setDelegateDataSource()
 
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0,
-            options: .curveEaseOut,
-            animations: {
-                self.baseView.openAnimations()
-            }
-        )
+        let baseView = SideMenuBaseView(sections: viewModel.sections, delegate: self)
+        let hostingController = addBaseView(baseView: baseView)
+        hostingController.view.backgroundColor = .clear
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setAnimation()
-    }
-
-    // MARK: - Action
-
-    // メニューエリア以外をタップした時の処理
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        for touch in touches where touch.view == baseView {
-            UIView.animate(
-                withDuration: 0.3,
-                delay: 0,
-                options: .curveEaseIn,
-                animations: { self.baseView.closeAnimations() }
-            ) { _ in
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-}
-
-// MARK: - Initialized
-
-extension SideMenuViewController {
-    private func setAnimation() {
-        // メニューの位置を取得する
-        let menuPosition: CGPoint = baseView.sideMenuParentView.layer.position
-        // 初期位置を画面の外側にするため、メニューの幅の分だけマイナスする
-        baseView.sideMenuParentView.layer.position.x = -(baseView.sideMenuParentView.frame.width)
-        // 表示時のアニメーションを作成する
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            options: .curveEaseOut,
-            animations: { self.baseView.sideMenuParentView.layer.position.x = menuPosition.x },
-            completion: nil
-        )
-    }
-
-    private func setDelegateDataSource() {
-        mail.mailComposeDelegate = self
-        baseView.configTableView(delegate: self, dataSource: viewModel)
-    }
 }
 
 // MARK: - MFMail Delegate
@@ -88,6 +32,8 @@ extension SideMenuViewController {
 extension SideMenuViewController: MFMailComposeViewControllerDelegate {
     private func openContactMailer() {
         if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
             // 宛先のメールアドレス
             mail.setToRecipients([Constants.Email.address])
             // 件名
@@ -127,12 +73,11 @@ extension SideMenuViewController {
     }
 }
 
-// MARK: - UITableView Delegate
+// MARK: - SideMenuBaseView Delegate
 
-extension SideMenuViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sectionRow = viewModel.sections[indexPath.section].rows[indexPath.row]
-        switch sectionRow {
+extension SideMenuViewController: SideMenuBaseViewDelegate {
+    func sideMenuBaseViewDidSelectItem(_ item: SideMenuViewModel.SectionRowType) {
+        switch item {
         case .calendar:
             modalToCalendar { [weak self] in
                 self?.dismiss(animated: true, completion: nil)
@@ -166,6 +111,9 @@ extension SideMenuViewController: UITableViewDelegate {
                 self?.dismiss(animated: true, completion: nil)
             }
         }
-        baseView.tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func sideMenuBaseViewDidRequestClose() {
+        dismiss(animated: true, completion: nil)
     }
 }

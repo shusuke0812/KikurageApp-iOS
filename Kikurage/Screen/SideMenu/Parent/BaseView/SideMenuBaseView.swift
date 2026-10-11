@@ -26,7 +26,7 @@ struct SideMenuBaseView: View {
     private let animationDuration: Double = 0.3
 
     var body: some View {
-        ZStack(alignment: .leading) {
+        ZStack(alignment: .topLeading) {
             Color.white.opacity(isOpen ? 0.5 : 0)
                 .ignoresSafeArea()
                 .onTapGesture {
@@ -34,13 +34,12 @@ struct SideMenuBaseView: View {
                 }
 
             VStack(spacing: 0) {
-                // ヘッダー（タイトル。背景のみステータスバーの裏まで伸ばす）
                 Text(R.string.localizable.side_menu_title())
                     .font(.system(size: 18, weight: .bold))
-                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 15)
                     .padding(.bottom, 10)
-                    .background(Color(uiColor: .systemBackground))//.ignoresSafeArea(edges: .top))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color(uiColor: .systemBackground))
 
                 // メニュー本体
                 List {
@@ -66,10 +65,10 @@ struct SideMenuBaseView: View {
                 .background(Color(uiColor: .systemGroupedBackground))
             }
             .frame(width: panelWidth)
+            .frame(maxHeight: .infinity, alignment: .top)
             .offset(x: isOpen ? 0 : -panelWidth)
-
-            Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .onAppear {
             withAnimation(.easeOut(duration: animationDuration)) {
                 isOpen = true
