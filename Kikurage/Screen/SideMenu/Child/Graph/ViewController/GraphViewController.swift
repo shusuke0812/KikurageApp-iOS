@@ -10,21 +10,20 @@ import KAAnalytics
 import KSGraphService
 import UIKit
 
-class GraphViewController: UIViewController {
-    private var baseView: GraphBaseView = .init()
+class GraphViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: GraphViewModel!
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = GraphViewModel()
-        setDelegateDataSource()
+        viewModel.delegate = self
         setNavigation()
+
+        let baseView = GraphBaseView(state: viewModel.state)
+        let _ = addBaseView(baseView: baseView)
+
         loadKikurageUser()
     }
 
@@ -43,10 +42,6 @@ class GraphViewController: UIViewController {
 // MARK: - Initialized
 
 extension GraphViewController {
-    private func setDelegateDataSource() {
-        viewModel.delegate = self
-    }
-
     private func setNavigation() {
         let closeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeBarButtonItem]
@@ -54,15 +49,12 @@ extension GraphViewController {
     }
 
     private func loadKikurageUser() {
-        baseView.startGraphActivityIndicators()
+        viewModel.state.isLoading = true
         viewModel.loadKikurageUser()
     }
 
     private func loadKikurageStateGraph() {
-        guard let kikurageUser = viewModel.kikurageUser else {
-            return
-        }
-        viewModel.loadKikurageStateGraph(productID: kikurageUser.productKey)
+        viewModel.loadKikurageStateGraph()
     }
 }
 
@@ -70,19 +62,16 @@ extension GraphViewController {
 
 extension GraphViewController: GraphViewModelDelegate {
     func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel) {
-        DispatchQueue.main.async {
-            self.baseView.stopGraphActivityIndicators()
-
-            self.baseView.setLineChartView(datas: graphViewModel.humidityGraphDatas, graphDataType: .humidity)
-            self.baseView.setLineChartView(datas: graphViewModel.temperatureGraphDatas, graphDataType: .temperature)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.state.isLoading = false
         }
     }
 
     func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String) {
-        DispatchQueue.main.async {
-            self.baseView.stopGraphActivityIndicators()
-
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.state.isLoading = false
+            self?.viewModel.state.errorMessage = errorMessage
+            self?.viewModel.state.hasError = true
         }
     }
 
@@ -91,8 +80,10 @@ extension GraphViewController: GraphViewModelDelegate {
     }
 
     func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String) {
-        DispatchQueue.main.async {
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.state.isLoading = false
+            self?.viewModel.state.errorMessage = errorMessage
+            self?.viewModel.state.hasError = true
         }
     }
 }
