@@ -29,7 +29,7 @@ class DeviceRegisterViewController: UIViewController, UIViewControllerNavigatabl
         qrCodeReaderViewModel.delegate = self
 
         baseView = DeviceRegisterBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         viewModel.delegate = self
 

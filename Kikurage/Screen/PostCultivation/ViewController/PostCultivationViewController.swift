@@ -22,7 +22,7 @@ class PostCultivationViewController: UIViewController, UIViewControllerNavigatab
         viewModel.delegate = self
 
         let baseView = PostCultivationBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setNavigation()
         adjustNavigationBarBackgroundColor()

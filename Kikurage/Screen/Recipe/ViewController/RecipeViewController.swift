@@ -23,7 +23,7 @@ class RecipeViewController: UIViewController, UIViewControllerNavigatable, Recip
         viewModel = RecipeViewModel()
 
         let baseView = RecipeBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setNavigationItem()
         setNotificationCenter()

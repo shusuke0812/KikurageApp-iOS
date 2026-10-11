@@ -17,7 +17,7 @@ class CultivationDetailViewController: UIViewController, UIViewControllerNavigat
         super.viewDidLoad()
 
         let baseView = CultivationDetailBaseView(cultivation: cultivation)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setNavigationItem()
         adjustNavigationBarBackgroundColor()

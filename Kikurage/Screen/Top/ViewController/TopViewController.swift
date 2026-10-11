@@ -18,7 +18,7 @@ class TopViewController: UIViewController, UIViewControllerNavigatable, TopAcces
     override func viewDidLoad() {
         super.viewDidLoad()
         baseView = TopBaseView(delegate: self)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         navigationItem.title = R.string.localizable.screen_top_title()
         adjustNavigationBarBackgroundColor()

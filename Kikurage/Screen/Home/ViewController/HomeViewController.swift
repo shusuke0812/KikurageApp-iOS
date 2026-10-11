@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
         viewModel.input.listenKikurageState()
 
         baseView = HomeBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         viewModel.state.kikurageName = R.string.localizable.screen_home_kikurage_name(kikurageUser.kikurageName ?? "-")
 

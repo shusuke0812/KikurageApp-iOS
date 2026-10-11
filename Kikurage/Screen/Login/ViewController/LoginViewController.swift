@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, UIViewControllerNavigatable, LoginA
         navigationItem.title = R.string.localizable.screen_login_title()
         viewModel = LoginViewModel()
         baseView = LoginBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setDelegate()
         adjustNavigationBarBackgroundColor()

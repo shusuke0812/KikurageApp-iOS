@@ -22,7 +22,7 @@ class PostRecipeViewController: UIViewController, UIViewControllerNavigatable {
         viewModel.delegate = self
 
         let baseView = PostRecipeBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setNavigation()
         adjustNavigationBarBackgroundColor()

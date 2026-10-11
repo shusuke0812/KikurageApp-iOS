@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController, UIViewControllerNavigatable, SignU
         navigationItem.title = R.string.localizable.screen_signup_title()
         viewModel = SignUpViewModel()
         baseView = SignUpBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setDelegate()
         adjustNavigationBarBackgroundColor()

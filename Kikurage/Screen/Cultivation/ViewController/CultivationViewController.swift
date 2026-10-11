@@ -23,7 +23,7 @@ class CultivationViewController: UIViewController, UIViewControllerNavigatable, 
         viewModel = CultivationViewModel()
 
         let baseView = CultivationBaseView(delegate: self, state: viewModel.state)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setNavigationItem()
         setNotificationCenter()

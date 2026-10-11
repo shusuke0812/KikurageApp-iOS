@@ -17,7 +17,7 @@ class CommunicationViewController: UIViewController, UIViewControllerNavigatable
         super.viewDidLoad()
 
         let baseView = CommunicationBaseView(delegate: self)
-        addBaseView(baseView: baseView)
+        let _ = addBaseView(baseView: baseView)
 
         setNavigationItem()
         adjustNavigationBarBackgroundColor()
