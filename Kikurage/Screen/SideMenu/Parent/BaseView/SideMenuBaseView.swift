@@ -37,7 +37,8 @@ struct SideMenuBaseView: View {
                 Text(R.string.localizable.side_menu_title())
                     .font(.system(size: 18, weight: .bold))
                     .padding(.horizontal, 15)
-                    .padding(.bottom, 10)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color(uiColor: .systemBackground))
 
