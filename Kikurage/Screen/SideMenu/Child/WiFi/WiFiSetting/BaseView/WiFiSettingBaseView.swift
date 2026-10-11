@@ -6,83 +6,91 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import UIKit
+import KSWiFiService
+import KUIKit
+import SwiftUI
 
 protocol WiFiSettingBaseViewDelegate: AnyObject {
-    func wifiSettingBaseViewDidTappedSetting(_ wifiSettingBaseView: WiFiSettingBaseView)
+    func wifiSettingBaseViewDidTapSetting()
+    func wifiSettingBaseViewDidConfirmAlert()
 }
 
-class WiFiSettingBaseView: UIView {
-    private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private let settingButton = UIButton()
-
-    private let disabledAlpha: CGFloat = 0.4
-
+struct WiFiSettingBaseView: View {
+    @StateObject var state: WiFiSettingState
     weak var delegate: WiFiSettingBaseViewDelegate?
 
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setupComponent()
-        setupButtonAction()
+    private let titleWidth: CGFloat = 85
+
+    init(state: WiFiSettingState, delegate: WiFiSettingBaseViewDelegate?) {
+        _state = StateObject(wrappedValue: state)
+        self.delegate = delegate
     }
 
-    required init?(coder: NSCoder) {
-        nil
-    }
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                List {
+                    Section(WiFiSettingSectionType.required.title) {
+                        HStack {
+                            Text(WiFiSettingSectionType.SectionRowType.ssid.title)
+                                .frame(width: titleWidth, alignment: .leading)
+                            TextField("", text: $state.ssid)
+                        }
 
-    func setupTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
-    }
+                        HStack {
+                            Text(WiFiSettingSectionType.SectionRowType.password.title)
+                                .frame(width: titleWidth, alignment: .leading)
+                            TextField("", text: $state.password)
+                        }
+                    }
 
-    func enableSettingButton(isEnabled: Bool) {
-        settingButton.isEnabled = isEnabled
-        if isEnabled {
-            settingButton.alpha = 1
-        } else {
-            settingButton.alpha = disabledAlpha
+                    Section(WiFiSettingSectionType.optional.title) {
+                        ForEach(WiFiSettingSectionType.optional.rows, id: \.self) { row in
+                            HStack {
+                                Text(row.title)
+                                Spacer(minLength: 0)
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(Color(uiColor: .systemGray3))
+                            }
+                        }
+                    }
+                }
+                .listStyle(.insetGrouped)
+
+                Button(action: {
+                    delegate?.wifiSettingBaseViewDidTapSetting()
+                }) {
+                    Text(R.string.localizable.side_menu_wifi_setting_button_title())
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .background(Color(uiColor: R.color.subColor() ?? .systemBlue))
+                .foregroundColor(.white)
+                .cornerRadius(.buttonCornerRadius)
+                .opacity(state.isButtonEnabled ? 1 : 0.4)
+                .disabled(!state.isButtonEnabled)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 32)
+            }
+
+            if state.isSettingUp {
+                KProgressHUDView()
+            }
+        }
+        .background(Color(uiColor: .systemGroupedBackground))
+        .alert(item: $state.alert) { alert in
+            Alert(
+                title: Text(alert.message),
+                dismissButton: .default(Text(R.string.localizable.common_alert_ok_btn_ok())) {
+                    delegate?.wifiSettingBaseViewDidConfirmAlert()
+                }
+            )
         }
     }
+}
 
-    private func setupComponent() {
-        backgroundColor = .systemGroupedBackground
-
-        tableView.register(WiFiSettingTableViewCell.self, forCellReuseIdentifier: "WiFiSettingTableViewCell")
-        tableView.register(WiFiListTableViewCell.self, forCellReuseIdentifier: "WiFiListTableViewCell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.isScrollEnabled = false
-
-        settingButton.layer.masksToBounds = true
-        settingButton.layer.cornerRadius = .buttonCornerRadius
-        settingButton.backgroundColor = R.color.subColor()
-        settingButton.setTitle(R.string.localizable.side_menu_wifi_setting_button_title(), for: .normal)
-        settingButton.alpha = disabledAlpha
-        settingButton.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(tableView)
-        addSubview(settingButton)
-
-        let buttonMargin: CGFloat = 16
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            settingButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: buttonMargin),
-            settingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: buttonMargin),
-            settingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -buttonMargin),
-            settingButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -buttonMargin * 2),
-            settingButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
-    }
-
-    private func setupButtonAction() {
-        settingButton.addAction(.init { [weak self] _ in
-            guard let self else {
-                return
-            }
-            self.delegate?.wifiSettingBaseViewDidTappedSetting(self)
-        }, for: .touchUpInside)
-    }
+#Preview {
+    let state = WiFiSettingState()
+    state.ssid = "Kikurage-WiFi"
+    return WiFiSettingBaseView(state: state, delegate: nil)
 }

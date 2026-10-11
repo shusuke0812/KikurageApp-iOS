@@ -10,49 +10,26 @@ import Foundation
 import KDBluetoothManager
 
 public protocol WiFiSettingViewModelDelegate: AnyObject {
-    func wifiSettingViewModel(_ wifiSettingViewModel: WiFiSettingViewModel, canSetWiFi: Bool)
     func wifiSettingViewModelDidSuccessSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
     func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
 }
 
 public class WiFiSettingViewModel: NSObject {
-    public private(set) var sections: [WiFiSettingSectionType] = [.required, .optional]
-    public private(set) var wifiSetting: WiFiSetting
-
     public weak var delegate: WiFiSettingViewModelDelegate?
+    public let state = WiFiSettingState()
 
     private let bluetoothManager = BluetoothManager.shared
 
     public init(selectedSSID: String) {
-        wifiSetting = WiFiSetting(ssid: selectedSSID, password: "")
         super.init()
+        state.ssid = selectedSSID
         bluetoothManager.delegate = self
     }
 
-    public func sectionRows(section: Int) -> Int {
-        let section = sections[section]
-        switch section {
-        case .required:
-            return section.rows.count
-        case .optional:
-            return section.rows.count
-        }
-    }
-
     public func setupWiFi() {
+        state.isSettingUp = true
+        let wifiSetting = WiFiSetting(ssid: state.ssid, password: state.password)
         bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
-    }
-
-    public func updateWiFiSetting(ssid: String) {
-        wifiSetting.ssid = ssid
-    }
-
-    public func updateWiFiSetting(password: String) {
-        wifiSetting.password = password
-    }
-
-    public func validateWiFiSetting() -> Bool {
-        !wifiSetting.ssid.isEmpty && !wifiSetting.password.isEmpty
     }
 }
 
@@ -68,6 +45,7 @@ extension WiFiSettingViewModel: BluetoothManagerDelegate {
             return
         }
 
+        state.isSettingUp = false
         switch completionMessage {
         case .wifiSettingSuccess:
             delegate?.wifiSettingViewModelDidSuccessSetting(self)
