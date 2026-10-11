@@ -6,36 +6,22 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-// Doc: https://developer.apple.com/documentation/uikit/view_controllers/creating_a_custom_container_view_controller
-
 import KAAnalytics
 import UIKit
 
-class DictionaryViewController: UIViewController {
-    private var baseView: DictionaryBaseView = .init()
-
-    private lazy var dictionaryTriviaVC: DictionaryTriviaViewController? = {
-        let vc = DictionaryTriviaViewController()
-        return vc
-    }()
-
-    private lazy var dictonaryTwitterVC: DictionaryTwitterViewController? = {
-        let vc = DictionaryTwitterViewController()
-        return vc
-    }()
-
-    private var currentViewController: UIViewController?
-
-    override func loadView() {
-        view = baseView
-    }
+class DictionaryViewController: UIViewController, UIViewControllerNavigatable {
+    private let dictionaryTriviaVC = DictionaryTriviaViewController()
+    private let dictionaryTwitterVC = DictionaryTwitterViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
-        baseView.delegate = self
 
-        setContainerViewController(dictionaryTriviaVC)
+        let baseView = DictionaryBaseView(
+            triviaViewController: dictionaryTriviaVC,
+            twitterViewController: dictionaryTwitterVC
+        )
+        let _ = addBaseView(baseView: baseView)
     }
 
     // MARK: - Action
@@ -48,46 +34,9 @@ class DictionaryViewController: UIViewController {
 // MARK: - Initialized
 
 extension DictionaryViewController {
-    private func setContainerViewController(_ vc: UIViewController?) {
-        if let vc = vc {
-            currentViewController = vc
-            addChild(vc)
-            baseView.addContainerView(vc.view)
-            vc.didMove(toParent: self)
-        }
-    }
-
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
         navigationItem.title = ""
-    }
-
-    private func removeContainerViewController() {
-        guard let vc = currentViewController else {
-            return
-        }
-        vc.willMove(toParent: nil)
-        vc.view.removeFromSuperview()
-        vc.removeFromParent()
-    }
-
-    private func showContainerView(index: Int) {
-        removeContainerViewController()
-        if index == 0 {
-            setContainerViewController(dictionaryTriviaVC)
-            FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTrivia)
-        } else if index == 1 {
-            setContainerViewController(dictonaryTwitterVC)
-            FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTwitter)
-        }
-    }
-}
-
-// MARK: - DictionaryBaseViewDelegate
-
-extension DictionaryViewController: DictionaryBaseViewDelegate {
-    func dictionaryBaseView(_ dictionaryBaseView: DictionaryBaseView, didChangeSegmentedAt index: Int) {
-        showContainerView(index: index)
     }
 }

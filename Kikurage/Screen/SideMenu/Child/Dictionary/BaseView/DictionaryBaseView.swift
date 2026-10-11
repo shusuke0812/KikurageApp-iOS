@@ -6,75 +6,47 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
-import WebKit
+import KAAnalytics
+import SwiftUI
 
-protocol DictionaryBaseViewDelegate: AnyObject {
-    func dictionaryBaseView(_ dictionaryBaseView: DictionaryBaseView, didChangeSegmentedAt index: Int)
-}
+struct DictionaryBaseView: View {
+    @State private var selectedSegment = 0
 
-class DictionaryBaseView: UIView {
-    private var segmentedControl: UISegmentedControl!
-    private var containerView: UIView!
+    let triviaViewController: UIViewController
+    let twitterViewController: UIViewController
 
-    weak var delegate: DictionaryBaseViewDelegate?
+    var body: some View {
+        VStack(spacing: 0) {
+            Picker("", selection: $selectedSegment) {
+                Text(R.string.localizable.side_menu_dictionary_segment_title_trivia()).tag(0)
+                Text(R.string.localizable.side_menu_dictionary_segment_title_twitter()).tag(1)
+            }
+            .pickerStyle(.segmented)
+            .padding(8)
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupComponent() {
-        backgroundColor = .white
-
-        segmentedControl = UISegmentedControl(items: [
-            R.string.localizable.side_menu_dictionary_segment_title_trivia(),
-            R.string.localizable.side_menu_dictionary_segment_title_twitter()
-        ])
-        segmentedControl.selectedSegmentIndex = .zero
-        segmentedControl.addTarget(self, action: #selector(changeViews(_:)), for: .valueChanged)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-
-        containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(segmentedControl)
-        addSubview(containerView)
-
-        NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-
-            containerView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 8),
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-
-    @objc private func changeViews(_ sender: Any) {
-        delegate?.dictionaryBaseView(self, didChangeSegmentedAt: segmentedControl.selectedSegmentIndex)
+            if selectedSegment == 0 {
+                ViewControllerContainer(viewController: triviaViewController)
+            } else {
+                ViewControllerContainer(viewController: twitterViewController)
+            }
+        }
+        .background(Color.white)
+        .onChange(of: selectedSegment) { newValue in
+            if newValue == 0 {
+                FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTrivia)
+            } else {
+                FirebaseAnalyticsManager.sendScreenViewEvent(.dictionaryTwitter)
+            }
+        }
     }
 }
 
-// MARK: - Config
+private struct ViewControllerContainer: UIViewControllerRepresentable {
+    let viewController: UIViewController
 
-extension DictionaryBaseView {
-    func addContainerView(_ view: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-
-        containerView.addSubview(view)
-
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: containerView.topAnchor),
-            view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        ])
+    func makeUIViewController(context: Context) -> UIViewController {
+        viewController
     }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }

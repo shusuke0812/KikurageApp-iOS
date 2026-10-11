@@ -6,74 +6,57 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 import WebKit
 
-protocol DictionaryTriviaBaseViewDelegate: AnyObject {
-    func dictonaryTriviaBaseView(_ dictionaryTriviaBaseView: DictionaryTriviaBaseView, didFinish navigation: WKNavigation!)
-}
+struct DictionaryTriviaBaseView: View {
+    @State private var isLoading = true
 
-class DictionaryTriviaBaseView: UIView {
-    private var webView: WKWebView!
-    private var loadingIndicatorView: UIActivityIndicatorView!
+    private let url = URL(string: "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq")
 
-    weak var delegate: DictionaryTriviaBaseViewDelegate?
+    var body: some View {
+        ZStack {
+            if let url {
+                WebViewRepresentable(url: url, isLoading: $isLoading)
+            }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupComponent() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        webView.translatesAutoresizingMaskIntoConstraints = false
-
-        loadingIndicatorView = UIActivityIndicatorView()
-        loadingIndicatorView.isHidden = true
-        loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(webView)
-        addSubview(loadingIndicatorView)
-
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: topAnchor),
-            webView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            webView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
+            if isLoading {
+                ProgressView()
+            }
+        }
     }
 }
 
-// MARK: - WKNavigationDelegate
+private struct WebViewRepresentable: UIViewRepresentable {
+    let url: URL
+    @Binding var isLoading: Bool
 
-extension DictionaryTriviaBaseView: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        delegate?.dictonaryTriviaBaseView(self, didFinish: navigation)
-    }
-}
-
-// MARK: - Config
-
-extension DictionaryTriviaBaseView {
-    func loadWebSite(url: URL) {
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
         webView.load(URLRequest(url: url))
+        return webView
     }
 
-    func startLoadingIindicator() {
-        loadingIndicatorView.startAnimating()
-        loadingIndicatorView.isHidden = false
+    func updateUIView(_ uiView: WKWebView, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(isLoading: $isLoading)
     }
 
-    func stopLoadingIndicator() {
-        loadingIndicatorView.stopAnimating()
-        loadingIndicatorView.isHidden = true
+    class Coordinator: NSObject, WKNavigationDelegate {
+        @Binding var isLoading: Bool
+
+        init(isLoading: Binding<Bool>) {
+            _isLoading = isLoading
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            isLoading = false
+        }
     }
+}
+
+#Preview {
+    DictionaryTriviaBaseView()
 }

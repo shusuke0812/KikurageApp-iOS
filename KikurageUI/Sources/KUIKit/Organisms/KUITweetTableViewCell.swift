@@ -7,6 +7,7 @@
 //
 
 import Kingfisher
+import SwiftUI
 import UIKit
 
 public struct KUITweetTableViewCellProps {
@@ -23,6 +24,7 @@ public struct KUITweetTableViewCellProps {
     }
 }
 
+@available(*, deprecated, renamed: "KTweetRow", message: "Need to change to SwiftUI")
 public class KUITweetTableViewCell: UITableViewCell {
     public static let identifier = "TweetTableViewCell"
 
@@ -105,4 +107,62 @@ public class KUITweetTableViewCell: UITableViewCell {
             tweetLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
+}
+
+public struct KTweetRowProps {
+    let userName: String
+    let createdAtString: String
+    let tweet: String
+    let iconImageURL: URL?
+
+    public init(userName: String, createdAtString: String, tweet: String, iconImageURL: URL?) {
+        self.userName = userName
+        self.createdAtString = createdAtString
+        self.tweet = tweet
+        self.iconImageURL = iconImageURL
+    }
+}
+
+public struct KTweetRow: View {
+    private let props: KTweetRowProps
+    private let iconImageWidth: CGFloat = 50
+
+    public init(props: KTweetRowProps) {
+        self.props = props
+    }
+
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 6) {
+                KFImage(props.iconImageURL)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: iconImageWidth, height: iconImageWidth)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle().stroke(Color(uiColor: .lightGray), lineWidth: 0.3)
+                    )
+
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(props.userName)
+                        .font(.system(size: 17, weight: .bold))
+                    Text(props.createdAtString)
+                        .font(.system(size: 17))
+                }
+            }
+
+            Text(props.tweet)
+                .font(.system(size: 17, weight: .light))
+        }
+        .padding(8)
+    }
+}
+
+#Preview {
+    KTweetRow(props: KTweetRowProps(
+        userName: "きくらげ栽培botくん",
+        createdAtString: "2022/04/03",
+        tweet: "今日もきくらげが元気に育っています🍄",
+        iconImageURL: nil
+    ))
 }
