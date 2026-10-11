@@ -9,21 +9,16 @@
 import KSDebugService
 import UIKit
 
-class DebugViewController: UIViewController {
-    private var baseView: DebugBaseView = .init()
+class DebugViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: DebugViewModel!
-
-    override func loadView() {
-        view = baseView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
-        baseView.delegate = self
         viewModel = DebugViewModel()
 
-        baseView.activityIndicatorView.startAnimating()
+        let baseView = DebugBaseView(delegate: self)
+        let _ = addBaseView(baseView: baseView)
     }
 
     // MARK: - Action
@@ -46,7 +41,7 @@ extension DebugViewController {
 // MARK: - DebugBaseView Delegate
 
 extension DebugViewController: DebugBaseViewDelegate {
-    func debugBaseViewDidTappedForceRestrart(_ debugBaseView: DebugBaseView) {
+    func debugBaseViewDidTapForceRestart() {
         viewModel.logout { result in
             switch result {
             case .success:
