@@ -112,7 +112,6 @@
 		9CE1EE4027D4BFB500B5BE9C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */; };
 		9CE1EE4327D4D91E00B5BE9C /* NavigationProtocol+Cultivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */; };
 		9CE3FE76275B66F300FFDF19 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */; };
-		9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */; };
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
 		9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */; };
@@ -254,7 +253,6 @@
 		9CE1EE3F27D4BFB500B5BE9C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		9CE1EE4227D4D91D00B5BE9C /* NavigationProtocol+Cultivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Cultivation.swift"; sourceTree = "<group>"; };
 		9CE3FE75275B66F300FFDF19 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
-		9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceTableViewCell.swift; sourceTree = "<group>"; };
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
@@ -976,7 +974,6 @@
 			isa = PBXGroup;
 			children = (
 				9CE0184229B46C9B00365E95 /* WiFiSelectDeviceBaseView.swift */,
-				9CE41D6229B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1348,7 +1345,6 @@
 				9C84702327F882B400E5F05A /* DictionaryTwitterBaseView.swift in Sources */,
 				9C6EF7792229F0CD00550AC2 /* RecipeViewController.swift in Sources */,
 				9C07E7E22530194900720768 /* UIViewController+Extension.swift in Sources */,
-				9CE41D6329B57EED00E797E3 /* WiFiSelectDeviceTableViewCell.swift in Sources */,
 				9C09280F2CCFEA88006DBD0C /* NavigationProtocol+Home.swift in Sources */,
 				9C91124B25B68ED0007BCECB /* CalendarViewController.swift in Sources */,
 				9CE0185129B46D7700365E95 /* WiFiSettingViewController.swift in Sources */,
