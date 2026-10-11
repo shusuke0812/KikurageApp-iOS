@@ -6,106 +6,57 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import HorizonCalendar
+import KSCalendarService
 import KUIKit
-import UIKit
+import SwiftUI
 
-class CalendarBaseView: UIView {
-    private var contentView: UIView!
+struct CalendarBaseView: View {
+    @StateObject var state: CalendarState
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
+    init(state: CalendarState) {
+        _state = StateObject(wrappedValue: state)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
 
-    private func setupComponent() {
-        backgroundColor = .white
+            if let startComponents = state.cultivationStartDateComponents,
+               let currentComponents = state.currentDateComponents {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        KRoundedView {
+                            KCalendarView(
+                                cultivationStartDateComponents: startComponents,
+                                currentDateComponents: currentComponents
+                            )
+                            .padding(15)
+                        }
+                        .aspectRatio(1, contentMode: .fit)
 
-        contentView = UIView()
-        contentView.backgroundColor = .systemGroupedBackground
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(contentView)
-
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-
-    private func setupCalendarView(cultivationStartDateComponents: DateComponents, currentDateComponents: DateComponents, cultivationTerm: Int) {
-        // Calendar
-        let calendarParentView = KUIRoundedView(props: KUIRoundedViewProps(backgroundColor: .white))
-        calendarParentView.translatesAutoresizingMaskIntoConstraints = false
-
-        let calendarView = CalendarView(initialContent: makeContent(cultivationStartDateComponents: cultivationStartDateComponents, currentDateComponents: currentDateComponents))
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-
-        let contentViewWidth = UIScreen.main.bounds.size.width - (15 * 2)
-
-        // Cultivation start date
-        let dateParentView = KUIRoundedView(props: KUIRoundedViewProps(backgroundColor: .white))
-        dateParentView.translatesAutoresizingMaskIntoConstraints = false
-
-        let label = UILabel()
-        label.text = R.string.localizable.side_menu_clendar_term(cultivationTerm)
-        label.textAlignment = .center
-        label.textColor = .darkGray
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        // Constraint
-        calendarParentView.addSubview(calendarView)
-        dateParentView.addSubview(label)
-        contentView.addSubview(calendarParentView)
-        contentView.addSubview(dateParentView)
-
-        NSLayoutConstraint.activate([
-            calendarParentView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
-            calendarParentView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            calendarParentView.widthAnchor.constraint(equalToConstant: contentViewWidth),
-            calendarParentView.heightAnchor.constraint(equalToConstant: contentViewWidth),
-
-            calendarView.topAnchor.constraint(equalTo: calendarParentView.topAnchor, constant: 15),
-            calendarView.leadingAnchor.constraint(equalTo: calendarParentView.leadingAnchor, constant: 15),
-            calendarView.trailingAnchor.constraint(equalTo: calendarParentView.trailingAnchor, constant: -15),
-            calendarView.bottomAnchor.constraint(equalTo: calendarParentView.bottomAnchor, constant: -15),
-
-            label.leadingAnchor.constraint(equalTo: dateParentView.leadingAnchor, constant: 15),
-            label.trailingAnchor.constraint(equalTo: dateParentView.trailingAnchor, constant: -15),
-            label.centerYAnchor.constraint(equalTo: dateParentView.centerYAnchor),
-
-            dateParentView.topAnchor.constraint(equalTo: calendarParentView.bottomAnchor, constant: 20),
-            dateParentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            dateParentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            dateParentView.heightAnchor.constraint(equalToConstant: 60)
-        ])
-    }
-
-    private func makeContent(cultivationStartDateComponents: DateComponents, currentDateComponents: DateComponents) -> CalendarViewContent {
-        let calendar = Calendar.current
-        let nowDateComponents = currentDateComponents
-        let startDate = calendar.date(from: cultivationStartDateComponents)!
-        let endDate = calendar.date(from: nowDateComponents)!
-
-        return CalendarViewContent(
-            calendar: calendar,
-            visibleDateRange: startDate ... endDate,
-            monthsLayout: .horizontal(options: HorizontalMonthsLayoutOptions())
-        )
+                        KRoundedView {
+                            Text(R.string.localizable.side_menu_clendar_term(state.cultivationTerm ?? 0))
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(Color(uiColor: .darkGray))
+                        }
+                        .frame(height: 60)
+                    }
+                    .padding(.horizontal, 15)
+                    .padding(.top, 50)
+                }
+            }
+        }
+        .alert(state.errorMessage, isPresented: $state.hasError) {
+            Button(R.string.localizable.common_alert_ok_btn_ok(), role: .cancel) {}
+        }
     }
 }
 
-// MARK: - Config
-
-extension CalendarBaseView {
-    func initCalendarView(cultivationStartDateComponents: DateComponents, currentDateComponents: DateComponents, cultivationTerm: Int) {
-        setupCalendarView(cultivationStartDateComponents: cultivationStartDateComponents, currentDateComponents: currentDateComponents, cultivationTerm: cultivationTerm)
-    }
+#Preview {
+    let state = CalendarState()
+    state.cultivationStartDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date().addingTimeInterval(-60 * 60 * 24 * 10))
+    state.currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+    state.cultivationTerm = 10
+    return CalendarBaseView(state: state)
 }

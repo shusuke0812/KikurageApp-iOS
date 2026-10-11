@@ -19,7 +19,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.15.0")),
         .package(url: "https://github.com/onevcat/Kingfisher", .upToNextMajor(from: "8.3.3")),
-        .package(url: "https://github.com/mac-cain13/R.swift", from: "7.8.0")
+        .package(url: "https://github.com/mac-cain13/R.swift", from: "7.8.0"),
+        .package(url: "https://github.com/airbnb/HorizonCalendar", branch: "master")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -29,7 +30,8 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
                 .product(name: "Kingfisher", package: "kingfisher"),
-                .product(name: "RswiftLibrary", package: "R.swift")
+                .product(name: "RswiftLibrary", package: "R.swift"),
+                .product(name: "HorizonCalendar", package: "HorizonCalendar")
             ],
             plugins: [.plugin(name: "RswiftGeneratePublicResources", package: "R.swift")]
         ),
