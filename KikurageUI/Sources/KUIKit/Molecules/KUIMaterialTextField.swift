@@ -28,6 +28,7 @@ public struct KUIMaterialTextFieldProps {
     }
 }
 
+@available(*, deprecated, renamed: "KMaterialTextField", message: "Need to change to SwiftUI")
 public class KUIMaterialTextField: UIView {
     public var onDidEndEditing: ((String) -> Void)?
 
@@ -126,15 +127,21 @@ extension KUIMaterialTextField: UITextFieldDelegate {
 public struct KMaterialTextFieldProps {
     let maxTextCount: Int
     let placeHolder: String?
+    let alignment: TextAlignment
+    let fontSize: CGFloat
     @Binding public var inputText: String
 
     public init(
         maxTextCount: Int,
         placeHolder: String? = nil,
+        alignment: TextAlignment = .leading,
+        fontSize: CGFloat = 15,
         inputText: Binding<String>
     ) {
         self.maxTextCount = maxTextCount
         self.placeHolder = placeHolder
+        self.alignment = alignment
+        self.fontSize = fontSize
         _inputText = inputText
     }
 }
@@ -150,7 +157,8 @@ public struct KMaterialTextField: View {
     public var body: some View {
         VStack(alignment: .trailing, spacing: 3) {
             TextField(props.placeHolder ?? "", text: props.$inputText)
-                .font(.system(size: 15))
+                .font(.system(size: props.fontSize))
+                .multilineTextAlignment(props.alignment)
                 .focused($isFocused)
                 .onChange(of: props.inputText) { newValue in
                     if newValue.count > props.maxTextCount {
