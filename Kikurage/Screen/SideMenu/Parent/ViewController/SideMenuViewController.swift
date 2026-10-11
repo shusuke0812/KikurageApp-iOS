@@ -79,19 +79,13 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
     func sideMenuBaseViewDidSelectItem(_ item: SideMenuViewModel.SectionRowType) {
         switch item {
         case .calendar:
-            modalToCalendar { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            }
+            modalToCalendar()
         case .graph:
-            modalToGraph { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            }
+            modalToGraph()
         case .contact:
             openContactMailer()
         case .accountSetting:
-            modalToAccountSetting { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            }
+            modalToAccountSetting()
         case .license:
             AcknowledgementControlller.openSettingApp(onError: {
                 UIAlertController.showAlert(style: .alert, viewController: self, title: R.string.localizable.common_error(), message: R.string.localizable.side_menu_license_error(), okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil, completionOk: nil)
@@ -99,17 +93,11 @@ extension SideMenuViewController: SideMenuBaseViewDelegate {
         case .searchRecipe:
             openSearchRecipePage()
         case .kikurageDictionary:
-            modalToDictionary { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            }
+            modalToDictionary()
         case .wifi:
-            modalToWiFi { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            }
+            modalToWiFi()
         case .debugTry:
-            modalToDebug { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            }
+            modalToDebug()
         }
     }
 
