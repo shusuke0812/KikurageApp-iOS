@@ -12,7 +12,6 @@ import UIKit
 
 class CalendarViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: CalendarViewModel!
-    private let state = CalendarState()
 
     // MARK: - Lifecycle
 
@@ -22,7 +21,7 @@ class CalendarViewController: UIViewController, UIViewControllerNavigatable {
         viewModel.delegate = self
         setNavigation()
 
-        let baseView = CalendarBaseView(state: state)
+        let baseView = CalendarBaseView(state: viewModel.state)
         let _ = addBaseView(baseView: baseView)
 
         viewModel.loadKikurageUser()
@@ -53,16 +52,12 @@ extension CalendarViewController {
 // MARK: - CalendarViewModel Delegate
 
 extension CalendarViewController: CalendarViewModelDelegate {
-    func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {
-        state.cultivationStartDateComponents = calendarViewModel.cultivationDateComponents
-        state.currentDateComponents = viewModel.cultivationDateComponents
-        state.cultivationTerm = calendarViewModel.cultivationTerm ?? 0
-    }
+    func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel) {}
 
     func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String) {
         DispatchQueue.main.async { [weak self] in
-            self?.state.errorMessage = errorMessage
-            self?.state.hasError = true
+            self?.viewModel.state.errorMessage = errorMessage
+            self?.viewModel.state.hasError = true
         }
     }
 }

@@ -18,24 +18,17 @@ public protocol CalendarViewModelDelegate: AnyObject {
 }
 
 public class CalendarViewModel {
-    public private(set) var cultivationDateComponents: DateComponents
-    public private(set) var cultivationTerm: Int?
-    public var currentDateComponents: DateComponents {
-        DateHelper.getDateComponents()
-    }
-
     public weak var delegate: CalendarViewModelDelegate?
+    public let state = CalendarState()
 
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
 
-    private(set) var kikurageUser: KikurageUser?
+    private var kikurageUser: KikurageUser?
 
     public init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
-        cultivationDateComponents = DateHelper.getDateComponents()
-        cultivationTerm = 0
     }
 }
 
@@ -44,8 +37,12 @@ public class CalendarViewModel {
 extension CalendarViewModel {
     private func saveDateComponents() {
         if let cultivationStartDate = kikurageUser?.cultivationStartDate {
-            cultivationDateComponents = DateHelper.getDateComponents(date: cultivationStartDate)
+            state.cultivationStartDateComponents = DateHelper.getDateComponents(date: cultivationStartDate)
+        } else {
+            state.cultivationStartDateComponents = DateHelper.getDateComponents()
         }
+        // MEMO: カレンダーの表示範囲の終端には、現在時刻ではなく栽培開始日を使用する（develop時代からの既存挙動）
+        state.currentDateComponents = state.cultivationStartDateComponents
     }
 
     private func calcCultivationTerm() {
@@ -55,7 +52,7 @@ extension CalendarViewModel {
         let endDate = calendar.startOfDay(for: Date())
 
         let components = calendar.dateComponents([.day], from: startDate, to: endDate)
-        cultivationTerm = components.day
+        state.cultivationTerm = components.day
     }
 }
 
