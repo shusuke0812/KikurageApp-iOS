@@ -14,47 +14,50 @@ public protocol WiFiListViewModelDelegate: AnyObject {
 }
 
 public class WiFiListViewModel: NSObject {
-    public private(set) var sections: [WiFiListSectionType] = [.spec, .enterWifi, .selectWifi]
-    public private(set) var wifiList = WiFiList()
-
-    public var selectedPeripheral: BluetoothPeripheral? {
-        bluetoothManager.selectedPeripheral
-    }
-
     public weak var delegate: WiFiListViewModelDelegate?
+    public let state = WiFiListState()
 
+    private var wifiList = WiFiList()
     private let bluetoothManager = BluetoothManager.shared
 
     override public init() {
         super.init()
         bluetoothManager.delegate = self
-    }
-
-    public func sectionRows(section: Int) -> Int {
-        switch sections[section] {
-        case .spec, .enterWifi:
-            return sections[section].rows.count
-        case .selectWifi:
-            return wifiList.list.count
-        }
-    }
-
-    public func getSelectedSSID(indexPath: IndexPath) -> String {
-        let section = sections[indexPath.section]
-        switch section {
-        case .spec, .enterWifi:
-            return ""
-        case .selectWifi:
-            return wifiList.list[indexPath.row].ssid
-        }
+        setupStaticState()
     }
 
     public func startWiFiScan() {
+        state.isScanning = true
         bluetoothManager.writeCommand(.writeStartWiFiScan)
     }
 
     public func stopWiFiScan() {
         bluetoothManager.writeCommand(.writeStopWiFiScan)
+    }
+}
+
+// MARK: - State Setting
+
+extension WiFiListViewModel {
+    private func setupStaticState() {
+        state.specSectionTitle = WiFiListSectionType.spec.title
+        state.enterWifiSectionTitle = WiFiListSectionType.enterWifi.title
+        state.selectWifiSectionTitle = WiFiListSectionType.selectWifi.title
+
+        state.enterWifiItems = WiFiListSectionType.enterWifi.rows.map { row in
+            WiFiListSelectableItem(id: row.title, title: row.title, ssid: "")
+        }
+
+        guard let selectedPeripheral = bluetoothManager.selectedPeripheral else {
+            return
+        }
+        state.specItems = WiFiListSectionType.spec.rows.map { row in
+            WiFiListSpecItem(
+                id: row.title,
+                title: row.title,
+                stateTitle: row.getSpecTitle(bluetoothPeripheral: selectedPeripheral)
+            )
+        }
     }
 }
 
@@ -70,8 +73,12 @@ extension WiFiListViewModel: BluetoothManagerDelegate {
             return
         }
         wifiList.addElement(wifi: wifi)
+        state.selectWifiItems = wifiList.list.map { wifi in
+            WiFiListSelectableItem(id: wifi.ssid, title: wifi.ssid, ssid: wifi.ssid)
+        }
 
         if wifi.isLastCount() {
+            state.isScanning = false
             delegate?.viewModelUpdateWiFiList(self)
         }
     }

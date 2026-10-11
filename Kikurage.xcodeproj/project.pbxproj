@@ -121,7 +121,6 @@
 		9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F432D2916FD006E6A01 /* KSHomeService */; };
 		9CEE7F462D2931CA006E6A01 /* KSCultivationService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F452D2931CA006E6A01 /* KSCultivationService */; };
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
-		9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */; };
 		9CF76B2529BA1060001963B3 /* WiFiListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */; };
 		9CFBA7E22D2A59930029ABF9 /* KSWiFiService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CFBA7E12D2A59930029ABF9 /* KSWiFiService */; };
 		9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CFBA7E32D2A602E0029ABF9 /* KSDebugService */; };
@@ -256,7 +255,6 @@
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
-		9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListSpecTableViewCell.swift; sourceTree = "<group>"; };
 		9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -998,7 +996,6 @@
 			isa = PBXGroup;
 			children = (
 				9CE0184829B46CE600365E95 /* WiFiListBaseView.swift */,
-				9CF76B2229BA101E001963B3 /* WiFiListSpecTableViewCell.swift */,
 				9CF76B2429BA1060001963B3 /* WiFiListTableViewCell.swift */,
 			);
 			path = BaseView;
@@ -1356,7 +1353,6 @@
 				9C9B6C712770B0F7004B2D62 /* SideMenuViewModel.swift in Sources */,
 				9CA7627F26E26B70000F7EE2 /* TopViewController.swift in Sources */,
 				9C96212F2599C4DA00F2E4A0 /* PostRecipeViewController.swift in Sources */,
-				9CF76B2329BA101E001963B3 /* WiFiListSpecTableViewCell.swift in Sources */,
 				9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */,
 				9C1ACF4D2225768A00A3D4D1 /* HomeViewController.swift in Sources */,
 				9C84701927F83FC100E5F05A /* DictionaryTriviaBaseView.swift in Sources */,
