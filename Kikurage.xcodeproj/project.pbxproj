@@ -132,7 +132,7 @@
 		9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F432D2916FD006E6A01 /* KSHomeService */; };
 		9CEE7F462D2931CA006E6A01 /* KSCultivationService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F452D2931CA006E6A01 /* KSCultivationService */; };
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
-		9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CFBA7E32D2A602E0029ABF9 /* KSDebugService */; };
+		A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599C80FF591093188CFF133 /* DebugViewModel.swift */; };
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
 		E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -175,6 +175,7 @@
 		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceSectionType.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
+		8599C80FF591093188CFF133 /* DebugViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -289,7 +290,6 @@
 			files = (
 				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
 				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
-				9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */,
 				9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
@@ -360,6 +360,15 @@
 			children = (
 				BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */,
 				42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5307B309859F4A4479BEF6F7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8599C80FF591093188CFF133 /* DebugViewModel.swift */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -918,6 +927,7 @@
 			children = (
 				9CA95651284E4C77005B7867 /* BaseView */,
 				9CA95652284E4C84005B7867 /* ViewController */,
+				5307B309859F4A4479BEF6F7 /* ViewModel */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -1509,6 +1519,7 @@
 				13BC0D03AC401DD5745154C4 /* WiFiSettingState.swift in Sources */,
 				6B0E3A281DBE4C10000B2CE3 /* WiFiSettingSectionType.swift in Sources */,
 				86FFDF4817CC4E66D44767FE /* WiFiSettingViewModel.swift in Sources */,
+				A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2418,10 +2429,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
-		};
-		9CFBA7E32D2A602E0029ABF9 /* KSDebugService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSDebugService;
 		};
 		A2D104A1080BC81190ECC5EF /* KDBluetoothManager */ = {
 			isa = XCSwiftPackageProductDependency;

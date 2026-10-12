@@ -1,6 +1,6 @@
 //
 //  DebugViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/6/6.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -10,20 +10,20 @@ import Foundation
 import KDLoginManager
 import KDRepository
 
-public protocol DebugViewModelDelegate: AnyObject {}
+protocol DebugViewModelDelegate: AnyObject {}
 
-public class DebugViewModel {
+class DebugViewModel {
     private let loginManager: LoginManager
     private let loginRepository: LoginRepositoryProtocol
 
-    public weak var delegate: DebugViewModelDelegate?
+    weak var delegate: DebugViewModelDelegate?
 
-    public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
+    init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         self.loginRepository = loginRepository
         loginManager = LoginManager()
     }
 
-    public func logout(completion: @escaping ((Result<Void, Error>) -> Void)) {
+    func logout(completion: @escaping ((Result<Void, Error>) -> Void)) {
         loginRepository.logout { [weak self] result in
             switch result {
             case .success:
