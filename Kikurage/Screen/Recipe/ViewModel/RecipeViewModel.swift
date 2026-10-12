@@ -1,39 +1,37 @@
 //
 //  RecipeViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2020/12/27.
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
+import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSDateHelper
 import RxCocoa
 import RxSwift
 import UIKit.UITableView
 
-@_exported import KDEntity
-
-public protocol RecipeViewModelInput {
+protocol RecipeViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
     func loadRecipes()
 }
 
-public protocol RecipeViewModelOutput {
+protocol RecipeViewModelOutput {
     var recipes: Observable<[KikurageRecipeTuple]> { get }
     var recipe: Observable<KikurageRecipeTuple> { get }
     var error: Observable<Error> { get }
 }
 
-public protocol RecipeViewModelType {
+protocol RecipeViewModelType {
     var input: RecipeViewModelInput { get }
     var output: RecipeViewModelOutput { get }
     var state: RecipeState { get }
 }
 
-public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewModelOutput {
+class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewModelOutput {
     private let recipeRepository: RecipeRepositoryProtocol
     private let loginManager: LoginManager
 
@@ -41,17 +39,17 @@ public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeV
     private let subject = PublishSubject<[KikurageRecipeTuple]>()
     private let errorSubject = PublishSubject<Error>()
 
-    public var input: RecipeViewModelInput { self }
-    public var output: RecipeViewModelOutput { self }
-    public let state = RecipeState()
+    var input: RecipeViewModelInput { self }
+    var output: RecipeViewModelOutput { self }
+    let state = RecipeState()
 
-    public var itemSelected: AnyObserver<IndexPath>
+    var itemSelected: AnyObserver<IndexPath>
 
-    public var recipes: Observable<[KikurageRecipeTuple]> { subject.asObservable() }
-    public var recipe: Observable<KikurageRecipeTuple>
-    public var error: Observable<Error> { errorSubject.asObserver() }
+    var recipes: Observable<[KikurageRecipeTuple]> { subject.asObservable() }
+    var recipe: Observable<KikurageRecipeTuple>
+    var error: Observable<Error> { errorSubject.asObserver() }
 
-    public init(recipeRepository: RecipeRepositoryProtocol = RecipeRepository()) {
+    init(recipeRepository: RecipeRepositoryProtocol = RecipeRepository()) {
         self.recipeRepository = recipeRepository
         loginManager = LoginManager()
 
@@ -100,7 +98,7 @@ extension RecipeViewModel {
 
 extension RecipeViewModel {
     /// きくらげ料理記録を読み込む
-    public func loadRecipes() {
+    func loadRecipes() {
         guard let userID = loginManager.userID else {
             // errorSubject.onNext(error) // TODO: Error型を定義してVCへ通知する
             return

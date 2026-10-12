@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0573AE492922DC211AD52BB2 /* PostRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283DD0182A404FFA7D10D1F /* PostRecipeViewModel.swift */; };
+		05DB566C4545E5195F5673CB /* PostRecipeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C4115DC87338C7B288C2F /* PostRecipeState.swift */; };
 		07B6E9C5CA9CA940A6F9211F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE1DF6F3F41F8E137BB55C /* LoginViewModel.swift */; };
 		0F3729FE3D9335CAD018DD89 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC3719D4BAF43F7D8F154A /* DictionaryViewModel.swift */; };
 		1131A5C51455B61985502323 /* AccountSettingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */; };
@@ -17,6 +19,7 @@
 		4371ADFD54A70AE38FD0A20E /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D361B136F35C8C2B874C66D9 /* LoginViewState.swift */; };
 		4A115A06079586141091C9BE /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */; };
 		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
+		4BF051BC9658085D13D94715 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4587C2500401C9FC6F1AA /* RecipeViewModel.swift */; };
 		4CEA4B1F5FEFD3282098456E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DB0886F00968D255100312 /* HomeViewModel.swift */; };
 		4D170530D1126F8407FEEFF2 /* DeviceRegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */; };
 		5359E62D971971BBDDA5CB1A /* WiFiSelectDeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACEDB10AD1DF7AF74D2023 /* WiFiSelectDeviceState.swift */; };
@@ -135,13 +138,13 @@
 		9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */; };
 		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
 		9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */; };
-		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599C80FF591093188CFF133 /* DebugViewModel.swift */; };
 		B1B6ED6FB0C6CFFCA3AEC86C /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754C2148636E317B38BD918F /* CalendarViewModel.swift */; };
 		B2534E77E799030A8C8D53E6 /* QRCodeReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE40A335978BCAA7FFFDBB /* QRCodeReaderViewModel.swift */; };
 		B860E02BCFB8F165FD3082D5 /* CultivationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */; };
 		B9D1D195C4BFCC7B2F6E7E6E /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */; };
 		BB39DD4F0417A269D3AF933A /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */; };
+		BE492967BD985416B052D0F0 /* RecipeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FBA78AB006F043767D3D25 /* RecipeState.swift */; };
 		C5A72A25A8AD587F59B85F86 /* DictionaryTwitterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908550A7D5448A52D456FCC /* DictionaryTwitterState.swift */; };
 		D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */; };
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
@@ -182,10 +185,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0283DD0182A404FFA7D10D1F /* PostRecipeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostRecipeViewModel.swift; sourceTree = "<group>"; };
 		0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		12ABCC85BD7E795C704DC3FF /* CultivationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CultivationViewModel.swift; sourceTree = "<group>"; };
 		14BDA06245DEBF5E7149B87F /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
 		1ECE1D2E4803542173BC526B /* GraphState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GraphState.swift; sourceTree = "<group>"; };
+		223C4115DC87338C7B288C2F /* PostRecipeState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostRecipeState.swift; sourceTree = "<group>"; };
 		23B0C19F9E29DBA7D43AAA4C /* WiFiListSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListSectionType.swift; sourceTree = "<group>"; };
 		28B0B707293735884DB77E01 /* WiFiListViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListViewModel.swift; sourceTree = "<group>"; };
 		2908550A7D5448A52D456FCC /* DictionaryTwitterState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterState.swift; sourceTree = "<group>"; };
@@ -196,6 +201,7 @@
 		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		4663F7D6D01C044ACF534300 /* QRCodeReaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeReaderView.swift; sourceTree = "<group>"; };
 		4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceSectionType.swift; sourceTree = "<group>"; };
+		50FBA78AB006F043767D3D25 /* RecipeState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecipeState.swift; sourceTree = "<group>"; };
 		50FE40A335978BCAA7FFFDBB /* QRCodeReaderViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewModel.swift; sourceTree = "<group>"; };
 		57DE1DF6F3F41F8E137BB55C /* LoginViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 		D361B136F35C8C2B874C66D9 /* LoginViewState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginViewState.swift; sourceTree = "<group>"; };
 		D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
 		DBBC3719D4BAF43F7D8F154A /* DictionaryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
+		DBF4587C2500401C9FC6F1AA /* RecipeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		DE5EBAA2EA85B2925503E787 /* WiFiSettingSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingSectionType.swift; sourceTree = "<group>"; };
 		E0ACEDB10AD1DF7AF74D2023 /* WiFiSelectDeviceState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceState.swift; sourceTree = "<group>"; };
@@ -325,7 +332,6 @@
 			files = (
 				9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
-				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
 				9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */,
 				9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */,
@@ -367,6 +373,16 @@
 			children = (
 				84D4E5B436119034996070F3 /* CalendarState.swift */,
 				754C2148636E317B38BD918F /* CalendarViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		09512E2F589C1BDAE5263840 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				223C4115DC87338C7B288C2F /* PostRecipeState.swift */,
+				0283DD0182A404FFA7D10D1F /* PostRecipeViewModel.swift */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -468,6 +484,16 @@
 			children = (
 				B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */,
 				12ABCC85BD7E795C704DC3FF /* CultivationViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		87C6AAE836F2E961DF56CCF0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				50FBA78AB006F043767D3D25 /* RecipeState.swift */,
+				DBF4587C2500401C9FC6F1AA /* RecipeViewModel.swift */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -770,6 +796,7 @@
 			children = (
 				9CA2044F271C782500D65DD7 /* BaseView */,
 				9CA20461271C7ABE00D65DD7 /* ViewController */,
+				87C6AAE836F2E961DF56CCF0 /* ViewModel */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -864,6 +891,7 @@
 			children = (
 				9CA2044E271C781C00D65DD7 /* BaseView */,
 				9CA20462271C7AE100D65DD7 /* ViewController */,
+				09512E2F589C1BDAE5263840 /* ViewModel */,
 			);
 			path = PostRecipe;
 			sourceTree = "<group>";
@@ -1689,6 +1717,10 @@
 				4CEA4B1F5FEFD3282098456E /* HomeViewModel.swift in Sources */,
 				4371ADFD54A70AE38FD0A20E /* LoginViewState.swift in Sources */,
 				07B6E9C5CA9CA940A6F9211F /* LoginViewModel.swift in Sources */,
+				BE492967BD985416B052D0F0 /* RecipeState.swift in Sources */,
+				4BF051BC9658085D13D94715 /* RecipeViewModel.swift in Sources */,
+				05DB566C4545E5195F5673CB /* PostRecipeState.swift in Sources */,
+				0573AE492922DC211AD52BB2 /* PostRecipeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2561,10 +2593,6 @@
 		9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KAAnalytics;
-		};
-		9CEE7F472D296020006E6A01 /* KSRecipeService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSRecipeService;
 		};
 		9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;

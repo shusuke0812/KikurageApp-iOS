@@ -1,6 +1,6 @@
 //
 //  PostRecipeViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2020/12/30.
 //  Copyright © 2020 shusuke. All rights reserved.
@@ -10,25 +10,24 @@ import Foundation
 import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSDateHelper
 
-public protocol PostRecipeViewModelDelegate: AnyObject {
+protocol PostRecipeViewModelDelegate: AnyObject {
     func postRecipeViewModelDidSuccessPostRecipe(_ postRecipeViewModel: PostRecipeViewModel)
     func postRecipeViewModelDidFailedPostRecipe(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String)
     func postRecipeViewModelDidSuccessPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel)
     func postRecipeViewModelDidFailedPostRecipeImages(_ postRecipeViewModel: PostRecipeViewModel, with errorMessage: String)
 }
 
-public class PostRecipeViewModel {
+class PostRecipeViewModel {
     private let recipeRepository: RecipeRepositoryProtocol
     private let loginManager: LoginManager
 
-    public weak var delegate: PostRecipeViewModelDelegate?
+    weak var delegate: PostRecipeViewModelDelegate?
 
-    public let state: PostRecipeState
-    public var postedRecipeDocumentID: String?
+    let state: PostRecipeState
+    var postedRecipeDocumentID: String?
 
-    public init(
+    init(
         maxImageCount: Int,
         recipeRepository: RecipeRepositoryProtocol = RecipeRepository()
     ) {
@@ -41,7 +40,7 @@ public class PostRecipeViewModel {
 // MARK: - Firebase Firestore
 
 extension PostRecipeViewModel {
-    public func postRecipe() {
+    func postRecipe() {
         guard let userID = loginManager.userID else {
             delegate?.postRecipeViewModelDidFailedPostRecipe(self, with: "error")
             return
@@ -81,7 +80,7 @@ extension PostRecipeViewModel {
 // MARK: - Firebase Storage
 
 extension PostRecipeViewModel {
-    public func postRecipeImages() {
+    func postRecipeImages() {
         guard let userID = loginManager.userID, let postedRecipeDocumentID = postedRecipeDocumentID else {
             delegate?.postRecipeViewModelDidFailedPostRecipeImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return

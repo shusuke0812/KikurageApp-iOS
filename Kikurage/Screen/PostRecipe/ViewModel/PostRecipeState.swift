@@ -1,6 +1,6 @@
 //
 //  PostRecipeState.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2026/10/4.
 //
@@ -9,12 +9,12 @@ import Combine
 import Foundation
 import UIKit
 
-public enum PostRecipeAlert: Identifiable {
+enum PostRecipeAlert: Identifiable {
     case confirmPost
     case postFailed(message: String)
     case postSucceeded
 
-    public var id: String {
+    var id: String {
         switch self {
         case .confirmPost:
             return "confirmPost"
@@ -26,15 +26,15 @@ public enum PostRecipeAlert: Identifiable {
     }
 }
 
-public final class PostRecipeState: ObservableObject {
-    @Published public var selectedImages: [UIImage?]
-    @Published public var name: String = ""
-    @Published public var memo: String = ""
-    @Published public var date: Date = Date()
-    @Published public var isPosting: Bool = false
-    @Published public var alert: PostRecipeAlert?
+final class PostRecipeState: ObservableObject {
+    @Published var selectedImages: [UIImage?]
+    @Published var name: String = ""
+    @Published var memo: String = ""
+    @Published var date: Date = Date()
+    @Published var isPosting: Bool = false
+    @Published var alert: PostRecipeAlert?
 
-    public init(maxImageCount: Int) {
+    init(maxImageCount: Int) {
         selectedImages = Array(repeating: nil, count: maxImageCount)
     }
 }

@@ -12,7 +12,6 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(name: "KSAppService", targets: ["KSAppService"]),
-        .library(name: "KSRecipeService", targets: ["KSRecipeService"]),
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
@@ -34,18 +33,6 @@ let package = Package(
                 .target(name: "KSSLoadKikurageStateUseCase")
             ],
             path: "Sources/Services/KSAppService"
-        ),
-        .target(
-            name: "KSRecipeService",
-            dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain"),
-                .product(name: "KDEntity", package: "KikurageDomain"),
-                .product(name: "KDLoginManager", package: "KikurageDomain"),
-                .product(name: "RxSwift", package: "RxSwift"),
-                .product(name: "RxCocoa", package: "RxSwift"),
-                .target(name: "KSSDateHelper")
-            ],
-            path: "Sources/Services/KSRecipeService"
         ),
         // MARK: - SharedServices
 
