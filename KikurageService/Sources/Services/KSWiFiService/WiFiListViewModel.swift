@@ -34,6 +34,10 @@ public class WiFiListViewModel: NSObject {
     public func stopWiFiScan() {
         bluetoothManager.writeCommand(.writeStopWiFiScan)
     }
+
+    public func disconnectPeripheral() {
+        bluetoothManager.disconnect()
+    }
 }
 
 // MARK: - State Setting

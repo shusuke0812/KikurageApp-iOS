@@ -31,6 +31,14 @@ class WiFiListViewController: UIViewController, UIViewControllerNavigatable, WiF
         viewModel.stopWiFiScan()
     }
 
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        // 戻るボタンタップ等でこの画面がナビゲーションスタックから外れた場合、選択中デバイスとのBLE接続を切断する
+        if parent == nil {
+            viewModel.disconnectPeripheral()
+        }
+    }
+
     private func setupNavigation() {
         navigationItem.title = R.string.localizable.side_menu_wifi_list_title()
     }
