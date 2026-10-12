@@ -59,6 +59,9 @@ public struct BluetoothPeripheralList {
     }
 
     public mutating func add(peripheral: BluetoothPeripheral) {
+        if list.contains(where: { $0.uuid == peripheral.uuid }) {
+            return
+        }
         list.append(peripheral)
     }
 
