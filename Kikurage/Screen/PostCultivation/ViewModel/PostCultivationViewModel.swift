@@ -1,35 +1,33 @@
 //
 //  PostCultivationViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2020/11/14.
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
 import Foundation
+import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSDateHelper
 
-@_exported import KDEntity
-
-public protocol PostCultivationViewModelDelegate: AnyObject {
+protocol PostCultivationViewModelDelegate: AnyObject {
     func postCultivationViewModelDidSuccessPostCultivation(_ postCultivationViewModel: PostCultivationViewModel)
     func postCultivationViewModelDidFailedPostCultivation(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String)
     func postCultivationViewModelDidSuccessPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel)
     func postCultivationViewModelDidFailedPostCultivationImages(_ postCultivationViewModel: PostCultivationViewModel, with errorMessage: String)
 }
 
-public class PostCultivationViewModel {
+class PostCultivationViewModel {
     private let cultivationRepository: CultivationRepositoryProtocol
     private let loginManager: LoginManager
 
-    public weak var delegate: PostCultivationViewModelDelegate?
+    weak var delegate: PostCultivationViewModelDelegate?
 
-    public let state: PostCultivationState
-    public var postedCultivationDocumentID: String?
+    let state: PostCultivationState
+    var postedCultivationDocumentID: String?
 
-    public init(
+    init(
         maxImageCount: Int,
         cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()
     ) {
@@ -42,9 +40,9 @@ public class PostCultivationViewModel {
 // MARK: - Validation
 
 extension PostCultivationViewModel {
-    public func postValidation() -> Bool {
+    func postValidation() -> Bool {
         if state.memo.isEmpty {
-            state.memo = R.LocalizableString.postCultivationValidMemo
+            state.memo = R.string.localizable.screen_post_cultivation_valid_memo()
         }
         return true
     }
@@ -53,7 +51,7 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Firestore
 
 extension PostCultivationViewModel {
-    public func postCultivation() {
+    func postCultivation() {
         guard let userID = loginManager.userID else {
             delegate?.postCultivationViewModelDidFailedPostCultivation(self, with: "error") // TODO: Error型を定義してVCに通知する
             return
@@ -92,7 +90,7 @@ extension PostCultivationViewModel {
 // MARK: - Firebase Storage
 
 extension PostCultivationViewModel {
-    public func postCultivationImages() {
+    func postCultivationImages() {
         guard let userID = loginManager.userID, let postedCultivationDocumentID = postedCultivationDocumentID else {
             delegate?.postCultivationViewModelDidFailedPostCultivationImages(self, with: "error") // TODO: FirebaseAPIError.documentIDError.description()
             return

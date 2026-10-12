@@ -1,39 +1,37 @@
 //
 //  CultivationViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2020/11/12.
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
 import Foundation
+import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSDateHelper
 import RxCocoa
 import RxSwift
 
-@_exported import KDEntity
-
-public protocol CultivationViewModelInput {
+protocol CultivationViewModelInput {
     var itemSelected: AnyObserver<IndexPath> { get }
 
     func loadCultivations()
 }
 
-public protocol CultivationViewModelOutput {
+protocol CultivationViewModelOutput {
     var cultivations: Observable<[KikurageCultivationTuple]> { get }
     var cultivation: Observable<KikurageCultivationTuple> { get }
     var error: Observable<Error> { get }
 }
 
-public protocol CultivationViewModelType {
+protocol CultivationViewModelType {
     var input: CultivationViewModelInput { get }
     var output: CultivationViewModelOutput { get }
     var state: CultivationState { get }
 }
 
-public class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
+class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
     private let cultivationRepository: CultivationRepositoryProtocol
     private let loginManager: LoginManager
 
@@ -41,17 +39,17 @@ public class CultivationViewModel: CultivationViewModelType, CultivationViewMode
     private let subject = PublishSubject<[KikurageCultivationTuple]>()
     private let errorSubject = PublishSubject<Error>()
 
-    public var input: CultivationViewModelInput { self }
-    public var output: CultivationViewModelOutput { self }
-    public let state = CultivationState()
+    var input: CultivationViewModelInput { self }
+    var output: CultivationViewModelOutput { self }
+    let state = CultivationState()
 
-    public let itemSelected: AnyObserver<IndexPath>
+    let itemSelected: AnyObserver<IndexPath>
 
-    public var cultivations: Observable<[KikurageCultivationTuple]> { subject.asObservable() }
-    public let cultivation: Observable<KikurageCultivationTuple>
-    public var error: Observable<Error> { errorSubject.asObserver() }
+    var cultivations: Observable<[KikurageCultivationTuple]> { subject.asObservable() }
+    let cultivation: Observable<KikurageCultivationTuple>
+    var error: Observable<Error> { errorSubject.asObserver() }
 
-    public init(cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()) {
+    init(cultivationRepository: CultivationRepositoryProtocol = CultivationRepository()) {
         self.cultivationRepository = cultivationRepository
         loginManager = LoginManager()
 
@@ -100,7 +98,7 @@ extension CultivationViewModel {
 
 extension CultivationViewModel {
     /// きくらげ栽培記録を読み込む
-    public func loadCultivations() {
+    func loadCultivations() {
         guard let userID = loginManager.userID else {
             // errorSubject.onNext() // TODO: Error型を定義してVCに通知する
             return
