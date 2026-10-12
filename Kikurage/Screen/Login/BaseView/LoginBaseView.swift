@@ -6,7 +6,6 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KSLoginService
 import KUIKit
 import SwiftUI
 

@@ -7,7 +7,7 @@
 //
 
 import KAAnalytics
-import KSLoginService
+import KDEntity
 import PKHUD
 import UIKit
 

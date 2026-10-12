@@ -1,27 +1,25 @@
 //
 //  LoginViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2025/1/4.
 //
 
 import Combine
 import Foundation
+import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSLoadKikurageStateUseCase
 
-@_exported import KDEntity
-
-public protocol LoginViewModelDelegate: AnyObject {
+protocol LoginViewModelDelegate: AnyObject {
     func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState)
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String)
 }
 
-public class LoginViewModel {
-    public weak var delegate: LoginViewModelDelegate?
+class LoginViewModel {
+    weak var delegate: LoginViewModelDelegate?
 
-    public var state: LoginViewState
+    var state: LoginViewState
 
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
@@ -29,7 +27,7 @@ public class LoginViewModel {
 
     private var cancellables = Set<AnyCancellable>()
 
-    public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
+    init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
@@ -46,7 +44,7 @@ public class LoginViewModel {
 // MARK: - Firebase Authentication
 
 extension LoginViewModel {
-    public func login() {
+    func login() {
         loginRepository.login(loginInfo: (state.email, state.password)) { [weak self] response in
             switch response {
             case .success(let loginUser):
