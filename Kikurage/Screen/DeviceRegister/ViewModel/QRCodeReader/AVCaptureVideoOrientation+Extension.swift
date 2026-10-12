@@ -1,6 +1,6 @@
 //
 //  AVCaptureVideoOrientation+Extension.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/7/16.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -10,7 +10,7 @@ import AVFoundation
 import Foundation
 import UIKit
 
-public extension AVCaptureVideoOrientation {
+extension AVCaptureVideoOrientation {
     init?(deviceOrientation: UIDeviceOrientation) {
         switch deviceOrientation {
         case .portrait: self = .portrait

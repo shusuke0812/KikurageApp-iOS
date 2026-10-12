@@ -1,6 +1,6 @@
 //
 //  DeviceRegisterViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2021/1/7.
 //  Copyright © 2021 shusuke. All rights reserved.
@@ -11,10 +11,9 @@ import Combine
 import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSDateHelper
 import UIKit
 
-public protocol DeviceRegisterViewModelDelegate: AnyObject {
+protocol DeviceRegisterViewModelDelegate: AnyObject {
     func deviceRegisterViewModelDidFailedValidation(_ deviceRegisterViewModel: DeviceRegisterViewModel)
     func deviceRegisterViewModelDidSuccessGetKikurageState(_ deviceRegisterViewModel: DeviceRegisterViewModel)
     func deviceRegisterViewModelDidFailedGetKikurageState(_ deviceRegisterViewMode: DeviceRegisterViewModel, with errorMessage: String)
@@ -22,20 +21,20 @@ public protocol DeviceRegisterViewModelDelegate: AnyObject {
     func deviceRegisterViewModelDidFailedPostKikurageUser(_ deviceRegisterViewModel: DeviceRegisterViewModel, with errorMessage: String)
 }
 
-public class DeviceRegisterViewModel {
+class DeviceRegisterViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
     /// 入力状態
-    public var state: DeviceRegisterState
+    var state: DeviceRegisterState
     /// きくらげの状態
-    public var kikurageState: KikurageState?
+    var kikurageState: KikurageState?
     /// きくらげユーザー
-    public var kikurageUser: KikurageUser?
+    var kikurageUser: KikurageUser?
 
-    public weak var delegate: DeviceRegisterViewModelDelegate?
+    weak var delegate: DeviceRegisterViewModelDelegate?
 
-    public init(
+    init(
         kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
         kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()
     ) {
@@ -52,7 +51,7 @@ public class DeviceRegisterViewModel {
             .assign(to: &state.$canRegister)
     }
 
-    public func getDateString(date: Date) -> String {
+    func getDateString(date: Date) -> String {
         DateHelper.formatToString(date: date)
     }
 }
@@ -61,7 +60,7 @@ public class DeviceRegisterViewModel {
 
 extension DeviceRegisterViewModel {
     /// デバイス登録ボタンタップ時の処理（ViewController から呼ぶ）
-    public func registerDevice() {
+    func registerDevice() {
         if state.canRegister {
             kikurageUser = KikurageUser(
                 productKey: state.productKey,
@@ -80,7 +79,7 @@ extension DeviceRegisterViewModel {
         kikurageUser?.setStateRef(productKey: productKey)
     }
 
-    public func didReadQrCode(qrCodeString: String) {
+    func didReadQrCode(qrCodeString: String) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             self.state.isQrcodeReaderVisible = false
@@ -94,14 +93,14 @@ extension DeviceRegisterViewModel {
         self.setStateReference(productKey: qrCodeString)
     }
 
-    public func didNotReadQrCode() {
+    func didNotReadQrCode() {
         DispatchQueue.main.async { [weak self] in
             self?.state.isQrcodeReaderVisible = false
         }
     }
 
     /// キャプチャセッション設定時の処理（ViewController から captureSession と videoOrientation を渡す）
-    public func didConfigureCaptureSession(captureSession: AVCaptureSession, videoOrientation: AVCaptureVideoOrientation?) {
+    func didConfigureCaptureSession(captureSession: AVCaptureSession, videoOrientation: AVCaptureVideoOrientation?) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             self.state.videoOrientation = videoOrientation
@@ -110,7 +109,7 @@ extension DeviceRegisterViewModel {
     }
 
     /// キャプチャセッションを更新（viewDidLayoutSubviews 等から呼ぶ）
-    public func setCaptureSession(_ captureSession: AVCaptureSession?) {
+    func setCaptureSession(_ captureSession: AVCaptureSession?) {
         state.captureSession = captureSession
     }
 }
@@ -119,7 +118,7 @@ extension DeviceRegisterViewModel {
 
 extension DeviceRegisterViewModel {
     /// きくらげの状態を読み込む
-    public func loadKikurageState() {
+    func loadKikurageState() {
         let productID = (kikurageUser?.productKey)! // swiftlint:disable:this force_unwrapping
         let request = KikurageStateRequest(productID: productID)
         kikurageStateRepository.getKikurageState(request: request) { [weak self] response in
@@ -134,7 +133,7 @@ extension DeviceRegisterViewModel {
     }
 
     /// きくらげユーザーを登録する
-    public func registerKikurageUser() {
+    func registerKikurageUser() {
         guard let kikurageUser = kikurageUser else {
             delegate?.deviceRegisterViewModelDidFailedPostKikurageUser(self, with: "error") // TODO: R.string.localizable.common_load_user_error() に置き換え
             return

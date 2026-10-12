@@ -1,6 +1,6 @@
 //
 //  QRCodeReaderView.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/2/4.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -22,11 +22,11 @@ import UIKit
 ///     )
 /// }
 /// ```
-public struct QRCodeReaderView: View {
+struct QRCodeReaderView: View {
     private let session: AVCaptureSession?
     private let videoOrientation: AVCaptureVideoOrientation?
 
-    public init(
+    init(
         session: AVCaptureSession?,
         orientation: AVCaptureVideoOrientation? = nil
     ) {
@@ -34,7 +34,7 @@ public struct QRCodeReaderView: View {
         self.videoOrientation = orientation
     }
 
-    public var body: some View {
+    var body: some View {
         CameraPreviewRepresentable(
             session: session,
             videoOrientation: videoOrientation

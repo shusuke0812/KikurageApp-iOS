@@ -1,6 +1,6 @@
 //
 //  QRCodeReaderViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/7/15.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -11,7 +11,7 @@
 import AVFoundation
 import Foundation
 
-public protocol QRCodeReaderViewModelDelegate: AnyObject {
+protocol QRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didConfigured captureSession: AVCaptureSession)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didFailedConfigured captureSession: AVCaptureSession, error: SessionSetupError)
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, didRead qrCodeString: String)
@@ -21,24 +21,24 @@ public protocol QRCodeReaderViewModelDelegate: AnyObject {
     func qrCodeReaderViewModel(_ qrCodeReaderViewModel: QRCodeReaderViewModel, interruptionEnded captureSession: AVCaptureSession)
 }
 
-public class QRCodeReaderViewModel: NSObject {
+class QRCodeReaderViewModel: NSObject {
     private let captureSessionQueue = DispatchQueue(label: (Bundle.main.bundleIdentifier ?? "missing_bundle_id") + "_capture.session")
     private var isCaptureSessionRunning = false
     private var kvos = [NSKeyValueObservation]()
 
     // MARK: - Event notification
 
-    public weak var delegate: QRCodeReaderViewModelDelegate?
+    weak var delegate: QRCodeReaderViewModelDelegate?
 
     // MARK: - AVCapture
 
     private var setupResult: SessionSetupResult = .success
 
-    public var captureSession: AVCaptureSession!
+    var captureSession: AVCaptureSession!
     @objc private dynamic var videoDeviceInput: AVCaptureDeviceInput!
     private var metadataOutput: AVCaptureMetadataOutput
 
-    override public init() {
+    override init() {
         captureSession = AVCaptureSession()
         metadataOutput = AVCaptureMetadataOutput()
         super.init()
@@ -231,7 +231,7 @@ public class QRCodeReaderViewModel: NSObject {
     /**
      discover camera inputs which is possible to setup capture session
      */
-    public func discoverDeviceCamera() -> AVCaptureDeviceInput? {
+    func discoverDeviceCamera() -> AVCaptureDeviceInput? {
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back)
         let devices = discoverySession.devices
         if let backCamera = devices.first {
@@ -249,7 +249,7 @@ public class QRCodeReaderViewModel: NSObject {
     /**
      start capturing on initialization. If restart, it has to use `resume()` method.
      */
-    public func startRunning() {
+    func startRunning() {
         captureSessionQueue.async {
             guard !self.captureSession.isRunning else {
                 return
@@ -259,7 +259,7 @@ public class QRCodeReaderViewModel: NSObject {
         }
     }
 
-    public func stopRunning() {
+    func stopRunning() {
         captureSessionQueue.async {
             guard !self.captureSession.isRunning else {
                 return
@@ -272,14 +272,14 @@ public class QRCodeReaderViewModel: NSObject {
     /**
      restart capturing on error. For example, it uses this method when session is interrupted.
      */
-    public func resume() {
+    func resume() {
         captureSessionQueue.async {
             self.captureSession.startRunning()
             self.isCaptureSessionRunning = self.captureSession.isRunning
         }
     }
 
-    public func removeCaptureSession() {
+    func removeCaptureSession() {
         stopRunning()
         captureSession.outputs.forEach { captureSession.removeOutput($0) }
         captureSession.inputs.forEach { captureSession.removeInput($0) }
@@ -290,7 +290,7 @@ public class QRCodeReaderViewModel: NSObject {
 // MARK: - AVCaptureMetadataOutputObjects Delegate
 
 extension QRCodeReaderViewModel: AVCaptureMetadataOutputObjectsDelegate {
-    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         for metadata in metadataObjects as! [AVMetadataMachineReadableCodeObject] { // swiftlint:disable:this force_cast
             guard let value = metadata.stringValue else {
                 return

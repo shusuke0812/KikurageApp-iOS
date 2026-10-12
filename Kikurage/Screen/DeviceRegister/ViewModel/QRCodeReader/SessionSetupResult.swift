@@ -1,6 +1,6 @@
 //
 //  SessionSetupResult.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/7/24.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum SessionSetupResult: Equatable {
+enum SessionSetupResult: Equatable {
     case success
     case error(SessionSetupError)
 }
 
-public enum SessionSetupError {
+enum SessionSetupError {
     case failure
     case notAuthorized
     case notReadQRCode

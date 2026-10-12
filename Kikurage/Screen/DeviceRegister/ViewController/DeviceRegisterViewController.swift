@@ -9,7 +9,6 @@
 import AVFoundation
 import KDEntity
 import KAAnalytics
-import KSDeviceRegisterService
 import PKHUD
 import UIKit
 

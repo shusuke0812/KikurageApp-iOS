@@ -12,11 +12,14 @@
 		193FA98264F799B486D3BC1B /* GraphState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECE1D2E4803542173BC526B /* GraphState.swift */; };
 		37EB170ABAE06D1859F6796F /* WiFiListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD50C82507AF86458C85ECE1 /* WiFiListState.swift */; };
 		3853181BBF1A7552F2E0593F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6DB8208A79CBA65075A9F /* GraphViewModel.swift */; };
+		4A115A06079586141091C9BE /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */; };
 		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
+		4D170530D1126F8407FEEFF2 /* DeviceRegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */; };
 		5359E62D971971BBDDA5CB1A /* WiFiSelectDeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACEDB10AD1DF7AF74D2023 /* WiFiSelectDeviceState.swift */; };
 		6B0E3A281DBE4C10000B2CE3 /* WiFiSettingSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EBAA2EA85B2925503E787 /* WiFiSettingSectionType.swift */; };
 		6E9B674648229FE5518CFF2E /* WiFiSelectDeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */; };
 		73C9D61BB9804CD7C7FDF41B /* WiFiListSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0C19F9E29DBA7D43AAA4C /* WiFiListSectionType.swift */; };
+		7479D9D6DB21B22C7747E3B9 /* QRCodeReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4663F7D6D01C044ACF534300 /* QRCodeReaderView.swift */; };
 		752E79975A0D2E83E5F1F1BC /* CultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ABCC85BD7E795C704DC3FF /* CultivationViewModel.swift */; };
 		75D401375117F46ABF43A9AC /* WiFiListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0B707293735884DB77E01 /* WiFiListViewModel.swift */; };
 		76023EC94A91926F888D4A46 /* WiFiSelectDeviceSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */; };
@@ -130,12 +133,14 @@
 		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
 		9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
-		9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */; };
 		9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F432D2916FD006E6A01 /* KSHomeService */; };
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599C80FF591093188CFF133 /* DebugViewModel.swift */; };
 		B1B6ED6FB0C6CFFCA3AEC86C /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754C2148636E317B38BD918F /* CalendarViewModel.swift */; };
+		B2534E77E799030A8C8D53E6 /* QRCodeReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE40A335978BCAA7FFFDBB /* QRCodeReaderViewModel.swift */; };
 		B860E02BCFB8F165FD3082D5 /* CultivationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */; };
+		B9D1D195C4BFCC7B2F6E7E6E /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */; };
+		BB39DD4F0417A269D3AF933A /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */; };
 		D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */; };
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
 		DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1A009602B012D55AC0AA8 /* SignUpState.swift */; };
@@ -180,10 +185,14 @@
 		23B0C19F9E29DBA7D43AAA4C /* WiFiListSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListSectionType.swift; sourceTree = "<group>"; };
 		28B0B707293735884DB77E01 /* WiFiListViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListViewModel.swift; sourceTree = "<group>"; };
 		36F38397AD2BD91063F1543E /* PostCultivationState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostCultivationState.swift; sourceTree = "<group>"; };
+		37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterState.swift; sourceTree = "<group>"; };
 		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
+		4663F7D6D01C044ACF534300 /* QRCodeReaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeReaderView.swift; sourceTree = "<group>"; };
 		4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceSectionType.swift; sourceTree = "<group>"; };
+		50FE40A335978BCAA7FFFDBB /* QRCodeReaderViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewModel.swift; sourceTree = "<group>"; };
 		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
+		6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		754C2148636E317B38BD918F /* CalendarViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		84D4E5B436119034996070F3 /* CalendarState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarState.swift; sourceTree = "<group>"; };
 		8599C80FF591093188CFF133 /* DebugViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
@@ -290,6 +299,8 @@
 		BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingState.swift; sourceTree = "<group>"; };
 		C9665CE3E1D7873EEF869803 /* WiFiSettingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingState.swift; sourceTree = "<group>"; };
 		CB09838E87CA564AE9F02948 /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
+		D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
+		DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		DE5EBAA2EA85B2925503E787 /* WiFiSettingSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingSectionType.swift; sourceTree = "<group>"; };
 		E0ACEDB10AD1DF7AF74D2023 /* WiFiSelectDeviceState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceState.swift; sourceTree = "<group>"; };
 		EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -317,7 +328,6 @@
 				9C06D2F12D28124700B52292 /* KSAppService in Frameworks */,
 				9CCA43D82D22C755005A78ED /* RswiftLibrary in Frameworks */,
 				9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */,
-				9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */,
 				DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +395,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4A5F04DF4189CF9E297AA7D6 /* QRCodeReader */ = {
+			isa = PBXGroup;
+			children = (
+				4663F7D6D01C044ACF534300 /* QRCodeReaderView.swift */,
+			);
+			name = QRCodeReader;
+			path = QRCodeReader;
+			sourceTree = "<group>";
+		};
 		4B2827120DC0FEB809A37683 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +423,17 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5C864C3B5D5094D37C80CFEB /* QRCodeReader */ = {
+			isa = PBXGroup;
+			children = (
+				D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */,
+				DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */,
+				50FE40A335978BCAA7FFFDBB /* QRCodeReaderViewModel.swift */,
+			);
+			name = QRCodeReader;
+			path = QRCodeReader;
+			sourceTree = "<group>";
+		};
 		730EA4ACD383C3D36AF30CBE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +450,17 @@
 			children = (
 				B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */,
 				12ABCC85BD7E795C704DC3FF /* CultivationViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A2649F316A2B46ACBCBEE78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */,
+				6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */,
+				5C864C3B5D5094D37C80CFEB /* QRCodeReader */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -1257,6 +1298,7 @@
 			children = (
 				9CFD869C2C1433230029527D /* BaseView */,
 				9CFD869B2C14331C0029527D /* ViewController */,
+				8A2649F316A2B46ACBCBEE78 /* ViewModel */,
 			);
 			path = DeviceRegister;
 			sourceTree = "<group>";
@@ -1273,6 +1315,7 @@
 			isa = PBXGroup;
 			children = (
 				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
+				4A5F04DF4189CF9E297AA7D6 /* QRCodeReader */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1582,6 +1625,12 @@
 				752E79975A0D2E83E5F1F1BC /* CultivationViewModel.swift in Sources */,
 				936998FA9370F3DC989E3A20 /* PostCultivationState.swift in Sources */,
 				90CA7E683FB267893A3DAB48 /* PostCultivationViewModel.swift in Sources */,
+				4D170530D1126F8407FEEFF2 /* DeviceRegisterState.swift in Sources */,
+				4A115A06079586141091C9BE /* DeviceRegisterViewModel.swift in Sources */,
+				B9D1D195C4BFCC7B2F6E7E6E /* SessionSetupResult.swift in Sources */,
+				BB39DD4F0417A269D3AF933A /* AVCaptureVideoOrientation+Extension.swift in Sources */,
+				B2534E77E799030A8C8D53E6 /* QRCodeReaderViewModel.swift in Sources */,
+				7479D9D6DB21B22C7747E3B9 /* QRCodeReaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2462,10 +2511,6 @@
 		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSLoginService;
-		};
-		9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSDeviceRegisterService;
 		};
 		9CEE7F432D2916FD006E6A01 /* KSHomeService */ = {
 			isa = XCSwiftPackageProductDependency;
