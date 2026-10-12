@@ -1,6 +1,6 @@
 //
 //  GraphViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2021/1/11.
 //  Copyright © 2021 shusuke. All rights reserved.
@@ -11,25 +11,25 @@ import KDEntity
 import KDLoginManager
 import KDRepository
 
-public protocol GraphViewModelDelegate: AnyObject {
+protocol GraphViewModelDelegate: AnyObject {
     func graphViewModelDidSuccessGetKikurageStateGraph(_ graphViewModel: GraphViewModel)
     func graphViewModelDidFailedGetKikurageStateGraph(_ graphViewModel: GraphViewModel, with errorMessage: String)
     func graphViewModelDidSuccessGetKikurageUser(_ graphViewModel: GraphViewModel)
     func graphViewModelDidFailedGetKikurageUser(_ graphViewModel: GraphViewModel, with errorMessage: String)
 }
 
-public class GraphViewModel {
+class GraphViewModel {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
 
-    public weak var delegate: GraphViewModelDelegate?
-    public let state = GraphState()
+    weak var delegate: GraphViewModelDelegate?
+    let state = GraphState()
     /// きくらげの１週間データ
     private var kikurageStateGraph: [KikurageStateGraphTuple] = []
     private var kikurageUser: KikurageUser?
 
-    public init(
+    init(
         kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
         kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()
     ) {
@@ -78,7 +78,7 @@ extension GraphViewModel {
 extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
-    public func loadKikurageStateGraph() {
+    func loadKikurageStateGraph() {
         guard let productKey = kikurageUser?.productKey else {
             return
         }
@@ -96,7 +96,7 @@ extension GraphViewModel {
         }
     }
 
-    public func loadKikurageUser() {
+    func loadKikurageUser() {
         guard let uid = loginManager.userID else {
             delegate?.graphViewModelDidFailedGetKikurageUser(self, with: "not found user id") // TODO: error.description()
             return

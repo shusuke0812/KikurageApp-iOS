@@ -19,7 +19,6 @@ let package = Package(
         .library(name: "KSCultivationService", targets: ["KSCultivationService"]),
         .library(name: "KSRecipeService", targets: ["KSRecipeService"]),
         .library(name: "KSCalendarService", targets: ["KSCalendarService"]),
-        .library(name: "KSGraphService", targets: ["KSGraphService"]),
         .library(name: "KSDictionaryService", targets: ["KSDictionaryService"]),
         .library(name: "KSWiFiService", targets: ["KSWiFiService"]),
         .library(name: "KSDebugService", targets: ["KSDebugService"]),
@@ -117,15 +116,6 @@ let package = Package(
                 .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSCalendarService"
-        ),
-        .target(
-            name: "KSGraphService",
-            dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain"),
-                .product(name: "KDEntity", package: "KikurageDomain"),
-                .product(name: "KDLoginManager", package: "KikurageDomain")
-            ],
-            path: "Sources/Services/KSGraphService"
         ),
         .target(
             name: "KSDictionaryService",
