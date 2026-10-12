@@ -15,7 +15,6 @@ let package = Package(
         .library(name: "KSLoginService", targets: ["KSLoginService"]),
         .library(name: "KSHomeService", targets: ["KSHomeService"]),
         .library(name: "KSRecipeService", targets: ["KSRecipeService"]),
-        .library(name: "KSDictionaryService", targets: ["KSDictionaryService"]),
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
@@ -68,16 +67,6 @@ let package = Package(
                 .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSRecipeService"
-        ),
-        .target(
-            name: "KSDictionaryService",
-            dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain"),
-                .product(name: "KDEntity", package: "KikurageDomain"),
-                .product(name: "KUIKit", package: "KikurageUI"),
-                .target(name: "KSSDateHelper")
-            ],
-            path: "Sources/Services/KSDictionaryService"
         ),
         // MARK: - SharedServices
 

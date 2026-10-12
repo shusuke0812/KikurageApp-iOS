@@ -1,35 +1,33 @@
 //
 //  DictionaryTwitterViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/4/3.
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
 import Foundation
+import KDEntity
 import KDRepository
-import KSSDateHelper
 
-@_exported import KDEntity
-
-public protocol DictionaryTwitterViewModelDelegate: AnyObject {
+protocol DictionaryTwitterViewModelDelegate: AnyObject {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel)
     func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String)
 }
 
-public class DictionaryTwitterViewModel {
-    public weak var delegate: DictionaryTwitterViewModelDelegate?
-    public let state = DictionaryTwitterState()
+class DictionaryTwitterViewModel {
+    weak var delegate: DictionaryTwitterViewModelDelegate?
+    let state = DictionaryTwitterState()
 
     private let twitterSearchRepository: TwitterSearchRepositoryProtocol
 
-    public init(twitterSearchRepository: TwitterSearchRepositoryProtocol = TwitterSearchRepository()) {
+    init(twitterSearchRepository: TwitterSearchRepositoryProtocol = TwitterSearchRepository()) {
         self.twitterSearchRepository = twitterSearchRepository
     }
 }
 
 extension DictionaryTwitterViewModel {
-    public func loadTweets() {
+    func loadTweets() {
         let twitterSearchRequest = TwitterSearchRequest(searchWord: "きくらげ", searchCount: 10, maxID: nil, sinceID: nil)
         twitterSearchRepository.getTweets(request: twitterSearchRequest) { [weak self] response in
             switch response {

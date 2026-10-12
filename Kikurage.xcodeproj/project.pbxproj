@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F3729FE3D9335CAD018DD89 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC3719D4BAF43F7D8F154A /* DictionaryViewModel.swift */; };
 		1131A5C51455B61985502323 /* AccountSettingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */; };
 		13BC0D03AC401DD5745154C4 /* WiFiSettingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9665CE3E1D7873EEF869803 /* WiFiSettingState.swift */; };
 		193FA98264F799B486D3BC1B /* GraphState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECE1D2E4803542173BC526B /* GraphState.swift */; };
@@ -41,7 +42,6 @@
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
-		9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482472D2A244200829067 /* KSDictionaryService */; };
 		9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2BDE8C2D33A9610067005D /* KALogger */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
 		9C44DE582D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE572D1FB8A900CA7585 /* NavigationProtocol+DeviceRegister.swift */; };
@@ -141,10 +141,12 @@
 		B860E02BCFB8F165FD3082D5 /* CultivationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */; };
 		B9D1D195C4BFCC7B2F6E7E6E /* SessionSetupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */; };
 		BB39DD4F0417A269D3AF933A /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */; };
+		C5A72A25A8AD587F59B85F86 /* DictionaryTwitterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908550A7D5448A52D456FCC /* DictionaryTwitterState.swift */; };
 		D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */; };
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
 		DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1A009602B012D55AC0AA8 /* SignUpState.swift */; };
 		E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */; };
+		EAC7A68319BBCAA78A26F6CA /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,7 @@
 		1ECE1D2E4803542173BC526B /* GraphState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GraphState.swift; sourceTree = "<group>"; };
 		23B0C19F9E29DBA7D43AAA4C /* WiFiListSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListSectionType.swift; sourceTree = "<group>"; };
 		28B0B707293735884DB77E01 /* WiFiListViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListViewModel.swift; sourceTree = "<group>"; };
+		2908550A7D5448A52D456FCC /* DictionaryTwitterState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterState.swift; sourceTree = "<group>"; };
 		36F38397AD2BD91063F1543E /* PostCultivationState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostCultivationState.swift; sourceTree = "<group>"; };
 		37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterState.swift; sourceTree = "<group>"; };
 		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 		50FE40A335978BCAA7FFFDBB /* QRCodeReaderViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewModel.swift; sourceTree = "<group>"; };
 		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
+		6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
 		6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		754C2148636E317B38BD918F /* CalendarViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		84D4E5B436119034996070F3 /* CalendarState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarState.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 		C9665CE3E1D7873EEF869803 /* WiFiSettingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingState.swift; sourceTree = "<group>"; };
 		CB09838E87CA564AE9F02948 /* PostCultivationViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostCultivationViewModel.swift; sourceTree = "<group>"; };
 		D7EEEDFF141033AC3EE2EC9D /* SessionSetupResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionSetupResult.swift; sourceTree = "<group>"; };
+		DBBC3719D4BAF43F7D8F154A /* DictionaryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		DDD33ED2C0E27CBB3F1BEB52 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		DE5EBAA2EA85B2925503E787 /* WiFiSettingSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingSectionType.swift; sourceTree = "<group>"; };
 		E0ACEDB10AD1DF7AF74D2023 /* WiFiSelectDeviceState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceState.swift; sourceTree = "<group>"; };
@@ -321,7 +326,6 @@
 				9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */,
 				9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
-				9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */,
 				9CCA43C92D22C601005A78ED /* IQKeyboardManagerSwift in Frameworks */,
 				9CCA43C42D22C5A9005A78ED /* DGCharts in Frameworks */,
 				9CCA43CC2D22C67A005A78ED /* PKHUD in Frameworks */,
@@ -472,6 +476,16 @@
 				9C147B1C223E493A0034D8AB /* MessageUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95415447301E7C7BBD1DF64D /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				2908550A7D5448A52D456FCC /* DictionaryTwitterState.swift */,
+				6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */,
+			);
+			name = Twitter;
+			path = Twitter;
 			sourceTree = "<group>";
 		};
 		9C1ACF3E2225768A00A3D4D1 = {
@@ -1196,6 +1210,7 @@
 			children = (
 				9CE029A627F48FD4002BDD30 /* BaseView */,
 				9CE029A727F48FDE002BDD30 /* ViewController */,
+				D826548377B139D600C060CC /* ViewModel */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -1334,6 +1349,16 @@
 			children = (
 				36F38397AD2BD91063F1543E /* PostCultivationState.swift */,
 				CB09838E87CA564AE9F02948 /* PostCultivationViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D826548377B139D600C060CC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DBBC3719D4BAF43F7D8F154A /* DictionaryViewModel.swift */,
+				95415447301E7C7BBD1DF64D /* Twitter */,
 			);
 			name = ViewModel;
 			path = ViewModel;
@@ -1631,6 +1656,9 @@
 				BB39DD4F0417A269D3AF933A /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				B2534E77E799030A8C8D53E6 /* QRCodeReaderViewModel.swift in Sources */,
 				7479D9D6DB21B22C7747E3B9 /* QRCodeReaderView.swift in Sources */,
+				0F3729FE3D9335CAD018DD89 /* DictionaryViewModel.swift in Sources */,
+				C5A72A25A8AD587F59B85F86 /* DictionaryTwitterState.swift in Sources */,
+				EAC7A68319BBCAA78A26F6CA /* DictionaryTwitterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2436,10 +2464,6 @@
 		9C06D2F22D281B1A00B52292 /* KUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KUIKit;
-		};
-		9C2482472D2A244200829067 /* KSDictionaryService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSDictionaryService;
 		};
 		9C2BDE8C2D33A9610067005D /* KALogger */ = {
 			isa = XCSwiftPackageProductDependency;
