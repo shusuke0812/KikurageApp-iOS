@@ -7,7 +7,6 @@
 //
 
 import KAAnalytics
-import KSWiFiService
 import UIKit
 
 class WiFiSelectDeviceViewController: UIViewController, UIViewControllerNavigatable, WiFiAccessable {

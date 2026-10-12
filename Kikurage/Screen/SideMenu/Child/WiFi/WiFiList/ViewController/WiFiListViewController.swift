@@ -6,7 +6,6 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KSWiFiService
 import UIKit
 
 class WiFiListViewController: UIViewController, UIViewControllerNavigatable, WiFiAccessable {

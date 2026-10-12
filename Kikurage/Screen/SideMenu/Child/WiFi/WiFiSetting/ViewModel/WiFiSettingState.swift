@@ -1,6 +1,6 @@
 //
 //  WiFiSettingState.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2026/10/11.
 //
@@ -8,11 +8,11 @@
 import Combine
 import Foundation
 
-public enum WiFiSettingAlert: Identifiable {
+enum WiFiSettingAlert: Identifiable {
     case success(message: String)
     case failure(message: String)
 
-    public var id: String {
+    var id: String {
         switch self {
         case .success(let message):
             return "success-\(message)"
@@ -21,7 +21,7 @@ public enum WiFiSettingAlert: Identifiable {
         }
     }
 
-    public var message: String {
+    var message: String {
         switch self {
         case .success(let message), .failure(let message):
             return message
@@ -29,15 +29,13 @@ public enum WiFiSettingAlert: Identifiable {
     }
 }
 
-public final class WiFiSettingState: ObservableObject {
-    @Published public var ssid: String = ""
-    @Published public var password: String = ""
-    @Published public var isSettingUp: Bool = false
-    @Published public var alert: WiFiSettingAlert?
+final class WiFiSettingState: ObservableObject {
+    @Published var ssid: String = ""
+    @Published var password: String = ""
+    @Published var isSettingUp: Bool = false
+    @Published var alert: WiFiSettingAlert?
 
-    public var isButtonEnabled: Bool {
+    var isButtonEnabled: Bool {
         !ssid.isEmpty && !password.isEmpty
     }
-
-    public init() {}
 }

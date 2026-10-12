@@ -1,6 +1,6 @@
 //
 //  WiFiSettingViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2023/3/5.
 //  Copyright © 2023 shusuke. All rights reserved.
@@ -9,27 +9,27 @@
 import Foundation
 import KDBluetoothManager
 
-public protocol WiFiSettingViewModelDelegate: AnyObject {
+protocol WiFiSettingViewModelDelegate: AnyObject {
     func wifiSettingViewModelDidSuccessSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
     func wifiSettingViewModelDidFailSetting(_ wifiSettingViewModel: WiFiSettingViewModel)
 }
 
-public class WiFiSettingViewModel: NSObject {
-    public weak var delegate: WiFiSettingViewModelDelegate?
-    public let state = WiFiSettingState()
+class WiFiSettingViewModel: NSObject {
+    weak var delegate: WiFiSettingViewModelDelegate?
+    let state = WiFiSettingState()
 
     private let bluetoothManager = BluetoothManager.shared
 
-    public init(selectedSSID: String) {
+    init(selectedSSID: String) {
         super.init()
         state.ssid = selectedSSID
     }
 
-    public func bluetoothDelegate() {
+    func bluetoothDelegate() {
         bluetoothManager.delegate = self
     }
 
-    public func setupWiFi() {
+    func setupWiFi() {
         state.isSettingUp = true
         let wifiSetting = WiFiSetting(ssid: state.ssid, password: state.password)
         bluetoothManager.writeCommand(.writeWiFiSetting(wifiSetting))
@@ -39,11 +39,11 @@ public class WiFiSettingViewModel: NSObject {
 // MARK: - BluetoothManagerDelegate
 
 extension WiFiSettingViewModel: BluetoothManagerDelegate {
-    public func bluetoothManager(_ bluetoothManager: KDBluetoothManager.BluetoothManager, isConnected: Bool) {}
-    public func bluetoothManagerDidDiscovered(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
-    public func bluetoothManagerDidConnected(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
+    func bluetoothManager(_ bluetoothManager: KDBluetoothManager.BluetoothManager, isConnected: Bool) {}
+    func bluetoothManagerDidDiscovered(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
+    func bluetoothManagerDidConnected(_ bluetoothManager: KDBluetoothManager.BluetoothManager) {}
 
-    public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {
+    func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {
         guard let completionMessage = BluetoothParser.decodeBluetoothCompletion(message)?.getBluetoothCompletion() else {
             return
         }

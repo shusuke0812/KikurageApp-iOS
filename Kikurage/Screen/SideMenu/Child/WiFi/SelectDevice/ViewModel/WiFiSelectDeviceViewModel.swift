@@ -1,6 +1,6 @@
 //
 //  WiFiSelectDeviceViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2023/3/5.
 //  Copyright © 2023 shusuke. All rights reserved.
@@ -9,26 +9,26 @@
 import Foundation
 import KDBluetoothManager
 
-public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
+protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
     func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
     func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
     func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel)
 }
 
-public class WiFiSelectDeviceViewModel: NSObject {
+class WiFiSelectDeviceViewModel: NSObject {
     private let sections: [WiFiSelectDeviceSectionType] = [.device]
 
-    public var isBluetoothAvailable: Bool {
+    var isBluetoothAvailable: Bool {
         return bluetoothManager.isBluetoothAvailable
     }
 
-    public weak var delegate: WiFiSelectDeviceViewModelDelegate?
-    public let state = WiFiSelectDeviceState()
+    weak var delegate: WiFiSelectDeviceViewModelDelegate?
+    let state = WiFiSelectDeviceState()
 
     private let bluetoothManager = BluetoothManager.shared
     private var selectedIndexPath: IndexPath?
 
-    override public init() {
+    override init() {
         super.init()
         state.sectionTitle = sections[0].title
     }
@@ -37,22 +37,22 @@ public class WiFiSelectDeviceViewModel: NSObject {
         bluetoothManager.release()
     }
 
-    public func bluetoothDelegate() {
+    func bluetoothDelegate() {
         bluetoothManager.delegate = self
     }
 
-    public func connectToPeripheral(indexPath: IndexPath) {
+    func connectToPeripheral(indexPath: IndexPath) {
         state.isConnecting = true
         bluetoothManager.connect(index: indexPath.row)
         selectedIndexPath = indexPath
     }
 
-    public func scanForPeripherals() {
+    func scanForPeripherals() {
         state.isScanning = true
         bluetoothManager.startScan()
     }
 
-    public func disconnectPeripheral() {
+    func disconnectPeripheral() {
         bluetoothManager.disconnect()
     }
 }
@@ -79,22 +79,22 @@ extension WiFiSelectDeviceViewModel {
 // MARK: - BluetoothManagerConnectionDelegate
 
 extension WiFiSelectDeviceViewModel: BluetoothManagerDelegate {
-    public func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {}
+    func bluetoothManagerDidReceivedValue(_ bluetoothManager: KDBluetoothManager.BluetoothManager, message: String) {}
 
-    public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {
+    func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {
         if !isConnected {
             state.isConnecting = false
             delegate?.viewModelDidFailConnectionToPeripheral(self)
         }
     }
 
-    public func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
+    func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
         state.isScanning = false
         state.devices = makeDevices()
         delegate?.viewModelDidAddPeripheral(self)
     }
 
-    public func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager) {
+    func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager) {
         if let selectedIndexPath = selectedIndexPath {
             bluetoothManager.setupSelectedPeripheral(index: selectedIndexPath.row)
             state.isConnecting = false

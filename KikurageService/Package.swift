@@ -20,7 +20,6 @@ let package = Package(
         .library(name: "KSRecipeService", targets: ["KSRecipeService"]),
         .library(name: "KSCalendarService", targets: ["KSCalendarService"]),
         .library(name: "KSDictionaryService", targets: ["KSDictionaryService"]),
-        .library(name: "KSWiFiService", targets: ["KSWiFiService"]),
         .library(name: "KSDebugService", targets: ["KSDebugService"]),
     ],
     dependencies: [
@@ -126,15 +125,6 @@ let package = Package(
                 .target(name: "KSSDateHelper")
             ],
             path: "Sources/Services/KSDictionaryService"
-        ),
-        .target(
-            name: "KSWiFiService",
-            dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain"),
-                .product(name: "KDEntity", package: "KikurageDomain"),
-                .product(name: "KDBluetoothManager", package: "KikurageDomain")
-            ],
-            path: "Sources/Services/KSWiFiService"
         ),
         .target(
             name: "KSDebugService",
