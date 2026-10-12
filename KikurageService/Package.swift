@@ -19,20 +19,5 @@ let package = Package(
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.9.0")),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.15.0")),
     ],
-    targets: [
-        // MARK: - SharedServices
-
-        .target(
-            name: "KSSLoadKikurageStateUseCase",
-            dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain"),
-                .product(name: "KDEntity", package: "KikurageDomain"),
-            ],
-            path: "Sources/SharedServices/KSSLoadKikurageStateUseCase"
-        ),
-        .target(
-            name: "KSSDateHelper",
-            path: "Sources/SharedServices/KSSDateHelper"
-        ),
-    ]
+    targets: []
 )
