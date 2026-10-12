@@ -41,7 +41,7 @@ struct HomeBaseView: View {
                     .padding(.horizontal, 16)
 
                     ZStack(alignment: .bottomTrailing) {
-                        KDeviceStatusImageView(props: KDeviceStatusImageViewProps(
+                        KUIDeviceStatusImageView(props: KUIDeviceStatusImageViewProps(
                             images: state.stateImages,
                             isAnimating: state.isAnimating,
                             hasError: state.hasStateError
@@ -60,7 +60,7 @@ struct HomeBaseView: View {
                     .padding(.top, 15)
                     .padding(.horizontal, 16)
 
-                    KDeviceStatusListView(props: KDeviceStatusListViewProps(
+                    KUIDeviceStatusListView(props: KUIDeviceStatusListViewProps(
                         temperature: state.temperature,
                         humidity: state.humidity
                     ))
@@ -68,7 +68,7 @@ struct HomeBaseView: View {
                     .padding(.top, 15)
                     .padding(.horizontal, 16)
 
-                    KHomeAdviceView(props: KHomeAdviceViewProps(
+                    KUIHomeAdviceView(props: KUIHomeAdviceViewProps(
                         title: R.string.localizable.screen_home_advice_title(),
                         description: state.advice,
                         image: R.image.hakase()
@@ -77,7 +77,7 @@ struct HomeBaseView: View {
                     .padding(.top, 15)
                     .padding(.horizontal, 16)
 
-                    KFooterButtonView(
+                    KUIFooterButtonView(
                         onCultivation: { delegate?.homeBaseViewDidTapCultivationButton() },
                         onRecipe: { delegate?.homeBaseViewDidTapRecipeButton() },
                         onCommunication: { delegate?.homeBaseViewDidTapCommunicationButton() }

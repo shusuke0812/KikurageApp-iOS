@@ -36,19 +36,19 @@ struct DeviceRegisterBaseView: View {
                 .ignoresSafeArea()
             ScrollView {
                 VStack(spacing: 0) {
-                    KTextField(props: KTextFieldProps(
+                    KUITextField(props: KUITextFieldProps(
                         placeHolder: R.string.localizable.screen_device_register_productkey_textfield_placeholer(),
                         inputText: $state.productKey
                     ))
                     .padding(.top, 40)
 
-                    KTextField(props: KTextFieldProps(
+                    KUITextField(props: KUITextFieldProps(
                         placeHolder: R.string.localizable.screen_device_register_kikurage_name_textfield_placeholer(),
                         inputText: $state.kikurageName
                     ))
                     .padding(.top, 25)
 
-                    KDropDownTextField(props: KDropDownTextFieldProps(
+                    KUIDropDownTextField(props: KUIDropDownTextFieldProps(
                         placeHolder: R.string.localizable.screen_device_register_cultivation_start_date_textfield_placeholer(),
                         date: $state.cultivationStartDate,
                         hasError: $cultivationStartDateHasError
@@ -72,7 +72,7 @@ struct DeviceRegisterBaseView: View {
                         .padding(.top, 15)
                     }
 
-                    KButton(props: KButtonProps(
+                    KUIButton(props: KUIButtonProps(
                         variant: .primary,
                         title: R.string.localizable.screen_device_register_register_btn_name()
                     )) {

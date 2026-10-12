@@ -50,7 +50,7 @@ struct TopBaseView: View {
 
 private struct HeaderView: View {
     var body: some View {
-        KImageView(props: KImageProps(image: R.image.kikurageDevice()))
+        KUIImageView(props: KUIImageProps(image: R.image.kikurageDevice()))
             .frame(maxWidth: .infinity)
             .aspectRatio(.imageViewRatio, contentMode: .fill)
     }
@@ -64,31 +64,31 @@ private struct BodyView: View {
 
     var body: some View {
         VStack(spacing: 40) {
-            KButton(
-                props: KButtonProps(
+            KUIButton(
+                props: KUIButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_top_login_btn_name(),
                     accessibilityIdentifier: Accessibility.generateIdentifier()
                 ),
                 onTap: onLogin
             )
-            KButton(
-                props: KButtonProps(
+            KUIButton(
+                props: KUIButtonProps(
                     variant: .secondary,
                     title: R.string.localizable.screen_top_signup_btn_name()
                 ),
                 onTap: onSignUp
             )
             HStack(spacing: 20) {
-                KUnderlinedTextButton(
-                    props: KUnderlinedTextButtonProps(
+                KUIUnderlinedTextButton(
+                    props: KUIUnderlinedTextButtonProps(
                         title: R.string.localizable.screen_top_app_term(),
                         color: .black
                     ),
                     onTap: onTerms
                 )
-                KUnderlinedTextButton(
-                    props: KUnderlinedTextButtonProps(
+                KUIUnderlinedTextButton(
+                    props: KUIUnderlinedTextButtonProps(
                         title: R.string.localizable.screen_top_app_privacy(),
                         color: .black
                     ),

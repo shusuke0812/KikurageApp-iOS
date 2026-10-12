@@ -18,12 +18,12 @@ struct CultivationDetailBaseView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            KCarouselView(
-                props: KCarouselViewProps(imageStoragePaths: cultivation.imageStoragePaths),
+            KUICarouselView(
+                props: KUICarouselViewProps(imageStoragePaths: cultivation.imageStoragePaths),
                 currentPage: $currentPage
             )
 
-            KCultivationDetailDescriptionView(props: KCultivationDetailDescriptionViewProps(
+            KUICultivationDetailDescriptionView(props: KUICultivationDetailDescriptionViewProps(
                 image: R.image.hakase(),
                 title: R.string.localizable.screen_cultivation_detail_memo_title(),
                 dateString: cultivation.viewDate,

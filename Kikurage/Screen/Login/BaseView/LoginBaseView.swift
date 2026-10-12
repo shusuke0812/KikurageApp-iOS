@@ -32,15 +32,15 @@ struct LoginBaseView: View {
             Color(uiColor: .systemGroupedBackground)
                 .ignoresSafeArea()
             VStack(spacing: 30) {
-                KTextField(props: KTextFieldProps(
+                KUITextField(props: KUITextFieldProps(
                     placeHolder: R.string.localizable.screen_login_email_textfield_placeholer(),
                     inputText: $state.email
                 ))
-                KPasswordField(props: KTextFieldProps(
+                KUIPasswordField(props: KUITextFieldProps(
                     placeHolder: R.string.localizable.screen_login_password_textfield_placeholer(),
                     inputText: $state.password
                 ))
-                KButton(props: KButtonProps(
+                KUIButton(props: KUIButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_login_login_btn_name(),
                     accessibilityIdentifier: Accessibility.generateIdentifier(),

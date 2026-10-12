@@ -42,7 +42,7 @@ struct RecipeBaseView: View {
                     } else {
                         LazyVStack(spacing: 0) {
                             ForEach(Array(state.recipes.enumerated()), id: \.offset) { _, recipe in
-                                KRecipeCell(props: KRecipeCellProps(
+                                KUIRecipeCell(props: KUIRecipeCellProps(
                                     imageStoragePath: recipe.data.imageStoragePaths.first ?? "",
                                     dateString: recipe.data.cookDate,
                                     title: recipe.data.name,
@@ -58,7 +58,7 @@ struct RecipeBaseView: View {
                 }
             }
 
-            KCircleButton(props: KCircleButtonProps(
+            KUICircleButton(props: KUICircleButtonProps(
                 variant: .primary,
                 image: R.image.addMemoButton(),
                 width: 60

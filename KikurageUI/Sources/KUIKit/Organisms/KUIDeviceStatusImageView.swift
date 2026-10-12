@@ -7,63 +7,8 @@
 //
 
 import SwiftUI
-import UIKit
 
-@available(*, deprecated, renamed: "KDeviceStatusImageView", message: "Need to change to SwiftUI")
-public class KUIDeviceStatusImageView: UIView {
-    private var statusImageView: UIImageView!
-
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupComponent()
-    }
-
-    public func runAnimation(images: [UIImage]) {
-        statusImageView.animationImages = images
-        statusImageView.animationDuration = 1
-        statusImageView.animationRepeatCount = 0
-        statusImageView.startAnimating()
-    }
-
-    public func startAnimating() {
-        statusImageView.startAnimating()
-    }
-
-    public func stopAnimating() {
-        statusImageView.stopAnimating()
-    }
-
-    private func setupComponent() {
-        let parentView = KUIRoundedView()
-        parentView.translatesAutoresizingMaskIntoConstraints = false
-
-        statusImageView = UIImageView()
-        statusImageView.contentMode = .scaleAspectFill
-        statusImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        parentView.addSubview(statusImageView)
-        addSubview(parentView)
-
-        NSLayoutConstraint.activate([
-            statusImageView.topAnchor.constraint(equalTo: parentView.topAnchor),
-            statusImageView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor),
-            statusImageView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor),
-            statusImageView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor),
-
-            parentView.topAnchor.constraint(equalTo: topAnchor),
-            parentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            parentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            parentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
-}
-
-public struct KDeviceStatusImageViewProps {
+public struct KUIDeviceStatusImageViewProps {
     let images: [UIImage]
     let isAnimating: Bool
     let hasError: Bool
@@ -79,10 +24,10 @@ public struct KDeviceStatusImageViewProps {
     }
 }
 
-public struct KDeviceStatusImageView: View {
-    private let props: KDeviceStatusImageViewProps
+public struct KUIDeviceStatusImageView: View {
+    private let props: KUIDeviceStatusImageViewProps
 
-    public init(props: KDeviceStatusImageViewProps) {
+    public init(props: KUIDeviceStatusImageViewProps) {
         self.props = props
     }
 
@@ -137,7 +82,7 @@ public struct KDeviceStatusImageView: View {
         ZStack {
             Color(uiColor: .systemGroupedBackground)
                 .ignoresSafeArea()
-            KDeviceStatusImageView(props: KDeviceStatusImageViewProps(
+            KUIDeviceStatusImageView(props: KUIDeviceStatusImageViewProps(
                 images: [UIImage(systemName: "face.smiling") ?? UIImage()],
                 isAnimating: false,
                 hasError: false
@@ -158,7 +103,7 @@ public struct KDeviceStatusImageView: View {
         ZStack {
             Color(uiColor: .systemGroupedBackground)
                 .ignoresSafeArea()
-            KDeviceStatusImageView(props: KDeviceStatusImageViewProps(
+            KUIDeviceStatusImageView(props: KUIDeviceStatusImageViewProps(
                 images: [],
                 isAnimating: false,
                 hasError: true

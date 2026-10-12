@@ -74,7 +74,7 @@ struct WiFiSettingBaseView: View {
             }
 
             if state.isSettingUp {
-                KProgressHUDView()
+                KUIProgressHUDView()
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))

@@ -33,15 +33,15 @@ struct SignUpBaseView: View {
             Color(uiColor: .systemGroupedBackground)
                 .ignoresSafeArea()
             VStack(spacing: 30) {
-                KTextField(props: KTextFieldProps(
+                KUITextField(props: KUITextFieldProps(
                     placeHolder: R.string.localizable.screen_signup_email_textfield_placeholer(),
                     inputText: $state.email
                 ))
-                KPasswordField(props: KTextFieldProps(
+                KUIPasswordField(props: KUITextFieldProps(
                     placeHolder: R.string.localizable.screen_signup_password_textfield_placeholer(),
                     inputText: $state.password
                 ))
-                KButton(props: KButtonProps(
+                KUIButton(props: KUIButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_signup_signup_btn_name(),
                     enabled: $state.enabled

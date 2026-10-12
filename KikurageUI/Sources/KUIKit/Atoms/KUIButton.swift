@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 public enum KUIButtonVariant {
     case primary
@@ -35,60 +34,6 @@ public enum KUIButtonVariant {
 public struct KUIButtonProps {
     let variant: KUIButtonVariant
     let title: String
-    let fontSize: CGFloat
-    let fontWeight: UIFont.Weight
-
-    public init(
-        variant: KUIButtonVariant,
-        title: String,
-        accessibilityIdentifier: String? = nil,
-        fontSize: CGFloat = 17.0,
-        fontWeight: UIFont.Weight = .bold
-    ) {
-        self.variant = variant
-        self.title = title
-        self.fontSize = fontSize
-        self.fontWeight = fontWeight
-    }
-}
-
-@available(*, deprecated, renamed: "KButton", message: "Need to change to SiwftUI")
-public class KUIButton: UIButton {
-    public var onTap: (() -> Void)?
-
-    public init(props: KUIButtonProps) {
-        super.init(frame: .zero)
-        setup(props: props)
-        setupButtonAction()
-    }
-
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setup(props: KUIButtonProps) {
-        layer.masksToBounds = true
-        layer.cornerRadius = 5
-        setTitle(props.title, for: .normal)
-        setTitleColor(props.variant.titleColor, for: .normal)
-        titleLabel?.font = .systemFont(ofSize: props.fontSize, weight: props.fontWeight)
-        backgroundColor = props.variant.backgroundColor
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    private func setupButtonAction() {
-        addAction(.init { [weak self] _ in
-            guard let self else {
-                return
-            }
-            self.onTap?()
-        }, for: .touchUpInside)
-    }
-}
-
-public struct KButtonProps {
-    let variant: KUIButtonVariant
-    let title: String
     let accessibilityIdentifier: String
     let fontSize: CGFloat
     let fontWeight: Font.Weight
@@ -114,11 +59,11 @@ public struct KButtonProps {
     }
 }
 
-public struct KButton: View {
-    private let props: KButtonProps
+public struct KUIButton: View {
+    private let props: KUIButtonProps
     public var onTap: (() -> Void)?
 
-    public init(props: KButtonProps, onTap: (() -> Void)? = nil) {
+    public init(props: KUIButtonProps, onTap: (() -> Void)? = nil) {
         self.props = props
         self.onTap = onTap
     }

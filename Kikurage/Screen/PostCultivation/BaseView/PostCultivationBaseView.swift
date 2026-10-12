@@ -35,7 +35,7 @@ struct PostCultivationBaseView: View {
 
             VStack(spacing: 0) {
                 ScrollView {
-                    KSelectImageGridView(
+                    KUISelectImageGridView(
                         selectedImages: $state.selectedImages,
                         onTapSlot: { index in
                             delegate?.postCultivationBaseViewDidTapImageSlot(at: index)
@@ -46,7 +46,7 @@ struct PostCultivationBaseView: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 8)
 
-                KMaterialTextView(props: KMaterialTextViewProps(
+                KUIMaterialTextView(props: KUIMaterialTextViewProps(
                     maxTextCount: 200,
                     placeHolder: R.string.localizable.screen_post_cultivation_textview_placeholder(),
                     inputText: $state.memo
@@ -55,7 +55,7 @@ struct PostCultivationBaseView: View {
                 .padding(.top, 15)
                 .padding(.horizontal, 8)
 
-                KDropDownTextField(props: KDropDownTextFieldProps(
+                KUIDropDownTextField(props: KUIDropDownTextFieldProps(
                     placeHolder: R.string.localizable.screen_post_cultivation_date_textfield_placeholder(),
                     date: $state.date
                 ))
@@ -64,7 +64,7 @@ struct PostCultivationBaseView: View {
 
                 Spacer(minLength: 0)
 
-                KButton(props: KButtonProps(
+                KUIButton(props: KUIButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_post_cultivation_post_button_title()
                 )) {
@@ -76,7 +76,7 @@ struct PostCultivationBaseView: View {
             }
 
             if state.isPosting {
-                KProgressHUDView()
+                KUIProgressHUDView()
             }
         }
         .alert(item: $state.alert) { alert in

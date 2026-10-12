@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 public enum KUILabelWithImageVariant {
     case imagePositionRight
@@ -17,82 +16,10 @@ public enum KUILabelWithImageVariant {
 public struct KUILabelWithImageProps {
     let variant: KUILabelWithImageVariant
     let title: String
-    let iamge: UIImage?
-
-    public init(
-        variant: KUILabelWithImageVariant,
-        title: String,
-        iamge: UIImage? = nil
-    ) {
-        self.variant = variant
-        self.title = title
-        self.iamge = iamge
-    }
-}
-
-@available(*, deprecated, renamed: "KLabelWithImage", message: "Need to change to SwiftUI")
-public class KUILabelWithImage: UIView {
-    private var label: UILabel!
-    private var imageView: UIImageView!
-    private var stackView: UIStackView!
-
-    public init(props: KUILabelWithImageProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
-    }
-
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent(props: KUILabelWithImageProps) {
-        label = UILabel()
-        label.text = props.title
-        label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        imageView = UIImageView()
-        imageView.image = props.iamge
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-        if props.variant == .imagePositionRight {
-            stackView = UIStackView(arrangedSubviews: [label, imageView])
-        } else {
-            stackView = UIStackView(arrangedSubviews: [imageView, label])
-        }
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(stackView)
-
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            imageView.heightAnchor.constraint(equalToConstant: 27),
-            imageView.widthAnchor.constraint(equalToConstant: 40)
-        ])
-    }
-}
-
-public enum KLabelWithImageVariant {
-    case imagePositionRight
-    case imagePositionLeft
-}
-
-public struct KLabelWithImageProps {
-    let variant: KLabelWithImageVariant
-    let title: String
     let image: UIImage?
 
     public init(
-        variant: KLabelWithImageVariant,
+        variant: KUILabelWithImageVariant,
         title: String,
         image: UIImage? = nil
     ) {
@@ -102,10 +29,10 @@ public struct KLabelWithImageProps {
     }
 }
 
-public struct KLabelWithImage: View {
-    private let props: KLabelWithImageProps
+public struct KUILabelWithImage: View {
+    private let props: KUILabelWithImageProps
 
-    public init(props: KLabelWithImageProps) {
+    public init(props: KUILabelWithImageProps) {
         self.props = props
     }
 
@@ -139,12 +66,12 @@ public struct KLabelWithImage: View {
         Color(uiColor: .systemGroupedBackground)
             .ignoresSafeArea()
         VStack(spacing: 20) {
-            KLabelWithImage(props: KLabelWithImageProps(
+            KUILabelWithImage(props: KUILabelWithImageProps(
                 variant: .imagePositionRight,
                 title: "画像が右",
                 image: UIImage(systemName: "star.fill")
             ))
-            KLabelWithImage(props: KLabelWithImageProps(
+            KUILabelWithImage(props: KUILabelWithImageProps(
                 variant: .imagePositionLeft,
                 title: "画像が左",
                 image: UIImage(systemName: "star.fill")

@@ -35,7 +35,7 @@ struct PostRecipeBaseView: View {
 
             VStack(spacing: 0) {
                 ScrollView {
-                    KSelectImageGridView(
+                    KUISelectImageGridView(
                         selectedImages: $state.selectedImages,
                         onTapSlot: { index in
                             delegate?.postRecipeBaseViewDidTapImageSlot(at: index)
@@ -46,7 +46,7 @@ struct PostRecipeBaseView: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 8)
 
-                KMaterialTextField(props: KMaterialTextFieldProps(
+                KUIMaterialTextField(props: KUIMaterialTextFieldProps(
                     maxTextCount: 20,
                     placeHolder: R.string.localizable.screen_post_recipe_recipe_name_textfield_placeholder(),
                     inputText: $state.name
@@ -54,7 +54,7 @@ struct PostRecipeBaseView: View {
                 .padding(.top, 15)
                 .padding(.horizontal, 8)
 
-                KMaterialTextView(props: KMaterialTextViewProps(
+                KUIMaterialTextView(props: KUIMaterialTextViewProps(
                     maxTextCount: 100,
                     placeHolder: R.string.localizable.screen_post_recipe_recipe_memo_textview_placeholder(),
                     inputText: $state.memo
@@ -63,7 +63,7 @@ struct PostRecipeBaseView: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 8)
 
-                KDropDownTextField(props: KDropDownTextFieldProps(
+                KUIDropDownTextField(props: KUIDropDownTextFieldProps(
                     placeHolder: R.string.localizable.screen_post_recipe_recipe_date_textfield_placeholder(),
                     date: $state.date
                 ))
@@ -72,7 +72,7 @@ struct PostRecipeBaseView: View {
 
                 Spacer(minLength: 0)
 
-                KButton(props: KButtonProps(
+                KUIButton(props: KUIButtonProps(
                     variant: .primary,
                     title: R.string.localizable.screen_post_recipe_post_button_title()
                 )) {
@@ -84,7 +84,7 @@ struct PostRecipeBaseView: View {
             }
 
             if state.isPosting {
-                KProgressHUDView()
+                KUIProgressHUDView()
             }
         }
         .alert(item: $state.alert) { alert in

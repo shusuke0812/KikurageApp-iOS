@@ -47,7 +47,7 @@ struct WiFiSelectDeviceBaseView: View {
             .listStyle(.insetGrouped)
 
             if state.isConnecting {
-                KProgressHUDView()
+                KUIProgressHUDView()
             }
         }
     }

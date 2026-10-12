@@ -29,7 +29,7 @@ struct CommunicationBaseView: View {
                     .padding(.top, 30)
                     .padding(.bottom, 30)
 
-                KRoundedView {
+                KUIRoundedView {
                     Text(R.string.localizable.screen_communication_information())
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical, 10)

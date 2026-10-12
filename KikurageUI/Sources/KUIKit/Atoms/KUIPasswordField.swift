@@ -7,28 +7,11 @@
 //
 
 import SwiftUI
-import UIKit
 
-@available(*, deprecated, renamed: "KPasswordField", message: "Need to change to SiwftUI")
-public class KUIPasswordField: KUITextField {
-    override public init(props: KUITextFieldProps) {
-        super.init(props: props)
-        setupComponent()
-    }
+public struct KUIPasswordField: View {
+    private var props: KUITextFieldProps
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent() {
-        isSecureTextEntry = true
-    }
-}
-
-public struct KPasswordField: View {
-    private var props: KTextFieldProps
-
-    public init(props: KTextFieldProps) {
+    public init(props: KUITextFieldProps) {
         self.props = props
     }
 

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 public struct KUICircleButtonProps {
     let variant: KUIButtonVariant
@@ -21,61 +20,11 @@ public struct KUICircleButtonProps {
     }
 }
 
-@available(*, deprecated, renamed: "KCircleButton", message: "Need to change to SwiftUI")
-public class KUICircleButton: UIButton {
+public struct KUICircleButton: View {
+    private let props: KUICircleButtonProps
     public var onTap: (() -> Void)?
 
-    public init(props: KUICircleButtonProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
-        setupAction()
-    }
-
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupComponent(props: KUICircleButtonProps) {
-        backgroundColor = props.variant.backgroundColor
-        setImage(props.image, for: .normal)
-        contentMode = .scaleToFill
-        layer.masksToBounds = true
-        layer.cornerRadius = props.width / 2
-        translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: props.width),
-            heightAnchor.constraint(equalToConstant: props.width)
-        ])
-    }
-
-    private func setupAction() {
-        addAction(.init { [weak self] _ in
-            guard let self else {
-                return
-            }
-            self.onTap?()
-        }, for: .touchUpInside)
-    }
-}
-
-public struct KCircleButtonProps {
-    let variant: KUIButtonVariant
-    let image: UIImage?
-    let width: CGFloat
-
-    public init(variant: KUIButtonVariant, image: UIImage?, width: CGFloat) {
-        self.variant = variant
-        self.image = image
-        self.width = width
-    }
-}
-
-public struct KCircleButton: View {
-    private let props: KCircleButtonProps
-    public var onTap: (() -> Void)?
-
-    public init(props: KCircleButtonProps, onTap: (() -> Void)? = nil) {
+    public init(props: KUICircleButtonProps, onTap: (() -> Void)? = nil) {
         self.props = props
         self.onTap = onTap
     }
@@ -100,7 +49,7 @@ public struct KCircleButton: View {
     ZStack {
         Color(uiColor: .systemGroupedBackground)
             .ignoresSafeArea()
-        KCircleButton(props: KCircleButtonProps(
+        KUICircleButton(props: KUICircleButtonProps(
             variant: .primary,
             image: UIImage(systemName: "plus"),
             width: 60

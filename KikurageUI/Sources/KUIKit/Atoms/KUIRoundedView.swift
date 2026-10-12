@@ -7,37 +7,8 @@
 //
 
 import SwiftUI
-import UIKit
 
 public struct KUIRoundedViewProps {
-    let backgroundColor: UIColor?
-
-    public init(
-        backgroundColor: UIColor? = .white
-    ) {
-        self.backgroundColor = backgroundColor
-    }
-}
-
-public class KUIRoundedView: UIView {
-    public init(props: KUIRoundedViewProps = KUIRoundedViewProps()) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
-    }
-
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent(props: KUIRoundedViewProps) {
-        backgroundColor = props.backgroundColor
-        clipsToBounds = true
-        layer.cornerRadius = .viewCornerRadius
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-}
-
-public struct KRoundedViewProps {
     let backgroundColor: Color
     let cornerRadius: CGFloat
 
@@ -50,12 +21,12 @@ public struct KRoundedViewProps {
     }
 }
 
-public struct KRoundedView<Content: View>: View {
-    private let props: KRoundedViewProps
+public struct KUIRoundedView<Content: View>: View {
+    private let props: KUIRoundedViewProps
     private let content: () -> Content
 
     public init(
-        props: KRoundedViewProps = KRoundedViewProps(),
+        props: KUIRoundedViewProps = KUIRoundedViewProps(),
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.props = props
@@ -73,7 +44,7 @@ public struct KRoundedView<Content: View>: View {
     ZStack {
         Color(uiColor: .systemGroupedBackground)
             .ignoresSafeArea()
-        KRoundedView {
+        KUIRoundedView {
             Text("Content")
                 .padding()
         }

@@ -1,83 +1,98 @@
 //
-//  KUIDropdownTextField.swift
+//  KUIDropDownTextField.swift
 //  KikurageUI
 //
 //  Created by Shusuke Ota on 2024/6/15.
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
-
-public enum KUIDropdownTextFieldVariant {
-    case date
-}
+import SwiftUI
 
 public struct KUIDropDownTextFieldProps {
-    let variant: KUIDropdownTextFieldVariant
-    let textFieldProps: KUITextFieldProps
+    public let placeHolder: String
+    @Binding public var date: Date
+    @Binding public var hasError: Bool
 
     public init(
-        variant: KUIDropdownTextFieldVariant,
-        textFieldProps: KUITextFieldProps
+        placeHolder: String,
+        date: Binding<Date>,
+        hasError: Binding<Bool> = .constant(false)
     ) {
-        self.variant = variant
-        self.textFieldProps = textFieldProps
+        self.placeHolder = placeHolder
+        _date = date
+        _hasError = hasError
     }
 }
 
-@available(*, deprecated, renamed: "KDropDownTextField", message: "Need to change to SwiftUI")
-public class KUIDropdownTextField: KUITextField {
-    @available(*, deprecated, message: "Use onDidEndEditing call back")
-    public var date: Date {
-        datePicker.date
-    }
-
-    public var onDidEndEditing: ((Date) -> Void)?
-
-    private let datePicker = UIDatePicker()
+public struct KUIDropDownTextField: View {
+    private var props: KUIDropDownTextFieldProps
+    @State private var showDatePicker = false
+    @State private var displayText: String = ""
 
     public init(props: KUIDropDownTextFieldProps) {
-        super.init(props: props.textFieldProps)
-        setupComponent(variant: props.variant)
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent(variant: KUIDropdownTextFieldVariant) {
-        switch variant {
-        case .date:
-            setupDatePicker()
-        }
-    }
-
-    private func setupDatePicker() {
-        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onTapDone))
-        let flexSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let toolbar = UIToolbar()
-        toolbar.frame = CGRect(x: 0, y: 0, width: frame.width, height: 44)
-        toolbar.setItems([flexSpaceItem, doneButtonItem], animated: true)
-
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .date
-        datePicker.timeZone = NSTimeZone.local
-        datePicker.locale = Locale.current
-        datePicker.addTarget(self, action: #selector(onSetDateText), for: .valueChanged)
-
-        inputView = datePicker
-        inputAccessoryView = toolbar
-    }
-
-    @objc private func onTapDone() {
-        resignFirstResponder()
-        onDidEndEditing?(datePicker.date)
-    }
-
-    @objc private func onSetDateText() {
+    private var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
-        formatter.locale = Locale.current
-        text = formatter.string(from: datePicker.date)
+        formatter.locale = .current
+        return formatter.string(from: props.date)
+    }
+
+    public var body: some View {
+        KUITextField(props: KUITextFieldProps(
+            placeHolder: props.placeHolder,
+            inputText: $displayText,
+            hasError: props.$hasError
+        ))
+        .allowsHitTesting(false)
+        .overlay(
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    showDatePicker = true
+                }
+        )
+        .onAppear {
+            displayText = formattedDate
+        }
+        .onChange(of: props.date) { _ in
+            displayText = formattedDate
+        }
+        .sheet(isPresented: $showDatePicker) {
+            VStack(spacing: 20) {
+                DatePicker("", selection: props.$date, displayedComponents: .date)
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+
+                KUIButton(props: KUIButtonProps(
+                    variant: .secondary,
+                    title: R.string.localizable.common_done()
+                ), onTap: {
+                    showDatePicker = false
+                })
+                .padding(.horizontal, 24)
+            }
+            .presentationDetents([.height(300), .medium])
+        }
+    }
+}
+
+#Preview {
+    KDropDownTextFieldPreviewWrapper()
+}
+
+private struct KDropDownTextFieldPreviewWrapper: View {
+    @State private var date = Date()
+    @State private var hasError = false
+
+    var body: some View {
+        KUIDropDownTextField(props: KUIDropDownTextFieldProps(
+            placeHolder: "日付を選択",
+            date: $date,
+            hasError: $hasError
+        ))
+        .padding()
     }
 }

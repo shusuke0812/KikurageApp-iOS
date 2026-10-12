@@ -26,8 +26,8 @@ struct CalendarBaseView: View {
                let currentComponents = state.currentDateComponents {
                 ScrollView {
                     VStack(spacing: 20) {
-                        KRoundedView {
-                            KCalendarView(
+                        KUIRoundedView {
+                            KUICalendarView(
                                 cultivationStartDateComponents: startComponents,
                                 currentDateComponents: currentComponents
                             )
@@ -35,7 +35,7 @@ struct CalendarBaseView: View {
                         }
                         .aspectRatio(1, contentMode: .fit)
 
-                        KRoundedView {
+                        KUIRoundedView {
                             Text(R.string.localizable.side_menu_clendar_term(state.cultivationTerm ?? 0))
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(Color(uiColor: .darkGray))

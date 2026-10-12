@@ -7,9 +7,8 @@
 //
 
 import SwiftUI
-import UIKit
 
-public struct KUIImageViewProps {
+public struct KUIImageProps {
     let image: UIImage?
 
     public init(image: UIImage?) {
@@ -17,38 +16,10 @@ public struct KUIImageViewProps {
     }
 }
 
-@available(*, deprecated, renamed: "KImageView", message: "Need to change to SiwftUI")
-public class KUIImageView: UIImageView {
-    public init(props: KUIImageViewProps) {
-        super.init(frame: .zero)
-        setup(props: props)
-    }
+public struct KUIImageView: View {
+    private let props: KUIImageProps
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setup(props: KUIImageViewProps) {
-        image = props.image
-        clipsToBounds = true
-        layer.cornerRadius = .viewCornerRadius
-        contentMode = .scaleAspectFill
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-}
-
-public struct KImageProps {
-    let image: UIImage?
-
-    public init(image: UIImage?) {
-        self.image = image
-    }
-}
-
-public struct KImageView: View {
-    private let props: KImageProps
-
-    public init(props: KImageProps) {
+    public init(props: KUIImageProps) {
         self.props = props
     }
 

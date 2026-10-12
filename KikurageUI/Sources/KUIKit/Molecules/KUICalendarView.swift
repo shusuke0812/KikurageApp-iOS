@@ -1,5 +1,5 @@
 //
-//  KCalendarView.swift
+//  KUICalendarView.swift
 //  KikurageUI
 //
 //  Created by Shusuke Ota on 2026/10/11.
@@ -8,7 +8,7 @@
 import HorizonCalendar
 import SwiftUI
 
-public struct KCalendarView: UIViewRepresentable {
+public struct KUICalendarView: UIViewRepresentable {
     private let cultivationStartDateComponents: DateComponents
     private let currentDateComponents: DateComponents
 

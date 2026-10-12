@@ -1,5 +1,5 @@
 //
-//  KProgressHUDView.swift
+//  KUIProgressHUDView.swift
 //  KikurageUI
 //
 //  Created by Shusuke Ota on 2026/10/4.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct KProgressHUDView: View {
+public struct KUIProgressHUDView: View {
     public init() {}
 
     public var body: some View {
@@ -30,5 +30,5 @@ public struct KProgressHUDView: View {
 }
 
 #Preview {
-    KProgressHUDView()
+    KUIProgressHUDView()
 }

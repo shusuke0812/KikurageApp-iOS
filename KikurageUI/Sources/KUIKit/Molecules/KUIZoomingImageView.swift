@@ -13,7 +13,7 @@ import Kingfisher
 import SwiftUI
 import UIKit
 
-public class KUIZoomingImageView: UIView {
+class ZoomingImageView: UIView {
     private var scrollView: UIScrollView!
     public var imageView: UIImageView!
 
@@ -156,17 +156,17 @@ public class KUIZoomingImageView: UIView {
 
 // MARK: - UIScrollViewDelegate
 
-extension KUIZoomingImageView: UIScrollViewDelegate {
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+extension ZoomingImageView: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
     }
 
-    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         preventScrollingToEmptyAreaOfImageView()
     }
 }
 
-public struct KZoomingImageViewProps {
+public struct KUIZoomingImageViewProps {
     let imageStoragePath: String
 
     public init(imageStoragePath: String) {
@@ -174,30 +174,30 @@ public struct KZoomingImageViewProps {
     }
 }
 
-public struct KZoomingImageView: View {
-    private let props: KZoomingImageViewProps
+public struct KUIZoomingImageView: View {
+    private let props: KUIZoomingImageViewProps
 
-    public init(props: KZoomingImageViewProps) {
+    public init(props: KUIZoomingImageViewProps) {
         self.props = props
     }
 
     public var body: some View {
-        KZoomingImageViewRepresentable(imageStoragePath: props.imageStoragePath)
+        ZoomingImageViewRepresentable(imageStoragePath: props.imageStoragePath)
     }
 }
 
-private struct KZoomingImageViewRepresentable: UIViewRepresentable {
+private struct ZoomingImageViewRepresentable: UIViewRepresentable {
     let imageStoragePath: String
 
-    func makeUIView(context: Context) -> KUIZoomingImageView {
-        let view = KUIZoomingImageView()
+    func makeUIView(context: Context) -> ZoomingImageView {
+        let view = ZoomingImageView()
         loadImage(into: view)
         return view
     }
 
-    func updateUIView(_ uiView: KUIZoomingImageView, context: Context) {}
+    func updateUIView(_ uiView: ZoomingImageView, context: Context) {}
 
-    private func loadImage(into view: KUIZoomingImageView) {
+    private func loadImage(into view: ZoomingImageView) {
         // ローカルのAsset Catalogに同名の画像があればそれを優先して表示する（Previewなどで使用）
         if let localImage = UIImage(named: imageStoragePath) {
             view.imageView.image = localImage
@@ -219,7 +219,7 @@ private struct KZoomingImageViewRepresentable: UIViewRepresentable {
     ZStack {
         Color.black
             .ignoresSafeArea()
-        KZoomingImageView(props: KZoomingImageViewProps(imageStoragePath: ""))
+        KUIZoomingImageView(props: KUIZoomingImageViewProps(imageStoragePath: ""))
             .frame(height: 320)
     }
 }

@@ -48,7 +48,7 @@ struct CultivationBaseView: View {
                     } else {
                         LazyVGrid(columns: columns, spacing: .cellSpacing * 2) {
                             ForEach(Array(state.cultivations.enumerated()), id: \.offset) { _, cultivation in
-                                KCultivationCell(props: KCultivationCellProps(
+                                KUICultivationCell(props: KUICultivationCellProps(
                                     imageStoragePath: cultivation.data.imageStoragePaths.first,
                                     viewDate: cultivation.data.viewDate
                                 ))
@@ -66,7 +66,7 @@ struct CultivationBaseView: View {
                 }
             }
 
-            KCircleButton(props: KCircleButtonProps(
+            KUICircleButton(props: KUICircleButtonProps(
                 variant: .primary,
                 image: R.image.addMemoButton(),
                 width: 60

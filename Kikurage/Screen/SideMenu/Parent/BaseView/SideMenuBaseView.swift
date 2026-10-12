@@ -47,7 +47,7 @@ struct SideMenuBaseView: View {
                     ForEach(sections, id: \.self) { section in
                         Section {
                             ForEach(section.rows, id: \.self) { row in
-                                KSideMenuItemRow(props: KSideMenuItemRowProps(
+                                KUISideMenuItemRow(props: KUISideMenuItemRowProps(
                                     title: row.title,
                                     iconImageName: row.iconImageName
                                 ))

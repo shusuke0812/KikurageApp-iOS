@@ -28,7 +28,7 @@ struct AccountSettingBaseView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            KCircleImageView(props: KCircleImageViewProps(
+            KUICircleImageView(props: KUICircleImageViewProps(
                 image: R.image.hakase(),
                 width: userImageViewWidth
             ))
@@ -37,7 +37,7 @@ struct AccountSettingBaseView: View {
                 delegate?.settingBaseViewDidTapUserImageView()
             }
 
-            KMaterialTextField(props: KMaterialTextFieldProps(
+            KUIMaterialTextField(props: KUIMaterialTextFieldProps(
                 maxTextCount: 30,
                 alignment: .center,
                 fontSize: 20,
@@ -48,7 +48,7 @@ struct AccountSettingBaseView: View {
 
             Spacer(minLength: 0)
 
-            KButton(props: KButtonProps(
+            KUIButton(props: KUIButtonProps(
                 variant: .primary,
                 title: R.string.localizable.side_menu_setting_edit_btn_title()
             ), onTap: {

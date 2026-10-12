@@ -7,36 +7,8 @@
 //
 
 import SwiftUI
-import UIKit
 
 public struct KUITextFieldProps {
-    let placeHolder: String
-
-    public init(placeHolder: String) {
-        self.placeHolder = placeHolder
-    }
-}
-
-public class KUITextField: UITextField {
-    public init(props: KUITextFieldProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
-    }
-
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent(props: KUITextFieldProps) {
-        autocorrectionType = .no
-        borderStyle = .roundedRect
-        font = .systemFont(ofSize: 15)
-        placeholder = props.placeHolder
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-}
-
-public struct KTextFieldProps {
     public let placeHolder: String
     @Binding public var inputText: String
     @Binding public var hasError: Bool
@@ -52,10 +24,10 @@ public struct KTextFieldProps {
     }
 }
 
-public struct KTextField: View {
-    private var props: KTextFieldProps
+public struct KUITextField: View {
+    private var props: KUITextFieldProps
 
-    public init(props: KTextFieldProps) {
+    public init(props: KUITextFieldProps) {
         self.props = props
     }
 

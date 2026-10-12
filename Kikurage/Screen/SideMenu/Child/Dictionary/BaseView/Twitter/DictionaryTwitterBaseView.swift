@@ -26,7 +26,7 @@ struct DictionaryTwitterBaseView: View {
                 KUIEmptyView(type: .notFoundTweets)
             } else {
                 List(state.tweets, id: \.id) { tweet in
-                    KTweetRow(props: KTweetRowProps(
+                    KUITweetRow(props: KUITweetRowProps(
                         userName: tweet.user.name,
                         createdAtString: DateHelper.formatToString(date: tweet.createdAt),
                         tweet: tweet.text,

@@ -7,37 +7,8 @@
 //
 
 import SwiftUI
-import UIKit
 
 public struct KUIDividerViewProps {
-    let color: UIColor
-
-    public init(color: UIColor = .lightGray) {
-        self.color = color
-    }
-}
-
-public class KUIDividerView: UIView {
-    public init(props: KUIDividerViewProps = KUIDividerViewProps()) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
-    }
-
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent(props: KUIDividerViewProps) {
-        backgroundColor = props.color
-        translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 0.5)
-        ])
-    }
-}
-
-public struct KDividerViewProps {
     let color: Color
 
     public init(color: Color = Color(uiColor: .lightGray)) {
@@ -45,10 +16,10 @@ public struct KDividerViewProps {
     }
 }
 
-public struct KDividerView: View {
-    private let props: KDividerViewProps
+public struct KUIDividerView: View {
+    private let props: KUIDividerViewProps
 
-    public init(props: KDividerViewProps = KDividerViewProps()) {
+    public init(props: KUIDividerViewProps = KUIDividerViewProps()) {
         self.props = props
     }
 
@@ -63,7 +34,7 @@ public struct KDividerView: View {
     ZStack {
         Color(uiColor: .systemGroupedBackground)
             .ignoresSafeArea()
-        KDividerView()
+        KUIDividerView()
             .padding()
     }
 }
