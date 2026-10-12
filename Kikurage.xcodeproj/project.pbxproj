@@ -21,6 +21,7 @@
 		76023EC94A91926F888D4A46 /* WiFiSelectDeviceSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */; };
 		86FFDF4817CC4E66D44767FE /* WiFiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BDA06245DEBF5E7149B87F /* WiFiSettingViewModel.swift */; };
 		89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */; };
+		8E01F904D6698F0EAC441BEA /* CalendarState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4E5B436119034996070F3 /* CalendarState.swift */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C06D2F12D28124700B52292 /* KSAppService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F02D28124700B52292 /* KSAppService */; };
 		9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F22D281B1A00B52292 /* KUIKit */; };
@@ -34,7 +35,6 @@
 		9C1ACF522225768A00A3D4D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF512225768A00A3D4D1 /* Assets.xcassets */; };
 		9C1ACF552225768A00A3D4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1ACF532225768A00A3D4D1 /* LaunchScreen.storyboard */; };
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
-		9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482412D2A1CA200829067 /* KSCalendarService */; };
 		9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482472D2A244200829067 /* KSDictionaryService */; };
 		9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2BDE8C2D33A9610067005D /* KALogger */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
@@ -132,6 +132,7 @@
 		9CEE7F462D2931CA006E6A01 /* KSCultivationService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F452D2931CA006E6A01 /* KSCultivationService */; };
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599C80FF591093188CFF133 /* DebugViewModel.swift */; };
+		B1B6ED6FB0C6CFFCA3AEC86C /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754C2148636E317B38BD918F /* CalendarViewModel.swift */; };
 		D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */; };
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
 		DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1A009602B012D55AC0AA8 /* SignUpState.swift */; };
@@ -178,6 +179,8 @@
 		4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceSectionType.swift; sourceTree = "<group>"; };
 		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
+		754C2148636E317B38BD918F /* CalendarViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		84D4E5B436119034996070F3 /* CalendarState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarState.swift; sourceTree = "<group>"; };
 		8599C80FF591093188CFF133 /* DebugViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
-				9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */,
 				9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
@@ -336,6 +338,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		070ADC21E920521FB9D5B08B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84D4E5B436119034996070F3 /* CalendarState.swift */,
+				754C2148636E317B38BD918F /* CalendarViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0A778502ECC5AC1591CD8A80 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +835,7 @@
 			children = (
 				9CA20455271C788000D65DD7 /* BaseView */,
 				9CA20464271C7B2400D65DD7 /* ViewController */,
+				070ADC21E920521FB9D5B08B /* ViewModel */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1535,6 +1548,8 @@
 				A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */,
 				DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */,
 				D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */,
+				8E01F904D6698F0EAC441BEA /* CalendarState.swift in Sources */,
+				B1B6ED6FB0C6CFFCA3AEC86C /* CalendarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2340,10 +2355,6 @@
 		9C06D2F22D281B1A00B52292 /* KUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KUIKit;
-		};
-		9C2482412D2A1CA200829067 /* KSCalendarService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSCalendarService;
 		};
 		9C2482472D2A244200829067 /* KSDictionaryService */ = {
 			isa = XCSwiftPackageProductDependency;

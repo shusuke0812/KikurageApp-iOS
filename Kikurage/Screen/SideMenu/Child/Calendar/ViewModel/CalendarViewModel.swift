@@ -1,6 +1,6 @@
 //
 //  CalendarViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2021/1/19.
 //  Copyright © 2021 shusuke. All rights reserved.
@@ -10,23 +10,22 @@ import Foundation
 import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSDateHelper
 
-public protocol CalendarViewModelDelegate: AnyObject {
+protocol CalendarViewModelDelegate: AnyObject {
     func calendarViewModelDidSuccessGetKikurageUser(_ calendarViewModel: CalendarViewModel)
     func calendarViewModelDidFailedGetKikurageUser(_ calendarViewModel: CalendarViewModel, with errorMessage: String)
 }
 
-public class CalendarViewModel {
-    public weak var delegate: CalendarViewModelDelegate?
-    public let state = CalendarState()
+class CalendarViewModel {
+    weak var delegate: CalendarViewModelDelegate?
+    let state = CalendarState()
 
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
 
     private var kikurageUser: KikurageUser?
 
-    public init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
+    init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
     }
@@ -61,7 +60,7 @@ extension CalendarViewModel {
 extension CalendarViewModel {
     /// きくらげユーザーを取得する
     /// - Parameter uid: ユーザーID
-    public func loadKikurageUser() {
+    func loadKikurageUser() {
         guard let userID = loginManager.userID else {
             delegate?.calendarViewModelDidFailedGetKikurageUser(self, with: "error") // TODO: Error型を定義してVCに通知する
             return
