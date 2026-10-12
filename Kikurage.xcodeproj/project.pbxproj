@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
+		89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C06D2F12D28124700B52292 /* KSAppService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F02D28124700B52292 /* KSAppService */; };
 		9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F22D281B1A00B52292 /* KUIKit */; };
@@ -252,6 +254,8 @@
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
+		AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
+		EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +355,7 @@
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 				9C03D033277DC1B20074C914 /* Settings.bundle */,
+				AE8D04DA6F9FEF9DF8B46B14 /* UseCase */,
 			);
 			path = Kikurage;
 			sourceTree = "<group>";
@@ -1083,6 +1088,7 @@
 			isa = PBXGroup;
 			children = (
 				9C90935D25B6666C00496F38 /* ChartViewHelper.swift */,
+				EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1135,6 +1141,15 @@
 				9CDD1FC125A69040006DA852 /* DeviceRegisterBaseView.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		AE8D04DA6F9FEF9DF8B46B14 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */,
+			);
+			name = UseCase;
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1399,6 +1414,8 @@
 				9CE5927C257F664D00924B42 /* PostCultivationBaseView.swift in Sources */,
 				9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */,
 				9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */,
+				89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */,
+				4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1439,7 +1456,7 @@
 		};
 		9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */;
+			productRef = 9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2312,7 +2329,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KSRecipeService;
 		};
-		9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */ = {
+		9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
