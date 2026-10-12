@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1131A5C51455B61985502323 /* AccountSettingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */; };
 		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
 		89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
@@ -24,7 +25,6 @@
 		9C22302D275B2E16009275EB /* GoogleService-Info-Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C22302C275B2E16009275EB /* GoogleService-Info-Production.plist */; };
 		9C2482422D2A1CA200829067 /* KSCalendarService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482412D2A1CA200829067 /* KSCalendarService */; };
 		9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482432D2A1F4C00829067 /* KSGraphService */; };
-		9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482452D2A228200829067 /* KSAccountSettingService */; };
 		9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2482472D2A244200829067 /* KSDictionaryService */; };
 		9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9C2BDE8C2D33A9610067005D /* KALogger */; };
 		9C44DE562D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C44DE552D1FB70A00CA7585 /* NavigationProtocol+SignUp.swift */; };
@@ -124,6 +124,7 @@
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		9CFBA7E22D2A59930029ABF9 /* KSWiFiService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CFBA7E12D2A59930029ABF9 /* KSWiFiService */; };
 		9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CFBA7E32D2A602E0029ABF9 /* KSDebugService */; };
+		E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
 		AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
+		BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingState.swift; sourceTree = "<group>"; };
 		EDA2ADF0B406469FBF97D1C6 /* DateHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,7 +271,6 @@
 				9C2482442D2A1F4C00829067 /* KSGraphService in Frameworks */,
 				9CFBA7E42D2A602E0029ABF9 /* KSDebugService in Frameworks */,
 				9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */,
-				9C2482462D2A228200829067 /* KSAccountSettingService in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
 				9C147B1D223E493A0034D8AB /* MessageUI.framework in Frameworks */,
@@ -312,6 +314,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B2827120DC0FEB809A37683 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */,
+				42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		923FE88E53278C489EBA6831 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +887,7 @@
 			children = (
 				9CAFDC052780212100C40094 /* BaseView */,
 				9CAFDC062780212A00C40094 /* ViewController */,
+				4B2827120DC0FEB809A37683 /* ViewModel */,
 			);
 			path = AccountSetting;
 			sourceTree = "<group>";
@@ -1416,6 +1429,8 @@
 				9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */,
 				89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */,
 				4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */,
+				1131A5C51455B61985502323 /* AccountSettingState.swift in Sources */,
+				E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2229,10 +2244,6 @@
 		9C2482432D2A1F4C00829067 /* KSGraphService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSGraphService;
-		};
-		9C2482452D2A228200829067 /* KSAccountSettingService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSAccountSettingService;
 		};
 		9C2482472D2A244200829067 /* KSDictionaryService */ = {
 			isa = XCSwiftPackageProductDependency;

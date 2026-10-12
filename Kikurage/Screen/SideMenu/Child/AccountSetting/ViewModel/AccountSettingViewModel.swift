@@ -1,6 +1,6 @@
 //
 //  AccountSettingViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2022/1/1.
 //  Copyright © 2022 shusuke. All rights reserved.
@@ -11,21 +11,21 @@ import KDEntity
 import KDLoginManager
 import KDRepository
 
-public protocol AccountSettingViewModelDelegate: AnyObject {
+protocol AccountSettingViewModelDelegate: AnyObject {
     func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel)
     func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: AccountSettingViewModel, with errorMessage: String)
 }
 
-public class AccountSettingViewModel {
+class AccountSettingViewModel {
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
     private let loginManager: LoginManager
 
-    public weak var delegate: AccountSettingViewModelDelegate?
-    public let state = AccountSettingState()
+    weak var delegate: AccountSettingViewModelDelegate?
+    let state = AccountSettingState()
 
     private var kikurageUser: KikurageUser?
 
-    public init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
+    init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
         self.kikurageUserRepository = kikurageUserRepository
         loginManager = LoginManager()
     }
@@ -34,7 +34,7 @@ public class AccountSettingViewModel {
 // MARK: - Firebase Firestore
 
 extension AccountSettingViewModel {
-    public func loadKikurageUser() {
+    func loadKikurageUser() {
         guard let uid = loginManager.userID else {
             delegate?.settingViewModelDidFailedGetKikurageUser(self, with: "error")
             return

@@ -8,7 +8,6 @@
 
 import CropViewController
 import KAAnalytics
-import KSAccountSettingService
 import UIKit
 
 class AccountSettingViewController: UIViewController, UIViewControllerNavigatable {
