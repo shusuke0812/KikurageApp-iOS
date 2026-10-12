@@ -7,7 +7,6 @@
 //
 
 import KAAnalytics
-import KSRecipeService
 import RxSwift
 import UIKit
 

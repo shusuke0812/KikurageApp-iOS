@@ -7,7 +7,7 @@
 //
 
 import KAAnalytics
-import KSAppService
+import KDEntity
 import KUIKit
 import SwiftUI
 import UIKit

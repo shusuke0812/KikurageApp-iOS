@@ -7,7 +7,7 @@
 //
 
 import KAAnalytics
-import KSCultivationService
+import KDEntity
 import RxSwift
 import UIKit
 

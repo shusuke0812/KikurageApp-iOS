@@ -6,7 +6,7 @@
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
-import KSCultivationService
+import KDEntity
 import KUIKit
 import SwiftUI
 import UIKit

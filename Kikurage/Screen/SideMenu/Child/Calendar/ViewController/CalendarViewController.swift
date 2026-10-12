@@ -7,7 +7,6 @@
 //
 
 import KAAnalytics
-import KSCalendarService
 import UIKit
 
 class CalendarViewController: UIViewController, UIViewControllerNavigatable {

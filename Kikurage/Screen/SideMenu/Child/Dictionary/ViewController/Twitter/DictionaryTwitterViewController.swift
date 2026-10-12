@@ -6,7 +6,6 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
-import KSDictionaryService
 import UIKit
 
 class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
