@@ -127,13 +127,14 @@
 		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
 		9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
-		9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */; };
 		9CEE7F422D29007D006E6A01 /* KSDeviceRegisterService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */; };
 		9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F432D2916FD006E6A01 /* KSHomeService */; };
 		9CEE7F462D2931CA006E6A01 /* KSCultivationService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F452D2931CA006E6A01 /* KSCultivationService */; };
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599C80FF591093188CFF133 /* DebugViewModel.swift */; };
+		D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */; };
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
+		DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1A009602B012D55AC0AA8 /* SignUpState.swift */; };
 		E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,12 +169,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		14BDA06245DEBF5E7149B87F /* WiFiSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSettingViewModel.swift; sourceTree = "<group>"; };
 		1ECE1D2E4803542173BC526B /* GraphState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GraphState.swift; sourceTree = "<group>"; };
 		23B0C19F9E29DBA7D43AAA4C /* WiFiListSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListSectionType.swift; sourceTree = "<group>"; };
 		28B0B707293735884DB77E01 /* WiFiListViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListViewModel.swift; sourceTree = "<group>"; };
 		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
 		4E25B92F46F8CCB61500C1DB /* WiFiSelectDeviceSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceSectionType.swift; sourceTree = "<group>"; };
+		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
 		8599C80FF591093188CFF133 /* DebugViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -298,7 +301,6 @@
 				9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */,
 				9CEE7F462D2931CA006E6A01 /* KSCultivationService in Frameworks */,
 				9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */,
-				9CEE7F402D28F37B006E6A01 /* KSSignUpService in Frameworks */,
 				9CCA43D52D22C714005A78ED /* RxCocoa in Frameworks */,
 				9C2482482D2A244200829067 /* KSDictionaryService in Frameworks */,
 				9CCA43C92D22C601005A78ED /* IQKeyboardManagerSwift in Frameworks */,
@@ -334,6 +336,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A778502ECC5AC1591CD8A80 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5DC1A009602B012D55AC0AA8 /* SignUpState.swift */,
+				0363ED3BB6CD9F952108C0EB /* SignUpViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		14078D8B15B6C7B1B1ED3454 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,6 +1200,7 @@
 			children = (
 				9CFD86962C1432CF0029527D /* BaseView */,
 				9CFD86972C1432D60029527D /* ViewController */,
+				0A778502ECC5AC1591CD8A80 /* ViewModel */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1520,6 +1533,8 @@
 				6B0E3A281DBE4C10000B2CE3 /* WiFiSettingSectionType.swift in Sources */,
 				86FFDF4817CC4E66D44767FE /* WiFiSettingViewModel.swift in Sources */,
 				A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */,
+				DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */,
+				D83667A96192DBE31A1A3C43 /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2404,10 +2419,6 @@
 		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSLoginService;
-		};
-		9CEE7F3F2D28F37B006E6A01 /* KSSignUpService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSSignUpService;
 		};
 		9CEE7F412D29007D006E6A01 /* KSDeviceRegisterService */ = {
 			isa = XCSwiftPackageProductDependency;

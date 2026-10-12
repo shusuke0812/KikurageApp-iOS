@@ -1,6 +1,6 @@
 //
 //  SignUpViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2021/9/6.
 //  Copyright © 2021 shusuke. All rights reserved.
@@ -12,22 +12,22 @@ import KDEntity
 import KDLoginManager
 import KDRepository
 
-public protocol SignUpViewModelDelegate: AnyObject {
+protocol SignUpViewModelDelegate: AnyObject {
     func signUpViewModelDidSuccessRegisterUser(_ signUpViewModel: SignUpViewModel)
     func signUpViewModelDidFailedRegisterUser(_ signUpViewModel: SignUpViewModel, with errorMessage: String)
 }
 
-public class SignUpViewModel {
-    public weak var delegate: SignUpViewModelDelegate?
+class SignUpViewModel {
+    weak var delegate: SignUpViewModelDelegate?
 
-    public var state: SignUpState
+    var state: SignUpState
 
     private let loginManager: LoginManager
     private var loginRepository: LoginRepositoryProtocol
 
     private var cancellables = Set<AnyCancellable>()
 
-    public init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
+    init(loginRepository: LoginRepositoryProtocol = LoginRepository()) {
         loginManager = LoginManager()
         self.loginRepository = loginRepository
         state = SignUpState()
@@ -39,7 +39,7 @@ public class SignUpViewModel {
             .assign(to: &state.$enabled)
     }
 
-    public func reloadUser(completion: @escaping ((Result<Void, Error>) -> Void)) {
+    func reloadUser(completion: @escaping ((Result<Void, Error>) -> Void)) {
         loginManager.reloadUser { [weak self] result in
             switch result {
             case .success:
@@ -55,7 +55,7 @@ public class SignUpViewModel {
 // MARK: - Firebase Authentication
 
 extension SignUpViewModel {
-    public func registerUser() {
+    func registerUser() {
         loginRepository.signUp(registerInfo: (state.email, state.password)) { [weak self] response in
             switch response {
             case .success(let loginUser):
