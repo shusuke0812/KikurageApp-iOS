@@ -15,6 +15,7 @@
 		3853181BBF1A7552F2E0593F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6DB8208A79CBA65075A9F /* GraphViewModel.swift */; };
 		4A115A06079586141091C9BE /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */; };
 		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
+		4CEA4B1F5FEFD3282098456E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DB0886F00968D255100312 /* HomeViewModel.swift */; };
 		4D170530D1126F8407FEEFF2 /* DeviceRegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */; };
 		5359E62D971971BBDDA5CB1A /* WiFiSelectDeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACEDB10AD1DF7AF74D2023 /* WiFiSelectDeviceState.swift */; };
 		6B0E3A281DBE4C10000B2CE3 /* WiFiSettingSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EBAA2EA85B2925503E787 /* WiFiSettingSectionType.swift */; };
@@ -133,7 +134,6 @@
 		9CEAF3BC2D32A21D00EB5C3E /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BB2D32A21D00EB5C3E /* HorizonCalendar */; };
 		9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEAF3BF2D32A40500EB5C3E /* KAAnalytics */; };
 		9CEE7F3E2D28EC82006E6A01 /* KSLoginService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F3D2D28EC82006E6A01 /* KSLoginService */; };
-		9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F432D2916FD006E6A01 /* KSHomeService */; };
 		9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */ = {isa = PBXBuildFile; productRef = 9CEE7F472D296020006E6A01 /* KSRecipeService */; };
 		A886685343F8F595FF3199D3 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599C80FF591093188CFF133 /* DebugViewModel.swift */; };
 		B1B6ED6FB0C6CFFCA3AEC86C /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754C2148636E317B38BD918F /* CalendarViewModel.swift */; };
@@ -147,6 +147,7 @@
 		DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1A009602B012D55AC0AA8 /* SignUpState.swift */; };
 		E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */; };
 		EAC7A68319BBCAA78A26F6CA /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */; };
+		F15F7E265005EA41D69E918B /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB8032A1E839AC75DC41246 /* HomeState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,8 @@
 		23B0C19F9E29DBA7D43AAA4C /* WiFiListSectionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListSectionType.swift; sourceTree = "<group>"; };
 		28B0B707293735884DB77E01 /* WiFiListViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListViewModel.swift; sourceTree = "<group>"; };
 		2908550A7D5448A52D456FCC /* DictionaryTwitterState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterState.swift; sourceTree = "<group>"; };
+		2AB8032A1E839AC75DC41246 /* HomeState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
+		35DB0886F00968D255100312 /* HomeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		36F38397AD2BD91063F1543E /* PostCultivationState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostCultivationState.swift; sourceTree = "<group>"; };
 		37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterState.swift; sourceTree = "<group>"; };
 		42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingViewModel.swift; sourceTree = "<group>"; };
@@ -317,7 +320,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CEE7F442D2916FD006E6A01 /* KSHomeService in Frameworks */,
 				9C2BDE8D2D33A9610067005D /* KALogger in Frameworks */,
 				9CCA43D22D22C6D8005A78ED /* CropViewController in Frameworks */,
 				9CEE7F482D296020006E6A01 /* KSRecipeService in Frameworks */,
@@ -735,6 +737,7 @@
 			children = (
 				9CA20446271C778700D65DD7 /* BaseView */,
 				9CA2045D271C7A4900D65DD7 /* ViewController */,
+				EE65FA86EA752A8B030B0963 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1364,6 +1367,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		EE65FA86EA752A8B030B0963 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2AB8032A1E839AC75DC41246 /* HomeState.swift */,
+				35DB0886F00968D255100312 /* HomeViewModel.swift */,
+			);
+			name = ViewModel;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1659,6 +1672,8 @@
 				0F3729FE3D9335CAD018DD89 /* DictionaryViewModel.swift in Sources */,
 				C5A72A25A8AD587F59B85F86 /* DictionaryTwitterState.swift in Sources */,
 				EAC7A68319BBCAA78A26F6CA /* DictionaryTwitterViewModel.swift in Sources */,
+				F15F7E265005EA41D69E918B /* HomeState.swift in Sources */,
+				4CEA4B1F5FEFD3282098456E /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2535,10 +2550,6 @@
 		9CEE7F3D2D28EC82006E6A01 /* KSLoginService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KSLoginService;
-		};
-		9CEE7F432D2916FD006E6A01 /* KSHomeService */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KSHomeService;
 		};
 		9CEE7F472D296020006E6A01 /* KSRecipeService */ = {
 			isa = XCSwiftPackageProductDependency;

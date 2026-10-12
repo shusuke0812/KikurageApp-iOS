@@ -1,38 +1,36 @@
 //
 //  HomeViewModel.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2020/10/21.
 //  Copyright © 2020 shusuke. All rights reserved.
 //
 
 import Foundation
+import KDEntity
 import KDRepository
-import KSSDateHelper
 import RxSwift
 
-@_exported import KDEntity
-
-public protocol HomeViewModelInput {
+protocol HomeViewModelInput {
     var kikurageUser: KikurageUser { get }
 
     func loadKikurageState()
     func listenKikurageState()
 }
 
-public protocol HomeViewModelOutput {
+protocol HomeViewModelOutput {
     var kikurageState: Observable<KikurageState> { get }
     var error: Observable<Error> { get }
     var dateNowString: String { get }
 }
 
-public protocol HomeViewModelType {
+protocol HomeViewModelType {
     var input: HomeViewModelInput { get }
     var output: HomeViewModelOutput { get }
     var state: HomeState { get }
 }
 
-public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
+class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol
 
@@ -40,19 +38,19 @@ public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModel
     private let errorSubject = PublishSubject<Error>()
     private let disposeBag = DisposeBag()
 
-    public var input: HomeViewModelInput { self }
-    public var output: HomeViewModelOutput { self }
-    public let state = HomeState()
+    var input: HomeViewModelInput { self }
+    var output: HomeViewModelOutput { self }
+    let state = HomeState()
 
-    public var kikurageUser: KikurageUser
-    public var kikurageState: Observable<KikurageState> { subject.asObservable() }
-    public var error: Observable<Error> { errorSubject.asObservable() }
+    var kikurageUser: KikurageUser
+    var kikurageState: Observable<KikurageState> { subject.asObservable() }
+    var error: Observable<Error> { errorSubject.asObservable() }
 
-    public var dateNowString: String {
+    var dateNowString: String {
         DateHelper.now()
     }
 
-    public init(
+    init(
         kikurageUser: KikurageUser,
         kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
         kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol = KikurageStateListenerRepository()
@@ -78,7 +76,7 @@ extension HomeViewModel {
 
 extension HomeViewModel {
     /// きくらげの状態を読み込む
-    public func loadKikurageState() {
+    func loadKikurageState() {
         let request = KikurageStateRequest(productID: kikurageUser.productKey)
         kikurageStateRepository.getKikurageState(request: request)
             .subscribe(
@@ -93,7 +91,7 @@ extension HomeViewModel {
     }
 
     /// きくらげの状態をリッスンする
-    public func listenKikurageState() {
+    func listenKikurageState() {
         kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
             .subscribe(
                 onNext: { [weak self] kikurageState in
