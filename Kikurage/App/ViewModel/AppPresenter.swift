@@ -1,25 +1,23 @@
 //
 //  AppPresenter.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2025/1/1.
 //
 
 import Foundation
 import KALogger
+import KDEntity
 import KDLoginManager
 import KDRepository
-import KSSLoadKikurageStateUseCase
 
-@_exported import KDEntity
-
-public protocol AppPresenterDelegate: AnyObject {
+protocol AppPresenterDelegate: AnyObject {
     func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
     func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String)
 }
 
-public class AppPresenter {
-    public var isLogin: Bool {
+class AppPresenter {
+    var isLogin: Bool {
         loginManager.isLogin
     }
 
@@ -27,9 +25,9 @@ public class AppPresenter {
     private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
     private let loginManager: LoginManager
 
-    public weak var delegate: AppPresenterDelegate?
+    weak var delegate: AppPresenterDelegate?
 
-    public init(
+    init(
         appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository()
     ) {
         self.appConfigRepository = appConfigRepository
@@ -37,7 +35,7 @@ public class AppPresenter {
         loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
     }
 
-    public func login() {
+    func login() {
         let userID = loginManager.userID ?? ""
         loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] result in
             switch result {
@@ -49,7 +47,7 @@ public class AppPresenter {
         }
     }
 
-    public func loadFacebookGroupURL() {
+    func loadFacebookGroupURL() {
         appConfigRepository.getFacebookGroupURL { response in
             switch response {
             case .success(let urlString):
@@ -60,7 +58,7 @@ public class AppPresenter {
         }
     }
 
-    public func loadTermsURL() {
+    func loadTermsURL() {
         appConfigRepository.getTermsURL { response in
             switch response {
             case .success(let urlString):
@@ -71,7 +69,7 @@ public class AppPresenter {
         }
     }
 
-    public func loadPrivacyPolicyURL() {
+    func loadPrivacyPolicyURL() {
         appConfigRepository.getPrivacyPolicyURL { response in
             switch response {
             case .success(let urlString):
@@ -82,7 +80,7 @@ public class AppPresenter {
         }
     }
 
-    public func loadLatestAppVersion() {
+    func loadLatestAppVersion() {
         appConfigRepository.getLatestAppVersion { response in
             switch response {
             case .success(let appVersionString):

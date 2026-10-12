@@ -7,7 +7,6 @@
 //
 
 import KAAnalytics
-import KSAppService
 import UIKit
 
 class CommunicationViewController: UIViewController, UIViewControllerNavigatable, CommunicationAccessable {

@@ -1,6 +1,6 @@
 //
 //  AppDelegateConfig.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2025/1/5.
 //
@@ -10,14 +10,14 @@ import Foundation
 import KACrashlytics
 import KDLoginManager
 
-public class AppDelegateConfig {
+class AppDelegateConfig {
     private let loginManager: LoginManager
 
-    public init() {
+    init() {
         loginManager = LoginManager()
     }
 
-    public func initialize() {
+    func initialize() {
         FirebaseApp.configure()
 
         let crashlytics = FirebaseCrashlyticsManager()

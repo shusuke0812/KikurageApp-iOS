@@ -1,18 +1,18 @@
 //
 //  AppVersion.swift
-//  KikurageService
+//  Kikurage
 //
 //  Created by Shusuke Ota on 2025/1/2.
 //
 
 import Foundation
 
-public struct AppVersion {
-    public let major: Int
-    public let minor: Int
-    public let patch: Int
+struct AppVersion {
+    let major: Int
+    let minor: Int
+    let patch: Int
 
-    public init?(versionString: String) {
+    init?(versionString: String) {
         guard let versions = versions(versionString) else {
             return nil
         }
@@ -21,13 +21,13 @@ public struct AppVersion {
         patch = versions[2]
     }
 
-    public var versionString: String {
+    var versionString: String {
         "\(major)\(separator)\(minor)\(separator)\(patch)"
     }
 
     // MARK: Comparable
 
-    public static func < (lhs: AppVersion, rhs: AppVersion) -> Bool {
+    static func < (lhs: AppVersion, rhs: AppVersion) -> Bool {
         if lhs.major < rhs.major {
             return true
         } else if lhs.major > rhs.major {
@@ -48,7 +48,7 @@ public struct AppVersion {
 
     // MARK: Equatable
 
-    public static func == (lhs: AppVersion, rhs: AppVersion) -> Bool {
+    static func == (lhs: AppVersion, rhs: AppVersion) -> Bool {
         if lhs.major == rhs.major {
             return true
         } else if lhs.minor == rhs.minor {

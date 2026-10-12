@@ -11,7 +11,6 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "KSAppService", targets: ["KSAppService"]),
     ],
     dependencies: [
         .package(path: "../KikurageDomain"),
@@ -21,19 +20,6 @@ let package = Package(
         .package(url: "https://github.com/firebase/firebase-ios-sdk", .upToNextMajor(from: "11.15.0")),
     ],
     targets: [
-        .target(
-            name: "KSAppService",
-            dependencies: [
-                .product(name: "KDRepository", package: "KikurageDomain"),
-                .product(name: "KDEntity", package: "KikurageDomain"),
-                .product(name: "KDLoginManager", package: "KikurageDomain"),
-                .product(name: "KALogger", package: "KikurageAnalytics"),
-                .product(name: "KACrashlytics", package: "KikurageAnalytics"),
-                .product(name: "FirebaseCore", package: "firebase-ios-sdk"),
-                .target(name: "KSSLoadKikurageStateUseCase")
-            ],
-            path: "Sources/Services/KSAppService"
-        ),
         // MARK: - SharedServices
 
         .target(
