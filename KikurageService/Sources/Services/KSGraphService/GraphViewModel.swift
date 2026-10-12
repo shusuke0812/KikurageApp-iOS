@@ -24,13 +24,10 @@ public class GraphViewModel {
     private let loginManager: LoginManager
 
     public weak var delegate: GraphViewModelDelegate?
+    public let state = GraphState()
     /// きくらげの１週間データ
-    public var kikurageStateGraph: [KikurageStateGraphTuple] = []
-    /// きくらげの１週間の温度データ
-    public var temperatureGraphDatas: [Int] = []
-    /// きくらげの１週間の湿度データ
-    public var humidityGraphDatas: [Int] = []
-    public var kikurageUser: KikurageUser?
+    private var kikurageStateGraph: [KikurageStateGraphTuple] = []
+    private var kikurageUser: KikurageUser?
 
     public init(
         kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
@@ -49,26 +46,30 @@ extension GraphViewModel {
         guard let graphData = kikurageStateGraph.first?.data else {
             return
         }
-        temperatureGraphDatas.append(graphData.mondayData?.temperature ?? 0)
-        temperatureGraphDatas.append(graphData.tuesdayData?.temperature ?? 0)
-        temperatureGraphDatas.append(graphData.wednesdayData?.temperature ?? 0)
-        temperatureGraphDatas.append(graphData.thursdayData?.temperature ?? 0)
-        temperatureGraphDatas.append(graphData.fridayData?.temperature ?? 0)
-        temperatureGraphDatas.append(graphData.saturdayData?.temperature ?? 0)
-        temperatureGraphDatas.append(graphData.sundayData?.temperature ?? 0)
+        state.temperatureGraphDatas = [
+            graphData.mondayData?.temperature ?? 0,
+            graphData.tuesdayData?.temperature ?? 0,
+            graphData.wednesdayData?.temperature ?? 0,
+            graphData.thursdayData?.temperature ?? 0,
+            graphData.fridayData?.temperature ?? 0,
+            graphData.saturdayData?.temperature ?? 0,
+            graphData.sundayData?.temperature ?? 0
+        ]
     }
 
     private func setHumidityGraphData() {
         guard let graphData = kikurageStateGraph.first?.data else {
             return
         }
-        humidityGraphDatas.append(graphData.mondayData?.humidity ?? 0)
-        humidityGraphDatas.append(graphData.tuesdayData?.humidity ?? 0)
-        humidityGraphDatas.append(graphData.wednesdayData?.humidity ?? 0)
-        humidityGraphDatas.append(graphData.thursdayData?.humidity ?? 0)
-        humidityGraphDatas.append(graphData.fridayData?.humidity ?? 0)
-        humidityGraphDatas.append(graphData.saturdayData?.humidity ?? 0)
-        humidityGraphDatas.append(graphData.sundayData?.humidity ?? 0)
+        state.humidityGraphDatas = [
+            graphData.mondayData?.humidity ?? 0,
+            graphData.tuesdayData?.humidity ?? 0,
+            graphData.wednesdayData?.humidity ?? 0,
+            graphData.thursdayData?.humidity ?? 0,
+            graphData.fridayData?.humidity ?? 0,
+            graphData.saturdayData?.humidity ?? 0,
+            graphData.sundayData?.humidity ?? 0
+        ]
     }
 }
 
@@ -77,8 +78,11 @@ extension GraphViewModel {
 extension GraphViewModel {
     /// きくらげステートのグラフデータを読み込む
     /// - Parameter productId: プロダクトキー
-    public func loadKikurageStateGraph(productID: String) {
-        let request = KiikurageStateGraphRequest(productID: productID)
+    public func loadKikurageStateGraph() {
+        guard let productKey = kikurageUser?.productKey else {
+            return
+        }
+        let request = KiikurageStateGraphRequest(productID: productKey)
         kikurageStateRepository.getKikurageStateGraph(request: request) { [weak self] response in
             switch response {
             case .success(let graphs):

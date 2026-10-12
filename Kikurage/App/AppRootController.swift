@@ -9,24 +9,19 @@
 import KAAnalytics
 import KSAppService
 import KUIKit
+import SwiftUI
 import UIKit
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
     private var presenter: AppPresenter!
-
-    private let hud: KUIHUD = {
-        let hud = KUIHUD()
-        hud.startRotateAnimation(duration: 1.0, rotateAxis: .y)
-        hud.translatesAutoresizingMaskIntoConstraints = false
-        return hud
-    }()
+    private var hudHostingController: UIHostingController<KUIHUD>?
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initHUD()
+        showHUD()
 
         presenter = AppPresenter()
         presenter.delegate = self
@@ -58,13 +53,28 @@ extension AppRootController {
         presenter.loadLatestAppVersion()
     }
 
-    private func initHUD() {
-        view.addSubview(hud)
+    private func showHUD() {
+        let hostingController = UIHostingController(rootView: KUIHUD())
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
+        hostingController.didMove(toParent: self)
 
         NSLayoutConstraint.activate([
-            hud.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            hud.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            hostingController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            hostingController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+
+        hudHostingController = hostingController
+    }
+
+    private func hideHUD() {
+        hudHostingController?.willMove(toParent: nil)
+        hudHostingController?.view.removeFromSuperview()
+        hudHostingController?.removeFromParent()
+        hudHostingController = nil
     }
 }
 
@@ -90,7 +100,7 @@ extension AppRootController {
         setCurrentViewController(vc)
         setScreenHeaderHeight(vc)
 
-        hud.stopRotateAnimation()
+        hideHUD()
     }
 
     private func setCurrentViewController(_ vc: UIViewController) {

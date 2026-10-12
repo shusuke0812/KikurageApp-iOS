@@ -11,21 +11,19 @@ import KAAnalytics
 import KSAccountSettingService
 import UIKit
 
-class AccountSettingViewController: UIViewController {
-    private var baseView: AccountSettingBaseView = .init()
+class AccountSettingViewController: UIViewController, UIViewControllerNavigatable {
     private var viewModel: AccountSettingViewModel!
 
     // MARK: - Lifecycle
 
-    override func loadView() {
-        view = baseView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = AccountSettingViewModel()
-        setDelegateDataSource()
+        viewModel.delegate = self
         setNavigation()
+
+        let baseView = AccountSettingBaseView(state: viewModel.state, delegate: self)
+        let _ = addBaseView(baseView: baseView)
 
         viewModel.loadKikurageUser()
     }
@@ -45,11 +43,6 @@ class AccountSettingViewController: UIViewController {
 // MARK: - Initialized
 
 extension AccountSettingViewController {
-    private func setDelegateDataSource() {
-        baseView.delegate = self
-        viewModel.delegate = self
-    }
-
     private func setNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -60,11 +53,11 @@ extension AccountSettingViewController {
 // MARK: - SettingBaseView Delegate
 
 extension AccountSettingViewController: AccountSettingBaseViewDelegate {
-    func settingBaseViewDidTappedUserImageView(_ settingBaseView: AccountSettingBaseView) {
+    func settingBaseViewDidTapUserImageView() {
         // FIXME: 写真アプリから写真を選んで円形にトリミング（CropViewController）してViewModelにあるKikurageUserを更新する
     }
 
-    func settingBaseViewDidTappedEditButton(_ settingBaseView: AccountSettingBaseView) {
+    func settingBaseViewDidTapEditButton() {
         // FIXME: ViewModelにあるkikurageUserを更新する処理を書く
         FirebaseAnalyticsManager.sendTapEvent(.accountSettingButton)
         print("DEBUG: ボタンがタップされました")
@@ -74,15 +67,7 @@ extension AccountSettingViewController: AccountSettingBaseViewDelegate {
 // MARK: - SettingViewModel Delegate
 
 extension AccountSettingViewController: AccountSettingViewModelDelegate {
-    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel) {
-        DispatchQueue.main.async {
-            self.baseView.setKikurageName(name: settingViewModel.kikurageUser?.kikurageName)
-        }
-    }
+    func settingViewModelDidSuccessGetKikurageUser(_ settingViewModel: AccountSettingViewModel) {}
 
-    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: AccountSettingViewModel, with errorMessage: String) {
-        DispatchQueue.main.async {
-            self.baseView.setKikurageName(name: nil)
-        }
-    }
+    func settingViewModelDidFailedGetKikurageUser(_ settingViewModel: AccountSettingViewModel, with errorMessage: String) {}
 }

@@ -30,6 +30,7 @@ public protocol RecipeViewModelOutput {
 public protocol RecipeViewModelType {
     var input: RecipeViewModelInput { get }
     var output: RecipeViewModelOutput { get }
+    var state: RecipeState { get }
 }
 
 public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeViewModelOutput {
@@ -42,6 +43,7 @@ public class RecipeViewModel: RecipeViewModelType, RecipeViewModelInput, RecipeV
 
     public var input: RecipeViewModelInput { self }
     public var output: RecipeViewModelOutput { self }
+    public let state = RecipeState()
 
     public var itemSelected: AnyObserver<IndexPath>
 

@@ -6,32 +6,48 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUIRoundedViewProps {
-    let backgroundColor: UIColor?
+    let backgroundColor: Color
+    let cornerRadius: CGFloat
 
     public init(
-        backgroundColor: UIColor? = .white
+        backgroundColor: Color = .white,
+        cornerRadius: CGFloat = .viewCornerRadius
     ) {
         self.backgroundColor = backgroundColor
+        self.cornerRadius = cornerRadius
     }
 }
 
-public class KUIRoundedView: UIView {
-    public init(props: KUIRoundedViewProps = KUIRoundedViewProps()) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
+public struct KUIRoundedView<Content: View>: View {
+    private let props: KUIRoundedViewProps
+    private let content: () -> Content
+
+    public init(
+        props: KUIRoundedViewProps = KUIRoundedViewProps(),
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.props = props
+        self.content = content
     }
 
-    public required init?(coder: NSCoder) {
-        nil
+    public var body: some View {
+        RoundedRectangle(cornerRadius: props.cornerRadius)
+            .fill(props.backgroundColor)
+            .overlay(content())
     }
+}
 
-    private func setupComponent(props: KUIRoundedViewProps) {
-        backgroundColor = props.backgroundColor
-        clipsToBounds = true
-        layer.cornerRadius = .viewCornerRadius
-        translatesAutoresizingMaskIntoConstraints = false
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KUIRoundedView {
+            Text("Content")
+                .padding()
+        }
+        .padding()
     }
 }

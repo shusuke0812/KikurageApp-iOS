@@ -6,33 +6,48 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUITextFieldProps {
-    let placeHolder: String
+    public let placeHolder: String
+    @Binding public var inputText: String
+    @Binding public var hasError: Bool
 
-    public init(placeHolder: String) {
+    public init(
+        placeHolder: String,
+        inputText: Binding<String> = .constant(""),
+        hasError: Binding<Bool> = .constant(false)
+    ) {
         self.placeHolder = placeHolder
+        _inputText = inputText
+        _hasError = hasError
     }
 }
 
-public class KUITextField: UITextField {
+public struct KUITextField: View {
+    private var props: KUITextFieldProps
+
     public init(props: KUITextFieldProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
+    public var body: some View {
+        TextField(props.placeHolder, text: props.$inputText)
+            .modifier(KTextFieldModifier(hasError: props.$hasError))
     }
+}
 
-    private func setupComponent(props: KUITextFieldProps) {
-        autocorrectionType = .no
-        borderStyle = .roundedRect
-        font = .systemFont(ofSize: 15)
-        placeholder = props.placeHolder
-        translatesAutoresizingMaskIntoConstraints = false
+struct KTextFieldModifier: ViewModifier {
+    @Binding var hasError: Bool
+
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .frame(height: 44)
+            .autocorrectionDisabled()
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(hasError ? Color.red : Color.gray, lineWidth: 0.5)
+            )
     }
-
-    // TODO: エラーの場合は枠線を赤色に更新できるようなメソッドを追加する
 }

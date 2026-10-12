@@ -16,47 +16,63 @@ public protocol WiFiSelectDeviceViewModelDelegate: AnyObject {
 }
 
 public class WiFiSelectDeviceViewModel: NSObject {
-    public private(set) var sections: [WiFiSelectDeviceSectionType] = [.device]
+    private let sections: [WiFiSelectDeviceSectionType] = [.device]
+
     public var isBluetoothAvailable: Bool {
         return bluetoothManager.isBluetoothAvailable
     }
 
     public weak var delegate: WiFiSelectDeviceViewModelDelegate?
+    public let state = WiFiSelectDeviceState()
 
     private let bluetoothManager = BluetoothManager.shared
     private var selectedIndexPath: IndexPath?
 
     override public init() {
         super.init()
-        bluetoothManager.delegate = self
+        state.sectionTitle = sections[0].title
     }
 
     deinit {
         bluetoothManager.release()
     }
 
-    public func sectionRows() -> Int {
-        bluetoothManager.peripherals.listCount
+    public func bluetoothDelegate() {
+        bluetoothManager.delegate = self
     }
 
     public func connectToPeripheral(indexPath: IndexPath) {
+        state.isConnecting = true
         bluetoothManager.connect(index: indexPath.row)
         selectedIndexPath = indexPath
     }
 
     public func scanForPeripherals() {
+        state.isScanning = true
         bluetoothManager.startScan()
-    }
-
-    public func getPeripheralInfo(index: Int) -> (signal: BluetoothSignal, peripheral: BluetoothPeripheral) {
-        let peripheral = bluetoothManager.peripherals.getElement(index: index)
-        let signal = BluetoothSignal.getSignal(rssi: peripheral.rssiInt)
-
-        return (signal, peripheral)
     }
 
     public func disconnectPeripheral() {
         bluetoothManager.disconnect()
+    }
+}
+
+// MARK: - Device List
+
+extension WiFiSelectDeviceViewModel {
+    private func makeDevices() -> [WiFiDeviceInfo] {
+        (0..<bluetoothManager.peripherals.listCount).map { index in
+            let peripheral = bluetoothManager.peripherals.getElement(index: index)
+            let signal = BluetoothSignal.getSignal(rssi: peripheral.rssiInt)
+
+            return WiFiDeviceInfo(
+                id: index,
+                signalImage: signal.image,
+                rssiString: peripheral.rssiString,
+                deviceName: peripheral.deviceName,
+                serviceCountString: peripheral.serviceCountString
+            )
+        }
     }
 }
 
@@ -67,17 +83,21 @@ extension WiFiSelectDeviceViewModel: BluetoothManagerDelegate {
 
     public func bluetoothManager(_ bluetoothManager: BluetoothManager, isConnected: Bool) {
         if !isConnected {
+            state.isConnecting = false
             delegate?.viewModelDidFailConnectionToPeripheral(self)
         }
     }
 
     public func bluetoothManagerDidDiscovered(_ bluetoothManager: BluetoothManager) {
+        state.isScanning = false
+        state.devices = makeDevices()
         delegate?.viewModelDidAddPeripheral(self)
     }
 
     public func bluetoothManagerDidConnected(_ bluetoothManager: BluetoothManager) {
         if let selectedIndexPath = selectedIndexPath {
             bluetoothManager.setupSelectedPeripheral(index: selectedIndexPath.row)
+            state.isConnecting = false
             delegate?.viewModelDidSuccessConnectionToPeripheral(self)
         }
     }

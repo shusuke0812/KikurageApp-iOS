@@ -6,44 +6,43 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUIUnderlinedTextButtonProps {
     let title: String
+    let color: Color
+    let fontWeiht: Font.Weight
 
-    public init(title: String) {
+    public init(
+        title: String,
+        color: Color = .blue,
+        fontWeiht: Font.Weight = .thin
+    ) {
         self.title = title
+        self.color = color
+        self.fontWeiht = fontWeiht
     }
 }
 
-public class KUIUnderlinedTextButton: UIButton {
+public struct KUIUnderlinedTextButton: View {
+    private let props: KUIUnderlinedTextButtonProps
+
     public var onTap: (() -> Void)?
 
-    public init(props: KUIUnderlinedTextButtonProps) {
-        super.init(frame: .zero)
-        setup(props: props)
-        setupButtonAction()
+    public init(props: KUIUnderlinedTextButtonProps, onTap: (() -> Void)? = nil) {
+        self.props = props
+        self.onTap = onTap
     }
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setup(props: KUIUnderlinedTextButtonProps) {
-        let attributes: [NSAttributedString.Key: Any] = [.underlineStyle: NSUnderlineStyle.single.rawValue, .foregroundColor: UIColor.black]
-        let attributedString = NSAttributedString(string: props.title, attributes: attributes)
-        setAttributedTitle(attributedString, for: .normal)
-
-        titleLabel?.font = .systemFont(ofSize: 15)
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    private func setupButtonAction() {
-        addAction(.init { [weak self] _ in
-            guard let self else {
-                return
-            }
-            self.onTap?()
-        }, for: .touchUpInside)
+    public var body: some View {
+        Button(action: {
+            onTap?()
+        }, label: {
+            Text(props.title)
+                .foregroundColor(props.color)
+                .font(.system(size: 15))
+                .fontWeight(props.fontWeiht)
+                .underline()
+        })
     }
 }

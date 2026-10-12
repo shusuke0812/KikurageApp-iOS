@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUICircleButtonProps {
     let variant: KUIButtonVariant
@@ -20,39 +20,39 @@ public struct KUICircleButtonProps {
     }
 }
 
-public class KUICircleButton: UIButton {
+public struct KUICircleButton: View {
+    private let props: KUICircleButtonProps
     public var onTap: (() -> Void)?
 
-    public init(props: KUICircleButtonProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
-        setupAction()
+    public init(props: KUICircleButtonProps, onTap: (() -> Void)? = nil) {
+        self.props = props
+        self.onTap = onTap
     }
 
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupComponent(props: KUICircleButtonProps) {
-        backgroundColor = props.variant.backgroundColor
-        setImage(props.image, for: .normal)
-        contentMode = .scaleToFill
-        layer.masksToBounds = true
-        layer.cornerRadius = props.width / 2
-        translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: props.width),
-            heightAnchor.constraint(equalToConstant: props.width)
-        ])
-    }
-
-    private func setupAction() {
-        addAction(.init { [weak self] _ in
-            guard let self else {
-                return
+    public var body: some View {
+        Button(action: { onTap?() }) {
+            if let image = props.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: props.width * 0.5, height: props.width * 0.5)
             }
-            self.onTap?()
-        }, for: .touchUpInside)
+        }
+        .frame(width: props.width, height: props.width)
+        .background(Color(uiColor: props.variant.backgroundColor))
+        .foregroundColor(Color(uiColor: props.variant.titleColor))
+        .clipShape(Circle())
+    }
+}
+
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KUICircleButton(props: KUICircleButtonProps(
+            variant: .primary,
+            image: UIImage(systemName: "plus"),
+            width: 60
+        ))
     }
 }

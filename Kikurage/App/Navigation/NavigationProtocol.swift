@@ -37,10 +37,18 @@ protocol PopNavigationProtocol where Self: UIViewController {
 // MARK: - Modal
 
 protocol ModalNavigationProtocol where Self: UIViewController {
+    func presentSideMenu(to vc: SideMenuViewController, completion: (() -> Void)?)
     func present(to vc: UIViewController, transitionStyle: UIModalTransitionStyle, presentationStyle: UIModalPresentationStyle, completion: (() -> Void)?)
 }
 
 extension ModalNavigationProtocol {
+    /// CustomNavigationControllerで包むとサイドメニューヘッダーの上にナビゲーションバーが挿入されてしますので、サイドメニューを画面全体に重ねて表示する
+    func presentSideMenu(to vc: SideMenuViewController, completion: (() -> Void)? = nil) {
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true, completion: completion)
+    }
+
     func present(to vc: UIViewController, transitionStyle: UIModalTransitionStyle = .coverVertical, presentationStyle: UIModalPresentationStyle = .fullScreen, completion: (() -> Void)? = nil) {
         let nc = CustomNavigationController(rootViewController: vc)
         nc.modalTransitionStyle = transitionStyle

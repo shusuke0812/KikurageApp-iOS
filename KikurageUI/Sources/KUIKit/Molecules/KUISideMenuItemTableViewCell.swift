@@ -6,52 +6,54 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-public class KUISideMenuItemTableViewCell: UITableViewCell {
-    public static let identifier = "SideMenuItemTableViewCell"
+public struct KUISideMenuItemRowProps {
+    let title: String
+    let iconImageName: String
 
-    private var iconImageView: UIImageView!
-    private var titleLabel: UILabel!
+    public init(title: String, iconImageName: String) {
+        self.title = title
+        self.iconImageName = iconImageName
+    }
+}
 
-    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupComponent()
+public struct KUISideMenuItemRow: View {
+    private let props: KUISideMenuItemRowProps
+
+    public init(props: KUISideMenuItemRowProps) {
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public var body: some View {
+        HStack(spacing: 18) {
+            Image(systemName: props.iconImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 25, height: 25)
+                .foregroundColor(.black)
+
+            Text(props.title)
+                .font(.system(size: 16))
+                .foregroundColor(.primary)
+
+            Spacer(minLength: 0)
+        }
+        .padding(.leading, 16)
+        .padding(.trailing, 6)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity)
+        .contentShape(Rectangle())
     }
+}
 
-    public func setSideMenuContent(title: String, iconImageName: String) {
-        titleLabel.text = title
-        iconImageView.image = UIImage(systemName: iconImageName)
-    }
-
-    private func setupComponent() {
-        contentView.backgroundColor = .systemGroupedBackground
-
-        iconImageView = UIImageView()
-        iconImageView.contentMode = .scaleAspectFit
-        iconImageView.tintColor = .black
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        titleLabel = UILabel()
-        titleLabel.font = .systemFont(ofSize: 16)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(titleLabel)
-
-        NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: 25),
-            iconImageView.heightAnchor.constraint(equalToConstant: 25),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-
-            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 18),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6)
-        ])
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        VStack(spacing: 0) {
+            KUISideMenuItemRow(props: KUISideMenuItemRowProps(title: "カレンダー", iconImageName: "calendar"))
+            KUISideMenuItemRow(props: KUISideMenuItemRowProps(title: "グラフ", iconImageName: "waveform.path.ecg"))
+        }
     }
 }

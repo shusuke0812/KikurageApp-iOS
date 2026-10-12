@@ -6,45 +6,95 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
-import KUIKit
-import UIKit
+import KSWiFiService
+import SwiftUI
 
-class WiFiListBaseView: UIView {
-    private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private(set) var tableViewHeaderView: KUITableHeaderView!
+protocol WiFiListBaseViewDelegate: AnyObject {
+    func wifiListBaseViewDidSelectWiFi(ssid: String)
+}
 
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setupComponent()
+struct WiFiListBaseView: View {
+    @StateObject var state: WiFiListState
+    weak var delegate: WiFiListBaseViewDelegate?
+
+    init(state: WiFiListState, delegate: WiFiListBaseViewDelegate?) {
+        _state = StateObject(wrappedValue: state)
+        self.delegate = delegate
     }
 
-    required init?(coder: NSCoder) {
-        nil
+    var body: some View {
+        List {
+            Section(state.specSectionTitle) {
+                ForEach(state.specItems) { item in
+                    HStack {
+                        Text(item.title)
+                        Spacer(minLength: 0)
+                        Text(item.stateTitle)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+
+            Section(state.enterWifiSectionTitle) {
+                ForEach(state.enterWifiItems) { item in
+                    WiFiSelectableRow(title: item.title)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            delegate?.wifiListBaseViewDidSelectWiFi(ssid: item.ssid)
+                        }
+                }
+            }
+
+            Section {
+                ForEach(state.selectWifiItems) { item in
+                    WiFiSelectableRow(title: item.title)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            delegate?.wifiListBaseViewDidSelectWiFi(ssid: item.ssid)
+                        }
+                }
+            } header: {
+                HStack(spacing: 8) {
+                    Text(state.selectWifiSectionTitle)
+                    if state.isScanning {
+                        ProgressView()
+                    }
+                }
+            }
+        }
+        .listStyle(.insetGrouped)
     }
+}
 
-    func setupTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
+private struct WiFiSelectableRow: View {
+    let title: String
+
+    var body: some View {
+        HStack {
+            Text(title)
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(Color(uiColor: .systemGray3))
+        }
     }
+}
 
-    func setupTableViewHeaderView(_ headerView: KUITableHeaderView, sectionNumber: Int) {
-        tableViewHeaderView = headerView
-        tableViewHeaderView.sectionNumber = sectionNumber
-    }
-
-    private func setupComponent() {
-        tableView.register(WiFiListSpecTableViewCell.self, forCellReuseIdentifier: "WiFiListSpecTableViewCell")
-        tableView.register(WiFiListTableViewCell.self, forCellReuseIdentifier: "WiFiListTableViewCell")
-        tableView.register(KUITableHeaderView.self, forHeaderFooterViewReuseIdentifier: KUITableHeaderView.indetifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(tableView)
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
+#Preview {
+    let state = WiFiListState()
+    state.specSectionTitle = "デバイス情報"
+    state.specItems = [
+        WiFiListSpecItem(id: "1", title: "デバイス名", stateTitle: "Kikurage-Device-01"),
+        WiFiListSpecItem(id: "2", title: "デバイスID", stateTitle: "XXXXXXXXXXXXXX****"),
+        WiFiListSpecItem(id: "3", title: "RSSI", stateTitle: "-50")
+    ]
+    state.enterWifiSectionTitle = "手動で入力"
+    state.enterWifiItems = [WiFiListSelectableItem(id: "enter", title: "Wi-Fiを入力する", ssid: "")]
+    state.selectWifiSectionTitle = "Wi-Fiを選択"
+    state.selectWifiItems = [
+        WiFiListSelectableItem(id: "wifi1", title: "Kikurage-WiFi", ssid: "Kikurage-WiFi"),
+        WiFiListSelectableItem(id: "wifi2", title: "Guest-WiFi", ssid: "Guest-WiFi")
+    ]
+    state.isScanning = true
+    return WiFiListBaseView(state: state, delegate: nil)
 }

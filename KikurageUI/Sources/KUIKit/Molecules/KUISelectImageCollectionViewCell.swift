@@ -6,151 +6,107 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import FirebaseStorage
-import Kingfisher
-import UIKit
+import SwiftUI
 
-public protocol KUISelectImageCollectionViewCellDelegate: AnyObject {
-    func didTapImageCancelButton(cell: KUISelectImageCollectionViewCell)
+public struct KUISelectImageCellProps {
+    let image: UIImage?
+
+    public init(image: UIImage?) {
+        self.image = image
+    }
 }
 
-public class KUISelectImageCollectionViewCell: UICollectionViewCell {
-    public static let identifier = "CameraCell"
-    public weak var delegate: KUISelectImageCollectionViewCellDelegate?
+public struct KUISelectImageCell: View {
+    private let props: KUISelectImageCellProps
 
-    private var selectImageView: UIImageView!
-    private var cancelButton: UIButton!
-
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
-        setupAction()
+    public init(props: KUISelectImageCellProps) {
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    /// デフォルトに戻す（キャンセルボタン押下時）
-    public func setDefaultImage() {
-        selectImageView.image = R.image.camera()
-    }
-
-    /// 選択した画像を表示する（新規選択時）
-    /// - Parameter image: 選択した画像
-    public func setIamge(image: UIImage) {
-        selectImageView.image = image
-        selectImageView.contentMode = .scaleAspectFill
-    }
-
-    /// 投稿した画像を表示する（Firebase読み込み時）
-    /// - Parameter imageStoragePath: 画像のStorageパス
-    public func setImage(imageStoragePath: String) {
-        if imageStoragePath.isEmpty {
-            setDefaultImage()
-            return
-        }
-        let storageReference = Storage.storage().reference(withPath: imageStoragePath)
-        storageReference.downloadURL { [weak self] completion in
-            switch completion {
-            case .success(let url):
-                self?.selectImageView.kf.setImage(with: url, placeholder: nil)
-            case .failure:
-                break
+    public var body: some View {
+        GeometryReader { geometry in
+            if let image = props.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .clipped()
+            } else {
+                Image(uiImage: UIImage(named: "camera") ?? UIImage())
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
             }
         }
-        selectImageView.contentMode = .scaleAspectFill
+    }
+}
+
+public struct KUISelectImageGridViewProps {
+    let cellSize: CGFloat
+    let spacing: CGFloat
+
+    public init(cellSize: CGFloat = 80, spacing: CGFloat = 10) {
+        self.cellSize = cellSize
+        self.spacing = spacing
+    }
+}
+
+public struct KUISelectImageGridView: View {
+    private let props: KUISelectImageGridViewProps
+    @Binding private var selectedImages: [UIImage?]
+    private let onTapSlot: (Int) -> Void
+
+    public init(
+        props: KUISelectImageGridViewProps = KUISelectImageGridViewProps(),
+        selectedImages: Binding<[UIImage?]>,
+        onTapSlot: @escaping (Int) -> Void
+    ) {
+        self.props = props
+        _selectedImages = selectedImages
+        self.onTapSlot = onTapSlot
     }
 
-    private func setupComponent() {
-        selectImageView = UIImageView(image: UIImage(named: "camera"))
-        selectImageView.clipsToBounds = true
-        selectImageView.contentMode = .scaleAspectFit
-        selectImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        cancelButton = UIButton()
-        cancelButton.tintColor = .darkGray
-        cancelButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(selectImageView)
-        contentView.addSubview(cancelButton)
-
-        NSLayoutConstraint.activate([
-            selectImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            selectImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            selectImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            selectImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
-            cancelButton.widthAnchor.constraint(equalToConstant: 20),
-            cancelButton.heightAnchor.constraint(equalToConstant: 20),
-            cancelButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cancelButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-    }
-
-    private func setupAction() {
-        cancelButton.addAction(.init { [weak self] _ in
-            guard let self else {
-                return
+    public var body: some View {
+        LazyVGrid(
+            columns: [GridItem(.adaptive(minimum: props.cellSize, maximum: props.cellSize), spacing: props.spacing)],
+            spacing: props.spacing
+        ) {
+            ForEach(selectedImages.indices, id: \.self) { index in
+                KUISelectImageCell(props: KUISelectImageCellProps(image: selectedImages[index]))
+                    .frame(width: props.cellSize, height: props.cellSize)
+                    .onTapGesture {
+                        if selectedImages[index] == nil {
+                            onTapSlot(index)
+                        }
+                    }
+                    .overlay(alignment: .bottomTrailing) {
+                        Button(action: { selectedImages[index] = nil }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(Color(uiColor: .darkGray))
+                        }
+                        .frame(width: 20, height: 20)
+                    }
             }
-            self.delegate?.didTapImageCancelButton(cell: self)
-        }, for: .touchUpInside)
+        }
     }
 }
 
-public class KUISelectImageCollectionViewModel: NSObject {
-    private var selectedImages: [UIImage?] = []
-    private let selectedImageMaxNumber: Int
-
-    public weak var collectionViewDelegate: KUISelectImageCollectionViewCellDelegate?
-
-    public init(selectedImageMaxNumber: Int, collectionViewDelegate: KUISelectImageCollectionViewCellDelegate?) {
-        self.selectedImageMaxNumber = selectedImageMaxNumber
-        selectedImages = Array(repeating: nil, count: selectedImageMaxNumber)
-        self.collectionViewDelegate = collectionViewDelegate
-    }
-
-    public func setImage(selectedImage: UIImage, index: Int) {
-        if index >= selectedImageMaxNumber {
-            return
-        }
-        selectedImages[index] = selectedImage
-    }
-
-    public func cancelImage(index: Int) {
-        if index >= selectedImageMaxNumber {
-            return
-        }
-        selectedImages[index] = nil
-    }
-
-    /// 画像をData型に変換
-    /// - Parameter compresssionQuality: 画像圧縮率 0.0 ~ 1.0
-    public func changeToImageData(compressionQuality: CGFloat) -> [Data?] {
-        let imageDatas: [Data?] = selectedImages.map { image in
-            image?.jpegData(compressionQuality: compressionQuality)
-        }
-        return imageDatas
-    }
+#Preview {
+    KSelectImageGridViewPreviewWrapper()
 }
 
-extension KUISelectImageCollectionViewModel: UICollectionViewDataSource {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        selectedImageMaxNumber
-    }
+private struct KSelectImageGridViewPreviewWrapper: View {
+    @State private var selectedImages: [UIImage?] = Array(repeating: nil, count: 6)
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KUISelectImageCollectionViewCell.identifier, for: indexPath) as! KUISelectImageCollectionViewCell // swiftlint:disable:this force_cast
-        // 各セルのdelegateと管理番号tag（削除用）を設定
-        cell.delegate = collectionViewDelegate
-        cell.tag = indexPath.item
-        // 選択された画像の設定
-        if let selectedImage = selectedImages[indexPath.item] {
-            cell.setIamge(image: selectedImage)
-        } else {
-            cell.setDefaultImage()
+    var body: some View {
+        ZStack {
+            Color(uiColor: .systemGroupedBackground)
+                .ignoresSafeArea()
+            KUISelectImageGridView(
+                selectedImages: $selectedImages,
+                onTapSlot: { _ in }
+            )
+            .padding()
         }
-        return cell
     }
 }

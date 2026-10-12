@@ -7,31 +7,12 @@
 //
 
 import UIKit
-import WebKit
 
-class DictionaryTriviaViewController: UIViewController {
-    private var baseView: DictionaryTriviaBaseView = .init()
-
-    override func loadView() {
-        view = baseView
-    }
-
+class DictionaryTriviaViewController: UIViewController, UIViewControllerNavigatable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        baseView.delegate = self
-
-        if let url = URL(string: "https://midorikoubou.jp/blog/2018/08/08/kikuragecultivation-faq") {
-            baseView.startLoadingIindicator()
-            baseView.loadWebSite(url: url)
-        }
-    }
-}
-
-// MARK: - DictionaryTriviaBaseViewDelegate
-
-extension DictionaryTriviaViewController: DictionaryTriviaBaseViewDelegate {
-    func dictonaryTriviaBaseView(_ dictionaryTriviaBaseView: DictionaryTriviaBaseView, didFinish navigation: WKNavigation!) {
-        baseView.stopLoadingIndicator()
+        let baseView = DictionaryTriviaBaseView()
+        let _ = addBaseView(baseView: baseView)
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUIHomeAdviceViewProps {
     let title: String
@@ -24,58 +24,43 @@ public struct KUIHomeAdviceViewProps {
     }
 }
 
-public class KUIHomeAdviceView: UIView {
-    private var contentView: KUIRoundedView!
-    private var headerView: KUILabelWithImage!
-    private var descriptionLabel: UILabel!
+public struct KUIHomeAdviceView: View {
+    private let props: KUIHomeAdviceViewProps
 
     public init(props: KUIHomeAdviceViewProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
+    public var body: some View {
+        KUIRoundedView(props: KUIRoundedViewProps(backgroundColor: Color(uiColor: .systemBackground))) {
+            VStack(alignment: .leading, spacing: 0) {
+                KUILabelWithImage(props: KUILabelWithImageProps(
+                    variant: .imagePositionRight,
+                    title: props.title,
+                    image: props.image
+                ))
+                Spacer(minLength: 5)
+                Text(props.description)
+                    .font(.system(size: 15))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer(minLength: 5)
+            }
+            .padding(5)
+        }
     }
+}
 
-    public func updateDescription(_ text: String) {
-        descriptionLabel.text = text
-    }
-
-    private func setupComponent(props: KUIHomeAdviceViewProps) {
-        contentView = KUIRoundedView(props: KUIRoundedViewProps())
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        headerView = KUILabelWithImage(props: KUILabelWithImageProps(
-            variant: .imagePositionRight,
-            title: props.title,
-            iamge: props.image
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KUIHomeAdviceView(props: KUIHomeAdviceViewProps(
+            title: "アドバイス",
+            description: "順調に育っとるぞ。その調子じゃ。",
+            image: UIImage(systemName: "face.smiling")
         ))
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-
-        descriptionLabel = UILabel()
-        descriptionLabel.text = props.description
-        descriptionLabel.font = .systemFont(ofSize: 15)
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(headerView)
-        contentView.addSubview(descriptionLabel)
-        addSubview(contentView)
-
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            headerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-
-            descriptionLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 5),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
-        ])
+        .frame(maxHeight: .infinity)
+        .padding(.top, 15)
+        .padding(.horizontal, 16)
     }
 }

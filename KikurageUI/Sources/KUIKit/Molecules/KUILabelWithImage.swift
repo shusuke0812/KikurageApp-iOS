@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public enum KUILabelWithImageVariant {
     case imagePositionRight
@@ -16,65 +16,67 @@ public enum KUILabelWithImageVariant {
 public struct KUILabelWithImageProps {
     let variant: KUILabelWithImageVariant
     let title: String
-    let iamge: UIImage?
+    let image: UIImage?
 
     public init(
         variant: KUILabelWithImageVariant,
         title: String,
-        iamge: UIImage? = nil
+        image: UIImage? = nil
     ) {
         self.variant = variant
         self.title = title
-        self.iamge = iamge
+        self.image = image
     }
 }
 
-public class KUILabelWithImage: UIView {
-    private var label: UILabel!
-    private var imageView: UIImageView!
-    private var stackView: UIStackView!
+public struct KUILabelWithImage: View {
+    private let props: KUILabelWithImageProps
 
     public init(props: KUILabelWithImageProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent(props: KUILabelWithImageProps) {
-        label = UILabel()
-        label.text = props.title
-        label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        imageView = UIImageView()
-        imageView.image = props.iamge
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-        if props.variant == .imagePositionRight {
-            stackView = UIStackView(arrangedSubviews: [label, imageView])
-        } else {
-            stackView = UIStackView(arrangedSubviews: [imageView, label])
+    public var body: some View {
+        HStack {
+            if props.variant == .imagePositionLeft {
+                imageView
+            }
+            Text(props.title)
+                .font(.system(size: 15, weight: .bold))
+            if props.variant == .imagePositionRight {
+                Spacer()
+                imageView
+            }
         }
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+    }
 
-        addSubview(stackView)
+    @ViewBuilder
+    private var imageView: some View {
+        if let image = props.image {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 30)
+        }
+    }
+}
 
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-
-            imageView.heightAnchor.constraint(equalToConstant: 27),
-            imageView.widthAnchor.constraint(equalToConstant: 40)
-        ])
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        VStack(spacing: 20) {
+            KUILabelWithImage(props: KUILabelWithImageProps(
+                variant: .imagePositionRight,
+                title: "画像が右",
+                image: UIImage(systemName: "star.fill")
+            ))
+            KUILabelWithImage(props: KUILabelWithImageProps(
+                variant: .imagePositionLeft,
+                title: "画像が左",
+                image: UIImage(systemName: "star.fill")
+            ))
+        }
+        .padding()
     }
 }

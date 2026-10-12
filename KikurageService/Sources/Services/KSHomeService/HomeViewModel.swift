@@ -29,6 +29,7 @@ public protocol HomeViewModelOutput {
 public protocol HomeViewModelType {
     var input: HomeViewModelInput { get }
     var output: HomeViewModelOutput { get }
+    var state: HomeState { get }
 }
 
 public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput {
@@ -41,6 +42,7 @@ public class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModel
 
     public var input: HomeViewModelInput { self }
     public var output: HomeViewModelOutput { self }
+    public let state = HomeState()
 
     public var kikurageUser: KikurageUser
     public var kikurageState: Observable<KikurageState> { subject.asObservable() }

@@ -6,22 +6,22 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public enum KUIButtonVariant {
     case primary
     case secondary
 
-    var backgroundColor: UIColor? {
+    var backgroundColor: UIColor {
         switch self {
         case .primary:
-            return R.color.subColor()
+            return R.color.subColor()!
         case .secondary:
             return .white
         }
     }
 
-    var titleColor: UIColor? {
+    var titleColor: UIColor {
         switch self {
         case .primary:
             return .white
@@ -34,52 +34,53 @@ public enum KUIButtonVariant {
 public struct KUIButtonProps {
     let variant: KUIButtonVariant
     let title: String
+    let accessibilityIdentifier: String
     let fontSize: CGFloat
-    let fontWeight: UIFont.Weight
+    let fontWeight: Font.Weight
+    let height: CGFloat
+    @Binding var enabled: Bool
 
     public init(
         variant: KUIButtonVariant,
         title: String,
-        accessibilityIdentifier: String? = nil,
+        accessibilityIdentifier: String = "",
         fontSize: CGFloat = 17.0,
-        fontWeight: UIFont.Weight = .bold
+        fontWeight: Font.Weight = .bold,
+        height: CGFloat = 45,
+        enabled: Binding<Bool> = .constant(true)
     ) {
         self.variant = variant
         self.title = title
         self.fontSize = fontSize
         self.fontWeight = fontWeight
+        self.accessibilityIdentifier = accessibilityIdentifier
+        self.height = height
+        _enabled = enabled
     }
 }
 
-public class KUIButton: UIButton {
+public struct KUIButton: View {
+    private let props: KUIButtonProps
     public var onTap: (() -> Void)?
 
-    public init(props: KUIButtonProps) {
-        super.init(frame: .zero)
-        setup(props: props)
-        setupButtonAction()
+    public init(props: KUIButtonProps, onTap: (() -> Void)? = nil) {
+        self.props = props
+        self.onTap = onTap
     }
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setup(props: KUIButtonProps) {
-        layer.masksToBounds = true
-        layer.cornerRadius = 5
-        setTitle(props.title, for: .normal)
-        setTitleColor(props.variant.titleColor, for: .normal)
-        titleLabel?.font = .systemFont(ofSize: props.fontSize, weight: props.fontWeight)
-        backgroundColor = props.variant.backgroundColor
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    private func setupButtonAction() {
-        addAction(.init { [weak self] _ in
-            guard let self else {
-                return
-            }
-            self.onTap?()
-        }, for: .touchUpInside)
+    public var body: some View {
+        Button(action: {
+            onTap?()
+        }, label: {
+            Text(props.title)
+                .font(.system(size: props.fontSize))
+                .fontWeight(props.fontWeight)
+                .frame(maxWidth: .infinity, minHeight: props.height)
+        })
+        .disabled(!props.enabled)
+        .foregroundColor(Color(uiColor: props.variant.titleColor))
+        .background(Color(uiColor: props.enabled ? props.variant.backgroundColor : .lightGray))
+        .cornerRadius(5)
+        .accessibilityIdentifier(props.accessibilityIdentifier)
     }
 }

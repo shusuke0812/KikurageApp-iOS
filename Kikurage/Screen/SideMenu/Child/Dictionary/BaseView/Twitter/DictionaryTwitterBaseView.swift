@@ -6,61 +6,44 @@
 //  Copyright © 2022 shusuke. All rights reserved.
 //
 
+import KSDictionaryService
+import KSSDateHelper
 import KUIKit
-import UIKit
+import SwiftUI
 
-class DictionaryTwitterBaseView: UIView {
-    private(set) var tableView: UITableView!
-    private var loadingIndicatorView: UIActivityIndicatorView!
+struct DictionaryTwitterBaseView: View {
+    @StateObject var state: DictionaryTwitterState
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupComponent()
+    init(state: DictionaryTwitterState) {
+        _state = StateObject(wrappedValue: state)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupComponent() {
-        tableView = UITableView()
-        tableView.register(KUITweetTableViewCell.self, forCellReuseIdentifier: KUITweetTableViewCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        loadingIndicatorView = UIActivityIndicatorView()
-        loadingIndicatorView.isHidden = true
-        loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(tableView)
-        addSubview(loadingIndicatorView)
-
-        NSLayoutConstraint.activate([
-            loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+    var body: some View {
+        ZStack {
+            if state.isLoading {
+                ProgressView()
+            } else if state.tweets.isEmpty {
+                KUIEmptyView(type: .notFoundTweets)
+            } else {
+                List(state.tweets, id: \.id) { tweet in
+                    KUITweetRow(props: KUITweetRowProps(
+                        userName: tweet.user.name,
+                        createdAtString: DateHelper.formatToString(date: tweet.createdAt),
+                        tweet: tweet.text,
+                        iconImageURL: URL(string: tweet.user.profileImageURL)
+                    ))
+                    .listRowInsets(EdgeInsets())
+                }
+                .listStyle(.plain)
+            }
+        }
+        .alert(state.errorMessage, isPresented: $state.hasError) {
+            Button(R.string.localizable.common_alert_ok_btn_ok(), role: .cancel) {}
+        }
     }
 }
 
-// MARK: - Config
-
-extension DictionaryTwitterBaseView {
-    func configTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
-    }
-
-    func startLoadingIndicator() {
-        loadingIndicatorView.isHidden = false
-        loadingIndicatorView.startAnimating()
-    }
-
-    func stopLoadingIndicator() {
-        loadingIndicatorView.isHidden = true
-        loadingIndicatorView.stopAnimating()
-    }
+#Preview {
+    let state = DictionaryTwitterState()
+    return DictionaryTwitterBaseView(state: state)
 }

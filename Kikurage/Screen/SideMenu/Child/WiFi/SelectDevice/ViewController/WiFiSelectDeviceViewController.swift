@@ -8,24 +8,23 @@
 
 import KAAnalytics
 import KSWiFiService
-import KUIKit
-import PKHUD
 import UIKit
 
-class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
-    private let baseView = WiFiSelectDeviceBaseView()
+class WiFiSelectDeviceViewController: UIViewController, UIViewControllerNavigatable, WiFiAccessable {
     private let viewModel = WiFiSelectDeviceViewModel()
-
-    override func loadView() {
-        view = baseView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupProtocols()
         setupNavigation()
 
+        let baseView = WiFiSelectDeviceBaseView(state: viewModel.state, delegate: self)
+        let _ = addBaseView(baseView: baseView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.delegate = self
+        viewModel.bluetoothDelegate()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -33,7 +32,6 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
         viewModel.disconnectPeripheral()
 
         if viewModel.isBluetoothAvailable {
-            baseView.tableViewHeaderView.startIndicatorAnimating()
             viewModel.scanForPeripherals()
         }
         FirebaseAnalyticsManager.sendScreenViewEvent(.wifi)
@@ -46,10 +44,6 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
         // TODO: WiFi disconnected
     }
 
-    private func setupProtocols() {
-        baseView.setupTableViewProtocols(delegate: self, dataSource: self)
-    }
-
     private func setupNavigation() {
         let closeButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(close(_:)))
         navigationItem.rightBarButtonItems = [closeButtonItem]
@@ -57,64 +51,24 @@ class WiFiSelectDeviceViewController: UIViewController, WiFiAccessable {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - WiFiSelectDeviceBaseView Delegate
 
-extension WiFiSelectDeviceViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        HUD.show(.progress)
-        viewModel.connectToPeripheral(indexPath: indexPath)
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        baseView.setupTableViewHeaderView(KUITableHeaderView.create(tableView: tableView))
-        baseView.tableViewHeaderView.setupTitleLabel(viewModel.sections[section].title)
-        return baseView.tableViewHeaderView
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension WiFiSelectDeviceViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.sections.count
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.sectionRows()
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WiFiSelectDeviceTableViewCell", for: indexPath) as! WiFiSelectDeviceTableViewCell // swiftlint:disable:this force_cast
-        cell.updateComponent(
-            signalImage: viewModel.getPeripheralInfo(index: indexPath.row).signal.image,
-            rssiString: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.rssiString,
-            deviceName: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.deviceName,
-            serviceCountString: viewModel.getPeripheralInfo(index: indexPath.row).peripheral.serviceCountString
-        )
-        return cell
+extension WiFiSelectDeviceViewController: WiFiSelectDeviceBaseViewDelegate {
+    func wifiSelectDeviceBaseViewDidSelectDevice(index: Int) {
+        viewModel.connectToPeripheral(indexPath: IndexPath(row: index, section: 0))
     }
 }
 
 // MARK: - WiFiSelectDeviceViewModelDelegate
 
 extension WiFiSelectDeviceViewController: WiFiSelectDeviceViewModelDelegate {
-    func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
-        DispatchQueue.main.async {
-            self.baseView.tableViewHeaderView.stopIndicatorAnimating()
-            self.baseView.tableView.reloadData()
-        }
-    }
+    func viewModelDidAddPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {}
 
     func viewModelDidSuccessConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
-        DispatchQueue.main.async {
-            HUD.hide()
-            self.pushToWiFiList()
+        DispatchQueue.main.async { [weak self] in
+            self?.pushToWiFiList()
         }
     }
 
-    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {
-        DispatchQueue.main.async {
-            HUD.hide()
-        }
-    }
+    func viewModelDidFailConnectionToPeripheral(_ wifiSelectDeviceViewModel: WiFiSelectDeviceViewModel) {}
 }

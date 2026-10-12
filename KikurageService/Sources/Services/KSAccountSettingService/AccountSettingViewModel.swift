@@ -21,8 +21,9 @@ public class AccountSettingViewModel {
     private let loginManager: LoginManager
 
     public weak var delegate: AccountSettingViewModelDelegate?
+    public let state = AccountSettingState()
 
-    public var kikurageUser: KikurageUser?
+    private var kikurageUser: KikurageUser?
 
     public init(kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()) {
         self.kikurageUserRepository = kikurageUserRepository
@@ -43,6 +44,7 @@ extension AccountSettingViewModel {
             switch response {
             case .success(let kikurageUser):
                 self?.kikurageUser = kikurageUser
+                self?.state.kikurageName = kikurageUser.kikurageName
                 self?.delegate?.settingViewModelDidSuccessGetKikurageUser(self!)
             case .failure(let error):
                 self?.delegate?.settingViewModelDidFailedGetKikurageUser(self!, with: error.description())

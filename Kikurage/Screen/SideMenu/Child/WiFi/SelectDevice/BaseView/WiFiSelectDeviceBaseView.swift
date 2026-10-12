@@ -6,43 +6,106 @@
 //  Copyright © 2023 shusuke. All rights reserved.
 //
 
+import KDBluetoothManager
+import KSWiFiService
 import KUIKit
-import UIKit
+import SwiftUI
 
-class WiFiSelectDeviceBaseView: UIView {
-    private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
-    private(set) var tableViewHeaderView: KUITableHeaderView!
+protocol WiFiSelectDeviceBaseViewDelegate: AnyObject {
+    func wifiSelectDeviceBaseViewDidSelectDevice(index: Int)
+}
 
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        setupComponent()
+struct WiFiSelectDeviceBaseView: View {
+    @StateObject var state: WiFiSelectDeviceState
+    weak var delegate: WiFiSelectDeviceBaseViewDelegate?
+
+    init(state: WiFiSelectDeviceState, delegate: WiFiSelectDeviceBaseViewDelegate?) {
+        _state = StateObject(wrappedValue: state)
+        self.delegate = delegate
     }
 
-    required init?(coder: NSCoder) {
-        nil
+    var body: some View {
+        ZStack {
+            List {
+                Section {
+                    ForEach(state.devices) { device in
+                        WiFiDeviceRow(info: device)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                delegate?.wifiSelectDeviceBaseViewDidSelectDevice(index: device.id)
+                            }
+                    }
+                } header: {
+                    HStack(spacing: 8) {
+                        Text(state.sectionTitle)
+                        if state.isScanning {
+                            ProgressView()
+                        }
+                    }
+                }
+            }
+            .listStyle(.insetGrouped)
+
+            if state.isConnecting {
+                KUIProgressHUDView()
+            }
+        }
     }
+}
 
-    func setupTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
+private struct WiFiDeviceRow: View {
+    let info: WiFiDeviceInfo
+
+    private let imageSize: CGFloat = 24
+
+    var body: some View {
+        HStack(spacing: 16) {
+            VStack(spacing: 4) {
+                if let signalImage = info.signalImage {
+                    Image(uiImage: signalImage)
+                        .resizable()
+                        .frame(width: imageSize, height: imageSize)
+                } else {
+                    Color.clear
+                        .frame(width: imageSize, height: imageSize)
+                }
+                Text(info.rssiString)
+                    .font(.system(size: 12))
+            }
+            .frame(width: imageSize * 1.5)
+
+            VStack(alignment: .leading, spacing: 0) {
+                Text(info.deviceName)
+                    .font(.system(size: 20))
+                Text(info.serviceCountString)
+                    .font(.system(size: 17))
+                    .foregroundColor(.gray)
+            }
+
+            Spacer(minLength: 0)
+
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(Color(uiColor: .systemGray3))
+        }
+        .padding(.vertical, 8)
     }
+}
 
-    func setupTableViewHeaderView(_ headerView: KUITableHeaderView) {
-        tableViewHeaderView = headerView
-    }
+#Preview {
+    let state = WiFiSelectDeviceState()
+    state.sectionTitle = "周辺デバイス"
+    state.isScanning = true
+    return WiFiSelectDeviceBaseView(state: state, delegate: nil)
+}
 
-    private func setupComponent() {
-        tableView.register(WiFiSelectDeviceTableViewCell.self, forCellReuseIdentifier: "WiFiSelectDeviceTableViewCell")
-        tableView.register(KUITableHeaderView.self, forHeaderFooterViewReuseIdentifier: KUITableHeaderView.indetifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(tableView)
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-    }
+#Preview {
+    WiFiDeviceRow(info: WiFiDeviceInfo(
+        id: 0,
+        signalImage: BluetoothSignal.good.image,
+        rssiString: "-50",
+        deviceName: "Kikurage-Device-01",
+        serviceCountString: "3 services"
+    ))
+    .padding()
 }

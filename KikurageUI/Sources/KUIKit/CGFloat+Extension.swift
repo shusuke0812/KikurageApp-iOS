@@ -10,7 +10,7 @@ import Foundation
 
 extension CGFloat {
     // Corner radius
-    static let viewCornerRadius: CGFloat = 18
+    public static let viewCornerRadius: CGFloat = 18
     static let buttonCornerRadius: CGFloat = 5
     static let cellCornerRadius: CGFloat = 10
 

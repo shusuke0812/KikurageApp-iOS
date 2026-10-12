@@ -6,9 +6,9 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-public struct KUIImageViewProps {
+public struct KUIImageProps {
     let image: UIImage?
 
     public init(image: UIImage?) {
@@ -16,21 +16,22 @@ public struct KUIImageViewProps {
     }
 }
 
-public class KUIImageView: UIImageView {
-    public init(props: KUIImageViewProps) {
-        super.init(frame: .zero)
-        setup(props: props)
+public struct KUIImageView: View {
+    private let props: KUIImageProps
+
+    public init(props: KUIImageProps) {
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setup(props: KUIImageViewProps) {
-        image = props.image
-        clipsToBounds = true
-        layer.cornerRadius = .viewCornerRadius
-        contentMode = .scaleAspectFill
-        translatesAutoresizingMaskIntoConstraints = false
+    public var body: some View {
+        if let image = props.image {
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(.viewCornerRadius)
+                .clipped()
+        } else {
+            // TODO: Not found image
+        }
     }
 }

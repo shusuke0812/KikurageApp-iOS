@@ -1,5 +1,5 @@
 //
-//  AccessibilityIdentifierManager.swift
+//  AccessibilitIdentifiable.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2022/2/8.
@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol AccessibilitIdentifiable {
     func generateAccessibilityIdentifier(filepath: String)
@@ -24,6 +25,12 @@ extension AccessibilitIdentifiable where Self: UIView {
             }
         }
         #endif
+    }
+}
+
+struct Accessibility {
+    static func generateIdentifier(filepath: String = #file) -> String {
+        "\(className(from: filepath))"
     }
 }
 

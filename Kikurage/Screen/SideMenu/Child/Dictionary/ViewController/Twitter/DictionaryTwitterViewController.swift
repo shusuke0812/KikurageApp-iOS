@@ -7,38 +7,20 @@
 //
 
 import KSDictionaryService
-import KUIKit
-import SwiftUI
 import UIKit
 
 class DictionaryTwitterViewController: UIViewController, UIViewControllerNavigatable {
-    private var baseView: DictionaryTwitterBaseView = .init()
-    private var emptyHostingVC: UIHostingController<KUIEmptyView>!
     private var viewModel: DictionaryTwitterViewModel!
-
-    override func loadView() {
-        view = baseView
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = DictionaryTwitterViewModel()
         viewModel.delegate = self
-        baseView.configTableView(delegate: self, dataSource: viewModel)
+
+        let baseView = DictionaryTwitterBaseView(state: viewModel.state)
+        let _ = addBaseView(baseView: baseView)
 
         loadTweets()
-    }
-}
-
-// MARK: - Initialize
-
-extension DictionaryTwitterViewController {
-    private func displayEmptyView(tweets: [Tweet.Status]) {
-        if tweets.isEmpty {
-            emptyHostingVC = addEmptyView(type: .notFoundTweets)
-        } else {
-            removeEmptyView(hostingVC: emptyHostingVC)
-        }
     }
 }
 
@@ -46,32 +28,25 @@ extension DictionaryTwitterViewController {
 
 extension DictionaryTwitterViewController {
     private func loadTweets() {
-        baseView.startLoadingIndicator()
+        viewModel.state.isLoading = true
         viewModel.loadTweets()
     }
 }
-
-// MARK: - UITableViewDelegate
-
-extension DictionaryTwitterViewController: UITableViewDelegate {}
 
 // MARK: - DictionaryTwitterViewModelDelegate
 
 extension DictionaryTwitterViewController: DictionaryTwitterViewModelDelegate {
     func dictionaryTwitterViewModelDidSuccessGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel) {
-        DispatchQueue.main.async {
-            self.baseView.stopLoadingIndicator()
-            self.displayEmptyView(tweets: dictionaryTwitterViewModel.tweets)
-            self.baseView.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.state.isLoading = false
         }
     }
 
     func dictionaryTwitterViewModelDidFailedGetTweets(_ dictionaryTwitterViewModel: DictionaryTwitterViewModel, with errorMessage: String) {
-        DispatchQueue.main.async {
-            self.baseView.stopLoadingIndicator()
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: R.string.localizable.common_alert_ok_btn_ok(), cancelButtonTitle: nil) { [weak self] in
-                self?.displayEmptyView(tweets: dictionaryTwitterViewModel.tweets)
-            }
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.state.isLoading = false
+            self?.viewModel.state.errorMessage = errorMessage
+            self?.viewModel.state.hasError = true
         }
     }
 }

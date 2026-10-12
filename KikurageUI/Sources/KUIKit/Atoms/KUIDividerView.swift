@@ -6,32 +6,35 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUIDividerViewProps {
-    let color: UIColor
+    let color: Color
 
-    public init(color: UIColor = .lightGray) {
+    public init(color: Color = Color(uiColor: .lightGray)) {
         self.color = color
     }
 }
 
-public class KUIDividerView: UIView {
+public struct KUIDividerView: View {
+    private let props: KUIDividerViewProps
+
     public init(props: KUIDividerViewProps = KUIDividerViewProps()) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
+    public var body: some View {
+        Rectangle()
+            .fill(props.color)
+            .frame(height: 0.5)
     }
+}
 
-    private func setupComponent(props: KUIDividerViewProps) {
-        backgroundColor = props.color
-        translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 0.5)
-        ])
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KUIDividerView()
+            .padding()
     }
 }

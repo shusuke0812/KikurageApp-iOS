@@ -6,19 +6,17 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-public class KUIPasswordField: KUITextField {
-    override public init(props: KUITextFieldProps) {
-        super.init(props: props)
-        setupComponent()
+public struct KUIPasswordField: View {
+    private var props: KUITextFieldProps
+
+    public init(props: KUITextFieldProps) {
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        nil
-    }
-
-    private func setupComponent() {
-        isSecureTextEntry = true
+    public var body: some View {
+        SecureField(props.placeHolder, text: props.$inputText)
+            .modifier(KTextFieldModifier(hasError: props.$hasError))
     }
 }

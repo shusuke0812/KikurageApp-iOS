@@ -112,4 +112,7 @@ iOSInjectionProject/
 # Secrets
 Kikurage/Utility/AccessToken/*.json
 
+# CLAUDE
+.steering
+
 #EOF

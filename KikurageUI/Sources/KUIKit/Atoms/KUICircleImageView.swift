@@ -6,7 +6,7 @@
 //  Copyright © 2024 shusuke. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 public struct KUICircleImageViewProps {
     let image: UIImage?
@@ -18,22 +18,39 @@ public struct KUICircleImageViewProps {
     }
 }
 
-public class KUICircleImageView: UIImageView {
+public struct KUICircleImageView: View {
+    private let props: KUICircleImageViewProps
+
     public init(props: KUICircleImageViewProps) {
-        super.init(frame: .zero)
-        setupComponent(props: props)
+        self.props = props
     }
 
-    public required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public var body: some View {
+        Group {
+            if let image = props.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                Color.clear
+            }
+        }
+        .frame(width: props.width, height: props.width)
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .stroke(Color.gray, lineWidth: 0.5)
+        )
     }
+}
 
-    private func setupComponent(props: KUICircleImageViewProps) {
-        contentMode = .scaleAspectFit
-        clipsToBounds = true
-        layer.cornerRadius = props.width / 2
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.gray.cgColor
-        image = props.image
+#Preview {
+    ZStack {
+        Color(uiColor: .systemGroupedBackground)
+            .ignoresSafeArea()
+        KUICircleImageView(props: KUICircleImageViewProps(
+            image: UIImage(systemName: "person.circle.fill"),
+            width: 50
+        ))
     }
 }

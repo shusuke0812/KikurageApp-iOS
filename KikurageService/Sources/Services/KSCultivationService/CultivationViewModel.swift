@@ -30,6 +30,7 @@ public protocol CultivationViewModelOutput {
 public protocol CultivationViewModelType {
     var input: CultivationViewModelInput { get }
     var output: CultivationViewModelOutput { get }
+    var state: CultivationState { get }
 }
 
 public class CultivationViewModel: CultivationViewModelType, CultivationViewModelInput, CultivationViewModelOutput {
@@ -42,6 +43,7 @@ public class CultivationViewModel: CultivationViewModelType, CultivationViewMode
 
     public var input: CultivationViewModelInput { self }
     public var output: CultivationViewModelOutput { self }
+    public let state = CultivationState()
 
     public let itemSelected: AnyObserver<IndexPath>
 
