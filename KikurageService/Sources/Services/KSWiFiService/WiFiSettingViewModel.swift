@@ -23,6 +23,9 @@ public class WiFiSettingViewModel: NSObject {
     public init(selectedSSID: String) {
         super.init()
         state.ssid = selectedSSID
+    }
+
+    public func bluetoothDelegate() {
         bluetoothManager.delegate = self
     }
 

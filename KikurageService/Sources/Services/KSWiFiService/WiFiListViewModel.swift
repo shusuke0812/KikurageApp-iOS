@@ -22,8 +22,11 @@ public class WiFiListViewModel: NSObject {
 
     override public init() {
         super.init()
-        bluetoothManager.delegate = self
         setupStaticState()
+    }
+
+    public func bluetoothDelegate() {
+        bluetoothManager.delegate = self
     }
 
     public func startWiFiScan() {

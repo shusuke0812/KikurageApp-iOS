@@ -15,10 +15,15 @@ class WiFiListViewController: UIViewController, UIViewControllerNavigatable, WiF
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        viewModel.delegate = self
 
         let baseView = WiFiListBaseView(state: viewModel.state, delegate: self)
         let _ = addBaseView(baseView: baseView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.delegate = self
+        viewModel.bluetoothDelegate()
     }
 
     override func viewDidAppear(_ animated: Bool) {

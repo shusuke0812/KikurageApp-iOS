@@ -24,10 +24,15 @@ class WiFiSettingViewController: UIViewController, UIViewControllerNavigatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        viewModel.delegate = self
 
         let baseView = WiFiSettingBaseView(state: viewModel.state, delegate: self)
         let _ = addBaseView(baseView: baseView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.delegate = self
+        viewModel.bluetoothDelegate()
     }
 
     private func setupNavigation() {

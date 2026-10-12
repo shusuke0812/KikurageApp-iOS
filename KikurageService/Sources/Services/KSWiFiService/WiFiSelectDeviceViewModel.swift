@@ -30,12 +30,15 @@ public class WiFiSelectDeviceViewModel: NSObject {
 
     override public init() {
         super.init()
-        bluetoothManager.delegate = self
         state.sectionTitle = sections[0].title
     }
 
     deinit {
         bluetoothManager.release()
+    }
+
+    public func bluetoothDelegate() {
+        bluetoothManager.delegate = self
     }
 
     public func connectToPeripheral(indexPath: IndexPath) {
