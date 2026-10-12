@@ -299,7 +299,6 @@
 		9CC2A93D27DC5F5900DA9DF7 /* NavigationProtocol+Communication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Communication.swift"; sourceTree = "<group>"; };
 		9CC2A93F27DC902900DA9DF7 /* NavigationProtocol+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+Menu.swift"; sourceTree = "<group>"; };
 		9CCA43B12D22B7A6005A78ED /* KikurageUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageUI; sourceTree = "<group>"; };
-		9CCA43B22D22B950005A78ED /* KikurageService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageService; sourceTree = "<group>"; };
 		9CCE9EFD2B932F1200D13911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9CDAFBBA29B81C6D0025219D /* NavigationProtocol+WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationProtocol+WiFi.swift"; sourceTree = "<group>"; };
 		9CDAFBF724E4BC1400E56550 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -536,7 +535,6 @@
 			children = (
 				9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */,
 				9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */,
-				9CCA43B22D22B950005A78ED /* KikurageService */,
 				9CCA43B12D22B7A6005A78ED /* KikurageUI */,
 				9C1ACF492225768A00A3D4D1 /* Kikurage */,
 				9C96F7022768E97300C2E778 /* KikurageTests */,
@@ -1531,7 +1529,6 @@
 				9CCA43D32D22C714005A78ED /* XCRemoteSwiftPackageReference "RxSwift" */,
 				9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */,
 				9C697E192D23C2F1005BC4DA /* XCLocalSwiftPackageReference "KikurageDomain" */,
-				9C06D2ED2D280EF500B52292 /* XCLocalSwiftPackageReference "KikurageService" */,
 			);
 			productRefGroup = 9C1ACF482225768A00A3D4D1 /* Products */;
 			projectDirPath = "";
@@ -1775,7 +1772,7 @@
 		};
 		9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */;
+			productRef = 9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2459,10 +2456,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		9C06D2ED2D280EF500B52292 /* XCLocalSwiftPackageReference "KikurageService" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = KikurageService;
-		};
 		9C697E192D23C2F1005BC4DA /* XCLocalSwiftPackageReference "KikurageDomain" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = KikurageDomain;
@@ -2620,7 +2613,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KAAnalytics;
 		};
-		9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */ = {
+		9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
