@@ -10,7 +10,16 @@ import KDEntity
 import KDFirebase
 import KDLocalStore
 
-public class LoginManager {
+public protocol LoginManagerProtocol {
+    var userID: String? { get }
+    var isLogin: Bool { get }
+    func reloadUser(completion: ((Result<Void, Error>) -> Void)?)
+    func saveUser(loginUser: LoginUser)
+    func removeUser()
+    func listenUserDetach()
+}
+
+public class LoginManager: LoginManagerProtocol {
     private let firebaseAuthClient: FirebaseAuthClientProtocol
     private let userDefaultClient: UserDefaultClientProtocol
 
