@@ -36,7 +36,7 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
         baseView = HomeBaseView(delegate: self, state: viewModel.state)
         let _ = addBaseView(baseView: baseView)
 
-        viewModel.state.kikurageName = R.string.localizable.screen_home_kikurage_name(kikurageUser.kikurageName ?? "-")
+        viewModel.state.kikurageName = R.string.localizable.screen_home_kikurage_name(kikurageUser.kikurageName)
 
         setNavigationItem()
         adjustNavigationBarBackgroundColor()
