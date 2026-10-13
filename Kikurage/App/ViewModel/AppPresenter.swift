@@ -13,7 +13,7 @@ import KDRepository
 import KDUseCase
 
 protocol AppPresenterDelegate: AnyObject {
-    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
+    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, user: KikurageUser?)
     func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String)
 }
 
@@ -41,7 +41,7 @@ class AppPresenter {
         loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] result in
             switch result {
             case .success(let res):
-                self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
+                self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, user: res.user)
             case .failure(let error):
                 self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: error.description())
             }

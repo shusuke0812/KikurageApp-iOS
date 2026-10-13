@@ -10,16 +10,15 @@ import Foundation
 import KDEntity
 
 protocol LoginAccessable: PushNavigationProtocol {
-    func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser)
+    func pushToHome(kikurageUser: KikurageUser)
 }
 
 extension LoginAccessable {
     // MARK: - Push
 
-    func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser) {
+    func pushToHome(kikurageUser: KikurageUser) {
         let vc = HomeViewController()
         vc.kikurageUser = kikurageUser
-        vc.kikurageState = kikurageState
         push(to: vc)
     }
 }

@@ -13,7 +13,7 @@ import KDRepository
 import KDUseCase
 
 protocol LoginViewModelDelegate: AnyObject {
-    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState)
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser)
     func loginViewModelDidFailedLogin(_ loginViewModel: LoginViewModel?, with errorMessage: String)
 }
 
@@ -53,7 +53,7 @@ extension LoginViewModel {
                 self?.loadKikurageStateWithUserUseCase.invoke(uid: loginUser.uid) { [weak self] responses in
                     switch responses {
                     case .success(let res):
-                        self?.delegate?.loginViewModelDidSuccessLogin(self, user: res.user, state: res.state)
+                        self?.delegate?.loginViewModelDidSuccessLogin(self, user: res.user)
                     case .failure(let error):
                         self?.delegate?.loginViewModelDidFailedLogin(self, with: error.description())
                     }

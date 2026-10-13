@@ -32,7 +32,7 @@ extension TopAccessable {
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser) {
         let vc = HomeViewController()
         vc.kikurageUser = kikurageUser
-        vc.kikurageState = kikurageState
+        //vc.kikurageState = kikurageState
         push(to: vc)
     }
 

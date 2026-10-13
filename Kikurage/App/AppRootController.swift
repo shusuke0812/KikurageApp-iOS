@@ -81,10 +81,9 @@ extension AppRootController {
 // MARK: - Transition
 
 extension AppRootController {
-    private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
+    private func showHomePage(user: KikurageUser?) {
         let vc = HomeViewController()
-        vc.kikurageUser = kikurageInfo.user
-        vc.kikurageState = kikurageInfo.state
+        vc.kikurageUser = user
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
@@ -139,13 +138,13 @@ extension AppRootController {
 // MARK: - AppPresenter Delegate
 
 extension AppRootController: AppPresenterDelegate {
-    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        if let user = kikurageInfo.user {
+    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, user: KikurageUser?) {
+        if let user = user {
             FirebaseAnalyticsManager.setUserProperty()
             FirebaseAnalyticsManager.setUserID(user.productKey)
         }
         DispatchQueue.main.async {
-            self.showHomePage(kikurageInfo: kikurageInfo)
+            self.showHomePage(user: user)
         }
     }
 

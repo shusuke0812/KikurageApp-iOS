@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
     private let disposeBag = RxSwift.DisposeBag()
     private var dateTimer: Timer?
 
-    var kikurageState: KikurageState!
     var kikurageUser: KikurageUser!
 
     deinit {
