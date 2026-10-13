@@ -1,6 +1,6 @@
 //
 //  LoadKikurageStateWithUserUseCase.swift
-//  Kikurage
+//  KikurageDomain
 //
 //  Created by Shusuke Ota on 2024/1/3.
 //  Copyright © 2024 shusuke. All rights reserved.
@@ -10,22 +10,22 @@ import Foundation
 import KDEntity
 import KDRepository
 
-typealias KikurageStateUserTuple = (user: KikurageUser, state: KikurageState)
+public typealias KikurageStateUserTuple = (user: KikurageUser, state: KikurageState)
 
-protocol LoadKikurageStateWithUserUseCaseProtocol {
+public protocol LoadKikurageStateWithUserUseCaseProtocol {
     func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, FirebaseClientError>) -> Void)
 }
 
-class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol {
+public class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol {
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
-    init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
     }
 
-    func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, FirebaseClientError>) -> Void) {
+    public func invoke(uid: String, completion: @escaping (Result<KikurageStateUserTuple, FirebaseClientError>) -> Void) {
         let userRequest = KikurageUserRequest(uid: uid)
         kikurageUserRepository.getKikurageUser(request: userRequest) { [weak self] response in
             switch response {

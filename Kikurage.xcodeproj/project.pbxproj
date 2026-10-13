@@ -22,7 +22,6 @@
 		3853181BBF1A7552F2E0593F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6DB8208A79CBA65075A9F /* GraphViewModel.swift */; };
 		4371ADFD54A70AE38FD0A20E /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D361B136F35C8C2B874C66D9 /* LoginViewState.swift */; };
 		4A115A06079586141091C9BE /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */; };
-		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
 		4BF051BC9658085D13D94715 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4587C2500401C9FC6F1AA /* RecipeViewModel.swift */; };
 		4CEA4B1F5FEFD3282098456E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DB0886F00968D255100312 /* HomeViewModel.swift */; };
 		4D170530D1126F8407FEEFF2 /* DeviceRegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */; };
@@ -107,6 +106,7 @@
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
 		9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
+		9CB9B91C307E6ECC003E1EC9 /* KDUseCase in Frameworks */ = {isa = PBXBuildFile; productRef = 9CB9B91B307E6ECC003E1EC9 /* KDUseCase */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
@@ -319,7 +319,6 @@
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
-		AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
 		B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CultivationState.swift; sourceTree = "<group>"; };
 		BD50C82507AF86458C85ECE1 /* WiFiListState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListState.swift; sourceTree = "<group>"; };
 		BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingState.swift; sourceTree = "<group>"; };
@@ -355,6 +354,7 @@
 				9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */,
 				DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */,
 				F55CD6CE391F110F00A56A1F /* KACrashlytics in Frameworks */,
+				9CB9B91C307E6ECC003E1EC9 /* KDUseCase in Frameworks */,
 				2EB92BB47701C6F625D91AFD /* FirebaseCore in Frameworks */,
 				8FB52D7D6A64507B5F479444 /* KDEntity in Frameworks */,
 				27F044AC6CCD4A3F737BA44A /* KDLoginManager in Frameworks */,
@@ -564,7 +564,6 @@
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 				9C03D033277DC1B20074C914 /* Settings.bundle */,
-				AE8D04DA6F9FEF9DF8B46B14 /* UseCase */,
 			);
 			path = Kikurage;
 			sourceTree = "<group>";
@@ -1383,14 +1382,6 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		AE8D04DA6F9FEF9DF8B46B14 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */,
-			);
-			path = UseCase;
-			sourceTree = "<group>";
-		};
 		B4F8BB3BD2E2A73713E588C9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1446,6 +1437,9 @@
 				9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */,
 			);
 			name = Kikurage;
+			packageProductDependencies = (
+				9CB9B91B307E6ECC003E1EC9 /* KDUseCase */,
+			);
 			productName = kikurageApp;
 			productReference = 9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */;
 			productType = "com.apple.product-type.application";
@@ -1688,7 +1682,6 @@
 				9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */,
 				9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */,
 				89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */,
-				4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */,
 				1131A5C51455B61985502323 /* AccountSettingState.swift in Sources */,
 				E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */,
 				193FA98264F799B486D3BC1B /* GraphState.swift in Sources */,
@@ -1772,7 +1765,7 @@
 		};
 		9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */;
+			productRef = 9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2550,6 +2543,10 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KALogger;
 		};
+		9CB9B91B307E6ECC003E1EC9 /* KDUseCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KDUseCase;
+		};
 		9CCA43C32D22C5A9005A78ED /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43C22D22C5A9005A78ED /* XCRemoteSwiftPackageReference "Charts" */;
@@ -2613,7 +2610,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = KAAnalytics;
 		};
-		9CFB763B2D3CA30D00CE5C37 /* plugin:RswiftGenerateInternalResources */ = {
+		9CFB763B2D3CA30D00CE5C37 /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9CCA43D62D22C755005A78ED /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";

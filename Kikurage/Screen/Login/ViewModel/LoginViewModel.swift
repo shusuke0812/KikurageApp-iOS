@@ -10,6 +10,7 @@ import Foundation
 import KDEntity
 import KDLoginManager
 import KDRepository
+import KDUseCase
 
 protocol LoginViewModelDelegate: AnyObject {
     func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState)
