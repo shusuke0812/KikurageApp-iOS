@@ -64,7 +64,9 @@ let package = Package(
             name: "KDUseCase",
             dependencies: [
                 .target(name: "KDRepository"),
-                .target(name: "KDEntity")
+                .target(name: "KDEntity"),
+                .target(name: "KDLoginManager"),
+                .product(name: "KACrashlytics", package: "KikurageAnalytics")
             ],
             path: "Sources/KDUseCase"
         ),

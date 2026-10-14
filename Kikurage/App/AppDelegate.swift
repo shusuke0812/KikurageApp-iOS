@@ -10,14 +10,15 @@ import IQKeyboardManagerSwift
 import KALogger
 import MetricKit
 import UIKit
+import KDUseCase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KLogManager.debug()
 
-        let appDelegateConfig = AppDelegateConfig()
-        appDelegateConfig.initialize()
+        let configureFirebaseUseCase = ConfigureFirebaseUseCase()
+        configureFirebaseUseCase.invoke()
 
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardManager.shared.keyboardDistance = 40

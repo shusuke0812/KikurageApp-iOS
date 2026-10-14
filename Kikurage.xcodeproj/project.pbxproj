@@ -40,7 +40,6 @@
 		8FB52D7D6A64507B5F479444 /* KDEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 95522194BEF8EE56DEF84650 /* KDEntity */; };
 		90CA7E683FB267893A3DAB48 /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB09838E87CA564AE9F02948 /* PostCultivationViewModel.swift */; };
 		936998FA9370F3DC989E3A20 /* PostCultivationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F38397AD2BD91063F1543E /* PostCultivationState.swift */; };
-		9B48CF8BF4F620E2A6532E6A /* AppDelegateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCCBB4136094CA28BC9AE83 /* AppDelegateConfig.swift */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F22D281B1A00B52292 /* KUIKit */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
@@ -217,7 +216,6 @@
 		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
 		6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
-		6DCCBB4136094CA28BC9AE83 /* AppDelegateConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppDelegateConfig.swift; sourceTree = "<group>"; };
 		6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		754C2148636E317B38BD918F /* CalendarViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		84D4E5B436119034996070F3 /* CalendarState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarState.swift; sourceTree = "<group>"; };
@@ -690,7 +688,6 @@
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
 				9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */,
 				2C002444DF6028A97EAB35C4 /* AppConfig.swift */,
-				6DCCBB4136094CA28BC9AE83 /* AppDelegateConfig.swift */,
 				E0318AA64A1231DB20AEF4C2 /* AppVersion.swift */,
 				E3A1962135139A67D715759F /* ViewModel */,
 			);
@@ -1722,7 +1719,6 @@
 				05DB566C4545E5195F5673CB /* PostRecipeState.swift in Sources */,
 				0573AE492922DC211AD52BB2 /* PostRecipeViewModel.swift in Sources */,
 				BA52788C05268CBC6BB055B9 /* AppConfig.swift in Sources */,
-				9B48CF8BF4F620E2A6532E6A /* AppDelegateConfig.swift in Sources */,
 				77D7500100F23835CFA32856 /* AppVersion.swift in Sources */,
 				E622D2F69973F0B8C3A87528 /* AppPresenter.swift in Sources */,
 			);
