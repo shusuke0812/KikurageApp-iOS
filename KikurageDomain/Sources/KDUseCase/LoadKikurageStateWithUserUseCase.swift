@@ -20,7 +20,10 @@ public class LoadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseP
     private let kikurageStateRepository: KikurageStateRepositoryProtocol
     private let kikurageUserRepository: KikurageUserRepositoryProtocol
 
-    public init(kikurageStateRepository: KikurageStateRepositoryProtocol, kikurageUserRepository: KikurageUserRepositoryProtocol) {
+    public init(
+        kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
+        kikurageUserRepository: KikurageUserRepositoryProtocol = KikurageUserRepository()
+    ) {
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageUserRepository = kikurageUserRepository
     }
