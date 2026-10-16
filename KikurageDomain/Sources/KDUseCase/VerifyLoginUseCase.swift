@@ -9,7 +9,7 @@ import Foundation
 import KDLoginManager
 
 public enum VerifyLogin {
-    case registeredProductKey(String)
+    case registeredProductKey(key: String, userId: String)
     case notRegisteredProductKey
     case noLogin
 }
@@ -43,7 +43,7 @@ public class VerifyLoginUseCase: VerifyLoginUseCaseProtocol {
                     completion(.success(VerifyLogin.notRegisteredProductKey))
                     return
                 }
-                completion(.success(VerifyLogin.registeredProductKey(productKey)))
+                completion(.success(VerifyLogin.registeredProductKey(key: productKey, userId: userId)))
             case .failure(let error):
                 completion(.failure("error")) // TODO: エラーメッセージ修正
             }
