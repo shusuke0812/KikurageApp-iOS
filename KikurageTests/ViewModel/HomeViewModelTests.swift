@@ -21,12 +21,11 @@ class HomeViewModelTests: XCTestCase {
         
         let testKikurageState = Stub.kikurageState
         let testKikurageUser = Stub.kikurageUser
-        let testKikurageStateGraph: [KikurageStateGraphTuple] = []
-        
+
         // Repository / ViewModel
         
-        kikurageStateRepository = StubKikurageStateRepository(kikurageState: testKikurageState, kikurageStateGraph: testKikurageStateGraph)
-        homeViewModel = HomeViewModel(kikurageUser: testKikurageUser, kikurageStateRepository: kikurageStateRepository, kikurageStateListenerRepository: KikurageStateListenerRepository())
+        //kikurageStateRepository = StubKikurageStateRepository(kikurageState: testKikurageState, kikurageStateGraph: testKikurageStateGraph)
+        //homeViewModel = HomeViewModel(productKey: testKikurageUser.productKey, userId: "testUserId", kikurageStateRepository: kikurageStateRepository, kikurageStateListenerRepository: KikurageStateListenerRepository())
     }
 
     override func tearDownWithError() throws {

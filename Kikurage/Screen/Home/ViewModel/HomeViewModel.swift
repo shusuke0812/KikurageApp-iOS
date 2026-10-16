@@ -12,10 +12,12 @@ import KDRepository
 import RxSwift
 
 protocol HomeViewModelInput {
-    var kikurageUser: KikurageUser { get }
+    var productKey: String { get }
+    var userId: String { get }
 
     func loadKikurageState()
     func listenKikurageState()
+    func loadKikurageName()
 }
 
 protocol HomeViewModelOutput {
@@ -42,7 +44,8 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     var output: HomeViewModelOutput { self }
     let state = HomeState()
 
-    var kikurageUser: KikurageUser
+    let productKey: String
+    let userId: String
     var kikurageState: Observable<KikurageState> { subject.asObservable() }
     var error: Observable<Error> { errorSubject.asObservable() }
 
@@ -51,11 +54,13 @@ class HomeViewModel: HomeViewModelType, HomeViewModelInput, HomeViewModelOutput 
     }
 
     init(
-        kikurageUser: KikurageUser,
+        productKey: String,
+        userId: String,
         kikurageStateRepository: KikurageStateRepositoryProtocol = KikurageStateRepository(),
         kikurageStateListenerRepository: KikurageStateListenerRepositoryProtocol = KikurageStateListenerRepository()
     ) {
-        self.kikurageUser = kikurageUser
+        self.productKey = productKey
+        self.userId = userId
 
         self.kikurageStateRepository = kikurageStateRepository
         self.kikurageStateListenerRepository = kikurageStateListenerRepository
@@ -77,7 +82,7 @@ extension HomeViewModel {
 extension HomeViewModel {
     /// きくらげの状態を読み込む
     func loadKikurageState() {
-        let request = KikurageStateRequest(productID: kikurageUser.productKey)
+        let request = KikurageStateRequest(productID: productKey)
         kikurageStateRepository.getKikurageState(request: request)
             .subscribe(
                 onSuccess: { [weak self] kikurageState in
@@ -92,7 +97,7 @@ extension HomeViewModel {
 
     /// きくらげの状態をリッスンする
     func listenKikurageState() {
-        kikurageStateListenerRepository.listenKikurageState(productKey: kikurageUser.productKey)
+        kikurageStateListenerRepository.listenKikurageState(productKey: productKey)
             .subscribe(
                 onNext: { [weak self] kikurageState in
                     self?.subject.onNext(kikurageState)
@@ -102,5 +107,10 @@ extension HomeViewModel {
                 }
             )
             .disposed(by: disposeBag)
+    }
+
+    /// きくらげの名前を読み込む
+    func loadKikurageName() {
+        // TODO: userIdを使ったKikurageUser取得処理を実装する（本タスクのスコープ外）
     }
 }

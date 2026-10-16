@@ -7,6 +7,7 @@
 //
 
 import KDEntity
+import KDLoginManager
 import UIKit
 
 protocol TopAccessable: PushNavigationProtocol, SafariViewNavigationProtocol {
@@ -30,8 +31,8 @@ extension TopAccessable {
     }
 
     func pushToHome(kikurageState: KikurageState, kikurageUser: KikurageUser) {
-        let vc = HomeViewController()
-        vc.kikurageUser = kikurageUser
+        let userId = LoginManager().userID ?? ""
+        let vc = HomeViewController(productKey: kikurageUser.productKey, userId: userId)
         //vc.kikurageState = kikurageState
         push(to: vc)
     }

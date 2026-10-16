@@ -7,15 +7,19 @@
 //
 
 import KAAnalytics
-import KDEntity
 import KUIKit
 import SwiftUI
 import UIKit
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
-    private var presenter: AppPresenter!
+    private let viewModel = AppViewModel()
+    private var effectObservationTask: Task<Void, Never>?
     private var hudHostingController: UIHostingController<KUIHUD>?
+
+    deinit {
+        effectObservationTask?.cancel()
+    }
 
     // MARK: - Lifecycle
 
@@ -23,16 +27,9 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         showHUD()
 
-        presenter = AppPresenter()
-        presenter.delegate = self
-
+        observeEffect()
         fetchRemoteConfig()
-
-        if presenter.isLogin {
-            presenter.login()
-        } else {
-            showTopPage()
-        }
+        viewModel.verifyLogin()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,10 +44,10 @@ class AppRootController: UIViewController {
 
 extension AppRootController {
     private func fetchRemoteConfig() {
-        presenter.loadFacebookGroupURL()
-        presenter.loadTermsURL()
-        presenter.loadPrivacyPolicyURL()
-        presenter.loadLatestAppVersion()
+        viewModel.loadFacebookGroupURL()
+        viewModel.loadTermsURL()
+        viewModel.loadPrivacyPolicyURL()
+        viewModel.loadLatestAppVersion()
     }
 
     private func showHUD() {
@@ -81,9 +78,8 @@ extension AppRootController {
 // MARK: - Transition
 
 extension AppRootController {
-    private func showHomePage(user: KikurageUser?) {
-        let vc = HomeViewController()
-        vc.kikurageUser = user
+    private func showHomePage(productKey: String, userId: String) {
+        let vc = HomeViewController(productKey: productKey, userId: userId)
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
@@ -135,22 +131,28 @@ extension AppRootController {
     }
 }
 
-// MARK: - AppPresenter Delegate
+// MARK: - Effect
 
-extension AppRootController: AppPresenterDelegate {
-    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, user: KikurageUser?) {
-        if let user = user {
-            FirebaseAnalyticsManager.setUserProperty()
-            FirebaseAnalyticsManager.setUserID(user.productKey)
-        }
-        DispatchQueue.main.async {
-            self.showHomePage(user: user)
+extension AppRootController {
+    private func observeEffect() {
+        effectObservationTask = Task { [weak self] in
+            guard let self else { return }
+            for await effect in self.viewModel.effects {
+                DispatchQueue.main.async {
+                    self.handleEffect(effect)
+                }
+            }
         }
     }
 
-    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String) {
-        DispatchQueue.main.async {
-            self.showTopPage()
+    private func handleEffect(_ effect: AppViewModel.Effect) {
+        switch effect {
+        case let .showHomePage(productKey, userId):
+            FirebaseAnalyticsManager.setUserProperty()
+            FirebaseAnalyticsManager.setUserID(productKey)
+            showHomePage(productKey: productKey, userId: userId)
+        case .showTopPage:
+            showTopPage()
         }
     }
 }
