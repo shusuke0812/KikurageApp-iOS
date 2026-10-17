@@ -1,53 +1,63 @@
 //
-//  AppPresenter.swift
+//  AppViewModel.swift
 //  Kikurage
 //
 //  Created by Shusuke Ota on 2025/1/1.
 //
 
 import Foundation
+import KAAnalytics
 import KALogger
-import KDEntity
-import KDLoginManager
 import KDRepository
+import KDUseCase
 
-protocol AppPresenterDelegate: AnyObject {
-    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?))
-    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String)
-}
-
-class AppPresenter {
-    var isLogin: Bool {
-        loginManager.isLogin
+final class AppViewModel {
+    enum Effect {
+        case showHomePage(productKey: String, userId: String)
+        case showTopPage
     }
+
+    let effects: AsyncStream<Effect>
+    private let effectContinuation: AsyncStream<Effect>.Continuation
 
     private let appConfigRepository: AppConfigRepositoryProtocol
-    private let loadKikurageStateWithUserUseCase: LoadKikurageStateWithUserUseCaseProtocol
-    private let loginManager: LoginManager
-
-    weak var delegate: AppPresenterDelegate?
+    private let verifyLoginUseCase: VerifyLoginUseCaseProtocol
 
     init(
-        appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository()
+        appConfigRepository: AppConfigRepositoryProtocol = AppConfigRepository(),
+        verifyLoginUseCase: VerifyLoginUseCaseProtocol = VerifyLoginUseCase()
     ) {
         self.appConfigRepository = appConfigRepository
-        loginManager = LoginManager()
-        loadKikurageStateWithUserUseCase = LoadKikurageStateWithUserUseCase(kikurageStateRepository: KikurageStateRepository(), kikurageUserRepository: KikurageUserRepository())
+        self.verifyLoginUseCase = verifyLoginUseCase
+        (effects, effectContinuation) = AsyncStream.makeStream(of: Effect.self)
     }
 
-    func login() {
-        let userID = loginManager.userID ?? ""
-        loadKikurageStateWithUserUseCase.invoke(uid: userID) { [weak self] result in
+    func verifyLogin() {
+        verifyLoginUseCase.invoke { [weak self] result in
             switch result {
-            case .success(let res):
-                self?.delegate?.appPresenterDidSuccessGetKikurageInfo(self, kikurageInfo: (user: res.user, state: res.state))
-            case .failure(let error):
-                self?.delegate?.appPresenterDidFailedGetKikurageInfo(self, errorMessage: error.description())
+            case .success(let verifyLogin):
+                switch verifyLogin {
+                case let .registeredProductKey(key, userId):
+                    FirebaseAnalyticsManager.setUserProperty()
+                    FirebaseAnalyticsManager.setUserID(key)
+                    self?.effectContinuation.yield(.showHomePage(productKey: key, userId: userId))
+                case .notRegisteredProductKey, .noLogin:
+                    self?.effectContinuation.yield(.showTopPage)
+                }
+            case .failure:
+                self?.effectContinuation.yield(.showTopPage)
             }
         }
     }
 
-    func loadFacebookGroupURL() {
+    func fetchRemoteConfig() {
+        loadFacebookGroupURL()
+        loadTermsURL()
+        loadPrivacyPolicyURL()
+        loadLatestAppVersion()
+    }
+
+    private func loadFacebookGroupURL() {
         appConfigRepository.getFacebookGroupURL { response in
             switch response {
             case .success(let urlString):
@@ -58,7 +68,7 @@ class AppPresenter {
         }
     }
 
-    func loadTermsURL() {
+    private func loadTermsURL() {
         appConfigRepository.getTermsURL { response in
             switch response {
             case .success(let urlString):
@@ -69,7 +79,7 @@ class AppPresenter {
         }
     }
 
-    func loadPrivacyPolicyURL() {
+    private func loadPrivacyPolicyURL() {
         appConfigRepository.getPrivacyPolicyURL { response in
             switch response {
             case .success(let urlString):
@@ -80,7 +90,7 @@ class AppPresenter {
         }
     }
 
-    func loadLatestAppVersion() {
+    private func loadLatestAppVersion() {
         appConfigRepository.getLatestAppVersion { response in
             switch response {
             case .success(let appVersionString):

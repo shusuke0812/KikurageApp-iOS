@@ -13,7 +13,8 @@ let package = Package(
         .library(name: "KDRepository", targets: ["KDRepository"]),
         .library(name: "KDLoginManager", targets: ["KDLoginManager"]),
         .library(name: "KDEntity", targets: ["KDEntity"]),
-        .library(name: "KDBluetoothManager", targets: ["KDBluetoothManager"])
+        .library(name: "KDBluetoothManager", targets: ["KDBluetoothManager"]),
+        .library(name: "KDUseCase", targets: ["KDUseCase"])
     ],
     dependencies: [
         .package(path: "../KikurageAnalytics"),
@@ -58,6 +59,16 @@ let package = Package(
                 .product(name: "KALogger", package: "KikurageAnalytics")
             ],
             path: "Sources/KDBluetoothManager"
+        ),
+        .target(
+            name: "KDUseCase",
+            dependencies: [
+                .target(name: "KDRepository"),
+                .target(name: "KDEntity"),
+                .target(name: "KDLoginManager"),
+                .product(name: "KACrashlytics", package: "KikurageAnalytics")
+            ],
+            path: "Sources/KDUseCase"
         ),
 
         // MARK: - Infrastructure

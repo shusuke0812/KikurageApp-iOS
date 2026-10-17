@@ -22,7 +22,6 @@
 		3853181BBF1A7552F2E0593F /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6DB8208A79CBA65075A9F /* GraphViewModel.swift */; };
 		4371ADFD54A70AE38FD0A20E /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D361B136F35C8C2B874C66D9 /* LoginViewState.swift */; };
 		4A115A06079586141091C9BE /* DeviceRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */; };
-		4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */; };
 		4BF051BC9658085D13D94715 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4587C2500401C9FC6F1AA /* RecipeViewModel.swift */; };
 		4CEA4B1F5FEFD3282098456E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DB0886F00968D255100312 /* HomeViewModel.swift */; };
 		4D170530D1126F8407FEEFF2 /* DeviceRegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A489D95C82694E0BDC18A5 /* DeviceRegisterState.swift */; };
@@ -41,7 +40,6 @@
 		8FB52D7D6A64507B5F479444 /* KDEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 95522194BEF8EE56DEF84650 /* KDEntity */; };
 		90CA7E683FB267893A3DAB48 /* PostCultivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB09838E87CA564AE9F02948 /* PostCultivationViewModel.swift */; };
 		936998FA9370F3DC989E3A20 /* PostCultivationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F38397AD2BD91063F1543E /* PostCultivationState.swift */; };
-		9B48CF8BF4F620E2A6532E6A /* AppDelegateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCCBB4136094CA28BC9AE83 /* AppDelegateConfig.swift */; };
 		9C03D034277DC1B20074C914 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D033277DC1B20074C914 /* Settings.bundle */; };
 		9C06D2F32D281B1A00B52292 /* KUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C06D2F22D281B1A00B52292 /* KUIKit */; };
 		9C074970224E173B0012D2E0 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */; };
@@ -107,6 +105,7 @@
 		9CB409D2276F051400E413E4 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB409D1276F051400E413E4 /* Stub.swift */; };
 		9CB6A0B72D1E2E8D00EE3745 /* NavigationProtocol+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB6A0B62D1E2E8D00EE3745 /* NavigationProtocol+Login.swift */; };
 		9CB7D604254050D600D57801 /* HomeBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7D603254050D600D57801 /* HomeBaseView.swift */; };
+		9CB9B91C307E6ECC003E1EC9 /* KDUseCase in Frameworks */ = {isa = PBXBuildFile; productRef = 9CB9B91B307E6ECC003E1EC9 /* KDUseCase */; };
 		9CBB32D127365E3600A1AB6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB32D327365E3600A1AB6C /* Localizable.strings */; };
 		9CBF6720276DF3E800081340 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF671F276DF3E800081340 /* HomeViewModelTests.swift */; };
 		9CBF6723276E00E400081340 /* StubKikurageStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF6722276E00E400081340 /* StubKikurageStateRepository.swift */; };
@@ -157,7 +156,7 @@
 		DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */ = {isa = PBXBuildFile; productRef = A2D104A1080BC81190ECC5EF /* KDBluetoothManager */; };
 		DF37CB7666A7AE6E0FF20F2E /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC1A009602B012D55AC0AA8 /* SignUpState.swift */; };
 		E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42307798AE4BE58F7477A8E2 /* AccountSettingViewModel.swift */; };
-		E622D2F69973F0B8C3A87528 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96393309F05A9C25D1B3F9CA /* AppPresenter.swift */; };
+		E622D2F69973F0B8C3A87528 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96393309F05A9C25D1B3F9CA /* AppViewModel.swift */; };
 		EAC7A68319BBCAA78A26F6CA /* DictionaryTwitterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */; };
 		F15F7E265005EA41D69E918B /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB8032A1E839AC75DC41246 /* HomeState.swift */; };
 		F55CD6CE391F110F00A56A1F /* KACrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 172C89BFB1DD83A374EC50C7 /* KACrashlytics */; };
@@ -217,12 +216,11 @@
 		5DC1A009602B012D55AC0AA8 /* SignUpState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		62B29774BC4774BD06DCB2B5 /* WiFiSelectDeviceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiSelectDeviceViewModel.swift; sourceTree = "<group>"; };
 		6948F3ABDB894A699A31C4F3 /* DictionaryTwitterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DictionaryTwitterViewModel.swift; sourceTree = "<group>"; };
-		6DCCBB4136094CA28BC9AE83 /* AppDelegateConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppDelegateConfig.swift; sourceTree = "<group>"; };
 		6EAB2627B9339CC0C5F5B3FE /* DeviceRegisterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceRegisterViewModel.swift; sourceTree = "<group>"; };
 		754C2148636E317B38BD918F /* CalendarViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		84D4E5B436119034996070F3 /* CalendarState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CalendarState.swift; sourceTree = "<group>"; };
 		8599C80FF591093188CFF133 /* DebugViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
-		96393309F05A9C25D1B3F9CA /* AppPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
+		96393309F05A9C25D1B3F9CA /* AppViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		9C03D033277DC1B20074C914 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C07496F224E173B0012D2E0 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		9C07E7E12530194900720768 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 		9CE5927B257F664D00924B42 /* PostCultivationBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCultivationBaseView.swift; sourceTree = "<group>"; };
 		9CE9D2312D23AB2B000EF8F9 /* KikurageDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageDomain; sourceTree = "<group>"; };
 		9CEAF3B62D326FAE00EB5C3E /* KikurageAnalytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = KikurageAnalytics; sourceTree = "<group>"; };
-		AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadKikurageStateWithUserUseCase.swift; sourceTree = "<group>"; };
 		B5B1B1B8583B77EEAA9D79D4 /* CultivationState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CultivationState.swift; sourceTree = "<group>"; };
 		BD50C82507AF86458C85ECE1 /* WiFiListState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WiFiListState.swift; sourceTree = "<group>"; };
 		BDCCBAD21991C53CE08CBC30 /* AccountSettingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountSettingState.swift; sourceTree = "<group>"; };
@@ -355,6 +352,7 @@
 				9CEAF3C02D32A40500EB5C3E /* KAAnalytics in Frameworks */,
 				DC252189149FB8CDA6FD504C /* KDBluetoothManager in Frameworks */,
 				F55CD6CE391F110F00A56A1F /* KACrashlytics in Frameworks */,
+				9CB9B91C307E6ECC003E1EC9 /* KDUseCase in Frameworks */,
 				2EB92BB47701C6F625D91AFD /* FirebaseCore in Frameworks */,
 				8FB52D7D6A64507B5F479444 /* KDEntity in Frameworks */,
 				27F044AC6CCD4A3F737BA44A /* KDLoginManager in Frameworks */,
@@ -564,7 +562,6 @@
 				9C1ACF512225768A00A3D4D1 /* Assets.xcassets */,
 				9CBB32D327365E3600A1AB6C /* Localizable.strings */,
 				9C03D033277DC1B20074C914 /* Settings.bundle */,
-				AE8D04DA6F9FEF9DF8B46B14 /* UseCase */,
 			);
 			path = Kikurage;
 			sourceTree = "<group>";
@@ -691,7 +688,6 @@
 				9C1ACF4A2225768A00A3D4D1 /* AppDelegate.swift */,
 				9C9A8DA026DFB9DE006C31E7 /* AppRootController.swift */,
 				2C002444DF6028A97EAB35C4 /* AppConfig.swift */,
-				6DCCBB4136094CA28BC9AE83 /* AppDelegateConfig.swift */,
 				E0318AA64A1231DB20AEF4C2 /* AppVersion.swift */,
 				E3A1962135139A67D715759F /* ViewModel */,
 			);
@@ -1383,14 +1379,6 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		AE8D04DA6F9FEF9DF8B46B14 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				AFF9B736596A3D7E3BF9F38A /* LoadKikurageStateWithUserUseCase.swift */,
-			);
-			path = UseCase;
-			sourceTree = "<group>";
-		};
 		B4F8BB3BD2E2A73713E588C9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,7 +1400,7 @@
 		E3A1962135139A67D715759F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				96393309F05A9C25D1B3F9CA /* AppPresenter.swift */,
+				96393309F05A9C25D1B3F9CA /* AppViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1446,6 +1434,9 @@
 				9CFB763C2D3CA30D00CE5C37 /* PBXTargetDependency */,
 			);
 			name = Kikurage;
+			packageProductDependencies = (
+				9CB9B91B307E6ECC003E1EC9 /* KDUseCase */,
+			);
 			productName = kikurageApp;
 			productReference = 9C1ACF472225768A00A3D4D1 /* KikurageDebug.app */;
 			productType = "com.apple.product-type.application";
@@ -1688,7 +1679,6 @@
 				9CDAFBBB29B81C6D0025219D /* NavigationProtocol+WiFi.swift in Sources */,
 				9C949B1125AD4211004FEE1F /* SideMenuBaseView.swift in Sources */,
 				89F4C064D5DD5A235391F635 /* DateHelper.swift in Sources */,
-				4BC63FC9DCEB1D9192E8E6C7 /* LoadKikurageStateWithUserUseCase.swift in Sources */,
 				1131A5C51455B61985502323 /* AccountSettingState.swift in Sources */,
 				E5B70FAB51E9CA3D9EF1F75B /* AccountSettingViewModel.swift in Sources */,
 				193FA98264F799B486D3BC1B /* GraphState.swift in Sources */,
@@ -1729,9 +1719,8 @@
 				05DB566C4545E5195F5673CB /* PostRecipeState.swift in Sources */,
 				0573AE492922DC211AD52BB2 /* PostRecipeViewModel.swift in Sources */,
 				BA52788C05268CBC6BB055B9 /* AppConfig.swift in Sources */,
-				9B48CF8BF4F620E2A6532E6A /* AppDelegateConfig.swift in Sources */,
 				77D7500100F23835CFA32856 /* AppVersion.swift in Sources */,
-				E622D2F69973F0B8C3A87528 /* AppPresenter.swift in Sources */,
+				E622D2F69973F0B8C3A87528 /* AppViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1946,7 +1935,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1974,7 +1963,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1999,7 +1988,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shusuke.ota.KikurageUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2059,7 +2048,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2125,7 +2114,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2153,7 +2142,7 @@
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2220,7 +2209,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2293,7 +2282,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2395,7 +2384,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				INFOPLIST_FILE = "${SRCROOT}/Kikurage/Utility/Plist/info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2549,6 +2538,10 @@
 		9C2BDE8C2D33A9610067005D /* KALogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KALogger;
+		};
+		9CB9B91B307E6ECC003E1EC9 /* KDUseCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KDUseCase;
 		};
 		9CCA43C32D22C5A9005A78ED /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;

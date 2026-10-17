@@ -6,16 +6,19 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KAAnalytics
-import KDEntity
 import KUIKit
 import SwiftUI
 import UIKit
 
 class AppRootController: UIViewController {
     private var currentViewController: UIViewController?
-    private var presenter: AppPresenter!
+    private let viewModel = AppViewModel()
+    private var effectObservationTask: Task<Void, Never>?
     private var hudHostingController: UIHostingController<KUIHUD>?
+
+    deinit {
+        effectObservationTask?.cancel()
+    }
 
     // MARK: - Lifecycle
 
@@ -23,16 +26,9 @@ class AppRootController: UIViewController {
         super.viewDidLoad()
         showHUD()
 
-        presenter = AppPresenter()
-        presenter.delegate = self
-
-        fetchRemoteConfig()
-
-        if presenter.isLogin {
-            presenter.login()
-        } else {
-            showTopPage()
-        }
+        observeEffect()
+        viewModel.fetchRemoteConfig()
+        viewModel.verifyLogin()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -46,13 +42,6 @@ class AppRootController: UIViewController {
 // MARK: - Initialized
 
 extension AppRootController {
-    private func fetchRemoteConfig() {
-        presenter.loadFacebookGroupURL()
-        presenter.loadTermsURL()
-        presenter.loadPrivacyPolicyURL()
-        presenter.loadLatestAppVersion()
-    }
-
     private func showHUD() {
         let hostingController = UIHostingController(rootView: KUIHUD())
         hostingController.view.backgroundColor = .clear
@@ -81,10 +70,8 @@ extension AppRootController {
 // MARK: - Transition
 
 extension AppRootController {
-    private func showHomePage(kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        let vc = HomeViewController()
-        vc.kikurageUser = kikurageInfo.user
-        vc.kikurageState = kikurageInfo.state
+    private func showHomePage(productKey: String, userId: String) {
+        let vc = HomeViewController(productKey: productKey, userId: userId)
         let nc = CustomNavigationController(rootViewController: vc)
         changeViewController(nc)
     }
@@ -136,22 +123,26 @@ extension AppRootController {
     }
 }
 
-// MARK: - AppPresenter Delegate
+// MARK: - Effect
 
-extension AppRootController: AppPresenterDelegate {
-    func appPresenterDidSuccessGetKikurageInfo(_ appPresenter: AppPresenter?, kikurageInfo: (user: KikurageUser?, state: KikurageState?)) {
-        if let user = kikurageInfo.user {
-            FirebaseAnalyticsManager.setUserProperty()
-            FirebaseAnalyticsManager.setUserID(user.productKey)
-        }
-        DispatchQueue.main.async {
-            self.showHomePage(kikurageInfo: kikurageInfo)
+extension AppRootController {
+    private func observeEffect() {
+        effectObservationTask = Task { [weak self] in
+            guard let self else { return }
+            for await effect in self.viewModel.effects {
+                DispatchQueue.main.async {
+                    self.handleEffect(effect)
+                }
+            }
         }
     }
 
-    func appPresenterDidFailedGetKikurageInfo(_ appPresenter: AppPresenter?, errorMessage: String) {
-        DispatchQueue.main.async {
-            self.showTopPage()
+    private func handleEffect(_ effect: AppViewModel.Effect) {
+        switch effect {
+        case let .showHomePage(productKey, userId):
+            showHomePage(productKey: productKey, userId: userId)
+        case .showTopPage:
+            showTopPage()
         }
     }
 }

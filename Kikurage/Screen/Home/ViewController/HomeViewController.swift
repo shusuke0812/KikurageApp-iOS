@@ -20,8 +20,18 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
     private let disposeBag = RxSwift.DisposeBag()
     private var dateTimer: Timer?
 
-    var kikurageState: KikurageState!
-    var kikurageUser: KikurageUser!
+    let productKey: String
+    let userId: String
+
+    init(productKey: String, userId: String) {
+        self.productKey = productKey
+        self.userId = userId
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        nil
+    }
 
     deinit {
         // KLogger.debug("call deinit")
@@ -31,13 +41,13 @@ class HomeViewController: UIViewController, UIViewControllerNavigatable, HomeAcc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = HomeViewModel(kikurageUser: kikurageUser)
+        viewModel = HomeViewModel(productKey: productKey, userId: userId)
         viewModel.input.listenKikurageState()
 
         baseView = HomeBaseView(delegate: self, state: viewModel.state)
         let _ = addBaseView(baseView: baseView)
 
-        viewModel.state.kikurageName = R.string.localizable.screen_home_kikurage_name(kikurageUser.kikurageName ?? "-")
+        viewModel.input.loadKikurageName()
 
         setNavigationItem()
         adjustNavigationBarBackgroundColor()

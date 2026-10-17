@@ -6,9 +6,14 @@
 //
 
 import FirebaseCrashlytics
+import FirebaseCore
 
 public struct FirebaseCrashlyticsManager {
     public init() {}
+
+    public func configure() {
+        FirebaseApp.configure()
+    }
 
     public func configUserID(_ id: String?) {
         let userID = id ?? "no id"

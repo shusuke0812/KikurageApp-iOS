@@ -52,10 +52,10 @@ extension LoginViewController: LoginBaseViewDelegate {
 // MARK: - LoginViewModel Delegate
 
 extension LoginViewController: LoginViewModelDelegate {
-    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser, state: KikurageState) {
+    func loginViewModelDidSuccessLogin(_ loginViewModel: LoginViewModel?, user: KikurageUser) {
         DispatchQueue.main.async {
             HUD.hide()
-            self.pushToHome(kikurageState: state, kikurageUser: user)
+            self.pushToHome(kikurageUser: user)
         }
     }
 
