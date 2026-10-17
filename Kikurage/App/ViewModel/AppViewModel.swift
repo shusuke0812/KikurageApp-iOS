@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KAAnalytics
 import KALogger
 import KDRepository
 import KDUseCase
@@ -37,6 +38,8 @@ final class AppViewModel {
             case .success(let verifyLogin):
                 switch verifyLogin {
                 case let .registeredProductKey(key, userId):
+                    FirebaseAnalyticsManager.setUserProperty()
+                    FirebaseAnalyticsManager.setUserID(key)
                     self?.effectContinuation.yield(.showHomePage(productKey: key, userId: userId))
                 case .notRegisteredProductKey, .noLogin:
                     self?.effectContinuation.yield(.showTopPage)

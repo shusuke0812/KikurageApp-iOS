@@ -6,7 +6,6 @@
 //  Copyright © 2021 shusuke. All rights reserved.
 //
 
-import KAAnalytics
 import KUIKit
 import SwiftUI
 import UIKit
@@ -141,8 +140,6 @@ extension AppRootController {
     private func handleEffect(_ effect: AppViewModel.Effect) {
         switch effect {
         case let .showHomePage(productKey, userId):
-            FirebaseAnalyticsManager.setUserProperty()
-            FirebaseAnalyticsManager.setUserID(productKey)
             showHomePage(productKey: productKey, userId: userId)
         case .showTopPage:
             showTopPage()
