@@ -47,7 +47,14 @@ final class AppViewModel {
         }
     }
 
-    func loadFacebookGroupURL() {
+    func fetchRemoteConfig() {
+        loadFacebookGroupURL()
+        loadTermsURL()
+        loadPrivacyPolicyURL()
+        loadLatestAppVersion()
+    }
+
+    private func loadFacebookGroupURL() {
         appConfigRepository.getFacebookGroupURL { response in
             switch response {
             case .success(let urlString):
@@ -58,7 +65,7 @@ final class AppViewModel {
         }
     }
 
-    func loadTermsURL() {
+    private func loadTermsURL() {
         appConfigRepository.getTermsURL { response in
             switch response {
             case .success(let urlString):
@@ -69,7 +76,7 @@ final class AppViewModel {
         }
     }
 
-    func loadPrivacyPolicyURL() {
+    private func loadPrivacyPolicyURL() {
         appConfigRepository.getPrivacyPolicyURL { response in
             switch response {
             case .success(let urlString):
@@ -80,7 +87,7 @@ final class AppViewModel {
         }
     }
 
-    func loadLatestAppVersion() {
+    private func loadLatestAppVersion() {
         appConfigRepository.getLatestAppVersion { response in
             switch response {
             case .success(let appVersionString):

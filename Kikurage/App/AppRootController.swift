@@ -28,7 +28,7 @@ class AppRootController: UIViewController {
         showHUD()
 
         observeEffect()
-        fetchRemoteConfig()
+        viewModel.fetchRemoteConfig()
         viewModel.verifyLogin()
     }
 
@@ -43,13 +43,6 @@ class AppRootController: UIViewController {
 // MARK: - Initialized
 
 extension AppRootController {
-    private func fetchRemoteConfig() {
-        viewModel.loadFacebookGroupURL()
-        viewModel.loadTermsURL()
-        viewModel.loadPrivacyPolicyURL()
-        viewModel.loadLatestAppVersion()
-    }
-
     private func showHUD() {
         let hostingController = UIHostingController(rootView: KUIHUD())
         hostingController.view.backgroundColor = .clear
